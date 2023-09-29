@@ -1,19 +1,16 @@
 ---
 title: "About"
-image: profile.jpg
+image: grad_headshot.jpg
 about:
   template: jolla
   links:
     - icon: twitter
       text: Twitter
-      href: https://twitter.com
+      href: https://twitter.com/kmdurkin_dna
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
+      href: www.linkedin.com/in/kathleen-d
     - icon: github
       text: Github
-      href: https://github.com
-
+      href: https://github.com/shedurkin
 ---
-
-About this blog :)
