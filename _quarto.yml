@@ -6,7 +6,7 @@ website:
   title: "Kathleen's Lab Notebook"
   navbar:
     right:
-      - about.qmd
+#      - about.qmd
       - icon: github
         href: https://github.com/shedurkin
 format:
@@ -16,3 +16,5 @@ format:
 
 editor: visual
 
+margin-header: |
+  ![](grad_headshot_circlecrop.png)
