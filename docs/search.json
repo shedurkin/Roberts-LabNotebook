@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "University of Washington, SAFS – Roberts Lab",
     "section": "",
-    "text": "First post\n\n\n\n\n\n\n\n\n\n\n\n\nSep 28, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nSep 25, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Formatting digital lab notebook\n\n\n\n\n\n\n\nonboarding\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFirst post\n\n\n\n\n\n\n\n\n\n\n\n\nSep 28, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/Sept. 28, 2023/index.html",
@@ -14,10 +14,10 @@
     "text": "I think I successfully created my lab notebook!"
   },
   {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
+    "objectID": "posts/Sept. 29, 2023/index.html",
+    "href": "posts/Sept. 29, 2023/index.html",
+    "title": "Formatting digital lab notebook",
     "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+    "text": "I added my lab notebook to the lab website, so it is now publically viewable as a part of the Roberts Lab. I’ve also continued formatting it and looking into the Quarto documentation."
   }
 ]
