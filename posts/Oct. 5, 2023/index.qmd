@@ -1,0 +1,9 @@
+---
+title: "Lit Review"
+author: "Kathleen Durkin"
+date: "2023-10-05"
+categories:
+    - onboarding
+---
+
+Continued reading through recent lab publications (see entry from yesterday).
