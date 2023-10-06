@@ -1,12 +1,12 @@
 ---
-title: "Lit Review"
+title: "Lit Review and Science Hour"
 author: "Kathleen Durkin"
-date: "2023-10-05"
+date: "2023-10-06"
 categories:
     - onboarding
 ---
 
-Continued reading through recent lab publications (see entry from yesterday) and compiled some questions about them to ask Steven at Science Hour tomorrow (see below). I also completed the required HazCom training (and returned updated training documentation to Sam), requested access to the UW chemical inventory/safety system, and wrote and uploaded a personal description, lab notebook link, email, and picture, to the lab website.
+Completed an additional employee training and went over my lit review questions (see Oct.5 entry) with Steven.
 
 [Questions:]{.underline}
 
@@ -45,19 +45,3 @@ Putnam et al. 2023 (Dynamic DNA methylation contributes to carryover effects...)
 -   or figure 5
 
 -   What are DEGs (pg12)? Also, are CpGs just cytosine/guanine pairs?
-
-General interests:
-
-Understanding and mitigating impacts of climate change/anthropogenic disturbance on marine ecosytems
-
-Specific interests:
-
-epigenetics (and heritbility of epigenetic modifications), phenotypic plasticity, microbiome, disease resistance/resilience, ecotoxicology
-
-Additional papers to read:
-
-Eirin-Lopez and Putnam, 2019 (shows DNA methylation varies in response to environmental factors in marine inverts)
-
-Stephens et al. 2023 (Ploidy variation and its implications for reproduction and population dynamics in two sympatric coral species)
-
-Strader et al. 2019 (heritable epigenetic modifications and transgenerational plasticity in sea urchins)
