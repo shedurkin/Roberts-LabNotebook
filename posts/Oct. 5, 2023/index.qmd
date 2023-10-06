@@ -14,6 +14,10 @@ General
 
 -   I read that both cytosine and adenine can be methylated, but every paper I've read so far studying methylation only looked at methylation of cytosine -- is there a reason adenine methylation is not commonly studied?
 
+-   Is all methylation (in gamete cells) heritable/potentially heritable? Do we know? If not, do we know why/what determines heritability? What about other forms of epigenetic modification?
+
+    -   Similarly, what proportion of methylation (or epigenetic modification in general) affects gamete cells?
+
 George et al. 2023 (Triploid Pacific oysters exhibit stress response dysregulation...)
 
 -   George et al. 2023 studied polyploidy in oysters because of its common use in oyster aquaculture -- does polyploidy have any potential conservation applications, particularly in eukaryotes, for whom ployploidy is often better tolerated? One scenario I can think of is intentional hybridization of two species to selectively breed a more resilient population -- since polyploidy is more common in hybrids, may be important to understand its impacts. I also know polyploidy sometimes happens in corals (especially Caribbean corals), which can reproduce asexually fairly easily. (Need to read related paper Stephens et al. 2023 -- w/ Putnam and Bhattacharya!)
@@ -42,12 +46,16 @@ Putnam et al. 2023 (Dynamic DNA methylation contributes to carryover effects...)
 
 -   What are DEGs (pg12)? Also, are CpGs just cytosine/guanine pairs?
 
--   What is "Wnt" (as in "Wnt signal transduction pathways," pg. 12)
-
 General interests:
 
 Understanding and mitigating impacts of climate change/anthropogenic disturbance on marine ecosytems
 
 Specific interests:
 
-epigenetics, phenotypic plasticity, microbiome, disease resistance/resilience, ecotoxicology
+epigenetics (and heritbility of epigenetic modifications), phenotypic plasticity, microbiome, disease resistance/resilience, ecotoxicology
+
+Additional papers to read:
+
+Eirin-Lopez and Putnam, 2019 (shows DNA methylation varies in response to environmental factors in marine inverts)
+
+Stephens et al. 2023 (Ploidy variation and its implications for reproduction and population dynamics in two sympatric coral species)
