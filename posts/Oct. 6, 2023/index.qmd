@@ -4,6 +4,7 @@ author: "Kathleen Durkin"
 date: "2023-10-06"
 categories:
     - onboarding
+    - lit review
 ---
 
 Completed an additional employee training and went over my lit review questions (see Oct.5 entry) with Steven.

@@ -4,6 +4,7 @@ author: "Kathleen Durkin"
 date: "2023-10-05"
 categories:
     - onboarding
+    - lit review
 ---
 
 Continued reading through recent lab publications (see entry from yesterday) and compiled some questions about them to ask Steven at Science Hour tomorrow (see below). I also completed the required HazCom training (and returned updated training documentation to Sam), requested access to the UW chemical inventory/safety system, and wrote and uploaded a personal description, lab notebook link, email, and picture, to the lab website.
