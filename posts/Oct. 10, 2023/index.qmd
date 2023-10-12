@@ -1,0 +1,9 @@
+---
+title: "RStudio/Bash Struggles"
+author: "Kathleen Durkin"
+date: "2023-10-10"
+categories:
+    - onboarding
+---
+
+I started looking at the github tasks Steven assigned me to familiarize me with Raven and the lab's computing practices (analyzing some weight/temp data and BLASTing/annotating a transcriptome), but quickly ran into setup issues. I made a new github repo using the lab's project template and tried running through one of the blast tutorials included in the project template, but immediately had problems with running the bash code chunks. I've done command-line data analysis work before, but never through an Rmarkdown file or in RStudio. When I tried to run any of the bash code chunks nothing would happen, not even an error output. First I updated Windows and RStudio, since I had updates waiting for both of them, but that didn't help. Since I work on a Windows laptop, which doesn't have a default way to run shell scripts, I downloaded and normally use the software Cygwin -- I think the problem running bash code in Rstudio may stem from RStudio not having a way to run bash, aka not having it's path to run bash script directing to Cygwin? I'll try more troubleshooting tomorrow.

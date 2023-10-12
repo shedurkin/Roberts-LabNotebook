@@ -1,0 +1,11 @@
+---
+title: "RStudio/Bash Struggles (cont.)"
+author: "Kathleen Durkin"
+date: "2023-10-11"
+categories:
+    - onboarding
+---
+
+I've continued trying to troubleshoot my issues with running bash code chunks in .Rmd files. Running Sys.which("bash") in the RStudio console the path "C:\\\\WINDOWS\\\\SYSTEM32\\\\bash.exe", which I *think* is bash installed as a part of the Windows Subsystem for Linux (WSL). I have WSL installed and I've tried opening and running commands in the WSL bash, but it crashes every time I open it, before I have the chance to try any commands. Maybe there's something wrong with it which is why bash chunks won't run in RStudio? I'm not 100% convinced because, weirdly enough, the terminal in my RStudio is functional -- I can run command line code from it (e.g. "pwd") from it with correct outputs. Running "which bash" from RStudio's terminal returns the path, "/usr/bin/bash". I have no idea why the terminal would be functional for running command line but bash code chunks inside an Rmd file aren't.
+
+Ok I checked which shell my RStudio Terminal was using (Tools \> Global Options \> Terminal \> New terminals open with) and my Terminal was using Git Bash. When I changed it to open using WSL Bash and tried to open a new terminal, the new terminal opened briefly and then immediately crashed and closed, just like when I tried opening WSL bash on my machine. Switching back to Git Bash and opening a new terminal with it worked just fine, which means the problem running bash code chunks in Rmd files must be because (for some reason) the bash code chunks in Rmd files are being run using the (apparently nonfunctional) WSL bash, instead of Git Bash! I need to figure out how to change the path so that bash code chunks will run with Git Bash -- I honestly have no idea how to do this though... I would normally assume that setting a preferred shell script for terminal would also set the script for running bash code chunks. The disconnect between terminal and shell script used by console also suggests I won't be able to change the console path to bash from the terminal so..... I'm stumped. Googling the issue is not helpful.
