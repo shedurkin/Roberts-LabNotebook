@@ -1,0 +1,14 @@
+{
+  "hash": "4f62f40702d6267b6408e327cc0cd66f",
+  "result": {
+    "markdown": "---\ntitle: \"RStudio/Bash Struggles (cont.)\"\nauthor: \"Kathleen Durkin\"\ndate: \"2023-10-12\"\ncategories:\n    - onboarding\n---\n\n\nI think I may have fixed the issue running bash code chunks in Rmd files! Included the following:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nknitr::opts_chunk$set(engine.path=list(bash='C:/Program Files/Git/git-bash.exe'))\n```\n:::\n\n\nAnd now, while I still don't seem to get any output when I try to run individual code chunks by pressing the \"play\" button in the top right corner, knitting the document works! I still haven't figured out how to permanently set the default shell script for running bash code chunks from Rmd files, so for now I guess I'll just have to include that YAML block in any Rmd file I'm working in.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
