@@ -6,3 +6,7 @@ categories:
     - onboarding
     - project-cod-temperature
 ---
+
+```{bash}
+pwd
+```
