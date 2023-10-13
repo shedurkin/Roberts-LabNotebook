@@ -142,6 +142,9 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<p>Finished the code temp/growth analysis assigned by Steven, code can be found on lab github: <a href="https://github.com/RobertsLab/project-cod-temperature/blob/main/Code/01_temp-size-analysis.Rmd" class="uri">https://github.com/RobertsLab/project-cod-temperature/blob/main/Code/01_temp-size-analysis.Rmd</a></p>
+<p>I’m still having issues with the disconnect between which shell script is being used by my terminal and which is used by console in R. We realized today that the reason I was having trouble pushing my analysis code to the lab’s project-cod-temperature repo on github was related to the disconnect problem. I was able to pull and push to github when I was working within the repo on RStudio, but I couldn’t commit using the Git environment in the upper right pane. However, pushing, pulling, and committing manually from the terminal all worked fine. We think that somehow, the commit action in the Git environment is using the same faulty WSL shell that my console is defaulting to, even though the push/pull actions are correctly defaulting to Git Bash. To make matters even more confusing, when I’m working within my <em>lab notebook</em> repo in RStudio I’m able to push, pull, <em>and</em> commit successfully from the Git environment with no issues. Why is my default shell script for console/some parts of git different between repos/RStudio projects?</p>
+<p>No answers yet, but for right now I’m still able to maintain functionality while working locally because the terminal is functioning appropriately and I have a workaround to run bash code chunks included in Rmd files (see Oct.12 post).</p>
 
 
 
