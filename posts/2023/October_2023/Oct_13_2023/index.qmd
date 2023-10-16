@@ -9,21 +9,19 @@ categories:
 
 # Cod Temp/Growth Analysis
 
-I finished the code temp/growth analysis assigned by Steven, [code](https://github.com/RobertsLab/project-cod-temperature/blob/main/Code/01_temp-size-analysis.Rmd) and [output pdf](https://github.com/RobertsLab/project-cod-temperature/blob/main/code/01_temp-size-analysis.pdf) can be found on lab github.
+I finished the code temp/growth analysis assigned by Steven, [code](https://github.com/RobertsLab/project-cod-temperature/blob/main/code/01_temp-size-analysis/01_temp-size-analysis.Rmd) and [output pdf](https://github.com/RobertsLab/project-cod-temperature/blob/main/code/01_temp-size-analysis/01_temp-size-analysis.pdf) can be found on lab github.
 
 I aimed to identify whether temperature treatment affected cod growth, and analyzed data using two growth variables, size (mm) and weight (g) sampled three times between Nov.2022 and Feb.2023.
 
-![](https://github.com/RobertsLab/project-cod-temperature/blob/main/output/01_sizeVtreatment-all-dates.png)
+![](https://raw.githubusercontent.com/RobertsLab/project-cod-temperature/main/output/01_temp-size-analysis/01_sizeVtreatment-all-dates.png)
 
-![](https://github.com/RobertsLab/project-cod-temperature/blob/main/output/02_weightVtreatment-all-dates.png)
+![](https://raw.githubusercontent.com/RobertsLab/project-cod-temperature/main/output/01_temp-size-analysis/02_weightVtreatment-all-dates.png)
 
 One-way ANOVA tests indicated statistically significant differences in both change in size (F(3, 156) = 37.9, p = 1.79e-18), and change in weight (F(3, 156) = 29.4, p = 3.73e-15) among the treatment temperatures. Additional application of Tukey's HSD test of multiple comparisons indicated that the both mean size change and mean weight change were significantly different among all treatment temperatures except between the 9 and 16 degree treatments.
 
-![](https://github.com/RobertsLab/project-cod-temperature/blob/main/output/03_size-change-TukeyHSD-plot.png)
+![](https://raw.githubusercontent.com/RobertsLab/project-cod-temperature/main/output/01_temp-size-analysis/03_size-change-TukeyHSD-plot.png)
 
-![](https://github.com/RobertsLab/project-cod-temperature/blob/main/output/04_weight-change-TukeyHSD-plot.png)
-
-![](https://github.com/RobertsLab/project-cod-temperature/blob/0ac0ed144c4bf00c026a7daf991600f8f56b9e21/output/04_weight-change-TukeyHSD-plot.png)
+![](https://raw.githubusercontent.com/RobertsLab/project-cod-temperature/main/output/01_temp-size-analysis/04_weight-change-TukeyHSD-plot.png)
 
 # R/bash issues (cont.)
 

@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kathleen Durkin">
-<meta name="dcterms.date" content="2023-10-05">
+<meta name="dcterms.date" content="2023-10-12">
 
-<title>Kathleen’s Lab Notebook - Lit Review</title>
+<title>Kathleen’s Lab Notebook - RStudio/Bash Struggles (cont.)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,25 +22,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<script src="../../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -63,7 +97,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -73,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../../index.html">
     <span class="navbar-title">Kathleen’s Lab Notebook</span>
     </a>
   </div>
@@ -99,10 +133,10 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Lit Review</h1>
+      <h1 class="title">RStudio/Bash Struggles (cont.)</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">onboarding</div>
-                <div class="quarto-category">lit review</div>
+                <div class="quarto-category">project-cod-temperature</div>
               </div>
                   </div>
   </div>
@@ -120,7 +154,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 5, 2023</p>
+        <p class="date">October 12, 2023</p>
       </div>
     </div>
     
@@ -142,44 +176,12 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Continued reading through recent lab publications (see entry from yesterday) and compiled some questions about them to ask Steven at Science Hour tomorrow (see below). I also completed the required HazCom training (and returned updated training documentation to Sam), requested access to the UW chemical inventory/safety system, and wrote and uploaded a personal description, lab notebook link, email, and picture, to the lab website.</p>
-<p><u>Questions:</u></p>
-<p>General</p>
-<ul>
-<li><p>I read that both cytosine and adenine can be methylated, but every paper I’ve read so far studying methylation only looked at methylation of cytosine – is there a reason adenine methylation is not commonly studied?</p></li>
-<li><p>Is all methylation (in gamete cells) heritable/potentially heritable? Do we know? If not, do we know why/what determines heritability? What about other forms of epigenetic modification?</p>
-<ul>
-<li>Similarly, what proportion of methylation (or epigenetic modification in general) affects gamete cells?</li>
-</ul></li>
-</ul>
-<p>George et al.&nbsp;2023 (Triploid Pacific oysters exhibit stress response dysregulation…)</p>
-<ul>
-<li><p>George et al.&nbsp;2023 studied polyploidy in oysters because of its common use in oyster aquaculture – does polyploidy have any potential conservation applications, particularly in eukaryotes, for whom ployploidy is often better tolerated? One scenario I can think of is intentional hybridization of two species to selectively breed a more resilient population – since polyploidy is more common in hybrids, may be important to understand its impacts. I also know polyploidy sometimes happens in corals (especially Caribbean corals), which can reproduce asexually fairly easily. (Need to read related paper Stephens et al.&nbsp;2023 – w/ Putnam and Bhattacharya!)</p></li>
-<li><p>Confused about a couple aspects of the experimental setup:</p>
-<ul>
-<li><p>Stated that lab obtained 500 oysters for the experiment, but then states that the starting sample size of each of the six treatments (2 controls, 2 single stressor, 2 multiple stressors) was 112, which adds to way over 500 oysters</p></li>
-<li><p>For the multiple stressors treatment, why was aerial exposure not repeated multiple times (since low tide happens on a regular daily schedule, not just once during a given warming event)?</p></li>
-</ul></li>
-<li><p>In Results, why is survival probability not the direct inverse of mortality?</p></li>
-<li><p>I think I noticed some typos… do you want to know about them or just leave it be?</p></li>
-</ul>
-<p>Putnam et al.&nbsp;2023 (Dynamic DNA methylation contributes to carryover effects…)</p>
-<ul>
-<li><p>In the results section I saw that shell area was used as a proxy for shell size – is it assumed that shell <em>thickness</em> remains fairly constant? Do we know this will hold during acidification? Also, are shell size and body mass tightly correlated? (I would assume so, but it would be interesting if acidic conditions messed with that relationship)</p></li>
-<li><p>In Fig.3 I’m a little confused about the y-axes of 3c and 3d – what is the baseline (the “1”) for these relative size values? It doesn’t seem like it could be original size (as in a and b)</p></li>
-<li><p>What is the difference between differentially methylated regions (DMRs) and differentially methylated genes (DMGs)? Are DMRs just methylation of non-coding DNA (e.g.&nbsp;introns)?</p></li>
-<li><p>I have no idea what’s going on in figure 4 :(</p></li>
-<li><p>or figure 5</p></li>
-<li><p>What are DEGs (pg12)? Also, are CpGs just cytosine/guanine pairs?</p></li>
-</ul>
-<p>General interests:</p>
-<p>Understanding and mitigating impacts of climate change/anthropogenic disturbance on marine ecosytems</p>
-<p>Specific interests:</p>
-<p>epigenetics (and heritbility of epigenetic modifications), phenotypic plasticity, microbiome, disease resistance/resilience, ecotoxicology</p>
-<p>Additional papers to read:</p>
-<p>Eirin-Lopez and Putnam, 2019 (shows DNA methylation varies in response to environmental factors in marine inverts)</p>
-<p>Stephens et al.&nbsp;2023 (Ploidy variation and its implications for reproduction and population dynamics in two sympatric coral species)</p>
-<p>Strader et al.&nbsp;2019 (heritable epigenetic modifications and transgenerational plasticity in sea urchins)</p>
+<p>I think I may have fixed the issue running bash code chunks in Rmd files! Included the following:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">engine.path=</span><span class="fu">list</span>(<span class="at">bash=</span><span class="st">'C:/Program Files/Git/git-bash.exe'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And now, while I still don’t seem to get any output when I try to run individual code chunks by pressing the “play” button in the top right corner, knitting the document works! I still haven’t figured out how to permanently set the default shell script for running bash code chunks from Rmd files (checking default shell using “Sys.which(”bash”)” from the console still returns “C::\\WINDOWS\\SYSTEM32\\bash.exe” aka WSL), so for now I guess I’ll just have to include that YAML block in any Rmd file I’m working in.</p>
+<p>Started working on cod temp/size data analysis assigned by Steven but haven’t been able to push to the lab Github repo (project-cod-temperature) bc, while I successfully cloned the repo to RStudio, I haven’t been able to connect them so I’m able to push changes back to it. Will ask about it during Science Hour tomorrow</p>
 
 
 
