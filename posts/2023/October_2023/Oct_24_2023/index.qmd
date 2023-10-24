@@ -1,0 +1,9 @@
+---
+title: "Learning how to BLAST from command line"
+author: "Kathleen Durkin"
+date: "2023-10-24"
+categories:
+    - onboarding
+---
+
+After several weeks of accumulating issues with running command line and working in RStudio/Github (both locally and on Raven), I think I've finally resolved them all! I was able to run the tutorial blast code successfully (I think). I still want to figure out/ask about the function of all the parameters called (e.g. -evalue 1E-20), and to figure out how to interpret the output results (or at least learn how to identify possible issues in the output)

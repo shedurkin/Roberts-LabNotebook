@@ -6,7 +6,7 @@ categories:
     - misc.
 ---
 
-After fairly continuous head-bashing with RStudio/bash/blast for the last two weeks I'm kind of tired of it, so today I'm going to focus on other stuff -- like setting some goals! I've had \~3 weeks now to get settled into the lab and Steven and I have had the chance to talk about possible directions for the near future, so let's put some stuff in writing :)
+After fairly continuous head-bashing (pun intended ;) ) with RStudio/bash/blast for the last two weeks I'm kind of tired of it, so today I'm going to focus on other stuff -- like setting some goals! I've had \~3 weeks now to get settled into the lab and Steven and I have had the chance to talk about possible directions for the near future, so let's put some stuff in writing.
 
 -   **Successfully run a blast search in Raven.** This feels basic, but considering the myriad difficulties I've had with RStudio/Github/Raven/bash/blast over the last few weeks, something tells me it won't be :/
 
