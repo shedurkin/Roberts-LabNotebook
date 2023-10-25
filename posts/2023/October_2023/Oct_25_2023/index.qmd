@@ -1,0 +1,12 @@
+---
+title: "Blast/Annotate Code Transcriptome"
+author: "Kathleen Durkin"
+date: "2023-10-25"
+categories:
+    - onboarding
+    - project-cod-temperature
+---
+
+Scaling up from the blast tutorial yesterday, I was able to run [the code Steven added](https://github.com/RobertsLab/project-cod-temperature/blob/main/code/03-transcriptome-annotation.Rmd) to the [cod project repo](https://github.com/RobertsLab/project-cod-temperature) to blast and annotate a cod transcriptome! I was also able to log in to my new Gannet account and get it set up, so I should (theoretically) be able to store large files there now. I'm still not 100 sure how I would do that though. I've read through some old Github issues and stuff and I think I'd need to either ssh or rsync to connect to Gannet from Raven and then copy over the large files using that connection. I'm not not familiar with rsync, so I'm not sure what the difference between ssh and rsync is or which is preferable. I also am not 100% sure what the server host name/IP address would be to ssh into Gannet, but I'm guessing I can use the IP that Gannet emailed to me. Since I'm not confident in correctly connecting and copying to Gannet from Raven I haven't uploaded the blast/annotation output files or pushed anything from running the rmd to github. I'll either ask about it in lab tomorrow or Science Hour on Friday.
+
+I'm also still not sure what a lot of the code from Steven's blast/annotation code is doing, so I want to do a deep-dive into the commands being run.
