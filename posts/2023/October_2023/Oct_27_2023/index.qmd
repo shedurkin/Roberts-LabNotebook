@@ -1,0 +1,48 @@
+---
+title: "Science Hour Questions"
+author: "Kathleen Durkin"
+date: "2023-10-27"
+categories:
+    - misc.
+    - lit review
+tags:
+    - Science Hour
+---
+
+**Questions for Science Hour:**
+
+Do we know how long (i.e. across how many generations) transgenerational/epigenetic acclimatization lasts?
+
+-   Don't really know. For mice/rats shown to persist 6-7 generations, but will definitely vary among taxa. Lab works with species with longerish generations, so has only really gone out to F2 (second generation)
+
+What about acclimatization related to microbiome? For example, say a coral has a more heat resistant symbiont. Symbionts can be "inherited" by offspring through vertical transmission (parent to offspring) or obtained by the offspring through horizontal transmission (picking up symbionts from water column or other corals). If you "infect" a coral with a thermally-tolerant symbiont, how many generations end up with the same symbiont (on average)? (Ofc this information would be more applicable to understanding acclimatization in species with short generation times, aka not coral)
+
+Do we know whether specific conditions facilitate acclimation/acclimatization? I'm thinking of how adaptation is facilitated by things like high genetic diversity, population connectivity, etc -- is there a proxy for acclimatization?
+
+-   epigenetic landscape, gene copy numbers (e.g. large #s of exons)
+
+-   highly changeable environment also affects epigenome (why?)
+
+**Huttenhofer, Schattner, & Poleacek 2005:**
+
+The paper often used the term "identified" (eg. "snoRNAs have been identified by experimental and computational means") -- what do they mean by this? Do they mean we know that a specific sequence is a snoRNA? That we know what it does?
+
+-   kind of both...?
+
+The paper said "ncRNAs often lack the characteristic features used by genefinders for protein-coding genes" and, in contrast, "have widely varying motifs". How, then, are ncRNAs identified? The paper mentions their "secondary structure" -- what does this mean?
+
+-   
+
+Mentioned the possibility of siRNAs being used as a applied tool to treat human disease because of their possible functionality in changing expression of disease-related genes. Does that mean it's possible that (presumably far in the future) ncRNAs could have be used to bolster stress/disease resilience in a conservation setting?
+
+-   yes!
+
+Mentioned that siRNAs and miRNAs, as a part of the ribonucleo-protein complex RISC, target mRNA using base complementarity -- does that mean that you can easily tell what siRNA/miRNA target (and thus their functionality) once you sequence them by simply IDing the associated strand of mRNA?
+
+Paper stated "it is not even known whether these \[more recently discovered ncRNAs\] have any function, and consequently they are more appropriately considered as ncRNA 'candidates.'" Does this imply that ncRNAs must by definition be functional? I thought the term encompassed any RNA that was non-coding, including potentially non-functional RNA bits...
+
+-   kind of a semantics issue
+
+In corals seeing a high prop of short ncRNAs that can't be classified as miRNAs
+
+Don't know if there are taxa-specific features of different ncRNA classes
