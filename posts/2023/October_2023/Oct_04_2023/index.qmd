@@ -1,9 +1,0 @@
----
-title: "Lit Review"
-author: "Kathleen Durkin"
-date: "2023-10-04"
-categories:
-    - onboarding
----
-
-I've been reading through a selection of papers recently published by the lab to learn more about past/ongoing projects and begin thinking about what kind of project I might want to join/start. I also read the paper Chris selected for lab meeting tomorrow (Pham et al. 2023).
