@@ -1,13 +1,13 @@
 ---
 title: "November 2023, Monthly Goals"
 author: "Kathleen Durkin"
-date: "2023-11"
+date: "2023-11-03"
 categories: ["monthly goals"]
 format:
   html
 ---
 
-# November Goals
+## November Goals
 
 Let's set some goals for the month of November (note, I'll be out on vacation for a few days this month over the Thanksgiving holiday)
 
