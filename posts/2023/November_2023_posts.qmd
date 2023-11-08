@@ -2,7 +2,7 @@
 title: "November 2023, Daily Log"
 author: "Kathleen Durkin"
 date: "2023-11"
-categories: ["monthly goals", "daily log"]
+categories: ["daily log"]
 format:
   html:
     toc: true
@@ -12,79 +12,79 @@ format:
 
 ## 30 November 2023
 
--   Thursday
+#### Thursday
 
 ## 29 November 2023
 
--   Wednesday
+#### Wednesday
 
 ## 28 November 2023
 
--   Tuesday
+#### Tuesday
 
 ## 27 November 2023
 
--   Monday
+#### Monday
 
 ## 24 November 2023
 
--   Friday
+#### Friday
 
 -   On Vacation
 
 ## 23 November 2023
 
--   Thursday
+#### Thursday
 -   On Vacation
 -   Happy Birthday to me 🎉
 
 ## 22 November 2023
 
--   Wednesday
+#### Wednesday
 
 -   On Vacation
 
 ## 21 November 2023
 
--   Tuesday
+#### Tuesday
 
 -   On Vacation
 
 ## 20 November 2023
 
--   Monday
+#### Monday
 
 ## 17 November 2023
 
--   Friday
+#### Friday
 
 ## 16 November 2023
 
--   Thursday
+#### Thursday
 
 ## 15 November 2023
 
--   Wednesday
+#### Wednesday
 
 ## 14 November 2023
 
--   Tuesday
+#### Tuesday
 
 ## 13 November 2023
 
--   Monday
+#### Monday
 
 ## 10 November 2023
 
--   Friday
+#### Friday
 
 ## 09 November 2023
 
--   Thursday
+#### Thursday
 
 ## 08 November 2023
 
-[**Wednesday**]{.underline}
+#### Wednesday
 
 -   Debugging my modification of Sam's sRNA trimming code for application to *P. meandrina.*
 
@@ -92,13 +92,13 @@ format:
 
 ## 07 November 2023 -- Classes and Homework
 
-[**Tuesday**]{.underline}
+#### Tuesday
 
 Mostly classes, seminar readings, and QSCI assignment today.
 
 ## 06 November 2023 -- E5 Molecular Working Group
 
-[**Monday**]{.underline}
+#### Monday
 
 Met with the E5 molecular working group to review status of long and short ncRNA deep dive. Got started on applying Sam's code for sRNA analysis to *P. meandrina*.
 
@@ -106,7 +106,7 @@ Also presented a version of my GSS talk (UCE target enrichment to improve soft c
 
 ## 03 November 2023
 
-[**Friday**]{.underline}
+#### Friday
 
 Set November monthly goals
 
@@ -114,7 +114,7 @@ Met with Steven during Science hour
 
 ## 02 November 2023 -- Calculating RNASeq sample size
 
-[**Thursday**]{.underline}
+#### Thursday
 
 Calculated necessary sample size for cod RNA sequencing, given an assumed coefficient of variation and detectable difference in expression -- view document [here](https://github.com/RobertsLab/project-cod-temperature/blob/main/code/04-RNASeq-sample-size.md).
 
@@ -122,7 +122,7 @@ Met with the E5 molecular working group for the first time!
 
 ## 01 November 2023 -- SICB Registration, Reviewing October Goals
 
-[**Wednesday**]{.underline}
+#### Wednesday
 
 In the spirit of yesterday's holiday, I completed the scary task of registering for SICB out-of-pocket and then submitting the reimbursement request 🥴. This afternoon I also attended a workshop on making research presentations and slides more communicative and accessible, led by Tim.
 
