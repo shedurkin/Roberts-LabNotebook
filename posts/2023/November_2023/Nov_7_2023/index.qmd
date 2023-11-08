@@ -1,0 +1,9 @@
+---
+title: "Classes and Homework"
+author: "Kathleen Durkin"
+date: "2023-11-07"
+categories:
+    - misc.
+---
+
+Mostly classes, seminar readings, and QSCI assignment today.

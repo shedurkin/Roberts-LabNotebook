@@ -1,0 +1,14 @@
+---
+title: "E5 Molecular Working Group"
+author: "Kathleen Durkin"
+date: "2023-11-06"
+categories:
+    - E5 Coral
+    - misc.
+tags: 
+    - GSS
+---
+
+Met with the E5 molecular working group to review status of long and short ncRNA deep dive. Got started on applying Sam's code for sRNA analysis to *P. meandrina* and *P. evermanni.*
+
+Also presented a version of my GSS talk (UCE target enrichment to improve soft coral species delimitation) for FISH510 assignment and got some helpful feedback! Will make some tweaks and cut down time before my practice talk in Nov. 16 lab meeting.

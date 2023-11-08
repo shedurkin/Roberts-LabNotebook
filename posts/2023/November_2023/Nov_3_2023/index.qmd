@@ -10,21 +10,24 @@ Let's set some goals for the month of November (note, I'll be out for a few days
 
 -   Register, plan for, and present at GSS (will be on undergrad work, not Roberts lab stuff)
 
-    <div class="progress">   
-    <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
+    ::: progress
+    ::: {.progress-bar role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"}
+    :::
+
     Registered
-    </div>
+    :::
 
 -   Read 2 project-relevant papers a week (8 total)
 
-    <div class="progress">   
-    <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
-    0%
-    </div>
+    ::: progress
+    ::: {.progress-bar role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"}
+    :::
 
-```{=html}
+    0%
+    :::
+
 <!-- -->
-```
+
 -   Cod project: Send samples out for RNA sequencing (don't need any sample prep, just find and send
 
 -   Coral project: Identify short RNA's for *Porites evermanni* and *Pocillopora meandrina*
