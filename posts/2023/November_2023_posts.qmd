@@ -35,6 +35,7 @@ format:
 ## 23 November 2023
 
 #### Thursday
+
 -   On Vacation
 -   Happy Birthday to me 🎉
 
@@ -80,25 +81,33 @@ format:
 
 ## 09 November 2023
 
-#### Thursday
+#### Thursday -- Lab Meeting, Debugging Raven-\>Github Issue
+
+-   Lab Meeting! DEI discussion
+
+-   Talked with Steven about Raven-\>Github issue (can't currently push from Raven). Meanwhile, backed up current work to Gannet
+
+-   Classes and assignments
 
 ## 08 November 2023
 
-#### Wednesday
+#### Wednesday -- E5 sRNA work (*P. meandrina*) and Website Reformatting
 
 -   Debugging my modification of Sam's sRNA trimming code for application to *P. meandrina.*
 
 -   Reformatting Lab Notebook structure
 
-## 07 November 2023 -- Classes and Homework
+-   Read Chpt.1 of "Race After Technology" for lab DEI discussion tomorrow
 
-#### Tuesday
+## 07 November 2023
+
+#### Tuesday -- Classes and Homework
 
 Mostly classes, seminar readings, and QSCI assignment today.
 
-## 06 November 2023 -- E5 Molecular Working Group
+## 06 November 2023 
 
-#### Monday
+#### Monday -- E5 Molecular Working Group
 
 Met with the E5 molecular working group to review status of long and short ncRNA deep dive. Got started on applying Sam's code for sRNA analysis to *P. meandrina*.
 
@@ -112,17 +121,17 @@ Set November monthly goals
 
 Met with Steven during Science hour
 
-## 02 November 2023 -- Calculating RNASeq sample size
+## 02 November 2023
 
-#### Thursday
+#### Thursday -- Calculating RNASeq sample size
 
 Calculated necessary sample size for cod RNA sequencing, given an assumed coefficient of variation and detectable difference in expression -- view document [here](https://github.com/RobertsLab/project-cod-temperature/blob/main/code/04-RNASeq-sample-size.md).
 
 Met with the E5 molecular working group for the first time!
 
-## 01 November 2023 -- SICB Registration, Reviewing October Goals
+## 01 November 2023
 
-#### Wednesday
+#### Wednesday -- SICB Registration, Reviewing October Goals
 
 In the spirit of yesterday's holiday, I completed the scary task of registering for SICB out-of-pocket and then submitting the reimbursement request 🥴. This afternoon I also attended a workshop on making research presentations and slides more communicative and accessible, led by Tim.
 

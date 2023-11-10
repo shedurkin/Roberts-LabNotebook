@@ -35,7 +35,7 @@ Let's set some goals for the month of November (note, I'll be out on vacation fo
 
 -   Coral project: Identify short RNA's for *Porites evermanni* and *Pocillopora meandrina*
 
-# Reviewing October Goals
+## Reviewing October Goals
 
 **✓ Successfully run a blast search in Raven.** Completed! I was able to run through Steven's full code for blasting and annotating a cod transcriptome, and I'll hopefully be able to glean enough from his code to understand how to write my own in the future.
 
