@@ -26,6 +26,12 @@ format:
 
 #### Monday
 
+Another paper+questions.
+
+[Gajigan et al. 2017](https://doi.org/10.1111/mec.14130):
+
+-   Many of the miRNAs identified in *A.digitifera* are novel (not identified in any other cnidarians or other taxa) -- are miRNAs generally this divergent accross closely related taxa, or is this proportion of novel miRNAs unusual?
+
 ## 24 November 2023
 
 #### Friday
@@ -55,13 +61,39 @@ format:
 
 #### Monday
 
+Read some papers on ncRNAs, questions for next Science Hour/meeting with Steven below:
+
+[Zhu et al. 2022](https://doi.org/10.1016/j.ygeno.2022.110404): I thought this paper was *sooooo* cool! The possibility of cross-kingdom miRNA effects is *crazy*
+
+-   What is KEEG? (referenced similarly to GO) Just a different database?
+
+-   "Rho-related" terms? (In GO context)
+
+-   No idea what Fig. 1 is showing
+
+-   I've noticed that GO annotations I've seen for corals never map to known *coral* functions -- they're always to similar things in other more-studied taxa (e.g. insects, nematodes). How often are GO annotations originally identified/set in one taxa validated for application in other taxa? How would that work? Is it even necessary?
+
+-   So Zhu et al. 2022 found symbiont-associated miRNAs in coral transcriptome, but also mentioned in intro that (in other studies) foreign miRNA presence was correlated with intake (e.g. when human ate certain plant associated miRNAs present in human serum, but would disappear if they stopped eating that plant). Does that mean that presence/function of symbiont miRNAs in corals change when the coral is bleached (aka, the symbionts are gone)? If some symbiont miRNAs may be affecting coral immune response, could this play into coral immunocompromisation during bleaching?
+
+[Trigg et al. 2021](https://doi.org/10.1111/1755-0998.13542)
+
+Also, not from either of the papers, but I was kind of confused about Sam's discussion of trying different trimming sizes to ID miRNAs. I've only taken a basic molgen class though, which didn't go very in-depth in to how RNAs (especially ncRNAs) work, so this may be a basic knowledge gap. In contrast to DNA, where all of the different introns/exons, etc. are contained in one long strand of DNA, I thought transcribed RNAs were separate molecules. If that's the case my understanding on how we sequence miRNAs is that we isolate all the RNAs of a very small size (20-30bp) and then sequence them -- why, then, would trimming be necessary? And how do you decide to do trimming? Do all miRNAs have some identical feature that indicates the beginning/end of them (like start/stop codons in DNA?
+
 ## 17 November 2023
 
 #### Friday
 
+-   Met with E5 molecular working group, reviewed status of long and short ncRNA investigations
+
+-   Attended GSS department presentations
+
+-   Presented at GSS!
+
 ## 16 November 2023
 
 #### Thursday
+
+-   Met with Steven to go over number and location of cod samples we want to send for RNAseq. Decided we probably want to send 160 samples total, 80 liver samples and 80 gill. Within each, 5 from each tank (4 tanks per temp treatment), for a total of 20 samples from each of the 4 temperature treatments.
 
 ## 15 November 2023
 
