@@ -1,7 +1,7 @@
 ---
 title: "November 2023, Daily Log"
 author: "Kathleen Durkin"
-date: "2023-11"
+date: "2023-11-27"
 categories: ["daily log"]
 format:
   html:
@@ -30,7 +30,9 @@ Another paper+questions.
 
 [Gajigan et al. 2017](https://doi.org/10.1111/mec.14130):
 
--   Many of the miRNAs identified in *A.digitifera* are novel (not identified in any other cnidarians or other taxa) -- are miRNAs generally this divergent accross closely related taxa, or is this proportion of novel miRNAs unusual?
+-   Many of the miRNAs identified in *A.digitifera* are novel (not identified in any other cnidarians or other taxa) -- are miRNAs generally this divergent across closely related taxa, or is this proportion of novel miRNAs unusual?
+
+I also received and reviewed my feedback from presenting at GSS (good marks and useful notes!), updated progress on my November goals, and fixed the image formatting of this notebook site. I still want to figure out how to show my headshot on only the home page (not in any of the posts), but that can be a battle for another day.
 
 ## 24 November 2023
 
@@ -74,6 +76,8 @@ Read some papers on ncRNAs, questions for next Science Hour/meeting with Steven 
 -   I've noticed that GO annotations I've seen for corals never map to known *coral* functions -- they're always to similar things in other more-studied taxa (e.g. insects, nematodes). How often are GO annotations originally identified/set in one taxa validated for application in other taxa? How would that work? Is it even necessary?
 
 -   So Zhu et al. 2022 found symbiont-associated miRNAs in coral transcriptome, but also mentioned in intro that (in other studies) foreign miRNA presence was correlated with intake (e.g. when human ate certain plant associated miRNAs present in human serum, but would disappear if they stopped eating that plant). Does that mean that presence/function of symbiont miRNAs in corals change when the coral is bleached (aka, the symbionts are gone)? If some symbiont miRNAs may be affecting coral immune response, could this play into coral immunocompromisation during bleaching?
+
+-   Has there been any similar work with other taxa of Symbiodiniaceae?
 
 [Trigg et al. 2021](https://doi.org/10.1111/1755-0998.13542)
 
