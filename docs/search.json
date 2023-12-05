@@ -284,7 +284,7 @@
     "href": "posts/2023/December_2023_posts.html",
     "title": "December 2023, Daily Log",
     "section": "",
-    "text": "Out – university holiday\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClasses. Learned about Celeste’s work with tunicates!\n\n\n\n\n\n\n\nE5 Molecular working group meeting – reviewed sRNA progress\nScience Hour – talked with Sam about some of my recent questions/confusion spots for miRNA stuff"
+    "text": "Out – university holiday\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOffice setup supplies arrived and I unpackaged and setup my new monitor, laptop stand, keyboard, and mouse! Still need to find some batteries for the wireless keyboard though.\nThe P.meandrina miRdeep2 finished running!\nA quick comparison of the different miRNA ID approaches for the three species we’ve been looking at:\n\n\n\n\n\n\n\n\n\n\n\n\nmiRTrace\n\nMirMachine\n\nBLASTn\n(E-val=10)\nmiRdeep2\nShortStack\n\n\n\n\n\nA. pulchra\n(A.millepora for genome-based)\nlophotrochozoa, rodents, primates,\nPredicted loci: 109\nUnique families: 11\nmiRBase: 19,120,159\nMirGene: 19,037,617\nPredicted miRNAs: 4,553\nMatches to known miRNAs: 4,137\nNovel miRNAs: 416\nPotential loci: 18,772\nmiRBase matches: 46\n# characterized as miRNA: 0\n\n\nP. evermanni\ninsects\nPredicted loci: 83\nUnique familes: 15\nmiRBase: 8,824,359\nMirGene: 8,783,659\nPredicted miRNAs: 5,812\nMatches to known miRNAS: 5,096\nNovel miRNAs: 716\nPotential loci: 15,040\nmiRBase matches: 25\n# characterized as miRNA: 0\n\n\nP. meandrina\nnematode, insects, lophotrochozoa, primates\nPredicted loci: 40\nUnique families: 7\nmiRBase: 13,708,946\nMirGene: 13,614,786\nPredicted miRNAs: 2,429\nMatches to known miRNAs: 2,143\nNovel miRNAs: 286\nPotential loci: 7,306\nmiRBase matches: 86\n# characterized as miRNA: 0\n\n\n\n\n\n\n\n\n\nClasses. Learned about Celeste’s work with tunicates!\n\n\n\n\n\n\n\nE5 Molecular working group meeting – reviewed sRNA progress\nScience Hour – talked with Sam about some of my recent questions/confusion spots for miRNA stuff"
   },
   {
     "objectID": "posts/2023/December_2023_posts.html#december-2023-4",
@@ -292,6 +292,13 @@
     "title": "December 2023, Daily Log",
     "section": "",
     "text": "Out – university holiday"
+  },
+  {
+    "objectID": "posts/2023/December_2023_posts.html#december-2023-18",
+    "href": "posts/2023/December_2023_posts.html#december-2023-18",
+    "title": "December 2023, Daily Log",
+    "section": "",
+    "text": "Office setup supplies arrived and I unpackaged and setup my new monitor, laptop stand, keyboard, and mouse! Still need to find some batteries for the wireless keyboard though.\nThe P.meandrina miRdeep2 finished running!\nA quick comparison of the different miRNA ID approaches for the three species we’ve been looking at:\n\n\n\n\n\n\n\n\n\n\n\n\nmiRTrace\n\nMirMachine\n\nBLASTn\n(E-val=10)\nmiRdeep2\nShortStack\n\n\n\n\n\nA. pulchra\n(A.millepora for genome-based)\nlophotrochozoa, rodents, primates,\nPredicted loci: 109\nUnique families: 11\nmiRBase: 19,120,159\nMirGene: 19,037,617\nPredicted miRNAs: 4,553\nMatches to known miRNAs: 4,137\nNovel miRNAs: 416\nPotential loci: 18,772\nmiRBase matches: 46\n# characterized as miRNA: 0\n\n\nP. evermanni\ninsects\nPredicted loci: 83\nUnique familes: 15\nmiRBase: 8,824,359\nMirGene: 8,783,659\nPredicted miRNAs: 5,812\nMatches to known miRNAS: 5,096\nNovel miRNAs: 716\nPotential loci: 15,040\nmiRBase matches: 25\n# characterized as miRNA: 0\n\n\nP. meandrina\nnematode, insects, lophotrochozoa, primates\nPredicted loci: 40\nUnique families: 7\nmiRBase: 13,708,946\nMirGene: 13,614,786\nPredicted miRNAs: 2,429\nMatches to known miRNAs: 2,143\nNovel miRNAs: 286\nPotential loci: 7,306\nmiRBase matches: 86\n# characterized as miRNA: 0"
   },
   {
     "objectID": "posts/2023/December_2023_posts.html#december-2023-19",
