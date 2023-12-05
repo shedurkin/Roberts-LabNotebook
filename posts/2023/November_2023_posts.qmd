@@ -14,13 +14,25 @@ format:
 
 #### Thursday
 
+Lab meeting, kept working on P.meandrina sRNA investigation
+
+[*P.meandrina* MirMachine](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/12-Pmea-sRNAseq-MirMachine.html)
+
+[*P.meandrina* ShortStack](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/13-Pmea-sRNAseq-ShortStack.md)
+
+*P.meandrina* miRdeep2 (incomplete)
+
 ## 29 November 2023
 
 #### Wednesday
 
+Completed rest of quarter's class assignments and studied for upcoming midterm
+
 ## 28 November 2023
 
 #### Tuesday
+
+Read a couple more papers to meet monthly goals
 
 ## 27 November 2023
 
@@ -69,7 +81,11 @@ Read some papers on ncRNAs, questions for next Science Hour/meeting with Steven 
 
 -   What is KEEG? (referenced similarly to GO) Just a different database?
 
+    -   Yep
+
 -   "Rho-related" terms? (In GO context)
+
+    -   related to Rho protein family
 
 -   No idea what Fig. 1 is showing
 
@@ -81,7 +97,9 @@ Read some papers on ncRNAs, questions for next Science Hour/meeting with Steven 
 
 [Trigg et al. 2021](https://doi.org/10.1111/1755-0998.13542)
 
-Also, not from either of the papers, but I was kind of confused about Sam's discussion of trying different trimming sizes to ID miRNAs. I've only taken a basic molgen class though, which didn't go very in-depth in to how RNAs (especially ncRNAs) work, so this may be a basic knowledge gap. In contrast to DNA, where all of the different introns/exons, etc. are contained in one long strand of DNA, I thought transcribed RNAs were separate molecules. If that's the case my understanding on how we sequence miRNAs is that we isolate all the RNAs of a very small size (20-30bp) and then sequence them -- why, then, would trimming be necessary? And how do you decide to do trimming? Do all miRNAs have some identical feature that indicates the beginning/end of them (like start/stop codons in DNA?
+Also, not from either of the papers, but I was kind of confused about Sam's discussion of trying different trimming sizes to ID miRNAs. I've only taken a basic molgen class though, which didn't go very in-depth in to how RNAs (especially ncRNAs) work, so this may be a basic knowledge gap. In contrast to DNA, where all of the different introns/exons, etc. are contained in one long strand of DNA, I thought transcribed RNAs were separate molecules. If that's the case my understanding on how we sequence miRNAs is that we isolate all the RNAs of a very small size (20-30bp) and then sequence them -- why, then, would trimming (beyond removing the adapters that facilitate enrichment) be necessary? And how do you decide to do trimming? Do all miRNAs have some identical feature that indicates the beginning/end of them (like start/stop codons in DNA)?
+
+-   
 
 ## 17 November 2023
 
@@ -151,7 +169,7 @@ I think I resolved my issues pushing from Raven to github! I backed up all my wo
 
 Mostly classes, seminar readings, and QSCI assignment today.
 
-## 06 November 2023 
+## 06 November 2023
 
 #### Monday -- E5 Molecular Working Group
 
