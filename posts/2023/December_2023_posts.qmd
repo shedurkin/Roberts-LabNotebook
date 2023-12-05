@@ -1,0 +1,95 @@
+---
+title: "December 2023, Daily Log"
+author: "Kathleen Durkin"
+date: "2023-12-5"
+categories: ["daily log"]
+format:
+  html:
+    toc: true
+---
+
+# Daily Log
+
+## 29 December 2023
+
+#### Friday
+
+## 28 December 2023
+
+#### Thursday
+
+## 27 December 2023
+
+#### Wednesday
+
+## 26 December 2023
+
+#### Tuesday
+
+## 25 December 2023
+
+#### Monday
+
+## 22 December 2023
+
+#### Friday
+
+## 21 December 2023
+
+#### Thursday
+
+## 20 December 2023
+
+#### Wednesday
+
+## 19 December 2023
+
+#### Tuesday
+
+## 18 December 2023
+
+#### Monday
+
+## 15 December 2023
+
+#### Friday
+
+## 14 December 2023
+
+#### Thursday
+
+## 13 December 2023
+
+#### Wednesday
+
+## 12 December 2023
+
+#### Tuesday
+
+## 11 December 2023
+
+#### Monday
+
+## 08 December 2023
+
+#### Friday
+
+## 07 December 2023
+
+#### Thursday
+
+## 06 December 2023
+
+#### Wednesday
+
+## 05 December 2023
+
+#### Tuesday
+
+## 04 December 2023
+
+#### Monday
+
+## 01 December 2023
+
+#### Friday
