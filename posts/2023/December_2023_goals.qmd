@@ -1,7 +1,7 @@
 ---
 title: "December 2023, Monthly Goals"
 author: "Kathleen Durkin"
-date: "2023-11-03"
+date: "2023-12-05"
 categories: ["monthly goals"]
 format:
   html

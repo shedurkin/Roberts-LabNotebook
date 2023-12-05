@@ -30,6 +30,8 @@ format:
 
 #### Monday
 
+-   Out -- university holiday
+
 ## 22 December 2023
 
 #### Friday
@@ -90,6 +92,12 @@ format:
 
 #### Monday
 
+Classes. Learned about Celeste's work with tunicates!
+
 ## 01 December 2023
 
 #### Friday
+
+-   E5 Molecular working group meeting -- reviewed sRNA progress
+
+-   Science Hour -- talked with Sam about some of my recent questions/confusion spots for miRNA stuff
