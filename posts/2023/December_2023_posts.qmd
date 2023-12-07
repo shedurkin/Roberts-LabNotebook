@@ -1,7 +1,7 @@
 ---
 title: "December 2023, Daily Log"
 author: "Kathleen Durkin"
-date: "2023-12-5"
+date: "last-modified"
 categories: ["daily log"]
 format:
   html:
