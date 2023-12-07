@@ -284,7 +284,7 @@
     "href": "posts/2023/December_2023_posts.html",
     "title": "December 2023, Daily Log",
     "section": "",
-    "text": "Out – university holiday\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOffice setup supplies arrived and I unpackaged and setup my new monitor, laptop stand, keyboard, and mouse! Still need to find some batteries for the wireless keyboard though.\nThe P.meandrina miRdeep2 finished running!\nA quick comparison of the different miRNA ID approaches for the three species we’ve been looking at:\n\n\n\n\n\n\n\n\n\n\n\n\nmiRTrace\n\nMirMachine\n\nBLASTn\n(E-val=10)\nmiRdeep2\nShortStack\n\n\n\n\n\nA. pulchra\n(A.millepora for genome-based)\nlophotrochozoa, rodents, primates,\nPredicted loci: 109\nUnique families: 11\nmiRBase: 19,120,159\nMirGene: 19,037,617\nPredicted miRNAs: 4,553\nMatches to known miRNAs: 4,137\nNovel miRNAs: 416\nPotential loci: 18,772\nmiRBase matches: 46\n# characterized as miRNA: 0\n\n\nP. evermanni\ninsects\nPredicted loci: 83\nUnique familes: 15\nmiRBase: 8,824,359\nMirGene: 8,783,659\nPredicted miRNAs: 5,812\nMatches to known miRNAS: 5,096\nNovel miRNAs: 716\nPotential loci: 15,040\nmiRBase matches: 25\n# characterized as miRNA: 0\n\n\nP. meandrina\nnematode, insects, lophotrochozoa, primates\nPredicted loci: 40\nUnique families: 7\nmiRBase: 13,708,946\nMirGene: 13,614,786\nPredicted miRNAs: 2,429\nMatches to known miRNAs: 2,143\nNovel miRNAs: 286\nPotential loci: 7,306\nmiRBase matches: 86\n# characterized as miRNA: 0\n\n\n\n\n\n\n\n\n\nClasses. Learned about Celeste’s work with tunicates!\n\n\n\n\n\n\n\nE5 Molecular working group meeting – reviewed sRNA progress\nScience Hour – talked with Sam about some of my recent questions/confusion spots for miRNA stuff"
+    "text": "Out – university holiday\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nStudied and took practice midterm for QSCI 482 (test on Friday) – got a 95!\nRead Chpt.2 for DEI -focused lab meeting tomorrow\n\n\n\n\n\n\n\nOffice setup supplies arrived and I unpackaged and setup my new monitor, laptop stand, keyboard, and mouse! Still need to find some batteries for the wireless keyboard though.\nThe P.meandrina miRdeep2 finished running!\nA quick comparison of the different miRNA ID approaches for the three species we’ve been looking at:\n\n\n\n\n\n\n\n\n\n\n\n\nmiRTrace\n\nMirMachine\n\nBLASTn\n(E-val=10)\nmiRdeep2\nShortStack\n\n\n\n\n\nA. pulchra\n(A.millepora for genome-based)\nlophotrochozoa, rodents, primates,\nPredicted loci: 109\nUnique families: 11\nmiRBase: 19,120,159\nMirGene: 19,037,617\nPredicted miRNAs: 4,553\nMatches to known miRNAs: 4,137\nNovel miRNAs: 416\nPotential loci: 18,772\nmiRBase matches: 46\n# characterized as miRNA: 0\n\n\nP. evermanni\ninsects\nPredicted loci: 83\nUnique familes: 15\nmiRBase: 8,824,359\nMirGene: 8,783,659\nPredicted miRNAs: 5,812\nMatches to known miRNAS: 5,096\nNovel miRNAs: 716\nPotential loci: 15,040\nmiRBase matches: 25\n# characterized as miRNA: 0\n\n\nP. meandrina\nnematode, insects, lophotrochozoa, primates\nPredicted loci: 40\nUnique families: 7\nmiRBase: 13,708,946\nMirGene: 13,614,786\nPredicted miRNAs: 2,429\nMatches to known miRNAs: 2,143\nNovel miRNAs: 286\nPotential loci: 7,306\nmiRBase matches: 86\n# characterized as miRNA: 0\n\n\n\n\n\n\n\n\n\nClasses. Learned about Celeste’s work with tunicates!\n\n\n\n\n\n\n\nE5 Molecular working group meeting – reviewed sRNA progress\nScience Hour – talked with Sam about some of my recent questions/confusion spots for miRNA stuff"
   },
   {
     "objectID": "posts/2023/December_2023_posts.html#december-2023-4",
@@ -292,6 +292,13 @@
     "title": "December 2023, Daily Log",
     "section": "",
     "text": "Out – university holiday"
+  },
+  {
+    "objectID": "posts/2023/December_2023_posts.html#december-2023-17",
+    "href": "posts/2023/December_2023_posts.html#december-2023-17",
+    "title": "December 2023, Daily Log",
+    "section": "",
+    "text": "Studied and took practice midterm for QSCI 482 (test on Friday) – got a 95!\nRead Chpt.2 for DEI -focused lab meeting tomorrow"
   },
   {
     "objectID": "posts/2023/December_2023_posts.html#december-2023-18",
@@ -322,11 +329,25 @@
     "text": "December 2023, Monthly Goals\n\n\n\n\n\n\n\nmonthly goals\n\n\n\n\n\n\n\n\n\n\n\nDec 5, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n  \n\n\n\n\nDecember 2023, Daily Log\n\n\n\n\n\n\n\ndaily log\n\n\n\n\n\n\n\n\n\n\n\nDec 5, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n  \n\n\n\n\nNovember 2023, Daily Log\n\n\n\n\n\n\n\ndaily log\n\n\n\n\n\n\n\n\n\n\n\nNov 30, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n  \n\n\n\n\nNovember 2023, Monthly Goals\n\n\n\n\n\n\n\nmonthly goals\n\n\n\n\n\n\n\n\n\n\n\nNov 3, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n  \n\n\n\n\nOctober 2023, Monthly Goals\n\n\n\n\n\n\n\nmonthly goals\n\n\n\n\n\n\n\n\n\n\n\nOct 18, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n  \n\n\n\n\nOctober 2023, Daily Log\n\n\n\n\n\n\n\ndaily log\n\n\n\n\n\n\n\n\n\n\n\nOct 1, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n  \n\n\n\n\nFormatting digital lab notebook\n\n\n\n\n\n\n\nonboarding\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n  \n\n\n\n\nFirst post\n\n\n\n\n\n\n\n\n\n\n\n\nSep 28, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\nNo matching items"
   },
   {
+    "objectID": "posts/2023/December_2023_goals.html",
+    "href": "posts/2023/December_2023_goals.html",
+    "title": "December 2023, Monthly Goals",
+    "section": "",
+    "text": "(Note, I’ll likely be out/less productive over the Christmas holiday)"
+  },
+  {
+    "objectID": "posts/2023/December_2023_goals.html#december-goals",
+    "href": "posts/2023/December_2023_goals.html#december-goals",
+    "title": "December 2023, Monthly Goals",
+    "section": "",
+    "text": "(Note, I’ll likely be out/less productive over the Christmas holiday)"
+  },
+  {
     "objectID": "posts/2023/December_2023_goals.html#reviewing-november-goals",
     "href": "posts/2023/December_2023_goals.html#reviewing-november-goals",
     "title": "December 2023, Monthly Goals",
     "section": "Reviewing November Goals",
-    "text": "Reviewing November Goals\nLet’s set some goals for the month of November (note, I’ll be out on vacation for a few days this month over the Thanksgiving holiday)\n✓ Register, plan for, and present at GSS (will be on undergrad work, not Roberts lab stuff)\n✓ Read 2 project-relevant papers a week (8 total)\n\n\nCod project: Send samples out for RNA sequencing (don’t need any sample prep, just find and send\n\n✓ Coral project: Identify short RNA’s for Porites evermanni and Pocillopora meandrina"
+    "text": "Reviewing November Goals\n✓ Register, plan for, and present at GSS (will be on undergrad work, not Roberts lab stuff)\n✓ Read 2 project-relevant papers a week (8 total)\n? Cod project: Send samples out for RNA sequencing (don’t need any sample prep, just find and send\n✓ Coral project: Identify short RNA’s for Porites evermanni and Pocillopora meandrina"
   },
   {
     "objectID": "posts/2023/November_2023_goals.html",

@@ -9,16 +9,14 @@ format:
 
 ## December Goals
 
-## Reviewing November Goals
+(Note, I'll likely be out/less productive over the Christmas holiday)
 
-Let's set some goals for the month of November (note, I'll be out on vacation for a few days this month over the Thanksgiving holiday)
+## Reviewing November Goals
 
 ✓ Register, plan for, and present at GSS (will be on undergrad work, not Roberts lab stuff)
 
 ✓ Read 2 project-relevant papers a week (8 total)
 
-<!-- -->
-
--   Cod project: Send samples out for RNA sequencing (don't need any sample prep, just find and send
+? Cod project: Send samples out for RNA sequencing (don't need any sample prep, just find and send
 
 ✓ Coral project: Identify short RNA's for *Porites evermanni* and *Pocillopora meandrina*
