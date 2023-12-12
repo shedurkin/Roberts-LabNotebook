@@ -1,28 +1,51 @@
 [
   {
+    "listing": "/projects.html",
+    "items": [
+      "/posts/projects/E5_coral.html",
+      "/posts/projects/pacific_cod.html"
+    ]
+  },
+  {
     "listing": "/daily_log.html",
     "items": [
-      "/posts/2023_daily_logs/December_2023_posts.html",
-      "/posts/2023_daily_logs/December_2023_goals.html",
-      "/posts/2023_daily_logs/November_2023_posts.html",
-      "/posts/2023_daily_logs/November_2023_goals.html",
-      "/posts/2023_daily_logs/October_2023_goals.html",
-      "/posts/2023_daily_logs/October_2023_posts.html",
-      "/posts/2023_daily_logs/September_2023/Sept_29_2023/index.html",
-      "/posts/2023_daily_logs/September_2023/Sept_28_2023/index.html"
+      "/posts/daily_logs/2023/December_2023_posts.html",
+      "/posts/daily_logs/2023/December_2023_goals.html",
+      "/posts/daily_logs/2023/November_2023_posts.html",
+      "/posts/daily_logs/2023/November_2023_goals.html",
+      "/posts/daily_logs/2023/October_2023_goals.html",
+      "/posts/daily_logs/2023/October_2023_posts.html",
+      "/posts/daily_logs/September_2023/Sept_29_2023/index.html",
+      "/posts/daily_logs/September_2023/Sept_28_2023/index.html"
     ]
   },
   {
     "listing": "/index.html",
     "items": [
-      "/posts/2023_daily_logs/December_2023_posts.html",
-      "/posts/2023_daily_logs/December_2023_goals.html",
-      "/posts/2023_daily_logs/November_2023_posts.html",
-      "/posts/2023_daily_logs/November_2023_goals.html",
-      "/posts/2023_daily_logs/October_2023_goals.html",
-      "/posts/2023_daily_logs/October_2023_posts.html",
-      "/posts/2023_daily_logs/September_2023/Sept_29_2023/index.html",
-      "/posts/2023_daily_logs/September_2023/Sept_28_2023/index.html"
+      "/posts/projects/E5_coral.html",
+      "/posts/projects/pacific_cod.html",
+      "/posts/daily_logs/2023/December_2023_posts.html",
+      "/posts/projects/E5_coral/testcoral.html",
+      "/posts/projects/pacific_cod/testcod.html",
+      "/posts/daily_logs/2023/December_2023_goals.html",
+      "/posts/daily_logs/2023/November_2023_posts.html",
+      "/posts/daily_logs/2023/November_2023_goals.html",
+      "/posts/daily_logs/2023/October_2023_goals.html",
+      "/posts/daily_logs/2023/October_2023_posts.html",
+      "/posts/daily_logs/September_2023/Sept_29_2023/index.html",
+      "/posts/daily_logs/September_2023/Sept_28_2023/index.html"
+    ]
+  },
+  {
+    "listing": "/posts/projects/E5_coral.html",
+    "items": [
+      "/posts/projects/E5_coral/testcoral.html"
+    ]
+  },
+  {
+    "listing": "/posts/projects/pacific_cod.html",
+    "items": [
+      "/posts/projects/pacific_cod/testcod.html"
     ]
   }
 ]

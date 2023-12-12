@@ -1,0 +1,44 @@
+---
+title: "November 2023, Monthly Goals"
+author: "Kathleen Durkin"
+date: "2023-11-03"
+categories: ["monthly goals"]
+format:
+  html
+---
+
+## November Goals
+
+Let's set some goals for the month of November (note, I'll be out on vacation for a few days this month over the Thanksgiving holiday)
+
+-   Register, plan for, and present at GSS (will be on undergrad work, not Roberts lab stuff)
+
+    ::: progress
+    ::: {.progress-bar role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"}
+    Presented!
+    :::
+    :::
+
+-   Read 2 project-relevant papers a week (8 total)
+
+    ::: progress
+    ::: {.progress-bar role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"}
+    100%
+    :::
+    :::
+
+<!-- -->
+
+-   Cod project: Send samples out for RNA sequencing (don't need any sample prep, just find and send
+
+-   Coral project: Identify short RNA's for *Porites evermanni* and *Pocillopora meandrina*
+
+## Reviewing October Goals
+
+**✓ Successfully run a blast search in Raven.** Completed! I was able to run through Steven's full code for blasting and annotating a cod transcriptome, and I'll hopefully be able to glean enough from his code to understand how to write my own in the future.
+
+**✗ Read up on the cod temperature/growth project.** Not yet 😕.
+
+**✓ Read up on E5 coral project and start to get settled in it.** Getting there! I've started reading up on ncRNAs and, while I had to miss the last two meetings of the E5 group because of a midterm and a function required for one of my scholarships, I'll be meeting with the working group tomorrow morning.
+
+**✓ Get registered for SICB.** Completed!

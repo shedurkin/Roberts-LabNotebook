@@ -1,9 +1,0 @@
----
-title: "Formatting digital lab notebook"
-author: "Kathleen Durkin"
-date: "09/29/2023"
-categories:
-  - onboarding
----
-
-I added my lab notebook to the lab website, so it is now publically viewable as a part of the Roberts Lab. I've also continued formatting it and looking into the Quarto documentation.

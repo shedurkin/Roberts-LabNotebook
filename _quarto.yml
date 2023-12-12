@@ -8,11 +8,12 @@ website:
     logo: grad_headshot_circlecrop.png
     right:
 #      - about.qmd
-      - href: projects.qmd
-        text: Projects
 
       - href: daily_log.qmd
         text: Daily Notebook Posts
+        
+      - href: projects.qmd
+        text: Projects
         
       - icon: github
         href: https://github.com/shedurkin
