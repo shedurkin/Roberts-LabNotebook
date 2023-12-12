@@ -1,0 +1,7 @@
+---
+title: "First post"
+author: "Kathleen Durkin"
+date: "2023-09-28"
+---
+
+I think I successfully created my lab notebook!

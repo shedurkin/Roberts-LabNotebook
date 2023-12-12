@@ -1,0 +1,22 @@
+---
+title: "December 2023, Monthly Goals"
+author: "Kathleen Durkin"
+date: "2023-12-05"
+categories: ["monthly goals"]
+format:
+  html
+---
+
+## December Goals
+
+(Note, I'll likely be out/less productive over the Christmas holiday)
+
+## Reviewing November Goals
+
+✓ Register, plan for, and present at GSS (will be on undergrad work, not Roberts lab stuff)
+
+✓ Read 2 project-relevant papers a week (8 total)
+
+? Cod project: Send samples out for RNA sequencing (don't need any sample prep, just find and send
+
+✓ Coral project: Identify short RNA's for *Porites evermanni* and *Pocillopora meandrina*

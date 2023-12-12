@@ -11,8 +11,8 @@ website:
       - href: projects.qmd
         text: Projects
 
-#      - href: notebook.qmd
-#        text: Daily Notebook Posts
+      - href: daily_log.qmd
+        text: Daily Notebook Posts
         
       - icon: github
         href: https://github.com/shedurkin

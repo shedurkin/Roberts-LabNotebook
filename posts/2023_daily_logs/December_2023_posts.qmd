@@ -1,0 +1,164 @@
+---
+title: "December 2023, Daily Log"
+author: "Kathleen Durkin"
+date: "last-modified"
+categories: ["daily log"]
+format:
+  html:
+    toc: true
+---
+
+# Daily Log
+
+## 29 December 2023
+
+#### Friday
+
+## 28 December 2023
+
+#### Thursday
+
+## 27 December 2023
+
+#### Wednesday
+
+## 26 December 2023
+
+#### Tuesday
+
+## 25 December 2023
+
+#### Monday
+
+-   Out -- university holiday
+
+## 22 December 2023
+
+#### Friday
+
+## 21 December 2023
+
+#### Thursday
+
+## 20 December 2023
+
+#### Wednesday
+
+## 19 December 2023
+
+#### Tuesday
+
+## 18 December 2023
+
+#### Monday
+
+## 15 December 2023
+
+#### Friday
+
+## 14 December 2023
+
+#### Thursday
+
+## 13 December 2023
+
+#### Wednesday
+
+## 12 December 2023
+
+#### Tuesday
+
+## 11 December 2023
+
+#### Monday
+
+With the end of the quarter and no more classwork, today's the day for lots of little things!
+
+-   Updated calendars (mine and lab) for the next few weeks and next quarter
+
+-   Moved all code/data from Autumn 2023 classes to github repo for future reference, and saved local copies of relevant class materials before end of quarter.
+
+-   Still no access to TREQ system, so emailed around again about that
+
+-   Registered for UW eScience Institute Software Carpentry Workshop in January -- Python focused!
+
+-   Brainstormed some stuff to talk about w/ Steven related to long-term plans for my degree work
+
+## 08 December 2023
+
+#### Friday
+
+Took QSCI482 midterm (last assignment of the quarter!) and read some papers.
+
+## 07 December 2023
+
+#### Thursday
+
+Lab meeting! Started sampling cod liver tissue samples for RNAseq (excluded samples with intestinal tapeworms) -- bolding indicates sampled this morning (\~30mg), and then stored at -80\*C.
+
++-------------+----------------------------+---------------------------------------------------+
+| Tanks       | Temperature Treatment (°C) | Samples to Seq (4/tank)                           |
++=============+============================+===================================================+
+| 1-4         | 16                         | 1-4 \| 10-13 \| 18-21 \| 28-31                    |
++-------------+----------------------------+---------------------------------------------------+
+| 5-8         | 5                          | **117-120 \|** 127-129, 131 \| 137-140 \| 147-150 |
++-------------+----------------------------+---------------------------------------------------+
+| 9-12        | 0                          | **37-40 \| 47-50 \| 57-60 \| 67-70**              |
++-------------+----------------------------+---------------------------------------------------+
+| 13-16       | 9                          | **78-80, 83 \| 88, 90-92 \| 97-100 \| 107-110**   |
++-------------+----------------------------+---------------------------------------------------+
+
+## 06 December 2023
+
+#### Wednesday
+
+-   Studied and took practice midterm for QSCI 482 (test on Friday) -- got a 95!
+
+-   Read Chpt.2 for DEI -focused lab meeting tomorrow
+
+## 05 December 2023
+
+#### Tuesday
+
+Office setup supplies arrived and I unpackaged and setup my new monitor, laptop stand, keyboard, and mouse! Still need to find some batteries for the wireless keyboard though.
+
+The [*P.meandrina* miRdeep2](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/11-Pmea-sRNAseq-miRdeep2.md) finished running!
+
+A quick comparison of the different miRNA ID approaches for the three species we've been looking at:
+
++-----------------------------------+---------------------------------------------+-------------------------+-------------------------+------------------------------------+----------------------------------+
+|                                   | miRTrace\                                   | MirMachine\             | BLASTn\                 | miRdeep2                           | ShortStack\                      |
+|                                   |                                             |                         | (E-val=10)              |                                    |                                  |
++===================================+=============================================+=========================+=========================+====================================+==================================+
+| *A. pulchra\                      | lophotrochozoa, rodents, primates,          | Predicted loci: **109** | miRBase: **19,120,159** | Predicted miRNAs: **4,553**        | Potential loci: **18,772**       |
+| *(*A.millepora* for genome-based) |                                             |                         |                         |                                    |                                  |
+|                                   |                                             | Unique families: **11** | MirGene: **19,037,617** | Matches to known miRNAs: **4,137** | miRBase matches: **46**          |
+|                                   |                                             |                         |                         |                                    |                                  |
+|                                   |                                             |                         |                         | Novel miRNAs: **416**              | \# characterized as miRNA: **0** |
++-----------------------------------+---------------------------------------------+-------------------------+-------------------------+------------------------------------+----------------------------------+
+| *P. evermanni*                    | insects                                     | Predicted loci: **83**  | miRBase: **8,824,359**  | Predicted miRNAs: **5,812**        | Potential loci: **15,040**       |
+|                                   |                                             |                         |                         |                                    |                                  |
+|                                   |                                             | Unique familes: **15**  | MirGene: **8,783,659**  | Matches to known miRNAS: **5,096** | miRBase matches: **25**          |
+|                                   |                                             |                         |                         |                                    |                                  |
+|                                   |                                             |                         |                         | Novel miRNAs: **716**              | \# characterized as miRNA: **0** |
++-----------------------------------+---------------------------------------------+-------------------------+-------------------------+------------------------------------+----------------------------------+
+| *P. meandrina*                    | nematode, insects, lophotrochozoa, primates | Predicted loci: **40**  | miRBase: **13,708,946** | Predicted miRNAs: **2,429**        | Potential loci: **7,306**        |
+|                                   |                                             |                         |                         |                                    |                                  |
+|                                   |                                             | Unique families: **7**  | MirGene: **13,614,786** | Matches to known miRNAs: **2,143** | miRBase matches: **86**          |
+|                                   |                                             |                         |                         |                                    |                                  |
+|                                   |                                             |                         |                         | Novel miRNAs: **286**              | \# characterized as miRNA: **0** |
++-----------------------------------+---------------------------------------------+-------------------------+-------------------------+------------------------------------+----------------------------------+
+
+## 04 December 2023
+
+#### Monday
+
+Classes. Learned about Celeste's work with tunicates!
+
+## 01 December 2023
+
+#### Friday
+
+-   E5 Molecular working group meeting -- reviewed sRNA progress
+
+-   Science Hour -- talked with Sam about some of my recent questions/confusion spots for miRNA stuff
