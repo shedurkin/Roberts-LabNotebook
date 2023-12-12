@@ -5,8 +5,15 @@ project:
 website:
   title: "Kathleen's Lab Notebook"
   navbar:
+    logo: grad_headshot_circlecrop.png
     right:
 #      - about.qmd
+      - href: projects.qmd
+        text: Projects
+
+#      - href: notebook.qmd
+#        text: Daily Notebook Posts
+        
       - icon: github
         href: https://github.com/shedurkin
 format:
@@ -16,5 +23,5 @@ format:
 
 editor: visual
 
-margin-header: |
-  ![](grad_headshot_circlecrop.png)
+#margin-header: |
+#  ![](grad_headshot_circlecrop.png)
