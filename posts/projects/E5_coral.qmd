@@ -1,5 +1,14 @@
 ---
-title: "E5 Coral"
+title: "E5 Coral Project"
+about:
+  id: description
+  template: jolla
+  image: "../../images/E5-Coral-Logo-Dark-Small.png"
+  image-shape: rectangle
+  links:
+    - icon: github
+      text: Github
+      href: https://github.com/urol-e5
 listing: 
   contents: E5_coral
   sort: "date desc"
@@ -13,5 +22,6 @@ title-block-banner: true
 format:
   html
 ---
-
-Description of E5 coral project!
+:::{#description}
+The E5 Coral project is a collaboration between six labs at six U.S. universities, and uses reef-building corals as a model system to test the connections between physiological, epigenetic, and metabolic states, and predict how population and community dynamics are influenced by epigenetically-modulated phenotypes.. Learn more at the [project website](https://e5coral.org/)!
+:::
