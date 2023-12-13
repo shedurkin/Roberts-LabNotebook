@@ -1,6 +1,18 @@
 ---
 title: "University of Washington, SAFS -- Roberts Lab"
 image: grad_headshot_circlecrop.png
+about:
+  template: trestles
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/kmdurkin_dna
+    - icon: linkedin
+      text: LinkedIn
+      href: www.linkedin.com/in/kathleen-d
+    - icon: github
+      text: Github
+      href: https://github.com/shedurkin
 # listing:
 #   contents: posts
 #   sort: "date desc"
@@ -12,4 +24,4 @@ page-layout: full
 title-block-banner: true
 ---
 
-Homepage currently under construction -- see posts and daily logs at the top right!
+## Welcome to my lab notebook!

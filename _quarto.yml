@@ -5,7 +5,7 @@ project:
 website:
   title: "Kathleen's Lab Notebook"
   navbar:
-    logo: grad_headshot_circlecrop.png
+#    logo: grad_headshot_circlecrop.png
     right:
 #      - about.qmd
 
