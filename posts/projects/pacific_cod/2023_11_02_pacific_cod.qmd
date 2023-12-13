@@ -1,0 +1,10 @@
+---
+title: "Cod Sample Size"
+author: "Kathleen Durkin"
+date: "2023-11-02"
+categories: ["pacifc-cod"]
+format:
+  html
+---
+
+Calculated necessary sample size for cod RNA sequencing, given an assumed coefficient of variation and detectable difference in expression -- view document [here](https://github.com/RobertsLab/project-cod-temperature/blob/main/code/04-RNASeq-sample-size.md).

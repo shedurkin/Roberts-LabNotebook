@@ -1,0 +1,10 @@
+---
+title: "P.meandrina sRNA: trimming, miRTrace, BLASTn"
+author: "Kathleen Durkin"
+date: "2023-11-14"
+categories: ["E5-coral"]
+format:
+  html
+---
+
+Modified Sam's code for *P.meandrina* sRNA [trimming](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/08-Pmea-sRNAseq-trimming.md), [miRTrace](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/09-Pmea-sRNAseq-miRTrace.md), and [BLASTn](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/10-Pmea-sRNAseq-BLASTn.md).

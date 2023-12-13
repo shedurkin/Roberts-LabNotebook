@@ -130,7 +130,7 @@ Revelations from lab meeting today! Several of my Raven problems were solved dur
 
 #### Wednesday -- October Goals
 
-After fairly continuous head-bashing (pun intended ;) ) with RStudio/bash/blast for the last two weeks I'm kind of tired of it, so today I'm going to focus on other stuff -- like setting some goals! I've had \~3 weeks now to get settled into the lab and Steven and I have had the chance to talk about possible directions for the near future, so let's put some stuff in writing -- see October Goals post for details.
+After fairly continuous head-bashing (pun intended ;) ) with RStudio/bash/blast for the last two weeks I'm kind of tired of it, so today I'm going to focus on other stuff -- like setting some goals! I've had \~3 weeks now to get settled into the lab and Steven and I have had the chance to talk about possible directions for the near future, so let's put some stuff in writing -- see [October Goals](./October_2023_goals.qmd) post for details.
 
 ## 17 October 2023
 
@@ -154,7 +154,7 @@ Thankfully that isn't an issue working in Raven, but now I'm kind of stumped bec
 
 #### Cod Temp/Growth Analysis
 
-I finished the [cod temp/growth analysis](../../projects/pacific_cod/testcod.qmd) assigned by Steven
+I finished the [cod temp/growth analysis](../../projects/pacific_cod/2023_10_13_pacific_cod.qmd) assigned by Steven
 
 #### R/bash issues (cont.)
 

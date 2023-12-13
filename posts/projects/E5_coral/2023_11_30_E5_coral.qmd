@@ -1,0 +1,16 @@
+---
+title: "P.meandrina sRNA: MirMachine, ShortStack"
+author: "Kathleen Durkin"
+date: "2023-11-30"
+categories: ["E5-coral"]
+format:
+  html
+---
+
+More on P.meandrina sRNA investigation
+
+[*P.meandrina* MirMachine](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/12-Pmea-sRNAseq-MirMachine.html)
+
+[*P.meandrina* ShortStack](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/13-Pmea-sRNAseq-ShortStack.md)
+
+*P.meandrina* miRdeep2 (incomplete)
