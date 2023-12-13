@@ -24,5 +24,5 @@ format:
 ---
 
 ::: {#description}
-The E5 Coral project is a collaboration between six labs at six U.S. universities, and uses reef-building corals as a model system to test the connections between physiological, epigenetic, and metabolic states, and predict how population and community dynamics are influenced by epigenetically-modulated phenotypes.. Learn more at the [project website](https://e5coral.org/)!
+The E5 Coral project is a collaboration between six labs at six U.S. universities, and uses reef-building corals as a model system to test the connections between physiological, epigenetic, and metabolic states, and predict how population and community dynamics are influenced by epigenetically-modulated phenotypes. Learn more at the [project website](https://e5coral.org/)!
 :::
