@@ -1,0 +1,47 @@
+---
+title: "Samples lists for cod RNAseq and methylation"
+author: "Kathleen Durkin"
+date: "2023-12-13"
+categories: ["pacifc-cod"]
+format:
+  html
+---
+
+Compiled [spreadsheets](https://docs.google.com/spreadsheets/d/19CqqS3wOhmG7drw163v7evUylRWwOjBOdvuR-y0RqF0/edit#gid=0) for the samples we plan to send for RNAseq and methylation.
+
+In the cod experiment we subjected cod to four temperature treatments, with four different tanks in each treatment (total of 16 tanks)
+
+For RNAseq we selected:
+
+-   Liver samples from four individuals from each tank (16 from each temperature treatment, 64 overall) as well as one additional individual from each temperature treatment to fill the sequencing quote for 80 samples. For liver, subsampling to send \~30mg of tissue for RNAseq.
+
+-   Blood samples from two individuals in the 0°C treatment (same tank) and two individuals in the 16°C treatment (same tank) (4 blood samples total). Selected from individuals that are already being sequenced with liver samples. For blood, sending full original sample for RNAseq.
+
+-   Gill samples from two individuals in the 0°C treatment (same tank) and two individuals in the 16°C treatment (same tank) (4 gill samples total). Selected the same four individuals as chosen for blood samples. For gill, subsampling to be able to send same individuals for both RNAseq and methylation.
+
+-   Spleen samples from two individuals in the 0°C treatment (same tank) and two individuals in the 16°C treatment (same tank) (4 spleen samples total). Selected the same four individuals as chosen for blood and gill samples. For spleen, sending full original sample for RNAseq.
+
+| Tissue     | Num. Samples | Notes                                                           |
+|------------|--------------|-----------------------------------------------------------------|
+| Liver      | 68           | 4 per tank, 16 per treatment (plus additional 1 per treatment)  |
+| Blood      | 4            | 2 for 0°C, 2 for 16°C                                           |
+| Gill       | 4            | 2 for 0°C, 2 for 16°C                                           |
+| Spleen     | 4            | 2 for 0°C, 2 for 16°C                                           |
+| **Total:** | **80**       |                                                                 |
+
+While almost all liver samples have been subsampled and set aside, we still need to pull and subsample the additional 4 liver, subsample all 4 gill, and pull all 4 spleen.
+
+For methylation we selected:
+
+-   Liver samples from two individuals from each tank (8 from each temperature treatment, 32 overall), and exclusively chose samples that are also being sent for RNAseq (for comparison).
+
+-   Blood samples from two individuals in the 0°C treatment (same tank) and two individuals in the 16°C treatment (same tank) (4 blood samples total). Selected from individuals that are already being sequenced with liver samples. Since all of the blood sent for RNAseq required full sample volume, can't send exact same blood samples as sent for RNAseq.
+
+-   Gill samples from two individuals in the 0°C treatment (same tank) and two individuals in the 16°C treatment (same tank) (4 gill samples total). These are gill subsamples from the same four individuals that are being sent for gill RNAseq.
+
+| Tissue     | Num. Samples | Notes                       |
+|------------|--------------|-----------------------------|
+| Liver      | 32           | 2 per tank, 8 per treatment |
+| Blood      | 4            | 2 for 0°C, 2 for 16°C       |
+| Gill       | 4            | 2 for 0°C, 2 for 16°C       |
+| **Total:** | **40**       |                             |

@@ -10,7 +10,7 @@ format:
 Started sampling cod liver tissue samples for RNAseq. (excluded samples with intestinal tapeworms) -- bolding indicates sampled this morning (\~30mg), and then stored at -80\*C.
 
 | Tanks | Temperature Treatment (°C) | Samples to Seq (4/tank)                           |
-|-------------------|--------------------|----------------------------------|
+|-------|----------------------------|---------------------------------------------------|
 | 1-4   | 16                         | 1-4 \| 10-13 \| 18-21 \| 28-31                    |
 | 5-8   | 5                          | **117-120 \|** 127-129, 131 \| 137-140 \| 147-150 |
 | 9-12  | 0                          | **37-40 \| 47-50 \| 57-60 \| 67-70**              |
