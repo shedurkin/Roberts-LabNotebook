@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Kathleen Durkin">
+<meta name="dcterms.date" content="2023-12-05">
 
-<title>Kathleen’s Lab Notebook - E5 Coral</title>
+<title>Kathleen’s Lab Notebook - P.meandrina sRNA: miRdeep2 and 3 species sRNA comparison</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,23 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-listing/list.min.js"></script>
-<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -60,50 +61,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-author','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Kathleen’s Lab Notebook</span>
     </a>
   </div>
@@ -114,11 +84,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../daily_log.html" rel="" target="">
+    <a class="nav-link" href="../../../daily_log.html" rel="" target="">
  <span class="menu-text">Daily Notebook Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../projects.html" rel="" target="">
+    <a class="nav-link" href="../../../projects.html" rel="" target="">
  <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item compact">
@@ -136,134 +106,117 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page">
-      <h1 class="title">E5 Coral</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">P.meandrina sRNA: miRdeep2 and 3 species sRNA comparison</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">E5-coral</div>
+              </div>
+                  </div>
   </div>
+    
+  
   <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Kathleen Durkin </p>
+            </div>
     </div>
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 5, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
-<div class="quarto-about-jolla column-page">
-  <img src="../../images/E5-Coral-Logo-Dark-Small.png" class="about-image
-  rectangle " style="width: 15em;">
- <div id="description">
-<p>The E5 Coral project is a collaboration between six labs at six U.S. universities, and uses reef-building corals as a model system to test the connections between physiological, epigenetic, and metabolic states, and predict how population and community dynamics are influenced by epigenetically-modulated phenotypes.. Learn more at the <a href="https://e5coral.org/">project website</a>!</p>
-</div> 
-  <hr class="about-sep">
-   <div class="about-links">
-  <a href="https://github.com/urol-e5" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
-</div>
-</div>
-
-
-
-
-
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-
-<table class="quarto-listing-table table">
+<p>The <a href="https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/11-Pmea-sRNAseq-miRdeep2.md"><em>P.meandrina</em> miRdeep2</a> finished running!</p>
+<p>A quick comparison of the different miRNA ID approaches for the three species we’ve been looking at:</p>
+<table class="table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 21%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 17%">
+<col style="width: 16%">
+</colgroup>
 <thead>
-<tr>
-<th>
-</th>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
-<th>
-Author
-</th>
-<th>
-Categories
-</th>
-<th>
-Reading Time
-</th>
+<tr class="header">
+<th></th>
+<th>miRTrace</th>
+<th>MirMachine</th>
+<th>BLASTn<br>
+(E-val=10)</th>
+<th>miRdeep2</th>
+<th>ShortStack</th>
 </tr>
 </thead>
-<tbody class="list">
-<tr data-index="0" data-categories="E5-coral" data-listing-date-sort="1701763200000" data-listing-file-modified-sort="1702493743748" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-title-sort="P.meandrina sRNA: miRdeep2 and 3 species sRNA comparison" data-listing-filename-sort="2023_12_05_E5_coral.qmd">
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-<td>
-<span class="listing-date">Dec 5, 2023</span>
-</td>
-<td>
-<a href="../../posts/projects/E5_coral/2023_12_05_E5_coral.html" class="title listing-title">P.meandrina sRNA: miRdeep2 and 3 species sRNA comparison</a>
-</td>
-<td>
-<span class="listing-author">Kathleen Durkin</span>
-</td>
-<td>
-<span class="listing-categories">E5-coral</span>
-</td>
-<td>
-<span class="listing-reading-time">13 min</span>
-</td>
+<tbody>
+<tr class="odd">
+<td><em>A. pulchra<br>
+</em>(<em>A.millepora</em> for genome-based)</td>
+<td>lophotrochozoa, rodents, primates,</td>
+<td><p>Predicted loci: <strong>109</strong></p>
+<p>Unique families: <strong>11</strong></p></td>
+<td><p>miRBase: <strong>19,120,159</strong></p>
+<p>MirGene: <strong>19,037,617</strong></p></td>
+<td><p>Predicted miRNAs: <strong>4,553</strong></p>
+<p>Matches to known miRNAs: <strong>4,137</strong></p>
+<p>Novel miRNAs: <strong>416</strong></p></td>
+<td><p>Potential loci: <strong>18,772</strong></p>
+<p>miRBase matches: <strong>46</strong></p>
+<p># characterized as miRNA: <strong>0</strong></p></td>
 </tr>
-<tr data-index="1" data-categories="E5-coral" data-listing-date-sort="1701331200000" data-listing-file-modified-sort="1702493147072" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="P.meandrina sRNA: MirMachine, ShortStack" data-listing-filename-sort="2023_11_30_E5_coral.qmd">
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-<td>
-<span class="listing-date">Nov 30, 2023</span>
-</td>
-<td>
-<a href="../../posts/projects/E5_coral/2023_11_30_E5_coral.html" class="title listing-title">P.meandrina sRNA: MirMachine, ShortStack</a>
-</td>
-<td>
-<span class="listing-author">Kathleen Durkin</span>
-</td>
-<td>
-<span class="listing-categories">E5-coral</span>
-</td>
-<td>
-<span class="listing-reading-time">1 min</span>
-</td>
+<tr class="even">
+<td><em>P. evermanni</em></td>
+<td>insects</td>
+<td><p>Predicted loci: <strong>83</strong></p>
+<p>Unique familes: <strong>15</strong></p></td>
+<td><p>miRBase: <strong>8,824,359</strong></p>
+<p>MirGene: <strong>8,783,659</strong></p></td>
+<td><p>Predicted miRNAs: <strong>5,812</strong></p>
+<p>Matches to known miRNAS: <strong>5,096</strong></p>
+<p>Novel miRNAs: <strong>716</strong></p></td>
+<td><p>Potential loci: <strong>15,040</strong></p>
+<p>miRBase matches: <strong>25</strong></p>
+<p># characterized as miRNA: <strong>0</strong></p></td>
 </tr>
-<tr data-index="2" data-categories="E5-coral" data-listing-date-sort="1699948800000" data-listing-file-modified-sort="1702493095500" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="P.meandrina sRNA: trimming, miRTrace, BLASTn" data-listing-filename-sort="2023_11_14_E5_coral.qmd">
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-<td>
-<span class="listing-date">Nov 14, 2023</span>
-</td>
-<td>
-<a href="../../posts/projects/E5_coral/2023_11_14_E5_coral.html" class="title listing-title">P.meandrina sRNA: trimming, miRTrace, BLASTn</a>
-</td>
-<td>
-<span class="listing-author">Kathleen Durkin</span>
-</td>
-<td>
-<span class="listing-categories">E5-coral</span>
-</td>
-<td>
-<span class="listing-reading-time">1 min</span>
-</td>
+<tr class="odd">
+<td><em>P. meandrina</em></td>
+<td>nematode, insects, lophotrochozoa, primates</td>
+<td><p>Predicted loci: <strong>40</strong></p>
+<p>Unique families: <strong>7</strong></p></td>
+<td><p>miRBase: <strong>13,708,946</strong></p>
+<p>MirGene: <strong>13,614,786</strong></p></td>
+<td><p>Predicted miRNAs: <strong>2,429</strong></p>
+<p>Matches to known miRNAs: <strong>2,143</strong></p>
+<p>Novel miRNAs: <strong>286</strong></p></td>
+<td><p>Potential loci: <strong>7,306</strong></p>
+<p>miRBase matches: <strong>86</strong></p>
+<p># characterized as miRNA: <strong>0</strong></p></td>
 </tr>
 </tbody>
-
 </table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -284,6 +237,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

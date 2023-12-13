@@ -104,10 +104,10 @@ Took QSCI482 midterm (last assignment of the quarter!) and read some papers.
 
 #### Thursday
 
-Lab meeting! Started sampling cod liver tissue samples for RNAseq (excluded samples with intestinal tapeworms) -- bolding indicates sampled this morning (\~30mg), and then stored at -80\*C.
+Lab meeting! Started [sampling cod liver tissue samples]() for RNAseq. (excluded samples with intestinal tapeworms) -- bolding indicates sampled this morning (\~30mg), and then stored at -80\*C.
 
 | Tanks | Temperature Treatment (°C) | Samples to Seq (4/tank)                           |
-|-------|----------------------------|---------------------------------------------------|
+|----------------|--------------------|------------------------------------|
 | 1-4   | 16                         | 1-4 \| 10-13 \| 18-21 \| 28-31                    |
 | 5-8   | 5                          | **117-120 \|** 127-129, 131 \| 137-140 \| 147-150 |
 | 9-12  | 0                          | **37-40 \| 47-50 \| 57-60 \| 67-70**              |
@@ -127,32 +127,7 @@ Lab meeting! Started sampling cod liver tissue samples for RNAseq (excluded samp
 
 Office setup supplies arrived and I unpackaged and setup my new monitor, laptop stand, keyboard, and mouse! Still need to find some batteries for the wireless keyboard though.
 
-The [*P.meandrina* miRdeep2](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/11-Pmea-sRNAseq-miRdeep2.md) finished running!
-
-A quick comparison of the different miRNA ID approaches for the three species we've been looking at:
-
-+-----------------------------------+---------------------------------------------+-------------------------+-------------------------+------------------------------------+----------------------------------+
-|                                   | miRTrace\                                   | MirMachine\             | BLASTn\                 | miRdeep2                           | ShortStack\                      |
-|                                   |                                             |                         | (E-val=10)              |                                    |                                  |
-+===================================+=============================================+=========================+=========================+====================================+==================================+
-| *A. pulchra\                      | lophotrochozoa, rodents, primates,          | Predicted loci: **109** | miRBase: **19,120,159** | Predicted miRNAs: **4,553**        | Potential loci: **18,772**       |
-| *(*A.millepora* for genome-based) |                                             |                         |                         |                                    |                                  |
-|                                   |                                             | Unique families: **11** | MirGene: **19,037,617** | Matches to known miRNAs: **4,137** | miRBase matches: **46**          |
-|                                   |                                             |                         |                         |                                    |                                  |
-|                                   |                                             |                         |                         | Novel miRNAs: **416**              | \# characterized as miRNA: **0** |
-+-----------------------------------+---------------------------------------------+-------------------------+-------------------------+------------------------------------+----------------------------------+
-| *P. evermanni*                    | insects                                     | Predicted loci: **83**  | miRBase: **8,824,359**  | Predicted miRNAs: **5,812**        | Potential loci: **15,040**       |
-|                                   |                                             |                         |                         |                                    |                                  |
-|                                   |                                             | Unique familes: **15**  | MirGene: **8,783,659**  | Matches to known miRNAS: **5,096** | miRBase matches: **25**          |
-|                                   |                                             |                         |                         |                                    |                                  |
-|                                   |                                             |                         |                         | Novel miRNAs: **716**              | \# characterized as miRNA: **0** |
-+-----------------------------------+---------------------------------------------+-------------------------+-------------------------+------------------------------------+----------------------------------+
-| *P. meandrina*                    | nematode, insects, lophotrochozoa, primates | Predicted loci: **40**  | miRBase: **13,708,946** | Predicted miRNAs: **2,429**        | Potential loci: **7,306**        |
-|                                   |                                             |                         |                         |                                    |                                  |
-|                                   |                                             | Unique families: **7**  | MirGene: **13,614,786** | Matches to known miRNAs: **2,143** | miRBase matches: **86**          |
-|                                   |                                             |                         |                         |                                    |                                  |
-|                                   |                                             |                         |                         | Novel miRNAs: **286**              | \# characterized as miRNA: **0** |
-+-----------------------------------+---------------------------------------------+-------------------------+-------------------------+------------------------------------+----------------------------------+
+Finished *P.meandrina* sRNA work, and compiled comparison of approaches across the three species ([here](../../projects/E5_coral/2023_12_05_E5_coral.qmd)).
 
 ## 04 December 2023
 

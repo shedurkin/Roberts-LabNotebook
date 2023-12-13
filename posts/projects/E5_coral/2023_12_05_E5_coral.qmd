@@ -1,0 +1,35 @@
+---
+title: "P.meandrina sRNA: miRdeep2 and 3 species sRNA comparison"
+author: "Kathleen Durkin"
+date: "2023-12-05"
+categories: ["E5-coral"]
+format:
+  html
+---
+
+The [*P.meandrina* miRdeep2](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/11-Pmea-sRNAseq-miRdeep2.md) finished running!
+
+A quick comparison of the different miRNA ID approaches for the three species we've been looking at:
+
++-----------------------------------+---------------------------------------------+-------------------------+-------------------------+------------------------------------+----------------------------------+
+|                                   | miRTrace                                    | MirMachine              | BLASTn\                 | miRdeep2                           | ShortStack                       |
+|                                   |                                             |                         | (E-val=10)              |                                    |                                  |
++===================================+=============================================+=========================+=========================+====================================+==================================+
+| *A. pulchra\                      | lophotrochozoa, rodents, primates,          | Predicted loci: **109** | miRBase: **19,120,159** | Predicted miRNAs: **4,553**        | Potential loci: **18,772**       |
+| *(*A.millepora* for genome-based) |                                             |                         |                         |                                    |                                  |
+|                                   |                                             | Unique families: **11** | MirGene: **19,037,617** | Matches to known miRNAs: **4,137** | miRBase matches: **46**          |
+|                                   |                                             |                         |                         |                                    |                                  |
+|                                   |                                             |                         |                         | Novel miRNAs: **416**              | \# characterized as miRNA: **0** |
++-----------------------------------+---------------------------------------------+-------------------------+-------------------------+------------------------------------+----------------------------------+
+| *P. evermanni*                    | insects                                     | Predicted loci: **83**  | miRBase: **8,824,359**  | Predicted miRNAs: **5,812**        | Potential loci: **15,040**       |
+|                                   |                                             |                         |                         |                                    |                                  |
+|                                   |                                             | Unique familes: **15**  | MirGene: **8,783,659**  | Matches to known miRNAS: **5,096** | miRBase matches: **25**          |
+|                                   |                                             |                         |                         |                                    |                                  |
+|                                   |                                             |                         |                         | Novel miRNAs: **716**              | \# characterized as miRNA: **0** |
++-----------------------------------+---------------------------------------------+-------------------------+-------------------------+------------------------------------+----------------------------------+
+| *P. meandrina*                    | nematode, insects, lophotrochozoa, primates | Predicted loci: **40**  | miRBase: **13,708,946** | Predicted miRNAs: **2,429**        | Potential loci: **7,306**        |
+|                                   |                                             |                         |                         |                                    |                                  |
+|                                   |                                             | Unique families: **7**  | MirGene: **13,614,786** | Matches to known miRNAs: **2,143** | miRBase matches: **86**          |
+|                                   |                                             |                         |                         |                                    |                                  |
+|                                   |                                             |                         |                         | Novel miRNAs: **286**              | \# characterized as miRNA: **0** |
++-----------------------------------+---------------------------------------------+-------------------------+-------------------------+------------------------------------+----------------------------------+
