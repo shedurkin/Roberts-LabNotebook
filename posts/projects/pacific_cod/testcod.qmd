@@ -1,10 +1,24 @@
 ---
-title: "Test Cod"
+title: "Cod Temp/Growth Analysis"
 author: "Kathleen Durkin"
-date: "2023-12-12"
+date: "2023-10-13"
 categories: ["pacifc-cod"]
 format:
   html
 ---
 
-testing cod project list
+I finished the code temp/growth analysis assigned by Steven, [code](https://github.com/RobertsLab/project-cod-temperature/blob/main/code/01_temp-size-analysis/01_temp-size-analysis.Rmd) and [output pdf](https://github.com/RobertsLab/project-cod-temperature/blob/main/code/01_temp-size-analysis/01_temp-size-analysis.pdf) can be found on lab github.
+
+I aimed to identify whether temperature treatment affected cod growth, and analyzed data using two growth variables, size (mm) and weight (g) sampled three times between Nov.2022 and Feb.2023.
+
+![](https://raw.githubusercontent.com/RobertsLab/project-cod-temperature/main/output/01_temp-size-analysis/01_sizeVtreatment-all-dates.png){width="1500"}
+
+![](https://raw.githubusercontent.com/RobertsLab/project-cod-temperature/main/output/01_temp-size-analysis/02_weightVtreatment-all-dates.png){width="1500"}
+
+One-way ANOVA tests indicated statistically significant differences in both change in size (F(3, 156) = 37.9, p = 1.79e-18), and change in weight (F(3, 156) = 29.4, p = 3.73e-15) among the treatment temperatures. Additional application of Tukey's HSD test of multiple comparisons indicated that both mean size change and mean weight change were significantly different among all treatment temperatures *except* between the 9 and 16 degree treatments.
+
+![](https://raw.githubusercontent.com/RobertsLab/project-cod-temperature/main/output/01_temp-size-analysis/03_size-change-TukeyHSD-plot.png){width="1500"}
+
+![](https://raw.githubusercontent.com/RobertsLab/project-cod-temperature/main/output/01_temp-size-analysis/04_weight-change-TukeyHSD-plot.png){width="1500"}
+
+### 

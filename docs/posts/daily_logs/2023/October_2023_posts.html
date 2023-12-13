@@ -191,10 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#october-2023-9" id="toc-october-2023-9" class="nav-link" data-scroll-target="#october-2023-9">18 October 2023</a></li>
   <li><a href="#october-2023-10" id="toc-october-2023-10" class="nav-link" data-scroll-target="#october-2023-10">17 October 2023</a></li>
   <li><a href="#october-2023-11" id="toc-october-2023-11" class="nav-link" data-scroll-target="#october-2023-11">16 October 2023</a></li>
-  <li><a href="#october-2023-12" id="toc-october-2023-12" class="nav-link" data-scroll-target="#october-2023-12">13 October 2023</a>
-  <ul class="collapse">
-  <li><a href="#rbash-issues-cont." id="toc-rbash-issues-cont." class="nav-link" data-scroll-target="#rbash-issues-cont.">R/bash issues (cont.)</a></li>
-  </ul></li>
+  <li><a href="#october-2023-12" id="toc-october-2023-12" class="nav-link" data-scroll-target="#october-2023-12">13 October 2023</a></li>
   <li><a href="#october-2023-13" id="toc-october-2023-13" class="nav-link" data-scroll-target="#october-2023-13">12 October 2023</a></li>
   <li><a href="#october-2023-14" id="toc-october-2023-14" class="nav-link" data-scroll-target="#october-2023-14">11 October 2023</a></li>
   <li><a href="#october-2023-15" id="toc-october-2023-15" class="nav-link" data-scroll-target="#october-2023-15">10 October 2023</a></li>
@@ -354,16 +351,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="cod-tempgrowth-analysis" class="level4">
 <h4 class="anchored" data-anchor-id="cod-tempgrowth-analysis">Cod Temp/Growth Analysis</h4>
-<p>I finished the code temp/growth analysis assigned by Steven, <a href="https://github.com/RobertsLab/project-cod-temperature/blob/main/code/01_temp-size-analysis/01_temp-size-analysis.Rmd">code</a> and <a href="https://github.com/RobertsLab/project-cod-temperature/blob/main/code/01_temp-size-analysis/01_temp-size-analysis.pdf">output pdf</a> can be found on lab github.</p>
-<p>I aimed to identify whether temperature treatment affected cod growth, and analyzed data using two growth variables, size (mm) and weight (g) sampled three times between Nov.2022 and Feb.2023.</p>
-<p><img src="https://raw.githubusercontent.com/RobertsLab/project-cod-temperature/main/output/01_temp-size-analysis/01_sizeVtreatment-all-dates.png" class="img-fluid" width="1500"></p>
-<p><img src="https://raw.githubusercontent.com/RobertsLab/project-cod-temperature/main/output/01_temp-size-analysis/02_weightVtreatment-all-dates.png" class="img-fluid" width="1500"></p>
-<p>One-way ANOVA tests indicated statistically significant differences in both change in size (F(3, 156) = 37.9, p = 1.79e-18), and change in weight (F(3, 156) = 29.4, p = 3.73e-15) among the treatment temperatures. Additional application of Tukey’s HSD test of multiple comparisons indicated that both mean size change and mean weight change were significantly different among all treatment temperatures <em>except</em> between the 9 and 16 degree treatments.</p>
-<p><img src="https://raw.githubusercontent.com/RobertsLab/project-cod-temperature/main/output/01_temp-size-analysis/03_size-change-TukeyHSD-plot.png" class="img-fluid" width="1500"></p>
-<p><img src="https://raw.githubusercontent.com/RobertsLab/project-cod-temperature/main/output/01_temp-size-analysis/04_weight-change-TukeyHSD-plot.png" class="img-fluid" width="1500"></p>
+<p>I finished the <a href="../../../posts/projects/pacific_cod/testcod.html">cod temp/growth analysis</a> assigned by Steven</p>
 </section>
-<section id="rbash-issues-cont." class="level3">
-<h3 class="anchored" data-anchor-id="rbash-issues-cont.">R/bash issues (cont.)</h3>
+<section id="rbash-issues-cont." class="level4">
+<h4 class="anchored" data-anchor-id="rbash-issues-cont.">R/bash issues (cont.)</h4>
 <p>I’m still having issues with the disconnect between which shell script is being used by my terminal and which is used by console in R. We realized today that my problems pushing my analysis code to the lab’s project-cod-temperature repo on github were related to the disconnect problem. I was able to pull and push to github when I was working within the repo on RStudio, but I couldn’t commit using the Git environment in the upper right pane. However, pushing, pulling, and committing manually from the terminal all worked fine. We think that, somehow, the commit action in the Git environment is using the same faulty WSL shell that my console is defaulting to, even though the push/pull actions are correctly defaulting to Git Bash. To make matters even more confusing, when I’m working within my <em>lab notebook</em> repo in RStudio I’m able to push, pull, <em>and</em> commit successfully from the Git environment with no issues. Why is my default shell script for console/some parts of git different between repos/RStudio projects?</p>
 <p>No answers yet, but for right now I’m still able to maintain functionality while working locally because the terminal is functioning appropriately and I have a workaround to run bash code chunks included in Rmd files (see Oct.12 post).</p>
 </section>
