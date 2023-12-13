@@ -64,6 +64,12 @@ format:
 
 #### Wednesday
 
+Hackathon 2023, Day Two!
+
+-   Finished overhauling my lab notebook site (for now). I reformatted the home page and added a site section for each of the projects I'm working on. For each project, have "about" page and posts for all the work I'm doing in that project (instead of having everything in just my daily logs). Still want to do something about all of the lit review notes/questions I currently have cluttering up my daily logs, but haven't 100% decided how I want to do that yet...
+
+-   
+
 ## 12 December 2023
 
 #### Tuesday
@@ -104,14 +110,7 @@ Took QSCI482 midterm (last assignment of the quarter!) and read some papers.
 
 #### Thursday
 
-Lab meeting! Started [sampling cod liver tissue samples]() for RNAseq. (excluded samples with intestinal tapeworms) -- bolding indicates sampled this morning (\~30mg), and then stored at -80\*C.
-
-| Tanks | Temperature Treatment (°C) | Samples to Seq (4/tank)                           |
-|----------------|--------------------|------------------------------------|
-| 1-4   | 16                         | 1-4 \| 10-13 \| 18-21 \| 28-31                    |
-| 5-8   | 5                          | **117-120 \|** 127-129, 131 \| 137-140 \| 147-150 |
-| 9-12  | 0                          | **37-40 \| 47-50 \| 57-60 \| 67-70**              |
-| 13-16 | 9                          | **78-80, 83 \| 88, 90-92 \| 97-100 \| 107-110**   |
+Lab meeting! Started [sampling cod liver tissue samples]() for RNAseq.
 
 ## 06 December 2023
 
