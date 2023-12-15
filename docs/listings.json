@@ -7,14 +7,6 @@
     ]
   },
   {
-    "listing": "/posts/projects/E5_coral.html",
-    "items": [
-      "/posts/projects/E5_coral/2023_12_05_E5_coral.html",
-      "/posts/projects/E5_coral/2023_11_30_E5_coral.html",
-      "/posts/projects/E5_coral/2023_11_14_E5_coral.html"
-    ]
-  },
-  {
     "listing": "/daily_log.html",
     "items": [
       "/posts/daily_logs/2023/December_2023_posts.html",
@@ -28,9 +20,18 @@
     ]
   },
   {
+    "listing": "/posts/projects/E5_coral.html",
+    "items": [
+      "/posts/projects/E5_coral/2023_12_05_E5_coral.html",
+      "/posts/projects/E5_coral/2023_11_30_E5_coral.html",
+      "/posts/projects/E5_coral/2023_11_14_E5_coral.html"
+    ]
+  },
+  {
     "listing": "/posts/projects/pacific_cod.html",
     "items": [
       "/posts/projects/pacific_cod/2023_12_13_pacific_cod.html",
+      "/posts/projects/pacific_cod/2023_12_14_pacific_cod.html",
       "/posts/projects/pacific_cod/2023_12_07_pacific_cod.html",
       "/posts/projects/pacific_cod/2023_11_02_pacific_cod.html",
       "/posts/projects/pacific_cod/2023_10_13_pacific_cod.html"

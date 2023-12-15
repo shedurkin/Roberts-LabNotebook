@@ -1,0 +1,16 @@
+---
+title: "Finish pulling/subsampling for cod RNAseq"
+author: "Kathleen Durkin"
+date: "2023-12-13"
+categories: ["pacifc-cod"]
+format:
+  html
+---
+
+Subsampled the four selected gill samples for RNAseq (in blue below) to retain half of the sample for methylation work later. Pulled the four selected spleen samples (yellow) and set aside whole tissue for RNAseq. Pulled remaining four liver samples (yellow) and subsampled, setting aside \~half of the tissue for RNAseq and retaining the rest.
+
+![](/images/cod_RNAseq_samples_sheet_partial.png)
+
+Also realized we were missing liver from one other sample we intend to send for RNAseq (sample 128), so pulled and subsampled that as well.
+
+Consolidated [all 80 samples](https://github.com/RobertsLab/project-cod-temperature/blob/main/data/Cod_RNAseq_NGS_Template_File.xlsx) we're sending for RNAseq in single box, in numerical order and grouped by tissue type, and stored at -80°C (middle freezer, top shelf, box labeled "Pacific Cod RNAseq Samples, Roberts Lab").

@@ -60,6 +60,12 @@ format:
 
 #### Thursday
 
+Hackathon 2023, Day Three!
+
+-   Finished pulling and subsampling cod samples, and consolidated to send for RNAseq on Monday -- details [here](../../projects/pacific-cod/2021_12_14_pacific_cod.qmd)
+-   Common recommendation for citation managers during lab meeting was [Paperpile](https://paperpile.com/) (for collaboration and easy integration with the Google environment) *with* a supplementary manager like [Zotero](https://www.zotero.org/) (for easier indexing, more detailed metadata, working offline). This sounds like a good plan to me! Messaged Steven about getting access to the lab paid Paperpile, and downloaded Zotero to start adding all my current lab-relevant literature.
+-   Started the tedious process of adding all of the papers I have downloaded to my laptop and iPad to Zotero, and transferring my highlighting/notes for each
+
 ## 13 December 2023
 
 #### Wednesday
