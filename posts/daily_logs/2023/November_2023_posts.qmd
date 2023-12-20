@@ -183,7 +183,7 @@ Met with Steven during Science hour
 
 #### Thursday -- Calculating RNASeq sample size
 
-Calculated necessary sample size for cod RNA sequencing, see [here](../../project/pacifc_cod/2023_11_02_pacific_cod.qmd). 
+Calculated necessary sample size for cod RNA sequencing, see [here](../../projects/pacific_cod/2023_11_02_pacific_cod.qmd).
 
 Met with the E5 molecular working group for the first time!
 

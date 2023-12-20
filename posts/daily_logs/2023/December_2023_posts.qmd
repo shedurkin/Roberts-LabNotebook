@@ -44,13 +44,25 @@ format:
 
 #### Wednesday
 
+-   Read Chpt.3 of "Race After Technology" for lab meeting tomorrow
+
+-   Read some papers reviewing sRNA analysis techniques using RNAseq data
+
 ## 19 December 2023
 
 #### Tuesday
 
+-   Lit review
+
+-   Looking for good text-to-speech platform/app/etc. and tried some out. The free one I tried doesn't work well with academic papers, so want to get an academia-focused service through the lab.
+
 ## 18 December 2023
 
 #### Monday
+
+-   Finished Zotero paper-entry
+
+-   Read some of those papers
 
 ## 15 December 2023
 
@@ -68,7 +80,7 @@ format:
 
 Hackathon 2023, Day Three!
 
--   Finished pulling and subsampling cod samples, and consolidated to send for RNAseq on Monday -- details [here](../../projects/pacific-cod/2021_12_14_pacific_cod.qmd)
+-   Finished pulling and subsampling cod samples, and consolidated to send for RNAseq on Monday -- details [here](../../projects/pacific_cod/2023_12_14_pacific_cod.qmd)
 -   Common recommendation for citation managers during lab meeting was [Paperpile](https://paperpile.com/) (for collaboration and easy integration with the Google environment) *with* a supplementary manager like [Zotero](https://www.zotero.org/) (for easier indexing, more detailed metadata, working offline). This sounds like a good plan to me! Messaged Steven about getting access to the lab paid Paperpile, and downloaded Zotero to start adding all my current lab-relevant literature.
 -   Started the tedious process of adding all of the papers I have downloaded to my laptop and iPad to Zotero, and transferring my highlighting/notes for each
 
