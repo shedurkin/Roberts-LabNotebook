@@ -21,13 +21,13 @@ For RNAseq we selected:
 
 -   Spleen samples from two individuals in the 0°C treatment (same tank) and two individuals in the 16°C treatment (same tank) (4 spleen samples total). Selected the same four individuals as chosen for blood and gill samples. For spleen, sending full original sample for RNAseq.
 
-| Tissue     | Num. Samples | Notes                                                           |
-|------------|--------------|-----------------------------------------------------------------|
-| Liver      | 68           | 4 per tank, 16 per treatment (plus additional 1 per treatment)  |
-| Blood      | 4            | 2 for 0°C, 2 for 16°C                                           |
-| Gill       | 4            | 2 for 0°C, 2 for 16°C                                           |
-| Spleen     | 4            | 2 for 0°C, 2 for 16°C                                           |
-| **Total:** | **80**       |                                                                 |
+| Tissue     | Num. Samples | Notes                                                          |
+|------------|--------------|----------------------------------------------------------------|
+| Liver      | 68           | 4 per tank, 16 per treatment (plus additional 1 per treatment) |
+| Blood      | 4            | 2 for 0°C, 2 for 16°C                                          |
+| Gill       | 4            | 2 for 0°C, 2 for 16°C                                          |
+| Spleen     | 4            | 2 for 0°C, 2 for 16°C                                          |
+| **Total:** | **80**       |                                                                |
 
 While almost all liver samples have been subsampled and set aside, we still need to pull and subsample the additional 4 liver, subsample all 4 gill, and pull all 4 spleen.
 
