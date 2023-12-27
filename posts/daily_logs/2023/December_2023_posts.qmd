@@ -22,9 +22,15 @@ format:
 
 #### Wednesday
 
+-   Prepped for meeting w/ Laura & Ingrid tomorrow by reviewing RNAseq data analysis notes Laura sent.
+
+-   Started modifying sRNAseq trimming/QC script from E5 work for use with the cod RNAseq data (once it's back). May test with snow crab data used in Laura's shared workflow
+
 ## 26 December 2023
 
 #### Tuesday
+
+-   Out
 
 ## 25 December 2023
 
@@ -36,9 +42,13 @@ format:
 
 #### Friday
 
+-   Out
+
 ## 21 December 2023
 
 #### Thursday
+
+-   Lab Meeting
 
 ## 20 December 2023
 
