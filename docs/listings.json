@@ -3,7 +3,16 @@
     "listing": "/projects.html",
     "items": [
       "/posts/projects/E5_coral.html",
-      "/posts/projects/pacific_cod.html"
+      "/posts/projects/pacific_cod.html",
+      "/posts/projects/misc.html"
+    ]
+  },
+  {
+    "listing": "/posts/projects/E5_coral.html",
+    "items": [
+      "/posts/projects/E5_coral/2023_12_05_E5_coral.html",
+      "/posts/projects/E5_coral/2023_11_30_E5_coral.html",
+      "/posts/projects/E5_coral/2023_11_14_E5_coral.html"
     ]
   },
   {
@@ -20,12 +29,8 @@
     ]
   },
   {
-    "listing": "/posts/projects/E5_coral.html",
-    "items": [
-      "/posts/projects/E5_coral/2023_12_05_E5_coral.html",
-      "/posts/projects/E5_coral/2023_11_30_E5_coral.html",
-      "/posts/projects/E5_coral/2023_11_14_E5_coral.html"
-    ]
+    "listing": "/posts/projects/misc.html",
+    "items": []
   },
   {
     "listing": "/posts/projects/pacific_cod.html",
