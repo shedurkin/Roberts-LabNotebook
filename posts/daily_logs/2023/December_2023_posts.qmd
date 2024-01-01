@@ -14,15 +14,21 @@ format:
 
 #### Friday
 
+-   Looked into more TTS tools, this time testing out some paid ones. Will be making a dedicated post about this once I've gotten through all the ones on my list.
+
 ## 28 December 2023
 
 #### Thursday
+
+-   Lab meeting -- Grace, Ariana, and Chris gave practice talks/outlines for SICB next week
+
+-   Meeting w/ Laura and Ingrid to go over Laura's RNAseq data analysis workflow and scripts.
 
 ## 27 December 2023
 
 #### Wednesday
 
--   Prepped for meeting w/ Laura & Ingrid tomorrow by reviewing RNAseq data analysis notes Laura sent.
+-   Prepped for meeting w/ Laura & Ingrid tomorrow by reviewing RNAseq data analysis [notes](https://docs.google.com/document/d/1HzMTreqnY2BD-oyjEJRA-JECpFE4CXlEoWKkmiaTYis/edit) Laura sent.
 
 -   Started modifying sRNAseq trimming/QC script from E5 work for use with the cod RNAseq data (once it's back). May test with snow crab data used in Laura's shared workflow
 
