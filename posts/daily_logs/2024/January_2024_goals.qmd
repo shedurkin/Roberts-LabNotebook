@@ -1,0 +1,36 @@
+---
+title: "January 2024, Monthly Goals"
+author: "Kathleen Durkin"
+date: "2024-01-01"
+categories: ["monthly goals"]
+format:
+  html
+---
+
+Happy New Year!
+
+## January Goals
+
+I'm going to be spending 1-2 weeks this month at conferences/workshops (SICB, MISS workshops, eScience Software Carpentry workshop), so I'm going to set a more limited list of goals:
+
+-   Review and pick a text-to-speech (TTS) tool for reading academic papers
+
+-   Establish more regularly-scheduled working hours! For the sake of establishing a better work-life balances :)
+
+-   Look into several grants/funding sources that I may want to apply for over the next year or so (GRFP, Fullbright, etc.)
+
+-   Update my CV. I want this to be my hyper-comprehensive CV that lists every single maybe, possibly relevant item. Note this will NOT be a CV I'm going to send to people without serious editing, I just need a place to keep track of everything that might eventually be important!
+
+-   Write a preliminary draft for the [Pacific Cod RNAseq project](../../projects/pacific_cod.qmd)
+
+## Reviewing December Goals
+
+So I somehow forgot to actually post my December goals and didn't realize until I checked back to make this review 🤦‍♀️. Instead I guess I'll just go over some of the bigger things I did in December:
+
+-   Finished up my first quarter at UW! Passed all my credit/no credit classes and got a grade in QSCI482 that I'm really happy with :)
+
+-   Fully reformatted my lab notebook site
+
+-   Got integrated into Zotero, my first reference manager tool
+
+-   Sent [80 cod samples for RNAseq](../../projects/pacific_cod/2023_12_14_pacific_cod.qmd)

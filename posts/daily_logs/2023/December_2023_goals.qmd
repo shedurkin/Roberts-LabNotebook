@@ -17,6 +17,6 @@ format:
 
 ✓ Read 2 project-relevant papers a week (8 total)
 
-? Cod project: Send samples out for RNA sequencing (don't need any sample prep, just find and send
+✓ Cod project: Send samples out for RNA sequencing (don't need any sample prep, just find and send)
 
-✓ Coral project: Identify short RNA's for *Porites evermanni* and *Pocillopora meandrina*
+✓ Coral project: Identify short RNAs for *Porites evermanni* and *Pocillopora meandrina*
