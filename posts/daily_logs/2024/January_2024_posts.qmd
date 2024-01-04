@@ -76,6 +76,12 @@ format:
 
 #### Monday
 
+## 06 January 2024
+
+#### Saturday
+
+SICB Day 5!
+
 ## 05 January 2024
 
 #### Friday
@@ -100,11 +106,9 @@ SICB Day 2!
 
 SICB Day 1!
 
--   MISS Grant Writing Workshop
+-   MISS Grant Writing Workshop (notes [here](https://docs.google.com/document/d/1_OzDwwrB3_MgcHZMNjwzF8FmA6CmD3FxBc-V2bGYIhQ/edit))
 
 -   MISS Figures and Illustrations Workshop
-
--   
 
 ## 01 January 2024
 
@@ -113,3 +117,5 @@ SICB Day 1!
 -   Did some Lab Notebook work -- set up new section for miscellaneous posts, set some January goals, and set up my January daily post page (which you're currently reading)
 
 -   Went through the (many, many) talks/events at SICB for the first few days and planned out my itinerary
+
+-   Started writing up my review of different TTs services -- find details [here](../../projects/misc/2024_01_02_TTS.qmd)

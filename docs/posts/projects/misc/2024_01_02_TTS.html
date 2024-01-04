@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Kathleen Durkin">
+<meta name="dcterms.date" content="2024-01-02">
 
-<title>Kathleen’s Lab Notebook - Daily Logs and Monthly Goals</title>
+<title>Kathleen’s Lab Notebook - Reviewing Text-To-Speech tools</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -61,50 +61,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Kathleen’s Lab Notebook</span>
     </a>
   </div>
@@ -115,11 +84,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./daily_log.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../../../daily_log.html" rel="" target="">
  <span class="menu-text">Daily Notebook Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html" rel="" target="">
+    <a class="nav-link" href="../../../projects.html" rel="" target="">
  <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item compact">
@@ -137,261 +106,106 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page">
-      <h1 class="title">Daily Logs and Monthly Goals</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Reviewing Text-To-Speech tools</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">miscellaneous</div>
+              </div>
+                  </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Kathleen Durkin </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 2, 2024</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
+<p>I get very fidgety when I have to sit and read papers for hours on end, and I’ve found that being able to listen to content while occupying my hands with a mindless task (origami, weaving, embroidery,doodling, etc.) really helps me stay engaged for longer periods of time. With this in mind I’ve been looking for a text-to-speech tool that would enable me to listen to academic papers, textbooks, etc.! I’m hoping this could really improve my lit review workflow, especially since many of the papers I’m reading right now are reviews with fewer tables/figures that sometimes complicate applying TTS to academic material. Here’s a review of some of the services I’ve tried so far:</p>
+<section id="audemic" class="level2">
+<h2 class="anchored" data-anchor-id="audemic"><a href="https://www.audemic.io">Audemic</a></h2>
+<p><strong>Price:</strong> $10.99/mo OR $118/yr</p>
+<p><strong>Free Trial:</strong> 5 papers</p>
+<p><strong>Features:</strong></p>
+<ul>
+<li><p>Can import pdfs directly from Zotero (though kind of buggy)</p></li>
+<li><p>Has navigable sectioning of PDFs, and you can reorder the sections (e.g.&nbsp;skipping Methods) as you like</p></li>
+<li><p>Generates a high-level summary of the document</p></li>
+<li><p>Skips in-text citations</p></li>
+<li><p>Can annotate/highlight in-text</p></li>
+<li><p>Can change the background color, font, and reading speed</p></li>
+<li><p>Multi-device</p></li>
+</ul>
+<p>I have mixed feelings about Audemic. I liked a lot of things about the narration itself. Some of the voice options were very <span style="color:green;"><strong>human-like</strong></span> and easy to listen to, and it did a pretty good (though not perfect) job of <span style="color:green;"><strong>pronouncing uncommon jargon</strong></span>. On the other hand, I disliked several aspects of how it displays the content you’ve uploaded while it’s narrating it. Upon uploading a pdf, all of the text is extracted and displayed in a sectioned <span style="color:red;"><strong>viewing pane that is completely removed from the original pdf</strong></span> (see below). That means that, in order to refer to figures or find “where” what you’re listening to is in the original document , you have to navigate to a completely separate pane to view the original pdf. Audemic also <span style="color:red;"><strong>doesn’t track in-text</strong></span> where the reader is at that time, so it’s very difficult to find where you are in the text. Finally, there are a couple annoying things, like <span style="color:orange;"><strong>buggy Zotero uploading</strong></span> and being <span style="color:orange;"><strong>unable to switch “voice” without re-uploading</strong></span> the document.</p>
+<p>Overall, given the many features I find annoying and the comparatively high price tag, <u>I’m not sure Audemic is worth the money, but it is the most human-like option I’ve found so far.</u></p>
+<p><img src="../../..\images/Audemic.png" class="img-fluid"></p>
+</section>
+<section id="voice-dream" class="level2">
+<h2 class="anchored" data-anchor-id="voice-dream"><a href="https://www.voicedream.com/">Voice Dream</a></h2>
+<p><strong>Price:</strong> $80/yr</p>
+<p><strong>Free Trial:</strong> 3 days (but can’t try without providing payment info😑)</p>
+<p><strong>Features:</strong></p>
+<ul>
+<li><p>Offline access and multi-device, and available as an iOS app</p></li>
+<li><p>Skips in-text citations</p></li>
+<li><p>Can annotate/highlight in-text</p></li>
+<li><p>Can change the background color, font, and reading speed</p></li>
+<li><p>Many options for customizing text navigation</p></li>
+</ul>
+<p>Honestly I came into Voice Dream kind of biased against it, because I think its recent price hike, from a one-time fee of $30 (April 2023) to $80/yr, and its requirement of payment info to access the free trial are kind of scummy practices. Objectively though, it does seem like a decent option.</p>
+<p>The real strengths of Voice Dream seem to lie in its <span style="color:green;"><strong>customizable text navigation features</strong></span>. For example, you can <span style="color:green;"><strong>choose your forward and backward “skip” buttons</strong></span> to skip by different time intervals, by paragraph, by heading, etc. You can <span style="color:green;"><strong>set a timer</strong></span> for how long the narration will read, and can change a variety of <span style="color:green;"><strong>visual settings</strong></span> (font, spacing, background color, etc.). When reading you can choose to view the text in either a <span style="color:green;"><strong>plain text viewing pane or in the original document</strong></span> and both options support an <span style="color:green;"><strong>in-text speech cursor</strong></span> to show where the narration is.</p>
+<p>However, several of the boasted features fell flat to me. While there are a ton of voices to choose from, all of the ones I tried are much <span style="color:red;"><strong>more synth-sounding</strong></span> than Audemic, in both tone and inflection. <span style="color:red;"><strong>Pronunciation of jargon</strong></span> is also not as good as Audemic, though there does seem to be a feature for correcting pronunciation of individual words. As in Audemic, your <span style="color:red;"><strong>voice selection is document-specific</strong></span>, so you have to reselect the voice you want every time. While the website claims Voice Dream skips citations and superfluous text, when I uploaded a pdf and tried listening it <span style="color:red;"><strong>didn’t skip either of these</strong></span>. It also <span style="color:red;"><strong>didn’t identify sections</strong></span> for my uploaded pdf (e.g.&nbsp;Abstract, Intro, etc.), so I couldn’t use the section navigation option. On top of these disappointing features, some features are missing entirely. Voice Dream has <span style="color:red;"><strong>no web app</strong></span>, so you can’t listen from a PC or Android, and there’s <span style="color:red;"><strong>no option to import directly from Zotero</strong></span> or Paperpile, meaning manual upload is required.</p>
+<p>Ultimately I know the quality of the voice is going to be much more important for my retention than text navigation features, so <u>I don’t think Voice Dream is a good option for me</u>. The voices are just too robotic, especially in comparison with Audemic.</p>
+</section>
+<section id="listening.io" class="level2">
+<h2 class="anchored" data-anchor-id="listening.io"><a href="https://www.listening.io/#built-for-papers">Listening.io</a></h2>
+<p><strong>Price:</strong> $12/mo OR $99/yr</p>
+<p><strong>Free Trial:</strong> 2wk</p>
+<p><strong>Features:</strong></p>
+<ul>
+<li><p>Combines a web app with an iOS app. While you can’t listen from the web app, you can upload papers there and then listen from the iOS app.</p></li>
+<li><p>Navigable sections and other text navigation options</p></li>
+<li><p>Skips citations</p></li>
+<li><p>Can notify them of word mispronunciations for correction</p></li>
+</ul>
+<p>Pros: Has a <strong>chrome extension</strong> to send papers directly to listening.io as you find them</p>
+<p>Cons:</p>
+</section>
+<section id="speechify" class="level2">
+<h2 class="anchored" data-anchor-id="speechify"><a href="https://speechify.com/">Speechify</a></h2>
+<p><strong>Price:</strong> $9.99/mo OR $120/yr</p>
+<p><strong>Free Trial:</strong> 3 days (but can’t try all features without providing payment info😑)</p>
+<p><strong>Features:</strong></p>
+<p>Again, have to provide payment info to access full free trial, which feels scammy, and I’m also annoyed that there’s no discount for annual subscription.</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="daily log" data-listing-date-sort="1704383454000" data-listing-file-modified-sort="1704383454530" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="body">
-<a href="./posts/daily_logs/2024/January_2024_posts.html">
-<h3 class="no-anchor listing-title">
-January 2024, Daily Log
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/daily_logs/2024/January_2024_posts.html">
-<div class="listing-date">
-Jan 4, 2024
-</div>
-<div class="listing-author">
-Kathleen Durkin
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="daily log" data-listing-date-sort="1704148825000" data-listing-file-modified-sort="1704148825319" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
-<div class="body">
-<a href="./posts/daily_logs/2023/December_2023_posts.html">
-<h3 class="no-anchor listing-title">
-December 2023, Daily Log
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/daily_logs/2023/December_2023_posts.html">
-<div class="listing-date">
-Jan 1, 2024
-</div>
-<div class="listing-author">
-Kathleen Durkin
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="monthly goals" data-listing-date-sort="1704096000000" data-listing-file-modified-sort="1704221198960" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="body">
-<a href="./posts/daily_logs/2024/January_2024_goals.html">
-<h3 class="no-anchor listing-title">
-January 2024, Monthly Goals
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/daily_logs/2024/January_2024_goals.html">
-<div class="listing-date">
-Jan 1, 2024
-</div>
-<div class="listing-author">
-Kathleen Durkin
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="monthly goals" data-listing-date-sort="1701763200000" data-listing-file-modified-sort="1704214305150" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="body">
-<a href="./posts/daily_logs/2023/December_2023_goals.html">
-<h3 class="no-anchor listing-title">
-December 2023, Monthly Goals
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/daily_logs/2023/December_2023_goals.html">
-<div class="listing-date">
-Dec 5, 2023
-</div>
-<div class="listing-author">
-Kathleen Durkin
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="daily log" data-listing-date-sort="1701331200000" data-listing-file-modified-sort="1703116233847" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
-<div class="body">
-<a href="./posts/daily_logs/2023/November_2023_posts.html">
-<h3 class="no-anchor listing-title">
-November 2023, Daily Log
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/daily_logs/2023/November_2023_posts.html">
-<div class="listing-date">
-Nov 30, 2023
-</div>
-<div class="listing-author">
-Kathleen Durkin
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="monthly goals" data-listing-date-sort="1698994800000" data-listing-file-modified-sort="1701796463487" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="body">
-<a href="./posts/daily_logs/2023/November_2023_goals.html">
-<h3 class="no-anchor listing-title">
-November 2023, Monthly Goals
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/daily_logs/2023/November_2023_goals.html">
-<div class="listing-date">
-Nov 3, 2023
-</div>
-<div class="listing-author">
-Kathleen Durkin
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="monthly goals" data-listing-date-sort="1697612400000" data-listing-file-modified-sort="1699486404452" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="body">
-<a href="./posts/daily_logs/2023/October_2023_goals.html">
-<h3 class="no-anchor listing-title">
-October 2023, Monthly Goals
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/daily_logs/2023/October_2023_goals.html">
-<div class="listing-date">
-Oct 18, 2023
-</div>
-<div class="listing-author">
-Kathleen Durkin
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-categories="daily log" data-listing-date-sort="1696143600000" data-listing-file-modified-sort="1702492720841" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="23">
-<div class="body">
-<a href="./posts/daily_logs/2023/October_2023_posts.html">
-<h3 class="no-anchor listing-title">
-October 2023, Daily Log
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/daily_logs/2023/October_2023_posts.html">
-<div class="listing-date">
-Oct 1, 2023
-</div>
-<div class="listing-author">
-Kathleen Durkin
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="8" data-categories="onboarding" data-listing-date-sort="1695970800000" data-listing-file-modified-sort="1696026237899" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="body">
-<a href="./posts/daily_logs/2023/September_2023/Sept_29_2023/index.html">
-<h3 class="no-anchor listing-title">
-Formatting digital lab notebook
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/daily_logs/2023/September_2023/Sept_29_2023/index.html">
-<div class="listing-date">
-Sep 29, 2023
-</div>
-<div class="listing-author">
-Kathleen Durkin
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="9" data-listing-date-sort="1695884400000" data-listing-file-modified-sort="1696014106835" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="body">
-<a href="./posts/daily_logs/2023/September_2023/Sept_28_2023/index.html">
-<h3 class="no-anchor listing-title">
-First post
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/daily_logs/2023/September_2023/Sept_28_2023/index.html">
-<div class="listing-date">
-Sep 28, 2023
-</div>
-<div class="listing-author">
-Kathleen Durkin
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
