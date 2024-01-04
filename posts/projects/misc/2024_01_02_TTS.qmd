@@ -1,0 +1,94 @@
+---
+title: "Reviewing Text-To-Speech tools"
+author: "Kathleen Durkin"
+date: "2024-01-02"
+categories: ["miscellaneous"]
+format:
+  html
+---
+
+I get very fidgety when I have to sit and read papers for hours on end, and I've found that being able to listen to content while occupying my hands with a mindless task (origami, weaving, embroidery,doodling, etc.) really helps me stay engaged for longer periods of time. With this in mind I've been looking for a text-to-speech tool that would enable me to listen to academic papers, textbooks, etc.! I'm hoping this could really improve my lit review workflow, especially since many of the papers I'm reading right now are reviews with fewer tables/figures that sometimes complicate applying TTS to academic material. Here's a review of some of the services I've tried so far:
+
+## [Audemic](https://www.audemic.io)
+
+**Price:** \$10.99/mo OR \$118/yr
+
+**Free Trial:** 5 papers
+
+**Features:**
+
+-   Can import pdfs directly from Zotero (though kind of buggy)
+
+-   Has navigable sectioning of PDFs, and you can reorder the sections (e.g. skipping Methods) as you like
+
+-   Generates a high-level summary of the document
+
+-   Skips in-text citations
+
+-   Can annotate/highlight in-text
+
+-   Can change the background color, font, and reading speed
+
+-   Multi-device
+
+I have mixed feelings about Audemic. I liked a lot of things about the narration itself. Some of the voice options were very [**human-like**]{style="color:green;"} and easy to listen to, and it did a pretty good (though not perfect) job of [**pronouncing uncommon jargon**]{style="color:green;"}. On the other hand, I disliked several aspects of how it displays the content you've uploaded while it's narrating it. Upon uploading a pdf, all of the text is extracted and displayed in a sectioned [**viewing pane that is completely removed from the original pdf**]{style="color:red;"} (see below). That means that, in order to refer to figures or find "where" what you're listening to is in the original document , you have to navigate to a completely separate pane to view the original pdf. Audemic also [**doesn't track in-text**]{style="color:red;"} where the reader is at that time, so it's very difficult to find where you are in the text. Finally, there are a couple annoying things, like [**buggy Zotero uploading**]{style="color:orange;"} and being [**unable to switch "voice" without re-uploading**]{style="color:orange;"} the document.
+
+Overall, given the many features I find annoying and the comparatively high price tag, [I'm not sure Audemic is worth the money, but it is the most human-like option I've found so far.]{.underline}
+
+![](/images/Audemic.png)
+
+## [Voice Dream](https://www.voicedream.com/)
+
+**Price:** \$80/yr
+
+**Free Trial:** 3 days (but can't try without providing payment info😑)
+
+**Features:**
+
+-   Offline access and multi-device, and available as an iOS app
+
+-   Skips in-text citations
+
+-   Can annotate/highlight in-text
+
+-   Can change the background color, font, and reading speed
+
+-   Many options for customizing text navigation
+
+Honestly I came into Voice Dream kind of biased against it, because I think its recent price hike, from a one-time fee of \$30 (April 2023) to \$80/yr, and its requirement of payment info to access the free trial are kind of scummy practices. Objectively though, it does seem like a decent option.
+
+The real strengths of Voice Dream seem to lie in its [**customizable text navigation features**]{style="color:green;"}. For example, you can [**choose your forward and backward "skip" buttons**]{style="color:green;"} to skip by different time intervals, by paragraph, by heading, etc. You can [**set a timer**]{style="color:green;"} for how long the narration will read, and can change a variety of [**visual settings**]{style="color:green;"} (font, spacing, background color, etc.). When reading you can choose to view the text in either a [**plain text viewing pane or in the original document**]{style="color:green;"} and both options support an [**in-text speech cursor**]{style="color:green;"} to show where the narration is.
+
+However, several of the boasted features fell flat to me. While there are a ton of voices to choose from, all of the ones I tried are much [**more synth-sounding**]{style="color:red;"} than Audemic, in both tone and inflection. [**Pronunciation of jargon**]{style="color:red;"} is also not as good as Audemic, though there does seem to be a feature for correcting pronunciation of individual words. As in Audemic, your [**voice selection is document-specific**]{style="color:red;"}, so you have to reselect the voice you want every time. While the website claims Voice Dream skips citations and superfluous text, when I uploaded a pdf and tried listening it [**didn't skip either of these**]{style="color:red;"}. It also [**didn't identify sections**]{style="color:red;"} for my uploaded pdf (e.g. Abstract, Intro, etc.), so I couldn't use the section navigation option. On top of these disappointing features, some features are missing entirely. Voice Dream has [**no web app**]{style="color:red;"}, so you can't listen from a PC or Android, and there's [**no option to import directly from Zotero**]{style="color:red;"} or Paperpile, meaning manual upload is required.
+
+Ultimately I know the quality of the voice is going to be much more important for my retention than text navigation features, so [I don't think Voice Dream is a good option for me]{.underline}. The voices are just too robotic, especially in comparison with Audemic.
+
+## [Listening.io](https://www.listening.io/#built-for-papers)
+
+**Price:** \$12/mo OR \$99/yr
+
+**Free Trial:** 2wk
+
+**Features:**
+
+-   Combines a web app with an iOS app. While you can't listen from the web app, you can upload papers there and then listen from the iOS app.
+
+-   Navigable sections and other text navigation options
+
+-   Skips citations
+
+-   Can notify them of word mispronunciations for correction
+
+Pros: Has a **chrome extension** to send papers directly to listening.io as you find them
+
+Cons:
+
+## [Speechify](https://speechify.com/)
+
+**Price:** \$9.99/mo OR \$120/yr
+
+**Free Trial:** 3 days (but can't try all features without providing payment info😑)
+
+**Features:**
+
+Again, have to provide payment info to access full free trial, which feels scammy, and I'm also annoyed that there's no discount for annual subscription.
