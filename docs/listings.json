@@ -8,6 +8,14 @@
     ]
   },
   {
+    "listing": "/posts/projects/E5_coral.html",
+    "items": [
+      "/posts/projects/E5_coral/2023_12_05_E5_coral.html",
+      "/posts/projects/E5_coral/2023_11_30_E5_coral.html",
+      "/posts/projects/E5_coral/2023_11_14_E5_coral.html"
+    ]
+  },
+  {
     "listing": "/daily_log.html",
     "items": [
       "/posts/daily_logs/2024/January_2024_posts.html",
@@ -23,16 +31,9 @@
     ]
   },
   {
-    "listing": "/posts/projects/E5_coral.html",
-    "items": [
-      "/posts/projects/E5_coral/2023_12_05_E5_coral.html",
-      "/posts/projects/E5_coral/2023_11_30_E5_coral.html",
-      "/posts/projects/E5_coral/2023_11_14_E5_coral.html"
-    ]
-  },
-  {
     "listing": "/posts/projects/misc.html",
     "items": [
+      "/posts/projects/misc/2024_01_02_SICB.html",
       "/posts/projects/misc/2024_01_02_TTS.html"
     ]
   },

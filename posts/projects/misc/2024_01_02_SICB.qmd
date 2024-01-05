@@ -1,0 +1,80 @@
+---
+title: "SICB 2024"
+author: "Kathleen Durkin"
+date: "2024-01-04"
+categories: ["miscellaneous"]
+format:
+  html
+---
+
+## SICB Day 1
+
+**MISS Grant Writing Workshop**
+
+-   (notes [here](https://docs.google.com/document/d/1_OzDwwrB3_MgcHZMNjwzF8FmA6CmD3FxBc-V2bGYIhQ/edit))
+
+**MISS Figures and Illustrations Workshop**
+
+## SICB Day 2
+
+## SICB Day 3
+
+**Immune response of Pycnopodia helianthoides to sea star wasting disease (Grace Crandall)**
+
+-   Can you see DEGs in absence of stress, ,just related to normal function?
+
+**Identifying genes mediating local adaptation using targeted vs. whole-genome approaches (Nathan Rank)**
+
+**Optimal foraging height of arboreal lizards: the role of visual acuity (Steven Adolph)**
+
+\^ This is one of my professors from undergrad!
+
+**Active tension driven soft coral pulsing: Exploring emergent behavior through elasticity and tension (Matea Santiago)**
+
+-   Exploring polyp movement differences across species?
+
+**A multi-omics approach investigating regulation of symbiont state in a facultatively symbiotic coral (Erin Borbee)**
+
+-   Changes in symbiont density associated with changes in immunity, BUT since tropical corals depend on symbionts, changes in symbiont density are often related to stress/disease -- how to disentangle how symbiont density alone is related to immunity.
+
+-   Use facultative coral (A. paculata) which is not obligate and can healthily host range of symbiont densities, unrelated to stress
+
+-   Used mixed colonies (both brown and white sections in same individual), did transcriptomics, immune assays, microbiome, genotyping (to validate genetically identical samples, not chimeric)
+
+-   NO DEGs or differences in immune assays between brown and white colonies (remember, no treatment here, just comparing different symbiont-load sections of within the same individual)
+
+-   BUT past work using completely brown and completely white individuals of same species DID find significant differences in immune assays!
+
+-   I really like and am interested in conducting this type of multi-omics work!
+
+**Cross-ocean coral transplantation to restore resilience in Caribbean reefs (Mikhail Matz)**
+
+-   That Caribbean coral paper I was looking for: Evolutionary history drives biogeographic patterns of coral reef resilience
+
+-   Super interesting talk, discussing reasons why cross-ocean transplant may be appropriate/necessary for Caribbean reefs. Basically, because of super low recruitment and low diversity in Caribbean reefs, almost every reef in the Caribbean is ecologically extinct (not meeting replacement levels). The a) low native diversity, b) existing high native prevalence of disease, c) 11th hour situation, mean that transplant from the *much* more reproductive Indo-Pacific could be appropriate to preserve existence of reef habitat at all in Caribbean.
+
+-   I really like how this presenter, who is clearly well established in career, didn't use any excessive or complicated jargon in their talk, but were still super engaging and interesting. A nice reprieve after so many pretty formally-spoken talks yesterday
+
+-   What kind of consideration needs to be given to the (few, but present) Caribbean reefs that are still stable and ecologically viable? Introduced super-recruiters would definitely outcompete the natives there
+
+**Leveraging coral disease 'omics datasets for disease classification and predictive modeling (Laura Mydlarz)**
+
+**Identifying shared and host-specific transcriptome charictaristics of the cnidarian-algal mutualism (Madison Emery)**
+
+-   The algal symbiosis mutualism has evolved separately several times in Cnidaria -- woah!
+
+-   Didn't realize there's a jellyfish taxa of cnidarians with obligate symbionts
+
+-   In Cassiopeia (facultative) the symbiotic individual seem to mount more damaging (to the host) immune responses than the aposymbiotic individuals (so individuals with symbionts are *less* likely to survive)
+
+-   Between two species with different symbiont evolutions, more than half of the DEOGs were differentially expressed in *different directions!*
+
+**Tolerance of infection could support resilience at multiple levels (James Adelman)**
+
+**Resilience to high temperature and hypoxia in fish: view from the genome and epigenome (Patricia Schulte)**
+
+**Interplay of acclimatization and adaptation modulates resilience to climate change in marine inverts (Hollie Putnam)**
+
+## SICB Day 4
+
+## SICB Day 5
