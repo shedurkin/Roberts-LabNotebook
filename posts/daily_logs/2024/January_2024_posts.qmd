@@ -88,6 +88,10 @@ format:
 
 [SICB Day 4](../../projects/misc/2024_01_02_SICB.qmd#sicb-day-4)!
 
+[Cnidarian Social](../../projects/misc/2024_01_02_SICB.qmd#cnidarian-social) after the conference -- super fun!
+
+Talked w Steven about next steps of coral stuff -- move towards combining sRNA and RNAseq stuff to examine how the sRNAs are involved in genome expression
+
 ## 04 January 2024
 
 #### Thursday

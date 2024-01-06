@@ -4,7 +4,8 @@ author: "Kathleen Durkin"
 date: "2024-01-04"
 categories: ["miscellaneous"]
 format:
-  html
+  html:
+    toc: true
 ---
 
 ## SICB Day 1
@@ -16,6 +17,34 @@ format:
 **MISS Figures and Illustrations Workshop**
 
 ## SICB Day 2
+
+**Facultatively sypmbiotic species as models for exploring immune-symbiosis interplay (Lauren Fuess)**
+
+**Tracking heavy metals during bleaching stress and recovery in Hawaiin reef-building corals (Callum Backstrom)**
+
+**Reacclimation to normal temperature failed to restore gamete performance in heatwave-exposed urchins (Jazcenya Gonzalez)**
+
+-   Could apply this to our systems -- heatwave conditions instead of persistent higher temps, and include the reacclimation component
+
+-   Detrimental generational impacts -- sperm speed and motility decreased (along with a couple of other metrics) and, while fertilization was maintained, embryo development was significantly negatively impacted
+
+**It's about time: Unraveling the molecualr clocks of fiddler crab embryos and larvae (Caitlin BrabbleRose)**
+
+-   Fidler crabs have *internal* circadian and/or circitidal clock -- exhibit specific behavior in lab, even when separated from external cues!! Woah!!
+
+-   Possible differential expression of some genes due to circadian and/or circitidal patterns!
+
+**Transcriptomic responses of gecarcinid land crabs to acute and prolonged desiccation stress (Victoria Watson-Zink)**
+
+**Patterns of intergenerational DNA methylation inheritance in Acropora (Christopher Peterson)**
+
+-   allele-specific methylation design
+
+-   methylation heritability varied among the crosses (among two Acropora species and their hybrids)
+
+-   Possibly some methylation is heritable and some isn't -- why?
+
+-   A whole bunch of differen mathematical analyses of their methylation data
 
 ## SICB Day 3
 
@@ -76,5 +105,59 @@ format:
 **Interplay of acclimatization and adaptation modulates resilience to climate change in marine inverts (Hollie Putnam)**
 
 ## SICB Day 4
+
+**Biological springs are most energy efficient when loaded and unloaded at equal rates (Mark Ilton)**
+
+\^ One of my undergad profs!
+
+**Chasing squishy and crunchy invaders: eDNA for dynamic invasive species surveillance in tide pools (Emily Lancaster)**
+
+-   Shells of dead animals (e.g. bivalves) can still shed eDNA, even if the body tissue is gone -- woah!
+
+**Antarctic marine benthic communities: Image transects reveal lower abundances in Eastern than Western (Kenneth Halanych)**
+
+**Striking gold: Successes in rare species detection using eDNA, acoustics, and visual surveys (Corinne Richards-Zawacki)**
+
+**A multiomic approach to understand tradeoffs between symbiosis and immunity in a reef-building coral (Maria Valadez Ingersoll)**
+
+-   Single cell RNAseq and SPLiTseq
+
+**Genome skimming resolves east Pacific Pocillopora species diversity and population differentiation (Michael Connelly)**
+
+**Plasticity in response to temperatures magnitude and fluctuation -- from coloration to thermal tolerance (Austin Hoffman)**
+
+-   Could do something like this, have two treatment axes, one for set of mean temps, one for set of temp variations
+
+**Genetic underpinnings of developmental plasticity and acute thermal responses in a coastal copepod (Alison Hall)**
+
+-   Differences in total detected DEGs can always be influenced bu underlying genetic variation in samples
+
+**Multigenerational plasticity to hypoxia and acidification in Atlantic silversides (Medidia menidia) (Christopher Murray)**
+
+-   transcriptional front loading
+
+**Approaches for minimally invasive long-term ecological montiering (Christine Mantegna)**
+
+-   Go Chris!!!
+
+**Seasonal variation in thermal tolerance and hypoxia tolerance of a threatened minnow and congener (Jessica Reemeyer)**
+
+-   Really interesting general question: it's common to study more common species to infer info about closely-related imperiled species. But how trustworthy is this? How transferrable are conclusions about thermal tolerance (etc.) between closely related species?
+
+-   Are corals and other marine inverts commonly affect by DO levels Is it even relevant (aka is DO variable in marine environments in the same way it is in freshwater)?
+
+-   The very closely related species *didn't* respond in exactly the same way, suggesting we can't always use "surrogate" species -- study your species if possible!
+
+**Rapid change in a rainforest anole: results from the first six years of a translocation experiment (Michael Logan)**
+
+-   Really cool talk an being able to directly track phenotypic change/adaptation of translocated lizards
+
+**Variable warm temperature elevates thermal tolerance but impairs freshwater tolerance in killifish (Michelle Monette)**
+
+### Cnidarian Social
+
+Spoke with Carly Kenkel and another woman whose name I can't remember now 😅, and the other person told us about her recent work with anemones studying the effect of estrogen pollution -- super interesting! So far they haven't seen any direct effect on the anemone host or anemone fertility/reproduction, which we might normally expect based on role of estrogen in vertebrates. There was, however, a significant effect on the symbiont populations -- in presence of estrogen, symbionts were increasingly photosynthetically efficient -- woah! The effect was so strong that they could actually see differences in the color of the water the anemones were held in because of increased levels of algae in the water. Increasing estrogen levels led to this gradient of increasingly green water 😮.
+
+We also talked a bit about the possibility of coral polyps in the same aggregate colony sharing the "symbiont load," and related nutrients, which could explain when some species have "patchy" symbiont distribution around colony. Apparently there's a kind of plant that grows in/near salty water and, to rid itself of excess salt, basically picks a leaf to die and sends all the salt there, leaving the rest of the plant healthy. Maybe similar stuff happens in corals?
 
 ## SICB Day 5
