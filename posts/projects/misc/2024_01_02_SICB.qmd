@@ -22,6 +22,8 @@ format:
 
 **Tracking heavy metals during bleaching stress and recovery in Hawaiin reef-building corals (Callum Backstrom)**
 
+-   Go Callum!
+
 **Reacclimation to normal temperature failed to restore gamete performance in heatwave-exposed urchins (Jazcenya Gonzalez)**
 
 -   Could apply this to our systems -- heatwave conditions instead of persistent higher temps, and include the reacclimation component
@@ -44,13 +46,68 @@ format:
 
 -   Possibly some methylation is heritable and some isn't -- why?
 
--   A whole bunch of differen mathematical analyses of their methylation data
+-   A whole bunch of different mathematical analyses of their methylation data
+
+**Building an 'epigenetic clock': Utelizing DNA methylation patterns to predict age in fish (Emma Strand)**
+
+-   Look into Gloucester marine genomic institute (in Boston)
+
+-   Whole genome bisulfate sequencing
+
+-   Elastic net penalized regression model
+
+-   Prelim data, but looks like there *may* be some methylation sites that can be used to predict age
+
+**Integrating genetics, phenotype, and physiology in a hybrid population of Plethodon (Kyle MOxley)**
+
+**Understanding the impacts of nutrient pollution on an urban coral in a n era of climate change (Caroline Fleming Ianniello)**
+
+-   Wow, coral species Astrangia poculata is a temperate coral species that lives in super urban areas -- they're even found in harbors of NYC!
+
+-   No apparent effect of nitrogen alone on basal metabolic rate
+
+-   However, significant metabolic depression when you combine nitrogen in form of ammonium with temperatures. Also see significant bleaching in combo.
+
+-   Preferentially uptakes ammonium to nitrate
+
+**Comparative analyses of long non-coding RNA activity in three corla species (Zachary Bengtsson)**
+
+-   Go Zach!
+
+-   True sequence siilarity vs. conserved regions?
+
+**Toxin tales: alkaloid load correlates with gene expression differences in poison frogs (Aurora Alvarez-Buylla)**
+
+**Global change in the sensory landscape: Color signal evolution across changing light environments (John David Curlis)**
+
+**Impacts of marine heatwaves on coral environmental memory and cross-generational acclimatization (Danielle Becker)**
+
+-   Remember phenotypic plasticity can be adaptive and maladaptive
+
+-   Rather than use static heat stress, could try more realistically mimicking MHWs by using cyclic temps with higher max (mimic daily temp cycle)
+
+-   Parental exposure to MHW conditions does impact larval survivorship under thermal stress -- environmental memory
+
+-   This is a Putnam lab person! works w Ariana
+
+**Characterizing dark gene functions in corals through microscopy and sRNA-seq approaches (Kevin Wong)**
+
+-   Super cool!
+
+**Symbionts to the rescue: Symbiodiiaceae facilitate coral survival in extreme bay environments (Maya Powell)**
+
+**Fine-scale morphological plasticity in staghorn corals as a function of flow, light, and genotype (Maya Gomez)**
 
 ## SICB Day 3
 
 **Immune response of Pycnopodia helianthoides to sea star wasting disease (Grace Crandall)**
 
--   Can you see DEGs in absence of stress, ,just related to normal function?
+-   Go Grace!
+
+```{=html}
+<!-- -->
+```
+-   Can you see DEGs in absence of stress, just related to normal function?
 
 **Identifying genes mediating local adaptation using targeted vs. whole-genome approaches (Nathan Rank)**
 
@@ -156,8 +213,36 @@ format:
 
 ### Cnidarian Social
 
-Spoke with Carly Kenkel and another woman whose name I can't remember now 😅, and the other person told us about her recent work with anemones studying the effect of estrogen pollution -- super interesting! So far they haven't seen any direct effect on the anemone host or anemone fertility/reproduction, which we might normally expect based on role of estrogen in vertebrates. There was, however, a significant effect on the symbiont populations -- in presence of estrogen, symbionts were increasingly photosynthetically efficient -- woah! The effect was so strong that they could actually see differences in the color of the water the anemones were held in because of increased levels of algae in the water. Increasing estrogen levels led to this gradient of increasingly green water 😮.
+Spoke with Carly Kenkel and another woman whose name I can't remember now 😅, and the other person told us about her recent work with anemones studying the effect of estrogen pollution -- super interesting! So far they haven't seen any direct effect on the anemone host or anemone fertility/reproduction, which we might normally expect based on role of estrogen in vertebrates. There was, however, a significant effect on the symbiont populations -- in presence of estrogen, symbionts were increasingly photosynthetically efficient -- woah! The effect was so strong that they could actually see differences in the color of the water the anemones were held in because of increased levels of algae in the water. Increasing estrogen levels led to this gradient of increasingly green water 😮. Also touched on studying impact of sediment suspension (affects symbiont productivity and/or polyp feeding?)
 
 We also talked a bit about the possibility of coral polyps in the same aggregate colony sharing the "symbiont load," and related nutrients, which could explain when some species have "patchy" symbiont distribution around colony. Apparently there's a kind of plant that grows in/near salty water and, to rid itself of excess salt, basically picks a leaf to die and sends all the salt there, leaving the rest of the plant healthy. Maybe similar stuff happens in corals?
 
 ## SICB Day 5
+
+**The importance of life history strategies in the recovery of corals after thermal stress (Jacqueline Padilla-Gamino)**
+
+-   Super interesting idea! Basically, maybe the combination of MHW and differing egg/sperm developmental timelines are causing egg/sperm mismatch when spawning happens!
+
+-   Eggs take a long time to develop and start in late summer, and thus are already in development during MHW/bleaching events. Sperm, however, as "cheap" and don't start developing until March, so never experience bleaching before the spawning season in early summer. That means that, during spawning, you can end up with bleaching-affected eggs trying to match with unstressed sperm -- maybe that "mismatch" is causing problems!
+
+-   Bred bleached (B) and non-bleached (NB) corals. Found that BxB corals and NBxNB corals were most successful in larval development, while BxNB and NBxB corals didn't do as well. Support for this possible mismatch problem
+
+-   While I'm sure this is at least partially because of bleaching-related stress effects of the viability of the eggs or something similar, this is making me think about the possible role of epigenetics here. We know that environmental conditions can be associated with epigenetic modifications like methylation, and that such epigenetic modifications can also take place in the gametes and thus become heritable. Is it possible that there are epigenetic modifications happening in the eggs during these bleaching events that are not happening to the sperm, and that this "mismatch" of the epigenome is less successful that the combination of two stress-modified gametes (BxB) or of two non-modified gametes (NBxNB)?
+
+**Assessing physiological and molecular plasticity in the early stages of Porites astreoides (Florence Fields)**
+
+**Intraspecific variation in thermal tolerance in the endangered Caribbean coral, Acropora palmata (Holland Elder)**
+
+-   Keep in mind bleaching, like other stress reponses, is continuous, not binary!
+
+**The butterfly(fish) effect: Using Caetodontidae territories as bioindicators (Corrine Avidan)**
+
+**Microbial predictors of bleacing in Great Barrier Reef Acropora millepora (Karim Primov)**
+
+**Iron wars over ligand soup: Exploring chemical crosstalk in Symbiodiniaceae-bacteria interactions (Hannah Reich)**
+
+-   Bacteria can help eukaryotic partners (like algae) access hard-to-get iron
+
+-   Possible connection here to Callum's talk about impacts of heavy metal contamination on coral/holobiont?
+
+**Environmental drivers of coral-associated algal and microbial communities across multiple scales (Coleen Bove)**
