@@ -1,13 +1,37 @@
 ---
-title: "Reviewing Text-To-Speech tools"
+title: "Reviewing Text-To-Speech Tools"
 author: "Kathleen Durkin"
 date: "2024-01-02"
 categories: ["miscellaneous"]
 format:
-  html
+  html:
+    toc: true
 ---
 
+updated Jan 10, 2024
+
 I get very fidgety when I have to sit and read papers for hours on end, and I've found that being able to listen to content while occupying my hands with a mindless task (origami, weaving, embroidery,doodling, etc.) really helps me stay engaged for longer periods of time. With this in mind I've been looking for a text-to-speech tool that would enable me to listen to academic papers, textbooks, etc.! I'm hoping this could really improve my lit review workflow, especially since many of the papers I'm reading right now are reviews with fewer tables/figures that sometimes complicate applying TTS to academic material. Here's a review of some of the services I've tried so far:
+
+## Summary
+
+[Speechify is ultimately the winner for me]{.underline}. Even though it seems exorbitantly expensive, it's also the option with the most features I find useful and the best voice options, which means it's most likely to be truly useful in my lit review workflow.
+
+|                                             | [Audemic](./2024_01_02_TTS.qmd#audemic) | [Voice Dream](./2024_01_02_TTS.qmd#voice-dream) | [Speechify](./2024_01_02_TTS.qmd#speechify) | [Listening.io](./2024_01_02_TTS.qmd#listening.io) |
+|---------------|---------------|---------------|---------------|---------------|
+| **Price**                                   | \$11/mo OR \$118/yr                     | \$80/yr                                         | \$140/yr                                    | Unlimited: \$20/mo OR \$140/yr                    |
+| **Free version?**                           |                                         | No                                              | Yes                                         | No                                                |
+| **Free trial**                              | 5 papers                                | 3 days                                          | 3 days                                      | 2 week                                            |
+| **Voice quality**                           | [Great]{style="color:green;"}           | [Poor]{style="color:red;"}                      | [Great]{style="color:green;"}               | [Good]{style="color:green;"}                      |
+| **Multi-device**                            | [Yes]{style="color:green;"}             | [No]{style="color:red;"}                        | [Yes]{style="color:green;"}                 | [Yes]{style="color:green;"}                       |
+| **AI summarization**                        | [Yes]{style="color:green;"}             | [No]{style="color:red;"}                        | [Yes]{style="color:green;"}                 | [No]{style="color:red;"}                          |
+| **Skips citations etc.**                    | [Yes]{style="color:green;"}             | [Yes (ish)]{style="color:orange;"}              | [Yes]{style="color:green;"}                 | [Yes]{style="color:green;"}                       |
+| **In-text annotation**                      | [Yes]{style="color:green;"}             | [Yes]{style="color:green;"}                     | [No]{style="color:red;"}                    | [Yes]{style="color:green;"}                       |
+| **Viewing settings (e.g. font, text size)** | [Yes]{style="color:green;"}             | [Yes]{style="color:green;"}                     | [Yes]{style="color:green;"}                 | [No]{style="color:red;"}                          |
+| **Tracks place in-text**                    | [No]{style="color:red;"}                | [Yes]{style="color:green;"}                     | [Yes]{style="color:green;"}                 | [Yes]{style="color:green;"}                       |
+| **Offline option**                          | [No]{style="color:red;"}                |                                                 | [Yes]{style="color:green;"}                 | [Yes]{style="color:green;"}                       |
+| **Zotero import**                           | [Yes (ish)]{style="color:orange;"}      | [No]{style="color:red;"}                        | [No]{style="color:red;"}                    | [No]{style="color:red;"}                          |
+| **Navigable sections**                      | [Yes]{style="color:green;"}             | [Yes (ish)]{style="color:orange;"}              | [No]{style="color:red;"}                    | [Yes]{style="color:green;"}                       |
+| **Easy to view OG document**                | [No]{style="color:red;"}                | [Yes]{style="color:green;"}                     | [Yes]{style="color:green;"}                 | [No]{style="color:red;"}                          |
 
 ## [Audemic](https://www.audemic.io)
 
@@ -33,7 +57,7 @@ I get very fidgety when I have to sit and read papers for hours on end, and I've
 
 I have mixed feelings about Audemic. I liked a lot of things about the narration itself. Some of the voice options were very [**human-like**]{style="color:green;"} and easy to listen to, and it did a pretty good (though not perfect) job of [**pronouncing uncommon jargon**]{style="color:green;"}. On the other hand, I disliked several aspects of how it displays the content you've uploaded while it's narrating it. Upon uploading a pdf, all of the text is extracted and displayed in a sectioned [**viewing pane that is completely removed from the original pdf**]{style="color:red;"} (see below). That means that, in order to refer to figures or find "where" what you're listening to is in the original document , you have to navigate to a completely separate pane to view the original pdf. Audemic also [**doesn't track in-text**]{style="color:red;"} where the reader is at that time, so it's very difficult to find where you are in the text. Finally, there are a couple annoying things, like [**buggy Zotero uploading**]{style="color:orange;"} and being [**unable to switch "voice" without re-uploading**]{style="color:orange;"} the document.
 
-Overall, given the many features I find annoying and the comparatively high price tag, [I'm not sure Audemic is worth the money, but it is the most human-like option I've found so far.]{.underline}
+Overall, given the many features I find annoying and the still-high price tag, [I'm not sure Audemic is worth the money, but it is the most human-like option I've found so far.]{.underline}
 
 ![](/images/Audemic.png)
 
@@ -59,19 +83,53 @@ Honestly I came into Voice Dream kind of biased against it, because I think its 
 
 The real strengths of Voice Dream seem to lie in its [**customizable text navigation features**]{style="color:green;"}. For example, you can [**choose your forward and backward "skip" buttons**]{style="color:green;"} to skip by different time intervals, by paragraph, by heading, etc. You can [**set a timer**]{style="color:green;"} for how long the narration will read, and can change a variety of [**visual settings**]{style="color:green;"} (font, spacing, background color, etc.). When reading you can choose to view the text in either a [**plain text viewing pane or in the original document**]{style="color:green;"} and both options support an [**in-text speech cursor**]{style="color:green;"} to show where the narration is.
 
-However, several of the boasted features fell flat to me. While there are a ton of voices to choose from, all of the ones I tried are much [**more synth-sounding**]{style="color:red;"} than Audemic, in both tone and inflection. [**Pronunciation of jargon**]{style="color:red;"} is also not as good as Audemic, though there does seem to be a feature for correcting pronunciation of individual words. As in Audemic, your [**voice selection is document-specific**]{style="color:red;"}, so you have to reselect the voice you want every time. While the website claims Voice Dream skips citations and superfluous text, when I uploaded a pdf and tried listening it [**didn't skip either of these**]{style="color:red;"}. It also [**didn't identify sections**]{style="color:red;"} for my uploaded pdf (e.g. Abstract, Intro, etc.), so I couldn't use the section navigation option. On top of these disappointing features, some features are missing entirely. Voice Dream has [**no web app**]{style="color:red;"}, so you can't listen from a PC or Android, and there's [**no option to import directly from Zotero**]{style="color:red;"} or Paperpile, meaning manual upload is required.
+However, several of the boasted features fell flat to me. While there are a ton of voices to choose from, all of the ones I tried are much [**more synth-sounding**]{style="color:red;"} than Audemic, in both tone and inflection. [**Pronunciation of jargon**]{style="color:red;"} is also not as good as Audemic, though there does seem to be a feature for correcting pronunciation of individual words. As in Audemic, your [**voice selection is document-specific**]{style="color:red;"}, so you have to re-select the voice you want every time. While the website claims Voice Dream skips citations and superfluous text, when I uploaded a pdf and tried listening it [**didn't skip either of these**]{style="color:red;"}. It also [**didn't identify sections**]{style="color:red;"} for my uploaded pdf (e.g. Abstract, Intro, etc.), so I couldn't use the section navigation option. On top of these disappointing features, some features are missing entirely. Voice Dream has [**no web app**]{style="color:red;"}, so you can't listen from a PC or Android, and there's [**no option to import directly from Zotero**]{style="color:red;"} or PaperPile, meaning manual upload is required.
 
 Ultimately I know the quality of the voice is going to be much more important for my retention than text navigation features, so [I don't think Voice Dream is a good option for me]{.underline}. The voices are just too robotic, especially in comparison with Audemic.
 
+## [Speechify](https://speechify.com/)
+
+**Price:** \$140/yr
+
+**Free Trial:** 3 days (with providing payment info😑), but there's also a free basic plan that you can use for as long as you want
+
+**Features:**
+
+-   Multi-device, and can add files and listen from both web app and iOS app
+
+-   Can connect to Canvas to add class-related docs directly
+
+-   Can generate AI summary
+
+-   Options to skip a whole bunch of in-text stuff (headers/footers, citations, brackets, braces, urls, footnotes)
+
+-   Has an ambient sound option!
+
+-   Can change text appearance.
+
+-   Tracks where in-text the narration is
+
+-   Offline option, though the available voices are more limited and less human-like
+
+-   Can change reading speed
+
+-   Integrated chatGPT, so you can ask it questions inside the speechify app and listen to the responses
+
+Just like Voice Dream, I didn't want to like Speechify when I first started trying it out. It's [**very expensive**]{style="color:red;"}, and the price was increased in the last month from an already high \$120/yr to a staggering \$140/yr. After trying it out, though, [I think this may be my favorite option!]{.underline}
+
+Speechify has all of the standard text navigation/viewing options ([**in-text tracker, can view original document or transcribed reading pane with viewing features, adjustable reading speed, skip citations+**]{style="color:green;"}, etc.), but there are two features that really stand out to me. The first is that a lot of the [**voices are very lifelike**]{style="color:green;"} and easy for me to listen to, which is really important to me. The second is their [**ambient sound option**]{style="color:green;"}, which allows you to play background sound (e.g. music on Spotify, white noise) at an automatically lowered volume while the app narrates text on top. This is super cool for me! I've been looking for something like this for a really long time, because when I work out I want to play music with a suitable beat, but I also want to listen to audiobooks or something because I get bored quickly -- that's exactly what this feature does! The last cool feature that also deserves a mention is Speechify's AI integration. you can generate [**AI summaries**]{style="color:green;"} of any document, and you can ask questions to [**chatGPT in the speechify app**]{style="color:green;"} and then listen to the responses.
+
+Most of my annoyances with Speechify are pretty minor. Like most of the other options, Speechify [**doesn't have a way to upload documents directly from Zotero**]{style="color:red;"} (or any other reference manager), which makes the process more tedious. There's also [**no feature to separate text into navigable sections**]{style="color:red;"} (e.g. Intro, Methods), and you [**can't annotate in-app**]{style="color:red;"}, so you'd need to switch to a different tool to make notes, highlight, etc.
+
 ## [Listening.io](https://www.listening.io/#built-for-papers)
 
-**Price:** \$12/mo OR \$99/yr
+**Price:** \$20/mo OR \$140/yr
 
 **Free Trial:** 2wk
 
 **Features:**
 
--   Combines a web app with an iOS app. While you can't listen from the web app, you can upload papers there and then listen from the iOS app.
+-   Multi-device, with web app and iOS app. Upload/manage papers from web app and listen from iOS.
 
 -   Navigable sections and other text navigation options
 
@@ -79,16 +137,14 @@ Ultimately I know the quality of the voice is going to be much more important fo
 
 -   Can notify them of word mispronunciations for correction
 
-Pros: Has a **chrome extension** to send papers directly to listening.io as you find them
+-   Adjustable reading speed
 
-Cons:
+-   In-app notetaking, with direct export of notes available
 
-## [Speechify](https://speechify.com/)
+-   Chrome extension to send papers directly to listening.io as you find them
 
-**Price:** \$9.99/mo OR \$120/yr
+Listening.io seems to be a newer, [**less established**]{style="color:red;"} TTS tool that has a lot of nice features. Like most of the other options I've looked at it has [**text navigation, adjustable reading speed, in-app notetaking, skips citations, and is multi-device**]{style="color:green;"}. It has also has a nice [**chrome extension**]{style="color:green;"}, which allows you to send papers directly from the source websites, and has some nice [**life-like voices**]{style="color:green;"}.
 
-**Free Trial:** 3 days (but can't try all features without providing payment info😑)
+There are some features that are missing though. There [**no way to change the background color, font, and text size**]{style="color:red;"}, and there's [**no option to see the original pdf**]{style="color:red;"} instead of a transcribed reading window. It also [**takes a while to upload new files**]{style="color:red;"} (\~3 min/doc), which could quickly get annoying, and there are [**no options for integrating with any popular reference managers**]{style="color:red;"}.
 
-**Features:**
-
-Again, have to provide payment info to access full free trial, which feels scammy, and I'm also annoyed that there's no discount for annual subscription.
+Listening.io seems like a decent option, but considering it has the same exorbitant price as Speechify [it's a little underwhelming. Ultimately, I don't think it's worth the money.]{.underline}
