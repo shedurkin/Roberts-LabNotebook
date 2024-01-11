@@ -72,17 +72,23 @@ eScience Institute Data Carpentry workshop, Day 4
 
 eScience Institute Data Carpentry workshop, Day 3
 
+Finished [review of TTS tools](../../projects/misc/2024_01_02_TTS.qmd) -- I think I'm going to go with Speechify
+
 ## 09 January 2024
 
 #### Tuesday
 
 eScience Institute Data Carpentry workshop, Day 2
 
+Classes, finished transcribing [SICB notes](../../projects/misc/2024_01_02_SICB.qmd)
+
 ## 08 January 2024
 
 #### Monday
 
 eScience Institute Data Carpentry workshop, Day 1
+
+First day of classes for the Winter quarter
 
 ## 06 January 2024
 
