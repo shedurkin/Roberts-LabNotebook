@@ -52,13 +52,23 @@ format:
 
 #### Tuesday
 
+Continued compiling/modifying/writing code for a general RNAseq analysis pipeline for use in the cod and/or E5 projects. Will be meeting w/ Zach tomorrow to talk about E5 molecular stuff (writing and gene expression analysis)
+
+Class
+
 ## 15 January 2024
 
 #### Monday
 
+Classwork + papers
+
 ## 12 January 2024
 
 #### Friday
+
+E5 Molecular group meeting (notes [here](https://docs.google.com/document/d/1IgbZgJOcZYKogHhHB1Apst1ihhXzmYLT-fLHrZf0dtc/edit?usp=sharing))
+
+Classwork
 
 ## 11 January 2024
 
