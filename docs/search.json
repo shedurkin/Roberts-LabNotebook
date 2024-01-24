@@ -116,42 +116,42 @@
     "href": "posts/daily_logs/2024/January_2024_posts.html#january-2024-5",
     "title": "January 2024, Daily Log",
     "section": "23 January 2024",
-    "text": "23 January 2024\n\nTuesday"
+    "text": "23 January 2024\n\nTuesday\n\nclass and classwork – Megan and I are picking papers for our FISH510 meeting next week that’s focused on epigenetics!\nlooked throughcod RNA extraction QC report and revised selection of samples for methylation work. Only samples that a) are being RNAseq’d; b) have sufficient RNA quantity; and c) have RIN values &gt;6 were considered"
   },
   {
     "objectID": "posts/daily_logs/2024/January_2024_posts.html#january-2024-6",
     "href": "posts/daily_logs/2024/January_2024_posts.html#january-2024-6",
     "title": "January 2024, Daily Log",
     "section": "22 January 2024",
-    "text": "22 January 2024\n\nMonday"
+    "text": "22 January 2024\n\nMonday\n\nFinally got access to TREQ!\nClasswork\nfinished high-level summary of smRNA ID workflow for E5 deep dive manuscript\nProposal writing class – we watched an example of an animated video over-viewing a lab’s work w/ microplastics in a very general-public-friendly way, it was sick! That would be a really cool component to create for the lab or for a future project/grant/proposal"
   },
   {
     "objectID": "posts/daily_logs/2024/January_2024_posts.html#january-2024-7",
     "href": "posts/daily_logs/2024/January_2024_posts.html#january-2024-7",
     "title": "January 2024, Daily Log",
     "section": "19 January 2024",
-    "text": "19 January 2024\n\nFriday"
+    "text": "19 January 2024\n\nFriday\n\nRead some papers for FISH510 – one of them, Császár et al. 2010 (adaptive potential of a set of coral and symbiont stress response traits) got me wondering about what DGE analysis work has been done on the symbionts separately from the host?\nDiscussion write up for FISH510\nprelim work on cod DGE paper"
   },
   {
     "objectID": "posts/daily_logs/2024/January_2024_posts.html#january-2024-8",
     "href": "posts/daily_logs/2024/January_2024_posts.html#january-2024-8",
     "title": "January 2024, Daily Log",
     "section": "18 January 2024",
-    "text": "18 January 2024\n\nThursday"
+    "text": "18 January 2024\n\nThursday\nLab meeting – Chris made a really awesome, helpful comment about remembering to enjoy the process of work/grad school, and Grace mentioned she’s using a new method to improve her productivity/focus by specifically allocating timed sections of work time and downtime (e.g. 25min working straight through, then 5 min for standing up, walking aruond, anything non-work related) that I think I’m going to try!\nAriana suggested assembling de novo transcriptome from our rnaseq data, which I know is a thing but I still don’t really get it…? How can you get useful/trustworthy information by comparing your data to itsself…?\n^in effort to make sense of above question I made a quick sketch – I think it’s something like this? I realized that I forgot (for the nth time) that I’m working with RNA now, not DNA, so there are multiple copies of every sequenced transcript, and for DGE work the relative abundances of the transcripts, rather than presence/absence, is what matters.\n\nFeeling very dumb and confused about the minutia of how to do the deep dive gene expression stuff so switched back to a generic DGE pipeline in preparation for the cod samples. Going to use Megan’s clam data (see full discussion of her workhere) as test data to push through my workflow."
   },
   {
     "objectID": "posts/daily_logs/2024/January_2024_posts.html#january-2024-9",
     "href": "posts/daily_logs/2024/January_2024_posts.html#january-2024-9",
     "title": "January 2024, Daily Log",
     "section": "17 January 2024",
-    "text": "17 January 2024\n\nWednesday"
+    "text": "17 January 2024\n\nWednesday\nAfter talking w Zach I think I have an idea of how to start writing up a condensed version of the sRNA methods for the deep dive ncRNA manuscript.\nAlso, Zach and I talked about how to move forward with gene expression analysis for the E5 deep dive. We have trimmed RNAseq reads for the three species but we couldn’t find any published transcriptomes. However, for P.meandrina we found NCBI published gff files with only annotated protein-coding genes, which could maybe be used to approximate a transcriptome file? We’re not sure if that work correctly with kallisto though, or if we’d still need to use HiSat…\nRead up on some of the sncRNA tools we used to write up on them in the deep dive manuscript (loving how it takes like 40min of reading to write 1 summary sentence of how something works)."
   },
   {
     "objectID": "posts/daily_logs/2024/January_2024_posts.html#january-2024-10",
     "href": "posts/daily_logs/2024/January_2024_posts.html#january-2024-10",
     "title": "January 2024, Daily Log",
     "section": "16 January 2024",
-    "text": "16 January 2024\n\nTuesday\nContinued compiling/modifying/writing code for a general RNAseq analysis pipeline for use in the cod and/or E5 projects. Will be meeting w/ Zach tomorrow to talk about E5 molecular stuff (writing and gene expression analysis)\nClass"
+    "text": "16 January 2024\n\nTuesday\nContinued compiling/modifying/writing code for a general RNAseq analysis pipeline for use in the cod and/or E5 projects. Will be meeting w/ Zach tomorrow to talk about E5 molecular stuff (writing and gene expression analysis)\nClass\nDid some work on updating CV"
   },
   {
     "objectID": "posts/daily_logs/2024/January_2024_posts.html#january-2024-11",
@@ -690,7 +690,7 @@
     "href": "daily_log.html",
     "title": "Daily Logs and Monthly Goals",
     "section": "",
-    "text": "January 2024, Daily Log\n\n\n\n\n\n\n\n\n\nJan 16, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nDecember 2023, Daily Log\n\n\n\n\n\n\n\n\n\nJan 1, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJanuary 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nJan 1, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nDecember 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nDec 5, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nNovember 2023, Daily Log\n\n\n\n\n\n\n\n\n\nNov 30, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nNovember 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nNov 3, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nOctober 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nOct 18, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nOctober 2023, Daily Log\n\n\n\n\n\n\n\n\n\nOct 1, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFormatting digital lab notebook\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFirst post\n\n\n\n\n\n\n\n\n\nSep 28, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\nNo matching items"
+    "text": "January 2024, Daily Log\n\n\n\n\n\n\n\n\n\nJan 23, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nDecember 2023, Daily Log\n\n\n\n\n\n\n\n\n\nJan 1, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJanuary 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nJan 1, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nDecember 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nDec 5, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nNovember 2023, Daily Log\n\n\n\n\n\n\n\n\n\nNov 30, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nNovember 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nNov 3, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nOctober 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nOct 18, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nOctober 2023, Daily Log\n\n\n\n\n\n\n\n\n\nOct 1, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFormatting digital lab notebook\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFirst post\n\n\n\n\n\n\n\n\n\nSep 28, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/daily_logs/2023/December_2023_goals.html",
