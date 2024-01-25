@@ -28,6 +28,10 @@ format:
 
 #### Wednesday
 
+-   got going on A.pulchra gene expression work, working out kinks of finding/downloading trimmed RNAseq reads and appropriate transcripts reference, and running through kallisto
+
+-   listened to this week's chapter for DEI meeting tomorrow
+
 ## 23 January 2024
 
 #### Tuesday
