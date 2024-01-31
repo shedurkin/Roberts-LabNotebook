@@ -1,0 +1,34 @@
+---
+title: "Ideas/Questions Log"
+author: "Kathleen Durkin"
+date: "last-modified"
+categories: ["miscellaneous"]
+format:
+  html:
+    toc: true
+---
+
+My favorite part of science is constantly interacting with papers/presentations/people that prompt new ideas and questions about the stuff I'm working in, and I want to make sure I don't forget things when that happens. This is my brain dump of thoughts/questions I want to remember and reference in the future!
+
+## Ideas
+
+-   At SICB, Jackie talked about how coral life history traits may cause "mismatch" of heat-acclimatized and non-acclimatized eggs and sperm (bc eggs are developing during summer/bleaching season, while sperm don't start developing till months later). Study something similar in oysters (if their life history makes sense)? Interesting to think about possible **epigenetic mismatch of gametes**...
+
+```{=html}
+<!-- -->
+```
+-   study set of multiple stressors and/or multiple generations on methylation/expression/phenotype/etc. (e.g. Feiner et al. 2022, set of chemical and thermal environmental stressors on daphnia to investigate epigenetic heritability)
+
+-   In same daphnia paper (Feiner er al. 2022), saw responses to naturally occurring stressors were more inherited than those to non-naturally occurring ones --- possible suggestion of **underlying preadaptation towards certain epigenetic modifications** that helps allow them to be passed on successfully and retained?
+
+-   keep in mind MHW conditions (sudden dramatic swings), not just slow warming creep of climate crisis
+
+-   If epigeneitc modification is heritable, what are **epigenetic impacts of releasing captive/bred stock** back into wild?
+
+-   Is it possible to study gene expression/methylation/ncRNA in **ancient DNA**? A study investigating gene expression or epigenetic modifications over the course of ancient climate change (e.g. end of last ice age) would be soooooo cool
+
+## Questions
+
+-   Need to look more into **epigenetic reprogramming** -- how does it work, mechanistically? How does it differ among taxa, especially between model organisms and inverts? How would it differ among sexual reproduction and the many forms of asexual reproduction?
+
+-   **Heritability of ncRNA-related epigenetic changes?**
