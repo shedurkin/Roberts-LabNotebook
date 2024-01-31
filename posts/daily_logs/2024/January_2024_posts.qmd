@@ -12,9 +12,22 @@ format:
 
 #### Wednesday
 
+## 30 January 2024
+
+#### Tuesday
+
+-   class/classwork (prep and leading FISH510 discussion)
+-   Consolidated a bunch of cool ideas/questions fro future reading/projects [here](/posts/projects/misc/2024_01_30_Ideas.qmd), will make this my go-to document for recording this stuff (so I don't just forget it all!)
+-   my fix for reformatting the converted gff -\> fasta file for P.evermani kallisto indexing is not working, due to a mysterious issue with fastx_collapser -- details in [github issue](https://github.com/RobertsLab/resources/issues/1793)
+-   Finished running *P.meandrina* kallisto (code [here](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/14-Pmea-RNAseq-kallisto.md), output matrix [here](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/output/14-Pmea-RNAseq-kallisto/kallisto/kallisto.isoform.counts.matrix)).
+
 ## 29 January 2024
 
 #### Monday
+
+-   Class and classwork
+
+-   P.evermanni kallisto work -- think I figured out how to convert gff to fasta and reformat appropriately for kallisto indexing (bedtools getFasta, fastx_toolkit fasta_formatter, fastx_toolkit fastx_collapser)
 
 ## 26 January 2024
 
@@ -42,7 +55,7 @@ Also started on process for *P.evermanni*, but realized that reference data is o
 
 -   class and classwork -- Megan and I are picking papers for our FISH510 meeting next week that's focused on epigenetics!
 
--   looked through[cod RNA extraction QC report](https://github.com/RobertsLab/project-cod-temperature/blob/main/data/Sample.QC.report.of_30-943133806_240118025106.xlsx) and revised selection of [samples for methylation](https://docs.google.com/spreadsheets/d/19CqqS3wOhmG7drw163v7evUylRWwOjBOdvuR-y0RqF0/edit#gid=155247170) work. Only tissue samples that a) are being RNAseq'd; b) have sufficient RNA quantity; and c) have RIN values \>6 were considered
+-   looked through [cod RNA extraction QC report](https://github.com/RobertsLab/project-cod-temperature/blob/main/data/Sample.QC.report.of_30-943133806_240118025106.xlsx) and revised selection of [samples for methylation](https://docs.google.com/spreadsheets/d/19CqqS3wOhmG7drw163v7evUylRWwOjBOdvuR-y0RqF0/edit#gid=155247170) work. Only tissue samples that a) are being RNAseq'd; b) have sufficient RNA quantity; and c) have RIN values \>6 were considered
 
 ## 22 January 2024
 
