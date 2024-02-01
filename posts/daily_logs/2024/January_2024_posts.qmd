@@ -1,7 +1,7 @@
 ---
 title: "January 2024, Daily Log"
 author: "Kathleen Durkin"
-date: "last-modified"
+date: "2024-01-31"
 categories: ["daily log"]
 format:
   html:
@@ -11,6 +11,8 @@ format:
 ## 31 January 2024
 
 #### Wednesday
+
+-   More debugging of *P.evermanni* RNAseq abundance quantification. (See [Github issues](https://github.com/RobertsLab/resources/issues/1793) and [notebook post](/posts/projects/E5_coral/2024_01_31_Peve_kallisto.qmd) for details)
 
 ## 30 January 2024
 

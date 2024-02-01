@@ -1,0 +1,34 @@
+---
+title: "P.evermanni RNAseq kallisto debugging"
+author: "Kathleen Durkin"
+date: "2024-01-31"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+---
+
+I'm currently trying to quantify RNA abundances using RNAseq data from the three E5 deep dive species, and I'm running into some issues for *P. evermanni*.
+
+Links:
+
+-   [code (.Rmd)](https://github.com/urol-e5/deep-dive/blob/main/E-Peve/code/12-Peve-RNAseq-kallisto.Rmd)
+
+```{=html}
+<!-- -->
+```
+-   [knitted file (.md)](https://github.com/urol-e5/deep-dive/blob/main/E-Peve/code/12-Peve-RNAseq-kallisto.md)
+
+-   [github issue](https://github.com/RobertsLab/resources/issues/1793)
+
+There's no published transcriptome fasta for *P. evermanni*, so instead I'm using a published CDS gff file and associated scaffold genome fasta to assemble a de novo reference transcriptome fasta.
+
+I first used bedtools getfasta to extract fasta sequences for everything listed in the original CDS gff file, but ended up with duplicate sequences, which interferes with kallisto indexing. While trying (and failing) to remove duplicates with the fastx_toolkit fastx_collapser, Steven pointed out that the gff file (image below) I'm using contains sequences labeled as both CDS and mRNA sequences, and suggested I use only those labeled as mRNA.
+
+![](images/Screenshot (228).png)
+
+I selected only sequecnes labelled as "mRNA" in the gff, extracted those sequences fastas from the scaffold reference, and was able to successfully build a kallisto index, however I was given a warning that kallisto index had identified 10,722,052 non-ACGUT characters in the 40,389 input sequences (or \~265 non-ACGUT characters per sequence!). Quickly looking through some of the extracted sequence fastas, I found some of them contain long internal stretches of N characters.
+
+![](images/Screenshot (229).png)
+
+Sam was able to inform me that this is due to the reference fasta I'm using to extract mRNA fastas. The reference is a scaffold, which characteristically contains arbitrary stretches of Ns connecting known sequences to others in the same region. Steven then also noticed that the gff file seems to be improperly labeled, with mRNA sequences that actually contain several CDS regions *and introns*, which could interfere with pseudoalignment. Instead, of using the labelled mRNAs, I may need to extract all the sequences labelled as CDS from the gff, obtain sequences fastas, group and concatenate by "Parent" (source mRNA) to exclude all of the introns, and then use those concatenated CDS fasta sequences as a reference for kallisto.
