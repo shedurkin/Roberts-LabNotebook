@@ -1,0 +1,48 @@
+---
+title: "February 2024, Monthly Goals"
+author: "Kathleen Durkin"
+date: "2024-02-01"
+categories: ["monthly goals"]
+format:
+  html
+---
+
+## Reviewing January Goals
+
+My favorite part of January was, by far, [SICB](/posts/projects/misc/2024_01_02_SICB.qmd)! I really loved going to my first big, more specialized conference, and I got to hear about *so* many interesting, relevant projects.
+
+I spent 1-2 weeks this month at conferences/workshops (SICB, MISS workshops, eScience Software Carpentry workshop), so I set a more limited list of goals:
+
+✔️ Review and pick a text-to-speech (TTS) tool for reading academic papers
+
+✔️ Establish more regularly-scheduled working hours! For the sake of establishing a better work-life balance :)
+
+❌ Look into several grants/funding sources that I may want to apply for over the next year or so (GRFP, Fullbright, etc.)
+
+✔️ Update my CV. I want this to be my hyper-comprehensive CV that lists every single maybe, possibly relevant item. Note this will NOT be a CV I'm going to send to people without serious editing, I just need a place to keep track of everything that might eventually be important!
+
+❌ Write a preliminary draft for the [Pacific Cod RNAseq project](/posts/projects/pacific_cod.qmd)
+
+I did ok with my goals this month. I picked a good [TTS tool](/posts/projects/misc/2024_01_02_TTS.qmd), have been working on normalizing my work hours, and updated my CV. However, I haven't looked into funding sources at all and only created a very basic outline for the cod manuscript. I think a big reason I didn't make progress on these is an unexpected set of tasks for the [E5 project](/posts/projects/E5_coral.qmd). At the end of December we had just wrapped up the sRNA identification stage of the E5 deep dive that I had been working on, so I was expecting minimal tasks for the month. However, after talking with Steven in early January, I started doing some gene expression work for the project, which has taken up a fair bit of time in the last two weeks.
+
+I've been making some good progress with the E5 work though, considering this is my first time doing gene expression analysis of any kind and my first time working with all of the tools. I've been able to get count matrices for two of the three species (notebook post coming soon) and I think we've successfully troubleshooted my [issues with the third species](/posts/projects/E5_coral/2024_01_31_Peve_kallisto.qmd). I also wrote an sRNA workflow summary for the E5 manuscript, which was an interesting process. I don't have much manuscript writing experience, so it's always a fun suprise to realize just how time consuming it can be.
+
+We're expecting to get the code RNAseq data back in mid-February, so I want to set up a pipeline for that data before then. I also need to reach out to Laura Specncer for details on the experimental setup/implementation, since the relevant documents in the github repo are pretty high-level.
+
+## February Goals
+
+-   Set up RNAseq DGE analysis pipeline for when we get the cod RNAseq data back.
+
+-   Connect with Laura to get details on the cod project's experimental setup/implementation
+
+-   Start and make progress on a lit review for the cod project/manuscript
+
+-   Either send cod samples for methylation sequencing or, if we decide to do extractions in-house, establish a reasonable timeline for extraction, DNA QC, and sequencing.
+
+-   Make progress on E5 gene expression work and generate a deliverable (either for lab meeting or molecular group meeting)
+
+-   Choose objective/hypotheses and plan oyster experiment
+
+#### Back-burner goals
+
+-    Look into several grants/funding sources that I may want to apply for over the next year or so (GRFP, Fullbright, etc.)
