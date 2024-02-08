@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -139,7 +173,16 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#starter-files" id="toc-starter-files" class="nav-link active" data-scroll-target="#starter-files">Starter files</a></li>
+  <li><a href="#extract-cds-sequences" id="toc-extract-cds-sequences" class="nav-link" data-scroll-target="#extract-cds-sequences">Extract CDS sequences</a></li>
+  <li><a href="#convert-gff-to-bed" id="toc-convert-gff-to-bed" class="nav-link" data-scroll-target="#convert-gff-to-bed">Convert gff to bed</a></li>
+  <li><a href="#generating-a-transcriptome-fasta" id="toc-generating-a-transcriptome-fasta" class="nav-link" data-scroll-target="#generating-a-transcriptome-fasta">Generating a transcriptome FASTA</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -147,19 +190,151 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>In the process of running <a href="../../../posts/projects/E5_coral/2024_02_06_RNAseq_kallisto.html">kallisto on the three E5 deep dive species</a>, we realized that there’s no transcriptome FASTA available for <em>P. evermanni</em>. that means we need to generate one!<br>
-</p>
+<p>In the process of running <a href="../../../posts/projects/E5_coral/2024_02_06_RNAseq_kallisto.html">kallisto on the three E5 deep dive species</a>, we realized that there’s no transcriptome FASTA available for <em>P. evermanni</em>. That means we need to generate one!</p>
 <p><a href="https://github.com/urol-e5/deep-dive/blob/main/E-Peve/code/12-Peve-RNAseq-kallisto.md">Rendered code</a></p>
-<p>The closest file to a <em>P. evermanni</em> transcriptome that we have is a <em>P.evermanni</em> coding sequence (CDS) gff file</p>
-<p>head of original gff</p>
-<p>and a coressponding geneome scaffolds FASTA</p>
-<p>head of scaffolds fasta</p>
-<p>A gff file lists information that can be used to identify and retrieve specific sequences. The first column lists the region or scaffold of a reference genome in which the sequence can be found; the third identifies which genomic feature (e.g., mRNA, CDS, UTR) the sequence is; and the fourth and fifth are genomic coordinates for the beginning and end of the sequence. Since we have both the coding sequences gff and a reference fasta, we should be able to extract FASTA sequences for all of the relevant sequences in the gff!<br>
-</p>
-<p>First, it looks like the gff has features labelled a little weirdly. Normally we’d want all of the mRNA sequences, but it looks like this file lists mRNA sequences that include introns. Instead, we want all of the CDS sequences associated with each mRNA (association is denoted in the final column with a parent mRNA ID, e.g.&nbsp;“Parent=Peve_00000001”). That means the first step is to extract all of the CDS sequences from our gff file.<br>
-</p>
+<p><u>Related posts:</u><br>
+<a href="\posts\projects\E5_coral\2024_02_06_RNAseq_kallisto.qmd">RNAseq abundance quantification (A.Pulchra, P.evermanni, P.meandrina)</a><br>
+<a href="\posts\projects\E5_coral\2024_01_31_Peve_kallisto.qmd">P.evermanni RNAseq kallisto debugging</a><br>
+<a href="\posts\projects\misc\2024_02_08_bedtools_gffvbed.qmd">Testing bedtools: gff vs bed input file</a></p>
+<section id="starter-files" class="level3">
+<h3 class="anchored" data-anchor-id="starter-files">Starter files</h3>
+<p>The closest file to a <em>P. evermanni</em> transcriptome that we have is a <em>P.evermanni</em> coding sequence (CDS) gff file, and a corresponding genome scaffolds FASTA.</p>
+<p>head of gff:</p>
+<pre><code>Porites_evermani_scaffold_1 Gmove mRNA 3107 4488 543 - . ID=Peve_00000001;Name=Peve_00000001;start=0;stop=1;cds_size=543 Porites_evermani_scaffold_1 Gmove CDS 3107 3444 . - . Parent=Peve_00000001 
+Porites_evermani_scaffold_1 Gmove CDS 4284 4488 . - . Parent=Peve_00000001</code></pre>
+<p>A gff file lists information that can be used to identify and retrieve specific sequences. The first column lists the region or scaffold of a reference genome in which the sequence can be found; the third identifies which genomic feature (e.g., mRNA, CDS, UTR) the sequence is; and the fourth and fifth are genomic coordinates for the beginning and end of the sequence. Since we have both the coding sequences gff and a reference fasta, we should be able to extract FASTA sequences for all of the relevant sequences in the gff!</p>
+</section>
+<section id="extract-cds-sequences" class="level3">
+<h3 class="anchored" data-anchor-id="extract-cds-sequences">Extract CDS sequences</h3>
+<p>First, it looks like the gff has features labelled a little weirdly. Normally we’d want all of the mRNA sequences, but it looks like this file lists mRNA sequences that include introns. Instead, we want all of the CDS sequences associated with each mRNA (association is denoted in the final column with a parent mRNA ID, e.g.&nbsp;“Parent=Peve_00000001”). That means the first step is to extract all of the CDS sequences from our gff file.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract only the CDS sequence lines from the gff</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-w</span> <span class="st">'CDS'</span> <span class="va">${transcriptome_gff}</span> <span class="op">&gt;</span> <span class="va">${transcriptome_gff_filtered}</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 5 <span class="va">${transcriptome_gff_filtered}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>Porites_evermani_scaffold_1 Gmove   CDS 3107    3444    .   -   .   Parent=Peve_00000001
+Porites_evermani_scaffold_1 Gmove   CDS 4284    4488    .   -   .   Parent=Peve_00000001
+Porites_evermani_scaffold_1 Gmove   CDS 424479  425361  .   -   .   Parent=Peve_00000002
+Porites_evermani_scaffold_1 Gmove   CDS 426181  426735  .   -   .   Parent=Peve_00000002
+Porites_evermani_scaffold_1 Gmove   CDS 427013  427140  .   -   .   Parent=Peve_00000002</code></pre>
+</section>
+<section id="convert-gff-to-bed" class="level3">
+<h3 class="anchored" data-anchor-id="convert-gff-to-bed">Convert gff to bed</h3>
+<p>Then we convert this filtered CDS gff file to a bed file, which has slightly different formatting. We’re doing this because we’ll be using a tool called bedtools getfasta, which can take both gff and bed files, but which I trust more to appropriately parse bed files (though, see post on whether it can handle gff files correctly as well).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure bedops can find its dependencies when running</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span>/home/shared/bedops_linux_x86_64-v2.4.41/bin:<span class="va">$PATH</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="va">${bedops}</span><span class="ex">/gff2bed</span> <span class="dt">\</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>--do-not-sort <span class="dt">\</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span> <span class="va">${transcriptome_gff_filtered}</span> <span class="dt">\</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="va">${transcriptome_bed}</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 3 <span class="va">${transcriptome_gff_filtered}</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">""</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 3 <span class="va">${transcriptome_bed}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>Porites_evermani_scaffold_1 Gmove   CDS 3107    3444    .   -   .   Parent=Peve_00000001
+Porites_evermani_scaffold_1 Gmove   CDS 4284    4488    .   -   .   Parent=Peve_00000001
+Porites_evermani_scaffold_1 Gmove   CDS 424479  425361  .   -   .   Parent=Peve_00000002
+
+Porites_evermani_scaffold_1 3106    3444    .   .   -   Gmove   CDS .   Parent=Peve_00000001
+Porites_evermani_scaffold_1 4283    4488    .   .   -   Gmove   CDS .   Parent=Peve_00000001
+Porites_evermani_scaffold_1 424478  425361  .   .   -   Gmove   CDS .   Parent=Peve_00000002</code></pre>
+</section>
+<section id="generating-a-transcriptome-fasta" class="level3">
+<h3 class="anchored" data-anchor-id="generating-a-transcriptome-fasta">Generating a transcriptome FASTA</h3>
+<p>The basic approach to generating this transcriptome makes use of the fact that each CDS sequence in our bed file is assigned a “parent” mRNA, denoted by a parent Id in the last column (e.g., “Parent=Peve_00000001”). Each sequence with the same parent ID should be used to a) retrieve a FASTA for that sequence, and b) concatenate all of the FASTAs with the same parent ID into a single, labelled gene FASTA. The below code will iterate through our entire bed file and do this for each parent ID and its associated sequences.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load bash variables into memory</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .bashvars</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Navigate to correct directory and make output file</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">${transcriptome_dir}</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="op">&gt;</span> <span class="va">${transcriptome_fasta_name}</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Helper list for processing all parent IDs</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="va">processed_ids</span><span class="op">=</span><span class="va">()</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">######################################################</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Helper function to concatenate and format several bedtools output sequences </span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co"># into a single, appropriately named contig</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="fu">concatenate_helper()</span> <span class="kw">{</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">local</span> <span class="va">input_bedtools_fastas</span><span class="op">=</span><span class="st">"</span><span class="va">$1</span><span class="st">"</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">local</span> <span class="va">parent_ID</span><span class="op">=</span><span class="st">"</span><span class="va">$2</span><span class="st">"</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">local</span> <span class="va">reference_name</span><span class="op">=</span><span class="st">""</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">local</span> <span class="va">positions</span><span class="op">=</span><span class="st">""</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">local</span> <span class="va">concatenated_sequences</span><span class="op">=</span><span class="st">""</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Read the input line by line</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="va">IFS</span><span class="op">=</span> <span class="bu">read</span> <span class="at">-r</span> <span class="va">line</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Check if the line starts with "&gt;"</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">[[</span> <span class="st">"</span><span class="va">$line</span><span class="st">"</span> <span class="ot">==</span> <span class="st">"&gt;"</span><span class="pp">*</span> <span class="kw">]];</span> <span class="cf">then</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Extract reference name and position from the line</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>            <span class="va">reference_position</span><span class="op">=</span><span class="st">"</span><span class="va">${line</span><span class="op">:</span><span class="dv">1</span><span class="va">}</span><span class="st">"</span>  <span class="co"># Remove "&gt;"</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>            <span class="va">reference_name</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="st">"</span><span class="va">$reference_position</span><span class="st">"</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d:</span> <span class="at">-f1</span><span class="va">)</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>            <span class="va">position</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="st">"</span><span class="va">$reference_position</span><span class="st">"</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d:</span> <span class="at">-f2</span><span class="va">)</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Append position to the positions variable</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>            <span class="va">positions</span><span class="op">+=</span><span class="st">"</span><span class="va">$position</span><span class="st">,"</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Concatenate sequences</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>            <span class="va">concatenated_sequences</span><span class="op">+=</span><span class="st">"</span><span class="va">$line</span><span class="st">"</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">fi</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">done</span> <span class="op">&lt;&lt;&lt;</span> <span class="st">"</span><span class="va">$input_bedtools_fastas</span><span class="st">"</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove trailing comma from positions</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    <span class="va">positions</span><span class="op">=</span><span class="st">"</span><span class="va">${positions</span><span class="op">%</span>,<span class="va">}</span><span class="st">"</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Output the reformatted result</span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"&gt;</span><span class="va">$parent_ID</span><span class="st"> </span><span class="va">$reference_name</span><span class="st">:</span><span class="va">$positions</span><span class="st">"</span></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"</span><span class="va">$concatenated_sequences</span><span class="st">"</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="co">######################################################</span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Process your input bed file</span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">IFS</span><span class="op">=</span> <span class="bu">read</span> <span class="at">-r</span> <span class="va">line</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>    <span class="co"># pull the parent ID number for the current line of the bed</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>    <span class="va">parentID</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="st">"</span><span class="va">$line</span><span class="st">"</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-o</span> <span class="st">'Parent=Peve_[0-9]\+'</span><span class="va">)</span></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Only continue if you haven't already processed the CDS sequences associated with this parent ID</span></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">[[</span> <span class="ot">!</span> <span class="st">" </span><span class="va">${processed_ids</span><span class="op">[@]</span><span class="va">}</span><span class="st"> "</span> <span class="ot">=~</span> <span class="st">" </span><span class="va">$parentID</span><span class="st"> "</span> <span class="kw">]];</span> <span class="cf">then</span></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Add the current parentID to the processed list</span></span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>        <span class="va">processed_ids</span><span class="op">+=</span><span class="va">(</span><span class="st">"</span><span class="va">$parentID</span><span class="st">"</span><span class="va">)</span></span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create temporary files to store intermediate results</span></span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>        <span class="va">temp_CDS_bed_file</span><span class="op">=</span><span class="va">$(</span><span class="fu">mktemp</span><span class="va">)</span></span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>        <span class="va">temp_bedtools_fasta_file</span><span class="op">=</span><span class="va">$(</span><span class="fu">mktemp</span><span class="va">)</span></span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Grab all of the CDS sequences with the same parent ID and write to temporary file</span></span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>        <span class="fu">grep</span> <span class="st">"</span><span class="va">$parentID</span><span class="st">"</span> <span class="va">${transcriptome_bed}</span> <span class="op">&gt;</span> <span class="st">"</span><span class="va">$temp_CDS_bed_file</span><span class="st">"</span></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Use bedtools to extract corresponding FASTAs and write to temporary file</span></span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>        <span class="va">${programs_array</span><span class="op">[</span>bedtools<span class="op">]</span><span class="va">}</span> getfasta <span class="at">-fi</span> <span class="va">${genome_fasta}</span> <span class="at">-bed</span> <span class="st">"</span><span class="va">$temp_CDS_bed_file</span><span class="st">"</span> <span class="at">-fo</span> <span class="st">"</span><span class="va">$temp_bedtools_fasta_file</span><span class="st">"</span></span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Use our helper function to concatenate and format all of these CDS fastas into a single contig</span></span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>        <span class="va">concatenated_fasta</span><span class="op">=</span><span class="va">$(</span><span class="ex">concatenate_helper</span> <span class="st">"</span><span class="va">$(</span><span class="fu">cat</span> <span class="st">"</span><span class="va">$temp_bedtools_fasta_file</span><span class="st">"</span><span class="va">)</span><span class="st">"</span> <span class="st">"</span><span class="va">$parentID</span><span class="st">"</span><span class="va">)</span></span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Add the concatenated CDS fasta to our output file on a new line</span></span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">"</span><span class="va">$concatenated_fasta</span><span class="st">"</span> <span class="op">&gt;&gt;</span> <span class="va">${transcriptome_fasta}</span></span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Remove the temporary files</span></span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rm</span> <span class="st">"</span><span class="va">$temp_CDS_bed_file</span><span class="st">"</span> <span class="st">"</span><span class="va">$temp_bedtools_fasta_file</span><span class="st">"</span></span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> <span class="va">${transcriptome_bed}</span></span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a><span class="co"># The output file ends up having a blank first line before the data, so delete that unwanted empty first line</span></span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-i</span> <span class="st">'1{/^$/d}'</span> <span class="va">${transcriptome_fasta}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we have a transcriptome FASTA the can be used for kallisto abundance quantification!</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

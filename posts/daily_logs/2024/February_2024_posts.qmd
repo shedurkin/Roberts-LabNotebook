@@ -95,11 +95,7 @@ format:
 #### Monday
 
 -   Didn't allocate any time last week for the two class assignments I have due today, so cranking those out (proposal introduction for cod project, read and write up discussion for seminar papers)
-
-<!-- -->
-
 -   Proposal writing class
-
 -   Checked output for my P.evermanni genome fasta script, then generalized the script (i.e. changed input/output file assignments to use the bash variables I set at the beginning of the document) and reran. It ran much quicker this time around and resulted in a much smaller output file, which means one of the two times I ran the script something was wrong. I did some brief poking around in the two outputs and it looks like maybe the original run was accidentally done using the full gff file, instead of the CDS-only gff? I don't have time to resolve it tonight, but I'll check again tomorrow and run the code and output by someone (Zach, Steven)
 
 ## 02 February 2024

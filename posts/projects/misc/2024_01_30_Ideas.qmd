@@ -14,9 +14,8 @@ My favorite part of science is constantly interacting with papers/presentations/
 
 -   At SICB, Jackie talked about how coral life history traits may cause "mismatch" of heat-acclimatized and non-acclimatized eggs and sperm (bc eggs are developing during summer/bleaching season, while sperm don't start developing till months later). Study something similar in oysters (if their life history makes sense)? Interesting to think about possible **epigenetic mismatch of gametes**...
 
-```{=html}
 <!-- -->
-```
+
 -   study set of multiple stressors and/or multiple generations on methylation/expression/phenotype/etc. (e.g. Feiner et al. 2022, set of chemical and thermal environmental stressors on daphnia to investigate epigenetic heritability)
 
 -   In same daphnia paper (Feiner er al. 2022), saw responses to naturally occurring stressors were more inherited than those to non-naturally occurring ones --- possible suggestion of **underlying preadaptation towards certain epigenetic modifications** that helps allow them to be passed on successfully and retained?
