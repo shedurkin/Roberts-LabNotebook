@@ -76,9 +76,19 @@ format:
 
 #### Wednesday
 
+-   read/watched some stuff on using WGCNA (for E5 RNAseq and sRNAseq data)
+
+-   Thought I was done w P. evermanni, but Sam pointed out that gff and bed files handle genomic coordinates differently and that, even though bedtools getfasta lists gffs as acceptable input formats, probably still treats them the same as bed files, so all of my transcriptome fastas could be off by 1-2 sequences. Probably doesn't affect end result of kallisto much, since it's pseudoaligning full reads, but still need to fix it. Should be a straightforward fix, the biggest pain will be waiting another 4 hours for the adjusted transcriptome generation code to run again😭
+
+-   Did a quick and dirty [test](/posts/projects/misc/2024_02_08_bedtools_gffvbed.qmd) using both a gff and a bed file as input to bedtools getfasta and both resulted in the same output, suggesting bedtools does appropriately differentiate between the formats! I'll still convert to bed before generating the P.evermanni transcriptome though, just in case
+
 ## 06 February 2024
 
 #### Tuesday
+
+-   Wrote some checks for the P.evermanni transcriptome generation script, and I'm pretty confident now that it's running correctly. I did a final rerun of the generation and wrote a [notebook post](/posts/projects/E5_coral/2024_02_06_RNAseq_kallisto.qmd) for the kallisto process for all three deep dive species. Will need to update it tomorrow once I have the final P.evermanni transcriptome and can run it through kallisto as well.
+
+-   510 class
 
 ## 05 February 2024
 
@@ -86,9 +96,8 @@ format:
 
 -   Didn't allocate any time last week for the two class assignments I have due today, so cranking those out (proposal introduction for cod project, read and write up discussion for seminar papers)
 
-```{=html}
 <!-- -->
-```
+
 -   Proposal writing class
 
 -   Checked output for my P.evermanni genome fasta script, then generalized the script (i.e. changed input/output file assignments to use the bash variables I set at the beginning of the document) and reran. It ran much quicker this time around and resulted in a much smaller output file, which means one of the two times I ran the script something was wrong. I did some brief poking around in the two outputs and it looks like maybe the original run was accidentally done using the full gff file, instead of the CDS-only gff? I don't have time to resolve it tonight, but I'll check again tomorrow and run the code and output by someone (Zach, Steven)

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kathleen Durkin">
-<meta name="dcterms.date" content="2024-02-05">
+<meta name="dcterms.date" content="2024-02-08">
 
 <title>Kathleen’s Lab Notebook - February 2024, Daily Log</title>
 <style>
@@ -127,7 +127,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">February 5, 2024</p>
+        <p class="date">February 8, 2024</p>
       </div>
     </div>
     
@@ -273,12 +273,21 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="february-2024-16">07 February 2024</h2>
 <section id="wednesday-3" class="level4">
 <h4 class="anchored" data-anchor-id="wednesday-3">Wednesday</h4>
+<ul>
+<li><p>read/watched some stuff on using WGCNA (for E5 RNAseq and sRNAseq data)</p></li>
+<li><p>Thought I was done w P. evermanni, but Sam pointed out that gff and bed files handle genomic coordinates differently and that, even though bedtools getfasta lists gffs as acceptable input formats, probably still treats them the same as bed files, so all of my transcriptome fastas could be off by 1-2 sequences. Probably doesn’t affect end result of kallisto much, since it’s pseudoaligning full reads, but still need to fix it. Should be a straightforward fix, the biggest pain will be waiting another 4 hours for the adjusted transcriptome generation code to run again😭</p></li>
+<li><p>Did a quick and dirty <a href="../../../posts/projects/misc/2024_02_08_bedtools_gffvbed.html">test</a> using both a gff and a bed file as input to bedtools getfasta and both resulted in the same output, suggesting bedtools does appropriately differentiate between the formats! I’ll still convert to bed before generating the P.evermanni transcriptome though, just in case</p></li>
+</ul>
 </section>
 </section>
 <section id="february-2024-17" class="level2">
 <h2 class="anchored" data-anchor-id="february-2024-17">06 February 2024</h2>
 <section id="tuesday-3" class="level4">
 <h4 class="anchored" data-anchor-id="tuesday-3">Tuesday</h4>
+<ul>
+<li><p>Wrote some checks for the P.evermanni transcriptome generation script, and I’m pretty confident now that it’s running correctly. I did a final rerun of the generation and wrote a <a href="../../../posts/projects/E5_coral/2024_02_06_RNAseq_kallisto.html">notebook post</a> for the kallisto process for all three deep dive species. Will need to update it tomorrow once I have the final P.evermanni transcriptome and can run it through kallisto as well.</p></li>
+<li><p>510 class</p></li>
+</ul>
 </section>
 </section>
 <section id="february-2024-18" class="level2">

@@ -1,0 +1,69 @@
+---
+title: "Testing bedtools: gff vs bed input file"
+author: "Kathleen Durkin"
+date: "2024-02-08"
+categories: ["misc"]
+format:
+  html:
+    toc: true
+engine: knitr
+---
+
+While writing some script to [generate a transcriptome fasta](/posts/projects/E5_coral/2024_02_07_Peve_transcriptome.qmd) using a CDS gff and scaffold genome, I ran into the question of how exactly the bedtools getfasta tool handles gff and bed file inputs. While both gff and bed files list basically the same types of sequence information, they list the genomic coordinates of the sequences slightly differently. gff files use a 1-based system, while bed files use a 0-based system (for details on how those differ, see this [website post](https://www.biostars.org/p/84686/) that I found helpful!). Bedtools states in the documentation for it's [getfasta](https://bedtools.readthedocs.io/en/latest/content/tools/getfasta.html) function that gff files are accepted as input, but it isn't made clear whether bedtools will treat the genomic coordinates in a gff file as 1-based, or as the o-based system used in bedtool's more standard file format, bed.
+
+To test whether bedtools can appropriately identify and parse both gff and bed files, I wrote some quick test files to run through bedtools getfasta.
+
+Write the test files:
+
+```{bash, eval=FALSE}
+
+echo -e ">Porites_evermani_scaffold_1" > test_input.fasta
+echo -e "AAAGGGTTTCCCAAAGGGTTTCCC" >> test_input.fasta
+
+echo -e "Porites_evermani_scaffold_1\tGmove\tCDS\t1\t5\t.\t-\t.\tParent=Peve_00000001" > test_input.gff
+echo -e "Porites_evermani_scaffold_1\tGmove\tCDS\t11\t15\t.\t-\t.\tParent=Peve_00000001" >> test_input.gff
+echo -e "Porites_evermani_scaffold_1\tGmove\tCDS\t20\t20\t.\t-\t.\tParent=Peve_00000002" >> test_input.gff
+
+echo -e "Porites_evermani_scaffold_1\t0\t5\t.\t.\t-\tGmove\tCDS\t.\tParent=Peve_00000001" > test_input.bed
+echo -e "Porites_evermani_scaffold_1\t10\t15\t.\t.\t-\tGmove\tCDS\t.\tParent=Peve_00000001" >> test_input.bed
+echo -e "Porites_evermani_scaffold_1\t19\t20\t.\t.\t-\tGmove\tCDS\t.\tParent=Peve_00000002" >> test_input.bed
+
+export PATH=/home/shared/bedops_linux_x86_64-v2.4.41/bin:$PATH
+
+${bedops}/gff2bed --do-not-sort < test_input.gff > test_input_gfftobed.bed
+```
+
+Run through bedtools getfasta:
+
+```{bash, eval=FALSE}
+source .bashvars
+cd ~/deep-dive/E-Peve/data
+
+${bedtools} getfasta -fi test_input.fasta -bed test_input.gff -fo test_gff_to_fasta.fasta
+${bedtools} getfasta -fi test_input.fasta -bed test_input.bed -fo test_bed_to_fasta.fasta
+${bedtools} getfasta -fi test_input.fasta -bed test_input_gfftobed.bed -fo test_gff_to_bed_to_fasta.fasta
+
+head test_gff_to_fasta.fasta
+echo ""
+head test_bed_to_fasta.fasta
+echo ""
+head test_gff_to_bed_to_fasta.fasta
+```
+
+Output:
+
+```         
+>Porites_evermani_scaffold_1:0-5 AAAGG 
+>Porites_evermani_scaffold_1:10-15 CCAAA 
+>Porites_evermani_scaffold_1:19-20 T  
+
+>Porites_evermani_scaffold_1:0-5 AAAGG 
+>Porites_evermani_scaffold_1:10-15 CCAAA 
+>Porites_evermani_scaffold_1:19-20 T  
+
+>Porites_evermani_scaffold_1:0-5 AAAGG 
+>Porites_evermani_scaffold_1:10-15 CCAAA 
+>Porites_evermani_scaffold_1:19-20 T
+```
+
+All three files resulted in identical FASTA outputs ! That provides support for bedtools being able to accurately identify which file format is input, and to then appropriately parse the genomic coordinates listed based on the file type!

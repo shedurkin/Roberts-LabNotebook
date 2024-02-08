@@ -1,0 +1,68 @@
+---
+title: "RNAseq Abundance Quantification (A.Pulchra, P.evermanni, P.meandrina)"
+author: "Kathleen Durkin"
+date: "2024-02-06"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+---
+
+I'm currently working on trying a few types of gene expression analysis with the E5 RNAseq and sRNAseq data we have for *A. Pulchra*, *P. evermanni*, and *P. meandrina,* but before I can do any analysis work we need abundance count matrices for the RNAseq data from each of the three species. This notebook post is a write up of the steps involved in quantifying transcript abundances using kallisto. I'll only be going step-by-step through the code used for *P. meandrina*, but the workflow is the same for all three species, and the rendered code for all three species is linked below.\
+
+[Rendered code (.md files):]{.underline}\
+- [A. pulchra](https://github.com/urol-e5/deep-dive/blob/main/D-Apul/code/14-Apul-RNAseq-kallisto.md)\
+- [P. evermanni](https://github.com/urol-e5/deep-dive/blob/main/E-Peve/code/12-Peve-RNAseq-kallisto.md)\
+- [P. meandrina](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/14-Pmea-RNAseq-kallisto.md)
+
+[Required Inputs:]{.underline}\
+- Trimmed RNAseq reads (e.g. `.fastq.gz`)\
+- Transcriptome fasta (e.g. `*.fasta`, `*.fna`, `*.fa`)
+
+[Output:]{.underline}\
+- Counts matrix representing the abundance of sequenced transcripts
+
+[Tools/software:]{.underline}\
+- [kallisto](#0) v.0.50.1\
+- [TrinityRNASeq](#0) v.2.12.0\
+
+## Kallisto Workflow
+
+### Download [trimmed reads](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/14-Pmea-RNAseq-kallisto.md#download-trimmed-rnaseq-reads) and [transcriptome](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/14-Pmea-RNAseq-kallisto.md#retrieve-the-reference-transcriptome)
+
+If you don't already have them in an accessible directory, download the trimmed RNAseq reads and transcriptome file you'll be using
+
+### Build [kallisto index](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/14-Pmea-RNAseq-kallisto.md#building-index)
+
+The first step is to build a kallisto index. In this step, kallisto takes your reference transcriptome as input and breaks each transcript into "k-mers," or shorter sequences that are k nucleotides long. It then "indexes" these k-mers, storing each k-mer and its transcript association in a data structure for more efficient retrieval during the pseudoalignment step.
+
+### Sample [quantification](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/14-Pmea-RNAseq-kallisto.md#sample-quantification)
+
+Next is quantification, which take both the index you just constructed and your trimmed RNAseq read, and makes use of pseudoalignment, a process that is much faster and more efficient than aligning each full read to a full transcript. Briefly, each read is broken up into k-mers, which are then mapped to the index to see which indexed transcript k-mers may match the read k-mers. Kallisto then calculates a probability score for each read/transcript pair, evaluating the likelihood that a given read originated from each transcript. These scores are then used to estimate transcript abundance.
+
+### Build [count matrix](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/14-Pmea-RNAseq-kallisto.md#trinity-matrix-with-kallisto-output) for all samples
+
+The kallisto quantification process can only take one sample (i.e., one pair of reads) at a time, so as a last step we build a counts matrix that lists the transcript abundances for all of our samples in a single file.
+
+### Summary
+
+[A. pulchra:]{.underline}\
+sample 140 -- 47M reads processed (61.4% mapped)\
+sample 145 -- 42M reads processed (65.3% mapped)\
+sample 150 -- 43M reads processed (47.0% mapped)\
+sample 173 -- 47M reads processed (60.7% mapped)\
+sample 178 -- 42M reads processed (59.3% mapped)\
+
+[P. evermanni:]{.underline}\
+sample 71 -- 50M reads processed (35.3% mapped)\
+sample 73 -- 51M reads processed (29.8% mapped)\
+sample 76 -- 49M reads processed (35.6% mapped)\
+sample 79 -- 49M reads processed (31.9% mapped)\
+sample 82 -- 48M reads processed (37.3% mapped)
+
+[P. meandrina:]{.underline}\
+sample 47 -- 54M reads processed (26.1% mapped)\
+sample 48 -- 51M reads processed (25.3% mapped)\
+sample 50 -- 55M reads processed (31.1% mapped)\
+sample 53 -- 53M reads processed (31.8% mapped)\
+sample 57 -- 42M reads processed (21.7% mapped)

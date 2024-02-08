@@ -1,0 +1,25 @@
+---
+title: "Generating a genes fasta for P. evermanni"
+author: "Kathleen Durkin"
+date: "2024-02-07"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+---
+
+In the process of running [kallisto on the three E5 deep dive species](2024_02_06_RNAseq_kallisto.qmd), we realized that there's no transcriptome FASTA available for *P. evermanni*. that means we need to generate one!\
+
+[Rendered code](https://github.com/urol-e5/deep-dive/blob/main/E-Peve/code/12-Peve-RNAseq-kallisto.md)
+
+The closest file to a *P. evermanni* transcriptome that we have is a *P.evermanni* coding sequence (CDS) gff file
+
+head of original gff
+
+and a coressponding geneome scaffolds FASTA
+
+head of scaffolds fasta
+
+A gff file lists information that can be used to identify and retrieve specific sequences. The first column lists the region or scaffold of a reference genome in which the sequence can be found; the third identifies which genomic feature (e.g., mRNA, CDS, UTR) the sequence is; and the fourth and fifth are genomic coordinates for the beginning and end of the sequence. Since we have both the coding sequences gff and a reference fasta, we should be able to extract FASTA sequences for all of the relevant sequences in the gff!\
+
+First, it looks like the gff has features labelled a little weirdly. Normally we'd want all of the mRNA sequences, but it looks like this file lists mRNA sequences that include introns. Instead, we want all of the CDS sequences associated with each mRNA (association is denoted in the final column with a parent mRNA ID, e.g. "Parent=Peve_00000001"). That means the first step is to extract all of the CDS sequences from our gff file.\
