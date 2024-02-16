@@ -52,25 +52,51 @@ format:
 
 #### Thursday
 
+-   reading -- I think I have a direction I want to go for the oyster project! Also looks like there's a gap in the literature
+
+-   ran idea by Ariana and she had some super helpful feedback about what variables need to be considered
+
 ## 14 February 2024
 
 #### Wednesday
+
+-   reading more oyster papers
+
+    -   triploidy inhibits gametogenisis -- does it also affect oysters' hermaphrodism? I.e. are triploid oysters less able to switch between male/female? If gamete production is inhibited, can you even tell?
 
 ## 13 February 2024
 
 #### Tuesday
 
+-   Class -- really interesting discussion of this set of critique/comment/letter to the editor papers basically arguing about the Gill-Oxygen Limitation Theory
+
+-   Started high-level lit review of oysters to try to figure out what question(s) I want to ask for an oyster experiment. Brianik & Allem 2023 review suggests empirical studies on oyster triploidy could be a really relevant area
+
 ## 12 February 2024
 
 #### Monday
+
+-   Classwork and classes
 
 ## 09 February 2024
 
 #### Friday
 
+-   E5 meetings
+
+-   trying to figure out what exactly the --ad-all-nodes option does in MirMachine, the documentation is p vague
+
+-   readings/synthesis post for fish510 on monday (**5** papers this week🥴)
+
 ## 08 February 2024
 
 #### Thursday
+
+-   note to self: go back and add references in my notebook posts
+
+-   looking into how to apply WGCNA to mulitomics datasets, since documentation seems to be focusd more on applying to single-omics with multiple treatments? Found som relevant papers, though I'm still a little confused by methods...
+
+-   \^ also found different toolkit called [mixOmics](https://mixomicsteam.github.io/mixOmics-Vignette/id_01.html), specifically intended for multi-omics analysis, but all of the visualization aptions look p different from WGCNA standard visualizations and I'm not that familiar with some of the terminology, so it isn't clear to me upon first read through how it compares to WGCNA approach...
 
 ## 07 February 2024
 

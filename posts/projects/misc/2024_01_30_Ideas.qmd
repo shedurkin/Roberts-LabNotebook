@@ -13,17 +13,10 @@ My favorite part of science is constantly interacting with papers/presentations/
 ## Ideas
 
 -   At SICB, Jackie talked about how coral life history traits may cause "mismatch" of heat-acclimatized and non-acclimatized eggs and sperm (bc eggs are developing during summer/bleaching season, while sperm don't start developing till months later). Study something similar in oysters (if their life history makes sense)? Interesting to think about possible **epigenetic mismatch of gametes**...
-
-<!-- -->
-
 -   study set of multiple stressors and/or multiple generations on methylation/expression/phenotype/etc. (e.g. Feiner et al. 2022, set of chemical and thermal environmental stressors on daphnia to investigate epigenetic heritability)
-
 -   In same daphnia paper (Feiner er al. 2022), saw responses to naturally occurring stressors were more inherited than those to non-naturally occurring ones --- possible suggestion of **underlying preadaptation towards certain epigenetic modifications** that helps allow them to be passed on successfully and retained?
-
 -   keep in mind MHW conditions (sudden dramatic swings), not just slow warming creep of climate crisis
-
 -   If epigeneitc modification is heritable, what are **epigenetic impacts of releasing captive/bred stock** back into wild?
-
 -   Is it possible to study gene expression/methylation/ncRNA in **ancient DNA**? A study investigating gene expression or epigenetic modifications over the course of ancient climate change (e.g. end of last ice age) would be soooooo cool
 
 ## Questions
@@ -31,3 +24,9 @@ My favorite part of science is constantly interacting with papers/presentations/
 -   Need to look more into **epigenetic reprogramming** -- how does it work, mechanistically? How does it differ among taxa, especially between model organisms and inverts? How would it differ among sexual reproduction and the many forms of asexual reproduction?
 
 -   **Heritability of ncRNA-related epigenetic changes?**
+
+-   While reading [George et al. 2023](https://doi.org/10.1111/gcb.16880), I noticed they used heat shock to induce triploidy in their Pacific oysters (referenced Yamamoto et al. 1988, which showed you can apply a heat shock of 35\*C to 20\*C-acclimated larvae during meiosis to induce triploidy). Raised the question of whether this can/does happen in the wild? And if it's possible to achieve triploidy-inducing heat shock conditions in the wild, does that mean that climate change/increased incidence of MHW will begin shifting wild oyster populations to more triploids, and thus affect fertility/reproductive viability of wild pops?
+
+-   A common way of producing triploid oyster stocks nowadays is crossing tetraploid and diploid oysters (genertes 100% triploid offspring without the mortality associated with heat-shock or chemically induced triploidy). We know that induced-triploids are less robust to temperature/aerial exposure stress than diploids (George et al. 2023). **Is it possible that, in induced triploids, the heat/chemical shock at an early life stage epigenetically "primes" them poorly**? Epigenetic modifications and genetic adaptations to stress are heritable, though, so how do tetraploidXdiploid triploids fare under stress conditions, and can this be modulated by the acclimation/adaptation of the parents?
+
+-   During some preliminary lit review on Pacific cod and MHW related mortality, I read that overall warming and early-year MHWs can affect the timing of marine primary production (e.g. phytoplankton reproduction and abundance). Oysters feed on phytoplankton through filter feeding -- **does that mean that, as oceans warm, oysters may be facing more starvation stress?** Especially if there ends up being a "mismatch" of spawning and primary production?
