@@ -1,0 +1,41 @@
+---
+title: "Google sheets template for organizing allllllll the papers"
+author: "Kathleen Durkin"
+date: "last-modified"
+categories: ["miscellaneous"]
+format:
+  html:
+    toc: true
+---
+
+As I've started reading more and more papers over the last few months I've been thinking more about how to keep track of all the information input. I'm still in the early stages of my projects, so it's difficult to know exactly which papers might be useful for future project planning, lit reviews, writing, etc. I recently started using a new method to organize all of my papers, so I thought I'd share!
+
+### Step 1: Zotero
+
+I started using the reference manager Zotero in December and I really like being able to annotate papers, generate notes, and assign tags. My workflow when I find a new paper I'm interested in is to first read the abstract, add the paper to my Zotero library, and assign tags related to how I might plan on using the paper (e.g. species name, relevant methods) . I also always assign the tag "unread," and then change it to "read" once I've finished reading/annotating.
+
+However, Zotero doesn't have an easy way to view the tags, notes, or some types of metadata associated with multiple papers at the same time. Since I'm a very visual person, I want a way to view, sort, and search the key information from all of my papers at the same time. After asking for suggestions in the lab Slack, Chris sent me a Sheets template that I've been testing out!
+
+### Step 2: Google Sheets
+
+[Original template](https://docs.google.com/spreadsheets/d/1kVvoM0zN4B2HWa04zXlOgJzptutfuxkU50Ny3Rp1BHw/edit?usp=sharing) (from Chris)
+
+[My current document](https://docs.google.com/spreadsheets/d/1y2bPvPm6MpkF2q6CGqsYnvArUU61ZP2w4jUlDJBdrQg/edit?usp=sharing)
+
+My current setup for this document looks like this:
+
+![](images/Screenshot (230).png)
+
+![](images/Screenshot (231).png)
+
+The metadata recorded in the Sheets document is a little redundant because all of my papers are already stored in my Zotero library, but it ensures I'm recording information for the right paper.
+
+Here's a look at all of the options for the different categorical variables:
+
+![]()
+
+![](images/Screenshot (235).png)
+
+With these options I can search by project, study type, and relevance, and keep track of how thoroughly I've read a source in my library.
+
+I'm still in the early stages of implementing this document, but so far I really like it! While I was brainstorming the oyster project experimental design I had to reference a few papers and the Sheets document made it much easier to quickly go through many papers and the information I'd identified as most helpful, without having to individually click on each paper to view its associated metadata/notes. I still need to transfer everything i currently have in my Zotero library to the Sheets doc, but I think having this system in place before I really get into the weeds of reading dozens/hundreds of papers for thesis writing will be super helpful!
