@@ -4,23 +4,38 @@ project:
 
 website:
   title: "Kathleen's Lab Notebook"
+  #favicon:
+  page-navigation: true
+  #description:
+  site-url: https://shedurkin.github.io/Roberts-LabNotebook/
+  repo-url: https://github.com/shedurkin/Roberts-LabNotebook
+  
   navbar:
-#    logo: grad_headshot_circlecrop.png
+    #logo: grad_headshot_circlecrop.png
     right:
-#      - about.qmd
-
-      - href: daily_log.qmd
-        text: Daily Notebook Posts
+      #- href: about.qmd
+        #text": "About"
         
-      - href: projects.qmd
-        text: Projects
+      - text: "Daily Notebook Posts"
+        file: daily_log.qmd
+        
+      - text: "Projects"
+        file: projects.qmd
         
       - icon: github
         href: https://github.com/shedurkin
+        
+      - icon: envelope
+        href: mailto:kdurkin1@uw.edu
+        
+  page-footer: "This notebook is built using [Quarto](https://quarto.org/)"
+  
 format:
   html:
     theme: flatly
     css: styles.css
+    code-block-bg: true
+    code-copy: true
 
 editor: visual
 
