@@ -32,6 +32,14 @@ format:
 
 #### Thursday
 
+-   Lab meeting
+
+-   I'm really liking the paper organization template sheet that Chris sent, and I've made a few tweaks -- details [here](/posts/projects/misc/2024_02_22_paper_organization.qmd)!
+
+-   We talked through possible approaches to my oyster project and clarified a viable, interesting end goal. Triploid summer mortality is the big concern, so it would be useful to have some way to "diagnose" stress in the field, informing farms when/how they need to adjust their setups to avoid mass mortality (e.g., adding feed, moving bags to reduce density, shifting to cooler waters, bring into hatchery(?), etc.). Stress "priming" is also a way that hatcheries could preemptively prepare stock for stressful events. Maybe a cool tweak to the project would be to start with diploid/triploid larvae, prime some (but not others), raise to adulthood, and outplant to see how they do in the field. Throughout, measure some set of physiological features (e.g., respiration) to quantify stress and try to **develop some assay of biomarkers indicative of stress/impending mortality.** Could still do temp and nutrition stress
+
+-   I also really like the idea that Sarah suggested about making notebook posts for specific topics when I do a deep dive into the literature on a specific thing, plus her notebook has some really cool features, so I think I'm going to try to implement some of those!
+
 ## 21 February 2024
 
 #### Wednesday
