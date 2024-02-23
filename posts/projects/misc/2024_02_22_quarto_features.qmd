@@ -1,0 +1,98 @@
+---
+title: "Testing out some cool Quarto features"
+author: "Kathleen Durkin"
+date: "last-modified"
+categories: ["miscellaneous"]
+format:
+  html:
+    toc: true
+    code-tools: 
+      source: true
+    comments:
+      hypothesis: true
+---
+
+After looking through one of Sarah's posts I noticed she has some super cool features included in her Quarto digital lab notebook, so I'm doing a deep dive into the Quarto documentation!
+
+### [Embedding code](https://quarto.org/docs/output-formats/html-code.html#code-tools)
+
+You can allow readers of a webpage to view all of the code used to create that html by including in the YAML:
+
+```         
+format:
+  html:
+    code-tools:
+      source: true
+```
+
+In the rendered HTML you'll see an "\</\> Code" icon next to the post title, and clicking this icon will show the page's source code!
+
+(Since all of the code for this post should now be viewable directly from the HTML, I won't be inserting code chunks for any other sections to show what code to use for each feature. )
+
+### [Bootstrap icons](https://icons.getbootstrap.com/)
+
+Soooooo many cute icons to choose from (not really Quarto-specific, but you can use them in Quarto docs)
+
+### [Tabsets](https://quarto.org/docs/output-formats/html-basics.html#tabsets)
+
+You can use tabsets to display sets of related information, separated by some features (e.g., programming language, treatment, species)
+
+::: panel-tabset
+## Python
+
+``` python
+def even_or_odd(number):
+    if number % 2 == 0:
+        result = "even"
+    else:
+        result = "odd"
+    return result
+```
+
+## R
+
+``` r
+even_or_odd <- function(number) {
+  if (number %% 2 == 0) {
+    result <- "even"
+  } else {
+    result <- "odd"
+  }
+  return(result)
+}
+```
+:::
+
+You can also *group* tabsets by the tab names, so that when you switch tabs in one tabset, the other grouped tabsets will also switch to the same tab!
+
+::: {.panel-tabset group="language"}
+## Python
+
+An ok programming language
+
+## R
+
+The far superior programming language
+
+## Bash
+
+The bane of my existence
+:::
+
+::: {.panel-tabset group="language"}
+## Python
+
+A kind of snake
+
+## R
+
+The sound a pirate makes
+
+## Bash
+
+The bane of my existence
+:::
+
+### [In-text annotation](https://quarto.org/docs/output-formats/html-basics.html#commenting)
+
+You can enable in-text annotations in a post! Try highlighting a word -- the options "Annotate" and "Highlight" should pop up (though you'll need an account with [hypothesis.is](https://web.hypothes.is/) to use this feature)
