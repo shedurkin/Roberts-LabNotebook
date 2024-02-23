@@ -20,8 +20,8 @@ about:
 #   categories: true
 #   sort-ui: false
 #   filter-ui: false
-page-layout: full
-title-block-banner: true
+#page-layout: full
+#title-block-banner: true
 ---
 
 ## Welcome to my lab notebook!
