@@ -12,6 +12,7 @@ website:
   
   navbar:
     #logo: grad_headshot_circlecrop.png
+    search: true
     right:
       #- href: about.qmd
         #text": "About"
@@ -36,7 +37,8 @@ format:
       light: flatly
       dark: darkly
     css: styles.css
-    code-block-bg: true
+    page-layout: full
+    code-background: true
     code-copy: true
 
 editor: visual

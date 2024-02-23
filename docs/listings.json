@@ -8,6 +8,17 @@
     ]
   },
   {
+    "listing": "/posts/projects/E5_coral.html",
+    "items": [
+      "/posts/projects/E5_coral/2024_02_07_Peve_transcriptome.html",
+      "/posts/projects/E5_coral/2024_02_06_RNAseq_kallisto.html",
+      "/posts/projects/E5_coral/2024_01_31_Peve_kallisto.html",
+      "/posts/projects/E5_coral/2023_12_05_E5_coral.html",
+      "/posts/projects/E5_coral/2023_11_30_E5_coral.html",
+      "/posts/projects/E5_coral/2023_11_14_E5_coral.html"
+    ]
+  },
+  {
     "listing": "/daily_log.html",
     "items": [
       "/posts/daily_logs/2024/February_2024_posts.html",
@@ -22,17 +33,6 @@
       "/posts/daily_logs/2023/October_2023_posts.html",
       "/posts/daily_logs/2023/September_2023/Sept_29_2023/index.html",
       "/posts/daily_logs/2023/September_2023/Sept_28_2023/index.html"
-    ]
-  },
-  {
-    "listing": "/posts/projects/E5_coral.html",
-    "items": [
-      "/posts/projects/E5_coral/2024_02_07_Peve_transcriptome.html",
-      "/posts/projects/E5_coral/2024_02_06_RNAseq_kallisto.html",
-      "/posts/projects/E5_coral/2024_01_31_Peve_kallisto.html",
-      "/posts/projects/E5_coral/2023_12_05_E5_coral.html",
-      "/posts/projects/E5_coral/2023_11_30_E5_coral.html",
-      "/posts/projects/E5_coral/2023_11_14_E5_coral.html"
     ]
   },
   {

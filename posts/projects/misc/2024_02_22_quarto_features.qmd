@@ -31,7 +31,7 @@ In the rendered HTML you'll see an "\</\> Code" icon next to the post title, and
 
 ### [Bootstrap icons](https://icons.getbootstrap.com/)
 
-Soooooo many cute icons to choose from (not really Quarto-specific, but you can use them in Quarto docs)
+There are soooooo many cute icons to choose from (not really Quarto-specific, but you can use them in Quarto docs)
 
 ### [Tabsets](https://quarto.org/docs/output-formats/html-basics.html#tabsets)
 
@@ -76,7 +76,7 @@ The far superior programming language
 
 ## Bash
 
-The bane of my existence
+Bane of my existence
 :::
 
 ::: {.panel-tabset group="language"}
@@ -90,9 +90,9 @@ The sound a pirate makes
 
 ## Bash
 
-The bane of my existence
+Bane of my existence
 :::
 
 ### [In-text annotation](https://quarto.org/docs/output-formats/html-basics.html#commenting)
 
-You can enable in-text annotations in a post! Try highlighting a word -- the options "Annotate" and "Highlight" should pop up (though you'll need an account with [hypothesis.is](https://web.hypothes.is/) to use this feature)
+You can enable in-text annotations in a post! Try highlighting a word -- the options "Annotate" and "Highlight" should pop up (though you'll need an account with [hypothesis.is](https://web.hypothes.is/) to use this feature -- there are also options for instead using [Utteranc](https://utteranc.es/)es or [Giscus](https://giscus.app/)for in-text annotation))
