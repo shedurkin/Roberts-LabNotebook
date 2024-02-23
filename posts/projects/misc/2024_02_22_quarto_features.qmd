@@ -14,11 +14,11 @@ format:
 
 After looking through one of Sarah's posts I noticed she has some super cool features included in her Quarto digital lab notebook, so I'm doing a deep dive into the Quarto documentation!
 
-### [Embedding code](https://quarto.org/docs/output-formats/html-code.html#code-tools)
+### [Embedding source code](https://quarto.org/docs/output-formats/html-code.html#code-tools)
 
 You can allow readers of a webpage to view all of the code used to create that html by including in the YAML:
 
-```         
+``` default
 format:
   html:
     code-tools:
@@ -95,4 +95,16 @@ Bane of my existence
 
 ### [In-text annotation](https://quarto.org/docs/output-formats/html-basics.html#commenting)
 
-You can enable in-text annotations in a post! Try highlighting a word -- the options "Annotate" and "Highlight" should pop up (though you'll need an account with [hypothesis.is](https://web.hypothes.is/) to use this feature -- there are also options for instead using [Utteranc](https://utteranc.es/)es or [Giscus](https://giscus.app/)for in-text annotation))
+You can enable in-text annotations in a post! Try highlighting a word -- the options "Annotate" and "Highlight" should pop up (though you'll need an account with [hypothesis.is](https://web.hypothes.is/) to use this feature -- there are also options for instead using [Utteranc](https://utteranc.es/)es or [Giscus](https://giscus.app/) for in-text annotation))
+
+### [Figures](https://quarto.org/docs/authoring/figures.html)
+
+There are a bunch of different ways to attach links and captions to text/images very easily, and to quickly generate sets of figures
+
+[![Dead man walking](https://www.fisheries.noaa.gov/s3/styles/full_width/s3/2021-11/Acropora_cervicornis_staghorn_coral.jpg?itok=8sYkq8lb){fig-align="center" width="400"}](https://www.fisheries.noaa.gov/species/staghorn-coral)
+
+### Videos
+
+You can directly embed videos!
+
+{{< video https://youtu.be/xfr64zoBTAQ?feature=shared >}}

@@ -186,10 +186,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#embedding-code" id="toc-embedding-code" class="nav-link active" data-scroll-target="#embedding-code">Embedding code</a></li>
+  <li><a href="#embedding-source-code" id="toc-embedding-source-code" class="nav-link active" data-scroll-target="#embedding-source-code">Embedding source code</a></li>
   <li><a href="#bootstrap-icons" id="toc-bootstrap-icons" class="nav-link" data-scroll-target="#bootstrap-icons">Bootstrap icons</a></li>
   <li><a href="#tabsets" id="toc-tabsets" class="nav-link" data-scroll-target="#tabsets">Tabsets</a></li>
   <li><a href="#in-text-annotation" id="toc-in-text-annotation" class="nav-link" data-scroll-target="#in-text-annotation">In-text annotation</a></li>
+  <li><a href="#figures" id="toc-figures" class="nav-link" data-scroll-target="#figures">Figures</a></li>
+  <li><a href="#videos" id="toc-videos" class="nav-link" data-scroll-target="#videos">Videos</a></li>
   </ul>
 </nav>
     </div>
@@ -200,13 +202,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>After looking through one of Sarah’s posts I noticed she has some super cool features included in her Quarto digital lab notebook, so I’m doing a deep dive into the Quarto documentation!</p>
-<section id="embedding-code" class="level3">
-<h3 class="anchored" data-anchor-id="embedding-code"><a href="https://quarto.org/docs/output-formats/html-code.html#code-tools">Embedding code</a></h3>
+<section id="embedding-source-code" class="level3">
+<h3 class="anchored" data-anchor-id="embedding-source-code"><a href="https://quarto.org/docs/output-formats/html-code.html#code-tools">Embedding source code</a></h3>
 <p>You can allow readers of a webpage to view all of the code used to create that html by including in the YAML:</p>
-<pre><code>format:
-  html:
-    code-tools:
-      source: true</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>format:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  html:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    code-tools:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      source: true</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In the rendered HTML you’ll see an “&lt;/&gt; Code” icon next to the post title, and clicking this icon will show the page’s source code!</p>
 <p>(Since all of the code for this post should now be viewable directly from the HTML, I won’t be inserting code chunks for any other sections to show what code to use for each feature. )</p>
 </section>
@@ -272,7 +274,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="in-text-annotation" class="level3">
 <h3 class="anchored" data-anchor-id="in-text-annotation"><a href="https://quarto.org/docs/output-formats/html-basics.html#commenting">In-text annotation</a></h3>
-<p>You can enable in-text annotations in a post! Try highlighting a word – the options “Annotate” and “Highlight” should pop up (though you’ll need an account with <a href="https://web.hypothes.is/">hypothesis.is</a> to use this feature – there are also options for instead using <a href="https://utteranc.es/">Utteranc</a>es or <a href="https://giscus.app/">Giscus</a>for in-text annotation))</p>
+<p>You can enable in-text annotations in a post! Try highlighting a word – the options “Annotate” and “Highlight” should pop up (though you’ll need an account with <a href="https://web.hypothes.is/">hypothesis.is</a> to use this feature – there are also options for instead using <a href="https://utteranc.es/">Utteranc</a>es or <a href="https://giscus.app/">Giscus</a> for in-text annotation))</p>
+</section>
+<section id="figures" class="level3">
+<h3 class="anchored" data-anchor-id="figures"><a href="https://quarto.org/docs/authoring/figures.html">Figures</a></h3>
+<p>There are a bunch of different ways to attach links and captions to text/images very easily, and to quickly generate sets of figures</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://www.fisheries.noaa.gov/species/staghorn-coral"><img src="https://www.fisheries.noaa.gov/s3/styles/full_width/s3/2021-11/Acropora_cervicornis_staghorn_coral.jpg?itok=8sYkq8lb" class="img-fluid figure-img" width="400"></a></p>
+<figcaption class="figure-caption">Dead man walking</figcaption>
+</figure>
+</div>
+</section>
+<section id="videos" class="level3">
+<h3 class="anchored" data-anchor-id="videos">Videos</h3>
+<p>You can directly embed videos!</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/xfr64zoBTAQ?feature=shared" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 
 
 <!-- -->
@@ -695,11 +712,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>After looking through one of Sarah's posts I noticed she has some super cool features included in her Quarto digital lab notebook, so I'm doing a deep dive into the Quarto documentation!</span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu">### [Embedding code](https://quarto.org/docs/output-formats/html-code.html#code-tools)</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu">### [Embedding source code](https://quarto.org/docs/output-formats/html-code.html#code-tools)</span></span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>You can allow readers of a webpage to view all of the code used to create that html by including in the YAML:</span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="in">``` default</span></span>
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="in">format:</span></span>
 <span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="in">  html:</span></span>
 <span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="in">    code-tools:</span></span>
@@ -776,7 +793,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a><span class="fu">### [In-text annotation](https://quarto.org/docs/output-formats/html-basics.html#commenting)</span></span>
 <span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>You can enable in-text annotations in a post! Try highlighting a word -- the options "Annotate" and "Highlight" should pop up (though you'll need an account with <span class="co">[</span><span class="ot">hypothesis.is</span><span class="co">](https://web.hypothes.is/)</span> to use this feature -- there are also options for instead using <span class="co">[</span><span class="ot">Utteranc</span><span class="co">](https://utteranc.es/)</span>es or <span class="co">[</span><span class="ot">Giscus</span><span class="co">](https://giscus.app/)</span>for in-text annotation))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>You can enable in-text annotations in a post! Try highlighting a word -- the options "Annotate" and "Highlight" should pop up (though you'll need an account with <span class="co">[</span><span class="ot">hypothesis.is</span><span class="co">](https://web.hypothes.is/)</span> to use this feature -- there are also options for instead using <span class="co">[</span><span class="ot">Utteranc</span><span class="co">](https://utteranc.es/)</span>es or <span class="co">[</span><span class="ot">Giscus</span><span class="co">](https://giscus.app/)</span> for in-text annotation))</span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a><span class="fu">### [Figures](https://quarto.org/docs/authoring/figures.html)</span></span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>There are a bunch of different ways to attach links and captions to text/images very easily, and to quickly generate sets of figures</span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="al">![Dead man walking](https://www.fisheries.noaa.gov/s3/styles/full_width/s3/2021-11/Acropora_cervicornis_staghorn_coral.jpg?itok=8sYkq8lb)</span><span class="ot">{fig-align="center" width="400"}</span><span class="co">](https://www.fisheries.noaa.gov/species/staghorn-coral)</span></span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a><span class="fu">### Videos</span></span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>You can directly embed videos!</span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>{{&lt; video https://youtu.be/xfr64zoBTAQ?feature=shared &gt;}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
