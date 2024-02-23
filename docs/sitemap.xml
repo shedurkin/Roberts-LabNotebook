@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/projects.html</loc>
-    <lastmod>2024-02-22T23:46:24.566Z</lastmod>
+    <lastmod>2024-02-22T23:50:35.748Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/2023_12_14_pacific_cod.html</loc>
@@ -26,11 +26,11 @@
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_02_SICB.html</loc>
-    <lastmod>2024-02-22T23:44:14.565Z</lastmod>
+    <lastmod>2024-02-22T23:50:56.633Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_02_07_Peve_transcriptome.html</loc>
-    <lastmod>2024-02-22T23:44:10.915Z</lastmod>
+    <lastmod>2024-02-22T23:49:41.624Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_01_31_Peve_kallisto.html</loc>
@@ -114,11 +114,11 @@
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</loc>
-    <lastmod>2024-02-22T23:45:58.783Z</lastmod>
+    <lastmod>2024-02-22T23:50:30.816Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_02_TTS.html</loc>
-    <lastmod>2024-02-22T23:44:16.986Z</lastmod>
+    <lastmod>2024-02-22T23:50:45.707Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_08_bedtools_gffvbed.html</loc>
@@ -126,7 +126,7 @@
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.html</loc>
-    <lastmod>2024-02-22T23:44:23.459Z</lastmod>
+    <lastmod>2024-02-23T00:59:53.714Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/2023_11_02_pacific_cod.html</loc>
@@ -134,10 +134,14 @@
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/2023_12_13_pacific_cod.html</loc>
-    <lastmod>2024-02-22T23:44:29.528Z</lastmod>
+    <lastmod>2024-02-22T23:49:12.645Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod.html</loc>
-    <lastmod>2024-02-22T23:46:29.367Z</lastmod>
+    <lastmod>2024-02-22T23:49:21.476Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_22_quarto_features.html</loc>
+    <lastmod>2024-02-23T00:59:56.697Z</lastmod>
   </url>
 </urlset>
