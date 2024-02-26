@@ -12,11 +12,11 @@ format:
       hypothesis: true
 ---
 
-After looking through one of Sarah's posts I noticed she has some super cool features included in her Quarto digital lab notebook, so I'm doing a deep dive into the Quarto documentation!
+After looking through one of Sarah's posts I noticed she has some super cool features included in [her Quarto digital lab notebook](https://sarahtanja.github.io/quarto-blog/), so I'm doing a deep dive into the Quarto documentation!
 
 ### [Embedding source code](https://quarto.org/docs/output-formats/html-code.html#code-tools)
 
-You can allow readers of a webpage to view all of the code used to create that html by including in the YAML:
+You can allow readers of a webpage to view all of the code used to create that HTML by including in the YAML:
 
 ``` default
 format:
@@ -99,7 +99,7 @@ You can enable in-text annotations in a post! Try highlighting a word -- the opt
 
 ### [Figures](https://quarto.org/docs/authoring/figures.html)
 
-There are a bunch of different ways to attach links and captions to text/images very easily, and to quickly generate sets of figures
+There are a bunch of different ways to attach links and captions to text/images very easily, and to quickly generate sets of figures.
 
 [![Dead man walking](https://www.fisheries.noaa.gov/s3/styles/full_width/s3/2021-11/Acropora_cervicornis_staghorn_coral.jpg?itok=8sYkq8lb){fig-align="center" width="400"}](https://www.fisheries.noaa.gov/species/staghorn-coral)
 
@@ -108,3 +108,74 @@ There are a bunch of different ways to attach links and captions to text/images 
 You can directly embed videos!
 
 {{< video https://youtu.be/xfr64zoBTAQ?feature=shared >}}
+
+### [Diagrams](https://quarto.org/docs/authoring/diagrams.html#overview)
+
+There are two types of diagrams that are supported by Quarto, Mermaid and Graphviz, and they both have webtools you can use to more easily design a diagram and get the code needed to generate it
+
+```{mermaid}
+flowchart LR
+  A[Hard edge] --> B(Round edge)
+  B --> C{Decision}
+  C --> D[Result one]
+  C --> E[Result two]
+```
+
+### [Embedding from other posts/documents](https://quarto.org/docs/authoring/notebook-embed.html)
+
+There are awhole bunch of ways to embed figures/code outputs/etc. from other documents in your notebook into a new post (see more at above link).
+
+### [Callouts](https://quarto.org/docs/authoring/callouts.html)
+
+You can insert 5 diffferent types of callout blocks in your text to draw attention to certain information! (I think this is super cool!)
+
+::: callout-note
+Note that there are five types of callouts, including: `note`
+:::
+
+::: callout-warning
+`warning`
+:::
+
+::: callout-important
+`important`
+:::
+
+::: callout-tip
+## Tip with Title
+
+`tip`
+
+(This is an example of a callout with a title)
+:::
+
+::: {.callout-caution collapse="true"}
+## Expand To Learn About Collapse
+
+and `caution`
+
+This is an example of a 'folded' caution callout that can be expanded by the user. You can use `collapse="true"` to collapse it by default or `collapse="false"` to make a collapsible callout that is expanded by default.
+:::
+
+You can also adjust the appearance of callouts in your doc
+
+### [Code annotation](https://quarto.org/docs/authoring/code-annotation.html#overview)
+
+You can insert footnote-like in-code anotations. This seems potentially redundant if you have good commenting in your code but it could still help make code explanations more digestible. You can also adjust how the annotation will appear using the `code-annotations:` command in the document YAML.
+
+``` r
+library(tidyverse)
+library(palmerpenguins)
+penguins |>                                      # <1>
+  mutate(                                        # <2>
+    bill_ratio = bill_depth_mm / bill_length_mm, # <2>
+    bill_area  = bill_depth_mm * bill_length_mm  # <2>
+  )                                              # <2>
+```
+
+1.  Take `penguins`, and then,
+2.  add new columns for the bill ratio and bill area.
+
+### [Author tools](https://quarto.org/docs/authoring/front-matter.html#overview)
+
+There are a whooooolllllleeee bunch of different options for specifying different author/article information that's normally included in scientific publications (authors, affiliations, corresponding, copyright, orcid ID, abstract, keywords, etc.). Here are some of the options I think I'm most likely to use in day-to-day notebook posts:
