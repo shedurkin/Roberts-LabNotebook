@@ -2,146 +2,150 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/projects.html</loc>
-    <lastmod>2024-02-23T02:09:07.200Z</lastmod>
+    <lastmod>2024-02-26T21:20:43.065Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/2023_12_14_pacific_cod.html</loc>
-    <lastmod>2024-02-23T02:08:29.295Z</lastmod>
+    <lastmod>2024-02-26T21:20:39.700Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/2023_12_07_pacific_cod.html</loc>
-    <lastmod>2024-02-23T02:08:24.896Z</lastmod>
+    <lastmod>2024-02-26T21:20:37.403Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/2023_10_13_pacific_cod.html</loc>
-    <lastmod>2024-02-23T02:08:22.191Z</lastmod>
+    <lastmod>2024-02-26T21:20:35.212Z</lastmod>
   </url>
   <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_22_quarto_features.html</loc>
-    <lastmod>2024-02-23T02:09:22.658Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_08_bedtools_gffvbed.html</loc>
-    <lastmod>2024-02-23T02:08:12.497Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_02_TTS.html</loc>
-    <lastmod>2024-02-23T02:08:09.572Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</loc>
-    <lastmod>2024-02-23T02:08:05.372Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_02_06_RNAseq_kallisto.html</loc>
-    <lastmod>2024-02-23T02:08:02.634Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2023_12_05_E5_coral.html</loc>
-    <lastmod>2024-02-23T02:08:00.110Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2023_11_14_E5_coral.html</loc>
-    <lastmod>2024-02-23T02:07:57.930Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/January_2024_goals.html</loc>
-    <lastmod>2024-02-23T02:07:55.345Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/February_2024_goals.html</loc>
-    <lastmod>2024-02-23T02:07:52.570Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2023/September_2023/Sept_28_2023/index.html</loc>
-    <lastmod>2024-02-23T02:07:50.360Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2023/October_2023_goals.html</loc>
-    <lastmod>2024-02-23T02:07:45.421Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2023/November_2023_goals.html</loc>
-    <lastmod>2024-02-23T02:07:42.706Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2023/December_2023_goals.html</loc>
-    <lastmod>2024-02-23T02:07:40.095Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/daily_log.html</loc>
-    <lastmod>2024-02-23T02:07:37.731Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/about.html</loc>
-    <lastmod>2024-02-23T02:07:34.694Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/index.html</loc>
-    <lastmod>2024-02-23T02:07:39.028Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2023/December_2023_posts.html</loc>
-    <lastmod>2024-02-23T02:07:41.634Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2023/November_2023_posts.html</loc>
-    <lastmod>2024-02-23T02:07:44.402Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2023/October_2023_posts.html</loc>
-    <lastmod>2024-02-23T02:07:49.271Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2023/September_2023/Sept_29_2023/index.html</loc>
-    <lastmod>2024-02-23T02:07:51.328Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/February_2024_posts.html</loc>
-    <lastmod>2024-02-23T02:07:54.268Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/January_2024_posts.html</loc>
-    <lastmod>2024-02-23T02:07:56.987Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2023_11_30_E5_coral.html</loc>
-    <lastmod>2024-02-23T02:07:58.906Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_01_31_Peve_kallisto.html</loc>
-    <lastmod>2024-02-23T02:08:01.502Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_02_07_Peve_transcriptome.html</loc>
-    <lastmod>2024-02-23T02:08:04.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_02_SICB.html</loc>
-    <lastmod>2024-02-23T02:08:07.312Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_30_Ideas.html</loc>
-    <lastmod>2024-02-23T02:08:10.944Z</lastmod>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_26_oyster_sampling_materials.html</loc>
+    <lastmod>2024-02-26T21:20:32.652Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_22_paper_organization.html</loc>
-    <lastmod>2024-02-23T02:08:14.092Z</lastmod>
+    <lastmod>2024-02-26T21:20:28.008Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_30_Ideas.html</loc>
+    <lastmod>2024-02-26T21:20:25.614Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_02_SICB.html</loc>
+    <lastmod>2024-02-26T21:20:22.380Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_02_07_Peve_transcriptome.html</loc>
+    <lastmod>2024-02-26T21:20:18.984Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_01_31_Peve_kallisto.html</loc>
+    <lastmod>2024-02-26T21:20:15.878Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2023_11_30_E5_coral.html</loc>
+    <lastmod>2024-02-26T21:20:13.620Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/January_2024_posts.html</loc>
+    <lastmod>2024-02-26T21:20:11.654Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/February_2024_posts.html</loc>
+    <lastmod>2024-02-26T21:25:52.406Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2023/September_2023/Sept_29_2023/index.html</loc>
+    <lastmod>2024-02-26T21:20:06.021Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2023/October_2023_posts.html</loc>
+    <lastmod>2024-02-26T21:20:04.187Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2023/November_2023_posts.html</loc>
+    <lastmod>2024-02-26T21:19:59.381Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2023/December_2023_posts.html</loc>
+    <lastmod>2024-02-26T21:19:56.522Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/index.html</loc>
+    <lastmod>2024-02-26T21:19:53.646Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/about.html</loc>
+    <lastmod>2024-02-26T21:19:49.673Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/daily_log.html</loc>
+    <lastmod>2024-02-26T21:25:44.748Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2023/December_2023_goals.html</loc>
+    <lastmod>2024-02-26T21:19:54.642Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2023/November_2023_goals.html</loc>
+    <lastmod>2024-02-26T21:19:57.789Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2023/October_2023_goals.html</loc>
+    <lastmod>2024-02-26T21:20:00.409Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2023/September_2023/Sept_28_2023/index.html</loc>
+    <lastmod>2024-02-26T21:20:05.112Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/February_2024_goals.html</loc>
+    <lastmod>2024-02-26T21:20:07.335Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/January_2024_goals.html</loc>
+    <lastmod>2024-02-26T21:20:09.915Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2023_11_14_E5_coral.html</loc>
+    <lastmod>2024-02-26T21:20:12.622Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2023_12_05_E5_coral.html</loc>
+    <lastmod>2024-02-26T21:20:14.740Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_02_06_RNAseq_kallisto.html</loc>
+    <lastmod>2024-02-26T21:20:17.503Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</loc>
+    <lastmod>2024-02-26T21:20:20.284Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_02_TTS.html</loc>
+    <lastmod>2024-02-26T21:20:24.456Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_08_bedtools_gffvbed.html</loc>
+    <lastmod>2024-02-26T21:20:26.829Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_22_quarto_features.html</loc>
+    <lastmod>2024-02-26T21:20:31.163Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.html</loc>
-    <lastmod>2024-02-23T02:09:13.355Z</lastmod>
+    <lastmod>2024-02-26T21:20:34.196Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/2023_11_02_pacific_cod.html</loc>
-    <lastmod>2024-02-23T02:08:23.243Z</lastmod>
+    <lastmod>2024-02-26T21:20:36.131Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/2023_12_13_pacific_cod.html</loc>
-    <lastmod>2024-02-23T02:08:27.869Z</lastmod>
+    <lastmod>2024-02-26T21:20:38.704Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod.html</loc>
-    <lastmod>2024-02-23T02:08:31.043Z</lastmod>
+    <lastmod>2024-02-26T21:20:41.014Z</lastmod>
   </url>
 </urlset>

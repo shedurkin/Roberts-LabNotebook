@@ -24,9 +24,17 @@ format:
 
 #### Monday
 
+-   Organized materials for oyster trip on Wednesday (see [post](/posts/projects/misc/2024_02_26_oyster_sampling_materials.qmd))
+
 ## 23 February 2024
 
 #### Friday
+
+-   E5 all hands meeting. Discussed original E5 proposal and plant stress priming paper
+
+-   Science Hour -- had some really great discussions w/ various lab members brainstorming different ideas/approaches for oyster work!
+
+-   did some last deep dive into Quarto documentation
 
 ## 22 February 2024
 
