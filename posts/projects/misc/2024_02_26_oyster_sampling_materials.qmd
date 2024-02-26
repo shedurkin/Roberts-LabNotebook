@@ -1,0 +1,45 @@
+---
+title: "Materials for oyster sampling 2/28/24"
+author: "Kathleen Durkin"
+date: "last-modified"
+categories: ["miscellaneous"]
+format:
+  html:
+    toc: true
+---
+
+On Wednesday I'm going with Ariana, Eric, Grace L. to the hatchery to help them with sampling. I collected the following materials and stored them in the conference room (FTR 230) for us to grab them on Wednesday before driving over. Note that the tubes are currently unlabeled, so if any of us has time today or tomorrow we'll want to label them with indelible marker (see details in [the github issue](https://github.com/RobertsLab/resources/issues/1817))
+
+-   spray bottles of DI H2O, 10% bleach, and 70% ethanol
+
+-   500mL of 70% ethanol
+
+-   RNA later (250mL received in 2023, additional that may be expired)
+
+-   waterproof markers, pens, pencils
+
+-   4 tweezers
+
+-   5 razors
+
+-   4 oyster shucking knives (two with broken tips?)
+
+-   bench covers
+
+-   gloves (1box ea S,M,L)
+
+-   pipettors (P10, P200, P1000) with 1 box tips each
+
+-   tubes (snap cap and screw cap, currently unlabeled)
+
+![]()
+
+![](images/IMG_8123.jpg){width="700"}
+
+![](images/IMG_8124.jpg){width="700"}
+
+![](images/IMG_8125.jpg){width="700"}
+
+![]()
+
+![](images/IMG_8126.jpg){width="700"}
