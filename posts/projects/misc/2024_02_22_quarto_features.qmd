@@ -10,6 +10,7 @@ format:
       source: true
     comments:
       hypothesis: true
+bibliography: references.bib
 ---
 
 After looking through one of Sarah's posts I noticed she has some super cool features included in [her Quarto digital lab notebook](https://sarahtanja.github.io/quarto-blog/), so I'm doing a deep dive into the Quarto documentation!
@@ -179,3 +180,7 @@ penguins |>                                      # <1>
 ### [Author tools](https://quarto.org/docs/authoring/front-matter.html#overview)
 
 There are a whooooolllllleeee bunch of different options for specifying different author/article information that's normally included in scientific publications (authors, affiliations, corresponding, copyright, orcid ID, abstract, keywords, etc.). Here are some of the options I think I'm most likely to use in day-to-day notebook posts:
+
+In-text citations:
+
+Triploid oysters experience higher mortality under multiple-stressor conditions than diploids [@george_triploid_2023]
