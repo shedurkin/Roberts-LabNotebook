@@ -16,7 +16,7 @@ format:
 
 #### Wednesday
 
--   Field day: sampling at Point Whitney (post here)
+-   Field day: sampling at Point Whitney (post [here](/posts/projects/misc/2024_02_28_oyster_sampling.qmd))
 
 ## 27 February 2024
 
@@ -38,9 +38,8 @@ format:
 
 -   added P.evermanni transcriptome info to E5 deep dive wiki ([here](https://github.com/urol-e5/deep-dive/wiki/Species-Characteristics-and-Genomic-Resources#transcripts-1)) -- see relevant github issue [here](https://github.com/urol-e5/deep-dive/issues/34#issuecomment-1963013790)
 
-```{=html}
 <!-- -->
-```
+
 -   Organized materials for oyster trip on Wednesday (see [post](/posts/projects/misc/2024_02_26_oyster_sampling_materials.qmd))
 -   proposal writing class
 -   outlined [current state](https://docs.google.com/document/d/1ylJC-Ds1QcObWe42tRH4hCke0nAdCrCb1vUPCC6N3X4/edit) of modified oyster project and some questions (meeting w Steven tomorrow to talk about it)

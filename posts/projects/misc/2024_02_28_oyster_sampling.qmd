@@ -8,7 +8,7 @@ format:
     toc: true
 ---
 
-We (Eric, Grace L., Ariana, and I) spent the day at the Point Whitney research station, performing a reciprocal heat stress treatment and sampling on 4 Pacific oyster (*Crassostrea gigas*) life stages (spat, seed, juvenile, adult) for Eric's thesis work. See [previous post for materials](/posts/projects/misc/2024_02_06_oyster_sampling_materials.qmd) and [Ariana's post](https://ahuffmyer.github.io/ASH_Putnam_Lab_Notebook/Lifestage-Carryover-Project-Sampling/) for project details.
+We (Eric, Grace L., Ariana, and I) spent the day at the Point Whitney research station, performing a reciprocal heat stress treatment and sampling on 4 Pacific oyster (*Crassostrea gigas*) life stages (spat, seed, juvenile, adult) for Eric's thesis work. See [previous post for materials](/posts/projects/misc/2024_02_26_oyster_sampling_materials.qmd) and [Ariana's post](https://ahuffmyer.github.io/ASH_Putnam_Lab_Notebook/Lifestage-Carryover-Project-Sampling/) for project details.
 
 [Organism:]{.underline} Pacific oyster (*Crassostrea gigas*)
 
@@ -44,36 +44,48 @@ For each age class, each set of treatment conditions was sampled. Sampling was p
 |           | For each treatment set, sampled 8 animals total. From each animal, *gill tissue was extracted and separated into three portions,* which were preserved for RNA, DNA, and flash frozen. This means we have "sets" of samples for the adults (e.g. a sample preserved for RNA work is associated with a sample preserved for DNA and a sample that was flash frozen, since all three are from the same animal), with a total of 24 samples for each treatment combination. |
 +-----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-+--------------+-------------------+--------------+-----------------+--------------+-----------------------+
-|              | Control/Ambient   | Control/High | Treated/Ambient | Treated/High | Total                 |
-+==============+===================+==============+=================+==============+=======================+
-| **Spat**     | RNA: 6\           | RNA: 6\      | RNA: 6\         | RNA: 6\      | RNA: 24\              |
-|              | DNA: 6\           | DNA: 6\      | DNA: 6\         | DNA: 6\      | DNA: 24\              |
-|              | frozen: 5         | frozen: 5    | frozen: 5       | frozen: 5    | frozen: 20            |
-|              |                   |              |                 |              |                       |
-|              |                   |              |                 |              | 68 total              |
-+--------------+-------------------+--------------+-----------------+--------------+-----------------------+
-| **Seed**     | RNA: 6\           | RNA: 6\      | RNA: 6\         | RNA: 6\      | RNA: 24\              |
-|              | DNA: 6\           | DNA: 6\      | DNA: 6\         | DNA: 6\      | DNA: 24\              |
-|              | frozen: 5         | frozen: 5    | frozen: 5       | frozen: 5    | frozen: 20            |
-|              |                   |              |                 |              |                       |
-|              |                   |              |                 |              | 68 total              |
-+--------------+-------------------+--------------+-----------------+--------------+-----------------------+
-| **Juvenile** | RNA: 6\           | RNA: 6\      | RNA: 6\         | RNA: 6\      | RNA: 24\              |
-|              | DNA: 6\           | DNA: 6\      | DNA: 6\         | DNA: 6\      | DNA: 24\              |
-|              | frozen: 5         | frozen: 5    | frozen: 5       | frozen: 5    | frozen: 20            |
-|              |                   |              |                 |              |                       |
-|              |                   |              |                 |              | 68 total              |
-+--------------+-------------------+--------------+-----------------+--------------+-----------------------+
-| **Adult**    | RNA: 8\           | RNA: 8\      | RNA: 8\         | RNA: 8\      | RNA: 32\              |
-|              | DNA: 8\           | DNA: 8\      | DNA: 8\         | DNA: 8\      | DNA: 32\              |
-|              | frozen: 8         | frozen: 8    | frozen: 8       | frozen: 8    | frozen: 32            |
-|              |                   |              |                 |              |                       |
-|              |                   |              |                 |              | 96 total              |
-+--------------+-------------------+--------------+-----------------+--------------+-----------------------+
-| **Total**    | RNA: 26\          | RNA: 26\     | RNA: 26\        | RNA: 26\     | RNA: 104\             |
-|              | DNA: 26\          | DNA: 26\     | DNA: 26\        | DNA: 26\     | DNA: 104\             |
-|              | frozen: 23        | frozen: 23   | frozen: 23      | frozen: 23   | frozen: 92            |
-|              |                   |              |                 |              |                       |
-|              | 75 total          | 75 total     | 75 total        | 75 total     | **300 total samples** |
-+--------------+-------------------+--------------+-----------------+--------------+-----------------------+
++--------------+-----------------+--------------+-----------------+--------------+-----------------------+
+|              | Control/Ambient | Control/High | Treated/Ambient | Treated/High | Total                 |
++==============+=================+==============+=================+==============+=======================+
+| **Spat**     | RNA: 6\         | RNA: 6\      | RNA: 6\         | RNA: 6\      | RNA: 24\              |
+|              | DNA: 6\         | DNA: 6\      | DNA: 6\         | DNA: 6\      | DNA: 24\              |
+|              | frozen: 5       | frozen: 5    | frozen: 5       | frozen: 5    | frozen: 20            |
+|              |                 |              |                 |              |                       |
+|              |                 |              |                 |              | 68 total              |
++--------------+-----------------+--------------+-----------------+--------------+-----------------------+
+| **Seed**     | RNA: 6\         | RNA: 6\      | RNA: 6\         | RNA: 6\      | RNA: 24\              |
+|              | DNA: 6\         | DNA: 6\      | DNA: 6\         | DNA: 6\      | DNA: 24\              |
+|              | frozen: 5       | frozen: 5    | frozen: 5       | frozen: 5    | frozen: 20            |
+|              |                 |              |                 |              |                       |
+|              |                 |              |                 |              | 68 total              |
++--------------+-----------------+--------------+-----------------+--------------+-----------------------+
+| **Juvenile** | RNA: 6\         | RNA: 6\      | RNA: 6\         | RNA: 6\      | RNA: 24\              |
+|              | DNA: 6\         | DNA: 6\      | DNA: 6\         | DNA: 6\      | DNA: 24\              |
+|              | frozen: 5       | frozen: 5    | frozen: 5       | frozen: 5    | frozen: 20            |
+|              |                 |              |                 |              |                       |
+|              |                 |              |                 |              | 68 total              |
++--------------+-----------------+--------------+-----------------+--------------+-----------------------+
+| **Adult**    | RNA: 8\         | RNA: 8\      | RNA: 8\         | RNA: 8\      | RNA: 32\              |
+|              | DNA: 8\         | DNA: 8\      | DNA: 8\         | DNA: 8\      | DNA: 32\              |
+|              | frozen: 8       | frozen: 8    | frozen: 8       | frozen: 8    | frozen: 32            |
+|              |                 |              |                 |              |                       |
+|              |                 |              |                 |              | 96 total              |
++--------------+-----------------+--------------+-----------------+--------------+-----------------------+
+| **Total**    | RNA: 26\        | RNA: 26\     | RNA: 26\        | RNA: 26\     | RNA: 104\             |
+|              | DNA: 26\        | DNA: 26\     | DNA: 26\        | DNA: 26\     | DNA: 104\             |
+|              | frozen: 23      | frozen: 23   | frozen: 23      | frozen: 23   | frozen: 92            |
+|              |                 |              |                 |              |                       |
+|              | 75 total        | 75 total     | 75 total        | 75 total     | **300 total samples** |
++--------------+-----------------+--------------+-----------------+--------------+-----------------------+
+
+![The oysters (each age class and treatment group in individual tubes or bags)](images/IMG_8128.jpg){width="500"}
+
+::: {layout-nrow="2"}
+![Sampling station](images/IMG_8129.jpg){width="890"}
+
+![Sampling station](images/IMG_8130.jpg){width="500"}
+
+![A juvenile oyster during sampling](images/IMG_8138.jpg){width="695"}
+
+![Oysters post-sampling](images/IMG_8139.jpg){width="695"}
+:::
