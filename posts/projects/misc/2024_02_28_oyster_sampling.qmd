@@ -1,0 +1,79 @@
+---
+title: "Oyster Sampling @ Point Whitney -- Lifestage Carryover Project"
+author: "Kathleen Durkin"
+date: "02-28-2024"
+categories: ["miscellaneous"]
+format:
+  html:
+    toc: true
+---
+
+We (Eric, Grace L., Ariana, and I) spent the day at the Point Whitney research station, performing a reciprocal heat stress treatment and sampling on 4 Pacific oyster (*Crassostrea gigas*) life stages (spat, seed, juvenile, adult) for Eric's thesis work. See [previous post for materials](/posts/projects/misc/2024_02_06_oyster_sampling_materials.qmd) and [Ariana's post](https://ahuffmyer.github.io/ASH_Putnam_Lab_Notebook/Lifestage-Carryover-Project-Sampling/) for project details.
+
+[Organism:]{.underline} Pacific oyster (*Crassostrea gigas*)
+
+[Lifestages:]{.underline} Seed, Spat, Juvenile, Adult
+
+For each of the four life stages, Eric had already performed an original conditioning treatment. We an additiol reciprocal exposure to acute stress. For example, half of the spat "control" group was exposed to the 32\*C "high" stress, half of the "control" group was left in ambient temperature, half of the "treated" spat group was exposed to the 32\*C "high" stress, and half of the "treated" spat group was left in ambient.
+
+[Conditioning treatment groups:]{.underline} Control, Treated
+
+[Acute stress treatment groups:]{.underline} Ambient, High (32\*C)
+
+[Possible treatment group combinations:]{.underline} Control/Ambient, Control/High, Treated/Ambient, Treated/High
+
+For each age class, each set of treatment conditions was sampled. Sampling was performed slightly differently for each age, due to size restrictions:
+
++-----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Age class | Sampling approach (for [**each**]{.underline} of the 4 treatment combinations)                                                                                                                                                                                                                                                                                                                                                                                           |
++===========+==========================================================================================================================================================================================================================================================================================================================================================================================================================================================================+
+| Spat      | Overview: 17 samples per treatment combination (RNA n=6, DNA n=6, frozen n=5) from 17 animals                                                                                                                                                                                                                                                                                                                                                                            |
+|           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|           | For each treatment set, sampled 6 animals for RNA preservation, 6 animals for DNA preservation, and 5 animals to be flash frozen (e.g., for lipid work). *Whole animals* were preserved, since the spat are too small to easily extract tissue from the shell.                                                                                                                                                                                                           |
++-----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Seed      | Overview: 17 samples per treatment combination (RNA n=6, DNA n=6, frozen n=5) from 17 animals                                                                                                                                                                                                                                                                                                                                                                            |
+|           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|           | For each treatment set, sampled 6 animals for RNA preservation, 6 animals for DNA preservation, and 5 animals to be flash frozen (e.g., for lipid work). Seed are larger than spat, so we were able to crack open the shell of each animal and preserve the *whole animal tissue*.                                                                                                                                                                                       |
++-----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Juvenile  | Overview: 17 samples per treatment combination (RNA n=6, DNA n=6, frozen n=5) from 17 animals                                                                                                                                                                                                                                                                                                                                                                            |
+|           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|           | For each treatment set, sampled 6 animals for RNA preservation, 6 animals for DNA preservation, and 5 animals to be flash frozen (e.g., for lipid work). Juveniles are large enough to open the shell and differentiate between tissue types, but too small to split gill tissue into multiple samples, so *the entire gill tissue* of each animal was sampled.                                                                                                          |
++-----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Adult     | Overview: 24 samples per treatment combination (RNA n=8, DNA n=8, frozen n=8) from 8 animals                                                                                                                                                                                                                                                                                                                                                                             |
+|           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|           | For each treatment set, sampled 8 animals total. From each animal, *gill tissue was extracted and separated into three portions,* which were preserved for RNA, DNA, and flash frozen. This means we have "sets" of samples for the adults (e.g. a sample preserved for RNA work is associated with a sample preserved for DNA and a sample that was flash frozen, since all three are from the same animal), with a total of 24 samples for each treatment combination. |
++-----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
++--------------+-------------------+--------------+-----------------+--------------+-----------------------+
+|              | Control/Ambient   | Control/High | Treated/Ambient | Treated/High | Total                 |
++==============+===================+==============+=================+==============+=======================+
+| **Spat**     | RNA: 6\           | RNA: 6\      | RNA: 6\         | RNA: 6\      | RNA: 24\              |
+|              | DNA: 6\           | DNA: 6\      | DNA: 6\         | DNA: 6\      | DNA: 24\              |
+|              | frozen: 5         | frozen: 5    | frozen: 5       | frozen: 5    | frozen: 20            |
+|              |                   |              |                 |              |                       |
+|              |                   |              |                 |              | 68 total              |
++--------------+-------------------+--------------+-----------------+--------------+-----------------------+
+| **Seed**     | RNA: 6\           | RNA: 6\      | RNA: 6\         | RNA: 6\      | RNA: 24\              |
+|              | DNA: 6\           | DNA: 6\      | DNA: 6\         | DNA: 6\      | DNA: 24\              |
+|              | frozen: 5         | frozen: 5    | frozen: 5       | frozen: 5    | frozen: 20            |
+|              |                   |              |                 |              |                       |
+|              |                   |              |                 |              | 68 total              |
++--------------+-------------------+--------------+-----------------+--------------+-----------------------+
+| **Juvenile** | RNA: 6\           | RNA: 6\      | RNA: 6\         | RNA: 6\      | RNA: 24\              |
+|              | DNA: 6\           | DNA: 6\      | DNA: 6\         | DNA: 6\      | DNA: 24\              |
+|              | frozen: 5         | frozen: 5    | frozen: 5       | frozen: 5    | frozen: 20            |
+|              |                   |              |                 |              |                       |
+|              |                   |              |                 |              | 68 total              |
++--------------+-------------------+--------------+-----------------+--------------+-----------------------+
+| **Adult**    | RNA: 8\           | RNA: 8\      | RNA: 8\         | RNA: 8\      | RNA: 32\              |
+|              | DNA: 8\           | DNA: 8\      | DNA: 8\         | DNA: 8\      | DNA: 32\              |
+|              | frozen: 8         | frozen: 8    | frozen: 8       | frozen: 8    | frozen: 32            |
+|              |                   |              |                 |              |                       |
+|              |                   |              |                 |              | 96 total              |
++--------------+-------------------+--------------+-----------------+--------------+-----------------------+
+| **Total**    | RNA: 26\          | RNA: 26\     | RNA: 26\        | RNA: 26\     | RNA: 104\             |
+|              | DNA: 26\          | DNA: 26\     | DNA: 26\        | DNA: 26\     | DNA: 104\             |
+|              | frozen: 23        | frozen: 23   | frozen: 23      | frozen: 23   | frozen: 92            |
+|              |                   |              |                 |              |                       |
+|              | 75 total          | 75 total     | 75 total        | 75 total     | **300 total samples** |
++--------------+-------------------+--------------+-----------------+--------------+-----------------------+
