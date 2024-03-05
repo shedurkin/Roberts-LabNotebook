@@ -14,9 +14,11 @@ Evaluated raw read sequence quality using FastQC (and used MultiQC to visualize 
 [Code](https://github.com/RobertsLab/project-cod-temperature/blob/main/code/05-cod-RNAseq-trimming.Rmd)\
 [Rendered code](https://github.com/RobertsLab/project-cod-temperature/blob/main/code/05-cod-RNAseq-trimming.md)
 
+Individual FastQC reports for each sequence are stored [here](https://gannet.fish.washington.edu/kdurkin1/C_macrocephalus/RNAseq/), and you can view the spreadsheet containing read-specific links and metadata [here](https://docs.google.com/spreadsheets/d/1_XqIOPVHSBVGscnjzDSWUeRL7HUHXfaHxVzec-I-8Xk/edit#gid=0).
+
 ### MultiQC Report Summary
 
-Can view full MultiQC report [here](https://htmlpreview.github.io/?https://github.com/RobertsLab/project-cod-temperature/blob/main/output/05-cod-RNAseq-trimming/raw-fastqc/multiqc_report.html)
+Can view full MultiQC report [here](https://gannet.fish.washington.edu/kdurkin1/C_macrocephalus/RNAseq/multiqc_report.html)
 
 ![](images/fastqc-status-check-heatmap.png)
 

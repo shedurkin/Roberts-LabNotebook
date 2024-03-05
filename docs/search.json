@@ -11,7 +11,7 @@
     "href": "posts/projects/pacific_cod/2024_03_04_RNAseq_QC_trimming.html",
     "title": "RNAseq data FastQC and trimming",
     "section": "",
-    "text": "Data recieved from Azenta Feb. 21, 2024 (project 30-943133806) (see Sam’s notebook post).\nEvaluated raw read sequence quality using FastQC (and used MultiQC to visualize all reads simultaneously)\nCode\nRendered code\n\nMultiQC Report Summary\nCan view full MultiQC report here"
+    "text": "Data recieved from Azenta Feb. 21, 2024 (project 30-943133806) (see Sam’s notebook post).\nEvaluated raw read sequence quality using FastQC (and used MultiQC to visualize all reads simultaneously)\nCode\nRendered code\nIndividual FastQC reports for each sequence are stored here, and you can view the spreadsheet containing read-specific links and metadata here.\n\nMultiQC Report Summary\nCan view full MultiQC report here"
   },
   {
     "objectID": "posts/projects/pacific_cod/2023_12_13_pacific_cod.html",
@@ -131,6 +131,146 @@
     "title": "P.meandrina sRNA: MirMachine, ShortStack",
     "section": "",
     "text": "More on P.meandrina sRNA investigation\nP.meandrina MirMachine\nP.meandrina ShortStack\nP.meandrina miRdeep2 (incomplete)"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-1",
+    "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-1",
+    "title": "March 2024, Daily Log",
+    "section": "28 March 2024",
+    "text": "28 March 2024\n\nThursday"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-2",
+    "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-2",
+    "title": "March 2024, Daily Log",
+    "section": "27 March 2024",
+    "text": "27 March 2024\n\nWednesday"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-3",
+    "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-3",
+    "title": "March 2024, Daily Log",
+    "section": "26 March 2024",
+    "text": "26 March 2024\n\nTuesday"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-4",
+    "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-4",
+    "title": "March 2024, Daily Log",
+    "section": "25 March 2024",
+    "text": "25 March 2024\n\nMonday"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-5",
+    "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-5",
+    "title": "March 2024, Daily Log",
+    "section": "22 March 2024",
+    "text": "22 March 2024\n\nFriday"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-6",
+    "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-6",
+    "title": "March 2024, Daily Log",
+    "section": "21 March 2024",
+    "text": "21 March 2024\n\nThursday"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-7",
+    "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-7",
+    "title": "March 2024, Daily Log",
+    "section": "20 March 2024",
+    "text": "20 March 2024\n\nWednesday"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-8",
+    "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-8",
+    "title": "March 2024, Daily Log",
+    "section": "19 March 2024",
+    "text": "19 March 2024\n\nTuesday"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-9",
+    "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-9",
+    "title": "March 2024, Daily Log",
+    "section": "18 March 2024",
+    "text": "18 March 2024\n\nMonday"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-10",
+    "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-10",
+    "title": "March 2024, Daily Log",
+    "section": "15 March 2024",
+    "text": "15 March 2024\n\nFriday"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-11",
+    "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-11",
+    "title": "March 2024, Daily Log",
+    "section": "14 March 2024",
+    "text": "14 March 2024\n\nThursday"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-12",
+    "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-12",
+    "title": "March 2024, Daily Log",
+    "section": "13 March 2024",
+    "text": "13 March 2024\n\nWednesday"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-13",
+    "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-13",
+    "title": "March 2024, Daily Log",
+    "section": "12 March 2024",
+    "text": "12 March 2024\n\nTuesday"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-14",
+    "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-14",
+    "title": "March 2024, Daily Log",
+    "section": "11 March 2024",
+    "text": "11 March 2024\n\nMonday"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-15",
+    "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-15",
+    "title": "March 2024, Daily Log",
+    "section": "08 March 2024",
+    "text": "08 March 2024\n\nFriday"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-16",
+    "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-16",
+    "title": "March 2024, Daily Log",
+    "section": "07 March 2024",
+    "text": "07 March 2024\n\nThursday"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-17",
+    "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-17",
+    "title": "March 2024, Daily Log",
+    "section": "06 March 2024",
+    "text": "06 March 2024\n\nWednesday"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-18",
+    "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-18",
+    "title": "March 2024, Daily Log",
+    "section": "05 March 2024",
+    "text": "05 March 2024\n\nTuesday"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-19",
+    "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-19",
+    "title": "March 2024, Daily Log",
+    "section": "04 March 2024",
+    "text": "04 March 2024\n\nMonday\n\nClass + presentation\ndownloading, and QCing the cod RNAseq data (full post)\nset goals for this month"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-20",
+    "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-20",
+    "title": "March 2024, Daily Log",
+    "section": "01 March 2024",
+    "text": "01 March 2024\n\nFriday\n\nGrinding a presentation on the oyster project for class on Monday"
   },
   {
     "objectID": "posts/daily_logs/2024/January_2024_posts.html",
@@ -340,7 +480,7 @@
     "href": "posts/daily_logs/2024/February_2024_posts.html#february-2024-3",
     "title": "February 2024, Daily Log",
     "section": "26 February 2024",
-    "text": "26 February 2024\n\nMonday\n\nadded P.evermanni transcriptome info to E5 deep dive wiki (here) – see relevant github issue here\n\n\n\nOrganized materials for oyster trip on Wednesday (see post)\nproposal writing class\noutlined current state of modified oyster project and some questions (meeting w Steven tomorrow to talk about it)"
+    "text": "26 February 2024\n\nMonday\n\nadded P.evermanni transcriptome info to E5 deep dive wiki (here) – see relevant github issue here\nOrganized materials for oyster trip on Wednesday (see post)\nproposal writing class\noutlined current state of modified oyster project and some questions (meeting w Steven tomorrow to talk about it)"
   },
   {
     "objectID": "posts/daily_logs/2024/February_2024_posts.html#february-2024-4",
@@ -914,7 +1054,7 @@
     "href": "daily_log.html",
     "title": "Daily Logs and Monthly Goals",
     "section": "",
-    "text": "February 2024, Daily Log\n\n\n\n\n\n\n\n\n\nMar 4, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFebruary 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nFeb 1, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJanuary 2024, Daily Log\n\n\n\n\n\n\n\n\n\nJan 31, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJanuary 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nJan 1, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nDecember 2023, Daily Log\n\n\n\n\n\n\n\n\n\nDec 29, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nDecember 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nDec 5, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nNovember 2023, Daily Log\n\n\n\n\n\n\n\n\n\nNov 30, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nNovember 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nNov 3, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nOctober 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nOct 18, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nOctober 2023, Daily Log\n\n\n\n\n\n\n\n\n\nOct 1, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFormatting digital lab notebook\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFirst post\n\n\n\n\n\n\n\n\n\nSep 28, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\nNo matching items"
+    "text": "March 2024, Daily Log\n\n\n\n\n\n\n\n\n\nMar 5, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nMarch 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nMar 4, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFebruary 2024, Daily Log\n\n\n\n\n\n\n\n\n\nFeb 29, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFebruary 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nFeb 1, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJanuary 2024, Daily Log\n\n\n\n\n\n\n\n\n\nJan 31, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJanuary 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nJan 1, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nDecember 2023, Daily Log\n\n\n\n\n\n\n\n\n\nDec 29, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nDecember 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nDec 5, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nNovember 2023, Daily Log\n\n\n\n\n\n\n\n\n\nNov 30, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nNovember 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nNov 3, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nOctober 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nOct 18, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nOctober 2023, Daily Log\n\n\n\n\n\n\n\n\n\nOct 1, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFormatting digital lab notebook\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFirst post\n\n\n\n\n\n\n\n\n\nSep 28, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/daily_logs/2023/December_2023_goals.html",
@@ -1013,6 +1153,27 @@
     "title": "January 2024, Monthly Goals",
     "section": "Reviewing December Goals",
     "text": "Reviewing December Goals\nSo I somehow forgot to actually post my December goals and didn’t realize until I checked back to make this review 🤦‍♀️. Instead I guess I’ll just go over some of the bigger things I did in December:\n\nFinished up my first quarter at UW! Passed all my credit/no credit classes and got a grade in QSCI482 that I’m really happy with :)\nFully reformatted my lab notebook site\nGot integrated into Zotero, my first reference manager tool\nSent 80 cod samples for RNAseq"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_goals.html",
+    "href": "posts/daily_logs/2024/March_2024_goals.html",
+    "title": "March 2024, Monthly Goals",
+    "section": "",
+    "text": "✔️ Set up RNAseq DGE analysis pipeline for when we get the cod RNAseq data back.\n⏳ Connect with Laura to get details on the cod project’s experimental setup/implementation\n✔️ Start and make progress on a lit review for the cod project/manuscript\n⏸️ Either send cod samples for methylation sequencing or, if we decide to do extractions in-house, establish a reasonable timeline for extraction, DNA QC, and sequencing.\n✔️ Make progress on E5 gene expression work and generate a deliverable (either for lab meeting or molecular group meeting)\n✔️ Choose objective/hypotheses and plan oyster experiment\n\n\n❌ Look into several grants/funding sources that I may want to apply for over the next year or so (GRFP, Fulbright, etc.)\nThis month was quite busy, and I think I did a decent job of meeting my goals. I’ve QC’d the cod RNAseq data and have a basic DGE analysis pipeline set up to run it through once I’m back in office. I haven’t connected with Laura about the experimental methods, but Steven said he could get me that info himself, since he was directly involved, and I’ve outlined a place in the cod manuscript for him to provide methods details. I have a preliminary lit review for both the cod project and the oyster project going, and have implemented a new spreadsheet system to help me keep better track of what information I learn where. I haven’t made any progress with the cod methylation, but that’s intentional – we decided to wait until we took a look at the RNAseq data to send out samples for WGBS. I troubleshooted several issues with getting the right E5 deep dive transcriptomes, so we’re in a good place to start with co-expression analysis (and Zach is taking point on that right now, since he has some sample pipelines from Ariana). Finally, I had a big push during the last two weeks of February to develop a plan for the oyster experiment I want to run, and I think we’re getting there! The big picture is set, now I just need to figure out some details (e.g. how high should the stress temp be, what equipment do we need for monitoring, etc.)\nWe also started pubathon this month, so I’m expecting the next month to have slightly more focus on writing up the things I’m working on."
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_goals.html#reviewing-february-goals",
+    "href": "posts/daily_logs/2024/March_2024_goals.html#reviewing-february-goals",
+    "title": "March 2024, Monthly Goals",
+    "section": "",
+    "text": "✔️ Set up RNAseq DGE analysis pipeline for when we get the cod RNAseq data back.\n⏳ Connect with Laura to get details on the cod project’s experimental setup/implementation\n✔️ Start and make progress on a lit review for the cod project/manuscript\n⏸️ Either send cod samples for methylation sequencing or, if we decide to do extractions in-house, establish a reasonable timeline for extraction, DNA QC, and sequencing.\n✔️ Make progress on E5 gene expression work and generate a deliverable (either for lab meeting or molecular group meeting)\n✔️ Choose objective/hypotheses and plan oyster experiment\n\n\n❌ Look into several grants/funding sources that I may want to apply for over the next year or so (GRFP, Fulbright, etc.)\nThis month was quite busy, and I think I did a decent job of meeting my goals. I’ve QC’d the cod RNAseq data and have a basic DGE analysis pipeline set up to run it through once I’m back in office. I haven’t connected with Laura about the experimental methods, but Steven said he could get me that info himself, since he was directly involved, and I’ve outlined a place in the cod manuscript for him to provide methods details. I have a preliminary lit review for both the cod project and the oyster project going, and have implemented a new spreadsheet system to help me keep better track of what information I learn where. I haven’t made any progress with the cod methylation, but that’s intentional – we decided to wait until we took a look at the RNAseq data to send out samples for WGBS. I troubleshooted several issues with getting the right E5 deep dive transcriptomes, so we’re in a good place to start with co-expression analysis (and Zach is taking point on that right now, since he has some sample pipelines from Ariana). Finally, I had a big push during the last two weeks of February to develop a plan for the oyster experiment I want to run, and I think we’re getting there! The big picture is set, now I just need to figure out some details (e.g. how high should the stress temp be, what equipment do we need for monitoring, etc.)\nWe also started pubathon this month, so I’m expecting the next month to have slightly more focus on writing up the things I’m working on."
+  },
+  {
+    "objectID": "posts/daily_logs/2024/March_2024_goals.html#march-goals",
+    "href": "posts/daily_logs/2024/March_2024_goals.html#march-goals",
+    "title": "March 2024, Monthly Goals",
+    "section": "March Goals",
+    "text": "March Goals\nI’m out for a while this month (March 6-15), so I have a more limited set of goals\n\nWrite a draft proposal for the oyster project\nFinish DGE analysis for cod project\nWrite full methods section draft (both experimental and analysis sections) for the cod manuscript (part of pubathon)\nStart a planning document for the oyster project in the same style as Ariana showed us during lab meeting (see daily post)\n\n\nBack-burner goals (again)\n\nLook into several grants/funding sources that I may want to apply for over the next year or so (GRFP, Fulbright, etc.)"
   },
   {
     "objectID": "posts/projects/E5_coral/2023_11_14_E5_coral.html",
