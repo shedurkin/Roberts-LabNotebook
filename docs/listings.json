@@ -8,14 +8,16 @@
     ]
   },
   {
-    "listing": "/posts/projects/E5_coral.html",
+    "listing": "/posts/projects/misc.html",
     "items": [
-      "/posts/projects/E5_coral/2024_02_07_Peve_transcriptome.html",
-      "/posts/projects/E5_coral/2024_02_06_RNAseq_kallisto.html",
-      "/posts/projects/E5_coral/2024_01_31_Peve_kallisto.html",
-      "/posts/projects/E5_coral/2023_12_05_E5_coral.html",
-      "/posts/projects/E5_coral/2023_11_30_E5_coral.html",
-      "/posts/projects/E5_coral/2023_11_14_E5_coral.html"
+      "/posts/projects/misc/2024_02_28_oyster_sampling.html",
+      "/posts/projects/misc/2024_02_22_quarto_features.html",
+      "/posts/projects/misc/2024_01_30_Ideas.html",
+      "/posts/projects/misc/2024_02_26_oyster_sampling_materials.html",
+      "/posts/projects/misc/2024_02_22_paper_organization.html",
+      "/posts/projects/misc/2024_02_08_bedtools_gffvbed.html",
+      "/posts/projects/misc/2024_01_02_SICB.html",
+      "/posts/projects/misc/2024_01_02_TTS.html"
     ]
   },
   {
@@ -36,21 +38,20 @@
     ]
   },
   {
-    "listing": "/posts/projects/misc.html",
+    "listing": "/posts/projects/E5_coral.html",
     "items": [
-      "/posts/projects/misc/2024_02_28_oyster_sampling.html",
-      "/posts/projects/misc/2024_02_22_quarto_features.html",
-      "/posts/projects/misc/2024_01_30_Ideas.html",
-      "/posts/projects/misc/2024_02_26_oyster_sampling_materials.html",
-      "/posts/projects/misc/2024_02_22_paper_organization.html",
-      "/posts/projects/misc/2024_02_08_bedtools_gffvbed.html",
-      "/posts/projects/misc/2024_01_02_SICB.html",
-      "/posts/projects/misc/2024_01_02_TTS.html"
+      "/posts/projects/E5_coral/2024_02_07_Peve_transcriptome.html",
+      "/posts/projects/E5_coral/2024_02_06_RNAseq_kallisto.html",
+      "/posts/projects/E5_coral/2024_01_31_Peve_kallisto.html",
+      "/posts/projects/E5_coral/2023_12_05_E5_coral.html",
+      "/posts/projects/E5_coral/2023_11_30_E5_coral.html",
+      "/posts/projects/E5_coral/2023_11_14_E5_coral.html"
     ]
   },
   {
     "listing": "/posts/projects/pacific_cod.html",
     "items": [
+      "/posts/projects/pacific_cod/2024_03_04_RNAseq_QC_trimming.html",
       "/posts/projects/pacific_cod/2023_12_13_pacific_cod.html",
       "/posts/projects/pacific_cod/2023_12_14_pacific_cod.html",
       "/posts/projects/pacific_cod/2023_12_07_pacific_cod.html",

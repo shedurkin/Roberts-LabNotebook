@@ -1,0 +1,33 @@
+---
+title: "RNAseq data FastQC and trimming"
+author: "Kathleen Durkin"
+date: "2024-03-04"
+categories: ["pacifc-cod"]
+format:
+  html
+---
+
+Data recieved from Azenta Feb. 21, 2024 (project 30-943133806) (see [Sam's notebook post](https://robertslab.github.io/sams-notebook/posts/2024/2024-02-21-Data-Received---Pacific-cod-RNA-seq-Azenta-Project-30-943133806/)).
+
+Evaluated raw read sequence quality using FastQC (and used MultiQC to visualize all reads simultaneously)
+
+[Code](https://github.com/RobertsLab/project-cod-temperature/blob/main/code/05-cod-RNAseq-trimming.Rmd)\
+[Rendered code](https://github.com/RobertsLab/project-cod-temperature/blob/main/code/05-cod-RNAseq-trimming.md)
+
+### MultiQC Report Summary
+
+Can view full MultiQC report [here](https://htmlpreview.github.io/?https://github.com/RobertsLab/project-cod-temperature/blob/main/output/05-cod-RNAseq-trimming/raw-fastqc/multiqc_report.html)
+
+![](images/fastqc-status-check-heatmap.png)
+
+![](images/cod_multiqc_seqcount.png)
+
+![](images/cod_multiqc_meanquality.png)
+
+![](images/cod_multiqc_perseqquality.png)
+
+![](images/cod_multiqc_persecGC.png)
+
+![](images/cod_multiqc_overrepseq.png)
+
+![](images/cod_multiqc_adapcontent-01.png)
