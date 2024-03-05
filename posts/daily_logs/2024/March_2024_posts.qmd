@@ -1,0 +1,101 @@
+---
+title: "March 2024, Daily Log"
+author: "Kathleen Durkin"
+date: "last-modified"
+categories: ["daily log"]
+format:
+  html:
+    toc: true
+---
+
+## **29 March 2024**
+
+#### Friday
+
+## **28 March 2024**
+
+#### Thursday
+
+## **27 March 2024**
+
+#### Wednesday
+
+## **26 March 2024**
+
+#### Tuesday
+
+## **25 March 2024**
+
+#### Monday
+
+## **22 March 2024**
+
+#### Friday
+
+## **21 March 2024**
+
+#### Thursday
+
+## **20 March 2024**
+
+#### Wednesday
+
+## **19 March 2024**
+
+#### Tuesday
+
+## **18 March 2024**
+
+#### Monday
+
+## **15 March 2024**
+
+#### Friday
+
+## **14 March 2024**
+
+#### Thursday
+
+## **13 March 2024**
+
+#### Wednesday
+
+## **12 March 2024**
+
+#### Tuesday
+
+## **11 March 2024**
+
+#### Monday
+
+## **08 March 2024**
+
+#### Friday
+
+## **07 March 2024**
+
+#### Thursday
+
+## **06 March 2024**
+
+#### Wednesday
+
+## **05 March 2024**
+
+#### Tuesday
+
+## **04 March 2024**
+
+#### Monday
+
+-   Class + presentation
+
+-   downloading, and QCing the cod RNAseq data ([full post](/posts/projects/pacific_cod/2024_03_04_RNAseq_QC_trimming.qmd))
+
+-   set [goals for this month](/posts/daily_logs/2024/March_2024_goals.qmd)
+
+## **01 March 2024**
+
+#### Friday
+
+-   Grinding a presentation on the oyster project for class on Monday

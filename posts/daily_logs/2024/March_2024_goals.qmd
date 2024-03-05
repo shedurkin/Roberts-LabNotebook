@@ -1,0 +1,46 @@
+---
+title: "March 2024, Monthly Goals"
+author: "Kathleen Durkin"
+date: "2024-03-04"
+categories: ["monthly goals"]
+format:
+  html
+---
+
+## Reviewing February Goals
+
+✔️ Set up RNAseq DGE analysis pipeline for when we get the cod RNAseq data back.
+
+⏳ Connect with Laura to get details on the cod project's experimental setup/implementation
+
+✔️ Start and make progress on a lit review for the cod project/manuscript
+
+⏸️ Either send cod samples for methylation sequencing or, if we decide to do extractions in-house, establish a reasonable timeline for extraction, DNA QC, and sequencing.
+
+✔️ Make progress on E5 gene expression work and generate a deliverable (either for lab meeting or molecular group meeting)
+
+✔️ Choose objective/hypotheses and plan oyster experiment
+
+#### Back-burner goals
+
+❌ Look into several grants/funding sources that I may want to apply for over the next year or so (GRFP, Fulbright, etc.)
+
+This month was quite busy, and I think I did a decent job of meeting my goals. I've QC'd the cod RNAseq data and have a basic DGE analysis pipeline set up to run it through once I'm back in office. I haven't connected with Laura about the experimental methods, but Steven said he could get me that info himself, since he was directly involved, and I've outlined a place in the cod manuscript for him to provide methods details. I have a preliminary lit review for both the cod project and the oyster project going, and have implemented a new spreadsheet system to help me keep better track of what information I learn where. I haven't made any progress with the cod methylation, but that's intentional -- we decided to wait until we took a look at the RNAseq data to send out samples for WGBS. I troubleshooted several issues with getting the right E5 deep dive transcriptomes, so we're in a good place to start with co-expression analysis (and Zach is taking point on that right now, since he has some sample pipelines from Ariana). Finally, I had a big push during the last two weeks of February to develop a plan for the oyster experiment I want to run, and I think we're getting there! The big picture is set, now I just need to figure out some details (e.g. how high should the stress temp be, what equipment do we need for monitoring, etc.)
+
+We also started [pubathon](https://robertslab.github.io/resources/Pubathon/) this month, so I'm expecting the next month to have slightly more focus on writing up the things I'm working on.
+
+## March Goals
+
+I'm out for a while this month (March 6-15), so I have a more limited set of goals
+
+-   Write a draft proposal for the oyster project
+
+-   Finish DGE analysis for cod project
+
+-   Write full methods section draft (both experimental and analysis sections) for the cod manuscript (part of pubathon)
+
+-   Start a planning document for the oyster project in the same style as Ariana showed us during lab meeting (see [daily post](/posts/daily_logs/2024/February_2024_posts.qmd#february-2024-20))
+
+#### Back-burner goals (again)
+
+-   Look into several grants/funding sources that I may want to apply for over the next year or so (GRFP, Fulbright, etc.)
