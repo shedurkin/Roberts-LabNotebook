@@ -7,32 +7,60 @@
     "text": "E5 Coral\n\n\n\n\n\n\n\n\n\n\n\nPacific Cod\n\n\n\n\n\n\n\n\n\n\n\nMiscellaneous\n\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "posts/projects/pacific_cod/2024_03_04_RNAseq_QC_trimming.html",
-    "href": "posts/projects/pacific_cod/2024_03_04_RNAseq_QC_trimming.html",
-    "title": "RNAseq data FastQC and trimming",
+    "objectID": "posts/projects/pacific_cod/2024_03_19_RNAseq_prelim_kallistoDESeq2.html",
+    "href": "posts/projects/pacific_cod/2024_03_19_RNAseq_prelim_kallistoDESeq2.html",
+    "title": "RNAseq data preliminary kallisto and DESeq2",
     "section": "",
-    "text": "Data recieved from Azenta Feb. 21, 2024 (project 30-943133806) (see Sam’s notebook post).\nEvaluated raw read sequence quality using FastQC (and used MultiQC to visualize all reads simultaneously)\nCode\nRendered code\nIndividual FastQC reports for each sequence are stored here, and you can view the spreadsheet containing read-specific links and metadata here.\n\nMultiQC Report Summary\nCan view full MultiQC report here"
+    "text": "Relevant posts:\nPacific cod RNAseq raw read QC\n\n\nRelevant code:\nRaw read QC\nKallisto pseudoalignment"
   },
   {
-    "objectID": "posts/projects/pacific_cod/2023_12_13_pacific_cod.html",
-    "href": "posts/projects/pacific_cod/2023_12_13_pacific_cod.html",
-    "title": "Samples lists for cod RNAseq and methylation",
+    "objectID": "posts/projects/pacific_cod/2023_12_14_pacific_cod.html",
+    "href": "posts/projects/pacific_cod/2023_12_14_pacific_cod.html",
+    "title": "Finish pulling/subsampling for cod RNAseq",
     "section": "",
-    "text": "Compiled spreadsheets for the samples we plan to send for RNAseq and methylation.\nIn the cod experiment we subjected cod to four temperature treatments, with four different tanks in each treatment (total of 16 tanks)\nFor RNAseq we selected:\n\nLiver samples from four individuals from each tank (16 from each temperature treatment, 64 overall) as well as one additional individual from each temperature treatment to fill the sequencing quote for 80 samples. For liver, subsampling to send ~30mg of tissue for RNAseq.\nBlood samples from two individuals in the 0°C treatment (same tank) and two individuals in the 16°C treatment (same tank) (4 blood samples total). Selected from individuals that are already being sequenced with liver samples. For blood, sending full original sample for RNAseq.\nGill samples from two individuals in the 0°C treatment (same tank) and two individuals in the 16°C treatment (same tank) (4 gill samples total). Selected the same four individuals as chosen for blood samples. For gill, subsampling to be able to send same individuals for both RNAseq and methylation.\nSpleen samples from two individuals in the 0°C treatment (same tank) and two individuals in the 16°C treatment (same tank) (4 spleen samples total). Selected the same four individuals as chosen for blood and gill samples. For spleen, sending full original sample for RNAseq.\n\n\n\n\n\n\n\n\n\nTissue\nNum. Samples\nNotes\n\n\n\n\nLiver\n68\n4 per tank, 16 per treatment (plus additional 1 per treatment)\n\n\nBlood\n4\n2 for 0°C, 2 for 16°C\n\n\nGill\n4\n2 for 0°C, 2 for 16°C\n\n\nSpleen\n4\n2 for 0°C, 2 for 16°C\n\n\nTotal:\n80\n\n\n\n\nWhile almost all liver samples have been subsampled and set aside, we still need to pull and subsample the additional 4 liver, subsample all 4 gill, and pull all 4 spleen.\nFor methylation we selected:\n\nLiver samples from two individuals from each tank (8 from each temperature treatment, 32 overall), and exclusively chose samples that are also being sent for RNAseq (for comparison).\nBlood samples from two individuals in the 0°C treatment (same tank) and two individuals in the 16°C treatment (same tank) (4 blood samples total). Selected from individuals that are already being sequenced with liver samples. Since all of the blood sent for RNAseq required full sample volume, can’t send exact same blood samples as sent for RNAseq.\nGill samples from two individuals in the 0°C treatment (same tank) and two individuals in the 16°C treatment (same tank) (4 gill samples total). These are gill subsamples from the same four individuals that are being sent for gill RNAseq.\n\n\n\n\nTissue\nNum. Samples\nNotes\n\n\n\n\nLiver\n32\n2 per tank, 8 per treatment\n\n\nBlood\n4\n2 for 0°C, 2 for 16°C\n\n\nGill\n4\n2 for 0°C, 2 for 16°C\n\n\nTotal:\n40"
+    "text": "Subsampled the four selected gill samples for RNAseq (in blue below) to retain half of the sample for methylation work later. Pulled the four selected spleen samples (yellow) and set aside whole tissue for RNAseq. Pulled remaining four liver samples (yellow) and subsampled, setting aside ~half of the tissue for RNAseq and retaining the rest.\n\nAlso realized we were missing liver from one other sample we intend to send for RNAseq (sample 128), so pulled and subsampled that as well.\nConsolidated all 80 samples we’re sending for RNAseq in single box, in numerical order and grouped by tissue type, and stored at -80°C (middle freezer, top shelf, box labeled “Pacific Cod RNAseq Samples, Roberts Lab”)."
   },
   {
-    "objectID": "posts/projects/pacific_cod/2023_11_02_pacific_cod.html",
-    "href": "posts/projects/pacific_cod/2023_11_02_pacific_cod.html",
-    "title": "Cod Sample Size",
+    "objectID": "posts/projects/pacific_cod/2023_12_07_pacific_cod.html",
+    "href": "posts/projects/pacific_cod/2023_12_07_pacific_cod.html",
+    "title": "Sampling liver samples for RNAseq",
     "section": "",
-    "text": "Calculated necessary sample size for cod RNA sequencing, given an assumed coefficient of variation and detectable difference in expression – view document here."
+    "text": "Started sampling cod liver tissue samples for RNAseq. (excluded samples with intestinal tapeworms) – bolding indicates sampled this morning (~30mg), and then stored at -80*C.\n\n\n\n\n\n\n\n\nTanks\nTemperature Treatment (°C)\nSamples to Seq (4/tank)\n\n\n\n\n1-4\n16\n1-4 | 10-13 | 18-21 | 28-31\n\n\n5-8\n5\n117-120 | 127-129, 131 | 137-140 | 147-150\n\n\n9-12\n0\n37-40 | 47-50 | 57-60 | 67-70\n\n\n13-16\n9\n78-80, 83 | 88, 90-92 | 97-100 | 107-110"
   },
   {
-    "objectID": "posts/projects/misc.html",
-    "href": "posts/projects/misc.html",
-    "title": "Miscellaneous",
+    "objectID": "posts/projects/pacific_cod/2023_10_13_pacific_cod.html",
+    "href": "posts/projects/pacific_cod/2023_10_13_pacific_cod.html",
+    "title": "Cod Temp/Growth Analysis",
     "section": "",
-    "text": "This is where all of my longer posts that aren’t tied to a specific project will live. Enjoy!\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nCategories\n\n\nReading Time\n\n\n\n\n\n\n\n\n\nFeb 28, 2024\n\n\nOyster Sampling @ Point Whitney – Lifestage Carryover Project\n\n\nmiscellaneous\n\n\n34 min\n\n\n\n\n\n\n\nFeb 27, 2024\n\n\nTesting out some cool Quarto features\n\n\nmiscellaneous\n\n\n5 min\n\n\n\n\n\n\n\nFeb 27, 2024\n\n\nIdeas/Questions Log\n\n\nmiscellaneous\n\n\n4 min\n\n\n\n\n\n\n\nFeb 26, 2024\n\n\nMaterials for oyster sampling 2/28/24\n\n\nmiscellaneous\n\n\n1 min\n\n\n\n\n\n\n\nFeb 22, 2024\n\n\nGoogle sheets template for organizing allllllll the papers\n\n\nmiscellaneous\n\n\n3 min\n\n\n\n\n\n\n\nFeb 8, 2024\n\n\nTesting bedtools: gff vs bed input file\n\n\nmisc\n\n\n2 min\n\n\n\n\n\n\n\nJan 4, 2024\n\n\nSICB 2024\n\n\nmiscellaneous\n\n\n11 min\n\n\n\n\n\n\n\nJan 2, 2024\n\n\nReviewing Text-To-Speech Tools\n\n\nmiscellaneous\n\n\n17 min\n\n\n\n\n\n\nNo matching items"
+    "text": "I finished the code temp/growth analysis assigned by Steven, code and output pdf can be found on lab github.\nI aimed to identify whether temperature treatment affected cod growth, and analyzed data using two growth variables, size (mm) and weight (g) sampled three times between Nov.2022 and Feb.2023.\n\n\nOne-way ANOVA tests indicated statistically significant differences in both change in size (F(3, 156) = 37.9, p = 1.79e-18), and change in weight (F(3, 156) = 29.4, p = 3.73e-15) among the treatment temperatures. Additional application of Tukey’s HSD test of multiple comparisons indicated that both mean size change and mean weight change were significantly different among all treatment temperatures except between the 9 and 16 degree treatments."
+  },
+  {
+    "objectID": "posts/projects/misc/2024_03_27_GNM569awk.html",
+    "href": "posts/projects/misc/2024_03_27_GNM569awk.html",
+    "title": "Learning awk for GNM569",
+    "section": "",
+    "text": "This quarter I’m taking GENOME569, which covers developing bioinformatic workflows for high-throughput sequencing. Today we briefly covered some of the primaries of Unix, and I realized I’ve never learned awk or written awk commands fro scratch! These are some awk practice problems from the class to hopefully help me get up to speed."
+  },
+  {
+    "objectID": "posts/projects/misc/2024_03_27_GNM569awk.html#practice-file",
+    "href": "posts/projects/misc/2024_03_27_GNM569awk.html#practice-file",
+    "title": "Learning awk for GNM569",
+    "section": "Practice file:",
+    "text": "Practice file:\ngrep_sed_example1.txt\nExperiment notes:\nWe are using the hg19 genome build\nThe cell line is A549\nA549 cells have a KRAS G12C mutation\nAnother cell line is MCF7"
+  },
+  {
+    "objectID": "posts/projects/misc/2024_03_27_GNM569awk.html#grep",
+    "href": "posts/projects/misc/2024_03_27_GNM569awk.html#grep",
+    "title": "Learning awk for GNM569",
+    "section": "grep",
+    "text": "grep\n\nFind the lines that mention “cell”:\n\n$ grep \"cell\" grep_sed_example1.txt\n\nThe cell line is A549\nA549 cells have a KRAS G12C mutation\nAnother cell line is MCF7\n“cell”: This is the regular expression pattern to match. It simply looks for the string “cell” within each line of the file.\n\n\nFind the lines that talk about “A549”:\n\n$ grep \"A549\" grep_sed_example1.txt\n\nThe cell line is A549\nA549 cells have a KRAS G12C mutation\n“A549”: This pattern matches the string “A549” within each line of the file.\n\n\nFind the lines that talk about either A549 or MCF7:\n\n$ grep -E \"A549|MCF7\" grep_sed_example1.txt\n\nThe cell line is A549\nA549 cells have a KRAS G12C mutation\nAnother cell line is MCF7\n-E: Enables extended regular expressions, allowing the use of the | (OR) operator.\n“A549|MCF7”: This pattern matches lines containing either “A549” or “MCF7”.\n\n\nFind the lines that end with a cell line id (i.e., A549 or MCF7):\n\n$ grep -E \"A549$|MCF7$\" grep_sed_example1.txt\n\nAnother cell line is MCF7\n-E: Enables extended regular expressions, allowing the use of the $ anchor to match the end of a line and the use of the | (OR) operator\n“A549$|MCF7$”: This pattern matches lines that end ($) with either “A549” or “MCF7”."
+  },
+  {
+    "objectID": "posts/projects/misc/2024_03_27_GNM569awk.html#sed",
+    "href": "posts/projects/misc/2024_03_27_GNM569awk.html#sed",
+    "title": "Learning awk for GNM569",
+    "section": "sed",
+    "text": "sed\nNote that sed will not make a permanent edit to the original file unless you specifically instruct it to do so using the -i option. Default behavior is to just output the modified text to standard output.\n\nChange instances of A549 to MCF7:\n\n$ sed 's/A549/MCF7/g' grep_sed_example1.txt\n\nExperiment notes:\nWe are using the hg19 genome build\nThe cell line is MCF7\nMCF7 cells have a KRAS G12C mutation\nAnother cell line is MCF7\ns: This is the substitute command in sed, which is used to perform substitutions.\n/A549/MCF7/: This is the substitution operation. It finds all occurrences of “A549” and replaces them with “MCF7”.\ng: This is the global flag, which tells sed to perform the substitution globally within each line, not just the first occurrence.\n\n\nChange only the second instance of A549 to A549_LUNG:\n\n\nChange instances of A549 to MCF7, but without stating “A549”:\n\n$ sed 's/[A-Z][0-9]\\{3\\}/MCF7/g' grep_sed_example1.txt\n\nExperiment notes:\nWe are using the hg19 genome build\nThe cell line is MCF7\nMCF7 cells have a KRAS G12C mutation\nAnother cell line is MCF7\n[A-Z]: Matches any uppercase letter from A to Z.\n[0-9]: Matches any digit from 0 to 9.\n\\{3\\}: Specifies that the previous pattern (digit) should occur exactly three times.\n/MCF7/: Replaces the matched pattern with “MCF7”.\ng: This flag is used for global substitution, ensuring all occurrences within each line are replaced.\n\n\nHow can I make multiple changes in a single line?\n-e: This option allows you to specify multiple sed commands in one line. Each -e flag indicates the beginning of a new sed command.\nThen you can just sequentially use the expressions you want to apply!"
   },
   {
     "objectID": "posts/projects/misc/2024_02_26_oyster_sampling_materials.html",
@@ -144,21 +172,21 @@
     "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-2",
     "title": "March 2024, Daily Log",
     "section": "27 March 2024",
-    "text": "27 March 2024\n\nWednesday"
+    "text": "27 March 2024\n\nWednesday\n\nclass (GNM569)\nclasswork\n\nUNIX reviewand troubleshooting issues with accessing git from the genome sciences nexus server; cygwin; and using bash in Rstudio (locally) for GNM569\nVideos, chapter reading and quizzes for FISH541"
   },
   {
     "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-3",
     "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-3",
     "title": "March 2024, Daily Log",
     "section": "26 March 2024",
-    "text": "26 March 2024\n\nTuesday"
+    "text": "26 March 2024\n\nTuesday\n\nclass (FISH541)\ngenerating some figures for cod RNAseq data – a (very late) notebook post(s) coming soon\nBraiding Sweetgrass,, reading and generating discussion questions for lab meeting on thursday"
   },
   {
     "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-4",
     "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-4",
     "title": "March 2024, Daily Log",
     "section": "25 March 2024",
-    "text": "25 March 2024\n\nMonday"
+    "text": "25 March 2024\n\nMonday\n\nsomehow missed doing daily posts all last week🤦‍♀️\nclass (GNM569)\nworking on cod RNAseq data analysis – think I finally understand the steps required for appropriate use of the DESeq2 package!"
   },
   {
     "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-5",
@@ -200,63 +228,63 @@
     "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-10",
     "title": "March 2024, Daily Log",
     "section": "15 March 2024",
-    "text": "15 March 2024\n\nFriday"
+    "text": "15 March 2024\n\nFriday\nOut"
   },
   {
     "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-11",
     "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-11",
     "title": "March 2024, Daily Log",
     "section": "14 March 2024",
-    "text": "14 March 2024\n\nThursday"
+    "text": "14 March 2024\n\nThursday\nOut"
   },
   {
     "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-12",
     "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-12",
     "title": "March 2024, Daily Log",
     "section": "13 March 2024",
-    "text": "13 March 2024\n\nWednesday"
+    "text": "13 March 2024\n\nWednesday\nOut"
   },
   {
     "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-13",
     "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-13",
     "title": "March 2024, Daily Log",
     "section": "12 March 2024",
-    "text": "12 March 2024\n\nTuesday"
+    "text": "12 March 2024\n\nTuesday\nOut"
   },
   {
     "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-14",
     "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-14",
     "title": "March 2024, Daily Log",
     "section": "11 March 2024",
-    "text": "11 March 2024\n\nMonday"
+    "text": "11 March 2024\n\nMonday\nOut"
   },
   {
     "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-15",
     "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-15",
     "title": "March 2024, Daily Log",
     "section": "08 March 2024",
-    "text": "08 March 2024\n\nFriday"
+    "text": "08 March 2024\n\nFriday\nOut"
   },
   {
     "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-16",
     "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-16",
     "title": "March 2024, Daily Log",
     "section": "07 March 2024",
-    "text": "07 March 2024\n\nThursday"
+    "text": "07 March 2024\n\nThursday\nOut"
   },
   {
     "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-17",
     "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-17",
     "title": "March 2024, Daily Log",
     "section": "06 March 2024",
-    "text": "06 March 2024\n\nWednesday"
+    "text": "06 March 2024\n\nWednesday\nOut"
   },
   {
     "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-18",
     "href": "posts/daily_logs/2024/March_2024_posts.html#march-2024-18",
     "title": "March 2024, Daily Log",
     "section": "05 March 2024",
-    "text": "05 March 2024\n\nTuesday"
+    "text": "05 March 2024\n\nTuesday\n\nProposal writing for FISH521"
   },
   {
     "objectID": "posts/daily_logs/2024/March_2024_posts.html#march-2024-19",
@@ -1054,7 +1082,7 @@
     "href": "daily_log.html",
     "title": "Daily Logs and Monthly Goals",
     "section": "",
-    "text": "March 2024, Daily Log\n\n\n\n\n\n\n\n\n\nMar 5, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nMarch 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nMar 4, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFebruary 2024, Daily Log\n\n\n\n\n\n\n\n\n\nFeb 29, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFebruary 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nFeb 1, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJanuary 2024, Daily Log\n\n\n\n\n\n\n\n\n\nJan 31, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJanuary 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nJan 1, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nDecember 2023, Daily Log\n\n\n\n\n\n\n\n\n\nDec 29, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nDecember 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nDec 5, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nNovember 2023, Daily Log\n\n\n\n\n\n\n\n\n\nNov 30, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nNovember 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nNov 3, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nOctober 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nOct 18, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nOctober 2023, Daily Log\n\n\n\n\n\n\n\n\n\nOct 1, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFormatting digital lab notebook\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFirst post\n\n\n\n\n\n\n\n\n\nSep 28, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\nNo matching items"
+    "text": "March 2024, Daily Log\n\n\n\n\n\n\n\n\n\nMar 27, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nMarch 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nMar 4, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFebruary 2024, Daily Log\n\n\n\n\n\n\n\n\n\nFeb 29, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFebruary 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nFeb 1, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJanuary 2024, Daily Log\n\n\n\n\n\n\n\n\n\nJan 31, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJanuary 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nJan 1, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nDecember 2023, Daily Log\n\n\n\n\n\n\n\n\n\nDec 29, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nDecember 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nDec 5, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nNovember 2023, Daily Log\n\n\n\n\n\n\n\n\n\nNov 30, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nNovember 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nNov 3, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nOctober 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nOct 18, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nOctober 2023, Daily Log\n\n\n\n\n\n\n\n\n\nOct 1, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFormatting digital lab notebook\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFirst post\n\n\n\n\n\n\n\n\n\nSep 28, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/daily_logs/2023/December_2023_goals.html",
@@ -1173,7 +1201,7 @@
     "href": "posts/daily_logs/2024/March_2024_goals.html#march-goals",
     "title": "March 2024, Monthly Goals",
     "section": "March Goals",
-    "text": "March Goals\nI’m out for a while this month (March 6-15), so I have a more limited set of goals\n\nWrite a draft proposal for the oyster project\nFinish DGE analysis for cod project\nWrite full methods section draft (both experimental and analysis sections) for the cod manuscript (part of pubathon)\nStart a planning document for the oyster project in the same style as Ariana showed us during lab meeting (see daily post)\n\n\nBack-burner goals (again)\n\nLook into several grants/funding sources that I may want to apply for over the next year or so (GRFP, Fulbright, etc.)"
+    "text": "March Goals\nI’m out for a little over a week this month (March 6-15), so I have a more limited set of goals\n\nWrite a draft proposal for the oyster project\nFinish DGE analysis for cod project\nWrite full methods section draft (both experimental and analysis sections) for the cod manuscript (part of pubathon)\nStart a planning document for the oyster project in the same style as Ariana showed us during lab meeting (see daily post)\n\n\nBack-burner goals (again)\n\nLook into several grants/funding sources that I may want to apply for over the next year or so (GRFP, Fulbright, etc.)"
   },
   {
     "objectID": "posts/projects/E5_coral/2023_11_14_E5_coral.html",
@@ -1274,31 +1302,38 @@
     "text": "We (Eric, Grace L., Ariana, and I) spent the day at the Point Whitney research station, performing a reciprocal heat stress treatment and sampling on 4 Pacific oyster (Crassostrea gigas) life stages (spat, seed, juvenile, adult) for Eric’s thesis work. See previous post for materials and Ariana’s post for project details.\nOrganism: Pacific oyster (Crassostrea gigas)\nLifestages: Seed, Spat, Juvenile, Adult\nFor each of the four life stages, Eric had already performed an original conditioning treatment. We an additiol reciprocal exposure to acute stress. For example, half of the spat “control” group was exposed to the 32*C “high” stress, half of the “control” group was left in ambient temperature, half of the “treated” spat group was exposed to the 32*C “high” stress, and half of the “treated” spat group was left in ambient.\nConditioning treatment groups: Control, Treated\nAcute stress treatment groups: Ambient, High (32*C)\nPossible treatment group combinations: Control/Ambient, Control/High, Treated/Ambient, Treated/High\nFor each age class, each set of treatment conditions was sampled. Sampling was performed slightly differently for each age, due to size restrictions:\n\n\n\n\n\n\n\nAge class\nSampling approach (for each of the 4 treatment combinations)\n\n\n\n\nSpat\nOverview: 17 samples per treatment combination (RNA n=6, DNA n=6, frozen n=5) from 17 animals\nFor each treatment set, sampled 6 animals for RNA preservation, 6 animals for DNA preservation, and 5 animals to be flash frozen (e.g., for lipid work). Whole animals were preserved, since the spat are too small to easily extract tissue from the shell.\n\n\nSeed\nOverview: 17 samples per treatment combination (RNA n=6, DNA n=6, frozen n=5) from 17 animals\nFor each treatment set, sampled 6 animals for RNA preservation, 6 animals for DNA preservation, and 5 animals to be flash frozen (e.g., for lipid work). Seed are larger than spat, so we were able to crack open the shell of each animal and preserve the whole animal tissue.\n\n\nJuvenile\nOverview: 17 samples per treatment combination (RNA n=6, DNA n=6, frozen n=5) from 17 animals\nFor each treatment set, sampled 6 animals for RNA preservation, 6 animals for DNA preservation, and 5 animals to be flash frozen (e.g., for lipid work). Juveniles are large enough to open the shell and differentiate between tissue types, but too small to split gill tissue into multiple samples, so the entire gill tissue of each animal was sampled.\n\n\nAdult\nOverview: 24 samples per treatment combination (RNA n=8, DNA n=8, frozen n=8) from 8 animals\nFor each treatment set, sampled 8 animals total. From each animal, gill tissue was extracted and separated into three portions, which were preserved for RNA, DNA, and flash frozen. This means we have “sets” of samples for the adults (e.g. a sample preserved for RNA work is associated with a sample preserved for DNA and a sample that was flash frozen, since all three are from the same animal), with a total of 24 samples for each treatment combination.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nControl/Ambient\nControl/High\nTreated/Ambient\nTreated/High\nTotal\n\n\n\n\nSpat\nRNA: 6\nDNA: 6\nfrozen: 5\nRNA: 6\nDNA: 6\nfrozen: 5\nRNA: 6\nDNA: 6\nfrozen: 5\nRNA: 6\nDNA: 6\nfrozen: 5\nRNA: 24\nDNA: 24\nfrozen: 20\n68 total\n\n\nSeed\nRNA: 6\nDNA: 6\nfrozen: 5\nRNA: 6\nDNA: 6\nfrozen: 5\nRNA: 6\nDNA: 6\nfrozen: 5\nRNA: 6\nDNA: 6\nfrozen: 5\nRNA: 24\nDNA: 24\nfrozen: 20\n68 total\n\n\nJuvenile\nRNA: 6\nDNA: 6\nfrozen: 5\nRNA: 6\nDNA: 6\nfrozen: 5\nRNA: 6\nDNA: 6\nfrozen: 5\nRNA: 6\nDNA: 6\nfrozen: 5\nRNA: 24\nDNA: 24\nfrozen: 20\n68 total\n\n\nAdult\nRNA: 8\nDNA: 8\nfrozen: 8\nRNA: 8\nDNA: 8\nfrozen: 8\nRNA: 8\nDNA: 8\nfrozen: 8\nRNA: 8\nDNA: 8\nfrozen: 8\nRNA: 32\nDNA: 32\nfrozen: 32\n96 total\n\n\nTotal\nRNA: 26\nDNA: 26\nfrozen: 23\n75 total\nRNA: 26\nDNA: 26\nfrozen: 23\n75 total\nRNA: 26\nDNA: 26\nfrozen: 23\n75 total\nRNA: 26\nDNA: 26\nfrozen: 23\n75 total\nRNA: 104\nDNA: 104\nfrozen: 92\n300 total samples\n\n\n\n\n\n\nThe oysters (each age class and treatment group in individual tubes or bags)\n\n\n\n\n\n\n\n\nSampling station\n\n\n\n\n\n\n\nSampling station\n\n\n\n\n\n\n\n\n\nA juvenile oyster during sampling\n\n\n\n\n\n\n\nOysters post-sampling"
   },
   {
-    "objectID": "posts/projects/pacific_cod/2023_10_13_pacific_cod.html",
-    "href": "posts/projects/pacific_cod/2023_10_13_pacific_cod.html",
-    "title": "Cod Temp/Growth Analysis",
+    "objectID": "posts/projects/misc.html",
+    "href": "posts/projects/misc.html",
+    "title": "Miscellaneous",
     "section": "",
-    "text": "I finished the code temp/growth analysis assigned by Steven, code and output pdf can be found on lab github.\nI aimed to identify whether temperature treatment affected cod growth, and analyzed data using two growth variables, size (mm) and weight (g) sampled three times between Nov.2022 and Feb.2023.\n\n\nOne-way ANOVA tests indicated statistically significant differences in both change in size (F(3, 156) = 37.9, p = 1.79e-18), and change in weight (F(3, 156) = 29.4, p = 3.73e-15) among the treatment temperatures. Additional application of Tukey’s HSD test of multiple comparisons indicated that both mean size change and mean weight change were significantly different among all treatment temperatures except between the 9 and 16 degree treatments."
+    "text": "This is where all of my longer posts that aren’t tied to a specific project will live. Enjoy!\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nCategories\n\n\nReading Time\n\n\n\n\n\n\n\n\n\nMar 27, 2024\n\n\nLearning awk for GNM569\n\n\nmisc\n\n\n3 min\n\n\n\n\n\n\n\nFeb 28, 2024\n\n\nOyster Sampling @ Point Whitney – Lifestage Carryover Project\n\n\nmiscellaneous\n\n\n34 min\n\n\n\n\n\n\n\nFeb 27, 2024\n\n\nTesting out some cool Quarto features\n\n\nmiscellaneous\n\n\n5 min\n\n\n\n\n\n\n\nFeb 27, 2024\n\n\nIdeas/Questions Log\n\n\nmiscellaneous\n\n\n4 min\n\n\n\n\n\n\n\nFeb 26, 2024\n\n\nMaterials for oyster sampling 2/28/24\n\n\nmiscellaneous\n\n\n1 min\n\n\n\n\n\n\n\nFeb 22, 2024\n\n\nGoogle sheets template for organizing allllllll the papers\n\n\nmiscellaneous\n\n\n3 min\n\n\n\n\n\n\n\nFeb 8, 2024\n\n\nTesting bedtools: gff vs bed input file\n\n\nmisc\n\n\n2 min\n\n\n\n\n\n\n\nJan 4, 2024\n\n\nSICB 2024\n\n\nmiscellaneous\n\n\n11 min\n\n\n\n\n\n\n\nJan 2, 2024\n\n\nReviewing Text-To-Speech Tools\n\n\nmiscellaneous\n\n\n17 min\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "posts/projects/pacific_cod/2023_12_07_pacific_cod.html",
-    "href": "posts/projects/pacific_cod/2023_12_07_pacific_cod.html",
-    "title": "Sampling liver samples for RNAseq",
+    "objectID": "posts/projects/pacific_cod/2023_11_02_pacific_cod.html",
+    "href": "posts/projects/pacific_cod/2023_11_02_pacific_cod.html",
+    "title": "Cod Sample Size",
     "section": "",
-    "text": "Started sampling cod liver tissue samples for RNAseq. (excluded samples with intestinal tapeworms) – bolding indicates sampled this morning (~30mg), and then stored at -80*C.\n\n\n\n\n\n\n\n\nTanks\nTemperature Treatment (°C)\nSamples to Seq (4/tank)\n\n\n\n\n1-4\n16\n1-4 | 10-13 | 18-21 | 28-31\n\n\n5-8\n5\n117-120 | 127-129, 131 | 137-140 | 147-150\n\n\n9-12\n0\n37-40 | 47-50 | 57-60 | 67-70\n\n\n13-16\n9\n78-80, 83 | 88, 90-92 | 97-100 | 107-110"
+    "text": "Calculated necessary sample size for cod RNA sequencing, given an assumed coefficient of variation and detectable difference in expression – view document here."
   },
   {
-    "objectID": "posts/projects/pacific_cod/2023_12_14_pacific_cod.html",
-    "href": "posts/projects/pacific_cod/2023_12_14_pacific_cod.html",
-    "title": "Finish pulling/subsampling for cod RNAseq",
+    "objectID": "posts/projects/pacific_cod/2023_12_13_pacific_cod.html",
+    "href": "posts/projects/pacific_cod/2023_12_13_pacific_cod.html",
+    "title": "Samples lists for cod RNAseq and methylation",
     "section": "",
-    "text": "Subsampled the four selected gill samples for RNAseq (in blue below) to retain half of the sample for methylation work later. Pulled the four selected spleen samples (yellow) and set aside whole tissue for RNAseq. Pulled remaining four liver samples (yellow) and subsampled, setting aside ~half of the tissue for RNAseq and retaining the rest.\n\nAlso realized we were missing liver from one other sample we intend to send for RNAseq (sample 128), so pulled and subsampled that as well.\nConsolidated all 80 samples we’re sending for RNAseq in single box, in numerical order and grouped by tissue type, and stored at -80°C (middle freezer, top shelf, box labeled “Pacific Cod RNAseq Samples, Roberts Lab”)."
+    "text": "Compiled spreadsheets for the samples we plan to send for RNAseq and methylation.\nIn the cod experiment we subjected cod to four temperature treatments, with four different tanks in each treatment (total of 16 tanks)\nFor RNAseq we selected:\n\nLiver samples from four individuals from each tank (16 from each temperature treatment, 64 overall) as well as one additional individual from each temperature treatment to fill the sequencing quote for 80 samples. For liver, subsampling to send ~30mg of tissue for RNAseq.\nBlood samples from two individuals in the 0°C treatment (same tank) and two individuals in the 16°C treatment (same tank) (4 blood samples total). Selected from individuals that are already being sequenced with liver samples. For blood, sending full original sample for RNAseq.\nGill samples from two individuals in the 0°C treatment (same tank) and two individuals in the 16°C treatment (same tank) (4 gill samples total). Selected the same four individuals as chosen for blood samples. For gill, subsampling to be able to send same individuals for both RNAseq and methylation.\nSpleen samples from two individuals in the 0°C treatment (same tank) and two individuals in the 16°C treatment (same tank) (4 spleen samples total). Selected the same four individuals as chosen for blood and gill samples. For spleen, sending full original sample for RNAseq.\n\n\n\n\n\n\n\n\n\nTissue\nNum. Samples\nNotes\n\n\n\n\nLiver\n68\n4 per tank, 16 per treatment (plus additional 1 per treatment)\n\n\nBlood\n4\n2 for 0°C, 2 for 16°C\n\n\nGill\n4\n2 for 0°C, 2 for 16°C\n\n\nSpleen\n4\n2 for 0°C, 2 for 16°C\n\n\nTotal:\n80\n\n\n\n\nWhile almost all liver samples have been subsampled and set aside, we still need to pull and subsample the additional 4 liver, subsample all 4 gill, and pull all 4 spleen.\nFor methylation we selected:\n\nLiver samples from two individuals from each tank (8 from each temperature treatment, 32 overall), and exclusively chose samples that are also being sent for RNAseq (for comparison).\nBlood samples from two individuals in the 0°C treatment (same tank) and two individuals in the 16°C treatment (same tank) (4 blood samples total). Selected from individuals that are already being sequenced with liver samples. Since all of the blood sent for RNAseq required full sample volume, can’t send exact same blood samples as sent for RNAseq.\nGill samples from two individuals in the 0°C treatment (same tank) and two individuals in the 16°C treatment (same tank) (4 gill samples total). These are gill subsamples from the same four individuals that are being sent for gill RNAseq.\n\n\n\n\nTissue\nNum. Samples\nNotes\n\n\n\n\nLiver\n32\n2 per tank, 8 per treatment\n\n\nBlood\n4\n2 for 0°C, 2 for 16°C\n\n\nGill\n4\n2 for 0°C, 2 for 16°C\n\n\nTotal:\n40"
+  },
+  {
+    "objectID": "posts/projects/pacific_cod/2024_03_04_RNAseq_QC_trimming.html",
+    "href": "posts/projects/pacific_cod/2024_03_04_RNAseq_QC_trimming.html",
+    "title": "RNAseq data FastQC and trimming",
+    "section": "",
+    "text": "Data recieved from Azenta Feb. 21, 2024 (project 30-943133806) (see Sam’s notebook post).\nEvaluated raw read sequence quality using FastQC (and used MultiQC to visualize all reads simultaneously)\nCode\nRendered code\nIndividual FastQC reports for each sequence are stored here, and you can view the spreadsheet containing read-specific links and metadata here.\n\nMultiQC Report Summary\nCan view full MultiQC report here"
   },
   {
     "objectID": "posts/projects/pacific_cod.html",
     "href": "posts/projects/pacific_cod.html",
     "title": "Pacific Cod",
     "section": "",
-    "text": "Github\n  \n\n  \n  \nGene activity and genetic selection in Pacific cod reared under thermal stress\nJuvenile Pacific cod will be reared in three temperatures under feeding and non-feeding conditions, then an integrated genomic approach will identify genes, gene variants, and epigenetic markers that respond to thermal stress and confer resilience. To complement the genomic approaches and further investigate temperature influences on energy resources, we will perform lipid analyses. This work will inform predictions of genetic selection and molecular response of Pacific cod in the Gulf of Alaska under climate change.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nCategories\n\n\nReading Time\n\n\n\n\n\n\n\n\n\nMar 4, 2024\n\n\nRNAseq data FastQC and trimming\n\n\npacifc-cod\n\n\n1 min\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nSamples lists for cod RNAseq and methylation\n\n\npacifc-cod\n\n\n5 min\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nFinish pulling/subsampling for cod RNAseq\n\n\npacifc-cod\n\n\n1 min\n\n\n\n\n\n\n\nDec 7, 2023\n\n\nSampling liver samples for RNAseq\n\n\npacifc-cod\n\n\n2 min\n\n\n\n\n\n\n\nNov 2, 2023\n\n\nCod Sample Size\n\n\npacifc-cod\n\n\n1 min\n\n\n\n\n\n\n\nOct 13, 2023\n\n\nCod Temp/Growth Analysis\n\n\npacifc-cod\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
+    "text": "Github\n  \n\n  \n  \nGene activity and genetic selection in Pacific cod reared under thermal stress\nJuvenile Pacific cod will be reared in three temperatures under feeding and non-feeding conditions, then an integrated genomic approach will identify genes, gene variants, and epigenetic markers that respond to thermal stress and confer resilience. To complement the genomic approaches and further investigate temperature influences on energy resources, we will perform lipid analyses. This work will inform predictions of genetic selection and molecular response of Pacific cod in the Gulf of Alaska under climate change.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nCategories\n\n\nReading Time\n\n\n\n\n\n\n\n\n\nMar 19, 2024\n\n\nRNAseq data preliminary kallisto and DESeq2\n\n\npacifc-cod\n\n\n1 min\n\n\n\n\n\n\n\nMar 4, 2024\n\n\nRNAseq data FastQC and trimming\n\n\npacifc-cod\n\n\n1 min\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nSamples lists for cod RNAseq and methylation\n\n\npacifc-cod\n\n\n5 min\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nFinish pulling/subsampling for cod RNAseq\n\n\npacifc-cod\n\n\n1 min\n\n\n\n\n\n\n\nDec 7, 2023\n\n\nSampling liver samples for RNAseq\n\n\npacifc-cod\n\n\n2 min\n\n\n\n\n\n\n\nNov 2, 2023\n\n\nCod Sample Size\n\n\npacifc-cod\n\n\n1 min\n\n\n\n\n\n\n\nOct 13, 2023\n\n\nCod Temp/Growth Analysis\n\n\npacifc-cod\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
   }
 ]

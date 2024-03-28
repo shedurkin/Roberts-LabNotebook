@@ -1,0 +1,139 @@
+---
+title: "Learning awk for GNM569"
+author: "Kathleen Durkin"
+date: "2024-03-27"
+categories: ["misc"]
+format:
+  html:
+    toc: true
+engine: knitr
+---
+
+This quarter I'm taking GENOME569, which covers developing bioinformatic workflows for high-throughput sequencing. Today we briefly covered some of the primaries of Unix, and I realized I've never learned awk or written awk commands fro scratch! These are some awk practice problems from the class to hopefully help me get up to speed.\
+
+## Practice file:
+
+grep_sed_example1.txt
+
+```         
+Experiment notes:
+We are using the hg19 genome build
+The cell line is A549
+A549 cells have a KRAS G12C mutation
+Another cell line is MCF7
+```
+
+## grep
+
+### Find the lines that mention "cell":
+
+```{bash, eval=FALSE}
+$ grep "cell" grep_sed_example1.txt
+```
+
+```         
+The cell line is A549
+A549 cells have a KRAS G12C mutation
+Another cell line is MCF7
+```
+
+"cell": This is the regular expression pattern to match. It simply looks for the string "cell" within each line of the file.
+
+### Find the lines that talk about "A549":
+
+```{bash, eval=FALSE}
+$ grep "A549" grep_sed_example1.txt
+```
+
+```         
+The cell line is A549
+A549 cells have a KRAS G12C mutation
+```
+
+"A549": This pattern matches the string "A549" within each line of the file.
+
+### Find the lines that talk about either A549 or MCF7:
+
+```{bash, eval=FALSE}
+$ grep -E "A549|MCF7" grep_sed_example1.txt
+```
+
+```         
+The cell line is A549
+A549 cells have a KRAS G12C mutation
+Another cell line is MCF7
+```
+
+-E: Enables extended regular expressions, allowing the use of the \| (OR) operator.
+
+"A549\|MCF7": This pattern matches lines containing either "A549" or "MCF7".
+
+### Find the lines that end with a cell line id (i.e., A549 or MCF7):
+
+```{bash, eval=FALSE}
+$ grep -E "A549$|MCF7$" grep_sed_example1.txt
+```
+
+```         
+Another cell line is MCF7
+```
+
+-E: Enables extended regular expressions, allowing the use of the \$ anchor to match the end of a line and the use of the \| (OR) operator
+
+"A549\$\|MCF7\$": This pattern matches lines that end (\$) with either "A549" or "MCF7".
+
+## sed
+
+Note that sed will not make a permanent edit to the original file unless you specifically instruct it to do so using the -i option. Default behavior is to just output the modified text to standard output.
+
+### Change instances of A549 to MCF7:
+
+```{bash, eval=FALSE}
+$ sed 's/A549/MCF7/g' grep_sed_example1.txt
+```
+
+```         
+Experiment notes:
+We are using the hg19 genome build
+The cell line is MCF7
+MCF7 cells have a KRAS G12C mutation
+Another cell line is MCF7
+```
+
+s: This is the substitute command in sed, which is used to perform substitutions.
+
+/A549/MCF7/: This is the substitution operation. It finds all occurrences of "A549" and replaces them with "MCF7".
+
+g: This is the global flag, which tells sed to perform the substitution globally within each line, not just the first occurrence.
+
+### Change only the second instance of A549 to A549_LUNG:
+
+### Change instances of A549 to MCF7, but without stating "A549":
+
+```{bash, eval=FALSE}
+$ sed 's/[A-Z][0-9]\{3\}/MCF7/g' grep_sed_example1.txt
+```
+
+```         
+Experiment notes:
+We are using the hg19 genome build
+The cell line is MCF7
+MCF7 cells have a KRAS G12C mutation
+Another cell line is MCF7
+```
+
+\[A-Z\]: Matches any uppercase letter from A to Z.
+
+\[0-9\]: Matches any digit from 0 to 9.
+
+\\{3\\}: Specifies that the previous pattern (digit) should occur exactly three times.
+
+/MCF7/: Replaces the matched pattern with "MCF7".
+
+g: This flag is used for global substitution, ensuring all occurrences within each line are replaced.
+
+### How can I make multiple changes in a single line?
+
+-e: This option allows you to specify multiple sed commands in one line. Each -e flag indicates the beginning of a new sed command.
+
+Then you can just sequentially use the expressions you want to apply!

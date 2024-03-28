@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Kathleen Durkin">
+<meta name="dcterms.date" content="2024-03-27">
 
-<title>Kathleen’s Lab Notebook - Miscellaneous</title>
+<title>Kathleen’s Lab Notebook - Learning awk for GNM569</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,28 +22,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-listing/list.min.js"></script>
-<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -62,40 +97,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -105,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Kathleen’s Lab Notebook</span>
     </a>
   </div>
@@ -116,11 +120,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../daily_log.html" rel="" target="">
+    <a class="nav-link" href="../../../daily_log.html" rel="" target="">
  <span class="menu-text">Daily Notebook Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../projects.html" rel="" target="">
+    <a class="nav-link" href="../../../projects.html" rel="" target="">
  <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item compact">
@@ -144,217 +148,166 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page">
-      <h1 class="title">Miscellaneous</h1>
-                      </div>
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Learning awk for GNM569</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">misc</div>
+              </div>
+                  </div>
   </div>
+    
+  
   <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Kathleen Durkin </p>
+            </div>
     </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 27, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#practice-file" id="toc-practice-file" class="nav-link active" data-scroll-target="#practice-file">Practice file:</a></li>
+  <li><a href="#grep" id="toc-grep" class="nav-link" data-scroll-target="#grep">grep</a>
+  <ul class="collapse">
+  <li><a href="#find-the-lines-that-mention-cell" id="toc-find-the-lines-that-mention-cell" class="nav-link" data-scroll-target="#find-the-lines-that-mention-cell">Find the lines that mention “cell”:</a></li>
+  <li><a href="#find-the-lines-that-talk-about-a549" id="toc-find-the-lines-that-talk-about-a549" class="nav-link" data-scroll-target="#find-the-lines-that-talk-about-a549">Find the lines that talk about “A549”:</a></li>
+  <li><a href="#find-the-lines-that-talk-about-either-a549-or-mcf7" id="toc-find-the-lines-that-talk-about-either-a549-or-mcf7" class="nav-link" data-scroll-target="#find-the-lines-that-talk-about-either-a549-or-mcf7">Find the lines that talk about either A549 or MCF7:</a></li>
+  <li><a href="#find-the-lines-that-end-with-a-cell-line-id-i.e.-a549-or-mcf7" id="toc-find-the-lines-that-end-with-a-cell-line-id-i.e.-a549-or-mcf7" class="nav-link" data-scroll-target="#find-the-lines-that-end-with-a-cell-line-id-i.e.-a549-or-mcf7">Find the lines that end with a cell line id (i.e., A549 or MCF7):</a></li>
+  </ul></li>
+  <li><a href="#sed" id="toc-sed" class="nav-link" data-scroll-target="#sed">sed</a>
+  <ul class="collapse">
+  <li><a href="#change-instances-of-a549-to-mcf7" id="toc-change-instances-of-a549-to-mcf7" class="nav-link" data-scroll-target="#change-instances-of-a549-to-mcf7">Change instances of A549 to MCF7:</a></li>
+  <li><a href="#change-only-the-second-instance-of-a549-to-a549_lung" id="toc-change-only-the-second-instance-of-a549-to-a549_lung" class="nav-link" data-scroll-target="#change-only-the-second-instance-of-a549-to-a549_lung">Change only the second instance of A549 to A549_LUNG:</a></li>
+  <li><a href="#change-instances-of-a549-to-mcf7-but-without-stating-a549" id="toc-change-instances-of-a549-to-mcf7-but-without-stating-a549" class="nav-link" data-scroll-target="#change-instances-of-a549-to-mcf7-but-without-stating-a549">Change instances of A549 to MCF7, but without stating “A549”:</a></li>
+  <li><a href="#how-can-i-make-multiple-changes-in-a-single-line" id="toc-how-can-i-make-multiple-changes-in-a-single-line" class="nav-link" data-scroll-target="#how-can-i-make-multiple-changes-in-a-single-line">How can I make multiple changes in a single line?</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
 
 
-<div class="quarto-about-jolla column-page">
-  <img src="../../images/misc.jpg" class="about-image
-  rectangle " style="width: 15em;">
- <div id="description">
-<p>This is where all of my longer posts that aren’t tied to a specific project will live. Enjoy!</p>
-</div>  
+<p>This quarter I’m taking GENOME569, which covers developing bioinformatic workflows for high-throughput sequencing. Today we briefly covered some of the primaries of Unix, and I realized I’ve never learned awk or written awk commands fro scratch! These are some awk practice problems from the class to hopefully help me get up to speed.<br>
+</p>
+<section id="practice-file" class="level2">
+<h2 class="anchored" data-anchor-id="practice-file">Practice file:</h2>
+<p>grep_sed_example1.txt</p>
+<pre><code>Experiment notes:
+We are using the hg19 genome build
+The cell line is A549
+A549 cells have a KRAS G12C mutation
+Another cell line is MCF7</code></pre>
+</section>
+<section id="grep" class="level2">
+<h2 class="anchored" data-anchor-id="grep">grep</h2>
+<section id="find-the-lines-that-mention-cell" class="level3">
+<h3 class="anchored" data-anchor-id="find-the-lines-that-mention-cell">Find the lines that mention “cell”:</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="st">"cell"</span> grep_sed_example1.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-
-
-
-
-
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-</th>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
-<th>
-Categories
-</th>
-<th>
-Reading Time
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-categories="misc" data-listing-date-sort="1711522800000" data-listing-file-modified-sort="1711583462027" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Learning awk for GNM569" data-listing-filename-sort="2024_03_27_GNM569awk.qmd">
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-<td>
-<span class="listing-date">Mar 27, 2024</span>
-</td>
-<td>
-<a href="../../posts/projects/misc/2024_03_27_GNM569awk.html" class="title listing-title">Learning awk for GNM569</a>
-</td>
-<td>
-<span class="listing-categories">misc</span>
-</td>
-<td>
-<span class="listing-reading-time">3 min</span>
-</td>
-</tr>
-<tr data-index="1" data-categories="miscellaneous" data-listing-date-sort="1709107200000" data-listing-file-modified-sort="1709238649052" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="34" data-listing-title-sort="Oyster Sampling @ Point Whitney -- Lifestage Carryover Project" data-listing-filename-sort="2024_02_28_oyster_sampling.qmd">
-<td>
-<span class="listing-image"><p class="card-img-top"><img src="misc\images\IMG_8128.jpg" style="height: 40px;"  class="thumbnail-image card-img"/></p></span>
-</td>
-<td>
-<span class="listing-date">Feb 28, 2024</span>
-</td>
-<td>
-<a href="../../posts/projects/misc/2024_02_28_oyster_sampling.html" class="title listing-title">Oyster Sampling @ Point Whitney – Lifestage Carryover Project</a>
-</td>
-<td>
-<span class="listing-categories">miscellaneous</span>
-</td>
-<td>
-<span class="listing-reading-time">34 min</span>
-</td>
-</tr>
-<tr data-index="2" data-categories="miscellaneous" data-listing-date-sort="1709081060000" data-listing-file-modified-sort="1709081060086" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-title-sort="Testing out some cool Quarto features" data-listing-filename-sort="2024_02_22_quarto_features.qmd">
-<td>
-<span class="listing-image"><p class="card-img-top"><img src="https://www.fisheries.noaa.gov/s3/styles/full_width/s3/2021-11/Acropora_cervicornis_staghorn_coral.jpg?itok=8sYkq8lb" style="height: 40px;"  class="thumbnail-image card-img"/></p></span>
-</td>
-<td>
-<span class="listing-date">Feb 27, 2024</span>
-</td>
-<td>
-<a href="../../posts/projects/misc/2024_02_22_quarto_features.html" class="title listing-title">Testing out some cool Quarto features</a>
-</td>
-<td>
-<span class="listing-categories">miscellaneous</span>
-</td>
-<td>
-<span class="listing-reading-time">5 min</span>
-</td>
-</tr>
-<tr data-index="3" data-categories="miscellaneous" data-listing-date-sort="1709063287000" data-listing-file-modified-sort="1709063287699" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="Ideas/Questions Log" data-listing-filename-sort="2024_01_30_Ideas.qmd">
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-<td>
-<span class="listing-date">Feb 27, 2024</span>
-</td>
-<td>
-<a href="../../posts/projects/misc/2024_01_30_Ideas.html" class="title listing-title">Ideas/Questions Log</a>
-</td>
-<td>
-<span class="listing-categories">miscellaneous</span>
-</td>
-<td>
-<span class="listing-reading-time">4 min</span>
-</td>
-</tr>
-<tr data-index="4" data-categories="miscellaneous" data-listing-date-sort="1708982385000" data-listing-file-modified-sort="1708982385069" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Materials for oyster sampling 2/28/24" data-listing-filename-sort="2024_02_26_oyster_sampling_materials.qmd">
-<td>
-<span class="listing-image"><p class="card-img-top"><img src="misc\.png" style="height: 40px;"  class="thumbnail-image card-img"/></p></span>
-</td>
-<td>
-<span class="listing-date">Feb 26, 2024</span>
-</td>
-<td>
-<a href="../../posts/projects/misc/2024_02_26_oyster_sampling_materials.html" class="title listing-title">Materials for oyster sampling 2/28/24</a>
-</td>
-<td>
-<span class="listing-categories">miscellaneous</span>
-</td>
-<td>
-<span class="listing-reading-time">1 min</span>
-</td>
-</tr>
-<tr data-index="5" data-categories="miscellaneous" data-listing-date-sort="1708645219000" data-listing-file-modified-sort="1708645219232" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Google sheets template for organizing allllllll the papers" data-listing-filename-sort="2024_02_22_paper_organization.qmd">
-<td>
-<span class="listing-image"><p class="card-img-top"><img src="misc\images\Screenshot (230).png" style="height: 40px;"  class="thumbnail-image card-img"/></p></span>
-</td>
-<td>
-<span class="listing-date">Feb 22, 2024</span>
-</td>
-<td>
-<a href="../../posts/projects/misc/2024_02_22_paper_organization.html" class="title listing-title">Google sheets template for organizing allllllll the papers</a>
-</td>
-<td>
-<span class="listing-categories">miscellaneous</span>
-</td>
-<td>
-<span class="listing-reading-time">3 min</span>
-</td>
-</tr>
-<tr data-index="6" data-categories="misc" data-listing-date-sort="1707379200000" data-listing-file-modified-sort="1707414788953" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Testing bedtools: gff vs bed input file" data-listing-filename-sort="2024_02_08_bedtools_gffvbed.qmd">
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-<td>
-<span class="listing-date">Feb 8, 2024</span>
-</td>
-<td>
-<a href="../../posts/projects/misc/2024_02_08_bedtools_gffvbed.html" class="title listing-title">Testing bedtools: gff vs bed input file</a>
-</td>
-<td>
-<span class="listing-categories">misc</span>
-</td>
-<td>
-<span class="listing-reading-time">2 min</span>
-</td>
-</tr>
-<tr data-index="7" data-categories="miscellaneous" data-listing-date-sort="1704355200000" data-listing-file-modified-sort="1704909516475" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-title-sort="SICB 2024" data-listing-filename-sort="2024_01_02_SICB.qmd">
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-<td>
-<span class="listing-date">Jan 4, 2024</span>
-</td>
-<td>
-<a href="../../posts/projects/misc/2024_01_02_SICB.html" class="title listing-title">SICB 2024</a>
-</td>
-<td>
-<span class="listing-categories">miscellaneous</span>
-</td>
-<td>
-<span class="listing-reading-time">11 min</span>
-</td>
-</tr>
-<tr data-index="8" data-categories="miscellaneous" data-listing-date-sort="1704182400000" data-listing-file-modified-sort="1705449923688" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-title-sort="Reviewing Text-To-Speech Tools" data-listing-filename-sort="2024_01_02_TTS.qmd">
-<td>
-<span class="listing-image"><p class="card-img-top"><img src="..\..\images\Audemic.png" style="height: 40px;"  class="thumbnail-image card-img"/></p></span>
-</td>
-<td>
-<span class="listing-date">Jan 2, 2024</span>
-</td>
-<td>
-<a href="../../posts/projects/misc/2024_01_02_TTS.html" class="title listing-title">Reviewing Text-To-Speech Tools</a>
-</td>
-<td>
-<span class="listing-categories">miscellaneous</span>
-</td>
-<td>
-<span class="listing-reading-time">17 min</span>
-</td>
-</tr>
-</tbody>
-
-</table>
-<div class="listing-no-matching d-none">
-No matching items
+<pre><code>The cell line is A549
+A549 cells have a KRAS G12C mutation
+Another cell line is MCF7</code></pre>
+<p>“cell”: This is the regular expression pattern to match. It simply looks for the string “cell” within each line of the file.</p>
+</section>
+<section id="find-the-lines-that-talk-about-a549" class="level3">
+<h3 class="anchored" data-anchor-id="find-the-lines-that-talk-about-a549">Find the lines that talk about “A549”:</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="st">"A549"</span> grep_sed_example1.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div></main> <!-- /main -->
+<pre><code>The cell line is A549
+A549 cells have a KRAS G12C mutation</code></pre>
+<p>“A549”: This pattern matches the string “A549” within each line of the file.</p>
+</section>
+<section id="find-the-lines-that-talk-about-either-a549-or-mcf7" class="level3">
+<h3 class="anchored" data-anchor-id="find-the-lines-that-talk-about-either-a549-or-mcf7">Find the lines that talk about either A549 or MCF7:</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="st">"A549|MCF7"</span> grep_sed_example1.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>The cell line is A549
+A549 cells have a KRAS G12C mutation
+Another cell line is MCF7</code></pre>
+<p>-E: Enables extended regular expressions, allowing the use of the | (OR) operator.</p>
+<p>“A549|MCF7”: This pattern matches lines containing either “A549” or “MCF7”.</p>
+</section>
+<section id="find-the-lines-that-end-with-a-cell-line-id-i.e.-a549-or-mcf7" class="level3">
+<h3 class="anchored" data-anchor-id="find-the-lines-that-end-with-a-cell-line-id-i.e.-a549-or-mcf7">Find the lines that end with a cell line id (i.e., A549 or MCF7):</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="st">"A549$|MCF7$"</span> grep_sed_example1.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>Another cell line is MCF7</code></pre>
+<p>-E: Enables extended regular expressions, allowing the use of the $ anchor to match the end of a line and the use of the | (OR) operator</p>
+<p>“A549$|MCF7$”: This pattern matches lines that end ($) with either “A549” or “MCF7”.</p>
+</section>
+</section>
+<section id="sed" class="level2">
+<h2 class="anchored" data-anchor-id="sed">sed</h2>
+<p>Note that sed will not make a permanent edit to the original file unless you specifically instruct it to do so using the -i option. Default behavior is to just output the modified text to standard output.</p>
+<section id="change-instances-of-a549-to-mcf7" class="level3">
+<h3 class="anchored" data-anchor-id="change-instances-of-a549-to-mcf7">Change instances of A549 to MCF7:</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sed <span class="st">'s/A549/MCF7/g'</span> grep_sed_example1.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>Experiment notes:
+We are using the hg19 genome build
+The cell line is MCF7
+MCF7 cells have a KRAS G12C mutation
+Another cell line is MCF7</code></pre>
+<p>s: This is the substitute command in sed, which is used to perform substitutions.</p>
+<p>/A549/MCF7/: This is the substitution operation. It finds all occurrences of “A549” and replaces them with “MCF7”.</p>
+<p>g: This is the global flag, which tells sed to perform the substitution globally within each line, not just the first occurrence.</p>
+</section>
+<section id="change-only-the-second-instance-of-a549-to-a549_lung" class="level3">
+<h3 class="anchored" data-anchor-id="change-only-the-second-instance-of-a549-to-a549_lung">Change only the second instance of A549 to A549_LUNG:</h3>
+</section>
+<section id="change-instances-of-a549-to-mcf7-but-without-stating-a549" class="level3">
+<h3 class="anchored" data-anchor-id="change-instances-of-a549-to-mcf7-but-without-stating-a549">Change instances of A549 to MCF7, but without stating “A549”:</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sed <span class="st">'s/[A-Z][0-9]\{3\}/MCF7/g'</span> grep_sed_example1.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>Experiment notes:
+We are using the hg19 genome build
+The cell line is MCF7
+MCF7 cells have a KRAS G12C mutation
+Another cell line is MCF7</code></pre>
+<p>[A-Z]: Matches any uppercase letter from A to Z.</p>
+<p>[0-9]: Matches any digit from 0 to 9.</p>
+<p>\{3\}: Specifies that the previous pattern (digit) should occur exactly three times.</p>
+<p>/MCF7/: Replaces the matched pattern with “MCF7”.</p>
+<p>g: This flag is used for global substitution, ensuring all occurrences within each line are replaced.</p>
+</section>
+<section id="how-can-i-make-multiple-changes-in-a-single-line" class="level3">
+<h3 class="anchored" data-anchor-id="how-can-i-make-multiple-changes-in-a-single-line">How can I make multiple changes in a single line?</h3>
+<p>-e: This option allows you to specify multiple sed commands in one line. Each -e flag indicates the beginning of a new sed command.</p>
+<p>Then you can just sequentially use the expressions you want to apply!</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -490,6 +443,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   } else {
     toggleColorMode(false);
   }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

@@ -20,13 +20,33 @@ format:
 
 #### Wednesday
 
+-   class (GNM569)
+
+-   classwork
+
+    -   [UNIX review](/posts/projects/misc/2024_03_27_GNM569awk.qmd)and troubleshooting issues with accessing git from the genome sciences nexus server; cygwin; and using bash in Rstudio (locally) for GNM569
+
+    -   Videos, chapter reading and quizzes for FISH541
+
 ## **26 March 2024**
 
 #### Tuesday
 
+-   class (FISH541)
+
+-   generating some figures for cod RNAseq data -- a (very late) notebook post(s) coming soon
+
+-   Braiding Sweetgrass,, reading and generating discussion questions for lab meeting on thursday
+
 ## **25 March 2024**
 
 #### Monday
+
+-   somehow missed doing daily posts all last week🤦‍♀️
+
+-   class (GNM569)
+
+-   working on cod RNAseq data analysis -- think I finally understand the steps required for appropriate use of the DESeq2 package!
 
 ## **22 March 2024**
 
@@ -52,37 +72,55 @@ format:
 
 #### Friday
 
+Out
+
 ## **14 March 2024**
 
 #### Thursday
+
+Out
 
 ## **13 March 2024**
 
 #### Wednesday
 
+Out
+
 ## **12 March 2024**
 
 #### Tuesday
+
+Out
 
 ## **11 March 2024**
 
 #### Monday
 
+Out
+
 ## **08 March 2024**
 
 #### Friday
+
+Out
 
 ## **07 March 2024**
 
 #### Thursday
 
+Out
+
 ## **06 March 2024**
 
 #### Wednesday
 
+Out
+
 ## **05 March 2024**
 
 #### Tuesday
+
+-   Proposal writing for FISH521
 
 ## **04 March 2024**
 
