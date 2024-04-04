@@ -1,0 +1,40 @@
+---
+title: "April 2024, Monthly Goals"
+author: "Kathleen Durkin"
+date: "2024-04-04"
+categories: ["monthly goals"]
+format:
+  html
+---
+
+## Reviewing March Goals
+
+I'm out for a little over a week this month (March 6-15), so I have a more limited set of goals
+
+✔️ Write a draft proposal for the oyster project
+
+✔️ Finish DGE analysis for cod project
+
+🟡 Write full methods section draft (both experimental and analysis sections) for the cod manuscript (part of pubathon)
+
+❌ Start a planning document for the oyster project in the same style as Ariana showed us during lab meeting (see [daily post](/posts/daily_logs/2024/February_2024_posts.qmd#february-2024-20))
+
+✔️ Connect with Laura to get details on the cod project's experimental setup/implementation (Rollover from February)
+
+#### Back-burner goals (again)
+
+-   Look into several grants/funding sources that I may want to apply for over the next year or so (GRFP, Fulbright, etc.)
+
+I think March went well! It was definitely a bit less productive that February -- I was out for a bit, and Spring Break-related lab absences meant some work was slowed down. Regardless, I got some through some important stuff for the cod and oyster projects. I wrote a [proposal for the oyster project](https://docs.google.com/document/d/1MRz_vSXEINmXkxV1CS9xZRQf1_rR_5IEXXyaJmXxYcg/edit) (for class), which was really helpful for me to get my current understanding of the project on paper. The project will definitely be changing a bit from what I wrote, but I really appreciated the first step. I've taken the cod RNAseq data through all the basic DGE analysis using DESeq2. Now I need to tackle the GO analysis and look into using WGCNA to examine coexpression. I have probably half of a preliminary methods section of the [cod manuscript](https://docs.google.com/document/d/1CrTyvBxRCPPmQ5h3x3-Bhh3-2bV7tBmfjbXUyEb7ufs/edit) done. I haven't made a planning doc for the oyster experiment, largely because I've still been feeling very unclear on how exactly the project implementation is going to work. Hopefully I'll be able to resolve that this month. Finally, I was able to meet with Laura about the cod project! She had some great suggestions for selecting methylation samples and for doing a more advanced analysis of the RNAseq data!
+
+## April Goals
+
+Now that spring quarter is upon us, I need to start focusing more on degree progress (rather than just project progress). I'm also going to keep my goals conservative, since I'm taking two more time-intensive courses this month.
+
+-   Select my committee members
+
+-   Start masters thesis proposal
+
+-   Perform WGCNA analysis of cod RNAseq data
+
+-   Start a planning document for the oyster project in the same style as Ariana showed us during lab meeting (see [daily post](/posts/daily_logs/2024/February_2024_posts.qmd#february-2024-20)) (rollover)

@@ -1,0 +1,18 @@
+---
+title: "RNAseq data preliminary kallisto and DESeq2"
+author: "Kathleen Durkin"
+date: "2024-03-19"
+categories: ["pacifc-cod"]
+format:
+  html
+---
+
+#### Relevant posts:
+
+Pacific cod RNAseq raw read QC
+
+#### Relevant code:
+
+Raw read QC\
+Kallisto pseudoalignment\
+\

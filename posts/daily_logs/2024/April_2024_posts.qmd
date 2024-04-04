@@ -1,0 +1,129 @@
+---
+title: "April 2024, Daily Log"
+author: "Kathleen Durkin"
+date: "last-modified"
+categories: ["daily log"]
+format:
+  html:
+    toc: true
+---
+
+## 30 April 2024
+
+#### Tuesday
+
+## 29 April 2024
+
+#### Monday
+
+## 26 April 2024
+
+#### Friday
+
+## 25 April 2024
+
+#### Thursday
+
+## 24 April 2024
+
+#### Wednesday
+
+## 23 April 2024
+
+#### Tuesday
+
+## 22 April 2024
+
+#### Monday
+
+## 19 April 2024
+
+#### Friday
+
+## 18 April 2024
+
+#### Thursday
+
+## 17 April 2024
+
+#### Wednesday
+
+## 16 April 2024
+
+#### Tuesday
+
+## 15 April 2024
+
+#### Monday
+
+## 12 April 2024
+
+#### Friday
+
+## 11 April 2024
+
+#### Thursday
+
+## 10 April 2024
+
+#### Wednesday
+
+## 09 April 2024
+
+#### Tuesday
+
+## 08 April 2024
+
+#### Monday
+
+## 05 April 2024
+
+#### Friday
+
+## 04 April 2024
+
+#### Thursday
+
+-   pubathon
+
+-   meeting w/ Steven about oyster experimental setup (see notes [here](https://docs.google.com/document/d/1IgbZgJOcZYKogHhHB1Apst1ihhXzmYLT-fLHrZf0dtc/edit#heading=h.o21bn5ytygqm))
+
+-   class (FISH541)
+
+-   updating lab notebook for start of April (new posts/goals docs)
+
+## 03 April 2024
+
+#### Wednesday
+
+-   class (GNM569)
+
+-   classwork for GNM569
+
+-   classwork for FSH541 -- readings and quiz
+
+-   meeting with Laura about cod DGE analysis --- notes [here](https://docs.google.com/document/d/1IgbZgJOcZYKogHhHB1Apst1ihhXzmYLT-fLHrZf0dtc/edit#heading=h.fukr5muir45g)
+
+-   making some final edits to cod methylation sample list
+
+-   lab trivia night :)
+
+## 02 April 2024
+
+#### Tuesday
+
+-   FSH541 lecture
+
+-   FSH541 lab
+
+-   some writing on cod manuscript
+
+## 01 April 2024
+
+#### Monday
+
+-   class (GNM569)
+
+-   adding experimental metadata to cod DGE analysis and generating some PCAs with size included
+
+-   classwork for FSH541 (reading, quiz)
