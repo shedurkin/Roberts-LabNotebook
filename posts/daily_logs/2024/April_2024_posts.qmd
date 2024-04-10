@@ -72,13 +72,27 @@ format:
 
 #### Tuesday
 
+-   classwork for FSH541
+
+-   FSH541 Lecture
+
+-   FSH541 Lab
+
+-   more working on GNM569 project, at this point
+
 ## 08 April 2024
 
 #### Monday
 
+-   Literally just grinding the GNM569 project all day, at this point I'm seeing lines of bash script in my sleep
+
 ## 05 April 2024
 
 #### Friday
+
+-   E5 molecular meeting, committed to continuing the sRNA analyses with new merged reads
+
+-   Grinding the GNM569 project for *6 hours straight* and making almost no progress because the TA is being singularly unhelpful 😭
 
 ## 04 April 2024
 
