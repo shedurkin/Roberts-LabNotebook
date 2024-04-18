@@ -690,49 +690,49 @@
     "href": "posts/daily_logs/2024/April_2024_posts.html#april-2024-9",
     "title": "April 2024, Daily Log",
     "section": "17 April 2024",
-    "text": "17 April 2024\n\nWednesday"
+    "text": "17 April 2024\n\nWednesday\n\nclass (GNM569)\nfinished mirdeep2 run with merged reads for E5. Tried to get started on the P.meandrina rerun, but I can’t access the reads online? Something’s up with Owl and I can’t access things stored there 😳\ngot references for everything I cited to far in cod manuscript and inserted the in-text citations\nupdated the readme file for the cod repo\nmore working on GO enrichment analysis for the cod rnaseq data. I figured out the annotation/making an ID-GO database step, now I’m trying to do the actual enrichment (nothing about this on the lab website, so trying to look through Matt’s code)\nreading and quiz for FSH541"
   },
   {
     "objectID": "posts/daily_logs/2024/April_2024_posts.html#april-2024-10",
     "href": "posts/daily_logs/2024/April_2024_posts.html#april-2024-10",
     "title": "April 2024, Daily Log",
     "section": "16 April 2024",
-    "text": "16 April 2024\n\nTuesday"
+    "text": "16 April 2024\n\nTuesday\n\nclasswork (FSH541)\nupdating cod methylation sample list again, per my discussion with Laura yesterday\nclass (FSH541)\nlab class (FSH541) – working on getting a HiSat workflow for aligning cod rnaseq reads to genome (note I already have a transcriptome pseduoaliignment and count matrix using kallisto, this is just an exercise)\nmariners game tonight with the cohort!"
   },
   {
     "objectID": "posts/daily_logs/2024/April_2024_posts.html#april-2024-11",
     "href": "posts/daily_logs/2024/April_2024_posts.html#april-2024-11",
     "title": "April 2024, Daily Log",
     "section": "15 April 2024",
-    "text": "15 April 2024\n\nMonday"
+    "text": "15 April 2024\n\nMonday\n\nclass (GNM569)\nrerunning BLAST and miRdeep2 with merged P.eve reads. Having some trouble with miRdeep2, I think the merging introduced reads &lt;17bp long, which miRdeep2 doesn’t like.\nmeeting with laura about cod project. discussed adjusting samples selected for methylation to ensure full representation of genetic diversity."
   },
   {
     "objectID": "posts/daily_logs/2024/April_2024_posts.html#april-2024-12",
     "href": "posts/daily_logs/2024/April_2024_posts.html#april-2024-12",
     "title": "April 2024, Daily Log",
     "section": "12 April 2024",
-    "text": "12 April 2024\n\nFriday"
+    "text": "12 April 2024\n\nFriday\nOut"
   },
   {
     "objectID": "posts/daily_logs/2024/April_2024_posts.html#april-2024-13",
     "href": "posts/daily_logs/2024/April_2024_posts.html#april-2024-13",
     "title": "April 2024, Daily Log",
     "section": "11 April 2024",
-    "text": "11 April 2024\n\nThursday"
+    "text": "11 April 2024\n\nThursday\n\nclass (FSH 541)\nclasswork\nstarting on rerunning E5 sRNAseq analyses using merged reads. starting with P.eve."
   },
   {
     "objectID": "posts/daily_logs/2024/April_2024_posts.html#april-2024-14",
     "href": "posts/daily_logs/2024/April_2024_posts.html#april-2024-14",
     "title": "April 2024, Daily Log",
     "section": "10 April 2024",
-    "text": "10 April 2024\n\nWednesday"
+    "text": "10 April 2024\n\nWednesday\n\nGNM569 class\nlast edits for GNM569 project, I’m just pushing what I have and walking the heck away🥴\nclasswork for FSH541\nmethods writing for cod manuscript"
   },
   {
     "objectID": "posts/daily_logs/2024/April_2024_posts.html#april-2024-15",
     "href": "posts/daily_logs/2024/April_2024_posts.html#april-2024-15",
     "title": "April 2024, Daily Log",
     "section": "09 April 2024",
-    "text": "09 April 2024\n\nTuesday\n\nclasswork for FSH541\nFSH541 Lecture\nFSH541 Lab\nmore working on GNM569 project, at this point"
+    "text": "09 April 2024\n\nTuesday\n\nclasswork for FSH541\nFSH541 Lecture\nFSH541 Lab\nmore working on GNM569 project – at this point I actually never want to look at a terminal window again, so…. this class may be having the wrong effect on me lol"
   },
   {
     "objectID": "posts/daily_logs/2024/April_2024_posts.html#april-2024-16",
@@ -1229,7 +1229,7 @@
     "href": "daily_log.html",
     "title": "Daily Logs and Monthly Goals",
     "section": "",
-    "text": "April 2024, Daily Log\n\n\n\n\n\n\n\n\n\nApr 9, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nApril 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nApr 4, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nMarch 2024, Daily Log\n\n\n\n\n\n\n\n\n\nMar 27, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nMarch 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nMar 4, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFebruary 2024, Daily Log\n\n\n\n\n\n\n\n\n\nFeb 29, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFebruary 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nFeb 1, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJanuary 2024, Daily Log\n\n\n\n\n\n\n\n\n\nJan 31, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJanuary 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nJan 1, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nDecember 2023, Daily Log\n\n\n\n\n\n\n\n\n\nDec 29, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nDecember 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nDec 5, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nNovember 2023, Daily Log\n\n\n\n\n\n\n\n\n\nNov 30, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nNovember 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nNov 3, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nOctober 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nOct 18, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nOctober 2023, Daily Log\n\n\n\n\n\n\n\n\n\nOct 1, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFormatting digital lab notebook\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFirst post\n\n\n\n\n\n\n\n\n\nSep 28, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\nNo matching items"
+    "text": "April 2024, Daily Log\n\n\n\n\n\n\n\n\n\nApr 17, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nApril 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nApr 4, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nMarch 2024, Daily Log\n\n\n\n\n\n\n\n\n\nMar 27, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nMarch 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nMar 4, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFebruary 2024, Daily Log\n\n\n\n\n\n\n\n\n\nFeb 29, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFebruary 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nFeb 1, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJanuary 2024, Daily Log\n\n\n\n\n\n\n\n\n\nJan 31, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJanuary 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nJan 1, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nDecember 2023, Daily Log\n\n\n\n\n\n\n\n\n\nDec 29, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nDecember 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nDec 5, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nNovember 2023, Daily Log\n\n\n\n\n\n\n\n\n\nNov 30, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nNovember 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nNov 3, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nOctober 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nOct 18, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nOctober 2023, Daily Log\n\n\n\n\n\n\n\n\n\nOct 1, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFormatting digital lab notebook\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFirst post\n\n\n\n\n\n\n\n\n\nSep 28, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/daily_logs/2023/December_2023_goals.html",
@@ -1306,7 +1306,7 @@
     "href": "posts/daily_logs/2024/April_2024_goals.html#april-goals",
     "title": "April 2024, Monthly Goals",
     "section": "April Goals",
-    "text": "April Goals\nNow that spring quarter is upon us, I need to start focusing more on degree progress (rather than just project progress). I’m also going to keep my goals conservative, since I’m taking two more time-intensive courses this month.\n\nSelect my committee members\nStart masters thesis proposal\nPerform WGCNA analysis of cod RNAseq data\nStart a planning document for the oyster project in the same style as Ariana showed us during lab meeting (see daily post) (rollover)"
+    "text": "April Goals\nNow that spring quarter is upon us, I need to start focusing more on degree progress (rather than just project progress). I’m also going to keep my goals conservative, since I’m taking two more time-intensive courses this month.\n\nSelect my committee members\nStart masters thesis proposal\nPerform GO enrichment analysis of cod RNAseq data\nStart a planning document for the oyster project in the same style as Ariana showed us during lab meeting (see daily post) (rollover)"
   },
   {
     "objectID": "posts/daily_logs/2024/February_2024_goals.html",

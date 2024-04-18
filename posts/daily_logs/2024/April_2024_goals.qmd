@@ -35,6 +35,6 @@ Now that spring quarter is upon us, I need to start focusing more on degree prog
 
 -   Start masters thesis proposal
 
--   Perform WGCNA analysis of cod RNAseq data
+-   Perform GO enrichment analysis of cod RNAseq data
 
 -   Start a planning document for the oyster project in the same style as Ariana showed us during lab meeting (see [daily post](/posts/daily_logs/2024/February_2024_posts.qmd#february-2024-20)) (rollover)
