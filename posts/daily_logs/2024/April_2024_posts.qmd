@@ -48,25 +48,69 @@ format:
 
 #### Wednesday
 
+-   class (GNM569)
+
+-   finished mirdeep2 run with merged reads for E5. Tried to get started on the P.meandrina rerun, but I can't access the reads online? Something's up with Owl and I can't access things stored there 😳
+
+-   got references for everything I cited to far in cod manuscript and inserted the in-text citations
+
+-   updated the readme file for the cod repo
+
+-   more working on GO enrichment analysis for the cod rnaseq data. I figured out the annotation/making an ID-GO database step, now I'm trying to do the actual enrichment (nothing about this on the lab website, so trying to look through Matt's code)
+
+-   reading and quiz for FSH541
+
 ## 16 April 2024
 
 #### Tuesday
+
+-   classwork (FSH541)
+
+-   updating cod methylation sample list again, per my discussion with Laura yesterday
+
+-   class (FSH541)
+
+-   lab class (FSH541) -- working on getting a HiSat workflow for aligning cod rnaseq reads to genome (note I already have a transcriptome pseduoaliignment and count matrix using kallisto, this is just an exercise)
+
+-   mariners game tonight with the cohort!
 
 ## 15 April 2024
 
 #### Monday
 
+-   class (GNM569)
+
+-   rerunning BLAST and miRdeep2 with merged P.eve reads. Having some trouble with miRdeep2, I think the merging introduced reads \<17bp long, which miRdeep2 doesn't like.
+
+-   meeting with laura about cod project. discussed adjusting samples selected for methylation to ensure full representation of genetic diversity.
+
 ## 12 April 2024
 
 #### Friday
+
+Out
 
 ## 11 April 2024
 
 #### Thursday
 
+-   class (FSH 541)
+
+-   classwork
+
+-   starting on rerunning E5 sRNAseq analyses using merged reads. starting with P.eve.
+
 ## 10 April 2024
 
 #### Wednesday
+
+-   GNM569 class
+
+-   last edits for GNM569 project, I'm just pushing what I have and walking the heck away🥴
+
+-   classwork for FSH541
+
+-   methods writing for cod manuscript
 
 ## 09 April 2024
 
@@ -78,7 +122,7 @@ format:
 
 -   FSH541 Lab
 
--   more working on GNM569 project, at this point
+-   more working on GNM569 project -- at this point I actually never want to look at a terminal window again, so.... this class may be having the wrong effect on me lol
 
 ## 08 April 2024
 
