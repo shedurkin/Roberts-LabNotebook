@@ -36,13 +36,35 @@ format:
 
 #### Monday
 
+-   class -- GNM569
+
+-   E5 analyses ... still...
+
+-   finished GNM569 project2
+
+-   classwork for FSH541 tomorrow
+
 ## 19 April 2024
 
 #### Friday
 
+-   E5 meeting
+
+-   continued rerunning analyses -- realized I didn't use the curated miRBase+cnidarians database from Jill, so I actually need to re-rerun pretty much everything 😭
+
+-   classwork for GNM569
+
 ## 18 April 2024
 
 #### Thursday
+
+-   pubathon
+
+-   class (FSH541)
+
+-   lab meeting, talked about figures
+
+-   continued rerunning E5 sRNA analyses
 
 ## 17 April 2024
 
