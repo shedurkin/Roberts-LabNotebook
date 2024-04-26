@@ -24,9 +24,23 @@ format:
 
 #### Thursday
 
+-   trying to make some figures for cod DEGs
+
+-   class (fsh541) -- Laura wasour instructor today!
+
+-   lab meeting
+
+-   [tissue subsampling](../../projects/pacific_cod/2024_04_25_methylation_subsampling.qmd) (cod liver tissue, compiling methylation samples)
+
 ## 24 April 2024
 
 #### Wednesday
+
+-   class, GNM569 (last class!)
+
+-   continuing cod HISAT run
+
+-   applied for some QSCI TA positions in the fall quarter
 
 ## 23 April 2024
 
