@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Kathleen Durkin">
+<meta name="dcterms.date" content="2024-04-29">
 
-<title>Kathleen’s Lab Notebook - Pacific Cod</title>
+<title>Kathleen’s Lab Notebook - Tissue subsampling for WGBS (cont.)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +25,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-listing/list.min.js"></script>
-<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -62,40 +63,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -105,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Kathleen’s Lab Notebook</span>
     </a>
   </div>
@@ -116,11 +86,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../daily_log.html" rel="" target="">
+    <a class="nav-link" href="../../../daily_log.html" rel="" target="">
  <span class="menu-text">Daily Notebook Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../projects.html" rel="" target="">
+    <a class="nav-link" href="../../../projects.html" rel="" target="">
  <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item compact">
@@ -145,11 +115,34 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page">
-      <h1 class="title">Pacific Cod</h1>
-                      </div>
+      <h1 class="title">Tissue subsampling for WGBS (cont.)</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">pacifc-cod</div>
+              </div>
+                  </div>
   </div>
+    
+  
   <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Kathleen Durkin </p>
+            </div>
     </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 29, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
@@ -160,211 +153,61 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-about-trestles column-page">
-  <div class="about-entity">
-    <img src="../../images/Pacific_cod.jpg" class="about-image
-  rounded " style="width: 20em;">
-
-    <div class="about-links">
-  <a href="https://github.com/RobertsLab/project-cod-temperature" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
-</div>
-  </div>
-  <div class="about-contents"><div id="description">
-<p><strong>Gene activity and genetic selection in Pacific cod reared under thermal stress</strong></p>
-<p>Juvenile Pacific cod will be reared in three temperatures under feeding and non-feeding conditions, then an integrated genomic approach will identify genes, gene variants, and epigenetic markers that respond to thermal stress and confer resilience. To complement the genomic approaches and further investigate temperature influences on energy resources, we will perform lipid analyses. This work will inform predictions of genetic selection and molecular response of Pacific cod in the Gulf of Alaska under climate change.</p>
-</div></div>
-</div>
-
-
-
-
-
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-</th>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
-<th>
-Categories
-</th>
-<th>
-Reading Time
-</th>
+<p>We’re planning on sending out samples for whole genome bisulfite sequencing (WGBS) to examine methlation in our cod samples. Today I finished compiling the blood and gill tissue and prepped for shipping tomorrow. (See previous post on <a href="../../../posts/projects/pacific_cod/2024_04_25_methylation_subsampling.html">subsampling the liver tissue samples</a>)</p>
+<p><a href="https://docs.google.com/spreadsheets/d/19CqqS3wOhmG7drw163v7evUylRWwOjBOdvuR-y0RqF0/edit#gid=155247170">Sample list</a></p>
+<section id="sample-selection" class="level3">
+<h3 class="anchored" data-anchor-id="sample-selection">Sample selection</h3>
+<p>All samples selected for methylation work are a subset of samples that were RNA sequenced. In sample selection we took consideration of RNA extraction and sequence quality, tank, genetic variability, size, and ZP3 gene haplotype.</p>
+<p>40 total samples</p>
+<ul>
+<li><p>32 liver (8/treatment)</p></li>
+<li><p>4 blood (2 from 0*C, 2 from 16*C)</p></li>
+<li><p>4 gill (2 from 0*C, 2 from 16*C)</p></li>
+</ul>
+</section>
+<section id="subsampling-protocol" class="level3">
+<h3 class="anchored" data-anchor-id="subsampling-protocol">Subsampling protocol</h3>
+<p>Sterilized all tools in 10% bleach, then rinsed in DI water before use. Sterilized between every use.</p>
+<p>Tissue quantity recommended by Azenta for DNA extraction from whole tissue is 10-30mg. For blood samples we just send the full blood volume. For gill tissues, which have already been subsampled for RNAseq work, all of the samples had &gt;10mg of tissue left so the entire remaining tissue was sampled for WGBS. This means that, for both the blood and gill samples, no tissue remained after subsampling for WGBS.</p>
+<p>All samples were stored in a box labelled “P.cod samples for methylation” with the date (04/25/2024) and my initials (KMD) in the middle -80 freezer in FTR.</p>
+</section>
+<section id="wgbs-samples" class="level3">
+<h3 class="anchored" data-anchor-id="wgbs-samples">WGBS Samples</h3>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td><strong>0C treatment</strong></td>
+<td><strong>16C treatment</strong></td>
 </tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-categories="pacifc-cod" data-listing-date-sort="1714374000000" data-listing-file-modified-sort="1714426011989" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Tissue subsampling for WGBS (cont.)" data-listing-filename-sort="2024_04_29_methylation_subsampling.qmd">
-<td>
-<span class="listing-image"><p class="card-img-top"><img src="pacific_cod\images\IMG_8692.jpg" style="height: 40px;"  class="thumbnail-image card-img"/></p></span>
-</td>
-<td>
-<span class="listing-date">Apr 29, 2024</span>
-</td>
-<td>
-<a href="../../posts/projects/pacific_cod/2024_04_29_methylation_subsampling.html" class="title listing-title">Tissue subsampling for WGBS (cont.)</a>
-</td>
-<td>
-<span class="listing-categories">pacifc-cod</span>
-</td>
-<td>
-<span class="listing-reading-time">2 min</span>
-</td>
+<tr class="even">
+<td>50 B</td>
+<td>12 B</td>
 </tr>
-<tr data-index="1" data-categories="pacifc-cod" data-listing-date-sort="1714028400000" data-listing-file-modified-sort="1714090613769" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="Tissue subsampling for WGBS (methylation work)" data-listing-filename-sort="2024_04_25_methylation_subsampling.qmd">
-<td>
-<span class="listing-image"><p class="card-img-top"><img src="pacific_cod\images\IMG_8631.jpg" style="height: 40px;"  class="thumbnail-image card-img"/></p></span>
-</td>
-<td>
-<span class="listing-date">Apr 25, 2024</span>
-</td>
-<td>
-<a href="../../posts/projects/pacific_cod/2024_04_25_methylation_subsampling.html" class="title listing-title">Tissue subsampling for WGBS (methylation work)</a>
-</td>
-<td>
-<span class="listing-categories">pacifc-cod</span>
-</td>
-<td>
-<span class="listing-reading-time">4 min</span>
-</td>
+<tr class="odd">
+<td>59 B</td>
+<td>18 B</td>
 </tr>
-<tr data-index="2" data-categories="pacifc-cod" data-listing-date-sort="1710831600000" data-listing-file-modified-sort="1711561510639" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="RNAseq data preliminary kallisto and DESeq2" data-listing-filename-sort="2024_03_19_RNAseq_prelim_kallistoDESeq2.qmd">
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-<td>
-<span class="listing-date">Mar 19, 2024</span>
-</td>
-<td>
-<a href="../../posts/projects/pacific_cod/2024_03_19_RNAseq_prelim_kallistoDESeq2.html" class="title listing-title">RNAseq data preliminary kallisto and DESeq2</a>
-</td>
-<td>
-<span class="listing-categories">pacifc-cod</span>
-</td>
-<td>
-<span class="listing-reading-time">1 min</span>
-</td>
+<tr class="even">
+<td>50 G</td>
+<td>12 G</td>
 </tr>
-<tr data-index="3" data-categories="pacifc-cod" data-listing-date-sort="1709539200000" data-listing-file-modified-sort="1709668973142" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="RNAseq data FastQC and trimming" data-listing-filename-sort="2024_03_04_RNAseq_QC_trimming.qmd">
-<td>
-<span class="listing-image"><p class="card-img-top"><img src="pacific_cod\images\fastqc-status-check-heatmap.png" style="height: 40px;"  class="thumbnail-image card-img"/></p></span>
-</td>
-<td>
-<span class="listing-date">Mar 4, 2024</span>
-</td>
-<td>
-<a href="../../posts/projects/pacific_cod/2024_03_04_RNAseq_QC_trimming.html" class="title listing-title">RNAseq data FastQC and trimming</a>
-</td>
-<td>
-<span class="listing-categories">pacifc-cod</span>
-</td>
-<td>
-<span class="listing-reading-time">1 min</span>
-</td>
-</tr>
-<tr data-index="4" data-categories="pacifc-cod" data-listing-date-sort="1702454400000" data-listing-file-modified-sort="1703115702289" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-title-sort="Samples lists for cod RNAseq and methylation" data-listing-filename-sort="2023_12_13_pacific_cod.qmd">
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-<td>
-<span class="listing-date">Dec 13, 2023</span>
-</td>
-<td>
-<a href="../../posts/projects/pacific_cod/2023_12_13_pacific_cod.html" class="title listing-title">Samples lists for cod RNAseq and methylation</a>
-</td>
-<td>
-<span class="listing-categories">pacifc-cod</span>
-</td>
-<td>
-<span class="listing-reading-time">5 min</span>
-</td>
-</tr>
-<tr data-index="5" data-categories="pacifc-cod" data-listing-date-sort="1702454400000" data-listing-file-modified-sort="1702584572969" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Finish pulling/subsampling for cod RNAseq" data-listing-filename-sort="2023_12_14_pacific_cod.qmd">
-<td>
-<span class="listing-image"><p class="card-img-top"><img src="..\..\images\cod_RNAseq_samples_sheet_partial.png" style="height: 40px;"  class="thumbnail-image card-img"/></p></span>
-</td>
-<td>
-<span class="listing-date">Dec 13, 2023</span>
-</td>
-<td>
-<a href="../../posts/projects/pacific_cod/2023_12_14_pacific_cod.html" class="title listing-title">Finish pulling/subsampling for cod RNAseq</a>
-</td>
-<td>
-<span class="listing-categories">pacifc-cod</span>
-</td>
-<td>
-<span class="listing-reading-time">1 min</span>
-</td>
-</tr>
-<tr data-index="6" data-categories="pacifc-cod" data-listing-date-sort="1701936000000" data-listing-file-modified-sort="1702501610346" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Sampling liver samples for RNAseq" data-listing-filename-sort="2023_12_07_pacific_cod.qmd">
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-<td>
-<span class="listing-date">Dec 7, 2023</span>
-</td>
-<td>
-<a href="../../posts/projects/pacific_cod/2023_12_07_pacific_cod.html" class="title listing-title">Sampling liver samples for RNAseq</a>
-</td>
-<td>
-<span class="listing-categories">pacifc-cod</span>
-</td>
-<td>
-<span class="listing-reading-time">2 min</span>
-</td>
-</tr>
-<tr data-index="7" data-categories="pacifc-cod" data-listing-date-sort="1698908400000" data-listing-file-modified-sort="1702492720784" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Cod Sample Size" data-listing-filename-sort="2023_11_02_pacific_cod.qmd">
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-<td>
-<span class="listing-date">Nov 2, 2023</span>
-</td>
-<td>
-<a href="../../posts/projects/pacific_cod/2023_11_02_pacific_cod.html" class="title listing-title">Cod Sample Size</a>
-</td>
-<td>
-<span class="listing-categories">pacifc-cod</span>
-</td>
-<td>
-<span class="listing-reading-time">1 min</span>
-</td>
-</tr>
-<tr data-index="8" data-categories="pacifc-cod" data-listing-date-sort="1697180400000" data-listing-file-modified-sort="1702492024996" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Cod Temp/Growth Analysis" data-listing-filename-sort="2023_10_13_pacific_cod.qmd">
-<td>
-<span class="listing-image"><p class="card-img-top"><img src="https://raw.githubusercontent.com/RobertsLab/project-cod-temperature/main/output/01_temp-size-analysis/01_sizeVtreatment-all-dates.png" style="height: 40px;"  class="thumbnail-image card-img"/></p></span>
-</td>
-<td>
-<span class="listing-date">Oct 13, 2023</span>
-</td>
-<td>
-<a href="../../posts/projects/pacific_cod/2023_10_13_pacific_cod.html" class="title listing-title">Cod Temp/Growth Analysis</a>
-</td>
-<td>
-<span class="listing-categories">pacifc-cod</span>
-</td>
-<td>
-<span class="listing-reading-time">1 min</span>
-</td>
+<tr class="odd">
+<td>59 G</td>
+<td>18 G</td>
 </tr>
 </tbody>
-
 </table>
-<div class="listing-no-matching d-none">
-No matching items
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/IMG_8692.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Final set of liver, blood, and gill samples prepped to send for WGBS</figcaption>
+</figure>
 </div>
-</div></main> <!-- /main -->
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -500,6 +343,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   } else {
     toggleColorMode(false);
   }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

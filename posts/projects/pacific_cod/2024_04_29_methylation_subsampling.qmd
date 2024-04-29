@@ -1,0 +1,44 @@
+---
+title: "Tissue subsampling for WGBS (cont.)"
+author: "Kathleen Durkin"
+date: "2024-04-29"
+categories: ["pacifc-cod"]
+format:
+  html
+---
+
+We're planning on sending out samples for whole genome bisulfite sequencing (WGBS) to examine methlation in our cod samples. Today I finished compiling the blood and gill tissue and prepped for shipping tomorrow. (See previous post on [subsampling the liver tissue samples](./2024_04_25_methylation_subsampling.qmd))
+
+[Sample list](https://docs.google.com/spreadsheets/d/19CqqS3wOhmG7drw163v7evUylRWwOjBOdvuR-y0RqF0/edit#gid=155247170)
+
+### Sample selection
+
+All samples selected for methylation work are a subset of samples that were RNA sequenced. In sample selection we took consideration of RNA extraction and sequence quality, tank, genetic variability, size, and ZP3 gene haplotype.
+
+40 total samples
+
+-   32 liver (8/treatment)
+
+-   4 blood (2 from 0\*C, 2 from 16\*C)
+
+-   4 gill (2 from 0\*C, 2 from 16\*C)
+
+### Subsampling protocol
+
+Sterilized all tools in 10% bleach, then rinsed in DI water before use. Sterilized between every use.
+
+Tissue quantity recommended by Azenta for DNA extraction from whole tissue is 10-30mg. For blood samples we just send the full blood volume. For gill tissues, which have already been subsampled for RNAseq work, all of the samples had \>10mg of tissue left so the entire remaining tissue was sampled for WGBS. This means that, for both the blood and gill samples, no tissue remained after subsampling for WGBS.
+
+All samples were stored in a box labelled "P.cod samples for methylation" with the date (04/25/2024) and my initials (KMD) in the middle -80 freezer in FTR.
+
+### WGBS Samples
+
+|                  |                   |
+|------------------|-------------------|
+| **0C treatment** | **16C treatment** |
+| 50 B             | 12 B              |
+| 59 B             | 18 B              |
+| 50 G             | 12 G              |
+| 59 G             | 18 G              |
+
+![Final set of liver, blood, and gill samples prepped to send for WGBS](images/IMG_8692.jpg)
