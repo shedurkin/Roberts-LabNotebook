@@ -27,7 +27,7 @@ All samples selected for methylation work are a subset of samples that were RNA 
 
 Sterilized all tools in 10% bleach, then rinsed in DI water before use. Sterilized between every use.
 
-Tissue quantity recommended by Azenta for DNA extraction from whole tissue is 10-30mg. For blood samples we just send the full blood volume. For gill tissues, which have already been subsampled for RNAseq work, all of the samples had \>10mg of tissue left so the entire remaining tissue was sampled for WGBS. This means that, for both the blood and gill samples, no tissue remained after subsampling for WGBS.
+Tissue quantity recommended by Azenta for DNA extraction from whole tissue is 10-30mg. For blood samples we just send the full blood volume. For gill tissues, which have already been subsampled for RNAseq work, all of the samples had \<10mg of tissue left so the entire remaining tissue was sampled for WGBS. This means that, for both the blood and gill samples, no tissue remained after subsampling for WGBS.
 
 All samples were stored in a box labelled "P.cod samples for methylation" with the date (04/25/2024) and my initials (KMD) in the middle -80 freezer in FTR.
 
