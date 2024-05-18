@@ -21,13 +21,12 @@ Rendered code:
 
 ## Summary
 
-|             |                       |                                |
-|-------------|-----------------------|--------------------------------|
-|             | **ShortStack**        | **miRdeep2**                   |
-| **Species** | **Identified miRNAs** | **miRNAs with database match** |
-| A.pulchra   | 38                    | 24                             |
-| P.evermanni | 46                    | 9                              |
-| P.meandrina | 36                    | 9                              |
+|             |                       |                                |                                                  |                                                                           |
+|------------|----------------|-----------------------|---------------------|----------------------------|
+| **Species** | **Identified miRNAs** | **miRNAs with database match** | **Database matches \*not\* classified as miRNA** | **\# of ShortStack miRNAs that are also classified as miRNA by miRdeep2** |
+| A.pulchra   | 38                    | 24                             | 44                                               | 36                                                                        |
+| P.evermanni | 46                    | 9                              | 27                                               | 30                                                                        |
+| P.meandrina | 36                    | 9                              | 20                                               | 27                                                                        |
 
 I used bedtools intersectBed to find shared sequences in the ShortStack and miRdeep2 mature miRNA output files.
 
