@@ -1,0 +1,33 @@
+---
+title: "May 2024, Monthly Goals"
+author: "Kathleen Durkin"
+date: "2024-05-13"
+categories: ["monthly goals"]
+format:
+  html
+---
+
+## Reviewing April Goals
+
+🟡 Select my committee members
+
+❌ Start masters thesis proposal
+
+✔️ Perform GO annotation analysis of cod RNAseq data
+
+❌ Start a planning document for the oyster project in the same style as Ariana showed us during lab meeting (see [daily post](/posts/daily_logs/2024/February_2024_posts.qmd#february-2024-20)) (rollover)
+
+Not a great month, goal-wise, but still a productive one! I have a short list of committee members, I just want to get some more feedback from other grad students before I send out emails. I haven't started a thesis proposal, honestly I just forgot about this goal and have been focused on the cod manuscript. I *have* made serious progress on the cod project! I've taken the data all the way through DESeq2, GO annotation, and enrichment analysis using the transcriptome reference (kallisto), and I've taken it through DESeq2 with the genome reference (HISAT2/featureCounts)! We also selected and sent a bunch of samples for methylation analysis, but we got back some really low DNA quality scores, so we need to figure out what to do about those. Finally, I still haven't done any oyster project planning 😔. My class schedule for the first half of the quarter prevented me from joining Steven and Ariana at the hatchery all last month, so I'm still kind of out of the loop.\
+I also did a fair bit of work for the E5 project in April that I wasn't planning on, rerunning analysis under new read trimming/merging parameters.
+
+## May Goals
+
+-   Finalize committee selection and send out email requests
+
+-   Pick which project(s) will comprise thesis proposal and discuss proposal with Steven
+
+-   Finish GO annotation and functional enrichment analysis for cod, genome-based analysis
+
+-   Read at least 10 papers to investigate the DEGs and functionally enriched processes from the cod data
+
+-   Start a planning document for the oyster project in the same style as Ariana showed us during lab meeting (see [daily post](/posts/daily_logs/2024/February_2024_posts.qmd#february-2024-20)) (rollover-over)

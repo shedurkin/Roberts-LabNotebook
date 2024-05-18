@@ -1,0 +1,125 @@
+---
+title: "May 2024, Daily Log"
+author: "Kathleen Durkin"
+date: "last-modified"
+categories: ["daily log"]
+format:
+  html:
+    toc: true
+---
+
+## 31 May 2024
+
+#### **Friday**
+
+## **30 May 2024**
+
+#### **Thursday**
+
+## **29 May 2024**
+
+#### **Wednesday**
+
+## **28 May 2024**
+
+#### **Tuesday**
+
+## **27 May 2024**
+
+#### **Monday**
+
+## **24 May 2024**
+
+#### **Friday**
+
+## **23 May 2024**
+
+#### **Thursday**
+
+## **22 May 2024**
+
+#### **Wednesday**
+
+## **21 May 2024**
+
+#### **Tuesday**
+
+## **20 May 2024**
+
+#### **Monday**
+
+## **17 May 2024**
+
+#### **Friday**
+
+E5 meeting
+
+Worked most of the day on [comparing the shortstack and mirdeep2 outputs](../../projects/E5_coral/2024_05_17_shortstack_mirdeep2_comparisons.qmd) for E5 deepdive
+
+## **16 May 2024**
+
+#### **Thursday**
+
+-   class (FSH541) -- teaching an ncRNA lesson! Lesson plan [here](https://docs.google.com/document/d/1Px9CNOBD8hfKftuug1kMhxLychdUmH-6ouWlX5XUgh0/edit)
+
+-   lab meeting -- preparing for open house this weekend!
+
+-   generated [summaries and visualizations of shortstack outputs](../../projects/E5_coral/2024_05_16_shortstack_visualizations.qmd) for E5 deep dive
+
+## **15 May 2024**
+
+#### **Wednesday**
+
+## **14 May 2024**
+
+#### **Tuesday**
+
+-   Union picketing
+
+-   class (FSH541)
+
+-   union sit in & prep for teaching class on thursday
+
+## **13 May 2024**
+
+#### **Monday**
+
+-   Finally did monthly goals and got back on making daily log entries
+
+-   met with Laura about cod project, discussed possible alternate directions given the poor methylation DNA extractions; different analysis avenues after using HISAT2/featureCounts
+
+-   realized that I never downloaded the read data for sample 92, and neither did Laura, so now that Owl is dead we're not sure how to access it. Reached out to Sam about it ([github issue](https://github.com/RobertsLab/resources/issues/1853))
+
+-   classwork for fish541. Also need to finish lesson planning for Thursday
+
+## **10 May 2024**
+
+#### **Friday**
+
+## **09 May 2024**
+
+#### **Thursday**
+
+## **08 May 2024**
+
+#### **Wednesday**
+
+## **07 May 2024**
+
+#### **Tuesday**
+
+## **06 May 2024**
+
+#### **Monday**
+
+## **03 May 2024**
+
+#### **Friday**
+
+## **02 May 2024**
+
+#### **Thursday**
+
+## **01 May 2024**
+
+#### **Wednesday**

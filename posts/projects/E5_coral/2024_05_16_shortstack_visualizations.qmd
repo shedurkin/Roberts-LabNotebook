@@ -1,0 +1,54 @@
+---
+title: "Summarizing and visualizing ShortStack outputs"
+author: "Kathleen Durkin"
+date: "2024-05-16"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+engine: knitr
+---
+
+Rendered code:
+
+[A. pulchra](https://github.com/urol-e5/deep-dive/blob/main/D-Apul/code/13.2.1-Apul-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase.md)
+
+[P. evermanni](https://github.com/urol-e5/deep-dive/blob/main/E-Peve/code/08.2-Peve-sRNAseq-ShortStack-31bp-fastp-merged.md)
+
+[P. meandrina](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/13.2.1-Pmea-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase.md)
+
+## Summary
+
+|             |                       |                                |
+|-------------|-----------------------|--------------------------------|
+|             | **ShortStack**        | **miRdeep2**                   |
+| **Species** | **Identified miRNAs** | **miRNAs with database match** |
+| A.pulchra   | 38                    | 24                             |
+| P.evermanni | 46                    | 9                              |
+| P.meandrina | 36                    | 9                              |
+
+It looks like all of the ShortStack miRNAs with database matches are matching the annoated cnidarian miRNAs curated by Jill, not standard miRBase entries. These curated cnidarian known miRNAs are almost exclusively from *Acropora* and *Stylophora* species, so it makes sense that *Acropora pulchra* has many more database matches than the other species.
+
+## A. pulchra
+
+![](https://github.com/urol-e5/deep-dive/blob/main/D-Apul/output/13.2.1-Apul-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase/figures/Apul_ShortStack_miRNA_histogram.png?raw=true)
+
+![](https://github.com/urol-e5/deep-dive/blob/main/D-Apul/output/13.2.1-Apul-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase/figures/Apul_ShortStack_dbmatch_histogram.png?raw=true)
+
+![](https://github.com/urol-e5/deep-dive/blob/main/D-Apul/output/13.2.1-Apul-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase/figures/Apul_ShortStack_venn.png?raw=true)
+
+## P. meandrina
+
+![](https://github.com/urol-e5/deep-dive/blob/main/E-Peve/output/08.2-Peve-sRNAseq-ShortStack-31bp-fastp-merged/figures/Peve_ShortStack_miRNA_histogram.png?raw=true)
+
+![](https://github.com/urol-e5/deep-dive/blob/main/E-Peve/output/08.2-Peve-sRNAseq-ShortStack-31bp-fastp-merged/figures/Peve_ShortStack_dbmatch_histogram.png?raw=true)
+
+![](https://github.com/urol-e5/deep-dive/blob/main/E-Peve/output/08.2-Peve-sRNAseq-ShortStack-31bp-fastp-merged/figures/Peve_ShortStack_venn.png?raw=true)
+
+## P. evermanni
+
+![](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/output/13.2.1-Pmea-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase/figures/Pmea_ShortStack_miRNA_histogram.png?raw=true)
+
+![](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/output/13.2.1-Pmea-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase/figures/Pmea_ShortStack_dbmatch_histogram.png?raw=true)
+
+![](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/output/13.2.1-Pmea-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase/figures/Pmea_ShortStack_venn.png?raw=true)

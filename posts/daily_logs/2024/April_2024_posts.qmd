@@ -1,7 +1,7 @@
 ---
 title: "April 2024, Daily Log"
 author: "Kathleen Durkin"
-date: "last-modified"
+date: "2024-04-30"
 categories: ["daily log"]
 format:
   html:

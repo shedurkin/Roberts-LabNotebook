@@ -1,0 +1,104 @@
+---
+title: "Comparing ShortStack outputs to miRdeep2"
+author: "Kathleen Durkin"
+date: "2024-05-17"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+engine: knitr
+---
+
+Both ShortStack and miRdeep2 are programs for identifying both known and novel miRNAs from a dataset based on an input database of known miRNAs and on expected miRNA size and precursor structures. However, they're giving pretty different output counts. Today I want to look at how much overlap there is in identified miRNAs between the two.
+
+Rendered code:
+
+[A. pulchra](https://github.com/urol-e5/deep-dive/blob/main/D-Apul/code/17-Apul-ShortStack-miRdeep2-comparison.md)
+
+[P. evermanni](https://github.com/urol-e5/deep-dive/blob/main/E-Peve/code/17-Peve-ShortStack-miRdeep2-comparison.md)
+
+[P. meandrina](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/17-Pmea-ShortStack-miRdeep2-comparison.md)
+
+## Summary
+
+|             |                       |                                |
+|-------------|-----------------------|--------------------------------|
+|             | **ShortStack**        | **miRdeep2**                   |
+| **Species** | **Identified miRNAs** | **miRNAs with database match** |
+| A.pulchra   | 38                    | 24                             |
+| P.evermanni | 46                    | 9                              |
+| P.meandrina | 36                    | 9                              |
+
+I used bedtools intersectBed to find shared sequences in the ShortStack and miRdeep2 mature miRNA output files.
+
+## Notes
+
+Interestingly, in all three of the species I saw an example of an miRNA identified by ShortStack that matched *two* loci identified as miRNAs by miRdeep2.
+
+In one of these examples (A.pulchra), the mature miRNA sequences for both the miRdeep2 miRNAs were identical, but the *precursor* sequences were different -- could this be an example of two different precursors that are processed into the same miRNA?
+
+```         
+NC_058072.1_Acropora_millepora_isolate_JS-1_chromosome_7_Amil_v2.1_whole_genome_shotgun_sequence_295614 12623.6     -   24755   24435   0   320 no  -   tca-miR-11646-3p_MIMAT0045620_Tribolium_castaneum_miR-11646-3p  -   -   ugggugucaucuauuauguuuu  aacauaaaagauggcacc  ugggugucaucuauuauguuuuugcuuguuaaaacauaaaagauggcacc  NC_058072.1_Acropora_millepora_isolate_JS-1_chromosome_7_Amil_v2.1_whole_genome_shotgun_sequence:19030617..19030667:+
+
+NC_058072.1_Acropora_millepora_isolate_JS-1_chromosome_7_Amil_v2.1_whole_genome_shotgun_sequence_295613 1.1     -   24449   24435   14  0   no  -   tca-miR-11646-3p_MIMAT0045620_Tribolium_castaneum_miR-11646-3p  -   -   ugggugucaucuauuauguuuu  aauguaacaaaauugacggccaga    aauguaacaaaauugacggccagaagccguacguauguagaaaauguggggugagugccugggugucaucuauuauguuuu   NC_058072.1_Acropora_millepora_isolate_JS-1_chromosome_7_Amil_v2.1_whole_genome_shotgun_sequence:19030558..19030639:+
+
+
+mature miRNA sequences for these two loci:
+ugggugucaucuauuauguuuu
+ugggugucaucuauuauguuuu
+
+
+precursor miRNA sequences for these two loci:
+ugggugucaucuauuauguuuuugcuuguuaaaacauaaaagauggcacc
+aauguaacaaaauugacggccagaagccguacguauguagaaaauguggggugagugccugggugucaucuauuauguuuu
+```
+
+In the other two cases (P.evermanni and P.meandrina) the pairs of loci had very similar precursor sequences and *reversed* mature and star sequences! In other words, the mature miRNA sequence for one is almost identical to the miRNA\* sequence of the other, and vice versa!
+
+P. evermanni:
+
+```         
+Porites_evermani_scaffold_334_234019    5.6     -   969 686 0   283 yes -   gga-miR-12259-5p_MIMAT0050009_Gallus_gallus_miR-12259-5p    -   -   ugcagguacaguuauaaggu    accuuauaacuguaccugccaa  ugcagguacaguuauaagguccccuugguggaccuuauaacuguaccugccaa   Porites_evermani_scaffold_334:153573..153626:-
+
+Porites_evermani_scaffold_334_233889    5.5     -   111 96  0   15  yes -   cpi-miR-9592-5p_MIMAT0037980_Chrysemys_picta_miR-9592-5p    -   -   gaccuuauaacuguaccugc    gcagguacaguuauaaggucc   gcagguacaguuauaagguccaccaaggggaccuuauaacuguaccugc   Porites_evermani_scaffold_334:153576..153625:+
+
+
+mature miRNA sequences for these two loci:
+ugcagguacaguuauaaggu
+gaccuuauaacuguaccugc
+
+
+miRNA* sequences for these two loci:
+accuuauaacuguaccugccaa
+gcagguacaguuauaaggucc
+
+
+precursor miRNA sequences for these two loci:
+ugcagguacaguuauaagguccccuugguggaccuuauaacuguaccugccaa
+gcagguacaguuauaagguccaccaaggggaccuuauaacuguaccugc
+```
+
+P. meandrina:
+
+```         
+Pocillopora_meandrina_HIv1___Sc0000000_1750 6153        -   12060   11275   0   785 yes -   hsa-miR-2117_MIMAT0011162_Homo_sapiens_miR-2117 -   -   uguucucucugcaguaagcaugu augcuugcuguaaagagaacuug uguucucucugcaguaagcauguuuugacaugcuugcuguaaagagaacuug    Pocillopora_meandrina_HIv1___Sc0000000:818048..818100:+
+
+Pocillopora_meandrina_HIv1___Sc0000000_34562    10      -   11  9   0   2   yes -   egr-miR-153-5p_MIMAT0037428_Echinococcus_granulosus_miR-153-5p  -   -   augcuuacugcagagagaacaug aaguucucuuuacagcaagcaugucaaa    aaguucucuuuacagcaagcaugucaaaacaugcuuacugcagagagaacaug   Pocillopora_meandrina_HIv1___Sc0000000:818046..818099:-
+
+
+mature miRNA sequences for these two loci:
+uguucucucugcaguaagcaugu
+augcuuacugcagagagaacaug
+
+
+miRNA* sequences for these two loci:
+augcuugcuguaaagagaacuug
+aaguucucuuuacagcaagcaugucaaa
+
+
+precursor miRNA sequences for these two loci:
+uguucucucugcaguaagcauguuuugacaugcuugcuguaaagagaacuug
+aaguucucuuuacagcaagcaugucaaaacaugcuuacugcagagagaacaug
+```
+
+Could this just be a case of miRdeep2 incorrectly distinguishing the mature and star sequences for one of these loci?
