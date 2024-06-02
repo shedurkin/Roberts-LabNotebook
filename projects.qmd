@@ -13,6 +13,7 @@ listing:
   sort-ui: false
   filter-ui: false
   fields: [image, title]
+  feed: true
 page-layout: full
 title-block-banner: true
 ---
