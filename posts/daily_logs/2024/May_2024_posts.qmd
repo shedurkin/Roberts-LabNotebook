@@ -12,41 +12,79 @@ format:
 
 #### **Friday**
 
+-   E5 meeting
+
+-   looking at figure options for E5
+
 ## **30 May 2024**
 
 #### **Thursday**
+
+-   pubathon
+
+-   editing blast parameters for miRNAs
+
+-   fsh541, last class
+
+-   lab meeting, prepping for hackathon
+
+-   generating pairwise distance matrix to compare E5 miRNA sequence similarity and generate related figures
 
 ## **29 May 2024**
 
 #### **Wednesday**
 
+-   GRFP info session
+
+-   more work on id'ing conserved mirnas and investigating their database matches
+
 ## **28 May 2024**
 
 #### **Tuesday**
+
+-   fsh541 class, presentation
+
+-   cleaned up p.cod github repo and updated readme for fsh541 lab submission
+
+-   started identifying conserved miRNAs for E5 deep dive
 
 ## **27 May 2024**
 
 #### **Monday**
 
+memorial day
+
+finished methods write up for FSH541 creative product
+
 ## **24 May 2024**
 
 #### **Friday**
+
+making presentations for fsh541 next week
 
 ## **23 May 2024**
 
 #### **Thursday**
 
+pubathon, class, lab meeting, meeting w pacific cod project group
+
 ## **22 May 2024**
 
 #### **Wednesday**
+
+finished functional annotation and enrichment of genome-based analysis
 
 ## **21 May 2024**
 
 #### **Tuesday**
 
+class and lab
+
 ## **20 May 2024**
 
 #### **Monday**
+
+classwork for fsh541
 
 ## **17 May 2024**
 
