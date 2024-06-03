@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Kathleen&#39;s Lab Notebook</title>
+<link>https://shedurkin.github.io/Roberts-LabNotebook/projects.html</link>
+<atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/projects.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.3.433</generator>
+<lastBuildDate>Mon, 03 Jun 2024 18:19:44 GMT</lastBuildDate>
+<item>
+  <title>E5 Coral</title>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="quarto-about-jolla column-page">
+  <img src="https://shedurkin.github.io/Roberts-LabNotebook/images/E5-Coral-Logo-Dark-Small.png" class="about-image
+  rectangle " style="width: 15em;">
+ <div id="description">
+<p>The E5 Coral project is a collaboration between six labs at six U.S. universities, and uses reef-building corals as a model system to test the connections between physiological, epigenetic, and metabolic states, and predict how population and community dynamics are influenced by epigenetically-modulated phenotypes. Learn more at the <a href="https://e5coral.org/">project website</a>!</p>
+</div> 
+  <hr class="about-sep">
+   <div class="about-links">
+  <a href="https://github.com/urol-e5" class="about-link" rel="" target="">
+    <i class="bi bi-github"></i>
+     <span class="about-link-text">Github</span>
+  </a>
+</div>
+</div>
+
+
+
+
+
+
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+</th>
+<th>
+Date
+</th>
+<th>
+Title
+</th>
+<th>
+Categories
+</th>
+<th>
+Reading Time
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-categories="E5-coral" data-listing-date-sort="1715929200000" data-listing-file-modified-sort="1715994144758" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-title-sort="Comparing ShortStack outputs to miRdeep2" data-listing-filename-sort="2024_05_17_shortstack_mirdeep2_comparisons.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2024_05_17_shortstack_mirdeep2_comparisons.html --></span>
+</td>
+<td>
+<span class="listing-date">May 17, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/E5_coral/2024_05_17_shortstack_mirdeep2_comparisons.html" class="title listing-title">Comparing ShortStack outputs to miRdeep2</a>
+</td>
+<td>
+<span class="listing-categories">E5-coral</span>
+</td>
+<td>
+<span class="listing-reading-time">7 min</span>
+</td>
+</tr>
+<tr data-index="1" data-categories="E5-coral" data-listing-date-sort="1715842800000" data-listing-file-modified-sort="1715992876606" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Summarizing and visualizing ShortStack outputs" data-listing-filename-sort="2024_05_16_shortstack_visualizations.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html --></span>
+</td>
+<td>
+<span class="listing-date">May 16, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html" class="title listing-title">Summarizing and visualizing ShortStack outputs</a>
+</td>
+<td>
+<span class="listing-categories">E5-coral</span>
+</td>
+<td>
+<span class="listing-reading-time">2 min</span>
+</td>
+</tr>
+<tr data-index="2" data-categories="E5-coral" data-listing-date-sort="1707292800000" data-listing-file-modified-sort="1711583505443" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-title-sort="Generating a genes fasta for P. evermanni" data-listing-filename-sort="2024_02_07_Peve_transcriptome.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2024_02_07_Peve_transcriptome.html --></span>
+</td>
+<td>
+<span class="listing-date">Feb 7, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/E5_coral/2024_02_07_Peve_transcriptome.html" class="title listing-title">Generating a genes fasta for P. evermanni</a>
+</td>
+<td>
+<span class="listing-categories">E5-coral</span>
+</td>
+<td>
+<span class="listing-reading-time">7 min</span>
+</td>
+</tr>
+<tr data-index="3" data-categories="E5-coral" data-listing-date-sort="1707206400000" data-listing-file-modified-sort="1707421872450" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="RNAseq abundance quantification (A.Pulchra, P.evermanni, P.meandrina)" data-listing-filename-sort="2024_02_06_RNAseq_kallisto.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2024_02_06_RNAseq_kallisto.html --></span>
+</td>
+<td>
+<span class="listing-date">Feb 6, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/E5_coral/2024_02_06_RNAseq_kallisto.html" class="title listing-title">RNAseq abundance quantification (A.Pulchra, P.evermanni, P.meandrina)</a>
+</td>
+<td>
+<span class="listing-categories">E5-coral</span>
+</td>
+<td>
+<span class="listing-reading-time">3 min</span>
+</td>
+</tr>
+<tr data-index="4" data-categories="E5-coral" data-listing-date-sort="1706688000000" data-listing-file-modified-sort="1706825073165" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="P.evermanni RNAseq kallisto debugging" data-listing-filename-sort="2024_01_31_Peve_kallisto.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2024_01_31_Peve_kallisto.html --></span>
+</td>
+<td>
+<span class="listing-date">Jan 31, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/E5_coral/2024_01_31_Peve_kallisto.html" class="title listing-title">P.evermanni RNAseq kallisto debugging</a>
+</td>
+<td>
+<span class="listing-categories">E5-coral</span>
+</td>
+<td>
+<span class="listing-reading-time">3 min</span>
+</td>
+</tr>
+<tr data-index="5" data-categories="E5-coral" data-listing-date-sort="1701763200000" data-listing-file-modified-sort="1702493743748" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-title-sort="P.meandrina sRNA: miRdeep2 and 3 species sRNA comparison" data-listing-filename-sort="2023_12_05_E5_coral.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2023_12_05_E5_coral.html --></span>
+</td>
+<td>
+<span class="listing-date">Dec 5, 2023</span>
+</td>
+<td>
+<a href="../../posts/projects/E5_coral/2023_12_05_E5_coral.html" class="title listing-title">P.meandrina sRNA: miRdeep2 and 3 species sRNA comparison</a>
+</td>
+<td>
+<span class="listing-categories">E5-coral</span>
+</td>
+<td>
+<span class="listing-reading-time">13 min</span>
+</td>
+</tr>
+<tr data-index="6" data-categories="E5-coral" data-listing-date-sort="1701331200000" data-listing-file-modified-sort="1702493147072" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="P.meandrina sRNA: MirMachine, ShortStack" data-listing-filename-sort="2023_11_30_E5_coral.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2023_11_30_E5_coral.html --></span>
+</td>
+<td>
+<span class="listing-date">Nov 30, 2023</span>
+</td>
+<td>
+<a href="../../posts/projects/E5_coral/2023_11_30_E5_coral.html" class="title listing-title">P.meandrina sRNA: MirMachine, ShortStack</a>
+</td>
+<td>
+<span class="listing-categories">E5-coral</span>
+</td>
+<td>
+<span class="listing-reading-time">1 min</span>
+</td>
+</tr>
+<tr data-index="7" data-categories="E5-coral" data-listing-date-sort="1699948800000" data-listing-file-modified-sort="1702493095500" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="P.meandrina sRNA: trimming, miRTrace, BLASTn" data-listing-filename-sort="2023_11_14_E5_coral.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2023_11_14_E5_coral.html --></span>
+</td>
+<td>
+<span class="listing-date">Nov 14, 2023</span>
+</td>
+<td>
+<a href="../../posts/projects/E5_coral/2023_11_14_E5_coral.html" class="title listing-title">P.meandrina sRNA: trimming, miRTrace, BLASTn</a>
+</td>
+<td>
+<span class="listing-categories">E5-coral</span>
+</td>
+<td>
+<span class="listing-reading-time">1 min</span>
+</td>
+</tr>
+</tbody>
+
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div> ]]></description>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</guid>
+  <pubDate>Mon, 03 Jun 2024 18:19:44 GMT</pubDate>
+</item>
+<item>
+  <title>Pacific Cod</title>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="quarto-about-trestles column-page">
+  <div class="about-entity">
+    <img src="https://shedurkin.github.io/Roberts-LabNotebook/images/Pacific_cod.jpg" class="about-image
+  rounded " style="width: 20em;">
+
+    <div class="about-links">
+  <a href="https://github.com/RobertsLab/project-cod-temperature" class="about-link" rel="" target="">
+    <i class="bi bi-github"></i>
+     <span class="about-link-text">Github</span>
+  </a>
+</div>
+  </div>
+  <div class="about-contents"><div id="description">
+<p><strong>Gene activity and genetic selection in Pacific cod reared under thermal stress</strong></p>
+<p>Juvenile Pacific cod will be reared in three temperatures under feeding and non-feeding conditions, then an integrated genomic approach will identify genes, gene variants, and epigenetic markers that respond to thermal stress and confer resilience. To complement the genomic approaches and further investigate temperature influences on energy resources, we will perform lipid analyses. This work will inform predictions of genetic selection and molecular response of Pacific cod in the Gulf of Alaska under climate change.</p>
+</div></div>
+</div>
+
+
+
+
+
+
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+</th>
+<th>
+Date
+</th>
+<th>
+Title
+</th>
+<th>
+Categories
+</th>
+<th>
+Reading Time
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-categories="pacifc-cod" data-listing-date-sort="1714374000000" data-listing-file-modified-sort="1715372877164" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Tissue subsampling for WGBS (cont.)" data-listing-filename-sort="2024_04_29_methylation_subsampling.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_cod/2024_04_29_methylation_subsampling.html --></span>
+</td>
+<td>
+<span class="listing-date">Apr 29, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/pacific_cod/2024_04_29_methylation_subsampling.html" class="title listing-title">Tissue subsampling for WGBS (cont.)</a>
+</td>
+<td>
+<span class="listing-categories">pacifc-cod</span>
+</td>
+<td>
+<span class="listing-reading-time">2 min</span>
+</td>
+</tr>
+<tr data-index="1" data-categories="pacifc-cod" data-listing-date-sort="1714028400000" data-listing-file-modified-sort="1714090613769" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="Tissue subsampling for WGBS (methylation work)" data-listing-filename-sort="2024_04_25_methylation_subsampling.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_cod/2024_04_25_methylation_subsampling.html --></span>
+</td>
+<td>
+<span class="listing-date">Apr 25, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/pacific_cod/2024_04_25_methylation_subsampling.html" class="title listing-title">Tissue subsampling for WGBS (methylation work)</a>
+</td>
+<td>
+<span class="listing-categories">pacifc-cod</span>
+</td>
+<td>
+<span class="listing-reading-time">4 min</span>
+</td>
+</tr>
+<tr data-index="2" data-categories="pacifc-cod" data-listing-date-sort="1710831600000" data-listing-file-modified-sort="1711561510639" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="RNAseq data preliminary kallisto and DESeq2" data-listing-filename-sort="2024_03_19_RNAseq_prelim_kallistoDESeq2.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_cod/2024_03_19_RNAseq_prelim_kallistoDESeq2.html --></span>
+</td>
+<td>
+<span class="listing-date">Mar 19, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/pacific_cod/2024_03_19_RNAseq_prelim_kallistoDESeq2.html" class="title listing-title">RNAseq data preliminary kallisto and DESeq2</a>
+</td>
+<td>
+<span class="listing-categories">pacifc-cod</span>
+</td>
+<td>
+<span class="listing-reading-time">1 min</span>
+</td>
+</tr>
+<tr data-index="3" data-categories="pacifc-cod" data-listing-date-sort="1709539200000" data-listing-file-modified-sort="1709668973142" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="RNAseq data FastQC and trimming" data-listing-filename-sort="2024_03_04_RNAseq_QC_trimming.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_cod/2024_03_04_RNAseq_QC_trimming.html --></span>
+</td>
+<td>
+<span class="listing-date">Mar 4, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/pacific_cod/2024_03_04_RNAseq_QC_trimming.html" class="title listing-title">RNAseq data FastQC and trimming</a>
+</td>
+<td>
+<span class="listing-categories">pacifc-cod</span>
+</td>
+<td>
+<span class="listing-reading-time">1 min</span>
+</td>
+</tr>
+<tr data-index="4" data-categories="pacifc-cod" data-listing-date-sort="1702454400000" data-listing-file-modified-sort="1703115702289" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-title-sort="Samples lists for cod RNAseq and methylation" data-listing-filename-sort="2023_12_13_pacific_cod.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_cod/2023_12_13_pacific_cod.html --></span>
+</td>
+<td>
+<span class="listing-date">Dec 13, 2023</span>
+</td>
+<td>
+<a href="../../posts/projects/pacific_cod/2023_12_13_pacific_cod.html" class="title listing-title">Samples lists for cod RNAseq and methylation</a>
+</td>
+<td>
+<span class="listing-categories">pacifc-cod</span>
+</td>
+<td>
+<span class="listing-reading-time">5 min</span>
+</td>
+</tr>
+<tr data-index="5" data-categories="pacifc-cod" data-listing-date-sort="1702454400000" data-listing-file-modified-sort="1702584572969" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Finish pulling/subsampling for cod RNAseq" data-listing-filename-sort="2023_12_14_pacific_cod.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_cod/2023_12_14_pacific_cod.html --></span>
+</td>
+<td>
+<span class="listing-date">Dec 13, 2023</span>
+</td>
+<td>
+<a href="../../posts/projects/pacific_cod/2023_12_14_pacific_cod.html" class="title listing-title">Finish pulling/subsampling for cod RNAseq</a>
+</td>
+<td>
+<span class="listing-categories">pacifc-cod</span>
+</td>
+<td>
+<span class="listing-reading-time">1 min</span>
+</td>
+</tr>
+<tr data-index="6" data-categories="pacifc-cod" data-listing-date-sort="1701936000000" data-listing-file-modified-sort="1702501610346" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Sampling liver samples for RNAseq" data-listing-filename-sort="2023_12_07_pacific_cod.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_cod/2023_12_07_pacific_cod.html --></span>
+</td>
+<td>
+<span class="listing-date">Dec 7, 2023</span>
+</td>
+<td>
+<a href="../../posts/projects/pacific_cod/2023_12_07_pacific_cod.html" class="title listing-title">Sampling liver samples for RNAseq</a>
+</td>
+<td>
+<span class="listing-categories">pacifc-cod</span>
+</td>
+<td>
+<span class="listing-reading-time">2 min</span>
+</td>
+</tr>
+<tr data-index="7" data-categories="pacifc-cod" data-listing-date-sort="1698908400000" data-listing-file-modified-sort="1702492720784" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Cod Sample Size" data-listing-filename-sort="2023_11_02_pacific_cod.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_cod/2023_11_02_pacific_cod.html --></span>
+</td>
+<td>
+<span class="listing-date">Nov 2, 2023</span>
+</td>
+<td>
+<a href="../../posts/projects/pacific_cod/2023_11_02_pacific_cod.html" class="title listing-title">Cod Sample Size</a>
+</td>
+<td>
+<span class="listing-categories">pacifc-cod</span>
+</td>
+<td>
+<span class="listing-reading-time">1 min</span>
+</td>
+</tr>
+<tr data-index="8" data-categories="pacifc-cod" data-listing-date-sort="1697180400000" data-listing-file-modified-sort="1702492024996" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Cod Temp/Growth Analysis" data-listing-filename-sort="2023_10_13_pacific_cod.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_cod/2023_10_13_pacific_cod.html --></span>
+</td>
+<td>
+<span class="listing-date">Oct 13, 2023</span>
+</td>
+<td>
+<a href="../../posts/projects/pacific_cod/2023_10_13_pacific_cod.html" class="title listing-title">Cod Temp/Growth Analysis</a>
+</td>
+<td>
+<span class="listing-categories">pacifc-cod</span>
+</td>
+<td>
+<span class="listing-reading-time">1 min</span>
+</td>
+</tr>
+</tbody>
+
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div> ]]></description>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod.html</guid>
+  <pubDate>Mon, 03 Jun 2024 18:19:44 GMT</pubDate>
+</item>
+<item>
+  <title>Miscellaneous</title>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="quarto-about-jolla column-page">
+  <img src="https://shedurkin.github.io/Roberts-LabNotebook/images/misc.jpg" class="about-image
+  rectangle " style="width: 15em;">
+ <div id="description">
+<p>This is where all of my longer posts that aren’t tied to a specific project will live. Enjoy!</p>
+</div>  
+</div>
+
+
+
+
+
+
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+</th>
+<th>
+Date
+</th>
+<th>
+Title
+</th>
+<th>
+Categories
+</th>
+<th>
+Reading Time
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-categories="misc" data-listing-date-sort="1711522800000" data-listing-file-modified-sort="1711583462027" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Learning awk for GNM569" data-listing-filename-sort="2024_03_27_GNM569awk.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2024_03_27_GNM569awk.html --></span>
+</td>
+<td>
+<span class="listing-date">Mar 27, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/misc/2024_03_27_GNM569awk.html" class="title listing-title">Learning awk for GNM569</a>
+</td>
+<td>
+<span class="listing-categories">misc</span>
+</td>
+<td>
+<span class="listing-reading-time">3 min</span>
+</td>
+</tr>
+<tr data-index="1" data-categories="miscellaneous" data-listing-date-sort="1709107200000" data-listing-file-modified-sort="1709238649052" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="34" data-listing-title-sort="Oyster Sampling @ Point Whitney -- Lifestage Carryover Project" data-listing-filename-sort="2024_02_28_oyster_sampling.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2024_02_28_oyster_sampling.html --></span>
+</td>
+<td>
+<span class="listing-date">Feb 28, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/misc/2024_02_28_oyster_sampling.html" class="title listing-title">Oyster Sampling @ Point Whitney – Lifestage Carryover Project</a>
+</td>
+<td>
+<span class="listing-categories">miscellaneous</span>
+</td>
+<td>
+<span class="listing-reading-time">34 min</span>
+</td>
+</tr>
+<tr data-index="2" data-categories="miscellaneous" data-listing-date-sort="1709081060000" data-listing-file-modified-sort="1709081060086" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-title-sort="Testing out some cool Quarto features" data-listing-filename-sort="2024_02_22_quarto_features.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2024_02_22_quarto_features.html --></span>
+</td>
+<td>
+<span class="listing-date">Feb 27, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/misc/2024_02_22_quarto_features.html" class="title listing-title">Testing out some cool Quarto features</a>
+</td>
+<td>
+<span class="listing-categories">miscellaneous</span>
+</td>
+<td>
+<span class="listing-reading-time">5 min</span>
+</td>
+</tr>
+<tr data-index="3" data-categories="miscellaneous" data-listing-date-sort="1709063287000" data-listing-file-modified-sort="1709063287699" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="Ideas/Questions Log" data-listing-filename-sort="2024_01_30_Ideas.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2024_01_30_Ideas.html --></span>
+</td>
+<td>
+<span class="listing-date">Feb 27, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/misc/2024_01_30_Ideas.html" class="title listing-title">Ideas/Questions Log</a>
+</td>
+<td>
+<span class="listing-categories">miscellaneous</span>
+</td>
+<td>
+<span class="listing-reading-time">4 min</span>
+</td>
+</tr>
+<tr data-index="4" data-categories="miscellaneous" data-listing-date-sort="1708982385000" data-listing-file-modified-sort="1708982385069" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Materials for oyster sampling 2/28/24" data-listing-filename-sort="2024_02_26_oyster_sampling_materials.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2024_02_26_oyster_sampling_materials.html --></span>
+</td>
+<td>
+<span class="listing-date">Feb 26, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/misc/2024_02_26_oyster_sampling_materials.html" class="title listing-title">Materials for oyster sampling 2/28/24</a>
+</td>
+<td>
+<span class="listing-categories">miscellaneous</span>
+</td>
+<td>
+<span class="listing-reading-time">1 min</span>
+</td>
+</tr>
+<tr data-index="5" data-categories="miscellaneous" data-listing-date-sort="1708645219000" data-listing-file-modified-sort="1708645219232" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Google sheets template for organizing allllllll the papers" data-listing-filename-sort="2024_02_22_paper_organization.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2024_02_22_paper_organization.html --></span>
+</td>
+<td>
+<span class="listing-date">Feb 22, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/misc/2024_02_22_paper_organization.html" class="title listing-title">Google sheets template for organizing allllllll the papers</a>
+</td>
+<td>
+<span class="listing-categories">miscellaneous</span>
+</td>
+<td>
+<span class="listing-reading-time">3 min</span>
+</td>
+</tr>
+<tr data-index="6" data-categories="misc" data-listing-date-sort="1707379200000" data-listing-file-modified-sort="1707414788953" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Testing bedtools: gff vs bed input file" data-listing-filename-sort="2024_02_08_bedtools_gffvbed.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2024_02_08_bedtools_gffvbed.html --></span>
+</td>
+<td>
+<span class="listing-date">Feb 8, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/misc/2024_02_08_bedtools_gffvbed.html" class="title listing-title">Testing bedtools: gff vs bed input file</a>
+</td>
+<td>
+<span class="listing-categories">misc</span>
+</td>
+<td>
+<span class="listing-reading-time">2 min</span>
+</td>
+</tr>
+<tr data-index="7" data-categories="miscellaneous" data-listing-date-sort="1704355200000" data-listing-file-modified-sort="1704909516475" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-title-sort="SICB 2024" data-listing-filename-sort="2024_01_02_SICB.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2024_01_02_SICB.html --></span>
+</td>
+<td>
+<span class="listing-date">Jan 4, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/misc/2024_01_02_SICB.html" class="title listing-title">SICB 2024</a>
+</td>
+<td>
+<span class="listing-categories">miscellaneous</span>
+</td>
+<td>
+<span class="listing-reading-time">11 min</span>
+</td>
+</tr>
+<tr data-index="8" data-categories="miscellaneous" data-listing-date-sort="1704182400000" data-listing-file-modified-sort="1705449923688" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-title-sort="Reviewing Text-To-Speech Tools" data-listing-filename-sort="2024_01_02_TTS.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2024_01_02_TTS.html --></span>
+</td>
+<td>
+<span class="listing-date">Jan 2, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/misc/2024_01_02_TTS.html" class="title listing-title">Reviewing Text-To-Speech Tools</a>
+</td>
+<td>
+<span class="listing-categories">miscellaneous</span>
+</td>
+<td>
+<span class="listing-reading-time">17 min</span>
+</td>
+</tr>
+</tbody>
+
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div> ]]></description>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.html</guid>
+  <pubDate>Mon, 03 Jun 2024 18:19:44 GMT</pubDate>
+</item>
+</channel>
+</rss>

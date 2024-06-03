@@ -147,6 +147,27 @@
     "text": "SICB Day 5\nThe importance of life history strategies in the recovery of corals after thermal stress (Jacqueline Padilla-Gamino)\n\nSuper interesting idea! Basically, maybe the combination of MHW and differing egg/sperm developmental timelines are causing egg/sperm mismatch when spawning happens!\nEggs take a long time to develop and start in late summer, and thus are already in development during MHW/bleaching events. Sperm, however, as “cheap” and don’t start developing until March, so never experience bleaching before the spawning season in early summer. That means that, during spawning, you can end up with bleaching-affected eggs trying to match with unstressed sperm – maybe that “mismatch” is causing problems!\nBred bleached (B) and non-bleached (NB) corals. Found that BxB corals and NBxNB corals were most successful in larval development, while BxNB and NBxB corals didn’t do as well. Support for this possible mismatch problem\nWhile I’m sure this is at least partially because of bleaching-related stress effects of the viability of the eggs or something similar, this is making me think about the possible role of epigenetics here. We know that environmental conditions can be associated with epigenetic modifications like methylation, and that such epigenetic modifications can also take place in the gametes and thus become heritable. Is it possible that there are epigenetic modifications happening in the eggs during these bleaching events that are not happening to the sperm, and that this “mismatch” of the epigenome is less successful that the combination of two stress-modified gametes (BxB) or of two non-modified gametes (NBxNB)?\n\nAssessing physiological and molecular plasticity in the early stages of Porites astreoides (Florence Fields)\nIntraspecific variation in thermal tolerance in the endangered Caribbean coral, Acropora palmata (Holland Elder)\n\nKeep in mind bleaching, like other stress reponses, is continuous, not binary!\n\nThe butterfly(fish) effect: Using Caetodontidae territories as bioindicators (Corrine Avidan)\nMicrobial predictors of bleacing in Great Barrier Reef Acropora millepora (Karim Primov)\nIron wars over ligand soup: Exploring chemical crosstalk in Symbiodiniaceae-bacteria interactions (Hannah Reich)\n\nBacteria can help eukaryotic partners (like algae) access hard-to-get iron\nPossible connection here to Callum’s talk about impacts of heavy metal contamination on coral/holobiont?\n\nEnvironmental drivers of coral-associated algal and microbial communities across multiple scales (Coleen Bove)"
   },
   {
+    "objectID": "posts/projects/E5_coral/2024_05_17_shortstack_mirdeep2_comparisons.html",
+    "href": "posts/projects/E5_coral/2024_05_17_shortstack_mirdeep2_comparisons.html",
+    "title": "Comparing ShortStack outputs to miRdeep2",
+    "section": "",
+    "text": "Both ShortStack and miRdeep2 are programs for identifying both known and novel miRNAs from a dataset based on an input database of known miRNAs and on expected miRNA size and precursor structures. However, they’re giving pretty different output counts. Today I want to look at how much overlap there is in identified miRNAs between the two.\nRendered code:\nA. pulchra\nP. evermanni\nP. meandrina"
+  },
+  {
+    "objectID": "posts/projects/E5_coral/2024_05_17_shortstack_mirdeep2_comparisons.html#summary",
+    "href": "posts/projects/E5_coral/2024_05_17_shortstack_mirdeep2_comparisons.html#summary",
+    "title": "Comparing ShortStack outputs to miRdeep2",
+    "section": "Summary",
+    "text": "Summary\n\n\n\n\n\n\n\n\n\n\nSpecies\nIdentified miRNAs\nmiRNAs with database match\nDatabase matches *not* classified as miRNA\n# of ShortStack miRNAs that are also classified as miRNA by miRdeep2\n\n\nA.pulchra\n38\n24\n44\n36\n\n\nP.evermanni\n46\n9\n27\n30\n\n\nP.meandrina\n36\n9\n20\n27\n\n\n\nI used bedtools intersectBed to find shared sequences in the ShortStack and miRdeep2 mature miRNA output files."
+  },
+  {
+    "objectID": "posts/projects/E5_coral/2024_05_17_shortstack_mirdeep2_comparisons.html#notes",
+    "href": "posts/projects/E5_coral/2024_05_17_shortstack_mirdeep2_comparisons.html#notes",
+    "title": "Comparing ShortStack outputs to miRdeep2",
+    "section": "Notes",
+    "text": "Notes\nInterestingly, in all three of the species I saw an example of an miRNA identified by ShortStack that matched two loci identified as miRNAs by miRdeep2.\nIn one of these examples (A.pulchra), the mature miRNA sequences for both the miRdeep2 miRNAs were identical, but the precursor sequences were different – could this be an example of two different precursors that are processed into the same miRNA?\nNC_058072.1_Acropora_millepora_isolate_JS-1_chromosome_7_Amil_v2.1_whole_genome_shotgun_sequence_295614 12623.6     -   24755   24435   0   320 no  -   tca-miR-11646-3p_MIMAT0045620_Tribolium_castaneum_miR-11646-3p  -   -   ugggugucaucuauuauguuuu  aacauaaaagauggcacc  ugggugucaucuauuauguuuuugcuuguuaaaacauaaaagauggcacc  NC_058072.1_Acropora_millepora_isolate_JS-1_chromosome_7_Amil_v2.1_whole_genome_shotgun_sequence:19030617..19030667:+\n\nNC_058072.1_Acropora_millepora_isolate_JS-1_chromosome_7_Amil_v2.1_whole_genome_shotgun_sequence_295613 1.1     -   24449   24435   14  0   no  -   tca-miR-11646-3p_MIMAT0045620_Tribolium_castaneum_miR-11646-3p  -   -   ugggugucaucuauuauguuuu  aauguaacaaaauugacggccaga    aauguaacaaaauugacggccagaagccguacguauguagaaaauguggggugagugccugggugucaucuauuauguuuu   NC_058072.1_Acropora_millepora_isolate_JS-1_chromosome_7_Amil_v2.1_whole_genome_shotgun_sequence:19030558..19030639:+\n\n\nmature miRNA sequences for these two loci:\nugggugucaucuauuauguuuu\nugggugucaucuauuauguuuu\n\n\nprecursor miRNA sequences for these two loci:\nugggugucaucuauuauguuuuugcuuguuaaaacauaaaagauggcacc\naauguaacaaaauugacggccagaagccguacguauguagaaaauguggggugagugccugggugucaucuauuauguuuu\nIn the other two cases (P.evermanni and P.meandrina) the pairs of loci had very similar precursor sequences and reversed mature and star sequences! In other words, the mature miRNA sequence for one is almost identical to the miRNA* sequence of the other, and vice versa!\nP. evermanni:\nPorites_evermani_scaffold_334_234019    5.6     -   969 686 0   283 yes -   gga-miR-12259-5p_MIMAT0050009_Gallus_gallus_miR-12259-5p    -   -   ugcagguacaguuauaaggu    accuuauaacuguaccugccaa  ugcagguacaguuauaagguccccuugguggaccuuauaacuguaccugccaa   Porites_evermani_scaffold_334:153573..153626:-\n\nPorites_evermani_scaffold_334_233889    5.5     -   111 96  0   15  yes -   cpi-miR-9592-5p_MIMAT0037980_Chrysemys_picta_miR-9592-5p    -   -   gaccuuauaacuguaccugc    gcagguacaguuauaaggucc   gcagguacaguuauaagguccaccaaggggaccuuauaacuguaccugc   Porites_evermani_scaffold_334:153576..153625:+\n\n\nmature miRNA sequences for these two loci:\nugcagguacaguuauaaggu\ngaccuuauaacuguaccugc\n\n\nmiRNA* sequences for these two loci:\naccuuauaacuguaccugccaa\ngcagguacaguuauaaggucc\n\n\nprecursor miRNA sequences for these two loci:\nugcagguacaguuauaagguccccuugguggaccuuauaacuguaccugccaa\ngcagguacaguuauaagguccaccaaggggaccuuauaacuguaccugc\nP. meandrina:\nPocillopora_meandrina_HIv1___Sc0000000_1750 6153        -   12060   11275   0   785 yes -   hsa-miR-2117_MIMAT0011162_Homo_sapiens_miR-2117 -   -   uguucucucugcaguaagcaugu augcuugcuguaaagagaacuug uguucucucugcaguaagcauguuuugacaugcuugcuguaaagagaacuug    Pocillopora_meandrina_HIv1___Sc0000000:818048..818100:+\n\nPocillopora_meandrina_HIv1___Sc0000000_34562    10      -   11  9   0   2   yes -   egr-miR-153-5p_MIMAT0037428_Echinococcus_granulosus_miR-153-5p  -   -   augcuuacugcagagagaacaug aaguucucuuuacagcaagcaugucaaa    aaguucucuuuacagcaagcaugucaaaacaugcuuacugcagagagaacaug   Pocillopora_meandrina_HIv1___Sc0000000:818046..818099:-\n\n\nmature miRNA sequences for these two loci:\nuguucucucugcaguaagcaugu\naugcuuacugcagagagaacaug\n\n\nmiRNA* sequences for these two loci:\naugcuugcuguaaagagaacuug\naaguucucuuuacagcaagcaugucaaa\n\n\nprecursor miRNA sequences for these two loci:\nuguucucucugcaguaagcauguuuugacaugcuugcuguaaagagaacuug\naaguucucuuuacagcaagcaugucaaaacaugcuuacugcagagagaacaug\nCould this just be a case of miRdeep2 incorrectly distinguishing the mature and star sequences for one of these loci?"
+  },
+  {
     "objectID": "posts/projects/E5_coral/2024_02_07_Peve_transcriptome.html",
     "href": "posts/projects/E5_coral/2024_02_07_Peve_transcriptome.html",
     "title": "Generating a genes fasta for P. evermanni",
@@ -166,6 +187,20 @@
     "title": "P.meandrina sRNA: MirMachine, ShortStack",
     "section": "",
     "text": "More on P.meandrina sRNA investigation\nP.meandrina MirMachine\nP.meandrina ShortStack\nP.meandrina miRdeep2 (incomplete)"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/May_2024_posts.html",
+    "href": "posts/daily_logs/2024/May_2024_posts.html",
+    "title": "May 2024, Daily Log",
+    "section": "",
+    "text": "E5 meeting\nlooking at figure options for E5"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/May_2024_posts.html#may-2024",
+    "href": "posts/daily_logs/2024/May_2024_posts.html#may-2024",
+    "title": "May 2024, Daily Log",
+    "section": "",
+    "text": "E5 meeting\nlooking at figure options for E5"
   },
   {
     "objectID": "posts/daily_logs/2024/May_2024_posts.html#may-2024-1",
@@ -1582,6 +1617,41 @@
     "text": "Kallisto Workflow\n\nDownload trimmed reads and transcriptome\nIf you don’t already have them in an accessible directory, download the trimmed RNAseq reads and transcriptome file you’ll be using\n\n\nBuild kallisto index\nThe first step is to build a kallisto index. In this step, kallisto takes your reference transcriptome as input and breaks each transcript into “k-mers,” or shorter sequences that are k nucleotides long. It then “indexes” these k-mers, storing each k-mer and its transcript association in a data structure for more efficient retrieval during the pseudoalignment step.\n\n\nSample quantification\nNext is quantification, which take both the index you just constructed and your trimmed RNAseq read, and makes use of pseudoalignment, a process that is much faster and more efficient than aligning each full read to a full transcript. Briefly, each read is broken up into k-mers, which are then mapped to the index to see which indexed transcript k-mers may match the read k-mers. Kallisto then calculates a probability score for each read/transcript pair, evaluating the likelihood that a given read originated from each transcript. These scores are then used to estimate transcript abundance.\n\n\nBuild count matrix for all samples\nThe kallisto quantification process can only take one sample (i.e., one pair of reads) at a time, so as a last step we build a counts matrix that lists the transcript abundances for all of our samples in a single file.\n\n\nSummary\nA. pulchra:\nsample 140 – 47M reads processed (61.4% mapped)\nsample 145 – 42M reads processed (65.3% mapped)\nsample 150 – 43M reads processed (47.0% mapped)\nsample 173 – 47M reads processed (60.7% mapped)\nsample 178 – 42M reads processed (59.3% mapped)\n\nP. evermanni:\nsample 71 – 50M reads processed (35.3% mapped)\nsample 73 – 51M reads processed (29.8% mapped)\nsample 76 – 49M reads processed (35.6% mapped)\nsample 79 – 49M reads processed (31.9% mapped)\nsample 82 – 48M reads processed (37.3% mapped)\nP. meandrina:\nsample 47 – 54M reads processed (26.1% mapped)\nsample 48 – 51M reads processed (25.3% mapped)\nsample 50 – 55M reads processed (31.1% mapped)\nsample 53 – 53M reads processed (31.8% mapped)\nsample 57 – 42M reads processed (21.7% mapped)"
   },
   {
+    "objectID": "posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html",
+    "href": "posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html",
+    "title": "Summarizing and visualizing ShortStack outputs",
+    "section": "",
+    "text": "Rendered code:\nA. pulchra\nP. evermanni\nP. meandrina"
+  },
+  {
+    "objectID": "posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html#summary",
+    "href": "posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html#summary",
+    "title": "Summarizing and visualizing ShortStack outputs",
+    "section": "Summary",
+    "text": "Summary\n\n\n\n\nShortStack\nmiRdeep2\n\n\nSpecies\nIdentified miRNAs\nmiRNAs with database match\n\n\nA.pulchra\n38\n24\n\n\nP.evermanni\n46\n9\n\n\nP.meandrina\n36\n9\n\n\n\nIt looks like all of the ShortStack miRNAs with database matches are matching the annoated cnidarian miRNAs curated by Jill, not standard miRBase entries. These curated cnidarian known miRNAs are almost exclusively from Acropora and Stylophora species, so it makes sense that Acropora pulchra has many more database matches than the other species."
+  },
+  {
+    "objectID": "posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html#a.-pulchra",
+    "href": "posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html#a.-pulchra",
+    "title": "Summarizing and visualizing ShortStack outputs",
+    "section": "A. pulchra",
+    "text": "A. pulchra"
+  },
+  {
+    "objectID": "posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html#p.-meandrina",
+    "href": "posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html#p.-meandrina",
+    "title": "Summarizing and visualizing ShortStack outputs",
+    "section": "P. meandrina",
+    "text": "P. meandrina"
+  },
+  {
+    "objectID": "posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html#p.-evermanni",
+    "href": "posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html#p.-evermanni",
+    "title": "Summarizing and visualizing ShortStack outputs",
+    "section": "P. evermanni",
+    "text": "P. evermanni"
+  },
+  {
     "objectID": "posts/projects/E5_coral.html",
     "href": "posts/projects/E5_coral.html",
     "title": "E5 Coral",
@@ -1692,75 +1762,5 @@
     "title": "Pacific Cod",
     "section": "",
     "text": "Github\n  \n\n  \n  \nGene activity and genetic selection in Pacific cod reared under thermal stress\nJuvenile Pacific cod will be reared in three temperatures under feeding and non-feeding conditions, then an integrated genomic approach will identify genes, gene variants, and epigenetic markers that respond to thermal stress and confer resilience. To complement the genomic approaches and further investigate temperature influences on energy resources, we will perform lipid analyses. This work will inform predictions of genetic selection and molecular response of Pacific cod in the Gulf of Alaska under climate change.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nCategories\n\n\nReading Time\n\n\n\n\n\n\n\n\n\nApr 29, 2024\n\n\nTissue subsampling for WGBS (cont.)\n\n\npacifc-cod\n\n\n2 min\n\n\n\n\n\n\n\nApr 25, 2024\n\n\nTissue subsampling for WGBS (methylation work)\n\n\npacifc-cod\n\n\n4 min\n\n\n\n\n\n\n\nMar 19, 2024\n\n\nRNAseq data preliminary kallisto and DESeq2\n\n\npacifc-cod\n\n\n1 min\n\n\n\n\n\n\n\nMar 4, 2024\n\n\nRNAseq data FastQC and trimming\n\n\npacifc-cod\n\n\n1 min\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nSamples lists for cod RNAseq and methylation\n\n\npacifc-cod\n\n\n5 min\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nFinish pulling/subsampling for cod RNAseq\n\n\npacifc-cod\n\n\n1 min\n\n\n\n\n\n\n\nDec 7, 2023\n\n\nSampling liver samples for RNAseq\n\n\npacifc-cod\n\n\n2 min\n\n\n\n\n\n\n\nNov 2, 2023\n\n\nCod Sample Size\n\n\npacifc-cod\n\n\n1 min\n\n\n\n\n\n\n\nOct 13, 2023\n\n\nCod Temp/Growth Analysis\n\n\npacifc-cod\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html",
-    "href": "posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html",
-    "title": "Summarizing and visualizing ShortStack outputs",
-    "section": "",
-    "text": "Rendered code:\nA. pulchra\nP. evermanni\nP. meandrina"
-  },
-  {
-    "objectID": "posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html#summary",
-    "href": "posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html#summary",
-    "title": "Summarizing and visualizing ShortStack outputs",
-    "section": "Summary",
-    "text": "Summary\n\n\n\n\nShortStack\nmiRdeep2\n\n\nSpecies\nIdentified miRNAs\nmiRNAs with database match\n\n\nA.pulchra\n38\n24\n\n\nP.evermanni\n46\n9\n\n\nP.meandrina\n36\n9\n\n\n\nIt looks like all of the ShortStack miRNAs with database matches are matching the annoated cnidarian miRNAs curated by Jill, not standard miRBase entries. These curated cnidarian known miRNAs are almost exclusively from Acropora and Stylophora species, so it makes sense that Acropora pulchra has many more database matches than the other species."
-  },
-  {
-    "objectID": "posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html#a.-pulchra",
-    "href": "posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html#a.-pulchra",
-    "title": "Summarizing and visualizing ShortStack outputs",
-    "section": "A. pulchra",
-    "text": "A. pulchra"
-  },
-  {
-    "objectID": "posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html#p.-meandrina",
-    "href": "posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html#p.-meandrina",
-    "title": "Summarizing and visualizing ShortStack outputs",
-    "section": "P. meandrina",
-    "text": "P. meandrina"
-  },
-  {
-    "objectID": "posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html#p.-evermanni",
-    "href": "posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html#p.-evermanni",
-    "title": "Summarizing and visualizing ShortStack outputs",
-    "section": "P. evermanni",
-    "text": "P. evermanni"
-  },
-  {
-    "objectID": "posts/projects/E5_coral/2024_05_17_shortstack_mirdeep2_comparisons.html",
-    "href": "posts/projects/E5_coral/2024_05_17_shortstack_mirdeep2_comparisons.html",
-    "title": "Comparing ShortStack outputs to miRdeep2",
-    "section": "",
-    "text": "Both ShortStack and miRdeep2 are programs for identifying both known and novel miRNAs from a dataset based on an input database of known miRNAs and on expected miRNA size and precursor structures. However, they’re giving pretty different output counts. Today I want to look at how much overlap there is in identified miRNAs between the two.\nRendered code:\nA. pulchra\nP. evermanni\nP. meandrina"
-  },
-  {
-    "objectID": "posts/projects/E5_coral/2024_05_17_shortstack_mirdeep2_comparisons.html#summary",
-    "href": "posts/projects/E5_coral/2024_05_17_shortstack_mirdeep2_comparisons.html#summary",
-    "title": "Comparing ShortStack outputs to miRdeep2",
-    "section": "Summary",
-    "text": "Summary\n\n\n\n\n\n\n\n\n\n\nSpecies\nIdentified miRNAs\nmiRNAs with database match\nDatabase matches *not* classified as miRNA\n# of ShortStack miRNAs that are also classified as miRNA by miRdeep2\n\n\nA.pulchra\n38\n24\n44\n36\n\n\nP.evermanni\n46\n9\n27\n30\n\n\nP.meandrina\n36\n9\n20\n27\n\n\n\nI used bedtools intersectBed to find shared sequences in the ShortStack and miRdeep2 mature miRNA output files."
-  },
-  {
-    "objectID": "posts/projects/E5_coral/2024_05_17_shortstack_mirdeep2_comparisons.html#notes",
-    "href": "posts/projects/E5_coral/2024_05_17_shortstack_mirdeep2_comparisons.html#notes",
-    "title": "Comparing ShortStack outputs to miRdeep2",
-    "section": "Notes",
-    "text": "Notes\nInterestingly, in all three of the species I saw an example of an miRNA identified by ShortStack that matched two loci identified as miRNAs by miRdeep2.\nIn one of these examples (A.pulchra), the mature miRNA sequences for both the miRdeep2 miRNAs were identical, but the precursor sequences were different – could this be an example of two different precursors that are processed into the same miRNA?\nNC_058072.1_Acropora_millepora_isolate_JS-1_chromosome_7_Amil_v2.1_whole_genome_shotgun_sequence_295614 12623.6     -   24755   24435   0   320 no  -   tca-miR-11646-3p_MIMAT0045620_Tribolium_castaneum_miR-11646-3p  -   -   ugggugucaucuauuauguuuu  aacauaaaagauggcacc  ugggugucaucuauuauguuuuugcuuguuaaaacauaaaagauggcacc  NC_058072.1_Acropora_millepora_isolate_JS-1_chromosome_7_Amil_v2.1_whole_genome_shotgun_sequence:19030617..19030667:+\n\nNC_058072.1_Acropora_millepora_isolate_JS-1_chromosome_7_Amil_v2.1_whole_genome_shotgun_sequence_295613 1.1     -   24449   24435   14  0   no  -   tca-miR-11646-3p_MIMAT0045620_Tribolium_castaneum_miR-11646-3p  -   -   ugggugucaucuauuauguuuu  aauguaacaaaauugacggccaga    aauguaacaaaauugacggccagaagccguacguauguagaaaauguggggugagugccugggugucaucuauuauguuuu   NC_058072.1_Acropora_millepora_isolate_JS-1_chromosome_7_Amil_v2.1_whole_genome_shotgun_sequence:19030558..19030639:+\n\n\nmature miRNA sequences for these two loci:\nugggugucaucuauuauguuuu\nugggugucaucuauuauguuuu\n\n\nprecursor miRNA sequences for these two loci:\nugggugucaucuauuauguuuuugcuuguuaaaacauaaaagauggcacc\naauguaacaaaauugacggccagaagccguacguauguagaaaauguggggugagugccugggugucaucuauuauguuuu\nIn the other two cases (P.evermanni and P.meandrina) the pairs of loci had very similar precursor sequences and reversed mature and star sequences! In other words, the mature miRNA sequence for one is almost identical to the miRNA* sequence of the other, and vice versa!\nP. evermanni:\nPorites_evermani_scaffold_334_234019    5.6     -   969 686 0   283 yes -   gga-miR-12259-5p_MIMAT0050009_Gallus_gallus_miR-12259-5p    -   -   ugcagguacaguuauaaggu    accuuauaacuguaccugccaa  ugcagguacaguuauaagguccccuugguggaccuuauaacuguaccugccaa   Porites_evermani_scaffold_334:153573..153626:-\n\nPorites_evermani_scaffold_334_233889    5.5     -   111 96  0   15  yes -   cpi-miR-9592-5p_MIMAT0037980_Chrysemys_picta_miR-9592-5p    -   -   gaccuuauaacuguaccugc    gcagguacaguuauaaggucc   gcagguacaguuauaagguccaccaaggggaccuuauaacuguaccugc   Porites_evermani_scaffold_334:153576..153625:+\n\n\nmature miRNA sequences for these two loci:\nugcagguacaguuauaaggu\ngaccuuauaacuguaccugc\n\n\nmiRNA* sequences for these two loci:\naccuuauaacuguaccugccaa\ngcagguacaguuauaaggucc\n\n\nprecursor miRNA sequences for these two loci:\nugcagguacaguuauaagguccccuugguggaccuuauaacuguaccugccaa\ngcagguacaguuauaagguccaccaaggggaccuuauaacuguaccugc\nP. meandrina:\nPocillopora_meandrina_HIv1___Sc0000000_1750 6153        -   12060   11275   0   785 yes -   hsa-miR-2117_MIMAT0011162_Homo_sapiens_miR-2117 -   -   uguucucucugcaguaagcaugu augcuugcuguaaagagaacuug uguucucucugcaguaagcauguuuugacaugcuugcuguaaagagaacuug    Pocillopora_meandrina_HIv1___Sc0000000:818048..818100:+\n\nPocillopora_meandrina_HIv1___Sc0000000_34562    10      -   11  9   0   2   yes -   egr-miR-153-5p_MIMAT0037428_Echinococcus_granulosus_miR-153-5p  -   -   augcuuacugcagagagaacaug aaguucucuuuacagcaagcaugucaaa    aaguucucuuuacagcaagcaugucaaaacaugcuuacugcagagagaacaug   Pocillopora_meandrina_HIv1___Sc0000000:818046..818099:-\n\n\nmature miRNA sequences for these two loci:\nuguucucucugcaguaagcaugu\naugcuuacugcagagagaacaug\n\n\nmiRNA* sequences for these two loci:\naugcuugcuguaaagagaacuug\naaguucucuuuacagcaagcaugucaaa\n\n\nprecursor miRNA sequences for these two loci:\nuguucucucugcaguaagcauguuuugacaugcuugcuguaaagagaacuug\naaguucucuuuacagcaagcaugucaaaacaugcuuacugcagagagaacaug\nCould this just be a case of miRdeep2 incorrectly distinguishing the mature and star sequences for one of these loci?"
-  },
-  {
-    "objectID": "posts/daily_logs/2024/May_2024_posts.html",
-    "href": "posts/daily_logs/2024/May_2024_posts.html",
-    "title": "May 2024, Daily Log",
-    "section": "",
-    "text": "E5 meeting\nlooking at figure options for E5"
-  },
-  {
-    "objectID": "posts/daily_logs/2024/May_2024_posts.html#may-2024",
-    "href": "posts/daily_logs/2024/May_2024_posts.html#may-2024",
-    "title": "May 2024, Daily Log",
-    "section": "",
-    "text": "E5 meeting\nlooking at figure options for E5"
   }
 ]
