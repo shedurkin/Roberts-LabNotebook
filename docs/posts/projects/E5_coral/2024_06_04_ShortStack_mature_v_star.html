@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kathleen Durkin">
-<meta name="dcterms.date" content="2024-06-13">
+<meta name="dcterms.date" content="2024-06-03">
 
 <title>Kathleen’s Lab Notebook - ShortStack: mature vs.&nbsp;star sequences incorrect?</title>
 <style>
@@ -22,7 +22,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -135,7 +154,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">June 13, 2024</p>
+        <p class="date">June 3, 2024</p>
       </div>
     </div>
     
@@ -156,21 +175,29 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>See <a href="https://github.com/urol-e5/deep-dive/issues/49">E5 deep-dive Github issue #49</a></p>
-<p>While looking at ShortStack database matches, for the three species I realized that all three have matches to multiple published sequences of miR-2030, but miR-2030 was not one of the miRNAs identified as conserved between the three species. After poking around I realized that the Apul miR-2030 miRNA and Peve miR-2030 have identical mature miRNA sequences, but the Pmea miR-2030 has a totally different mature sequence. Instead, the <em>star</em> sequence of Pmea miR-2030 matches the mature sequences for Apul miR-2030 and Peve miR-2030. This raises the possibility that ShortStack is incorrectly distinguishing between mature and star sequences, which would throw a bit of a wrench in the current workflow to identify conserved miRNAs.</p>
+<p>While looking at ShortStack database matches, for the three species I realized that all three have matches to multiple published sequences of miR-2030, but miR-2030 was not one of the miRNAs identified as conserved between the three species. After poking around I realized that the Apul miR-2030 miRNA and Peve miR-2030 have identical mature miRNA sequences, but the Pmea miR-2030 has a totally different mature sequence. Instead, the <em>star</em> sequence of Pmea miR-2030 matches the mature sequences for Apul miR-2030 and Peve miR-2030. This raises the possibility that ShortStack is incorrectly distinguishing between mature and star sequences, which would throw a bit of a wrench in the current workflow to identify conserved miRNAs. I also noted something similar when <a href="../../../posts/projects/E5_coral/2024_05_17_shortstack_mirdeep2_comparisons.html">comparing ShortStack outputs to the miRdeep2 output</a>.</p>
 <p><img src="images/Screenshot (248).png" class="img-fluid"></p>
 <p><img src="images/Screenshot (249).png" class="img-fluid"></p>
-<p>As a reminder, miRNAs originate as primary miRNA transcrpts (“pri-miRNAs”) transcribed from genes, which are characteristically folded in a “hairpin” structure. These pri-miRNAs are then cleaved at their base to form precursor miRNAs (“pre-miRNAs”). The pre-miRNA loop is then removed by Dicer, leaving a mature miRNA duplex. Both of these strands (5’ and 3’) can be loaded into an Argonaute (AGO) protein complex to form an RNA-induced silencing complex (RISC), which then guides gene expression. However, one strand is usually preferentially loaded, in part based on its thermodynamic stability. Strands that are not loaded are unwound from their complement and generally degraded by cellular machinery. The preferentially-loaded strand is commonly titled the “mature miRNA,” while the unloaded strand is commonly called the “miRNA*” or “miRNA star”. Since the AGO-loaded strand (mature miRNA) is the one that actually influences gene expression, this is the strand that is considered important during miRNA identification and analysis. (Summarized from O’Brien et al.&nbsp;2018)</p>
+<p>As a reminder, miRNAs originate as primary miRNA transcripts (“pri-miRNAs”) transcribed from genes, which are characteristically folded in a “hairpin” structure. These pri-miRNAs are then cleaved at their base to form precursor miRNAs (“pre-miRNAs”). The pre-miRNA loop is then removed by Dicer, leaving a mature miRNA duplex. Both of these strands (5’ and 3’) can be loaded into an Argonaute (AGO) protein complex to form an RNA-induced silencing complex (RISC), which then guides gene expression. However, one strand is usually preferentially loaded, in part based on its thermodynamic stability. Strands that are not loaded are unwound from their complement and generally degraded by cellular machinery. The preferentially-loaded strand is commonly titled the “mature miRNA,” while the unloaded strand is commonly called the “miRNA*” or “miRNA star”. Since the AGO-loaded strand (mature miRNA) is the one that actually influences gene expression, this is the strand that is considered important during miRNA identification and analysis. (Summarized from <span class="citation" data-cites="obrien_overview_2018">(<a href="#ref-obrien_overview_2018" role="doc-biblioref">O’Brien et al. 2018</a>)</span>)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/miRNA-biogenisis.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">miRNA biogenisis (Tomari &amp; Zamore 2005)</figcaption>
+<figcaption class="figure-caption">miRNA biogenisis <span class="citation" data-cites="tomari_microrna_2005">(<a href="#ref-tomari_microrna_2005" role="doc-biblioref">Tomari and Zamore 2005</a>)</span></figcaption>
 </figure>
 </div>
-<p>It isn’t entirely clear from the ShortStack documentation how it distinguishes between mature and star sequences.</p>
+<p>It isn’t entirely clear from the ShortStack documentation how it distinguishes between mature and star sequences. What sequence features would indicate one strand is more likely to be loaded on to the RISC complex than the other? In addition, O’Brien et al.&nbsp;(2018) seem to suggest that both the mature and star miRNA molecules could play some role in gene expression – does that mean we should be considering both to be important?</p>
 
 
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-obrien_overview_2018" class="csl-entry" role="listitem">
+O’Brien, Jacob, Heyam Hayder, Yara Zayed, and Chun Peng. 2018. <span>“Overview of <span>MicroRNA</span> <span>Biogenesis</span>, <span>Mechanisms</span> of <span>Actions</span>, and <span>Circulation</span>.”</span> <em>Frontiers in Endocrinology</em> 9 (August): 402. <a href="https://doi.org/10.3389/fendo.2018.00402">https://doi.org/10.3389/fendo.2018.00402</a>.
+</div>
+<div id="ref-tomari_microrna_2005" class="csl-entry" role="listitem">
+Tomari, Yukihide, and Phillip D. Zamore. 2005. <span>“<span>MicroRNA</span> <span>Biogenesis</span>: <span>Drosha</span> <span>Can</span>’t <span>Cut</span> <span>It</span> Without a <span>Partner</span>.”</span> <em>Current Biology</em> 15 (2): R61–64. <a href="https://doi.org/10.1016/j.cub.2004.12.057">https://doi.org/10.1016/j.cub.2004.12.057</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

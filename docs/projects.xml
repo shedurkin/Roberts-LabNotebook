@@ -10,7 +10,7 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/projects.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Mon, 03 Jun 2024 22:22:34 GMT</lastBuildDate>
+<lastBuildDate>Tue, 04 Jun 2024 19:55:04 GMT</lastBuildDate>
 <item>
   <title>E5 Coral</title>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</link>
@@ -61,7 +61,24 @@ Reading Time
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-categories="E5-coral" data-listing-date-sort="1715929200000" data-listing-file-modified-sort="1715994144758" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-title-sort="Comparing ShortStack outputs to miRdeep2" data-listing-filename-sort="2024_05_17_shortstack_mirdeep2_comparisons.qmd">
+<tr data-index="0" data-categories="E5-coral" data-listing-date-sort="1718262000000" data-listing-file-modified-sort="1717530320106" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="ShortStack: mature vs. star sequences incorrect?" data-listing-filename-sort="2024_06_04_ShortStack_mature_v_star.qmd">
+<td>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/Screenshot (248).png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
+</td>
+<td>
+<span class="listing-date">Jun 13, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/E5_coral/2024_06_04_ShortStack_mature_v_star.html" class="title listing-title">ShortStack: mature vs.&nbsp;star sequences incorrect?</a>
+</td>
+<td>
+<span class="listing-categories">E5-coral</span>
+</td>
+<td>
+<span class="listing-reading-time">2 min</span>
+</td>
+</tr>
+<tr data-index="1" data-categories="E5-coral" data-listing-date-sort="1715929200000" data-listing-file-modified-sort="1717523821272" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-title-sort="Comparing ShortStack outputs to miRdeep2" data-listing-filename-sort="2024_05_17_shortstack_mirdeep2_comparisons.qmd">
 <td>
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
@@ -78,7 +95,7 @@ Reading Time
 <span class="listing-reading-time">7 min</span>
 </td>
 </tr>
-<tr data-index="1" data-categories="E5-coral" data-listing-date-sort="1715842800000" data-listing-file-modified-sort="1715992876606" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Summarizing and visualizing ShortStack outputs" data-listing-filename-sort="2024_05_16_shortstack_visualizations.qmd">
+<tr data-index="2" data-categories="E5-coral" data-listing-date-sort="1715842800000" data-listing-file-modified-sort="1715992876606" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Summarizing and visualizing ShortStack outputs" data-listing-filename-sort="2024_05_16_shortstack_visualizations.qmd">
 <td>
 <span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/https:/github.com/urol-e5/deep-dive/blob/main/D-Apul/output/13.2.1-Apul-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase/figures/Apul_ShortStack_miRNA_histogram.png?raw=true" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
@@ -95,7 +112,7 @@ Reading Time
 <span class="listing-reading-time">2 min</span>
 </td>
 </tr>
-<tr data-index="2" data-categories="E5-coral" data-listing-date-sort="1707292800000" data-listing-file-modified-sort="1711583505443" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-title-sort="Generating a genes fasta for P. evermanni" data-listing-filename-sort="2024_02_07_Peve_transcriptome.qmd">
+<tr data-index="3" data-categories="E5-coral" data-listing-date-sort="1707292800000" data-listing-file-modified-sort="1711583505443" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-title-sort="Generating a genes fasta for P. evermanni" data-listing-filename-sort="2024_02_07_Peve_transcriptome.qmd">
 <td>
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
@@ -112,7 +129,7 @@ Reading Time
 <span class="listing-reading-time">7 min</span>
 </td>
 </tr>
-<tr data-index="3" data-categories="E5-coral" data-listing-date-sort="1707206400000" data-listing-file-modified-sort="1707421872450" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="RNAseq abundance quantification (A.Pulchra, P.evermanni, P.meandrina)" data-listing-filename-sort="2024_02_06_RNAseq_kallisto.qmd">
+<tr data-index="4" data-categories="E5-coral" data-listing-date-sort="1707206400000" data-listing-file-modified-sort="1707421872450" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="RNAseq abundance quantification (A.Pulchra, P.evermanni, P.meandrina)" data-listing-filename-sort="2024_02_06_RNAseq_kallisto.qmd">
 <td>
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
@@ -129,7 +146,7 @@ Reading Time
 <span class="listing-reading-time">3 min</span>
 </td>
 </tr>
-<tr data-index="4" data-categories="E5-coral" data-listing-date-sort="1706688000000" data-listing-file-modified-sort="1706825073165" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="P.evermanni RNAseq kallisto debugging" data-listing-filename-sort="2024_01_31_Peve_kallisto.qmd">
+<tr data-index="5" data-categories="E5-coral" data-listing-date-sort="1706688000000" data-listing-file-modified-sort="1706825073165" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="P.evermanni RNAseq kallisto debugging" data-listing-filename-sort="2024_01_31_Peve_kallisto.qmd">
 <td>
 <span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/Screenshot (228).png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
@@ -146,7 +163,7 @@ Reading Time
 <span class="listing-reading-time">3 min</span>
 </td>
 </tr>
-<tr data-index="5" data-categories="E5-coral" data-listing-date-sort="1701763200000" data-listing-file-modified-sort="1702493743748" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-title-sort="P.meandrina sRNA: miRdeep2 and 3 species sRNA comparison" data-listing-filename-sort="2023_12_05_E5_coral.qmd">
+<tr data-index="6" data-categories="E5-coral" data-listing-date-sort="1701763200000" data-listing-file-modified-sort="1702493743748" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-title-sort="P.meandrina sRNA: miRdeep2 and 3 species sRNA comparison" data-listing-filename-sort="2023_12_05_E5_coral.qmd">
 <td>
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
@@ -163,7 +180,7 @@ Reading Time
 <span class="listing-reading-time">13 min</span>
 </td>
 </tr>
-<tr data-index="6" data-categories="E5-coral" data-listing-date-sort="1701331200000" data-listing-file-modified-sort="1702493147072" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="P.meandrina sRNA: MirMachine, ShortStack" data-listing-filename-sort="2023_11_30_E5_coral.qmd">
+<tr data-index="7" data-categories="E5-coral" data-listing-date-sort="1701331200000" data-listing-file-modified-sort="1702493147072" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="P.meandrina sRNA: MirMachine, ShortStack" data-listing-filename-sort="2023_11_30_E5_coral.qmd">
 <td>
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
@@ -180,7 +197,7 @@ Reading Time
 <span class="listing-reading-time">1 min</span>
 </td>
 </tr>
-<tr data-index="7" data-categories="E5-coral" data-listing-date-sort="1699948800000" data-listing-file-modified-sort="1702493095500" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="P.meandrina sRNA: trimming, miRTrace, BLASTn" data-listing-filename-sort="2023_11_14_E5_coral.qmd">
+<tr data-index="8" data-categories="E5-coral" data-listing-date-sort="1699948800000" data-listing-file-modified-sort="1702493095500" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="P.meandrina sRNA: trimming, miRTrace, BLASTn" data-listing-filename-sort="2023_11_14_E5_coral.qmd">
 <td>
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
@@ -205,7 +222,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</guid>
-  <pubDate>Mon, 03 Jun 2024 22:22:34 GMT</pubDate>
+  <pubDate>Tue, 04 Jun 2024 19:55:04 GMT</pubDate>
 </item>
 <item>
   <title>Pacific Cod</title>
@@ -421,7 +438,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod.html</guid>
-  <pubDate>Mon, 03 Jun 2024 22:22:34 GMT</pubDate>
+  <pubDate>Tue, 04 Jun 2024 19:55:04 GMT</pubDate>
 </item>
 <item>
   <title>Miscellaneous</title>
@@ -466,7 +483,24 @@ Reading Time
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-categories="misc" data-listing-date-sort="1711522800000" data-listing-file-modified-sort="1711583462027" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Learning awk for GNM569" data-listing-filename-sort="2024_03_27_GNM569awk.qmd">
+<tr data-index="0" data-categories="miscellaneous" data-listing-date-sort="1717530392000" data-listing-file-modified-sort="1717530392192" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-title-sort="Testing out some cool Quarto features" data-listing-filename-sort="2024_02_22_quarto_features.qmd">
+<td>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/https:/www.fisheries.noaa.gov/s3/styles/full_width/s3/2021-11/Acropora_cervicornis_staghorn_coral.jpg?itok=8sYkq8lb" style="height: 40px;" class="thumbnail-image card-img"></p></span>
+</td>
+<td>
+<span class="listing-date">Jun 4, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/misc/2024_02_22_quarto_features.html" class="title listing-title">Testing out some cool Quarto features</a>
+</td>
+<td>
+<span class="listing-categories">miscellaneous</span>
+</td>
+<td>
+<span class="listing-reading-time">5 min</span>
+</td>
+</tr>
+<tr data-index="1" data-categories="misc" data-listing-date-sort="1711522800000" data-listing-file-modified-sort="1711583462027" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Learning awk for GNM569" data-listing-filename-sort="2024_03_27_GNM569awk.qmd">
 <td>
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
@@ -483,7 +517,7 @@ Reading Time
 <span class="listing-reading-time">3 min</span>
 </td>
 </tr>
-<tr data-index="1" data-categories="miscellaneous" data-listing-date-sort="1709107200000" data-listing-file-modified-sort="1709238649052" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="34" data-listing-title-sort="Oyster Sampling @ Point Whitney -- Lifestage Carryover Project" data-listing-filename-sort="2024_02_28_oyster_sampling.qmd">
+<tr data-index="2" data-categories="miscellaneous" data-listing-date-sort="1709107200000" data-listing-file-modified-sort="1709238649052" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="34" data-listing-title-sort="Oyster Sampling @ Point Whitney -- Lifestage Carryover Project" data-listing-filename-sort="2024_02_28_oyster_sampling.qmd">
 <td>
 <span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/IMG_8128.jpg" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
@@ -498,23 +532,6 @@ Reading Time
 </td>
 <td>
 <span class="listing-reading-time">34 min</span>
-</td>
-</tr>
-<tr data-index="2" data-categories="miscellaneous" data-listing-date-sort="1709081060000" data-listing-file-modified-sort="1709081060086" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-title-sort="Testing out some cool Quarto features" data-listing-filename-sort="2024_02_22_quarto_features.qmd">
-<td>
-<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/https:/www.fisheries.noaa.gov/s3/styles/full_width/s3/2021-11/Acropora_cervicornis_staghorn_coral.jpg?itok=8sYkq8lb" style="height: 40px;" class="thumbnail-image card-img"></p></span>
-</td>
-<td>
-<span class="listing-date">Feb 27, 2024</span>
-</td>
-<td>
-<a href="../../posts/projects/misc/2024_02_22_quarto_features.html" class="title listing-title">Testing out some cool Quarto features</a>
-</td>
-<td>
-<span class="listing-categories">miscellaneous</span>
-</td>
-<td>
-<span class="listing-reading-time">5 min</span>
 </td>
 </tr>
 <tr data-index="3" data-categories="miscellaneous" data-listing-date-sort="1709063287000" data-listing-file-modified-sort="1709063287699" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="Ideas/Questions Log" data-listing-filename-sort="2024_01_30_Ideas.qmd">
@@ -627,7 +644,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.html</guid>
-  <pubDate>Mon, 03 Jun 2024 22:22:34 GMT</pubDate>
+  <pubDate>Tue, 04 Jun 2024 19:55:04 GMT</pubDate>
 </item>
 </channel>
 </rss>

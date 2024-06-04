@@ -1,24 +1,25 @@
 ---
 title: "ShortStack: mature vs. star sequences incorrect?"
 author: "Kathleen Durkin"
-date: "2024-06-13"
+date: "2024-06-03"
 categories: ["E5-coral"]
 format:
   html:
     toc: true
 engine: knitr
+bibliography: ../../../references.bib
 ---
 
 See [E5 deep-dive Github issue #49](https://github.com/urol-e5/deep-dive/issues/49)
 
-While looking at ShortStack database matches, for the three species I realized that all three have matches to multiple published sequences of miR-2030, but miR-2030 was not one of the miRNAs identified as conserved between the three species. After poking around I realized that the Apul miR-2030 miRNA and Peve miR-2030 have identical mature miRNA sequences, but the Pmea miR-2030 has a totally different mature sequence. Instead, the *star* sequence of Pmea miR-2030 matches the mature sequences for Apul miR-2030 and Peve miR-2030. This raises the possibility that ShortStack is incorrectly distinguishing between mature and star sequences, which would throw a bit of a wrench in the current workflow to identify conserved miRNAs.
+While looking at ShortStack database matches, for the three species I realized that all three have matches to multiple published sequences of miR-2030, but miR-2030 was not one of the miRNAs identified as conserved between the three species. After poking around I realized that the Apul miR-2030 miRNA and Peve miR-2030 have identical mature miRNA sequences, but the Pmea miR-2030 has a totally different mature sequence. Instead, the *star* sequence of Pmea miR-2030 matches the mature sequences for Apul miR-2030 and Peve miR-2030. This raises the possibility that ShortStack is incorrectly distinguishing between mature and star sequences, which would throw a bit of a wrench in the current workflow to identify conserved miRNAs. I also noted something similar when [comparing ShortStack outputs to the miRdeep2 output](./2024_05_17_shortstack_mirdeep2_comparisons.qmd).
 
-![](images/Screenshot (248).png)
+![](images/Screenshot%20(248).png)
 
-![](images/Screenshot (249).png)
+![](images/Screenshot%20(249).png)
 
-As a reminder, miRNAs originate as primary miRNA transcrpts ("pri-miRNAs") transcribed from genes, which are characteristically folded in a "hairpin" structure. These pri-miRNAs are then cleaved at their base to form precursor miRNAs ("pre-miRNAs"). The pre-miRNA loop is then removed by Dicer, leaving a mature miRNA duplex. Both of these strands (5' and 3') can be loaded into an Argonaute (AGO) protein complex to form an RNA-induced silencing complex (RISC), which then guides gene expression. However, one strand is usually preferentially loaded, in part based on its thermodynamic stability. Strands that are not loaded are unwound from their complement and generally degraded by cellular machinery. The preferentially-loaded strand is commonly titled the "mature miRNA," while the unloaded strand is commonly called the "miRNA\*" or "miRNA star". Since the AGO-loaded strand (mature miRNA) is the one that actually influences gene expression, this is the strand that is considered important during miRNA identification and analysis. (Summarized from O'Brien et al. 2018)
+As a reminder, miRNAs originate as primary miRNA transcripts ("pri-miRNAs") transcribed from genes, which are characteristically folded in a "hairpin" structure. These pri-miRNAs are then cleaved at their base to form precursor miRNAs ("pre-miRNAs"). The pre-miRNA loop is then removed by Dicer, leaving a mature miRNA duplex. Both of these strands (5' and 3') can be loaded into an Argonaute (AGO) protein complex to form an RNA-induced silencing complex (RISC), which then guides gene expression. However, one strand is usually preferentially loaded, in part based on its thermodynamic stability. Strands that are not loaded are unwound from their complement and generally degraded by cellular machinery. The preferentially-loaded strand is commonly titled the "mature miRNA," while the unloaded strand is commonly called the "miRNA\*" or "miRNA star". Since the AGO-loaded strand (mature miRNA) is the one that actually influences gene expression, this is the strand that is considered important during miRNA identification and analysis. (Summarized from [@obrien_overview_2018])
 
-![miRNA biogenisis (Tomari & Zamore 2005)](images/miRNA-biogenisis.jpg)
+![miRNA biogenisis [@tomari_microrna_2005]](images/miRNA-biogenisis.jpg)
 
-It isn't entirely clear from the ShortStack documentation how it distinguishes between mature and star sequences.
+It isn't entirely clear from the ShortStack documentation how it distinguishes between mature and star sequences. What sequence features would indicate one strand is more likely to be loaded on to the RISC complex than the other? In addition, O'Brien et al. (2018) seem to suggest that both the mature and star miRNA molecules could play some role in gene expression -- does that mean we should be considering both to be important?
