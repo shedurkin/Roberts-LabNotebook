@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Kathleen Durkin">
+<meta name="dcterms.date" content="2024-06-13">
 
-<title>Kathleen’s Lab Notebook - E5 Coral</title>
+<title>Kathleen’s Lab Notebook - ShortStack: mature vs.&nbsp;star sequences incorrect?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +25,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-listing/list.min.js"></script>
-<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -62,40 +63,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -105,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Kathleen’s Lab Notebook</span>
     </a>
   </div>
@@ -116,11 +86,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../daily_log.html" rel="" target="">
+    <a class="nav-link" href="../../../daily_log.html" rel="" target="">
  <span class="menu-text">Daily Notebook Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../projects.html" rel="" target="">
+    <a class="nav-link" href="../../../projects.html" rel="" target="">
  <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item compact">
@@ -145,223 +115,62 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page">
-      <h1 class="title">E5 Coral</h1>
-                      </div>
+      <h1 class="title">ShortStack: mature vs.&nbsp;star sequences incorrect?</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">E5-coral</div>
+              </div>
+                  </div>
   </div>
+    
+  
   <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Kathleen Durkin </p>
+            </div>
     </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 13, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page" id="quarto-document-content">
 
 
 
 
-<div class="quarto-about-jolla column-page">
-  <img src="../../images/E5-Coral-Logo-Dark-Small.png" class="about-image
-  rectangle " style="width: 15em;">
- <div id="description">
-<p>The E5 Coral project is a collaboration between six labs at six U.S. universities, and uses reef-building corals as a model system to test the connections between physiological, epigenetic, and metabolic states, and predict how population and community dynamics are influenced by epigenetically-modulated phenotypes. Learn more at the <a href="https://e5coral.org/">project website</a>!</p>
-</div> 
-  <hr class="about-sep">
-   <div class="about-links">
-  <a href="https://github.com/urol-e5" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
+<p>See <a href="https://github.com/urol-e5/deep-dive/issues/49">E5 deep-dive Github issue #49</a></p>
+<p>While looking at ShortStack database matches, for the three species I realized that all three have matches to multiple published sequences of miR-2030, but miR-2030 was not one of the miRNAs identified as conserved between the three species. After poking around I realized that the Apul miR-2030 miRNA and Peve miR-2030 have identical mature miRNA sequences, but the Pmea miR-2030 has a totally different mature sequence. Instead, the <em>star</em> sequence of Pmea miR-2030 matches the mature sequences for Apul miR-2030 and Peve miR-2030. This raises the possibility that ShortStack is incorrectly distinguishing between mature and star sequences, which would throw a bit of a wrench in the current workflow to identify conserved miRNAs.</p>
+<p><img src="images/Screenshot (248).png" class="img-fluid"></p>
+<p><img src="images/Screenshot (249).png" class="img-fluid"></p>
+<p>As a reminder, miRNAs originate as primary miRNA transcrpts (“pri-miRNAs”) transcribed from genes, which are characteristically folded in a “hairpin” structure. These pri-miRNAs are then cleaved at their base to form precursor miRNAs (“pre-miRNAs”). The pre-miRNA loop is then removed by Dicer, leaving a mature miRNA duplex. Both of these strands (5’ and 3’) can be loaded into an Argonaute (AGO) protein complex to form an RNA-induced silencing complex (RISC), which then guides gene expression. However, one strand is usually preferentially loaded, in part based on its thermodynamic stability. Strands that are not loaded are unwound from their complement and generally degraded by cellular machinery. The preferentially-loaded strand is commonly titled the “mature miRNA,” while the unloaded strand is commonly called the “miRNA*” or “miRNA star”. Since the AGO-loaded strand (mature miRNA) is the one that actually influences gene expression, this is the strand that is considered important during miRNA identification and analysis. (Summarized from O’Brien et al.&nbsp;2018)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/miRNA-biogenisis.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">miRNA biogenisis (Tomari &amp; Zamore 2005)</figcaption>
+</figure>
 </div>
-</div>
+<p>It isn’t entirely clear from the ShortStack documentation how it distinguishes between mature and star sequences.</p>
 
 
 
-
-
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-</th>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
-<th>
-Categories
-</th>
-<th>
-Reading Time
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-categories="E5-coral" data-listing-date-sort="1718262000000" data-listing-file-modified-sort="1717529227475" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="ShortStack: mature vs. star sequences incorrect?" data-listing-filename-sort="2024_06_04_ShortStack_mature_v_star.qmd">
-<td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2024_06_04_ShortStack_mature_v_star.html --></span>
-</td>
-<td>
-<span class="listing-date">Jun 13, 2024</span>
-</td>
-<td>
-<a href="../../posts/projects/E5_coral/2024_06_04_ShortStack_mature_v_star.html" class="title listing-title">ShortStack: mature vs.&nbsp;star sequences incorrect?</a>
-</td>
-<td>
-<span class="listing-categories">E5-coral</span>
-</td>
-<td>
-<span class="listing-reading-time">2 min</span>
-</td>
-</tr>
-<tr data-index="1" data-categories="E5-coral" data-listing-date-sort="1715929200000" data-listing-file-modified-sort="1717523821272" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-title-sort="Comparing ShortStack outputs to miRdeep2" data-listing-filename-sort="2024_05_17_shortstack_mirdeep2_comparisons.qmd">
-<td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2024_05_17_shortstack_mirdeep2_comparisons.html --></span>
-</td>
-<td>
-<span class="listing-date">May 17, 2024</span>
-</td>
-<td>
-<a href="../../posts/projects/E5_coral/2024_05_17_shortstack_mirdeep2_comparisons.html" class="title listing-title">Comparing ShortStack outputs to miRdeep2</a>
-</td>
-<td>
-<span class="listing-categories">E5-coral</span>
-</td>
-<td>
-<span class="listing-reading-time">7 min</span>
-</td>
-</tr>
-<tr data-index="2" data-categories="E5-coral" data-listing-date-sort="1715842800000" data-listing-file-modified-sort="1715992876606" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Summarizing and visualizing ShortStack outputs" data-listing-filename-sort="2024_05_16_shortstack_visualizations.qmd">
-<td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html --></span>
-</td>
-<td>
-<span class="listing-date">May 16, 2024</span>
-</td>
-<td>
-<a href="../../posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html" class="title listing-title">Summarizing and visualizing ShortStack outputs</a>
-</td>
-<td>
-<span class="listing-categories">E5-coral</span>
-</td>
-<td>
-<span class="listing-reading-time">2 min</span>
-</td>
-</tr>
-<tr data-index="3" data-categories="E5-coral" data-listing-date-sort="1707292800000" data-listing-file-modified-sort="1711583505443" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-title-sort="Generating a genes fasta for P. evermanni" data-listing-filename-sort="2024_02_07_Peve_transcriptome.qmd">
-<td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2024_02_07_Peve_transcriptome.html --></span>
-</td>
-<td>
-<span class="listing-date">Feb 7, 2024</span>
-</td>
-<td>
-<a href="../../posts/projects/E5_coral/2024_02_07_Peve_transcriptome.html" class="title listing-title">Generating a genes fasta for P. evermanni</a>
-</td>
-<td>
-<span class="listing-categories">E5-coral</span>
-</td>
-<td>
-<span class="listing-reading-time">7 min</span>
-</td>
-</tr>
-<tr data-index="4" data-categories="E5-coral" data-listing-date-sort="1707206400000" data-listing-file-modified-sort="1707421872450" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="RNAseq abundance quantification (A.Pulchra, P.evermanni, P.meandrina)" data-listing-filename-sort="2024_02_06_RNAseq_kallisto.qmd">
-<td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2024_02_06_RNAseq_kallisto.html --></span>
-</td>
-<td>
-<span class="listing-date">Feb 6, 2024</span>
-</td>
-<td>
-<a href="../../posts/projects/E5_coral/2024_02_06_RNAseq_kallisto.html" class="title listing-title">RNAseq abundance quantification (A.Pulchra, P.evermanni, P.meandrina)</a>
-</td>
-<td>
-<span class="listing-categories">E5-coral</span>
-</td>
-<td>
-<span class="listing-reading-time">3 min</span>
-</td>
-</tr>
-<tr data-index="5" data-categories="E5-coral" data-listing-date-sort="1706688000000" data-listing-file-modified-sort="1706825073165" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="P.evermanni RNAseq kallisto debugging" data-listing-filename-sort="2024_01_31_Peve_kallisto.qmd">
-<td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2024_01_31_Peve_kallisto.html --></span>
-</td>
-<td>
-<span class="listing-date">Jan 31, 2024</span>
-</td>
-<td>
-<a href="../../posts/projects/E5_coral/2024_01_31_Peve_kallisto.html" class="title listing-title">P.evermanni RNAseq kallisto debugging</a>
-</td>
-<td>
-<span class="listing-categories">E5-coral</span>
-</td>
-<td>
-<span class="listing-reading-time">3 min</span>
-</td>
-</tr>
-<tr data-index="6" data-categories="E5-coral" data-listing-date-sort="1701763200000" data-listing-file-modified-sort="1702493743748" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-title-sort="P.meandrina sRNA: miRdeep2 and 3 species sRNA comparison" data-listing-filename-sort="2023_12_05_E5_coral.qmd">
-<td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2023_12_05_E5_coral.html --></span>
-</td>
-<td>
-<span class="listing-date">Dec 5, 2023</span>
-</td>
-<td>
-<a href="../../posts/projects/E5_coral/2023_12_05_E5_coral.html" class="title listing-title">P.meandrina sRNA: miRdeep2 and 3 species sRNA comparison</a>
-</td>
-<td>
-<span class="listing-categories">E5-coral</span>
-</td>
-<td>
-<span class="listing-reading-time">13 min</span>
-</td>
-</tr>
-<tr data-index="7" data-categories="E5-coral" data-listing-date-sort="1701331200000" data-listing-file-modified-sort="1702493147072" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="P.meandrina sRNA: MirMachine, ShortStack" data-listing-filename-sort="2023_11_30_E5_coral.qmd">
-<td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2023_11_30_E5_coral.html --></span>
-</td>
-<td>
-<span class="listing-date">Nov 30, 2023</span>
-</td>
-<td>
-<a href="../../posts/projects/E5_coral/2023_11_30_E5_coral.html" class="title listing-title">P.meandrina sRNA: MirMachine, ShortStack</a>
-</td>
-<td>
-<span class="listing-categories">E5-coral</span>
-</td>
-<td>
-<span class="listing-reading-time">1 min</span>
-</td>
-</tr>
-<tr data-index="8" data-categories="E5-coral" data-listing-date-sort="1699948800000" data-listing-file-modified-sort="1702493095500" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="P.meandrina sRNA: trimming, miRTrace, BLASTn" data-listing-filename-sort="2023_11_14_E5_coral.qmd">
-<td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2023_11_14_E5_coral.html --></span>
-</td>
-<td>
-<span class="listing-date">Nov 14, 2023</span>
-</td>
-<td>
-<a href="../../posts/projects/E5_coral/2023_11_14_E5_coral.html" class="title listing-title">P.meandrina sRNA: trimming, miRTrace, BLASTn</a>
-</td>
-<td>
-<span class="listing-categories">E5-coral</span>
-</td>
-<td>
-<span class="listing-reading-time">1 min</span>
-</td>
-</tr>
-</tbody>
-
-</table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -497,6 +306,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   } else {
     toggleColorMode(false);
   }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

@@ -22,7 +22,7 @@ Rendered code:
 ## Summary
 
 |             |                       |                                |                                                  |                                                                           |
-|------------|----------------|-----------------------|---------------------|----------------------------|
+|-------------|-----------------------|--------------------------------|--------------------------------------------------|---------------------------------------------------------------------------|
 | **Species** | **Identified miRNAs** | **miRNAs with database match** | **Database matches \*not\* classified as miRNA** | **\# of ShortStack miRNAs that are also classified as miRNA by miRdeep2** |
 | A.pulchra   | 38                    | 24                             | 44                                               | 36                                                                        |
 | P.evermanni | 46                    | 9                              | 27                                               | 30                                                                        |

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/projects.html</loc>
-    <lastmod>2024-06-03T18:19:44.428Z</lastmod>
+    <lastmod>2024-06-03T22:22:34.620Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/2024_04_29_methylation_subsampling.html</loc>
@@ -46,7 +46,7 @@
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_05_17_shortstack_mirdeep2_comparisons.html</loc>
-    <lastmod>2024-06-03T18:19:11.736Z</lastmod>
+    <lastmod>2024-06-04T19:27:23.836Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_02_07_Peve_transcriptome.html</loc>
@@ -162,7 +162,7 @@
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</loc>
-    <lastmod>2024-06-03T18:19:13.044Z</lastmod>
+    <lastmod>2024-06-04T19:27:51.577Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_02_TTS.html</loc>
@@ -182,7 +182,7 @@
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.html</loc>
-    <lastmod>2024-06-03T18:19:32.706Z</lastmod>
+    <lastmod>2024-06-03T22:22:41.737Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/2023_11_02_pacific_cod.html</loc>
@@ -203,5 +203,9 @@
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod.html</loc>
     <lastmod>2024-06-03T18:19:42.732Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_06_04_ShortStack_mature_v_star.html</loc>
+    <lastmod>2024-06-04T19:27:50.037Z</lastmod>
   </url>
 </urlset>
