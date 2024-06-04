@@ -1,0 +1,20 @@
+---
+title: "June 2024, Monthly Goals"
+author: "Kathleen Durkin"
+date: "2024-06-04"
+categories: ["monthly goals"]
+format:
+  html
+---
+
+## Reviewing May Goals
+
+✔️ Finalize committee selection and send out email requests
+
+✔️ Pick which project(s) will comprise thesis proposal and discuss proposal with Steven
+
+✔️ Finish GO annotation and functional enrichment analysis for cod, genome-based analysis
+
+🟡 Read at least 10 papers to investigate the DEGs and functionally enriched processes from the cod data
+
+🟡 Start a planning document for the oyster project in the same style as Ariana showed us during lab meeting (see [daily post](/posts/daily_logs/2024/February_2024_posts.qmd#february-2024-20)) (rollover-over)

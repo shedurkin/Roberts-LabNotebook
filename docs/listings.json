@@ -10,6 +10,8 @@
   {
     "listing": "/daily_log.html",
     "items": [
+      "/posts/daily_logs/2024/June_2024_posts.html",
+      "/posts/daily_logs/2024/June_2024_goals.html",
       "/posts/daily_logs/2024/May_2024_posts.html",
       "/posts/daily_logs/2024/May_2024_goals.html",
       "/posts/daily_logs/2024/April_2024_posts.html",
@@ -47,9 +49,9 @@
   {
     "listing": "/posts/projects/misc.html",
     "items": [
+      "/posts/projects/misc/2024_02_22_quarto_features.html",
       "/posts/projects/misc/2024_03_27_GNM569awk.html",
       "/posts/projects/misc/2024_02_28_oyster_sampling.html",
-      "/posts/projects/misc/2024_02_22_quarto_features.html",
       "/posts/projects/misc/2024_01_30_Ideas.html",
       "/posts/projects/misc/2024_02_26_oyster_sampling_materials.html",
       "/posts/projects/misc/2024_02_22_paper_organization.html",
