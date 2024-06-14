@@ -23,3 +23,5 @@ As a reminder, miRNAs originate as primary miRNA transcripts ("pri-miRNAs") tran
 ![miRNA biogenisis [@tomari_microrna_2005]](images/miRNA-biogenisis.jpg)
 
 It isn't entirely clear from the ShortStack documentation how it distinguishes between mature and star sequences. What sequence features would indicate one strand is more likely to be loaded on to the RISC complex than the other? In addition, O'Brien et al. (2018) seem to suggest that both the mature and star miRNA molecules could play some role in gene expression -- does that mean we should be considering both to be important?
+
+June 7 update:

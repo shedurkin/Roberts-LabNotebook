@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kathleen Durkin">
-<meta name="dcterms.date" content="2024-06-04">
+<meta name="dcterms.date" content="2024-06-14">
 
 <title>Kathleen’s Lab Notebook - June 2024, Daily Log</title>
 <style>
@@ -135,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">June 4, 2024</p>
+        <p class="date">June 14, 2024</p>
       </div>
     </div>
     
@@ -244,6 +244,12 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="june-2024-10"><strong>14 June 2024</strong></h2>
 <section id="friday-2" class="level4">
 <h4 class="anchored" data-anchor-id="friday-2"><strong>Friday</strong></h4>
+<ul>
+<li><p>E5 meeting</p></li>
+<li><p>reading some <em>more</em> papers on ShortStack, miRNA biogenisis/structure and siRNAs following E5 meeting discussion</p></li>
+<li><p>Some more looking through ShortStack outputs and added a bit to the manuscript</p></li>
+<li><p>Reading some papers on the mechanisms of triploid mortality and associated physiological indicators to think about which biomarkers might be the best place to start. Learned that triploid mortality has been associated with triploid fecundity/gametogenisis, which is whack since I thought they were largely sterile</p></li>
+</ul>
 </section>
 </section>
 <section id="june-2024-11" class="level2">
@@ -256,12 +262,23 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="june-2024-12"><strong>12 June 2024</strong></h2>
 <section id="wednesday-2" class="level4">
 <h4 class="anchored" data-anchor-id="wednesday-2"><strong>Wednesday</strong></h4>
+<ul>
+<li><p>Continue rerunning Pacific cod analyses</p></li>
+<li><p>writing in the E5 manuscript, discussion section</p></li>
+<li><p>did some prep for Chris’s <a href="https://docs.google.com/document/d/11JxeS9e5-MzAGy_EKtnJsAcvAaS5sQTMdS1ov9DlpP0/edit">Yellow Island Graduate Student Panel</a></p></li>
+</ul>
 </section>
 </section>
 <section id="june-2024-13" class="level2">
 <h2 class="anchored" data-anchor-id="june-2024-13"><strong>11 June 2024</strong></h2>
 <section id="tuesday-2" class="level4">
 <h4 class="anchored" data-anchor-id="tuesday-2"><strong>Tuesday</strong></h4>
+<ul>
+<li><p>still rerunning Pacific cod analyses</p></li>
+<li><p>Running into some issues while converting SAM files to sorted BAM. Occasionally quits and I have to restart it, and I’ve also started running out of disk space on Raven. Clearing some old files.</p></li>
+<li><p>Added plots of top DEGs and their abundance across all treatments</p></li>
+<li><p>noticed that in a lot of these plots, there’s sort of a bimodal distribution in the 16C treatment, with ~5 samples clustering away from the median…</p></li>
+</ul>
 </section>
 </section>
 <section id="june-2024-14" class="level2">
@@ -274,18 +291,33 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="june-2024-15"><strong>07 June 2024</strong></h2>
 <section id="friday-3" class="level4">
 <h4 class="anchored" data-anchor-id="friday-3"><strong>Friday</strong></h4>
+<ul>
+<li><p>continue with Pacific cod analysis rerun</p></li>
+<li><p>some reading on mature v star miRNA for <a href="https://github.com/urol-e5/deep-dive/issues/49">E5 issue</a> (updated notebook post)</p></li>
+</ul>
 </section>
 </section>
 <section id="june-2024-16" class="level2">
 <h2 class="anchored" data-anchor-id="june-2024-16"><strong>06 June 2024</strong></h2>
 <section id="thursday-3" class="level4">
 <h4 class="anchored" data-anchor-id="thursday-3"><strong>Thursday</strong></h4>
+<ul>
+<li><p>started rerunning full Pacific cod analysis with sample 92 included</p>
+<ul>
+<li>troubleshooting trimming code that suddenly wont run – realized the code on Raven somehow reverted to an older version, so just needed to copy over the correct code from github</li>
+</ul></li>
+<li><p>reading on miRNA biogenisis/transport/function</p></li>
+</ul>
 </section>
 </section>
 <section id="june-2024-17" class="level2">
 <h2 class="anchored" data-anchor-id="june-2024-17"><strong>05 June 2024</strong></h2>
 <section id="wednesday-3" class="level4">
 <h4 class="anchored" data-anchor-id="wednesday-3"><strong>Wednesday</strong></h4>
+<ul>
+<li><p>talked with Ariana about oyster stuff</p></li>
+<li><p>helped Divya with github/raven problems to finish out FISH541 work</p></li>
+</ul>
 </section>
 </section>
 <section id="june-2024-18" class="level2">
@@ -296,7 +328,7 @@ ul.task-list li input[type="checkbox"] {
 <li><p>more looking into that shortstack issue, also found that Pmea shortstack needs to be rerun because it’s using the wrong database file (see <a href="https://github.com/urol-e5/deep-dive/issues/49">github issue</a>)</p></li>
 <li><p>Did some reading on miRNA biogenisis and updated Shortstack notebook post from yesterday</p></li>
 <li><p>Set up daily posts and goals for this month</p></li>
-<li></li>
+<li><p>Trying to figure out how to incorporate the star miRNA sequences in comparison analysis (if we decide that would be useful because of possible incorrect mature/star ID). It wouldn’t work perfectly just subbing in a different list of sequences to current workflow. Star sequences are getting blast hits to the sets of stars associated with already known conserved mature miRNAs, and I’m not exactly sure how I might want to change the filtering to get what I want. After manually investigating it in Google sheets though, it looks like including star sequences wouldn’t have a huge impact. Instead of 4 miRNAs conserved in all three species and 1/1/1 for each pair of species, including stars as possible mature miRNA sequences would shift the conserved counts to 5 miRNAs in all three species and 0/1/1 for the Apul-Peve, Apul-Pmea, and Peve-Pmea pairs.</p></li>
 </ul>
 </section>
 </section>

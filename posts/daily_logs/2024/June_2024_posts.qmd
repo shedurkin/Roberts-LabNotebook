@@ -52,6 +52,14 @@ format:
 
 #### **Friday**
 
+-   E5 meeting
+
+-   reading some *more* papers on ShortStack, miRNA biogenisis/structure and siRNAs following E5 meeting discussion
+
+-   Some more looking through ShortStack outputs and added a bit to the manuscript
+
+-   Reading some papers on the mechanisms of triploid mortality and associated physiological indicators to think about which biomarkers might be the best place to start. Learned that triploid mortality has been associated with triploid fecundity/gametogenisis, which is whack since I thought they were largely sterile
+
 ## **13 June 2024**
 
 #### **Thursday**
@@ -60,9 +68,23 @@ format:
 
 #### **Wednesday**
 
+-   Continue rerunning Pacific cod analyses
+
+-   writing in the E5 manuscript, discussion section
+
+-   did some prep for Chris's [Yellow Island Graduate Student Panel](https://docs.google.com/document/d/11JxeS9e5-MzAGy_EKtnJsAcvAaS5sQTMdS1ov9DlpP0/edit)
+
 ## **11 June 2024**
 
 #### **Tuesday**
+
+-   still rerunning Pacific cod analyses
+
+-   Running into some issues while converting SAM files to sorted BAM. Occasionally quits and I have to restart it, and I've also started running out of disk space on Raven. Clearing some old files.
+
+-   Added plots of top DEGs and their abundance across all treatments
+
+-   noticed that in a lot of these plots, there's sort of a bimodal distribution in the 16C treatment, with \~5 samples clustering away from the median...
 
 ## **10 June 2024**
 
@@ -72,13 +94,27 @@ format:
 
 #### **Friday**
 
+-   continue with Pacific cod analysis rerun
+
+-   some reading on mature v star miRNA for [E5 issue](https://github.com/urol-e5/deep-dive/issues/49) (updated notebook post)
+
 ## **06 June 2024**
 
 #### **Thursday**
 
+-   started rerunning full Pacific cod analysis with sample 92 included
+
+    -   troubleshooting trimming code that suddenly wont run -- realized the code on Raven somehow reverted to an older version, so just needed to copy over the correct code from github
+
+-   reading on miRNA biogenisis/transport/function
+
 ## **05 June 2024**
 
 #### **Wednesday**
+
+-   talked with Ariana about oyster stuff
+
+-   helped Divya with github/raven problems to finish out FISH541 work
 
 ## **04 June 2024**
 
@@ -90,7 +126,7 @@ format:
 
 -   Set up daily posts and goals for this month
 
--   
+-   Trying to figure out how to incorporate the star miRNA sequences in comparison analysis (if we decide that would be useful because of possible incorrect mature/star ID). It wouldn't work perfectly just subbing in a different list of sequences to current workflow. Star sequences are getting blast hits to the sets of stars associated with already known conserved mature miRNAs, and I'm not exactly sure how I might want to change the filtering to get what I want. After manually investigating it in Google sheets though, it looks like including star sequences wouldn't have a huge impact. Instead of 4 miRNAs conserved in all three species and 1/1/1 for each pair of species, including stars as possible mature miRNA sequences would shift the conserved counts to 5 miRNAs in all three species and 0/1/1 for the Apul-Peve, Apul-Pmea, and Peve-Pmea pairs.
 
 ## **03 June 2024**
 

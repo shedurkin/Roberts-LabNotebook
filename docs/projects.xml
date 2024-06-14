@@ -10,7 +10,7 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/projects.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Tue, 04 Jun 2024 20:26:04 GMT</lastBuildDate>
+<lastBuildDate>Fri, 14 Jun 2024 23:34:25 GMT</lastBuildDate>
 <item>
   <title>E5 Coral</title>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</link>
@@ -61,7 +61,7 @@ Reading Time
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-categories="E5-coral" data-listing-date-sort="1717398000000" data-listing-file-modified-sort="1717532334778" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="ShortStack: mature vs. star sequences incorrect?" data-listing-filename-sort="2024_06_04_ShortStack_mature_v_star.qmd">
+<tr data-index="0" data-categories="E5-coral" data-listing-date-sort="1717398000000" data-listing-file-modified-sort="1718226644839" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="ShortStack: mature vs. star sequences incorrect?" data-listing-filename-sort="2024_06_04_ShortStack_mature_v_star.qmd">
 <td>
 <span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2024_06_04_ShortStack_mature_v_star.html --></span>
 </td>
@@ -222,7 +222,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</guid>
-  <pubDate>Tue, 04 Jun 2024 20:26:04 GMT</pubDate>
+  <pubDate>Fri, 14 Jun 2024 23:34:25 GMT</pubDate>
 </item>
 <item>
   <title>Pacific Cod</title>
@@ -438,7 +438,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod.html</guid>
-  <pubDate>Tue, 04 Jun 2024 20:26:04 GMT</pubDate>
+  <pubDate>Fri, 14 Jun 2024 23:34:25 GMT</pubDate>
 </item>
 <item>
   <title>Miscellaneous</title>
@@ -644,7 +644,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.html</guid>
-  <pubDate>Tue, 04 Jun 2024 20:26:04 GMT</pubDate>
+  <pubDate>Fri, 14 Jun 2024 23:34:25 GMT</pubDate>
 </item>
 </channel>
 </rss>
