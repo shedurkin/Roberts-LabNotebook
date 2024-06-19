@@ -9,13 +9,13 @@ format:
 engine: knitr
 ---
 
-In the process of running [kallisto on the three E5 deep dive species](2024_02_06_RNAseq_kallisto.qmd), we realized that there's no transcriptome FASTA available for *P. evermanni*. That means we need to generate one!
+In the process of running [kallisto on the three E5 deep dive species](./2024_02_06_RNAseq_kallisto.qmd), we realized that there's no transcriptome FASTA available for *P. evermanni*. That means we need to generate one!
 
 [Rendered code](https://github.com/urol-e5/deep-dive/blob/main/E-Peve/code/12-Peve-RNAseq-kallisto.md)
 
 [Related posts:]{.underline}\
-[RNAseq abundance quantification (A.Pulchra, P.evermanni, P.meandrina)](2024_02_06_RNAseq_kallisto.qmd)\
-[P.evermanni RNAseq kallisto debugging](2024_01_31_Peve_kallisto.qmd)\
+[RNAseq abundance quantification (A.Pulchra, P.evermanni, P.meandrina)](./2024_02_06_RNAseq_kallisto.qmd)\
+[P.evermanni RNAseq kallisto debugging](./2024_01_31_Peve_kallisto.qmd)\
 [Testing bedtools: gff vs bed input file](../misc/2024_02_08_bedtools_gffvbed.qmd)
 
 ### Starter files

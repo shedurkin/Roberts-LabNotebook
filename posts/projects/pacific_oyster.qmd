@@ -1,0 +1,29 @@
+---
+title: "Pacific Oyster"
+about:
+  id: description
+  template: trestles
+  image: "../../images/pacific-oyster-david-nunuk.jpg"
+  image-shape: rounded
+  links:
+    - icon: github
+      text: Github
+listing: 
+  contents: pacific_oyster
+  sort: "date desc"
+  type: table
+#  categories: true
+  sort-ui: false
+  filter-ui: false
+  fields: [image, date, title, categories, reading-time]
+page-layout: full
+title-block-banner: true
+format:
+  html
+---
+
+::: {#description}
+**Stress hardening in Pacific oysters**
+
+Project planning for stress hardening experiment with Pacific oysters
+:::
