@@ -1,0 +1,34 @@
+---
+title: "NSF GRFP, the aquaculture question"
+author: "Kathleen Durkin"
+date: "2024-06-18"
+categories: ["misc"]
+format:
+  html:
+    toc: true
+engine: knitr
+---
+
+Research eligibility guidelines, according to the [Program Solicitation](https://new.nsf.gov/funding/opportunities/nsf-graduate-research-fellowship-program-grfp/nsf23-605/solicitation#elig):
+
+b\) Ineligible areas of study
+
+Individuals are **not eligible to apply if they will be enrolled in graduate study focused on clinical practice, counseling, social work, patient-oriented research, epidemiological and medical behavioral studies, outcomes research, and health services research**. Ineligible study includes pharmacologic, non-pharmacologic, and behavioral interventions for disease or disorder prevention, prophylaxis, diagnosis, therapy, or treatment. Research to provide evidence leading to a scientific basis for consideration of a change in health policy or standard of care is not eligible. **Graduate study focused on community, public, or global health, or other population-based research including medical intervention trials is also not eligible.**
+
+c\) Ineligible proposed research
+
+\(i\) Research for which the goals are directly human disease- or health-related, including the etiology, diagnosis, and/or treatment of disease or disorder is not eligible for support. Research activities using animal models of disease, for developing or testing of drugs or other procedures for treatment of disease or disorder are not eligible.
+
+\(ii\) Research focused on basic questions in plant pathology are eligible, however, **applied studies focused on maximizing production in agricultural plants or impacts on food safety, are not eligible.**
+
+\(iii\) Research with implications that inform policy is eligible. Research with the expressed intent to influence, advocate for, or effect specific policy outcomes is not eligible.
+
+d\) Limited exceptions to ineligible proposed research
+
+\(i\) Certain areas of bioengineering research directed at medical use are eligible. These include research projects in bioengineering to aid persons with disabilities, or to diagnose or treat human disease or disorder, provided they apply engineering principles to problems in medicine while primarily advancing engineering knowledge. Applicants planning to study and conduct research in these areas of bioengineering should select biomedical engineering as the field of study.
+
+\(ii\) Certain areas of materials research directed at development of materials for use in biological or biomedical systems are eligible, provided they are focused on furthering fundamental materials research.
+
+\(iii\) Certain areas of research with etiology-, diagnosis-, or treatment-related goals that advance fundamental knowledge in engineering, mathematical, physical, computer or information sciences, are eligible for support.
+
+Aquaculture and other forms of animal farming is not specifically mentioned, but the emphasis seems to be that r**esearch should be intended to advance fundamental knowledge**. Since aquaculture is inherently *applied*, it's probably best to steer clear in the proposal.
