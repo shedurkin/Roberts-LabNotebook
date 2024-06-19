@@ -25,3 +25,11 @@ As a reminder, miRNAs originate as primary miRNA transcripts ("pri-miRNAs") tran
 It isn't entirely clear from the ShortStack documentation how it distinguishes between mature and star sequences. What sequence features would indicate one strand is more likely to be loaded on to the RISC complex than the other? In addition, O'Brien et al. (2018) seem to suggest that both the mature and star miRNA molecules could play some role in gene expression -- does that mean we should be considering both to be important?
 
 June 7 update:
+
+from the [ShortStack github documentation](https://github.com/MikeAxtell/ShortStack#mirfasta):
+
+> "This is a FASTA formatted file containing hairpin, mature miRNA, and miRNA\* sequences derived from ShortStack's identification of MIRNA loci. These are genomic sequences, and the genomic coordinates are noted in the FASTA header. **ShortStack's determination of mature miRNA vs. miRNA\* strands is based on abundance of alignments at that particular locus.** These designations may not always be accurate for an entire MIRNA family .. sometimes one paralog can attract most of the true mature miRNA alignments, leaving the other paralogs with mostly true miRNA\* alignments. Take care when performing annotations."
+
+Out of curiosity I tried rerunning the conserved-miRNA analysis with both the mature and star sequences, and it looks like the first example I identified (miR-2030) is probably the only instance of an miRNA star being identical to other mature miRNAs in our read data.
+
+ShortStack bases its mature/star classification on read counts because, generally, the unutilized miRNA-star strands get quickly broken down by cell machinery. However, I found a paper identifying several instances of miRNA-star reads outnumbering associated mature miRNA reads [@jagadeeswaran_deep_2010], so that assumption definitely doesn't hold 100%. For miRNAs with database matches we could use the known mature miRNA sequences to double check ShortStack's mature/star classification, but for novel miRNAs I think we just have to accept the ShortStack results.
