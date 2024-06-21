@@ -10,7 +10,7 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/projects.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Fri, 21 Jun 2024 02:40:29 GMT</lastBuildDate>
+<lastBuildDate>Fri, 21 Jun 2024 21:04:23 GMT</lastBuildDate>
 <item>
   <title>E5 Coral</title>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</link>
@@ -222,7 +222,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</guid>
-  <pubDate>Fri, 21 Jun 2024 02:40:29 GMT</pubDate>
+  <pubDate>Fri, 21 Jun 2024 21:04:23 GMT</pubDate>
 </item>
 <item>
   <title>Pacific Cod</title>
@@ -438,7 +438,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod.html</guid>
-  <pubDate>Fri, 21 Jun 2024 02:40:29 GMT</pubDate>
+  <pubDate>Fri, 21 Jun 2024 21:04:23 GMT</pubDate>
 </item>
 <item>
   <title>Pacific Oyster</title>
@@ -493,7 +493,7 @@ Reading Time
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-categories="pacific_oyster" data-listing-date-sort="1718866800000" data-listing-file-modified-sort="1718932811862" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Lit Review: Energetics" data-listing-filename-sort="2024_06_20_Energetics.qmd">
+<tr data-index="0" data-categories="pacific_oyster" data-listing-date-sort="1718866800000" data-listing-file-modified-sort="1718982850055" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Lit Review: Energetics" data-listing-filename-sort="2024_06_20_Energetics.qmd">
 <td>
 <span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_06_20_Energetics.html --></span>
 </td>
@@ -510,7 +510,7 @@ Reading Time
 <span class="listing-reading-time">3 min</span>
 </td>
 </tr>
-<tr data-index="1" data-categories="pacific_oyster" data-listing-date-sort="1718866800000" data-listing-file-modified-sort="1718937519164" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Lit Review: Experimental design questions" data-listing-filename-sort="2024_06_20_experimental_design_questions.qmd">
+<tr data-index="1" data-categories="pacific_oyster" data-listing-date-sort="1718866800000" data-listing-file-modified-sort="1719003451002" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-title-sort="Lit Review: Experimental design questions" data-listing-filename-sort="2024_06_20_experimental_design_questions.qmd">
 <td>
 <span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_06_20_experimental_design_questions.html --></span>
 </td>
@@ -524,10 +524,10 @@ Reading Time
 <span class="listing-categories">pacific_oyster</span>
 </td>
 <td>
-<span class="listing-reading-time">2 min</span>
+<span class="listing-reading-time">15 min</span>
 </td>
 </tr>
-<tr data-index="2" data-categories="pacific_oyster" data-listing-date-sort="1718780400000" data-listing-file-modified-sort="1718932930372" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Preliminary Project Outline" data-listing-filename-sort="2024_06_19_Project_Outline.qmd">
+<tr data-index="2" data-categories="pacific_oyster" data-listing-date-sort="1718780400000" data-listing-file-modified-sort="1718982850088" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Preliminary Project Outline" data-listing-filename-sort="2024_06_19_Project_Outline.qmd">
 <td>
 <span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_06_19_Project_Outline.html --></span>
 </td>
@@ -552,7 +552,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster.html</guid>
-  <pubDate>Fri, 21 Jun 2024 02:40:29 GMT</pubDate>
+  <pubDate>Fri, 21 Jun 2024 21:04:23 GMT</pubDate>
 </item>
 <item>
   <title>Miscellaneous</title>
@@ -775,7 +775,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.html</guid>
-  <pubDate>Fri, 21 Jun 2024 02:40:29 GMT</pubDate>
+  <pubDate>Fri, 21 Jun 2024 21:04:23 GMT</pubDate>
 </item>
 </channel>
 </rss>

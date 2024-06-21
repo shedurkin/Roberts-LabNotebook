@@ -28,10 +28,10 @@ bibliography: ../../../references.bib
 
 ### Questions/Notes:
 
-1.   We\'d need to make sure they don\'t spawn, so need to do some digging into what conditions might induce spawning. Would be important during priming stage.
-2.   MHW definition is pretty distinct, would need to decide what type of scenario to simulate
-3.   Need to figure out sample sizes for whatever tests I want to do. Would be benefitted by running some test assays before starting experiment. A bunch of these assays have been used with Pacific oysters already, so could find those and make a table or something. 
-4.   Apparently heartbeat is potentially a better metric for metabolic rate than respiration, and is nondestructive
-5.   Acute stress test could be a good biomarker itself. Aka take an oyster after hardening and see how long it survives at 35C, monitoring heartbeat and stuff. Would, of course, also want to do preliminary tests
-6.   Should also keep in mind that genetic composition can completely change the true sample size (e.g., if triploids and diploids are siblings)
-7.   Should look at all the hardening papers to try to assess best timeline (e.g. how long to harden, how long to wait between hardening and stress)
+1.  We'd need to make sure they don't spawn, so need to do some digging into what conditions might induce spawning. Would be important during priming stage.
+2.  MHW definition is pretty distinct, would need to decide what type of scenario to simulate
+3.  Need to figure out sample sizes for whatever tests I want to do. Would be benefitted by running some test assays before starting experiment. A bunch of these assays have been used with Pacific oysters already, so could find those and make a table or something. 
+4.  Apparently heartbeat is potentially a better metric for metabolic rate than respiration, and is nondestructive
+5.  Acute stress test could be a good biomarker itself. Aka take an oyster after hardening and see how long it survives at 35C, monitoring heartbeat and stuff. Would, of course, also want to do preliminary tests
+6.  Should also keep in mind that genetic composition can completely change the true sample size (e.g., if triploids and diploids are siblings)
+7.  Should look at all the hardening papers to try to assess best timeline (e.g. how long to harden, how long to wait between hardening and stress)

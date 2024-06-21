@@ -22,7 +22,7 @@ The oyster project will involve evaluating some metric(s) of body condition or e
 
 -   temperature dependence of development rate is the parameter with greatest influence on the costs of development in relation to optimal temperature.
 
-## Energy homeostasis to assess stress tolerance 
+## Energy homeostasis to assess stress tolerance
 
 [@sokolova_energy_2012]
 
