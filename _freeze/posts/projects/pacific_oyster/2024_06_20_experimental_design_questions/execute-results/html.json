@@ -1,0 +1,14 @@
+{
+  "hash": "6cbc28787c7920e580801e06be8b2bbb",
+  "result": {
+    "markdown": "---\ntitle: \"Lit Review: Experimental design questions\"\nauthor: \"Kathleen Durkin\"\ndate: \"2024-06-20\"\ncategories: [\"pacific_oyster\"]\nformat:\n  html:\n    toc: true\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nAddressing some questions/notes raised during preliminary project planning\n\n### Spawning conditions\n\nWe\\'d need to make sure they don\\'t spawn, so need to do some digging into what conditions might induce spawning. Would be important during priming stage.\n\nIn hatchery settings:\n\n-   \"In the Pacific Northwest, **the Pacific oyster may be induced to spawn and viable gametes may be obtained at any time during the year**. Year-round spawning is possible because the Pacific oyster normally does not completely spawn out in all Pacific Northwest estuarine areas, generally too cool to induce complete spawning.\"\n\n    Conditioning: Oyster with sufficient glycogen stores held at **18-20C for 4 weeks** to develop mature gametes. These conditioned oysters will be prime for induced spawning for the next 2-4 weeks.\n\n    Initiating spawning: Raise water to 25C, then to 30C over 30min period. Then **fluctuate between 25C and 30C**. **Addition of gametes** to the water can also induce spawning, presumably because of some hormone signaling.\n\n    [@breese1975]\n\nIn natural/outplant conditions:\n\n-   In France's Thau Lagoon, which is characterized by no tidal amplitude (oysters remain submerged), high summer temps and salinities (\\>26C and 36 PSU), low phytoplankton concentration, and high oyster growth rates.\n\n    \"spawning in C. gigas does not occur below a daily seawater temperature of 17-18°C\"\n\n    [@ubertini_gametogenesis_2017]\n\n-   \n\n1.   MHW definition is pretty distinct, would need to decide what type of scenario to simulate\n2.   Need to figure out sample sizes for whatever tests I want to do. Would be benefited by running some test assays before starting experiment. A bunch of these assays have been used with Pacific oysters already, so could find those and make a table or something. \n3.   Apparently heartbeat is potentially a better metric for metabolic rate than respiration, and is nondestructive\n4.   Acute stress test could be a good biomarker itself. Aka take an oyster after hardening and see how long it survives at 35C, monitoring heartbeat and stuff. Would, of course, also want to do preliminary tests\n5.   Should also keep in mind that genetic composition can completely change the true sample size (e.g., if triploids and diploids are siblings)\n6.   Should look at all the hardening papers to try to assess best timeline (e.g. how long to harden, how long to wait between hardening and stress)\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
