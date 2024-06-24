@@ -35,3 +35,11 @@ bibliography: ../../../references.bib
 5.  Acute stress test could be a good biomarker itself. Aka take an oyster after hardening and see how long it survives at 35C, monitoring heartbeat and stuff. Would, of course, also want to do preliminary tests
 6.  Should also keep in mind that genetic composition can completely change the true sample size (e.g., if triploids and diploids are siblings)
 7.  Should look at all the hardening papers to try to assess best timeline (e.g. how long to harden, how long to wait between hardening and stress)
+
+-   Say manual hardening 3-4 hrs/day MWF. Then 2 wk recovery and MHW of 40C immersed and emmersed for a few hours, then montier at ambient for a few weeks. Can stress test rest if alive.
+
+-   Also, can include a much larger number of diploids and outplant MHW survivors to test long term effects
+
+-   could throw in the tetraploids to spawn at the end and see if larvae are more resilient
+
+-   We need to grab 4 cohorts that havent been tested yet (can see github issue about ploidy stuff)

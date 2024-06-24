@@ -7,7 +7,7 @@ website:
   #favicon:
   page-navigation: true
   #description:
-  site-url: https://shedurkin.github.io/Roberts-LabNotebook/
+  site-url: https://shedurkin.github.io/Roberts-LabNotebook
   repo-url: https://github.com/shedurkin/Roberts-LabNotebook
   
   navbar:
