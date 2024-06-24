@@ -48,7 +48,7 @@ Experimental testing:
 
     [@chavez-villalba_broodstock_2002]
 
-Summary: Generally speaking, gametogenisis is prompted by a minimum temperature of 17C - 18C in the presence of sufficient energy storage. Fastest maturation happens around 22C, with spawning triggered by warmer temperatures than used during conditioning (e.g., 25C to 30C). If we're acclimatizing in the 25C range there will likely be resultant gametogenisis, but conditioning for \~2 weeks is sufficiently short to prevent full gonadal maturation ("ripening") and subsequent spawning. Not entirely clear though what happens if you hold at 20C for 2 weeks and then drop back down in temp -- would gametogenisis continue?
+Summary: Generally speaking, gametogenisis is prompted by a minimum temperature of 17C - 18C in the presence of sufficient energy storage. Fastest maturation happens around 22C, with spawning triggered by warmer temperatures than used during conditioning (e.g., 25C to 30C). If we're acclimatizing in the 25C range there will likely be resultant gametogenisis, but conditioning for \~2 weeks is sufficiently short to prevent full gonadal maturation ("ripening") and subsequent spawning. Not entirely clear though what happens if you hold at 20C for 2 weeks and then drop back down in temp -- would gametogenisis continue? Holding at higher temps after ripening can trigger spawning, so we'd need to be mindful of the hardening -\> stress test timeline. Then again, if 25-30 is ideal to trigger spawning, maybe higher temps (35-40C) would be too hot for it...
 
 ### Hardening timeline
 
@@ -99,14 +99,22 @@ Wild-caught tropical oyster I. nucleus, acclimated at 26C for 1month. Emmersed a
 
 Similar resilience evaluation approach to what we're thinking in own project (quantifying temperature induced mortality and 50% lethal temp as a biomarker)
 
+ploidy -- should look into differences in ploidy, can then maybe try to manipulate it (e.g. hsps are different, try to harden in a way that would affect hsp expression)
+
 ### Defining an MHW
 
 MHW definition is pretty distinct, would need to decide what type of scenario to simulate
 
 Marine heatwaves (MHWs) are defined as "a discrete period of prolonged anomalously warm water at a particular location, and quantitative definitions are based on ocean temperatures exceeding a fixed (Frölicher et al. 2018), seasonally varying (Hobday et al. 2016), or cumulative (Eakin et al. 2010) threshold." [@oliver_marine_2021]
 
+### Ploidy
+
+### Physiological assays
+
+![Assays suggested in Ariana's Sea Grant biomarkers proposal](images/oyster_assays.png)
+
 1.  Need to figure out sample sizes for whatever tests I want to do. Would be benefited by running some test assays before starting experiment. A bunch of these assays have been used with Pacific oysters already, so could find those and make a table or something. 
-
 2.  Apparently heartbeat is potentially a better metric for metabolic rate than respiration, and is nondestructive
-
 3.  Should also keep in mind that genetic composition can completely change the true sample size (e.g., if triploids and diploids are siblings)
+
+-   can measure clearance rate (feeding) as an easy non-destructive way. Would be pretty straightforward to measure (can talk to larkin abut it, he did it)

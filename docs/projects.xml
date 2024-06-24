@@ -10,7 +10,7 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/projects.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Fri, 21 Jun 2024 21:04:23 GMT</lastBuildDate>
+<lastBuildDate>Mon, 24 Jun 2024 21:09:31 GMT</lastBuildDate>
 <item>
   <title>E5 Coral</title>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</link>
@@ -222,7 +222,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</guid>
-  <pubDate>Fri, 21 Jun 2024 21:04:23 GMT</pubDate>
+  <pubDate>Mon, 24 Jun 2024 21:09:31 GMT</pubDate>
 </item>
 <item>
   <title>Pacific Cod</title>
@@ -438,7 +438,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod.html</guid>
-  <pubDate>Fri, 21 Jun 2024 21:04:23 GMT</pubDate>
+  <pubDate>Mon, 24 Jun 2024 21:09:31 GMT</pubDate>
 </item>
 <item>
   <title>Pacific Oyster</title>
@@ -457,6 +457,10 @@ No matching items
   <a href="" class="about-link" rel="" target="">
     <i class="bi bi-github"></i>
      <span class="about-link-text">Github</span>
+  </a>
+  <a href="https://docs.google.com/document/d/1-MvCmHOqEUaeohUuiMW3vVxOPeX89JKdT9rh2eBLq3A/edit#heading=h.o7w81ibur94r" class="about-link" rel="" target="">
+    <i class="bi bi-file-text"></i>
+     <span class="about-link-text">Manuscript</span>
   </a>
 </div>
   </div>
@@ -510,7 +514,7 @@ Reading Time
 <span class="listing-reading-time">3 min</span>
 </td>
 </tr>
-<tr data-index="1" data-categories="pacific_oyster" data-listing-date-sort="1718866800000" data-listing-file-modified-sort="1719003451002" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-title-sort="Lit Review: Experimental design questions" data-listing-filename-sort="2024_06_20_experimental_design_questions.qmd">
+<tr data-index="1" data-categories="pacific_oyster" data-listing-date-sort="1718866800000" data-listing-file-modified-sort="1719263263748" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-title-sort="Lit Review: Experimental design questions" data-listing-filename-sort="2024_06_20_experimental_design_questions.qmd">
 <td>
 <span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_06_20_experimental_design_questions.html --></span>
 </td>
@@ -552,7 +556,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster.html</guid>
-  <pubDate>Fri, 21 Jun 2024 21:04:23 GMT</pubDate>
+  <pubDate>Mon, 24 Jun 2024 21:09:31 GMT</pubDate>
 </item>
 <item>
   <title>Miscellaneous</title>
@@ -775,7 +779,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.html</guid>
-  <pubDate>Fri, 21 Jun 2024 21:04:23 GMT</pubDate>
+  <pubDate>Mon, 24 Jun 2024 21:09:31 GMT</pubDate>
 </item>
 </channel>
 </rss>
