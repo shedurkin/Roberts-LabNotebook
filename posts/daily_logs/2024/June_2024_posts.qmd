@@ -20,9 +20,17 @@ format:
 
 #### **Wednesday**
 
+-   data entry for oyster lengths
+
+-   Point Whitney notebook post
+
+-   
+
 ## **25 June 2024**
 
 #### **Tuesday**
+
+-   Field day at Point Whitney (details in [notebook post](../../projects/pacific_oyster/2024_06_25_Point_Whitney.qmd))
 
 ## **24 June 2024**
 
@@ -34,7 +42,7 @@ format:
 
 -   meeting w steven
 
--   
+-   some review of C.gigas thermal tolerances
 
 ## **21 June 2024**
 
