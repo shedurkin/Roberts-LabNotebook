@@ -10,7 +10,7 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/projects.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Wed, 26 Jun 2024 23:54:52 GMT</lastBuildDate>
+<lastBuildDate>Thu, 27 Jun 2024 18:51:17 GMT</lastBuildDate>
 <item>
   <title>E5 Coral</title>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</link>
@@ -222,7 +222,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</guid>
-  <pubDate>Wed, 26 Jun 2024 23:54:52 GMT</pubDate>
+  <pubDate>Thu, 27 Jun 2024 18:51:17 GMT</pubDate>
 </item>
 <item>
   <title>Pacific Cod</title>
@@ -438,7 +438,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod.html</guid>
-  <pubDate>Wed, 26 Jun 2024 23:54:52 GMT</pubDate>
+  <pubDate>Thu, 27 Jun 2024 18:51:17 GMT</pubDate>
 </item>
 <item>
   <title>Pacific Oyster</title>
@@ -497,7 +497,7 @@ Reading Time
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-categories="pacific_oyster" data-listing-date-sort="1719298800000" data-listing-file-modified-sort="1719445435699" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="Point Whitney: Experimental Setup" data-listing-filename-sort="2024_06_25_Point_Whitney.qmd">
+<tr data-index="0" data-categories="pacific_oyster" data-listing-date-sort="1719298800000" data-listing-file-modified-sort="1719510117718" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-title-sort="Point Whitney: Experimental Setup" data-listing-filename-sort="2024_06_25_Point_Whitney.qmd">
 <td>
 <span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/datasheet1_2024_06_25.JPG" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
@@ -511,7 +511,7 @@ Reading Time
 <span class="listing-categories">pacific_oyster</span>
 </td>
 <td>
-<span class="listing-reading-time">4 min</span>
+<span class="listing-reading-time">6 min</span>
 </td>
 </tr>
 <tr data-index="1" data-categories="pacific_oyster" data-listing-date-sort="1718866800000" data-listing-file-modified-sort="1718982850055" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Lit Review: Energetics" data-listing-filename-sort="2024_06_20_Energetics.qmd">
@@ -531,7 +531,7 @@ Reading Time
 <span class="listing-reading-time">3 min</span>
 </td>
 </tr>
-<tr data-index="2" data-categories="pacific_oyster" data-listing-date-sort="1718866800000" data-listing-file-modified-sort="1719436012470" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-title-sort="Lit Review: Experimental design questions" data-listing-filename-sort="2024_06_20_experimental_design_questions.qmd">
+<tr data-index="2" data-categories="pacific_oyster" data-listing-date-sort="1718866800000" data-listing-file-modified-sort="1719446913340" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-title-sort="Lit Review: Experimental design questions" data-listing-filename-sort="2024_06_20_experimental_design_questions.qmd">
 <td>
 <span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/https:/ars.els-cdn.com/content/image/1-s2.0-S0044848601008985-gr4.jpg" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
@@ -573,7 +573,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster.html</guid>
-  <pubDate>Wed, 26 Jun 2024 23:54:52 GMT</pubDate>
+  <pubDate>Thu, 27 Jun 2024 18:51:17 GMT</pubDate>
 </item>
 <item>
   <title>Miscellaneous</title>
@@ -796,7 +796,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.html</guid>
-  <pubDate>Wed, 26 Jun 2024 23:54:52 GMT</pubDate>
+  <pubDate>Thu, 27 Jun 2024 18:51:17 GMT</pubDate>
 </item>
 </channel>
 </rss>

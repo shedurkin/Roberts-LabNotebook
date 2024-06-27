@@ -23,7 +23,7 @@ The diploids were generally a bit bigger, there were more oysters larger than th
 [Length summary stats (mm):]{.underline}
 
 |                    |                 |         |         |           |          |            |
-|---------------|-----------|--------|--------|--------|---------|--------|
+|--------------------|-----------------|---------|---------|-----------|----------|------------|
 | **Bag**            | **Sample size** | **Min** | **Max** | **Range** | **Mean** | **Median** |
 | triploid control   | 100             | 23      | 65      | 42        | 35.62    | 34         |
 | triploid treatment | 100             | 23      | 54      | 31        | 32.47    | 30         |
@@ -53,7 +53,7 @@ Oysters are being held at "ambient" in outdoor tank at the Point Whitney Shellfi
 
 The stress hardening regime will involve placing the treatment oysters (100 triploid and 100 diploid) in a heated tank for four hour sessions, three times a week, for two weeks. After a hardening session they will be placed back in the ambient tanks.
 
-::: callout-important
+::: {.callout-note appearance="minimal" icon="false"}
 [Temperature]{.underline}: 35C
 
 [Time]{.underline}: 4 hours per session
@@ -68,3 +68,28 @@ The stress hardening regime will involve placing the treatment oysters (100 trip
 -   I think the rest (Mon 07/01/2024, Wed 07/03/2024, Fri 07/05/2024, Mon 07/08/2024) will be done by me.
 
 ### UCar rental/mileage details
+
+Quick overview of Ucar rental and ferry reciepts. I also want to get an estimate of my transport costs for one day at the hatchery.
+
+![UCar checkout](images/ucar_checkout.JPG)
+
+![UCar dash at check in](images/ucar_checkin.JPG)
+
+![ferry receipt out](images/ferry_reciept_1.jpeg)
+
+![ferry receipt back](images/ferry_reciept_2.jpeg)
+
+|                                    |              |
+|------------------------------------|-------------:|
+| UCar max daily rate (5+ hrs):      |      \$34.45 |
+| Mileage (110 miles x \$0.34/mile): |      \$37.40 |
+| Ferries (out and back):            |      \$44.50 |
+| Total cost:                        | **\$116.35** |
+
+**Would it be cheaper to drive all the way around, to avoid ferry costs?**
+
+Roundtrip mileage if I take the ferry route: 120 miles (\~4 hours)\
+Roundtrip mileage if I take the long way around: 240 miles (\~5 hours)\
+Mileage difference: 120 miles = \$40.80
+
+So driving the long, ferry-free route would have essentially the same additional mileage cost as the ferry fees. In other words, **it would cost the same**. Since The ferry route saves some time and involves less driving, I'm going to stick with it.

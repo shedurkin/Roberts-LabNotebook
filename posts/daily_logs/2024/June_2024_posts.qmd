@@ -24,7 +24,7 @@ format:
 
 -   Point Whitney notebook post
 
--   
+-   troubleshooting problems pushing github changes
 
 ## **25 June 2024**
 
