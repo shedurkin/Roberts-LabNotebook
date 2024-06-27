@@ -23,7 +23,7 @@ The diploids were generally a bit bigger, there were more oysters larger than th
 [Length summary stats (mm):]{.underline}
 
 |                    |                 |         |         |           |          |            |
-|--------------------|-----------------|---------|---------|-----------|----------|------------|
+|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
 | **Bag**            | **Sample size** | **Min** | **Max** | **Range** | **Mean** | **Median** |
 | triploid control   | 100             | 23      | 65      | 42        | 35.62    | 34         |
 | triploid treatment | 100             | 23      | 54      | 31        | 32.47    | 30         |
@@ -79,12 +79,12 @@ Quick overview of Ucar rental and ferry reciepts. I also want to get an estimate
 
 ![ferry receipt back](images/ferry_reciept_2.jpeg)
 
-|                                    |              |
-|------------------------------------|-------------:|
-| UCar max daily rate (5+ hrs):      |      \$34.45 |
-| Mileage (110 miles x \$0.34/mile): |      \$37.40 |
-| Ferries (out and back):            |      \$44.50 |
-| Total cost:                        | **\$116.35** |
+|                                                                                 |              |
+|---------------------------------------------------------------------------------|-------------:|
+| UCar max [daily rate](https://facilities.uw.edu/services/rates/fleet) (5+ hrs): |      \$34.45 |
+| Mileage (110 miles x \$0.34/mile):                                              |      \$37.40 |
+| Ferries (out and back):                                                         |      \$44.50 |
+| Total cost:                                                                     | **\$116.35** |
 
 **Would it be cheaper to drive all the way around, to avoid ferry costs?**
 
