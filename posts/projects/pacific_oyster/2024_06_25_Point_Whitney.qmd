@@ -23,7 +23,7 @@ The diploids were generally a bit bigger, there were more oysters larger than th
 [Length summary stats (mm):]{.underline}
 
 |                    |                 |         |         |           |          |            |
-|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+|--------------------|-----------------|---------|---------|-----------|----------|------------|
 | **Bag**            | **Sample size** | **Min** | **Max** | **Range** | **Mean** | **Median** |
 | triploid control   | 100             | 23      | 65      | 42        | 35.62    | 34         |
 | triploid treatment | 100             | 23      | 54      | 31        | 32.47    | 30         |

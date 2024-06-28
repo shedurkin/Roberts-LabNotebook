@@ -1,0 +1,14 @@
+{
+  "hash": "a503950a247c0d6932b79994a3ea0c7c",
+  "result": {
+    "markdown": "---\ntitle: \"Resazurin assay notes/questions\"\nauthor: \"Kathleen Durkin\"\ndate: \"2024-06-27\"\ncategories: [\"pacific_oyster\"]\nformat:\n  html:\n    toc: true\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nResazurin notes from Colby:\n\n-   See Colby's notebook posts [here](https://genefish.wordpress.com/2024/06/21/procedure-results-of-resazurin-dilution/)\n\n\n```{=html}\n<!-- -->\n```\n\n-   Dilutions don\\'t seem to affect results (e.g. magnitude in difference). Note color change in lower dilutions first, note color changes in stressed oysters and bigger oysters faster. \n\n-   More dilution leads to faster evaporation\n\n-   Ask ariana about bringing some of my source cohorts back to lab for resazurin trials\n\n-   Would be nice at some point to validate the resazurin assay wit a better understood metric for respiration\n\n-   Should do a bit of lit review on resazurin assay, how it's been applied till now, how it works\n\nBig Questions: \n\n1.  Does the resazurin compound affect the oysters? What about at different dilutions?\n\n\n```{=html}\n<!-- -->\n```\n\n2.  Does resazurin continue color changing when oysters are removed?\n\n\n```{=html}\n<!-- -->\n```\n\n3.  How to do assay with larger oysters? Can we keep them in larger beakers and then just extract Resazurin samples from each to quantify in spectrophotometer?\n\n\n```{=html}\n<!-- -->\n```\n\n4.  Ratio of oyster size to resazurin volume? How to normalize for oysters of different sizes?\n\n\n```{=html}\n<!-- -->\n```\n\n5.  What is the \\\"limit\\\" of the resazurin? I.e. at what point is the color change reached its maximum difference, so that no more color change is possible even during continued respiration?\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
