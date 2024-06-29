@@ -8,6 +8,7 @@ about:
   links:
     - icon: github
       text: Github
+      href: https://github.com/RobertsLab/oyster-ploidy-hardening
     - icon: file-text
       text: Manuscript
       href: https://docs.google.com/document/d/1-MvCmHOqEUaeohUuiMW3vVxOPeX89JKdT9rh2eBLq3A/edit#heading=h.o7w81ibur94r

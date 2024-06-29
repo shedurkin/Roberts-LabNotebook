@@ -1,0 +1,14 @@
+{
+  "hash": "c690bd4cfed0246a847dcd73a280b4ae",
+  "result": {
+    "markdown": "---\ntitle: \"Point Whitney: Hardening Treatments\"\nauthor: \"Kathleen Durkin\"\ndate: \"2024-06-28\"\ncategories: [\"pacific_oyster\"]\nformat:\n  html:\n    toc: true\nengine: knitr\n#bibliography: ../../../references.bib\n---\n\n\nToday Ariana and I did stress hardening treatments for several oyster cohorts.\n\n![](images/IMG_9109.jpg)\n\n![](images/IMG_9110.jpg)\n\n![](images/IMG_9111.jpg)\n\n![](images/IMG_9112.jpg)\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

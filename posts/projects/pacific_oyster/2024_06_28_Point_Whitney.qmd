@@ -1,0 +1,21 @@
+---
+title: "Point Whitney: Hardening Treatments"
+author: "Kathleen Durkin"
+date: "2024-06-28"
+categories: ["pacific_oyster"]
+format:
+  html:
+    toc: true
+engine: knitr
+#bibliography: ../../../references.bib
+---
+
+Today Ariana and I did stress hardening treatments for several oyster cohorts.
+
+![](images/IMG_9109.jpg)
+
+![](images/IMG_9110.jpg)
+
+![](images/IMG_9111.jpg)
+
+![](images/IMG_9112.jpg)
