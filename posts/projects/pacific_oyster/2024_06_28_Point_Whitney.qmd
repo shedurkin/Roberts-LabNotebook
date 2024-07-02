@@ -10,7 +10,48 @@ engine: knitr
 #bibliography: ../../../references.bib
 ---
 
-Today Ariana and I did stress hardening treatments for several oyster cohorts.
+June 28, 2024, working at Point Whitney with A. Huffmeyer
+
+[Github repo for the KD experiement](https://github.com/RobertsLab/oyster-ploidy-hardening)
+
+Primary Goals for the day:
+
+-   Adding cattle tags to KD experiment bags and the new seed bags
+
+-   Performing hardening treatments on several cohorts
+
+-   Weekly [probe measurements](https://docs.google.com/spreadsheets/d/1EssYgZ8fZl4V9PLlYWtEGXSeln1L4JUM0bqT_MYv6cI/edit?gid=0#gid=0)
+
+-   Maintenance on HUDLs and larvae (see [Ariana's post](https://ahuffmyer.github.io/ASH_Putnam_Lab_Notebook/Point-Whitney-Field-Day-June-28-2024/) for more on this)
+
+Cattle tags:
+
+| Cattle Tag \# | Original bag label        | Experiment | Treatment |
+|---------------|---------------------------|------------|-----------|
+| 45            | Bag 1, triploid control   | KD         |           |
+| 60            | Bag 2, triploid treatment | KD         |           |
+| 64            | Bag 3, diploid control    | KD         |           |
+| 65            | Bag 4, diploid treatment  | KD         |           |
+| 66            | UW-SR26                   | new seed   | FW        |
+| 56            | UW-SR6                    | new seed   | FW        |
+| 36            | UW-SR27                   | new seed   | control   |
+| 37            | UW-SR30                   | new seed   | control   |
+| 50            | UW-SR23                   | new seed   | immune    |
+| 47            | UW-SR14                   | new seed   | 35C       |
+| 30            | UW-SR18                   | new seed   | 35C       |
+| 49            | UW-SR3                    | new seed   | immune    |
+| 75            | UW-SR5                    | new seed   | FW 35C    |
+| 76            | UW-SR21                   | new seed   | FW 35C    |
+
+Stress treatments we did today:
+
+| Experiment          | Bags (cattle tag #s) | Treatment      | Start time | End time | Duration |
+|---------------|----------------|-------------|----------|---------|---------|
+| KD diploid/triploid | 60, 65               | 35C seawater   | 12:12      | 16:00    | 4 hr     |
+| Broodstock          | 99, 100              | freshwater     | 11:43      | 12:13    | 30 min   |
+| New seed            | 56, 66               | freshwater     | 11:45      | 12:46    | 1 hr     |
+| New seed            | 30, 47               | 35C seawater   | 12:33      | 13:33    | 1 hr     |
+| New seed            | 75, 76               | 35C freshwater | 13:07      | 14:07    | 1 hr     |
 
 ![](images/IMG_9109.jpg)
 
@@ -19,3 +60,11 @@ Today Ariana and I did stress hardening treatments for several oyster cohorts.
 ![](images/IMG_9111.jpg)
 
 ![](images/IMG_9112.jpg)
+
+### Ferry receipts and mileage
+
+Drove personal vehicle today, so will need to be reimbursed for mileage
+
+![](images/ferry_receipts.jpeg)
+
+![](images/mileage_map.png)

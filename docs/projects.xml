@@ -10,7 +10,7 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/projects.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Sat, 29 Jun 2024 07:34:43 GMT</lastBuildDate>
+<lastBuildDate>Tue, 02 Jul 2024 20:24:37 GMT</lastBuildDate>
 <item>
   <title>E5 Coral</title>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</link>
@@ -222,7 +222,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</guid>
-  <pubDate>Sat, 29 Jun 2024 07:34:43 GMT</pubDate>
+  <pubDate>Tue, 02 Jul 2024 20:24:37 GMT</pubDate>
 </item>
 <item>
   <title>Pacific Cod</title>
@@ -438,7 +438,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod.html</guid>
-  <pubDate>Sat, 29 Jun 2024 07:34:43 GMT</pubDate>
+  <pubDate>Tue, 02 Jul 2024 20:24:37 GMT</pubDate>
 </item>
 <item>
   <title>Pacific Oyster</title>
@@ -497,7 +497,7 @@ Reading Time
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-categories="pacific_oyster" data-listing-date-sort="1719558000000" data-listing-file-modified-sort="1719645985411" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Point Whitney: Hardening Treatments" data-listing-filename-sort="2024_06_28_Point_Whitney.qmd">
+<tr data-index="0" data-categories="pacific_oyster" data-listing-date-sort="1719558000000" data-listing-file-modified-sort="1719951792420" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-title-sort="Point Whitney: Hardening Treatments" data-listing-filename-sort="2024_06_28_Point_Whitney.qmd">
 <td>
 <span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_06_28_Point_Whitney.html --></span>
 </td>
@@ -511,7 +511,7 @@ Reading Time
 <span class="listing-categories">pacific_oyster</span>
 </td>
 <td>
-<span class="listing-reading-time">1 min</span>
+<span class="listing-reading-time">5 min</span>
 </td>
 </tr>
 <tr data-index="1" data-categories="pacific_oyster" data-listing-date-sort="1719471600000" data-listing-file-modified-sort="1719533187847" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Resazurin assay notes/questions" data-listing-filename-sort="2024_06_25_Resazurin.qmd">
@@ -607,7 +607,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster.html</guid>
-  <pubDate>Sat, 29 Jun 2024 07:34:43 GMT</pubDate>
+  <pubDate>Tue, 02 Jul 2024 20:24:37 GMT</pubDate>
 </item>
 <item>
   <title>Miscellaneous</title>
@@ -830,7 +830,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.html</guid>
-  <pubDate>Sat, 29 Jun 2024 07:34:43 GMT</pubDate>
+  <pubDate>Tue, 02 Jul 2024 20:24:37 GMT</pubDate>
 </item>
 </channel>
 </rss>
