@@ -23,7 +23,7 @@ The diploids were generally a bit bigger, there were more oysters larger than th
 [Length summary stats (mm):]{.underline}
 
 |                    |                 |         |         |           |          |            |
-|--------------------|-----------------|---------|---------|-----------|----------|------------|
+|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
 | **Bag**            | **Sample size** | **Min** | **Max** | **Range** | **Mean** | **Median** |
 | triploid control   | 100             | 23      | 65      | 42        | 35.62    | 34         |
 | triploid treatment | 100             | 23      | 54      | 31        | 32.47    | 30         |
@@ -80,7 +80,7 @@ Quick overview of Ucar rental and ferry reciepts. I also want to get an estimate
 ![ferry receipt back](images/ferry_reciept_2.jpeg)
 
 |                                                                                 |              |
-|---------------------------------------------------------------------------------|-------------:|
+|---------------------------------------------------------|--------------:|
 | UCar max [daily rate](https://facilities.uw.edu/services/rates/fleet) (5+ hrs): |      \$34.45 |
 | Mileage (110 miles x \$0.34/mile):                                              |      \$37.40 |
 | Ferries (out and back):                                                         |      \$44.50 |
@@ -92,4 +92,4 @@ Roundtrip mileage if I take the ferry route: 120 miles (\~4 hours)\
 Roundtrip mileage if I take the long way around: 240 miles (\~5 hours)\
 Mileage difference: 120 miles = \$40.80
 
-So driving the long, ferry-free route would have essentially the same additional mileage cost as the ferry fees. In other words, **it would cost the same**. Since The ferry route saves some time and involves less driving, I'm going to stick with it.
+So driving the long, ferry-free route would have essentially the same additional mileage cost as the ferry fees. In other words, **it would cost the same**. Since the ferry route saves some time and involves less driving, I'm going to stick with it.

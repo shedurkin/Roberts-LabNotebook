@@ -1,0 +1,78 @@
+---
+title: "Point Whitney: Stress treatments, clearance rate trials"
+author: "Kathleen Durkin"
+date: "2024-07-03"
+categories: ["pacific_oyster"]
+format:
+  html:
+    toc: true
+engine: knitr
+#bibliography: ../../../references.bib
+---
+
+Another day at Point Whitney doing stress hardening and clearance rate trials
+
+-   KD dioploid/triploid stress hardening
+
+-   New seed hardening (35C, FW, and 35C FW)
+
+-   [Probe measurements](https://docs.google.com/spreadsheets/d/1EssYgZ8fZl4V9PLlYWtEGXSeln1L4JUM0bqT_MYv6cI/edit?gid=0#gid=0)
+
+-   Clearance rate trials
+
+We also took two bags of oysters (the "13" diploid untreated, and the "Bird - Extra" triploid untreated) back to the FTR lab to use in some Resazurin trials. Transported in plastic cooler with ice packs, placed in the seawater tank in FTR. Out of water for \~5hrs.
+
+### Stress hardening
+
+Treatments I did today:
+
+| Experiment          | Bags (cattle tag #s) | Treatment      | Start time | End time | Duration |
+|---------------|------------|------------|----------|---------|---------|
+| KD diploid/triploid | 60, 65               | 35C seawater   | 12:27      | 16:27    | 4 hr     |
+| New seed            | 56, 66               | freshwater     | 10:12      | 11:12    | 1 hr     |
+| New seed            | 30, 47               | 35C seawater   | 12:31      | 13:31    | 1 hr     |
+| New seed            | 75, 76               | 35C freshwater | 13:35      | 14:35    | 1 hr     |
+
+: Water still took *forever* (\~3 hr) to heat up to 35C. We're putting one heater on a timer so it will hopefully pre-heat the water for me before I arrive on Friday
+
+I took probe measurements from the three holer (the one holding the KD oysters) and dock, and from each of the stress treatment containers. See raw data in the "Notebook photos" section, and digitally entered data [here](https://docs.google.com/spreadsheets/d/1EssYgZ8fZl4V9PLlYWtEGXSeln1L4JUM0bqT_MYv6cI/edit?gid=0#gid=0).
+
+### Clearance rate trials
+
+#### Trial 3
+
+Another round of clearance rate trials. This time I wanted to try oysters at a range of sizes. Selected 3 oysters of a range of sizes from both the "13" diploid cohort and the "Bird" triploid cohort (untreated). Placed each oyster in 700mL of algae-rich seawater (sourced from black tub and diluted until algae content was just below the quantifiable level of 199 ug/L using the FluoroSense fluorometer). Monitored for \~1hr at roughly 10min intervals. Took triplicate fluorometer readings each time.
+
+See data entered here, or original data in the below notebook photos.
+
+![Note: values shown are the third of each set of triplicate measurements from each time point (column "Fluoro3" in the raw datasheet)](images/Trial 3.png)
+
+As expected, the small oysters (13 26mm and Bird 24mm) have a much lower clearance rate. Interestingly though, all of the larger oysters (13 75mm, 13 88mm, Bird 61mm, and Bird 76mm) see to have pretty similar clearance rates, with the Bird 61mm oyster actually beating the others at most time points!
+
+![Trial 3 oysters. "Bird" triploid untreated (top) and "13" diploid untreated (bottom)](images/IMG_9158.jpg)
+
+![Trial 3 setup](images/IMG_9163.jpg)
+
+Overall, since the fluorometer is non-invasive and very easy to use, it seems like the best option may just be to measure clearance rate of the full cohorts (i.e. place the full treatment bags in algae-rich water and monitor feeding). The oysters don't always open to feed and the fluorometer doesn't seem sensitive/consistent enough to use with smaller sample sizes.
+
+Unfortunately the FluoroSense fluorometer stopped working at roughly 15:15. It's only displaying 0 readings, even for my control solution which was consistently reading at \~180 and was visibly clouded with algae. Matt and I tried recalibrating the fluorometer using the 800ppb Rhodamine calibration solution, but saw no change. There's no visible damage, the display is functioning normally, and the blue fluorescence light is still working as usual, so I'm really not sure what the issue is :(
+
+### Notebook photos
+
+![](images/datasheet1_07_03_2024.jpg)
+
+![](images/datasheet2_07_03_2024.jpg)
+
+![](images/datasheet3_07_03_2024.jpg)
+
+![](images/datasheet4_07_03_2024.jpg)
+
+![](images/datasheet5_07_03_2024.jpg)
+
+### Ucar/ferry reciepts
+
+![](images/ferry_reciepts.jpg)
+
+![](images/ucar_checkout-02.jpg)
+
+![](images/ucar_checkin-02.jpg)
