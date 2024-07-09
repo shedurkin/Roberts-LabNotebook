@@ -1,0 +1,14 @@
+{
+  "hash": "ef9f839aa4021edc15710339d0a9c373",
+  "result": {
+    "markdown": "---\ntitle: \"Point Whitney: Stress treatments\"\nauthor: \"Kathleen Durkin\"\ndate: \"2024-07-05\"\ncategories: [\"pacific_oyster\"]\nformat:\n  html:\n    toc: true\nengine: knitr\n#bibliography: ../../../references.bib\n---\n\n\nAnother day at Point Whitney doing stress hardening\n\n-   KD dioploid/triploid stress hardening\n\n-   New seed hardening (35C, FW, and 35C FW)\n\n-   New seed hardening with immune stress (Poly IC)\n\n-   [Probe measurements](https://docs.google.com/spreadsheets/d/1EssYgZ8fZl4V9PLlYWtEGXSeln1L4JUM0bqT_MYv6cI/edit?gid=0#gid=0)\n\n### Stress hardening\n\nTreatments I did today:\n\n| Experiment          | Bags (cattle tag #s) | Treatment      | Start time | End time | Duration |\n|--------------|----------------|------------|------------|------------|------------|\n| KD diploid/triploid | 60, 65               | 35C seawater   | 11:37      | 15:45    | \\~4 hr   |\n| New seed            | 56, 66               | freshwater     | 11:25      | 12:25    | 1 hr     |\n| New seed            | 30, 47               | 35C seawater   | 11:40      | 13:40    |          |\n| New seed            | 75, 76               | 35C freshwater | 12:53      | 13:53    | 1 hr     |\n| New seed            | 49, 50               | Poly IC        | 15:17      | 16:17    | 1 hr     |\n\nMy notes say I exposed the new seed 35C group for 2 hours (11:40 - 13:40), so I either wrote down the end time incorrectly or mistakenly hardened this group for two hours, instead of the intended one hour. I would guess it's the former, but I couldn't say for sure.\n\nI also only had time to do the Poly IC immune hardening for 1 hr today, instead of the usual 2.\n\nI took probe measurements from the upweller holding the KD oysters, the upweller holding the broodstock, the dock, and from each of the stress treatment containers. See raw data in the \"Notebook photos\" section, and digitally entered data [here](https://docs.google.com/spreadsheets/d/1EssYgZ8fZl4V9PLlYWtEGXSeln1L4JUM0bqT_MYv6cI/edit?gid=0#gid=0).\n\n### Notebook photos\n\n![](images/IMG_9183.jpg)\n\n![](images/IMG_9184.jpg)\n\n### Ucar/ferry receipts\n\n![](images/IMG_9181.jpg)\n\n![](images/IMG_9208.jpg)\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

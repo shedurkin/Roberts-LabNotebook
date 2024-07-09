@@ -27,7 +27,7 @@ We also took two bags of oysters (the "13" diploid untreated, and the "Bird - Ex
 Treatments I did today:
 
 | Experiment          | Bags (cattle tag #s) | Treatment      | Start time | End time | Duration |
-|---------------|------------|------------|----------|---------|---------|
+|---------------------|----------------------|----------------|------------|----------|----------|
 | KD diploid/triploid | 60, 65               | 35C seawater   | 12:27      | 16:27    | 4 hr     |
 | New seed            | 56, 66               | freshwater     | 10:12      | 11:12    | 1 hr     |
 | New seed            | 30, 47               | 35C seawater   | 12:31      | 13:31    | 1 hr     |
@@ -43,9 +43,9 @@ I took probe measurements from the three holer (the one holding the KD oysters) 
 
 Another round of clearance rate trials. This time I wanted to try oysters at a range of sizes. Selected 3 oysters of a range of sizes from both the "13" diploid cohort and the "Bird" triploid cohort (untreated). Placed each oyster in 700mL of algae-rich seawater (sourced from black tub and diluted until algae content was just below the quantifiable level of 199 ug/L using the FluoroSense fluorometer). Monitored for \~1hr at roughly 10min intervals. Took triplicate fluorometer readings each time.
 
-See data entered here, or original data in the below notebook photos.
+See data entered [here](https://docs.google.com/spreadsheets/d/1vyTBfkfhaLdnIoF1lEjogi5L56VB6xdcsXvcqvHP2rU/edit?gid=0#gid=0), or original data in the below notebook photos.
 
-![Note: values shown are the third of each set of triplicate measurements from each time point (column "Fluoro3" in the raw datasheet)](images/Trial 3.png)
+![Note: values shown are the third of each set of triplicate measurements from each time point (column "Fluoro3" in the raw datasheet)](images/Trial%203.png)
 
 As expected, the small oysters (13 26mm and Bird 24mm) have a much lower clearance rate. Interestingly though, all of the larger oysters (13 75mm, 13 88mm, Bird 61mm, and Bird 76mm) see to have pretty similar clearance rates, with the Bird 61mm oyster actually beating the others at most time points!
 
@@ -53,7 +53,7 @@ As expected, the small oysters (13 26mm and Bird 24mm) have a much lower clearan
 
 ![Trial 3 setup](images/IMG_9163.jpg)
 
-Overall, since the fluorometer is non-invasive and very easy to use, it seems like the best option may just be to measure clearance rate of the full cohorts (i.e. place the full treatment bags in algae-rich water and monitor feeding). The oysters don't always open to feed and the fluorometer doesn't seem sensitive/consistent enough to use with smaller sample sizes.
+Overall, since the fluorometer is non-invasive and very easy to use, it seems like the best option may just be to measure clearance rate of the full cohorts (i.e. place the full treatment bags in algae-rich water and monitor feeding). The oysters don't always open to feed and the fluorometer doesn't seem sensitive/consistent enough to use with smaller sample sizes. We would, however, need to ensure similar sizes in the groups we're comparing, since the ratio of oyster size to water volume obviously has a serious effect on clearance rate.
 
 Unfortunately the FluoroSense fluorometer stopped working at roughly 15:15. It's only displaying 0 readings, even for my control solution which was consistently reading at \~180 and was visibly clouded with algae. Matt and I tried recalibrating the fluorometer using the 800ppb Rhodamine calibration solution, but saw no change. There's no visible damage, the display is functioning normally, and the blue fluorescence light is still working as usual, so I'm really not sure what the issue is :(
 

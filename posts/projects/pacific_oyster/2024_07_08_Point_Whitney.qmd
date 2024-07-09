@@ -1,0 +1,53 @@
+---
+title: "Point Whitney: Stress treatments"
+author: "Kathleen Durkin"
+date: "2024-07-08"
+categories: ["pacific_oyster"]
+format:
+  html:
+    toc: true
+engine: knitr
+#bibliography: ../../../references.bib
+---
+
+Another day at Point Whitney doing stress hardening
+
+-   KD dioploid/triploid stress hardening
+
+-   New seed hardening (35C, FW, and 35C FW)
+
+-   New seed hardening with immune stress (Poly IC)
+
+-   [Probe measurements](https://docs.google.com/spreadsheets/d/1EssYgZ8fZl4V9PLlYWtEGXSeln1L4JUM0bqT_MYv6cI/edit?gid=0#gid=0)
+
+### Stress hardening
+
+Treatments I did today:
+
+| Experiment          | Bags (cattle tag #s) | Treatment      | Start time | End time | Duration |
+|------------|------------|------------|------------|------------|------------|
+| KD diploid/triploid | 60, 65               | 35C seawater   | 11:05      | 15:05    | 4 hr     |
+| New seed            | 56, 66               | freshwater     | 10:09      | 11:09    | 1 hr     |
+| New seed            | 30, 47               | 35C seawater   | 11:07      | 12:09    | 1 hr     |
+| New seed            | 75, 76               | 35C freshwater | 12:14      | 13:15    | 1 hr     |
+| New seed            | 49, 50               | Poly IC        | 10:15      | 12:15    | 2 hr     |
+
+I took probe measurements from the upweller holding the KD oysters, the upweller holding the broodstock, the dock, and from each of the stress treatment containers. See raw data in the "Notebook photos" section, and digitally entered data [here](https://docs.google.com/spreadsheets/d/1EssYgZ8fZl4V9PLlYWtEGXSeln1L4JUM0bqT_MYv6cI/edit?gid=0#gid=0).
+
+It was a hot day today! Temp off the dock reached \>24C at midday.
+
+The fluorometer still isn't working, submitted support request form online to Turner Designs.
+
+![](images/IMG_9205.JPG)
+
+### Notebook photos
+
+![](images/IMG_9206.jpg)
+
+### Ucar/ferry receipts
+
+![](images/IMG_9209.jpg)
+
+![](images/IMG_9201.jpg)
+
+![](images/IMG_9202.jpg)
