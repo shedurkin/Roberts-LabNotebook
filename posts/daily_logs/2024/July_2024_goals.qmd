@@ -1,0 +1,8 @@
+---
+title: "July 2024, Monthly Goals"
+author: "Kathleen Durkin"
+date: "2024-07-09"
+categories: ["monthly goals"]
+format:
+  html
+---

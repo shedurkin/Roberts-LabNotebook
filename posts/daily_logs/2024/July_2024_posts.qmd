@@ -1,0 +1,121 @@
+---
+title: "July 2024, Daily Log"
+author: "Kathleen Durkin"
+date: "last-modified"
+categories: ["daily log"]
+format:
+  html:
+    toc: true
+---
+
+## 31 July 2024
+
+#### Wednesday
+
+## 30 July 2024
+
+#### Tuesday
+
+## 29 July 2024
+
+#### Monday
+
+## 26 July 2024
+
+#### Friday
+
+## 25 July 2024
+
+#### Thursday
+
+## 24 July 2024
+
+#### Wednesday
+
+## 23 July 2024
+
+#### Tuesday
+
+## 22 July 2024
+
+#### Monday
+
+## 19 July 2024
+
+#### Friday
+
+## 18 July 2024
+
+#### Thursday
+
+## 17 July 2024
+
+#### Wednesday
+
+## 16 July 2024
+
+#### Tuesday
+
+## 15 July 2024
+
+#### Monday
+
+## 12 July 2024
+
+#### Friday
+
+## 11 July 2024
+
+#### Thursday
+
+## 10 July 2024
+
+#### Wednesday
+
+## 09 July 2024
+
+#### Tuesday
+
+-   meeting with Steven and Ariana about Point Whitney work
+
+-   data entry and notebook updates
+
+-   meeting with Zach and Andy about Hilborn seminar paper
+
+## 08 July 2024
+
+#### Monday
+
+Field day at Point Whitney, see [notebook post](../../projects/pacific_oyster/2024_07_08_Point_Whitney.qmd)
+
+## 05 July 2024
+
+#### Friday
+
+Field day at Point Whitney, see [notebook post](../../projects/pacific_oyster/2024_07_05_Point_Whitney.qmd)
+
+## 04 July 2024
+
+#### Thursday
+
+-   Fourth of July
+
+-   admin for point whitney stuff
+
+## 03 July 2024
+
+#### Wednesday
+
+Field day at Point Whitney, see [notebook post](../../projects/pacific_oyster/2024_07_03_Point_Whitney.qmd)
+
+## 02 July 2024
+
+#### Tuesday
+
+data entry, admin for Point Whitney work (submitting receipts, making notebook post, Ucar reservations)
+
+## 01 July 2024
+
+#### Monday
+
+Field day at Point Whitney, see [notebook post](../../projects/pacific_oyster/2024_07_01_Point_Whitney.qmd)
