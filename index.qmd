@@ -1,6 +1,6 @@
 ---
 title: "University of Washington, SAFS -- Roberts Lab"
-image: grad_headshot_circlecrop.png
+image: ./images/SICB-headshot-circlecrop.png
 about:
   template: trestles
   links:
