@@ -1,0 +1,14 @@
+{
+  "hash": "f14a54a54e2090d5349056845a8e41ca",
+  "result": {
+    "markdown": "---\ntitle: \"Extreme stress test trial\"\nauthor: \"Kathleen Durkin\"\ndate: \"2024-07-11\"\ncategories: [\"pacific_oyster\"]\nformat:\n  html:\n    toc: true\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nTrial run of extreme stress test using the extra untreated, diploid \"13\" oysters currently stored in seawater cold room in FTR. \\\n\\\n\n### Plan\n\nPlace oysters in 43C seawater for 1hr, then remove and return to ambient. Check daily for mortality for \\~2wks.\n\n### Trial protocol\n\n1.  Filled a clean tripour container with 700 mL of seawater from the cold seawater tank in FTR. Placed in the incubator at 42C at roughly 13:00 7/11/2024.\n\n2.  Isolated two groups of 10 oysters from bag \"13\" (untreated diploid), selecting similarly sized sets of oysters. Placed the two groups into small mesh bags, then placed back in the cold seawater tank (\\~10C) in FTR. Selected and grouped oysters at roughly 15:00 7/11/2024.\n\n    **Note:** ...at 17:30 the seawater still isn't at 42C. Incubator is now empty so setting the incubator to 44C, covered the tripour with plastic wrap to prevent evaporation, and leaving it to finish preheating overnight. Will hopefully be able to finish this stress tomorrow.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
