@@ -27,27 +27,27 @@ Place oysters in 43C seawater for 1hr, then remove and return to ambient. Check 
 
 3.  Randomly assigned one bag to treatment and one to control. Labelled each with a labelled 15mL tube placed inside bag and a colored zip tie attached to the bag (didn't have any waterproof bag tags). Red is 43C group and blue is control. Measured length of each oyster in each group using a caliper, then placed back in respective labelled bags. Roughly **11:30 7/12/2024.**
 
-    ![](images/IMG_9275.jpg)
+    ![](images/IMG_9275.jpg){width="500"}
 
-    ![](images/IMG_9276.jpg)
+    ![](images/IMG_9276.jpg){width="500"}
 
 ![](images/IMG_9278.jpg)
 
-![](images/IMG_9279.jpg)
+![](images/IMG_9279.jpg){width="500"}
 
-![](images/IMG_9280.jpg)
+![](images/IMG_9280.jpg){width="500"}
 
 4.  Placed control oysters in tripour containing 700mL seawater from FTR tank, ambient temperature (13C). Left on table in cold room for 1 hr (**11:47 - 12:47 7/12/2024**), then placed oysters back into FTR tank.
 
-    ![](images/IMG_9281.jpg)
+    ![](images/IMG_9281.jpg){width="500"}
 
-    ![](images/IMG_9287.jpg)\
+    ![](images/IMG_9287.jpg){width="500"}\
     Placed treatment oysters in tripour of warm seawater (\~25C) for 10 seconds, then placed in tipour of 700mL seawater heated to 43C. Left in incubator set to 43.5C for 1 hr (**11:51 - 12:53 7/12/2024**). After 1 hr, removed and placed back into FTR tank.
 
-    ![](images/IMG_9286.jpg)\
+    ![](images/IMG_9286.jpg){width="500"}\
     I dipped the treatment oysters into warmed water before treatment because I was worried about them bringing down the treatment temperature when added. Unfortunately, this attempt didn't do enough to prevent the treatment water cooling, because **at the end of the 1 hr treatment the water was only \~38C**, despite being held in the heated incubator the whole time.
 
-    ![](images/IMG_9288.jpg)
+    ![](images/IMG_9288.jpg){width="500"}
 
 5.  Check oysters in both groups for mortality once per day at roughly noon for the next 2 weeks. To check mortality, remove bag of oysters from tank, empty bag onto table. An empty shell or gaping with no response to stimulation (prodding with metal tool) indicates mortality.
 
@@ -59,3 +59,15 @@ Big takeaway is that I need to rethink the heating mechanism. It took a whole da
 The **rod heaters used at PW seem much faster** and capable of maintaining a steady temp, but they also have to be used with a greater water volume. Maybe the stress test should be done in a **bucket of heated seawater**? Should only take a 2-3 hrs to heat bucket to 43 with one of those rods, the larger water volume means **temp would be way less reduced** by addition of oysters, and the rod heater would more quickly bring the water back up to 43 if needed.
 
 As for this current stress test trial, I'm not really sure what to do about this. If the oysters were only in 35-38C water for the entire hour then it was more like the hardening treatmetnt and I'd guess won't be very lethal. I think I'll check mortality daily through the weekend, and if there's no significant mortality in either group by Monday I'll retry the stress test.
+
+### Mortality
+
+Checked bags daily at roughly noon for mortality. Mortality evaluated by prodding oysters and squeezing lightly at base of hinge. Empty shells or oysters that gaped and remained open during stimulation were considered dead.
+
+| Date | Time  | Control (mm length of dead oyster(s)) | Extreme stress (mm length of dead oyster(s)) |
+|------|-------|---------------------------------------|----------------------------------------------|
+| 7/13 | 13:00 | \-                                    | \-                                           |
+| 7/14 | 11:15 | \-                                    | \-                                           |
+| 7/15 | 12:00 | 30                                    | 29, 30                                       |
+
+Notes: First mortalities on 7/15 (3 days after stress) in the smallest oysters, but see mortalities in both stress and control groups.
