@@ -1,5 +1,5 @@
 ---
-title: "Extreme stress test trial"
+title: "Extreme stress test trial #1"
 author: "Kathleen Durkin"
 date: "2024-07-11"
 categories: ["pacific_oyster"]
@@ -17,7 +17,7 @@ Trial run of extreme stress test using the extra untreated, diploid "13" oysters
 
 Place oysters in 43C seawater for 1hr, then remove and return to ambient. Check daily for mortality for \~2wks.
 
-### Trial protocol
+### Trial 1 protocol
 
 1.  Filled a clean tripour container with 700 mL of seawater from the cold seawater tank in FTR. Placed in the incubator at 42C at roughly **13:00 7/11/2024**.
 
@@ -58,7 +58,7 @@ Big takeaway is that I need to rethink the heating mechanism. It took a whole da
 \
 The **rod heaters used at PW seem much faster** and capable of maintaining a steady temp, but they also have to be used with a greater water volume. Maybe the stress test should be done in a **bucket of heated seawater**? Should only take a 2-3 hrs to heat bucket to 43 with one of those rods, the larger water volume means **temp would be way less reduced** by addition of oysters, and the rod heater would more quickly bring the water back up to 43 if needed.
 
-As for this current stress test trial, I'm not really sure what to do about this. If the oysters were only in 35-38C water for the entire hour then it was more like the hardening treatmetnt and I'd guess won't be very lethal. I think I'll check mortality daily through the weekend, and if there's no significant mortality in either group by Monday I'll retry the stress test.
+As for this current stress test trial, I'm not really sure what to do about this. If the oysters were only in 35-38C water for the entire hour then it was more like the hardening treatment and I'd guess won't be very lethal. I think I'll check mortality daily through the weekend, and if there's no significant mortality in either group by Monday I'll retry the stress test.
 
 ### Mortality
 
@@ -68,6 +68,15 @@ Checked bags daily at roughly noon for mortality. Mortality evaluated by proddin
 |------|-------|---------------------------------------|----------------------------------------------|
 | 7/13 | 13:00 | \-                                    | \-                                           |
 | 7/14 | 11:15 | \-                                    | \-                                           |
-| 7/15 | 12:00 | 30                                    | 29, 30                                       |
+| 7/15 | 12:00 | 29                                    | 29, 29                                       |
+| 7/16 | 12:15 | 34, 31, 29                            | 31                                           |
+| 7/17 |       |                                       |                                              |
+| 7/18 |       |                                       |                                              |
+| 7/19 |       |                                       |                                              |
+| 7/20 |       |                                       |                                              |
 
-Notes: First mortalities on 7/15 (3 days after stress) in the smallest oysters, but see mortalities in both stress and control groups.
+Notes:
+
+-   First mortalities on 7/15 (3 days after stress) in the smallest oysters, but see mortalities in both stress and control groups.
+
+-   On 7/16, roughly equal deaths in both groups, and exclusively in the smallest oysters
