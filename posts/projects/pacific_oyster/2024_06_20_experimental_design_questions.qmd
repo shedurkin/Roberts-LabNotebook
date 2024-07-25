@@ -119,6 +119,8 @@ When selecting which assays to use, it's useful to know which physiological para
 
 ![Assays suggested in Ariana's Sea Grant biomarkers proposal](images/oyster_assays.png)
 
+[Glycogen stores:]{.underline} @hwang_involvement_2023 found that Pacific oysters store glycogen in many tissues, but glycogen content over a year only varies significantly in the **mantel edge tissue**. This suggests to me that mantel edge is the tissue whose glycogen content would be most dramatically impacted by changes to energy requirements/allocation, and is the best tissue to sample for a glycogen assay.
+
 ### Thermal tolerance
 
 Understanding the known thermotolerance of Pacific oysters will inform what temperatures/durations we choose for the hardening regime and extreme stress test.

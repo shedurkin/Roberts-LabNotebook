@@ -28,17 +28,39 @@ format:
 
 #### Thursday
 
+-   partial water change (\~10 gallons) in both the FTR seawater tanks, added Instant Algae to both.
+
+-   checked extreme stress trial mortalities
+
+-   updating lab notebooks, admin
+
 ## 24 July 2024
 
 #### Wednesday
+
+-   Helped Ariana DNA sample some seed from her 10K seed experiment to get more experience sampling oysters.
+
+-   Checked mortalities in extreme stress groups
+
+-   did some [oyster exams](../../projects/pacific_oyster/2024_07_24_oyster_examinations.qmd), including dissection of dip/trip large oysters. Noted developed gonad in the triploid!
 
 ## 23 July 2024
 
 #### Tuesday
 
+Picked up my hardened oysters from PW and brought back to FTR. See [post](../../projects/pacific_oyster/2024_07_23_Point_Whitney.qmd) for more details.
+
 ## 22 July 2024
 
 #### Monday
+
+-   checked oyster mortalities for Extreme Stress Trials 1 and 2 over weekend, see posts for more
+
+-   finally added the additional 2TB SSD storage to laptop, need to move around some current file/program storage now
+
+-   Meeting w/ Steven, overviewed plan for my oysters once finished with recovery/acclimation, and set up seawater tank in FTR for my oysters.
+
+-   reading/note taking on assay options (see [spreadsheet](https://docs.google.com/spreadsheets/d/1yjQmdXelPzKs32425yZWjtZV4hF7w42PTIGfK2WSfLY/edit?gid=0#gid=0))
 
 ## 19 July 2024
 
@@ -56,9 +78,17 @@ format:
 
 #### Tuesday
 
+-   Checked mortality in oysters from [Extreme Stress Trial 1](../../projects/pacific_oyster/2024_07_15_stress_test_trial2.qmd) and [Trial 2](../../projects/pacific_oyster/2024_07_11_stress_test_trial.qmd). Mortality in both, including in controls, exclusively the small oysters. Why are controls dying...?
+
+-   Set up heater in second FTR seawater tank. Set to 20C, will check again later today to make sure its functioning properly.
+
 ## 15 July 2024
 
 #### Monday
+
+-   Checked [Extreme Stress Trial 1](../../projects/pacific_oyster/2024_07_11_stress_test_trial.qmd) oysters for mortality (also checked Sat. 7/13 and Sun 7/14)
+
+-   setting up and conducting [Extreme Stress Trial 2](../../projects/pacific_oyster/2024_07_15_stress_test_trial2.qmd). Using direct heater, instead of ambient heating from incubator setup.
 
 ## 12 July 2024
 

@@ -1,0 +1,14 @@
+{
+  "hash": "bab55cc312f848f2c7eea132031233c5",
+  "result": {
+    "markdown": "---\ntitle: \"Point Whitney: Transporting KD oysters\"\nauthor: \"Kathleen Durkin\"\ndate: \"2024-07-23\"\ncategories: [\"pacific_oyster\"]\nformat:\n  html:\n    toc: true\nengine: knitr\n#bibliography: ../../../references.bib\n---\n\n\nShorter trip to Point Whitney today to bring my hardened dip/trip oysters back to FTR and grab a few things.\n\n### Oysters\n\nMy hardened diploid/triploid oysters finished their 2 week recovery period yesterday, so today I brought them back to the lab for sampling and an extreme stress survivorship test. The oysters were packed in a cooler with ice, sandwiched between layers of wet paper/cardboard and foam, so that the oysters never came in direct contact with ice. They were packed like this for \\~4 hours before I got them back to FTR and placed them in the right seawater tank in the FTR cold room. The tank contains seawater made from freshwater and Instant Sea, mixed to a salinity of \\~27 psu, and held at 20C. These conditions were selected to match the ambient salinity and temperature the oysters experienced at Point Whitney for the last month. I also added roughly 15mL of Instant Algae once the oysters were placed in the tank, diluted before addition.\n\n### Other PW tasks\n\nI also took probe measurements from the dock and upweller we've been using (see picture below), and then packed both the probe and a new HOBO temperature logger to bring back to FTR. Added probe measurements to my ongoing [spreadsheet](https://docs.google.com/spreadsheets/d/1EssYgZ8fZl4V9PLlYWtEGXSeln1L4JUM0bqT_MYv6cI/edit?gid=0#gid=0).\n\n![](images/IMG_9391.jpg){width=\"700\"}\n\n### Ucar/ferry \n\nSubmitted ferry receipts for reimbursement 7/24\n\n![](images/IMG_9405.jpg){width=\"500\"}\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

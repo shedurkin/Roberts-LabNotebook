@@ -36,24 +36,29 @@ This time I'll be using full bucket of water with a heater + thermostat, instead
 
 3.  Once the treatment seawater bucket was at 43C, I began the stress trial. I placed the "treatment" bag of oysters in the 43C bucket, and the "control" bag of oysters in the bucket of ambient water (roughly 17C). The oysters remained in their respective buckets for 1 hr (16:30 - 17:30, 7/15/2024).
 
-    I maintained the treatment water temperature of 43C by manually monitoring the thermostats and thermometer. When any of these temperature gauges dropped below 42C (a 1C variation) I turned the heater back on until all three temperature gauges were again at 43C. I also mixed the water the entire time the heater was on, to ensure even heating, and ensured the bag of oysters was not touching the heating element itself. I had to turn the heater on roughly every 15 minutes to maintain temperature.
+    Our thermostats have amaximum temperature regulation setting of 36C, so I maintained the treatment water temperature of 43C by manually monitoring the thermostats and thermometer. When any of these temperature gauges dropped below 42C (a 1C variation) I turned the heater back on until all three temperature gauges were again at 43C. I also mixed the water the entire time the heater was on, to ensure even heating, and ensured the bag of oysters was not touching the heating element itself. I had to turn the heater on roughly every 15 minutes to maintain temperature.
 
-    **Notes:** The thermostat whose sensor was at the top of the treatment bucket consistently displayed a temperature 1C below the thermostat placed at the bottom of the bucket. I'm not sure if this is because the top layer of water lost heat faster or because of a calibration difference in the thermostats. This means, however, that a drop below 42C in the top thermostat generally meant a drop to 42C in the bottom of the bucket, which means water at the bottom of the bucket likely never dropped below 42C.
+    **Notes:** The thermostat whose sensor was at the top of the treatment bucket consistently displayed a temperature 1C below the thermostat placed at the bottom of the bucket. I'm not sure if this is because the top layer of water lost heat faster or because of a calibration difference in the thermostats. This means, however, that a drop below 42C in the top thermostat generally meant a drop *to* 42C in the bottom of the bucket, which means water at the bottom of the bucket likely never dropped below 42C.
 
 4.  After the 1hr treatment, placed both bags of oysters back in the cold seawater tank in FTR.
 
     Unplugged all heaters and thermostats, emptied both buckets of seawater into the drains in the seawater room, and rinsed both with DI water.
 
-5.  Monitor oysters in both groups for mortality once per day at roughly noon for the next 2 weeks. To check mortality, remove bag of oysters from tank, empty bag onto table. An empty shell or gaping with no response to stimulation (prodding with metal tool) indicates mortality.
+5.  Monitor oysters in both groups for mortality once per day at roughly noon (12:00) for the next 2 weeks. To check mortality, remove bag of oysters from tank, empty bag onto table. An empty shell or gaping with no response to stimulation (prodding with metal tool) indicates mortality.
 
 ### Mortality
 
-Checked bags daily at roughly noon for mortality. Mortality evaluated by prodding oysters and squeezing lightly at base of hinge. Empty shells or oysters that gaped and remained open during stimulation were considered dead.
+Checked bags daily at roughly noon for mortality. Mortality evaluated by prodding oysters and squeezing lightly at base of hinge to check whether the shell is empty. Empty shells or oysters that gaped and remained open during stimulation were considered dead. Removed dead oysters to prevent double-counting.
 
 | Date | Time  | Control (mm length of dead oyster(s)) | Extreme stress (mm length of dead oyster(s)) |
-|------|-------|---------------------------------------|----------------------------------------------|
+|---------------|---------------|-------------------|-----------------------|
 | 7/16 | 12:30 | \-                                    | 25, 27                                       |
-| 7/17 |       |                                       |                                              |
-| 7/18 |       |                                       |                                              |
-| 7/19 |       |                                       |                                              |
-| 7/20 |       |                                       |                                              |
+| 7/17 | 12:45 | 30                                    | 30                                           |
+| 7/18 | 12:15 | \-                                    | \-                                           |
+| 7/19 | 14:30 | \-                                    | \-                                           |
+| 7/20 | 13:00 | \-                                    | \-                                           |
+| 7/21 | 17:00 | \-                                    | 30                                           |
+| 7/22 | 12:15 | \-                                    | \-                                           |
+| 7/23 | 16:00 | \-                                    | 35                                           |
+| 7/24 | 13:00 | \-                                    | \-                                           |
+| 7/25 | 11:00 | \-                                    | \-                                           |

@@ -62,21 +62,28 @@ As for this current stress test trial, I'm not really sure what to do about this
 
 ### Mortality
 
-Checked bags daily at roughly noon for mortality. Mortality evaluated by prodding oysters and squeezing lightly at base of hinge. Empty shells or oysters that gaped and remained open during stimulation were considered dead.
+Checked bags daily at roughly noon for mortality. Mortality evaluated by prodding oysters and squeezing lightly at base of hinge. Empty shells or oysters that gaped and remained open during stimulation were considered dead. Removed dead oysters to prevent double-counting.
 
 | Date | Time  | Control (mm length of dead oyster(s)) | Extreme stress (mm length of dead oyster(s)) |
-|------|-------|---------------------------------------|----------------------------------------------|
+|---------------|---------------|-------------------|-----------------------|
 | 7/13 | 13:00 | \-                                    | \-                                           |
 | 7/14 | 11:15 | \-                                    | \-                                           |
 | 7/15 | 12:00 | 29                                    | 29, 29                                       |
 | 7/16 | 12:15 | 34, 31, 29                            | 31                                           |
-| 7/17 |       |                                       |                                              |
-| 7/18 |       |                                       |                                              |
-| 7/19 |       |                                       |                                              |
-| 7/20 |       |                                       |                                              |
+| 7/17 | 12:45 | \-                                    | \-                                           |
+| 7/18 | 12:15 | \-                                    | \-                                           |
+| 7/19 | 14:30 | \-                                    | \-                                           |
+| 7/20 | 13:00 | \-                                    | \-                                           |
+| 7/21 | 17:00 | \-                                    | 35 (one of the two fused together)           |
+| 7/22 | 12:15 | \-                                    | \-                                           |
+| 7/23 | 16:00 | \-                                    | \-                                           |
+| 7/24 | 13:00 | \-                                    | \-                                           |
+| 7/25 | 11:00 | \-                                    | \-                                           |
 
 Notes:
 
 -   First mortalities on 7/15 (3 days after stress) in the smallest oysters, but see mortalities in both stress and control groups.
 
 -   On 7/16, roughly equal deaths in both groups, and exclusively in the smallest oysters
+
+-   On 7/21, the dead oyster found in the treatment bag was one of two fused oysters. As such, was unable to remove from the bag.

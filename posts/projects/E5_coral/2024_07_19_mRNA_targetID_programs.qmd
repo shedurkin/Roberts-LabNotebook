@@ -1,0 +1,27 @@
+---
+title: "Programs for identifying miRNA targets"
+author: "Kathleen Durkin"
+date: "2024-07-19"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+[miRanda](https://www.sciencedirect.com/science/article/pii/S0888754322001495#s0055)
+
+Seems like a solid option, seen it cited in [coral miRNA paper](https://www.sciencedirect.com/science/article/pii/S0888754322001495#s0055), and listed in [review paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3927079/) @peterson_common_2014 as one of the OG, more regularly maintained miRNA target prediction programs that takes user sequence input. Most recently updated 2010. Also, available as downloadable software run on linux/unix, so more reproducible than the other main miRNA target prediction softwares which are web based. Only problem is that the miRanda site ([www.microrna.org](http://www.microrna.org/)) doesn't seem to be functional... This is extra weird because the coral miRNA paper that used it was from 2022, which is quite recent.\
+\
+[miRanda tutorial](https://bioinformaticsworkbook.org/dataAnalysis/SmallRNA/Miranda_miRNA_Target_Prediction.html#gsc.tab=0)
+
+Found a [site](https://regendbase.org/tools/miranda) that appears to use the miRanda algorithm in a web based tool, and it seems to be functioning normally
+
+![](images/Screenshot%202024-07-19%20165134.png)
+
+![](images/Screenshot%202024-07-19%20165241.png)
+
+I tried emailing the corresponding authors of the miRanda papers, but I'm not confident I'll hear back. In the meantime I should also look into R package options, which weren't really covered in the 2014 review I've been referencing.
+
+### [mirTarRnaSeq](https://www.bioconductor.org/packages/release/bioc/html/mirTarRnaSeq.html)

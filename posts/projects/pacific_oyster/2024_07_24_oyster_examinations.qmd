@@ -1,0 +1,54 @@
+---
+title: "Some oyster exams and disections"
+author: "Kathleen Durkin"
+date: "2024-07-24"
+categories: ["pacific_oyster"]
+format:
+  html:
+    toc: true
+engine: knitr
+#bibliography: ../../../references.bib
+bibliography: references.bib
+---
+
+Some notes and pictures from working with the FTR-stored oysters today.
+
+### White spotting in extreme stress bags
+
+I noticed some tiny white dots covering portions of some oysters in the extreme stress trial bags (Trial 1 stressed bag, and Trial 2 stressed bag). See pictures below. After talking with Ariana we decided they're probably just an odd type of tunicate. I rubbed off as much as I could, but I noted there do seem to be tiny holes left below where the dots were. Put the oysters back in the left FTR seawater tank.
+
+![](images/IMG_9398.jpg){width="300"}
+
+![](images/IMG_9402.jpg){width="300"}
+
+### Dissecting a dip/trip
+
+My hardening experiment oysters are a wide range of sizes, so it's likely I'll be able to take more detailed tissue samples (e.g., specific tissue types, multiple samples from the same tissue). I want to open a larger oyster to see the anatomy clearly and get a sense of where everything is. I also want to check the reproductive maturity of some oysters from the hatchery.
+
+To do this, pulled a large untreated diploid (bag "13") and large untreated triploid (bag "Bird - Extra") for dissection.
+
+#### Diploid
+
+-   **No developed gonad** in the diploid
+
+![](images/IMG_9410.jpg){width="700"}
+
+-   The diploid had some serious **shell deterioration**, particularly around the hinge. Looks to be the work of some kind of boring parasite that left the shell riddled with orange-something filled holes. The shell broke very easily and separated into layers. Notably, there was no obvious sign of this deterioration on the exterior of the shell.
+
+    Took a look at some of the orange substance under the scope:
+
+![](images/IMG_9420.jpg)
+
+#### Triploid
+
+-   The triploid had a **developed gonad**!
+
+![](images/IMG_9407.jpg)
+
+Took a gamete sample and examined under the scope:
+
+![](images/IMG_9418-01.jpg){width="700"}
+
+It's female! The eggs seem viable but underdeveloped -- many have a vaguely tear-drop shape, rather than a filled-out circle.
+
+This is just one diploid and triploid, but it's interesting that the triploid is the only one with gametes. This could either mean that (a) the "Bird" oysters are not actually triploids, or (b) this is a case of a triploid not actually being sterile. Even though triploids are touted as being sterile, I've actually read a few papers noting triploids developing gametes in the field and, relevantly, triploid mortality being associated with fecund triploids! @houssin2019 @j.brianik2023
