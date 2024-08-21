@@ -1,0 +1,48 @@
+---
+title: "Mortality check of hardened diploid and triploid oysters"
+author: "Kathleen Durkin"
+date: "2024-07-28"
+categories: ["pacific_oyster"]
+format:
+  html:
+    toc: true
+engine: knitr
+#bibliography: ../../../references.bib
+---
+
+## Checking mortalities
+
+I transferred the hardened diploid and triploid oysters from Point Whitney to an FTR 208 seawater tank held at 20C on July 23 (see [post](./2024_07_23_Point_Whitney.qmd)). They've now had a few days to acclimate to the tank, so I checked post-hardening mortality, making note of size as well.
+
+To check a bag I emptied it onto a counter and sorted by live/dead. Evaluated whether alive or dead by squeezing lightly on hinge and, for any oysters that gaped, prodding lightly with metal tool. Lack of response indicated death. I took a picture of all oysters, separated by live or dead, with a ruler, then measured the length of each manually with a caliper. Removed and discarded dead oysters/shells.
+
+[Mortality and size data](https://docs.google.com/spreadsheets/d/1zvq3cIyN-kI8eTnX96CSJhre9aA-Rj9POYtFrEdOtac/edit?gid=61126976#gid=61126976)
+
+Pictures below -- oysters lying above the caliper are dead, below are live
+
+![Bag 045 -- 81/100 surviving (\~20% mortality)](images/Bag045.jpg){width="400"}
+
+![Bag 060 -- 65/100 surviving (\~35% mortality)](images/Bag060.jpg){width="400"}
+
+![Bag 064 -- 61/100 surviving (\~40% mortality)](images/Bag064.jpg){width="400"}
+
+![Bag 065 -- 68/100 surviving (\~30% mortality)](images/Bag065.jpg){width="400"}
+
+During sampling I want to sample a roughly even size distribution from each group. To standardize, I set four size classes based on the average lower quartile, median, and upper quartiles of surviving oysters in each group.
+
+|                         | Bag 045 | Bag 060 | Bag 064 | Bag 065 | Average |
+|-------------------------|---------|---------|---------|---------|---------|
+| **lower quartile (mm)** | 32      | 31      | 38      | 39.75   | 35.2    |
+| **median (mm)**         | 39      | 36      | 45      | 47      | 41.8    |
+| **upper quartile (mm)** | 45      | 44      | 56      | 51.25   | 49.1    |
+
+Size classes:
+
+Round to nearest mm
+
+| Size class | length range |
+|------------|--------------|
+| 1          | 0mm - 35mm   |
+| 2          | 36mm - 42mm  |
+| 3          | 43mm - 49mm  |
+| 4          | 50mm -       |

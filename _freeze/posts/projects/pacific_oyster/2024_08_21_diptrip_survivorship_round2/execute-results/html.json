@@ -1,0 +1,14 @@
+{
+  "hash": "71a7b1a4cb2811b26ece428591032bd3",
+  "result": {
+    "markdown": "---\ntitle: \"Dip/Trip Hardening, Survivorship Round 2\"\nauthor: \"Kathleen Durkin\"\ndate: \"2024-08-21\"\ncategories: [\"pacific_oyster\"]\nformat:\n  html:\n    toc: true\nengine: knitr\n#bibliography: ../../../references.bib\n---\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

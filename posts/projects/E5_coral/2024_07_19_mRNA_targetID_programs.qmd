@@ -25,3 +25,13 @@ Found a [site](https://regendbase.org/tools/miranda) that appears to use the miR
 I tried emailing the corresponding authors of the miRanda papers, but I'm not confident I'll hear back. In the meantime I should also look into R package options, which weren't really covered in the 2014 review I've been referencing.
 
 ### [mirTarRnaSeq](https://www.bioconductor.org/packages/release/bioc/html/mirTarRnaSeq.html)
+
+R package. Actually requires miRanda to preprocess some input data :(
+
+### [RNAhybrid](https://bio.tools/rnahybrid)
+
+Webtool (though I think may have downloadable version?). At least the webtool limits input target file to 50,000 characters, which is a fraction of a full transcriptome. Could try doing DEG analysis first, but still might be too big...
+
+### [TimiRGen](https://bioconductor.org/packages/release/bioc/html/TimiRGeN.html)
+
+R package. There's no accessible vignette though, so would be a huge pain to figure out...

@@ -1,0 +1,36 @@
+---
+title: "Survivorship test, Resazurin"
+author: "Kathleen Durkin"
+date: "2024-08-07"
+categories: ["pacific_oyster"]
+format:
+  html:
+    toc: true
+engine: knitr
+#bibliography: ../../../references.bib
+---
+
+Resazuring measurments from Pacific oyster dip/trip survivorship Round 1 (pooled treatment groups)
+
+```{r}
+library(ggplot2)
+
+# load data
+resazurin_OG <- read.csv("../../../../../Data/Pacific_oysters/2024_08_02_diptrip_resazurin_compiled.csv")
+
+# remove any NA measurement values
+resazurin <- resazurin_OG[!is.na(resazurin_OG$Measurement),]
+
+# set specified order of the groups
+resazurin$Group <- factor(resazurin$Group, levels = c("045T", "060T", "064T", "065T", "045C", "060C", "064C", "065C", "TNO", "CNO"))
+
+# plot
+ggplot(resazurin, aes(x = Time, y = Measurement, color = Group, group = Group)) +
+  geom_point() +
+  geom_line() +
+  labs(title = "Resazurin measurements over time",
+       x = "Time",
+       y = "Measurement",
+       color = "Group") +
+  theme_minimal()
+```

@@ -25,7 +25,7 @@ Field day at Point Whitney to continue hardening stress treatments
 Treatments I did today:
 
 | Experiment          | Bags (cattle tag #s) | Treatment      | Start time | End time | Duration |
-|----------------|------------|------------|------------|------------|------------|
+|---------------------|----------------------|----------------|------------|----------|----------|
 | KD diploid/triploid | 60, 65               | 35C seawater   | 13:10      | 16:57    | \~4 hr   |
 | New seed            | 56, 66               | freshwater     | 11:19      | 12:19    | 1 hr     |
 | New seed            | 30, 47               | 35C seawater   | 13:14      | 14:17    | 1 hr     |
@@ -73,11 +73,11 @@ The algae levels dropped *much* more quickly than I expected in both ploidies, f
 
 Quick chart below of Trial 2 fluorometry readings (blue is 13, red is Bird, yellow is control)
 
-![](images/chart (1).png)
+![](images/chart%20(1).png)
 
 Takeaways:
 
--    Fluorometer readings dropped slightly over the course of an hour in the control -- maybe algae just die off at low levels? Not sure if that would affect chlorophyll levels though...
+-   Fluorometer readings dropped slightly over the course of an hour in the control -- maybe algae just die off at low levels? Not sure if that would affect chlorophyll levels though...
 
 -   The diploid "13" oyster didn't seem to consume any algae. I noticed during the trial that oyster looked fully closed during most of the trial, while the "Bird" oyster was clearly opened. If we want to use clearance rate experimentally, we'd need to have a backup plan for oysters that don't want to feed.
 

@@ -51,7 +51,7 @@ This time I'll be using full bucket of water with a heater + thermostat, instead
 Checked bags daily at roughly noon for mortality. Mortality evaluated by prodding oysters and squeezing lightly at base of hinge to check whether the shell is empty. Empty shells or oysters that gaped and remained open during stimulation were considered dead. Removed dead oysters to prevent double-counting.
 
 | Date | Time  | Control (mm length of dead oyster(s)) | Extreme stress (mm length of dead oyster(s)) |
-|---------------|---------------|-------------------|-----------------------|
+|-----------------|-----------------|------------------|---------------------|
 | 7/16 | 12:30 | \-                                    | 25, 27                                       |
 | 7/17 | 12:45 | 30                                    | 30                                           |
 | 7/18 | 12:15 | \-                                    | \-                                           |
@@ -62,3 +62,6 @@ Checked bags daily at roughly noon for mortality. Mortality evaluated by proddin
 | 7/23 | 16:00 | \-                                    | 35                                           |
 | 7/24 | 13:00 | \-                                    | \-                                           |
 | 7/25 | 11:00 | \-                                    | \-                                           |
+| 7/26 | 12:00 | \-                                    | \-                                           |
+| 7/27 | 10:00 | \-                                    | \-                                           |
+| 7/28 | 13:00 | \-                                    | \-                                           |

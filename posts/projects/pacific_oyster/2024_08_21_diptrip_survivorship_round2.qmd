@@ -1,0 +1,11 @@
+---
+title: "Dip/Trip Hardening, Survivorship Round 2"
+author: "Kathleen Durkin"
+date: "2024-08-21"
+categories: ["pacific_oyster"]
+format:
+  html:
+    toc: true
+engine: knitr
+#bibliography: ../../../references.bib
+---

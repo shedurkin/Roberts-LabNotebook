@@ -1,0 +1,16 @@
+{
+  "hash": "f4b9004f29f1c0e762713072faf9d250",
+  "result": {
+    "markdown": "---\ntitle: \"Survivorship test, Resazurin\"\nauthor: \"Kathleen Durkin\"\ndate: \"2024-08-07\"\ncategories: [\"pacific_oyster\"]\nformat:\n  html:\n    toc: true\nengine: knitr\n#bibliography: ../../../references.bib\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(ggplot2)\n```\n\n::: {.cell-output .cell-output-stderr}\n```\nWarning: package 'ggplot2' was built under R version 4.2.3\n```\n:::\n\n```{.r .cell-code}\n# load data\nresazurin_OG <- read.csv(\"../../../../../Data/Pacific_oysters/2024_08_02_diptrip_resazurin_compiled.csv\")\n\n# remove any NA measurement values\nresazurin <- resazurin_OG[!is.na(resazurin_OG$Measurement),]\n\n# set specified order of the groups\nresazurin$Group <- factor(resazurin$Group, levels = c(\"045T\", \"060T\", \"064T\", \"065T\", \"045C\", \"060C\", \"064C\", \"065C\", \"TNO\", \"CNO\"))\n\n# plot\nggplot(resazurin, aes(x = Time, y = Measurement, color = Group, group = Group)) +\n  geom_point() +\n  geom_line() +\n  labs(title = \"Resazurin measurements over time\",\n       x = \"Time\",\n       y = \"Measurement\",\n       color = \"Group\") +\n  theme_minimal()\n```\n\n::: {.cell-output-display}\n![](2024_08_07_diptrip_survivorship_Resazurin_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "2024_08_07_diptrip_survivorship_Resazurin_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

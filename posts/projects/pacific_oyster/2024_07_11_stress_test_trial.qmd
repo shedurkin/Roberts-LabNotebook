@@ -65,7 +65,7 @@ As for this current stress test trial, I'm not really sure what to do about this
 Checked bags daily at roughly noon for mortality. Mortality evaluated by prodding oysters and squeezing lightly at base of hinge. Empty shells or oysters that gaped and remained open during stimulation were considered dead. Removed dead oysters to prevent double-counting.
 
 | Date | Time  | Control (mm length of dead oyster(s)) | Extreme stress (mm length of dead oyster(s)) |
-|---------------|---------------|-------------------|-----------------------|
+|-----------------|-----------------|------------------|---------------------|
 | 7/13 | 13:00 | \-                                    | \-                                           |
 | 7/14 | 11:15 | \-                                    | \-                                           |
 | 7/15 | 12:00 | 29                                    | 29, 29                                       |
@@ -79,6 +79,7 @@ Checked bags daily at roughly noon for mortality. Mortality evaluated by proddin
 | 7/23 | 16:00 | \-                                    | \-                                           |
 | 7/24 | 13:00 | \-                                    | \-                                           |
 | 7/25 | 11:00 | \-                                    | \-                                           |
+| 7/26 | 12:00 | \-                                    | 31                                           |
 
 Notes:
 
@@ -87,3 +88,5 @@ Notes:
 -   On 7/16, roughly equal deaths in both groups, and exclusively in the smallest oysters
 
 -   On 7/21, the dead oyster found in the treatment bag was one of two fused oysters. As such, was unable to remove from the bag.
+
+-   After 2 weeks of daily monitoring (ended 7/26), I'm gonna switch to checking the oysters every \~1 week (until we decide to do something else with them).

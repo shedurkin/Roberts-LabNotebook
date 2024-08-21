@@ -10,7 +10,7 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/projects.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Thu, 25 Jul 2024 21:37:12 GMT</lastBuildDate>
+<lastBuildDate>Wed, 21 Aug 2024 23:30:31 GMT</lastBuildDate>
 <item>
   <title>E5 Coral</title>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</link>
@@ -61,7 +61,7 @@ Reading Time
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-categories="E5-coral" data-listing-date-sort="1721372400000" data-listing-file-modified-sort="1721680690331" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Programs for identifying miRNA targets" data-listing-filename-sort="2024_07_19_mRNA_targetID_programs.qmd">
+<tr data-index="0" data-categories="E5-coral" data-listing-date-sort="1721372400000" data-listing-file-modified-sort="1722013864840" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Programs for identifying miRNA targets" data-listing-filename-sort="2024_07_19_mRNA_targetID_programs.qmd">
 <td>
 <span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2024_07_19_mRNA_targetID_programs.html --></span>
 </td>
@@ -75,7 +75,7 @@ Reading Time
 <span class="listing-categories">E5-coral</span>
 </td>
 <td>
-<span class="listing-reading-time">1 min</span>
+<span class="listing-reading-time">2 min</span>
 </td>
 </tr>
 <tr data-index="1" data-categories="E5-coral" data-listing-date-sort="1717398000000" data-listing-file-modified-sort="1718760353410" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="ShortStack: mature vs. star sequences incorrect?" data-listing-filename-sort="2024_06_04_ShortStack_mature_v_star.qmd">
@@ -239,7 +239,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</guid>
-  <pubDate>Thu, 25 Jul 2024 21:37:12 GMT</pubDate>
+  <pubDate>Wed, 21 Aug 2024 23:30:31 GMT</pubDate>
 </item>
 <item>
   <title>Pacific Cod</title>
@@ -455,7 +455,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod.html</guid>
-  <pubDate>Thu, 25 Jul 2024 21:37:12 GMT</pubDate>
+  <pubDate>Wed, 21 Aug 2024 23:30:31 GMT</pubDate>
 </item>
 <item>
   <title>Pacific Oyster</title>
@@ -514,7 +514,92 @@ Reading Time
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-categories="pacific_oyster" data-listing-date-sort="1721804400000" data-listing-file-modified-sort="1721943094742" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Some oyster exams and disections" data-listing-filename-sort="2024_07_24_oyster_examinations.qmd">
+<tr data-index="0" data-categories="pacific_oyster" data-listing-date-sort="1724223600000" data-listing-file-modified-sort="1724275594985" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Dip/Trip Hardening, Survivorship Round 2" data-listing-filename-sort="2024_08_21_diptrip_survivorship_round2.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_08_21_diptrip_survivorship_round2.html --></span>
+</td>
+<td>
+<span class="listing-date">Aug 21, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/pacific_oyster/2024_08_21_diptrip_survivorship_round2.html" class="title listing-title">Dip/Trip Hardening, Survivorship Round 2</a>
+</td>
+<td>
+<span class="listing-categories">pacific_oyster</span>
+</td>
+<td>
+<span class="listing-reading-time">1 min</span>
+</td>
+</tr>
+<tr data-index="1" data-categories="pacific_oyster" data-listing-date-sort="1723014000000" data-listing-file-modified-sort="1724275475768" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Survivorship test, Resazurin" data-listing-filename-sort="2024_08_07_diptrip_survivorship_Resazurin.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_08_07_diptrip_survivorship_Resazurin.html --></span>
+</td>
+<td>
+<span class="listing-date">Aug 7, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/pacific_oyster/2024_08_07_diptrip_survivorship_Resazurin.html" class="title listing-title">Survivorship test, Resazurin</a>
+</td>
+<td>
+<span class="listing-categories">pacific_oyster</span>
+</td>
+<td>
+<span class="listing-reading-time">1 min</span>
+</td>
+</tr>
+<tr data-index="2" data-categories="pacific_oyster" data-listing-date-sort="1722582000000" data-listing-file-modified-sort="1724282135256" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-title-sort="Dip/Trip Hardening, Survivorship Round 1" data-listing-filename-sort="2024_08_21_diptrip_survivorship_round1.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_08_21_diptrip_survivorship_round1.html --></span>
+</td>
+<td>
+<span class="listing-date">Aug 2, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/pacific_oyster/2024_08_21_diptrip_survivorship_round1.html" class="title listing-title">Dip/Trip Hardening, Survivorship Round 1</a>
+</td>
+<td>
+<span class="listing-categories">pacific_oyster</span>
+</td>
+<td>
+<span class="listing-reading-time">5 min</span>
+</td>
+</tr>
+<tr data-index="3" data-categories="pacific_oyster" data-listing-date-sort="1722236400000" data-listing-file-modified-sort="1724278285692" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-title-sort="Sampling hardened diploid and triploid oysters" data-listing-filename-sort="2024_07_29_diptrip_sampling.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_07_29_diptrip_sampling.html --></span>
+</td>
+<td>
+<span class="listing-date">Jul 29, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/pacific_oyster/2024_07_29_diptrip_sampling.html" class="title listing-title">Sampling hardened diploid and triploid oysters</a>
+</td>
+<td>
+<span class="listing-categories">pacific_oyster</span>
+</td>
+<td>
+<span class="listing-reading-time">5 min</span>
+</td>
+</tr>
+<tr data-index="4" data-categories="pacific_oyster" data-listing-date-sort="1722150000000" data-listing-file-modified-sort="1724277259290" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Mortality check of hardened diploid and triploid oysters" data-listing-filename-sort="2024_07_28_diptrip_mortalities.qmd">
+<td>
+<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_07_28_diptrip_mortalities.html --></span>
+</td>
+<td>
+<span class="listing-date">Jul 28, 2024</span>
+</td>
+<td>
+<a href="../../posts/projects/pacific_oyster/2024_07_28_diptrip_mortalities.html" class="title listing-title">Mortality check of hardened diploid and triploid oysters</a>
+</td>
+<td>
+<span class="listing-categories">pacific_oyster</span>
+</td>
+<td>
+<span class="listing-reading-time">3 min</span>
+</td>
+</tr>
+<tr data-index="5" data-categories="pacific_oyster" data-listing-date-sort="1721804400000" data-listing-file-modified-sort="1721943094742" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Some oyster exams and disections" data-listing-filename-sort="2024_07_24_oyster_examinations.qmd">
 <td>
 <span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_07_24_oyster_examinations.html --></span>
 </td>
@@ -531,7 +616,7 @@ Reading Time
 <span class="listing-reading-time">2 min</span>
 </td>
 </tr>
-<tr data-index="1" data-categories="pacific_oyster" data-listing-date-sort="1721718000000" data-listing-file-modified-sort="1721939930404" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Point Whitney: Transporting KD oysters" data-listing-filename-sort="2024_07_23_Point_Whitney.qmd">
+<tr data-index="6" data-categories="pacific_oyster" data-listing-date-sort="1721718000000" data-listing-file-modified-sort="1724277259193" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Point Whitney: Transporting KD oysters" data-listing-filename-sort="2024_07_23_Point_Whitney.qmd">
 <td>
 <span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_07_23_Point_Whitney.html --></span>
 </td>
@@ -548,7 +633,7 @@ Reading Time
 <span class="listing-reading-time">2 min</span>
 </td>
 </tr>
-<tr data-index="2" data-categories="pacific_oyster" data-listing-date-sort="1721026800000" data-listing-file-modified-sort="1721938733356" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-title-sort="Extreme stress test trial #2" data-listing-filename-sort="2024_07_15_stress_test_trial2.qmd">
+<tr data-index="7" data-categories="pacific_oyster" data-listing-date-sort="1721026800000" data-listing-file-modified-sort="1722286902738" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-title-sort="Extreme stress test trial #2" data-listing-filename-sort="2024_07_15_stress_test_trial2.qmd">
 <td>
 <span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_07_15_stress_test_trial2.html --></span>
 </td>
@@ -562,10 +647,10 @@ Reading Time
 <span class="listing-categories">pacific_oyster</span>
 </td>
 <td>
-<span class="listing-reading-time">9 min</span>
+<span class="listing-reading-time">10 min</span>
 </td>
 </tr>
-<tr data-index="3" data-categories="pacific_oyster" data-listing-date-sort="1720681200000" data-listing-file-modified-sort="1721938733322" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-title-sort="Extreme stress test trial #1" data-listing-filename-sort="2024_07_11_stress_test_trial.qmd">
+<tr data-index="8" data-categories="pacific_oyster" data-listing-date-sort="1720681200000" data-listing-file-modified-sort="1722021582892" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-title-sort="Extreme stress test trial #1" data-listing-filename-sort="2024_07_11_stress_test_trial.qmd">
 <td>
 <span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_07_11_stress_test_trial.html --></span>
 </td>
@@ -579,10 +664,10 @@ Reading Time
 <span class="listing-categories">pacific_oyster</span>
 </td>
 <td>
-<span class="listing-reading-time">10 min</span>
+<span class="listing-reading-time">11 min</span>
 </td>
 </tr>
-<tr data-index="4" data-categories="pacific_oyster" data-listing-date-sort="1720422000000" data-listing-file-modified-sort="1720557229013" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Point Whitney: Stress treatments" data-listing-filename-sort="2024_07_08_Point_Whitney.qmd">
+<tr data-index="9" data-categories="pacific_oyster" data-listing-date-sort="1720422000000" data-listing-file-modified-sort="1720557229013" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Point Whitney: Stress treatments" data-listing-filename-sort="2024_07_08_Point_Whitney.qmd">
 <td>
 <span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_07_08_Point_Whitney.html --></span>
 </td>
@@ -599,7 +684,7 @@ Reading Time
 <span class="listing-reading-time">3 min</span>
 </td>
 </tr>
-<tr data-index="5" data-categories="pacific_oyster" data-listing-date-sort="1720162800000" data-listing-file-modified-sort="1720557228979" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Point Whitney: Stress treatments" data-listing-filename-sort="2024_07_05_Point_Whitney.qmd">
+<tr data-index="10" data-categories="pacific_oyster" data-listing-date-sort="1720162800000" data-listing-file-modified-sort="1720557228979" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Point Whitney: Stress treatments" data-listing-filename-sort="2024_07_05_Point_Whitney.qmd">
 <td>
 <span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_07_05_Point_Whitney.html --></span>
 </td>
@@ -616,7 +701,7 @@ Reading Time
 <span class="listing-reading-time">3 min</span>
 </td>
 </tr>
-<tr data-index="6" data-categories="pacific_oyster" data-listing-date-sort="1719990000000" data-listing-file-modified-sort="1720554724249" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="Point Whitney: Stress treatments, clearance rate trials" data-listing-filename-sort="2024_07_03_Point_Whitney.qmd">
+<tr data-index="11" data-categories="pacific_oyster" data-listing-date-sort="1719990000000" data-listing-file-modified-sort="1720554724249" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="Point Whitney: Stress treatments, clearance rate trials" data-listing-filename-sort="2024_07_03_Point_Whitney.qmd">
 <td>
 <span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_07_03_Point_Whitney.html --></span>
 </td>
@@ -633,7 +718,7 @@ Reading Time
 <span class="listing-reading-time">4 min</span>
 </td>
 </tr>
-<tr data-index="7" data-categories="pacific_oyster" data-listing-date-sort="1719817200000" data-listing-file-modified-sort="1719957675745" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="Point Whitney: Stress treatments, clearance rate trials" data-listing-filename-sort="2024_07_01_Point_Whitney.qmd">
+<tr data-index="12" data-categories="pacific_oyster" data-listing-date-sort="1719817200000" data-listing-file-modified-sort="1724277259362" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="Point Whitney: Stress treatments, clearance rate trials" data-listing-filename-sort="2024_07_01_Point_Whitney.qmd">
 <td>
 <span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_07_01_Point_Whitney.html --></span>
 </td>
@@ -650,7 +735,7 @@ Reading Time
 <span class="listing-reading-time">4 min</span>
 </td>
 </tr>
-<tr data-index="8" data-categories="pacific_oyster" data-listing-date-sort="1719558000000" data-listing-file-modified-sort="1719954215219" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-title-sort="Point Whitney: Hardening Treatments" data-listing-filename-sort="2024_06_28_Point_Whitney.qmd">
+<tr data-index="13" data-categories="pacific_oyster" data-listing-date-sort="1719558000000" data-listing-file-modified-sort="1719954215219" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-title-sort="Point Whitney: Hardening Treatments" data-listing-filename-sort="2024_06_28_Point_Whitney.qmd">
 <td>
 <span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_06_28_Point_Whitney.html --></span>
 </td>
@@ -667,7 +752,7 @@ Reading Time
 <span class="listing-reading-time">5 min</span>
 </td>
 </tr>
-<tr data-index="9" data-categories="pacific_oyster" data-listing-date-sort="1719471600000" data-listing-file-modified-sort="1720548984704" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Resazurin assay notes/questions" data-listing-filename-sort="2024_06_25_Resazurin.qmd">
+<tr data-index="14" data-categories="pacific_oyster" data-listing-date-sort="1719471600000" data-listing-file-modified-sort="1720548984704" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Resazurin assay notes/questions" data-listing-filename-sort="2024_06_25_Resazurin.qmd">
 <td>
 <span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_06_25_Resazurin.html --></span>
 </td>
@@ -684,7 +769,7 @@ Reading Time
 <span class="listing-reading-time">2 min</span>
 </td>
 </tr>
-<tr data-index="10" data-categories="pacific_oyster" data-listing-date-sort="1719298800000" data-listing-file-modified-sort="1720219445220" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-title-sort="Point Whitney: Experimental Setup" data-listing-filename-sort="2024_06_25_Point_Whitney.qmd">
+<tr data-index="15" data-categories="pacific_oyster" data-listing-date-sort="1719298800000" data-listing-file-modified-sort="1720219445220" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-title-sort="Point Whitney: Experimental Setup" data-listing-filename-sort="2024_06_25_Point_Whitney.qmd">
 <td>
 <span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_06_25_Point_Whitney.html --></span>
 </td>
@@ -701,7 +786,7 @@ Reading Time
 <span class="listing-reading-time">6 min</span>
 </td>
 </tr>
-<tr data-index="11" data-categories="pacific_oyster" data-listing-date-sort="1718866800000" data-listing-file-modified-sort="1718982850055" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Lit Review: Energetics" data-listing-filename-sort="2024_06_20_Energetics.qmd">
+<tr data-index="16" data-categories="pacific_oyster" data-listing-date-sort="1718866800000" data-listing-file-modified-sort="1718982850055" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Lit Review: Energetics" data-listing-filename-sort="2024_06_20_Energetics.qmd">
 <td>
 <span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_06_20_Energetics.html --></span>
 </td>
@@ -718,7 +803,7 @@ Reading Time
 <span class="listing-reading-time">3 min</span>
 </td>
 </tr>
-<tr data-index="12" data-categories="pacific_oyster" data-listing-date-sort="1718866800000" data-listing-file-modified-sort="1721938281399" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-title-sort="Lit Review: Experimental design questions" data-listing-filename-sort="2024_06_20_experimental_design_questions.qmd">
+<tr data-index="17" data-categories="pacific_oyster" data-listing-date-sort="1718866800000" data-listing-file-modified-sort="1721938281399" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-title-sort="Lit Review: Experimental design questions" data-listing-filename-sort="2024_06_20_experimental_design_questions.qmd">
 <td>
 <span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_06_20_experimental_design_questions.html --></span>
 </td>
@@ -735,7 +820,7 @@ Reading Time
 <span class="listing-reading-time">16 min</span>
 </td>
 </tr>
-<tr data-index="13" data-categories="pacific_oyster" data-listing-date-sort="1718780400000" data-listing-file-modified-sort="1719265662584" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Preliminary Project Outline" data-listing-filename-sort="2024_06_19_Project_Outline.qmd">
+<tr data-index="18" data-categories="pacific_oyster" data-listing-date-sort="1718780400000" data-listing-file-modified-sort="1719265662584" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Preliminary Project Outline" data-listing-filename-sort="2024_06_19_Project_Outline.qmd">
 <td>
 <span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_06_19_Project_Outline.html --></span>
 </td>
@@ -760,7 +845,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster.html</guid>
-  <pubDate>Thu, 25 Jul 2024 21:37:12 GMT</pubDate>
+  <pubDate>Wed, 21 Aug 2024 23:30:31 GMT</pubDate>
 </item>
 <item>
   <title>Miscellaneous</title>
@@ -983,7 +1068,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.html</guid>
-  <pubDate>Thu, 25 Jul 2024 21:37:12 GMT</pubDate>
+  <pubDate>Wed, 21 Aug 2024 23:30:31 GMT</pubDate>
 </item>
 </channel>
 </rss>
