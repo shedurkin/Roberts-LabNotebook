@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kathleen Durkin">
-<meta name="dcterms.date" content="2024-08-21">
+<meta name="dcterms.date" content="2024-08-09">
 
 <title>Kathleen’s Lab Notebook - Dip/Trip Hardening, Survivorship Round 2</title>
 <style>
@@ -169,7 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">August 21, 2024</p>
+        <p class="date">August 9, 2024</p>
       </div>
     </div>
     
@@ -196,8 +196,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>Second attempt at a survivorship test with my remaining hardened diploid and triploid oysters (see first survivorship test <a href="./2024_08_02_diptrip_survivorship_round2.qmd">here</a>). See all details and original data collection in physical lab notebook, digital copy of mortality and meta data <a href="https://docs.google.com/spreadsheets/d/1e0EcJ3Jrjq-a_IehlJsX7WaRoSG3tCUWKyWhY5yJfMs/edit?gid=0#gid=0">here</a>.</p>
-<p>As a reminder, I have diploid and triploid Pacific oysters that were hardened using 6 treatments of 35C for 4hours, over the course of 2 weeks. After 2 weeks of recovery they were brought back to FTR, acclimated, sampled, and used in a survivorship test of 42C Resazurin for 4hours. However, since I made the mistake of pooling all oysters in each treatment group, I compromised independence, making the results statistically meaningless. During this second attempt at a survivorship trial I’ll keep all individual oysters in separate containers, and I won’t be using Resazurin, since the ambient temp Resazurin groups in the first surivorship test still saw high mortality. For the purposes of this second survivorship test, survivorship round 1 will essentially be treated like an additional hardening treatment.</p>
+<p>Second attempt at a survivorship test with my remaining hardened diploid and triploid oysters (see first survivorship test <a href="../../../posts/projects/pacific_oyster/2024_08_02_diptrip_survivorship_round1.html">here</a>). See all details and original data collection in physical lab notebook, digital copy of mortality and meta data <a href="https://docs.google.com/spreadsheets/d/1e0EcJ3Jrjq-a_IehlJsX7WaRoSG3tCUWKyWhY5yJfMs/edit?gid=0#gid=0">here</a>.</p>
+<p>As a reminder, I have diploid and triploid Pacific oysters that were hardened using 6 treatments of 35C for 4hours, over the course of 2 weeks. After 2 weeks of recovery they were brought back to FTR, acclimated, sampled, and used in a survivorship test of 42C Resazurin for 4hours. However, since I made the mistake of pooling all oysters in each treatment group, I compromised independence, making the results statistically meaningless. During this second attempt at a survivorship trial I’ll keep all individual oysters in separate containers, and I won’t be using Resazurin, since the ambient temp Resazurin groups in the first survivorship test still saw high mortality. For the purposes of this second survivorship test, survivorship round 1 will essentially be treated like an additional hardening treatment.</p>
 <section id="survivorship-round-2-protocol" class="level2">
 <h2 class="anchored" data-anchor-id="survivorship-round-2-protocol">Survivorship Round 2 Protocol</h2>
 <ol type="1">
@@ -205,18 +205,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Evenly split the remaining oysters in all survivorship round 1 groups into two even groups, maintaining size distributions. Assigned a randomly selected label to each group. Each oyster will be individually labelled with the alphanumeric of GroupLabel##.</p>
 <table class="table">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 21%">
-<col style="width: 21%">
-<col style="width: 14%">
-<col style="width: 9%">
+<col style="width: 30%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 12%">
+<col style="width: 8%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Original hardening bag</th>
-<th>Round 1 group</th>
-<th>Round 2 group</th>
-<th>Labl</th>
+<th>Round 1 treatment</th>
+<th>Round 2 treatment</th>
+<th>Label</th>
 <th>Count</th>
 </tr>
 </thead>
@@ -352,22 +352,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>The original hardening was performed at too low a temperature to see an effect at 42C stress. The original hardening was done at 35C, while survivorship round 1 was at 42C, the same temperature the oysters then experienced during this survivorship round. My brief <a href="./2024_06_20_experimental_design_questions">review</a> of other papers that attempted hardening in bivalves did suggest that hardening was most effective when conditions were similar to those the organism would experience during an extreme stress event post-hardening.</p></li>
 </ol>
 <div class="cell">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">#####################</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="do">### Load Packages </span><span class="al">###</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">#####################</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.2.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggrepel' was built under R version 4.2.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'dplyr' was built under R version 4.2.3</code></pre>
-</div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'dplyr'</code></pre>
@@ -382,88 +376,85 @@ Attaching package: 'dplyr'</code></pre>
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyr' was built under R version 4.2.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="do">#################</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="do">### Load Data </span><span class="al">###</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="do">#################</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>round2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../../../../../Data/Pacific_oysters/2024_08_22_Survivorship_Round2.csv"</span>)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="do">####################</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="do">### Data Munging </span><span class="al">###</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="do">####################</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert mort_date to Date format</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>round2 <span class="ot">&lt;-</span> round2 <span class="sc">%&gt;%</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mort_date =</span> <span class="fu">as.Date</span>(mort_date, <span class="at">format=</span><span class="st">"%m/%d/%Y"</span>))</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the total number of original samples in each group</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>group_totals <span class="ot">&lt;-</span> round2 <span class="sc">%&gt;%</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_samples =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">'drop'</span>)</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a sequence of dates covering the entire period</span></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>date_seq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(round2<span class="sc">$</span>mort_date, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="fu">max</span>(round2<span class="sc">$</span>mort_date, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">by =</span> <span class="st">"day"</span>)</span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the date before start of experiment, to show original 0% mortality</span></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>date_seq <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">as.Date</span>(<span class="st">"2024-08-08"</span>), date_seq)</span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data frame with all combinations of treatment group and date</span></span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>round2_full <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">group =</span> <span class="fu">unique</span>(round2<span class="sc">$</span>group), </span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>                           <span class="at">date =</span> date_seq)</span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate the data by group and date to get daily death counts</span></span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>round2_daily <span class="ot">&lt;-</span> round2 <span class="sc">%&gt;%</span></span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group, mort_date) <span class="sc">%&gt;%</span></span>
-<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">deaths =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">'drop'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">date =</span> mort_date)</span>
-<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Join the aggregated daily deaths with the full date range</span></span>
-<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>round2_cumulative <span class="ot">&lt;-</span> round2_full <span class="sc">%&gt;%</span></span>
-<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(round2_daily, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"group"</span>, <span class="st">"date"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">deaths =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(deaths), <span class="dv">0</span>, deaths)) <span class="sc">%&gt;%</span>  <span class="co"># Replace NA with 0 for days with no deaths</span></span>
-<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span></span>
-<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(date) <span class="sc">%&gt;%</span></span>
-<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cumulative_deaths =</span> <span class="fu">cumsum</span>(deaths)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Join with group totals to calculate cumulative deaths as a percentage</span></span>
-<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>round2_cumulative <span class="ot">&lt;-</span> round2_cumulative <span class="sc">%&gt;%</span></span>
-<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(group_totals, <span class="at">by =</span> <span class="st">"group"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cumulative_death_percentage =</span> (cumulative_deaths <span class="sc">/</span> total_samples) <span class="sc">*</span> <span class="dv">100</span>)</span>
-<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a><span class="co"># retrieve metadata associated with groups</span></span>
-<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> round2 <span class="sc">%&gt;%</span></span>
-<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(group, cattle_tag, round1_treatment, round2_treatment) <span class="sc">%&gt;%</span></span>
-<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
-<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>round2_cumulative_metadata <span class="ot">&lt;-</span> round2_cumulative <span class="sc">%&gt;%</span></span>
-<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(metadata, <span class="at">by =</span> <span class="st">"group"</span>)</span>
-<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a><span class="do">################</span></span>
-<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a><span class="do">### Plot Data ##</span></span>
-<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a><span class="do">################</span></span>
-<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a>labels_df <span class="ot">&lt;-</span> round2_cumulative_metadata <span class="sc">%&gt;%</span></span>
-<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span></span>
-<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(date <span class="sc">==</span> <span class="fu">max</span>(date)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb12-65"><a href="#cb12-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-66"><a href="#cb12-66" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(round2_cumulative_metadata, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> cumulative_death_percentage, <span class="at">group =</span> group, <span class="at">color =</span> round1_treatment)) <span class="sc">+</span></span>
-<span id="cb12-67"><a href="#cb12-67" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_point() +</span></span>
-<span id="cb12-68"><a href="#cb12-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb12-69"><a href="#cb12-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> round2_treatment) <span class="sc">+</span></span>
-<span id="cb12-70"><a href="#cb12-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data =</span> labels_df, <span class="fu">aes</span>(<span class="at">label =</span> group), <span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">nudge_x =</span> <span class="fl">0.3</span>, <span class="at">check_overlap =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb12-71"><a href="#cb12-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Cumulative mortality from Survivorship Round 2"</span>,</span>
-<span id="cb12-72"><a href="#cb12-72" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Time"</span>,</span>
-<span id="cb12-73"><a href="#cb12-73" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Cumulative mortality"</span>) <span class="sc">+</span></span>
-<span id="cb12-74"><a href="#cb12-74" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in geom_text_repel(data = labels_df, aes(label = group), size = 2.5, :
-Ignoring unknown parameters: `check_overlap`</code></pre>
-</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="do">#################</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="do">### Load Data </span><span class="al">###</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="do">#################</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>round2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../../../../../Data/Pacific_oysters/2024_08_22_Survivorship_Round2.csv"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="do">####################</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="do">### Data Munging </span><span class="al">###</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="do">####################</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert mort_date to Date format</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>round2 <span class="ot">&lt;-</span> round2 <span class="sc">%&gt;%</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mort_date =</span> <span class="fu">as.Date</span>(mort_date, <span class="at">format=</span><span class="st">"%m/%d/%Y"</span>))</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the total number of original samples in each group</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>group_totals <span class="ot">&lt;-</span> round2 <span class="sc">%&gt;%</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_samples =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">'drop'</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a sequence of dates covering the entire period</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>date_seq <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(round2<span class="sc">$</span>mort_date, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="fu">max</span>(round2<span class="sc">$</span>mort_date, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">by =</span> <span class="st">"day"</span>)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the date before start of experiment, to show original 0% mortality</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>date_seq <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">as.Date</span>(<span class="st">"2024-08-08"</span>), date_seq)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data frame with all combinations of treatment group and date</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>round2_full <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">group =</span> <span class="fu">unique</span>(round2<span class="sc">$</span>group), </span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>                           <span class="at">date =</span> date_seq)</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate the data by group and date to get daily death counts</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>round2_daily <span class="ot">&lt;-</span> round2 <span class="sc">%&gt;%</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group, mort_date) <span class="sc">%&gt;%</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">deaths =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">'drop'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">date =</span> mort_date)</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Join the aggregated daily deaths with the full date range</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>round2_cumulative <span class="ot">&lt;-</span> round2_full <span class="sc">%&gt;%</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(round2_daily, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"group"</span>, <span class="st">"date"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">deaths =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(deaths), <span class="dv">0</span>, deaths)) <span class="sc">%&gt;%</span>  <span class="co"># Replace NA with 0 for days with no deaths</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(date) <span class="sc">%&gt;%</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cumulative_deaths =</span> <span class="fu">cumsum</span>(deaths)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Join with group totals to calculate cumulative deaths as a percentage</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>round2_cumulative <span class="ot">&lt;-</span> round2_cumulative <span class="sc">%&gt;%</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(group_totals, <span class="at">by =</span> <span class="st">"group"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cumulative_death_percentage =</span> (cumulative_deaths <span class="sc">/</span> total_samples) <span class="sc">*</span> <span class="dv">100</span>)</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="co"># retrieve metadata associated with groups</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> round2 <span class="sc">%&gt;%</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(group, cattle_tag, round1_treatment, round2_treatment) <span class="sc">%&gt;%</span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>round2_cumulative_metadata <span class="ot">&lt;-</span> round2_cumulative <span class="sc">%&gt;%</span></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(metadata, <span class="at">by =</span> <span class="st">"group"</span>)</span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a><span class="do">################</span></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a><span class="do">### Plot Data ##</span></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a><span class="do">################</span></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>labels_df <span class="ot">&lt;-</span> round2_cumulative_metadata <span class="sc">%&gt;%</span></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span></span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(date <span class="sc">==</span> <span class="fu">max</span>(date)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(round2_cumulative_metadata, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> cumulative_death_percentage, <span class="at">group =</span> group, <span class="at">color =</span> round1_treatment)) <span class="sc">+</span></span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_point() +</span></span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> round2_treatment) <span class="sc">+</span></span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data =</span> labels_df, <span class="fu">aes</span>(<span class="at">label =</span> group), <span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">nudge_x =</span> <span class="fl">0.3</span>, <span class="at">check_overlap =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Cumulative mortality from Survivorship Round 2"</span>,</span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Time"</span>,</span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Cumulative mortality (%)"</span>) <span class="sc">+</span></span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="2024_08_09_diptrip_survivorship_round2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>

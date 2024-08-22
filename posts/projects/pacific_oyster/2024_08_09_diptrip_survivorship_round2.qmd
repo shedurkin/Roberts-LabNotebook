@@ -6,11 +6,12 @@ categories: ["pacific_oyster"]
 format:
   html:
     toc: true
+    code-fold: true
 engine: knitr
 #bibliography: ../../../references.bib
 ---
 
-Second attempt at a survivorship test with my remaining hardened diploid and triploid oysters (see first survivorship test [here](./2024_08_02_diptrip_survivorship_round2.qmd)). See all details and original data collection in physical lab notebook, digital copy of mortality and meta data [here](https://docs.google.com/spreadsheets/d/1e0EcJ3Jrjq-a_IehlJsX7WaRoSG3tCUWKyWhY5yJfMs/edit?gid=0#gid=0).
+Second attempt at a survivorship test with my remaining hardened diploid and triploid oysters (see first survivorship test [here](./2024_08_02_diptrip_survivorship_round1.qmd)). See all details and original data collection in physical lab notebook, digital copy of mortality and meta data [here](https://docs.google.com/spreadsheets/d/1e0EcJ3Jrjq-a_IehlJsX7WaRoSG3tCUWKyWhY5yJfMs/edit?gid=0#gid=0).
 
 As a reminder, I have diploid and triploid Pacific oysters that were hardened using 6 treatments of 35C for 4hours, over the course of 2 weeks. After 2 weeks of recovery they were brought back to FTR, acclimated, sampled, and used in a survivorship test of 42C Resazurin for 4hours. However, since I made the mistake of pooling all oysters in each treatment group, I compromised independence, making the results statistically meaningless. During this second attempt at a survivorship trial I'll keep all individual oysters in separate containers, and I won't be using Resazurin, since the ambient temp Resazurin groups in the first survivorship test still saw high mortality. For the purposes of this second survivorship test, survivorship round 1 will essentially be treated like an additional hardening treatment.
 
@@ -61,7 +62,7 @@ Several possible explanations for this observation:
 
 3.  The original hardening was performed at too low a temperature to see an effect at 42C stress. The original hardening was done at 35C, while survivorship round 1 was at 42C, the same temperature the oysters then experienced during this survivorship round. My brief [review](./2024_06_20_experimental_design_questions) of other papers that attempted hardening in bivalves did suggest that hardening was most effective when conditions were similar to those the organism would experience during an extreme stress event post-hardening.
 
-```{r}
+```{r, warning=FALSE}
 #####################
 ### Load Packages ###
 #####################
