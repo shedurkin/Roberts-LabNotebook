@@ -1,0 +1,150 @@
+---
+title: "Dip/Trip Hardening, Survivorship Round 2"
+author: "Kathleen Durkin"
+date: "2024-08-09"
+categories: ["pacific_oyster"]
+format:
+  html:
+    toc: true
+engine: knitr
+#bibliography: ../../../references.bib
+---
+
+Second attempt at a survivorship test with my remaining hardened diploid and triploid oysters (see first survivorship test [here](./2024_08_02_diptrip_survivorship_round2.qmd)). See all details and original data collection in physical lab notebook, digital copy of mortality and meta data [here](https://docs.google.com/spreadsheets/d/1e0EcJ3Jrjq-a_IehlJsX7WaRoSG3tCUWKyWhY5yJfMs/edit?gid=0#gid=0).
+
+As a reminder, I have diploid and triploid Pacific oysters that were hardened using 6 treatments of 35C for 4hours, over the course of 2 weeks. After 2 weeks of recovery they were brought back to FTR, acclimated, sampled, and used in a survivorship test of 42C Resazurin for 4hours. However, since I made the mistake of pooling all oysters in each treatment group, I compromised independence, making the results statistically meaningless. During this second attempt at a survivorship trial I'll keep all individual oysters in separate containers, and I won't be using Resazurin, since the ambient temp Resazurin groups in the first survivorship test still saw high mortality. For the purposes of this second survivorship test, survivorship round 1 will essentially be treated like an additional hardening treatment.
+
+## Survivorship Round 2 Protocol
+
+1.  Preheated 15 gallon bucket of seawater (mixed to \~25psu using dechlorinated tap water and Instant Ocean) to 42C using a rod heater.
+
+2.  Evenly split the remaining oysters in all survivorship round 1 groups into two even groups, maintaining size distributions. Assigned a randomly selected label to each group. Each oyster will be individually labelled with the alphanumeric of GroupLabel##.
+
+    | Original hardening bag | Round 1 treatment | Round 2 treatment | Label    | Count |
+    |------------------------|-------------------|-------------------|----------|-------|
+    | 045                    | control (20C)     | control (20C)     | Kilo     | 7     |
+    | 045                    | control (20C)     | stress (42C)      | Foxtrot  | 7     |
+    | 045                    | stress (42C)      | control (20C)     | Echo     | 10    |
+    | 045                    | stress (42C)      | stress (42C)      | India    | 10    |
+    | 060                    | control (20C)     | control (20C)     | Bravo    | 1     |
+    | 060                    | control (20C)     | stress (42C)      | Alpha    | 2     |
+    | 060                    | stress (42C)      | control (20C)     | Oscar    | 11    |
+    | 060                    | stress (42C)      | stress (42C)      | November | 11    |
+    | 064                    | control (20C)     | control (20C)     | Charlie  | 1     |
+    | 064                    | control (20C)     | stress (42C)      | Papa     | 2     |
+    | 064                    | stress (42C)      | control (20C)     | Hotel    | 6     |
+    | 064                    | stress (42C)      | stress (42C)      | Golf     | 6     |
+    | 065                    | control (20C)     | control (20C)     | Mike     | 4     |
+    | 065                    | control (20C)     | stress (42C)      | Juliett  | 3     |
+    | 065                    | stress (42C)      | control (20C)     | Lima     | 8     |
+    | 065                    | stress (42C)      | stress (42C)      | Delta    | 8     |
+
+3.  Measured the volume of each oyster by placing in a graduated cylinder of seawater and calculating volume difference. Then placed each oyster in an appropriately sized container. Want to maintain a roughly 1:5 oyster to water volume ratio (1:4 was insufficient to cover some of the heavily cupped oysters), so each container needed to hold at least 6x the oyster volume. Used mix of plastic cups with lids and glass graduated cylinders of several sizes to hold all oysters.
+
+4.  Filled each cup with seawater of the appropriate temperature (20C or 42C), maintaining a 1:5 oyster:water volume ratio. I also set a minimum water volume of 15mL to ensure the smaller oysters were still fully covered. Filled cups in random order, placing 42C cups in the 42C incubator once filled. 20C cups were left on countertop. Filling took \~30min.
+
+5.  Once all cups were filled, began the survivorship test. Checked all cups for mortality every hour. Ended test at 5hours, after roughly 30% of stressed oysters had died.
+
+6.  Removed all oysters from 42C incubator. Replaced the water in all cups with 20C seawater, filling to a 1:6 volume ratio to reduce risk of hypoxia during recovery.
+
+7.  Checked for mortality in all oysters daily, and replaced all oysters' water with fresh 20C seawater daily. Note that no food is added to seawater, so last time these oysters were fed was Aug. 6, during their recovery from survivorship round 1.
+
+## Update 8/22
+
+As of 8/22 we're sitting at roughly 50% mortality in the round 2 stressed oysters and roughly 10% mortality in the controls. Interestingly, while there doesn't appear to be any difference among the original hardening groups, the round 1 survivorship does seem to have had a hardening effect!
+
+Several possible explanations for this observation:
+
+1.  The original hardening did have an effect, but it was too subtle to see with our reduced sample sizes
+
+2.  The original hardening was too long ago -- it's effects were short-term and are no longer manifest, 4 weeks later
+
+3.  The original hardening was performed at too low a temperature to see an effect at 42C stress. The original hardening was done at 35C, while survivorship round 1 was at 42C, the same temperature the oysters then experienced during this survivorship round. My brief [review](./2024_06_20_experimental_design_questions) of other papers that attempted hardening in bivalves did suggest that hardening was most effective when conditions were similar to those the organism would experience during an extreme stress event post-hardening.
+
+```{r}
+#####################
+### Load Packages ###
+#####################
+
+library(ggplot2)
+library(ggrepel)
+library(dplyr)
+library(tidyr)
+
+#################
+### Load Data ###
+#################
+
+round2 <- read.csv("../../../../../Data/Pacific_oysters/2024_08_22_Survivorship_Round2.csv")
+
+####################
+### Data Munging ###
+####################
+
+# Convert mort_date to Date format
+round2 <- round2 %>%
+  mutate(mort_date = as.Date(mort_date, format="%m/%d/%Y"))
+
+# Calculate the total number of original samples in each group
+group_totals <- round2 %>%
+  group_by(group) %>%
+  summarise(total_samples = n(), .groups = 'drop')
+
+# Generate a sequence of dates covering the entire period
+date_seq <- seq(min(round2$mort_date, na.rm = TRUE), max(round2$mort_date, na.rm = TRUE), by = "day")
+# Add the date before start of experiment, to show original 0% mortality
+date_seq <- c(as.Date("2024-08-08"), date_seq)
+
+# Create a data frame with all combinations of treatment group and date
+round2_full <- expand.grid(group = unique(round2$group), 
+                           date = date_seq)
+
+# Aggregate the data by group and date to get daily death counts
+round2_daily <- round2 %>%
+  group_by(group, mort_date) %>%
+  summarise(deaths = n(), .groups = 'drop') %>%
+  rename(date = mort_date)
+
+# Join the aggregated daily deaths with the full date range
+round2_cumulative <- round2_full %>%
+  left_join(round2_daily, by = c("group", "date")) %>%
+  mutate(deaths = ifelse(is.na(deaths), 0, deaths)) %>%  # Replace NA with 0 for days with no deaths
+  group_by(group) %>%
+  arrange(date) %>%
+  mutate(cumulative_deaths = cumsum(deaths)) %>%
+  ungroup()
+
+# Join with group totals to calculate cumulative deaths as a percentage
+round2_cumulative <- round2_cumulative %>%
+  left_join(group_totals, by = "group") %>%
+  mutate(cumulative_death_percentage = (cumulative_deaths / total_samples) * 100)
+
+# retrieve metadata associated with groups
+metadata <- round2 %>%
+  select(group, cattle_tag, round1_treatment, round2_treatment) %>%
+  distinct()
+
+round2_cumulative_metadata <- round2_cumulative %>%
+  left_join(metadata, by = "group")
+
+################
+### Plot Data ##
+################
+
+labels_df <- round2_cumulative_metadata %>%
+  group_by(group) %>%
+  filter(date == max(date)) %>%
+  ungroup()
+
+ggplot(round2_cumulative_metadata, aes(x = date, y = cumulative_death_percentage, group = group, color = round1_treatment)) +
+  #geom_point() +
+  geom_line() +
+  facet_wrap(~ round2_treatment) +
+  geom_text_repel(data = labels_df, aes(label = group), size = 2.5, nudge_x = 0.3, check_overlap = TRUE) +
+  labs(title = "Cumulative mortality from Survivorship Round 2",
+       x = "Time",
+       y = "Cumulative mortality (%)") +
+  theme_minimal()
+```
+
+Faceted by Round 2 treatment, color indicates Round 1 treatment (i.e. "second hardening")
