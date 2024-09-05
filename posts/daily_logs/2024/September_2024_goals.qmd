@@ -1,0 +1,43 @@
+---
+title: "September 2024, Monthly Goals"
+author: "Kathleen Durkin"
+date: "2024-09-03"
+categories: ["monthly goals"]
+format:
+  html
+---
+
+## September goals
+
+-   Have finalized masters thesis committee
+
+-   Schedule first committee meeting, to meet within fall quarter
+
+-   Have all three confirmed references for GRFP
+
+-   Complete draft of all GRFP application materials
+
+-   Complete draft of SIFP application materials (this is contingent on hearing back from Andrea Quattrini in a timely manner, not a huge priority but would be nice)
+
+-   E5 manuscript draft submitted to bioRxiv (this is also not really up to me, but I will need to make sure I'm completing all miRNA relevant requirements for this checkpoint)
+
+## Overview of last few months
+
+I failed to set goals or consistently log daily activities for the last \~2 months, but here's an overview of what I got done this summer:
+
+### Oyster project
+
+Did heat hardening on diploid and triploid Pacific oysters, sampled, and ran survivorship tests. Now just monitoring the reminder for mortality because they're taking *forever* to die, despite not being fed for a full month at this point. See the [project page](../../projects/pacific_oyster.qmd) for more
+
+### E5 coral
+
+The deep dive manuscript is in final stages (hopefully), and as far as I know I've fulfilled my contributions to the miRNA methods, results, and discussion sections.\
+I've also started looking at gene expression and coexpression, details on that are in the expression [github](https://github.com/urol-e5/expression)
+
+### NSF GRFP
+
+I've been to a couple of info sessions/writing workshops for the NSF GRFP and have created my planning docs, updated CV, identified likely references, and started outlining my personal statement and research statement.
+
+### Degree progress
+
+My biggest goal this summer for degree progress was to nail down my committee and, due to sporadic personal and faculty availability, I unfortunately don't have that yet. I thought I had my second SAFS faculty member, but they had to pull out due to personal reasons/needing to reduce commitments for this coming quarters. I'm contacting some other faculty though and hopefully I'll have a replacement before the start of the quarter in \~3 weeks.
