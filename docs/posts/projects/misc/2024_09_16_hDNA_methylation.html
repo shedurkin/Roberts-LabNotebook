@@ -174,7 +174,7 @@ div.csl-indent {
   <li><a href="#challenges-of-working-with-hdna" id="toc-challenges-of-working-with-hdna" class="nav-link" data-scroll-target="#challenges-of-working-with-hdna">Challenges of working with hDNA</a></li>
   <li><a href="#previous-methylation-work-using-hdna" id="toc-previous-methylation-work-using-hdna" class="nav-link" data-scroll-target="#previous-methylation-work-using-hdna">Previous methylation work using hDNA</a></li>
   <li><a href="#methods-for-dna-methylation-mapping" id="toc-methods-for-dna-methylation-mapping" class="nav-link" data-scroll-target="#methods-for-dna-methylation-mapping">Methods for DNA methylation mapping</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#nanopore-sequencing" id="toc-nanopore-sequencing" class="nav-link" data-scroll-target="#nanopore-sequencing">Nanopore Sequencing</a></li>
   <li><a href="#notes-for-sifp-project" id="toc-notes-for-sifp-project" class="nav-link" data-scroll-target="#notes-for-sifp-project">Notes for SIFP project:</a></li>
   </ul>
 </nav>
@@ -247,11 +247,11 @@ Question
 <li><p>Interestingly, while the youngest specimens (0-3yo) yielded much higher global methylation rates than the older groups (13yo and 76yo), the two older groups did not have significantly different global methylation rates. So while new material is much more successful, <strong>past ~10 years all older material has similar global methylation rates?</strong></p></li>
 <li><p>Regional methylation patterns did not differ significantly due to specimen age</p></li>
 <li><p>There was no notable signal of read end deamination. However, this may be the result of including a double digestion step, which cleaves DNA at both ends and may have “cut off” the more highly deaminated read ends. The slightly reduced global methylation rate of the 76yo group, in comparison to the 0-3 yo group, <strong>may indicate cytosine deamination in the oldest group</strong>.</p></li>
-<li><p><strong>Recommends steps to reduce sequencing of deaminated sites</strong> (e.g.&nbsp;a double-digestions step, as included in this study, or uracil-DNA-glycosylase and endonuclease VIII, which can be used to remove uracils prior to bisulphite treatment, preventing the sequencing of unmethylated cystosines that have been deaminated into uracil)</p></li>
+<li><p><strong>Recommends steps to reduce sequencing of deaminated sites</strong> (e.g.&nbsp;a double-digestions step, as included in this study, or uracil-DNA-glycosylase and endonuclease VIII, which can be used to remove uracils prior to bisulfite treatment, preventing the sequencing of unmethylated cystosines that have been deaminated into uracil)</p></li>
 <li><p>Recommendations for increasing yield from historic specimens:</p>
 <ul>
 <li><p><strong>Reduce size selection window</strong> to compensate for DNA fragmentation. Note that, while selecting smaller fragments would increase yield, it may also reduce the number of homologous loci sequenced across individuals, which may reduce ability to compare methylation patterns if sample size is low.</p></li>
-<li><p>Steps to minimize DNA degradation during bisulphite treatment, e.g.&nbsp;<strong>shortening bisulphite incubation time</strong>. Note, however, that this could also reduce conversion efficiency.</p></li>
+<li><p>Steps to minimize DNA degradation during bisulfite treatment, e.g.&nbsp;<strong>shortening bisulfite incubation time</strong>. Note, however, that this could also reduce conversion efficiency.</p></li>
 <li><p>Could <strong>remove the double digestion step</strong>, as this may have contributed to DNA fragmentation issues. Note, however, that this may lead to more issues with read-end deamination signal, as discussed above</p></li>
 </ul></li>
 </ul>
@@ -259,7 +259,7 @@ Question
 <section id="methods-for-dna-methylation-mapping" class="level3">
 <h3 class="anchored" data-anchor-id="methods-for-dna-methylation-mapping">Methods for DNA methylation mapping</h3>
 <p>ChatGPT Summary:</p>
-<p>Here's a comparison of different methylation mapping tools/methods based on <strong>cost</strong>, <strong>suitability for degraded/low-quantity DNA</strong>, <strong>use with partial cytosine deamination</strong>, and <strong>how established</strong> the method is:</p>
+<p>Here’s a comparison of different methylation mapping tools/methods based on <strong>cost</strong>, <strong>suitability for degraded/low-quantity DNA</strong>, <strong>use with partial cytosine deamination</strong>, and <strong>how established</strong> the method is:</p>
 <section id="whole-genome-bisulfite-sequencing-wgbs" class="level4">
 <h4 class="anchored" data-anchor-id="whole-genome-bisulfite-sequencing-wgbs"><strong>Whole Genome Bisulfite Sequencing (WGBS)</strong></h4>
 <ul>
@@ -311,7 +311,7 @@ Question
 <li><p><strong>Cost</strong>: Low to moderate. MS-AFLP is a more affordable technique compared to sequencing-based approaches.</p></li>
 <li><p><strong>Use with degraded/low-quantity DNA</strong>: More suitable for degraded or low-quantity DNA, as it is based on PCR amplification and restriction digestion, which requires less starting material than sequencing-based approaches.</p></li>
 <li><p><strong>Use with partial cytosine deamination</strong>: MS-AFLP does not use bisulfite treatment, so partial deamination is not an issue. However, it depends on restriction enzymes sensitive to methylation status, so results can be impacted by incomplete digestion.</p></li>
-<li><p><strong>How well established</strong>: Long established but less widely used in high-resolution methylation studies compared to sequencing methods like WGBS. It's an older method useful for specific applications, such as detecting overall methylation patterns or comparing methylation between samples.</p></li>
+<li><p><strong>How well established</strong>: Long established but less widely used in high-resolution methylation studies compared to sequencing methods like WGBS. It’s an older method useful for specific applications, such as detecting overall methylation patterns or comparing methylation between samples.</p></li>
 </ul>
 </section>
 <section id="methylated-cpg-binding-domain-sequencing-mbd-seq" class="level4">
@@ -329,18 +329,18 @@ Question
 <li><p><strong>Cost</strong>: Low to moderate. MethylRAD uses methylation-sensitive restriction enzymes to digest and sequence methylated DNA regions, making it more cost-effective than sequencing-based approaches that require bisulfite conversion or whole-genome coverage.</p></li>
 <li><p><strong>Use with degraded/low-quantity DNA</strong>: Suitable for low-quantity DNA because it relies on restriction digestion and PCR amplification, but highly degraded DNA may still cause issues if fragments are too short to be efficiently digested.</p></li>
 <li><p><strong>Use with partial cytosine deamination</strong>: Not affected by cytosine deamination since MethylRAD does not use bisulfite treatment. Instead, it depends on restriction enzyme sensitivity to methylation, so it avoids issues related to incomplete bisulfite conversion.</p></li>
-<li><p><strong>How well established</strong>: Relatively new but gaining traction. It's not as widely adopted as WGBS but is becoming a popular, cost-effective alternative for methylation analysis, particularly for comparative methylation studies.</p></li>
+<li><p><strong>How well established</strong>: Relatively new but gaining traction. It’s not as widely adopted as WGBS but is becoming a popular, cost-effective alternative for methylation analysis, particularly for comparative methylation studies.</p></li>
 </ul>
 </section>
 <section id="comparison-table" class="level4">
 <h4 class="anchored" data-anchor-id="comparison-table"><strong>Comparison Table</strong></h4>
 <table class="table">
 <colgroup>
-<col style="width: 16%">
-<col style="width: 8%">
-<col style="width: 29%">
-<col style="width: 21%">
+<col style="width: 19%">
+<col style="width: 19%">
 <col style="width: 23%">
+<col style="width: 19%">
+<col style="width: 19%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -411,15 +411,22 @@ Question
 </tbody>
 </table>
 </section>
-</section>
-<section id="summary" class="level3">
-<h3 class="anchored" data-anchor-id="summary">Summary</h3>
+<section id="summary" class="level4">
+<h4 class="anchored" data-anchor-id="summary">Summary</h4>
 <ul>
 <li><p><strong>Cost</strong>: WGBS remains the most expensive method, while MethylRAD and MS-AFLP are among the least expensive. MBD-seq is a mid-range option that provides genome-wide methylation information without full sequencing.</p></li>
 <li><p><strong>Degraded/low-quantity DNA</strong>: MethylRAD and MBD-seq handle low-quantity DNA better than WGBS, but highly degraded samples may still present challenges for both.</p></li>
 <li><p><strong>Partial cytosine deamination</strong>: MBD-seq and MethylRAD are unaffected by partial cytosine deamination because they don’t rely on bisulfite conversion.</p></li>
 <li><p><strong>How established</strong>: WGBS is the gold standard, while MBD-seq is a well-established alternative for methylation profiling. MethylRAD is newer but growing in popularity due to its cost-effectiveness and potential for comparative studies.</p></li>
 </ul>
+</section>
+</section>
+<section id="nanopore-sequencing" class="level3">
+<h3 class="anchored" data-anchor-id="nanopore-sequencing">Nanopore Sequencing</h3>
+<p>An option that Steven mentioned as potentially useful is Nanopore sequencing. In this method, DNA (or RNA) molecules are fed through a nanopore, a tiny hole embedded in a membrane that separates two chambers of electrolyte solution. When a voltage is applied, an enzyme pushes the DNA molecule through the nanopore and fluctuations in the electric current are tracked. Specialized software can then be used to assign nucleotide at each position based on the current fluctuations.</p>
+<p>While Nanopore sequencing was originally developed for standard DNA sequencing, softwares have been developed that can interpret Nanopore read data to identify methylated nucleotides (e.g., <span class="citation" data-cites="ahsan_signal_2024">Ahsan et al. (<a href="#ref-ahsan_signal_2024" role="doc-biblioref">2024</a>)</span>). This has many advantages over WGBS that could be really useful for working with hDNA.</p>
+<p>As a reminder, the biggest hurdles when working with hDNA are likely to be 1) low DNA quantity, and 2) low DNA quality, including spontaneous cytosine deamination that converts CpG sites to either UpGs (unmethylated) or TpGs (methylated). Nanopore sequencing reads and detects nucleotides from a single DNA molecule at a time, meaning it <strong>works with much lower quantities of DNA</strong> than traditional sequencing methods. This also means that DNA amplification (i.e., PCR) is not required, so there are no biases introduced prior to sequencing. In addition, since Nanopore sequencing requires no modification of the DNA (e.g., bisulfite conversion), there is no introduced deamination, meaning <strong>deaminated cytosines will not be confused with intact methylated and unmethylated cytosines</strong>. Finally, as the cherry on top, Oxford Nanopore Technologies <a href="https://nanoporetech.com/news/oxford-nanopore-announces-breakthrough-technology-performance-to-deliver-complete-human-genomes-and-richer-multiomic-data-in-london-calling-tech-update">announced</a> just a few months ago that they now have “the ability to detect damaged DNA bases, including genomic Uracil (dU) at 96.34% accuracy.” This means that, not only will Nanopore sequencing distinguish between intact and deaminated cytosines, it should be able to <strong>differentiate between deaminated cytosines (deaminated CpG → UpG) and deaminated methylated cytosines (CpG → TpG)!</strong></p>
+<p>I couldn’t find a description of the analysis changes that allow ONT to detect damaged DNA, but if that update is not yet publicly available, I also found a paper describing how to detect Uracil in DNA <span class="citation" data-cites="bekesi_detection_2021">Békési et al. (<a href="#ref-bekesi_detection_2021" role="doc-biblioref">2021</a>)</span>, which would similarly allow you to discriminate cytosine deamination of methylated and unmethylated cytosine.</p>
 </section>
 <section id="notes-for-sifp-project" class="level3">
 <h3 class="anchored" data-anchor-id="notes-for-sifp-project">Notes for SIFP project:</h3>
@@ -433,6 +440,12 @@ Question
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-ahsan_signal_2024" class="csl-entry" role="listitem">
+Ahsan, Mian Umair, Anagha Gouru, Joe Chan, Wanding Zhou, and Kai Wang. 2024. <span>“A Signal Processing and Deep Learning Framework for Methylation Detection Using <span>Oxford</span> <span>Nanopore</span> Sequencing.”</span> <em>Nature Communications</em> 15 (1): 1448. <a href="https://doi.org/10.1038/s41467-024-45778-y">https://doi.org/10.1038/s41467-024-45778-y</a>.
+</div>
+<div id="ref-bekesi_detection_2021" class="csl-entry" role="listitem">
+Békési, Angéla, Eszter Holub, Hajnalka Laura Pálinkás, and Beáta G. Vértessy. 2021. <span>“Detection of <span>Genomic</span> <span>Uracil</span> <span>Patterns</span>.”</span> <em>International Journal of Molecular Sciences</em> 22 (8): 3902. <a href="https://doi.org/10.3390/ijms22083902">https://doi.org/10.3390/ijms22083902</a>.
+</div>
 <div id="ref-niiranen_epigenomic_2022" class="csl-entry" role="listitem">
 Niiranen, Laura, Dawid Leciej, Hanna Edlund, Carolina Bernhardsson, Magdalena Fraser, Federico Sánchez Quinto, Karl-Heinz Herzig, Mattias Jakobsson, Jarosław Walkowiak, and Olaf Thalmann. 2022. <span>“Epigenomic <span>Modifications</span> in <span>Modern</span> and <span>Ancient</span> <span>Genomes</span>.”</span> <em>Genes</em> 13 (2): 178. <a href="https://doi.org/10.3390/genes13020178">https://doi.org/10.3390/genes13020178</a>.
 </div>
