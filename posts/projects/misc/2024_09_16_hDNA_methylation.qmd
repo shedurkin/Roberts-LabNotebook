@@ -18,7 +18,7 @@ Literature review on DNA methylation mapping of historical DNA (hDNA), collected
 
 For the purposes of this proposal, hDNA would potentially be collected from **dried and liquid-stored coral specimens**, preferably those collected ≥100 year ago. This age preference has two reasonings. First, beginning in the early 1900s many museum specimens were "fixed" (preserved as fluid voucher specimens) in formalin, a formaldehyde solution, which we now know presents many complications for DNA work. Second, for this project the value of museum archives lies in their collections of specimens that **predate the serious impacts of anthropogenic climate change** and environmental disturbance. Older specimens will yield epigenomes more useful for comparison to those of modern counterparts.
 
-![@raxworthy_mining_2021](images/Screenshot 2024-09-16 174607.png)
+![@raxworthy_mining_2021](images/Screenshot%202024-09-16%20174607.png)
 
 ### Challenges of working with hDNA
 
@@ -56,7 +56,7 @@ I've only found one paper so far that has trialed hDNA methylation mapping, and 
 
 -   Collected in same locality in Menominee county, Michigan, over three collecting periods spanning 76 years (1940, 2003, and 2013--2016)
 
-![@raxworthy_mining_2021](images/Screenshot 2024-09-16 174756.png)
+![@raxworthy_mining_2021](images/Screenshot%202024-09-16%20174756.png)
 
 -   For the older specimens (13yo and 76yo), improved sequencing results decreased quickly past 5X read depth. In other words, while 5X depthwas a big improvement on 1X, 10X depth was not much different from 5X. This suggests that **higher sequencing depth is important when working with old material, but has diminishing returns.**
 
@@ -64,7 +64,7 @@ I've only found one paper so far that has trialed hDNA methylation mapping, and 
 
 -   Regional methylation patterns did not differ significantly due to specimen age
 
--    There was no notable signal of read end deamination. However, this may be the result of including a double digestion step, which cleaves DNA at both ends and may have "cut off" the more highly deaminated read ends. The slightly reduced global methylation rate of the 76yo group, in comparison to the 0-3 yo group, **may indicate cytosine deamination in the oldest group**.
+-   There was no notable signal of read end deamination. However, this may be the result of including a double digestion step, which cleaves DNA at both ends and may have "cut off" the more highly deaminated read ends. The slightly reduced global methylation rate of the 76yo group, in comparison to the 0-3 yo group, **may indicate cytosine deamination in the oldest group**.
 
 -   **Recommends steps to reduce sequencing of deaminated sites** (e.g. a double-digestions step, as included in this study, or uracil-DNA-glycosylase and endonuclease VIII, which can be used to remove uracils prior to bisulfite treatment, preventing the sequencing of unmethylated cystosines that have been deaminated into uracil)
 
@@ -80,7 +80,7 @@ I've only found one paper so far that has trialed hDNA methylation mapping, and 
 
 ChatGPT Summary:
 
-Here\'s a comparison of different methylation mapping tools/methods based on **cost**, **suitability for degraded/low-quantity DNA**, **use with partial cytosine deamination**, and **how established** the method is:
+Here's a comparison of different methylation mapping tools/methods based on **cost**, **suitability for degraded/low-quantity DNA**, **use with partial cytosine deamination**, and **how established** the method is:
 
 #### **Whole Genome Bisulfite Sequencing (WGBS)**
 
@@ -140,7 +140,7 @@ Here\'s a comparison of different methylation mapping tools/methods based on **c
 
 -   **Use with partial cytosine deamination**: MS-AFLP does not use bisulfite treatment, so partial deamination is not an issue. However, it depends on restriction enzymes sensitive to methylation status, so results can be impacted by incomplete digestion.
 
--   **How well established**: Long established but less widely used in high-resolution methylation studies compared to sequencing methods like WGBS. It\'s an older method useful for specific applications, such as detecting overall methylation patterns or comparing methylation between samples.
+-   **How well established**: Long established but less widely used in high-resolution methylation studies compared to sequencing methods like WGBS. It's an older method useful for specific applications, such as detecting overall methylation patterns or comparing methylation between samples.
 
 #### **Methylated CpG Binding Domain Sequencing (MBD-seq)**
 
@@ -160,12 +160,12 @@ Here\'s a comparison of different methylation mapping tools/methods based on **c
 
 -   **Use with partial cytosine deamination**: Not affected by cytosine deamination since MethylRAD does not use bisulfite treatment. Instead, it depends on restriction enzyme sensitivity to methylation, so it avoids issues related to incomplete bisulfite conversion.
 
--   **How well established**: Relatively new but gaining traction. It\'s not as widely adopted as WGBS but is becoming a popular, cost-effective alternative for methylation analysis, particularly for comparative methylation studies.
+-   **How well established**: Relatively new but gaining traction. It's not as widely adopted as WGBS but is becoming a popular, cost-effective alternative for methylation analysis, particularly for comparative methylation studies.
 
 #### **Comparison Table**
 
 | **Method**                 | **Cost**     | **Degraded/Low-Quantity DNA**                   | **Partial Cytosine Deamination**   | **How Established**                  |
-|----------------------------|--------------|-------------------------------------------------|------------------------------------|--------------------------------------|
+|--------------|--------------|-----------------|--------------|--------------|
 | **WGBS**                   | High         | Less suitable                                   | Sensitive to incomplete conversion | Gold standard, very well established |
 | **Targeted BS**            | Moderate     | Better suited                                   | Sensitive to incomplete conversion | Well established                     |
 | **EM-Seq**                 | Moderate     | Suitable                                        | Avoids bisulfite-induced damage    | Newer, gaining popularity            |
@@ -175,7 +175,7 @@ Here\'s a comparison of different methylation mapping tools/methods based on **c
 | **MBD-seq**                | Moderate     | Suitable for low-quantity, less for degraded    | Not impacted                       | Well established but less common     |
 | **MethylRAD**              | Low/Moderate | Suitable, but not ideal for highly degraded DNA | Not impacted                       | Newer, cost-effective, growing       |
 
-### Summary
+#### Summary
 
 -   **Cost**: WGBS remains the most expensive method, while MethylRAD and MS-AFLP are among the least expensive. MBD-seq is a mid-range option that provides genome-wide methylation information without full sequencing.
 
@@ -184,6 +184,14 @@ Here\'s a comparison of different methylation mapping tools/methods based on **c
 -   **Partial cytosine deamination**: MBD-seq and MethylRAD are unaffected by partial cytosine deamination because they don't rely on bisulfite conversion.
 
 -   **How established**: WGBS is the gold standard, while MBD-seq is a well-established alternative for methylation profiling. MethylRAD is newer but growing in popularity due to its cost-effectiveness and potential for comparative studies.
+
+### Nanopore Sequencing
+
+An option that Steven mentioned as potentially useful is Nanopore sequencing. In this method, DNA (or RNA) molecules are fed through a nanopore, a tiny hole embedded in a membrane that separates two chambers of electrolyte solution. When a voltage is applied, an enzyme pushes the DNA molecule through the nanopore and fluctuations in the electric current are tracked. Specialized software can then be used to assign nucleotide at each position based on the current fluctuations.
+
+While Nanopore sequencing was originally developed for standard DNA sequencing, softwares have been developed that can interpret Nanopore read data to identify methylated nucleotides (e.g., @ahsan_signal_2024). This has many advantages over WGBS that could be really useful for working with hDNA.
+
+As a reminder, the biggest hurdles when working with hDNA are likely to be 1) low DNA quantity, and 2) low DNA quality, including spontaneous cytosine deamination that converts CpG sites to either UpGs (unmethylated) or TpGs (methylated). Nanopore sequencing reads and detects nucleotides from a single DNA molecule at a time, meaning it **works with much lower quantities of DNA** than traditional sequencing methods. This also means that DNA amplification (i.e., PCR) is not required, so there are no biases introduced prior to sequencing. In addition, since Nanopore sequencing requires no modification of the DNA (e.g., bisulfite conversion), there is no introduced deamination, meaning **deaminated cytosines will not be confused with intact methylated and unmethylated cytosines**. Finally, as the cherry on top, Oxford Nanopore Technologies [announced](https://nanoporetech.com/news/oxford-nanopore-announces-breakthrough-technology-performance-to-deliver-complete-human-genomes-and-richer-multiomic-data-in-london-calling-tech-update) just a few months ago that they now have "the ability to detect damaged DNA bases, including genomic Uracil (dU) at 96.34% accuracy." This means that, not only will Nanopore sequencing distinguish between intact and deaminated cytosines, it should be able to **differentiate between deaminated cytosines (deaminated CpG → UpG) and deaminated methylated cytosines (CpG → TpG)!**
 
 ### Notes for SIFP project:
 
