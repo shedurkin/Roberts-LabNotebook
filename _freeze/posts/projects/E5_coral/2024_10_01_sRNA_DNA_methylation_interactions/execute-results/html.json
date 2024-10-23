@@ -1,0 +1,14 @@
+{
+  "hash": "f0b49b0914a401fb83c0e574fab52eda",
+  "result": {
+    "markdown": "---\ntitle: \"Lit Review: Understanding interactions of sRNA and DNA methylation\"\nauthor: \"Kathleen Durkin\"\ndate: \"last-modified\"\ncategories: [\"E5-coral\"]\nformat:\n  html:\n    toc: true\nengine: knitr\nbibliography: ../../../references.bib\n---\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,42 @@
+---
+title: "Lit Review: Understanding interactions of sRNA and DNA methylation"
+author: "Kathleen Durkin"
+date: "last-modified"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+-   miRNAs can modulate DNA methylation, e.g. by binding to the mRNA of DNMTs. Example: in humans, miR-29 targets DNMT3, with negative relationship
+
+-   miRNA promoters can be methylated, which can influence miRNA expression (generally hypermethylation of promoter = gene silencing)
+
+-   In plants and some animals, siRNAs can guide DNA mehthylation machinery to loci through RNA-directed DNA methylation (RdDM). Typically involves siRNAs pairing with RNA transcripts and recruiting proteins (e.g., AGOs) which direct DNMTs to methylate specified DNA regions
+
+-   siRNAs also play a role in guiding DNA methylation to silence transposable elements (maintains genomic stability).
+
+    -   Additionally, in humans siRNAs are sometimes derived from the 5' UTR of their own target transposon (found in L1 LTRs). <https://www.nature.com/scitable/topicpage/transposons-the-jumping-genes-518/>.
+
+-   piwis generally interacte with DNA methylation during gametogenisis and development, so not sure if would be detectable in our samples?
+
+Methods:
+
+Expression data:
+
+-   ID sncRNAs (primarily miRNAs and siRNAs)
+
+-   correlate SRNA expression with expression of DNMTs and other methylation machinery
+
+WGBS
+
+map methylation patterns at:
+
+-   small RNA loci to evaluate promoter methylation
+-   transposon regions to check possible transposon silencing (esp. siRNAs)
+
+Integrative:
+
+-   ID target genes/regions of miRNAs and siRNAs and check those regions to see if targets show patterns of differential methylation and expression

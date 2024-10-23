@@ -1,0 +1,133 @@
+---
+title: "Rerunning ShortStack for deedp-dive-expression"
+author: "Kathleen Durkin"
+date: "last-modified"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+We performed sRNA discovery for *A. pulchra*, *P. evermanni*, and *P. tuahiniensis* (formerly identified as *P. meandrina*) as part of the E5 `deep-dive` initiative. Notably, we used the *A. millipora* genome as an alignment reference during *A. pulchra* sRNA discovery because no *A. pulchra* genome was available at the time. However, collaborators are have now assembled an *A. pulchra* genome, so we can rerun sRNA discovery with a better reference for use in the `deep-dive-expression` project. Additionally, the sRNA discovery tool we decided to use, [ShortStack](https://github.com/MikeAxtell/ShortStack) @axtell2013, has a new update (v.4.1.0) with functionality for visualizing miRNA hairpin structures and generating genome-browser-ready quantitative coverage tracks of aligned small RNAs. These new features could prove useful, so I'm just rerunning ShortStack for all three species, using the *pulchra* genome for *A. pulchra* discovery and ShortStack 4.1.0 for all three.
+
+[**Original `deep-dive` sRNA discovery, using ShortStack 4.0.3 (for reference):**]{.underline}
+
+A. pulchra (using A. millipora genome)
+
+-   [code](https://github.com/urol-e5/deep-dive/blob/main/D-Apul/code/13.2.1-Apul-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase.Rmd)
+
+-   [knitted .md](https://github.com/urol-e5/deep-dive/blob/main/D-Apul/code/13.2.1-Apul-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase.md)
+
+P. evermanni
+
+-   [code](https://github.com/urol-e5/deep-dive/blob/main/E-Peve/code/08.2-Peve-sRNAseq-ShortStack-31bp-fastp-merged.Rmd)
+
+-   [knitted .md](https://github.com/urol-e5/deep-dive/blob/main/E-Peve/code/08.2-Peve-sRNAseq-ShortStack-31bp-fastp-merged.md)
+
+P. tuahiniensis (identified here as P. meandrina, using P. meandrina genome)
+
+-   [code](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/13.2.1-Pmea-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase.Rmd)
+
+-   [knitted .md](https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/13.2.1-Pmea-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase.md)
+
+[**`deep-dive-expression` reruns with ShortStack 4.1.0:**]{.underline}
+
+A. pulchra (using A. pulchra genome)
+
+-   [code](https://github.com/urol-e5/deep-dive-expression/blob/main/D-Apul/code/11-Apul-sRNA-ShortStack_4.1.0-pulchra_genome.Rmd)
+
+-   [knitted .md](https://github.com/urol-e5/deep-dive-expression/blob/main/D-Apul/code/11-Apul-sRNA-ShortStack_4.1.0-pulchra_genome.md)
+
+P. evermanni
+
+-   [code](https://github.com/urol-e5/deep-dive-expression/blob/main/E-Peve/code/05-Peve-sRNA-ShortStack_4.1.0.Rmd)
+
+-   [knitted .md](https://github.com/urol-e5/deep-dive-expression/blob/main/E-Peve/code/05-Peve-sRNA-ShortStack_4.1.0.md)
+
+P. tuahiniensis (using P. meandrina genome)
+
+-   [code](https://github.com/urol-e5/deep-dive-expression/blob/main/F-Ptuh/code/05-Ptuh-sRNA-ShortStack_4.1.0.Rmd)
+
+-   [knitted .md](https://github.com/urol-e5/deep-dive-expression/blob/main/F-Ptuh/code/05-Ptuh-sRNA-ShortStack_4.1.0.md)
+
+## Summary
+
+### Comparing original sRNA discovery to reruns
+
++----------------------+-----------------------+---------------------+---------------+
+|                      | ShortStack 4.0.3\     | ShortStack 4.1.0\   | 𝚫             |
+|                      | (A. millipora genome) | (A. pulchra genome) |               |
++======================+======================:+====================:+==============:+
+| Potential miRNA loci | 18895                 | 20789               | +1894 (10%)   |
++----------------------+-----------------------+---------------------+---------------+
+| Identified miRNA     | 38                    | 39                  | +1 (2.6%)     |
++----------------------+-----------------------+---------------------+---------------+
+| Database matches     | 69                    | 131                 | +62 (90%)     |
++----------------------+-----------------------+---------------------+---------------+
+
+: A. pulchra
+
++----------------------+------------------+------------------+---------------+
+|                      | ShortStack 4.0.3 | ShortStack 4.1.0 | 𝚫             |
++======================+=================:+=================:+==============:+
+| Potential miRNA loci | 16736            | 16893            | +157 (0.9%)   |
++----------------------+------------------+------------------+---------------+
+| Identified miRNA     | 46               | 45               | -1 (2.2%)     |
++----------------------+------------------+------------------+---------------+
+| Database matches     | 37               | 38               | +1 (2.7%)     |
++----------------------+------------------+------------------+---------------+
+
+: P. evermanni
+
++----------------------+------------------+------------------+---------------+
+|                      | ShortStack 4.0.3 | ShortStack 4.1.0 | 𝚫             |
++======================+=================:+=================:+==============:+
+| Potential miRNA loci | 7220             | 7189             | -31 (0.4%)    |
++----------------------+------------------+------------------+---------------+
+| Identified miRNA     | 37               | 37               | none          |
++----------------------+------------------+------------------+---------------+
+| Database matches     | 96               | 117              | +21 (22%)     |
++----------------------+------------------+------------------+---------------+
+
+: P. tuahniensis
+
+```{r}
+# Load necessary library
+library(ggplot2)
+library(tidyr)
+
+# Create the data frame for all species
+miRNA_data <- data.frame(
+  Species = rep(c("Apul*", "Peve", "Ptuh"), each = 2),
+  ShortStack_Version = rep(c("4.0.3", "4.1.0"), times = 3),
+  Potential_miRNA_loci = c(18895, 20789, 16736, 16893, 7220, 7189),
+  Identified_miRNA = c(38, 39, 46, 45, 37, 37),
+  Database_matches = c(69, 131, 37, 38, 96, 117)
+)
+
+# Reshape the data to long format for facetting
+miRNA_long <- pivot_longer(miRNA_data,
+                           cols = c("Potential_miRNA_loci", "Identified_miRNA", "Database_matches"),
+                           names_to = "Metric", values_to = "Value")
+miRNA_long$Metric <- factor(miRNA_long$Metric, 
+                            levels = c("Potential_miRNA_loci", "Identified_miRNA", "Database_matches"))
+
+# Facet-wrapped plot for all three metrics
+ggplot(miRNA_long, aes(x = Species, y = Value, fill = ShortStack_Version)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap(~ Metric, scales = "free_y") +  # Facet by Metric and allow different y-axis scales
+  labs(title = "miRNA Metrics by Species and ShortStack Version",
+       x = "Species", y = "Value") +
+ # scale_fill_manual(values = c("4.0.3" = "blue", "4.1.0" = "red")) +
+  theme_minimal()
+```
+
+\*Note, Apul also used a different genome for the v.4.1.0 run
+
+### Structural visualizations
+
+ShortStack 4.1.0 also automatically generates visualizations of the hairpin structure of each identified miRNA, stored as a pdf. As an example, below is the [visualization for A. pulchra Cluster 18728](https://github.com/urol-e5/deep-dive-expression/blob/main/D-Apul/output/11-Apul-sRNA-ShortStack_4.1.0-pulchra_genome/ShortStack_out/strucVis/Cluster_18728.ps.pdf), which was annotated as a valid miRNA and database matched the well-studied miRNA miR-100.\
+
+![](images/Cluster_18728.ps.jpg)

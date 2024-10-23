@@ -165,7 +165,7 @@ Here's a comparison of different methylation mapping tools/methods based on **co
 #### **Comparison Table**
 
 | **Method**                 | **Cost**     | **Degraded/Low-Quantity DNA**                   | **Partial Cytosine Deamination**   | **How Established**                  |
-|--------------|--------------|-----------------|--------------|--------------|
+|----------------------------|--------------|-------------------------------------------------|------------------------------------|--------------------------------------|
 | **WGBS**                   | High         | Less suitable                                   | Sensitive to incomplete conversion | Gold standard, very well established |
 | **Targeted BS**            | Moderate     | Better suited                                   | Sensitive to incomplete conversion | Well established                     |
 | **EM-Seq**                 | Moderate     | Suitable                                        | Avoids bisulfite-induced damage    | Newer, gaining popularity            |
@@ -193,7 +193,7 @@ While Nanopore sequencing was originally developed for standard DNA sequencing, 
 
 As a reminder, the biggest hurdles when working with hDNA are likely to be 1) low DNA quantity, and 2) low DNA quality, including spontaneous cytosine deamination that converts CpG sites to either UpGs (unmethylated) or TpGs (methylated). Nanopore sequencing reads and detects nucleotides from a single DNA molecule at a time, meaning it **works with much lower quantities of DNA** than traditional sequencing methods. This also means that DNA amplification (i.e., PCR) is not required, so there are no biases introduced prior to sequencing. In addition, since Nanopore sequencing requires no modification of the DNA (e.g., bisulfite conversion), there is no introduced deamination, meaning **deaminated cytosines will not be confused with intact methylated and unmethylated cytosines**. Finally, as the cherry on top, Oxford Nanopore Technologies [announced](https://nanoporetech.com/news/oxford-nanopore-announces-breakthrough-technology-performance-to-deliver-complete-human-genomes-and-richer-multiomic-data-in-london-calling-tech-update) just a few months ago that they now have "the ability to detect damaged DNA bases, including genomic Uracil (dU) at 96.34% accuracy." This means that, not only will Nanopore sequencing distinguish between intact and deaminated cytosines, it should be able to **differentiate between deaminated cytosines (deaminated CpG → UpG) and deaminated methylated cytosines (CpG → TpG)!**
 
-I couldn't find a description of the analysis changes that allow ONT to detect damaged DNA, but if that update is not yet publicly available, I also found a paper describing how to detect Uracil in DNA @bekesi_detection_2021, which would similarly allow you to discriminate cytosine deamination of methylated and unmethylated cytosine.
+I couldn't find a description of the analysis changes that allow ONT to detect damaged DNA, but if that update is not yet publicly available, I also found a paper describing how to detect Uracil in DNA (@bekesi_detection_2021), which would similarly allow you to discriminate cytosine deamination of methylated and unmethylated cytosine.
 
 ### Notes for SIFP project:
 
