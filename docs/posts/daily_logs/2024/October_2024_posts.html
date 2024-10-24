@@ -9,7 +9,7 @@
 <meta name="author" content="Kathleen Durkin">
 <meta name="dcterms.date" content="2024-10-24">
 
-<title>Kathleen’s Lab Notebook - Rerunning ShortStack for deep-dive-expression</title>
+<title>Kathleen’s Lab Notebook - October 2024, Daily Log</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,60 +22,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -167,10 +114,10 @@ div.csl-indent {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Rerunning ShortStack for deep-dive-expression</h1>
+    <div class="quarto-title column-page">
+      <h1 class="title">October 2024, Daily Log</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">E5-coral</div>
+                <div class="quarto-category">monthly goals</div>
               </div>
                   </div>
   </div>
@@ -199,231 +146,176 @@ div.csl-indent {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a>
-  <ul class="collapse">
-  <li><a href="#comparing-original-srna-discovery-to-reruns" id="toc-comparing-original-srna-discovery-to-reruns" class="nav-link" data-scroll-target="#comparing-original-srna-discovery-to-reruns">Comparing original sRNA discovery to reruns</a></li>
-  <li><a href="#structural-visualizations" id="toc-structural-visualizations" class="nav-link" data-scroll-target="#structural-visualizations">Structural visualizations</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
 
 
 
 
-<p>We performed sRNA discovery for <em>A. pulchra</em>, <em>P. evermanni</em>, and <em>P. tuahiniensis</em> (formerly identified as <em>P. meandrina</em>) as part of the E5 <code>deep-dive</code> initiative. Notably, we used the <em>A. millipora</em> genome as an alignment reference during <em>A. pulchra</em> sRNA discovery because no <em>A. pulchra</em> genome was available at the time. However, collaborators are have now assembled an <em>A. pulchra</em> genome, so we can rerun sRNA discovery with a better reference for use in the <code>deep-dive-expression</code> project. Additionally, the sRNA discovery tool we decided to use, <a href="https://github.com/MikeAxtell/ShortStack">ShortStack</a> <span class="citation" data-cites="axtell2013">Axtell (<a href="#ref-axtell2013" role="doc-biblioref">2013</a>)</span>, has a new update (v.4.1.0) with functionality for visualizing miRNA hairpin structures and generating genome-browser-ready quantitative coverage tracks of aligned small RNAs. These new features could prove useful, so I’m just rerunning ShortStack for all three species, using the <em>pulchra</em> genome for <em>A. pulchra</em> discovery and ShortStack 4.1.0 for all three.</p>
-<p><u><strong>Original <code>deep-dive</code> sRNA discovery, using ShortStack 4.0.3 (for reference):</strong></u></p>
-<p>A. pulchra (using A. millipora genome)</p>
-<ul>
-<li><p><a href="https://github.com/urol-e5/deep-dive/blob/main/D-Apul/code/13.2.1-Apul-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase.Rmd">code</a></p></li>
-<li><p><a href="https://github.com/urol-e5/deep-dive/blob/main/D-Apul/code/13.2.1-Apul-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase.md">knitted .md</a></p></li>
-</ul>
-<p>P. evermanni</p>
-<ul>
-<li><p><a href="https://github.com/urol-e5/deep-dive/blob/main/E-Peve/code/08.2-Peve-sRNAseq-ShortStack-31bp-fastp-merged.Rmd">code</a></p></li>
-<li><p><a href="https://github.com/urol-e5/deep-dive/blob/main/E-Peve/code/08.2-Peve-sRNAseq-ShortStack-31bp-fastp-merged.md">knitted .md</a></p></li>
-</ul>
-<p>P. tuahiniensis (identified here as P. meandrina, using P. meandrina genome)</p>
-<ul>
-<li><p><a href="https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/13.2.1-Pmea-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase.Rmd">code</a></p></li>
-<li><p><a href="https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/13.2.1-Pmea-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase.md">knitted .md</a></p></li>
-</ul>
-<p><u><strong><code>deep-dive-expression</code> reruns with ShortStack 4.1.0:</strong></u></p>
-<p>A. pulchra (using A. pulchra genome)</p>
-<ul>
-<li><p><a href="https://github.com/urol-e5/deep-dive-expression/blob/main/D-Apul/code/11-Apul-sRNA-ShortStack_4.1.0-pulchra_genome.Rmd">code</a></p></li>
-<li><p><a href="https://github.com/urol-e5/deep-dive-expression/blob/main/D-Apul/code/11-Apul-sRNA-ShortStack_4.1.0-pulchra_genome.md">knitted .md</a></p></li>
-</ul>
-<p>P. evermanni</p>
-<ul>
-<li><p><a href="https://github.com/urol-e5/deep-dive-expression/blob/main/E-Peve/code/05-Peve-sRNA-ShortStack_4.1.0.Rmd">code</a></p></li>
-<li><p><a href="https://github.com/urol-e5/deep-dive-expression/blob/main/E-Peve/code/05-Peve-sRNA-ShortStack_4.1.0.md">knitted .md</a></p></li>
-</ul>
-<p>P. tuahiniensis (using P. meandrina genome)</p>
-<ul>
-<li><p><a href="https://github.com/urol-e5/deep-dive-expression/blob/main/F-Ptuh/code/05-Ptuh-sRNA-ShortStack_4.1.0.Rmd">code</a></p></li>
-<li><p><a href="https://github.com/urol-e5/deep-dive-expression/blob/main/F-Ptuh/code/05-Ptuh-sRNA-ShortStack_4.1.0.md">knitted .md</a></p></li>
-</ul>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<section id="comparing-original-srna-discovery-to-reruns" class="level3">
-<h3 class="anchored" data-anchor-id="comparing-original-srna-discovery-to-reruns">Comparing original sRNA discovery to reruns</h3>
-<table class="table">
-<caption>A. pulchra</caption>
-<colgroup>
-<col style="width: 27%">
-<col style="width: 28%">
-<col style="width: 25%">
-<col style="width: 16%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: right;">ShortStack 4.0.3<br>
-(A. millipora genome)</th>
-<th style="text-align: right;">ShortStack 4.1.0<br>
-(A. pulchra genome)</th>
-<th style="text-align: right;">𝚫</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Potential miRNA loci</td>
-<td style="text-align: right;">18895</td>
-<td style="text-align: right;">20789</td>
-<td style="text-align: right;">+1894 (10%)</td>
-</tr>
-<tr class="even">
-<td>Identified miRNA</td>
-<td style="text-align: right;">38</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: right;">+1 (2.6%)</td>
-</tr>
-<tr class="odd">
-<td>Database matches</td>
-<td style="text-align: right;">69</td>
-<td style="text-align: right;">131</td>
-<td style="text-align: right;">+62 (90%)</td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<caption>P. evermanni</caption>
-<colgroup>
-<col style="width: 30%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 18%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: right;">ShortStack 4.0.3</th>
-<th style="text-align: right;">ShortStack 4.1.0</th>
-<th style="text-align: right;">𝚫</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Potential miRNA loci</td>
-<td style="text-align: right;">16736</td>
-<td style="text-align: right;">16893</td>
-<td style="text-align: right;">+157 (0.9%)</td>
-</tr>
-<tr class="even">
-<td>Identified miRNA</td>
-<td style="text-align: right;">46</td>
-<td style="text-align: right;">45</td>
-<td style="text-align: right;">-1 (2.2%)</td>
-</tr>
-<tr class="odd">
-<td>Database matches</td>
-<td style="text-align: right;">37</td>
-<td style="text-align: right;">38</td>
-<td style="text-align: right;">+1 (2.7%)</td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<caption>P. tuahniensis</caption>
-<colgroup>
-<col style="width: 31%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 17%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: right;">ShortStack 4.0.3</th>
-<th style="text-align: right;">ShortStack 4.1.0</th>
-<th style="text-align: right;">𝚫</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Potential miRNA loci</td>
-<td style="text-align: right;">7220</td>
-<td style="text-align: right;">7189</td>
-<td style="text-align: right;">-31 (0.4%)</td>
-</tr>
-<tr class="even">
-<td>Identified miRNA</td>
-<td style="text-align: right;">37</td>
-<td style="text-align: right;">37</td>
-<td style="text-align: right;">none</td>
-</tr>
-<tr class="odd">
-<td>Database matches</td>
-<td style="text-align: right;">96</td>
-<td style="text-align: right;">117</td>
-<td style="text-align: right;">+21 (22%)</td>
-</tr>
-</tbody>
-</table>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load necessary library</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.2.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyr' was built under R version 4.2.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the data frame for all species</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>miRNA_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Species =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Apul*"</span>, <span class="st">"Peve"</span>, <span class="st">"Ptuh"</span>), <span class="at">each =</span> <span class="dv">2</span>),</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ShortStack_Version =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"4.0.3"</span>, <span class="st">"4.1.0"</span>), <span class="at">times =</span> <span class="dv">3</span>),</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Potential_miRNA_loci =</span> <span class="fu">c</span>(<span class="dv">18895</span>, <span class="dv">20789</span>, <span class="dv">16736</span>, <span class="dv">16893</span>, <span class="dv">7220</span>, <span class="dv">7189</span>),</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Identified_miRNA =</span> <span class="fu">c</span>(<span class="dv">38</span>, <span class="dv">39</span>, <span class="dv">46</span>, <span class="dv">45</span>, <span class="dv">37</span>, <span class="dv">37</span>),</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Database_matches =</span> <span class="fu">c</span>(<span class="dv">69</span>, <span class="dv">131</span>, <span class="dv">37</span>, <span class="dv">38</span>, <span class="dv">96</span>, <span class="dv">117</span>)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape the data to long format for facetting</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>miRNA_long <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(miRNA_data,</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                           <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"Potential_miRNA_loci"</span>, <span class="st">"Identified_miRNA"</span>, <span class="st">"Database_matches"</span>),</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                           <span class="at">names_to =</span> <span class="st">"Metric"</span>, <span class="at">values_to =</span> <span class="st">"Value"</span>)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>miRNA_long<span class="sc">$</span>Metric <span class="ot">&lt;-</span> <span class="fu">factor</span>(miRNA_long<span class="sc">$</span>Metric, </span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                            <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Potential_miRNA_loci"</span>, <span class="st">"Identified_miRNA"</span>, <span class="st">"Database_matches"</span>))</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Facet-wrapped plot for all three metrics</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(miRNA_long, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Value, <span class="at">fill =</span> ShortStack_Version)) <span class="sc">+</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Metric, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span>  <span class="co"># Facet by Metric and allow different y-axis scales</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"miRNA Metrics by Species and ShortStack Version"</span>,</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Species"</span>, <span class="at">y =</span> <span class="st">"Value"</span>) <span class="sc">+</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a> <span class="co"># scale_fill_manual(values = c("4.0.3" = "blue", "4.1.0" = "red")) +</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="2024_10_22_shortstack_4.1.0_reruns_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>*Note, Apul also used a different genome for the v.4.1.0 run</p>
+<section id="october-2024" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024">31 October 2024</h2>
+<section id="thursday" class="level4">
+<h4 class="anchored" data-anchor-id="thursday">Thursday</h4>
 </section>
-<section id="structural-visualizations" class="level3">
-<h3 class="anchored" data-anchor-id="structural-visualizations">Structural visualizations</h3>
-<p>ShortStack 4.1.0 also automatically generates visualizations of the hairpin structure of each identified miRNA, stored as a pdf. As an example, below is the <a href="https://github.com/urol-e5/deep-dive-expression/blob/main/D-Apul/output/11-Apul-sRNA-ShortStack_4.1.0-pulchra_genome/ShortStack_out/strucVis/Cluster_18728.ps.pdf">visualization for A. pulchra Cluster 18728</a>, which was annotated as a valid miRNA and database matched the well-studied miRNA miR-100.<br>
-</p>
-<p><img src="images/Cluster_18728.ps.jpg" class="img-fluid"></p>
-
+</section>
+<section id="october-2024-1" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024-1">30 October 2024</h2>
+<section id="wednesday" class="level4">
+<h4 class="anchored" data-anchor-id="wednesday">Wednesday</h4>
+</section>
+</section>
+<section id="october-2024-2" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024-2">29 October 2024</h2>
+<section id="tuesday" class="level4">
+<h4 class="anchored" data-anchor-id="tuesday">Tuesday</h4>
+</section>
+</section>
+<section id="october-2024-3" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024-3">28 October 2024</h2>
+<section id="monday" class="level4">
+<h4 class="anchored" data-anchor-id="monday">Monday</h4>
+</section>
+</section>
+<section id="october-2024-4" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024-4">25 October 2024</h2>
+<section id="friday" class="level4">
+<h4 class="anchored" data-anchor-id="friday">Friday</h4>
+</section>
+</section>
+<section id="october-2024-5" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024-5">24 October 2024</h2>
+<section id="thursday-1" class="level4">
+<h4 class="anchored" data-anchor-id="thursday-1">Thursday</h4>
+<ul>
+<li><p>SWED101 asynchronus assignment</p></li>
+<li><p>emails catch up</p></li>
+<li><p>TAing: emails, reviewing midterm expectations, preliminary SA3 grading</p></li>
+<li><p>TAing: weekly meeting w Minyan</p></li>
+<li><p>Reviewed Year 1 GSAR and thought through current status/revisions (prep for Steven meeting)</p>
+<ul>
+<li>Filled out current coursework on Plan of Study Form</li>
+</ul></li>
+<li><p>Seminar</p></li>
+<li><p>TGIT</p></li>
+<li><p>grading</p></li>
+</ul>
+</section>
+</section>
+<section id="october-2024-6" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024-6">23 October 2024</h2>
+<section id="wednesday-1" class="level4">
+<h4 class="anchored" data-anchor-id="wednesday-1">Wednesday</h4>
+<ul>
+<li><p>SWED101 class</p></li>
+<li><p>start up on coral review work, got in contact with Hilborn’s contact</p></li>
+<li><p>Completed ShortStack 4.1.0 reruns and comparison on all three species for E5 deep-dive-expression (<a href="../../../posts/projects/E5_coral/2024_10_22_shortstack_4.1.0_reruns.html">notebook post</a>)</p></li>
+<li><p>oyster water change</p></li>
+</ul>
+</section>
+</section>
+<section id="october-2024-7" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024-7">22 October 2024</h2>
+<section id="tuesday-1" class="level4">
+<h4 class="anchored" data-anchor-id="tuesday-1">Tuesday</h4>
+</section>
+</section>
+<section id="october-2024-8" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024-8">21 October 2024</h2>
+<section id="monday-1" class="level4">
+<h4 class="anchored" data-anchor-id="monday-1">Monday</h4>
+</section>
+</section>
+<section id="october-2024-9" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024-9">18 October 2024</h2>
+<section id="friday-1" class="level4">
+<h4 class="anchored" data-anchor-id="friday-1">Friday</h4>
+</section>
+</section>
+<section id="october-2024-10" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024-10">17 October 2024</h2>
+<section id="thursday-2" class="level4">
+<h4 class="anchored" data-anchor-id="thursday-2">Thursday</h4>
+</section>
+</section>
+<section id="october-2024-11" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024-11">16 October 2024</h2>
+<section id="wednesday-2" class="level4">
+<h4 class="anchored" data-anchor-id="wednesday-2">Wednesday</h4>
+<p>Finalized and submitted GRFP application!!!</p>
+</section>
+</section>
+<section id="october-2024-12" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024-12">15 October 2024</h2>
+<section id="tuesday-2" class="level4">
+<h4 class="anchored" data-anchor-id="tuesday-2">Tuesday</h4>
+<p>Finalized and submitted SIFP application!!!</p>
+</section>
+</section>
+<section id="october-2024-13" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024-13">14 October 2024</h2>
+<section id="monday-2" class="level4">
+<h4 class="anchored" data-anchor-id="monday-2">Monday</h4>
+</section>
+</section>
+<section id="october-2024-14" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024-14">11 October 2024</h2>
+<section id="friday-2" class="level4">
+<h4 class="anchored" data-anchor-id="friday-2">Friday</h4>
+</section>
+</section>
+<section id="october-2024-15" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024-15">10 October 2024</h2>
+<section id="thursday-3" class="level4">
+<h4 class="anchored" data-anchor-id="thursday-3">Thursday</h4>
+</section>
+</section>
+<section id="october-2024-16" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024-16">09 October 2024</h2>
+<section id="wednesday-3" class="level4">
+<h4 class="anchored" data-anchor-id="wednesday-3">Wednesday</h4>
+</section>
+</section>
+<section id="october-2024-17" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024-17">08 October 2024</h2>
+<section id="tuesday-3" class="level4">
+<h4 class="anchored" data-anchor-id="tuesday-3">Tuesday</h4>
+</section>
+</section>
+<section id="october-2024-18" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024-18">07 October 2024</h2>
+<section id="monday-3" class="level4">
+<h4 class="anchored" data-anchor-id="monday-3">Monday</h4>
+</section>
+</section>
+<section id="october-2024-19" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024-19">04 October 2024</h2>
+<section id="friday-3" class="level4">
+<h4 class="anchored" data-anchor-id="friday-3">Friday</h4>
+</section>
+</section>
+<section id="october-2024-20" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024-20">03 October 2024</h2>
+<section id="thursday-4" class="level4">
+<h4 class="anchored" data-anchor-id="thursday-4">Thursday</h4>
+</section>
+</section>
+<section id="october-2024-21" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024-21">02 October 2024</h2>
+<section id="wednesday-4" class="level4">
+<h4 class="anchored" data-anchor-id="wednesday-4">Wednesday</h4>
+</section>
+</section>
+<section id="october-2024-22" class="level2">
+<h2 class="anchored" data-anchor-id="october-2024-22">01 October 2024</h2>
+<section id="tuesday-4" class="level4">
+<h4 class="anchored" data-anchor-id="tuesday-4">Tuesday</h4>
 
 
 </section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-axtell2013" class="csl-entry" role="listitem">
-Axtell, Michael J. 2013. <span>“ShortStack: Comprehensive Annotation and Quantification of Small RNA Genes.”</span> <em>RNA</em> 19 (6): 740–51. <a href="https://doi.org/10.1261/rna.035279.112">https://doi.org/10.1261/rna.035279.112</a>.
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
