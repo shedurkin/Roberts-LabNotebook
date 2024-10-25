@@ -27,6 +27,14 @@ format:
 
 #### Friday
 
+-   TAing: led both lab sections, (midterm this week).
+
+-   Prepped for Steven meeting, outlined current progress with E5 work and plans/goals for degree progress
+
+-   Met with Steven -- meeting notes/planning [here](./2024_10_25_Degree_ProgressPlan_Meeting.qmd)
+
+-   readings on DNA methylation in corals, role in transposon silencing
+
 ## 24 October 2024
 
 #### Thursday
@@ -47,7 +55,7 @@ format:
 
 -   TGIT
 
--   grading
+-   TAing: reviewed midterm for typos/confusing wording before printing for tomorrow
 
 ## 23 October 2024
 

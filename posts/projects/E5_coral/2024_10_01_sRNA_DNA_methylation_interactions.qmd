@@ -40,3 +40,23 @@ map methylation patterns at:
 Integrative:
 
 -   ID target genes/regions of miRNAs and siRNAs and check those regions to see if targets show patterns of differential methylation and expression
+
+## DNA methylation in invertebrates
+
+(Ying et al. 2022)
+
+-   Invertebrate genomes are much less methylated than vertebrates (\<40%, in comparison to vertebrate levels of \~70%)
+
+-   In inverts, unlike vertebrates, methylation is not directly associated with silencing gene expression, and does not primarily regulate expression through methylation of promoter regions. Instead, most methylated CpGs are located in gene bodies (gene body methylation, gbM), especially actively transcribed regions.
+
+-   In vertebrates, transposons are extensively methylated, and it is believed that DNA methylation plays an important role in silencing TEs, stabilizing gene expression
+
+-   In invertebrates, however, there is no correlation between methylation level and genome size (which one would expect to increase with TE silencing), and invertebrate transposons are depleted
+
+-   housekeeping genes are highly methylated relative to DEGs in invertebrates (confirmed to hold in Cnidaria)
+
+-   In cnidarians, genetic an environmental factors both appear to contribute to differential methylation patterns
+
+    -   treatments resulted in global-level changes to gbM and gene expression, but correlation between gbM and expression was limited or absent -- so **what is the role of methylation if it doesn't directly regulate gene expression**?
+
+-   Ying et al. (2022) propose that **transposons are the primary targets of DNA methylation in cnidarians**

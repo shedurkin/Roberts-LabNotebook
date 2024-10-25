@@ -1,0 +1,92 @@
+---
+title: "Masters/Bypass Progress and Planning"
+author: "Kathleen Durkin"
+date: "last-modified"
+categories: ["monthly goals"]
+format:
+  html:
+    toc: true
+engine: knitr
+---
+
+Overview of 2024.10.25 meeting with Steven to discuss/plan Masters/bypass completion.
+
+## AU24
+
+-   Finalize masters committee. Discussing with Kerry on Tuesday (10/29), I think (hope) she'll agree to join my committee! If not, Jackie would also fit.
+
+-   Have first committee meeting. **What materials/slides do I need to prepare for this?**
+
+    -   Need to prepare material overviewing my current degree progress and plans for completion
+
+-   Submit Plan of Study. Currently need 5.5 credits to complete masters requirements (4.5 if CENV 590 can by counted toward degree -- would need approval). **What other courses would be beneficial for proposed study?**
+
+-   Thesis focus: role of multiple epigenetic mechanisms and their interactions in environmental memory/stress response in marine invertebrates.
+
+    -   E5: miRNA, miRNA + RNA expression, miRNA/siRNA + DNA methylation
+
+-   Q: **How is collaborative work handled for thesis? E.g., to what extent can E5 work be included in thesis?**
+
+    -   E5 work that I've completed is fully eligible
+
+### Thesis progress and brainstorming
+
+Chapter 1: corals deep-dive (+ deep-dive-expression)
+
+I've currently completed miRNA/siRNA characterization and preliminary expression work. I'm in the process of characterizting patterns of sncRNA + mRNA coexpression. Will also incorporate DNA methylation mapping and sncRNA/methylation interaction analysis.
+
+-   were methylation samples sent out? for deep dive
+
+-   could also include coral hDNA methylation in this if I receive the SIFP
+
+-   logical expansion into PhD thesis is looking at time series data
+
+Chapter 2: environmental memory in oysters
+
+-   we have data for oysters under OA exposure. Described in parents, but not yet touched children. In parents have gene expression and methylation (plus lncRNA from the RNAseq data)
+
+-   so I could look into **heritability of methylation in oysters**
+
+-   methylation data from the offspring already exists!! (i.e., the samples have already been sequenced)
+
+-   side note: lab has already looked into barcoding bisulfite-converted DNA, but had limited success because their gene of interest was very long and bisulfite treatment degrades high-molecular-weight DNA. It would be interesting to develop some kind of screening protocol to screen for methylation patterns associate with resilience. (e.g., for broodstock screening)
+
+### To-Do: 
+
+E5:
+
+-   For each miRNA, calculate correlation coefficent with each gene
+
+-   Look into miRNA binding again (get software from Jill?)
+
+-   interactions with lncRNA (get data from Zach). Could also do binding here, since lncRNAs may be sponges, precursors, etc.
+
+-   cross-species stuff could be interesting -- gene orthologs? but can be back burner for now
+
+-   correlation between methylation in an miRNA-coding region and expression of that miRNA.
+
+General:
+
+-   can bring Hollie in now for committee
+
+-   schedule meeting with steven, weekly thursdays at 11
+
+## WI25
+
+-   Full draft of Masters Proposal
+
+-   Q: **To what extant can your thesis work deviate from submitted Proposal?**
+
+## SP25/SU25
+
+-   Submit finalized Masters Proposal
+
+## SU25
+
+-   Possibly Smithsonian fellowship (coral hDNA methylation), 10wks
+
+    -   **How would funding for the remaining \~4wks work for this?**
+
+## AU25
+
+-   MS exam + bypass

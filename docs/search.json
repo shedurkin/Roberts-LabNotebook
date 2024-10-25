@@ -214,7 +214,7 @@
     "href": "posts/projects/E5_coral.html",
     "title": "E5 Coral",
     "section": "",
-    "text": "The E5 Coral project is a collaboration between six labs at six U.S. universities, and uses reef-building corals as a model system to test the connections between physiological, epigenetic, and metabolic states, and predict how population and community dynamics are influenced by epigenetically-modulated phenotypes. Learn more at the project website!\n \n  \n   \n  \n    \n     Github\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nCategories\n\n\nReading Time\n\n\n\n\n\n\n\n\n\nOct 24, 2024\n\n\nRerunning ShortStack for deep-dive-expression\n\n\nE5-coral\n\n\n6 min\n\n\n\n\n\n\n\nOct 22, 2024\n\n\nLit Review: Understanding interactions of sRNA and DNA methylation\n\n\nE5-coral\n\n\n2 min\n\n\n\n\n\n\n\nJul 19, 2024\n\n\nPrograms for identifying miRNA targets\n\n\nE5-coral\n\n\n2 min\n\n\n\n\n\n\n\nJun 3, 2024\n\n\nShortStack: mature vs. star sequences incorrect?\n\n\nE5-coral\n\n\n3 min\n\n\n\n\n\n\n\nMay 17, 2024\n\n\nComparing ShortStack outputs to miRdeep2\n\n\nE5-coral\n\n\n7 min\n\n\n\n\n\n\n\nMay 16, 2024\n\n\nSummarizing and visualizing ShortStack outputs\n\n\nE5-coral\n\n\n2 min\n\n\n\n\n\n\n\nFeb 7, 2024\n\n\nGenerating a genes fasta for P. evermanni\n\n\nE5-coral\n\n\n7 min\n\n\n\n\n\n\n\nFeb 6, 2024\n\n\nRNAseq abundance quantification (A.Pulchra, P.evermanni, P.meandrina)\n\n\nE5-coral\n\n\n3 min\n\n\n\n\n\n\n\nJan 31, 2024\n\n\nP.evermanni RNAseq kallisto debugging\n\n\nE5-coral\n\n\n3 min\n\n\n\n\n\n\n\nDec 5, 2023\n\n\nP.meandrina sRNA: miRdeep2 and 3 species sRNA comparison\n\n\nE5-coral\n\n\n13 min\n\n\n\n\n\n\n\nNov 30, 2023\n\n\nP.meandrina sRNA: MirMachine, ShortStack\n\n\nE5-coral\n\n\n1 min\n\n\n\n\n\n\n\nNov 14, 2023\n\n\nP.meandrina sRNA: trimming, miRTrace, BLASTn\n\n\nE5-coral\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
+    "text": "The E5 Coral project is a collaboration between six labs at six U.S. universities, and uses reef-building corals as a model system to test the connections between physiological, epigenetic, and metabolic states, and predict how population and community dynamics are influenced by epigenetically-modulated phenotypes. Learn more at the project website!\n \n  \n   \n  \n    \n     Github\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nCategories\n\n\nReading Time\n\n\n\n\n\n\n\n\n\nOct 25, 2024\n\n\nLit Review: Understanding interactions of sRNA and DNA methylation\n\n\nE5-coral\n\n\n3 min\n\n\n\n\n\n\n\nOct 24, 2024\n\n\nRerunning ShortStack for deep-dive-expression\n\n\nE5-coral\n\n\n6 min\n\n\n\n\n\n\n\nJul 19, 2024\n\n\nPrograms for identifying miRNA targets\n\n\nE5-coral\n\n\n2 min\n\n\n\n\n\n\n\nJun 3, 2024\n\n\nShortStack: mature vs. star sequences incorrect?\n\n\nE5-coral\n\n\n3 min\n\n\n\n\n\n\n\nMay 17, 2024\n\n\nComparing ShortStack outputs to miRdeep2\n\n\nE5-coral\n\n\n7 min\n\n\n\n\n\n\n\nMay 16, 2024\n\n\nSummarizing and visualizing ShortStack outputs\n\n\nE5-coral\n\n\n2 min\n\n\n\n\n\n\n\nFeb 7, 2024\n\n\nGenerating a genes fasta for P. evermanni\n\n\nE5-coral\n\n\n7 min\n\n\n\n\n\n\n\nFeb 6, 2024\n\n\nRNAseq abundance quantification (A.Pulchra, P.evermanni, P.meandrina)\n\n\nE5-coral\n\n\n3 min\n\n\n\n\n\n\n\nJan 31, 2024\n\n\nP.evermanni RNAseq kallisto debugging\n\n\nE5-coral\n\n\n3 min\n\n\n\n\n\n\n\nDec 5, 2023\n\n\nP.meandrina sRNA: miRdeep2 and 3 species sRNA comparison\n\n\nE5-coral\n\n\n13 min\n\n\n\n\n\n\n\nNov 30, 2023\n\n\nP.meandrina sRNA: MirMachine, ShortStack\n\n\nE5-coral\n\n\n1 min\n\n\n\n\n\n\n\nNov 14, 2023\n\n\nP.meandrina sRNA: trimming, miRTrace, BLASTn\n\n\nE5-coral\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/projects/E5_coral/2024_06_04_ShortStack_mature_v_star.html",
@@ -487,7 +487,7 @@
     "href": "daily_log.html",
     "title": "Daily Logs and Monthly Goals",
     "section": "",
-    "text": "October 2024, Daily Log\n\n\n\n\n\n\n\n\n\nOct 24, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nSeptember 2024, Daily Log\n\n\n\n\n\n\n\n\n\nOct 1, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nSeptember 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJuly 2024, Daily Log\n\n\n\n\n\n\n\n\n\nJul 26, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJuly 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nJul 9, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJune 2024, Daily Log\n\n\n\n\n\n\n\n\n\nJul 2, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJune 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nJun 4, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nMay 2024, Daily Log\n\n\n\n\n\n\n\n\n\nJun 3, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nMay 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nMay 13, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nApril 2024, Daily Log\n\n\n\n\n\n\n\n\n\nApr 30, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nApril 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nApr 4, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nMarch 2024, Daily Log\n\n\n\n\n\n\n\n\n\nMar 27, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nMarch 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nMar 4, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFebruary 2024, Daily Log\n\n\n\n\n\n\n\n\n\nFeb 29, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFebruary 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nFeb 1, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJanuary 2024, Daily Log\n\n\n\n\n\n\n\n\n\nJan 31, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJanuary 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nJan 1, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nDecember 2023, Daily Log\n\n\n\n\n\n\n\n\n\nDec 29, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nDecember 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nDec 5, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nNovember 2023, Daily Log\n\n\n\n\n\n\n\n\n\nNov 30, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nNovember 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nNov 3, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nOctober 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nOct 18, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nOctober 2023, Daily Log\n\n\n\n\n\n\n\n\n\nOct 1, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFormatting digital lab notebook\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFirst post\n\n\n\n\n\n\n\n\n\nSep 28, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\nNo matching items"
+    "text": "October 2024, Daily Log\n\n\n\n\n\n\n\n\n\nOct 25, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nMasters/Bypass Progress and Planning\n\n\n\n\n\n\n\n\n\nOct 25, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nSeptember 2024, Daily Log\n\n\n\n\n\n\n\n\n\nOct 1, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nSeptember 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJuly 2024, Daily Log\n\n\n\n\n\n\n\n\n\nJul 26, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJuly 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nJul 9, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJune 2024, Daily Log\n\n\n\n\n\n\n\n\n\nJul 2, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJune 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nJun 4, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nMay 2024, Daily Log\n\n\n\n\n\n\n\n\n\nJun 3, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nMay 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nMay 13, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nApril 2024, Daily Log\n\n\n\n\n\n\n\n\n\nApr 30, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nApril 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nApr 4, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nMarch 2024, Daily Log\n\n\n\n\n\n\n\n\n\nMar 27, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nMarch 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nMar 4, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFebruary 2024, Daily Log\n\n\n\n\n\n\n\n\n\nFeb 29, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFebruary 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nFeb 1, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJanuary 2024, Daily Log\n\n\n\n\n\n\n\n\n\nJan 31, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nJanuary 2024, Monthly Goals\n\n\n\n\n\n\n\n\n\nJan 1, 2024\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nDecember 2023, Daily Log\n\n\n\n\n\n\n\n\n\nDec 29, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nDecember 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nDec 5, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nNovember 2023, Daily Log\n\n\n\n\n\n\n\n\n\nNov 30, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nNovember 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nNov 3, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nOctober 2023, Monthly Goals\n\n\n\n\n\n\n\n\n\nOct 18, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nOctober 2023, Daily Log\n\n\n\n\n\n\n\n\n\nOct 1, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFormatting digital lab notebook\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\n\n\nFirst post\n\n\n\n\n\n\n\n\n\nSep 28, 2023\n\n\nKathleen Durkin\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -2510,14 +2510,14 @@
     "href": "posts/daily_logs/2024/October_2024_posts.html#october-2024-4",
     "title": "October 2024, Daily Log",
     "section": "25 October 2024",
-    "text": "25 October 2024\n\nFriday"
+    "text": "25 October 2024\n\nFriday\n\nTAing: led both lab sections, (midterm this week).\nPrepped for Steven meeting, outlined current progress with E5 work and plans/goals for degree progress\nMet with Steven – meeting notes/planning here\nreadings on DNA methylation in corals, role in transposon silencing"
   },
   {
     "objectID": "posts/daily_logs/2024/October_2024_posts.html#october-2024-5",
     "href": "posts/daily_logs/2024/October_2024_posts.html#october-2024-5",
     "title": "October 2024, Daily Log",
     "section": "24 October 2024",
-    "text": "24 October 2024\n\nThursday\n\nSWED101 asynchronus assignment\nemails catch up\nTAing: emails, reviewing midterm expectations, preliminary SA3 grading\nTAing: weekly meeting w Minyan\nReviewed Year 1 GSAR and thought through current status/revisions (prep for Steven meeting)\n\nFilled out current coursework on Plan of Study Form\n\nSeminar\nTGIT\ngrading"
+    "text": "24 October 2024\n\nThursday\n\nSWED101 asynchronus assignment\nemails catch up\nTAing: emails, reviewing midterm expectations, preliminary SA3 grading\nTAing: weekly meeting w Minyan\nReviewed Year 1 GSAR and thought through current status/revisions (prep for Steven meeting)\n\nFilled out current coursework on Plan of Study Form\n\nSeminar\nTGIT\nTAing: reviewed midterm for typos/confusing wording before printing for tomorrow"
   },
   {
     "objectID": "posts/daily_logs/2024/October_2024_posts.html#october-2024-6",
@@ -2637,5 +2637,54 @@
     "title": "October 2024, Daily Log",
     "section": "01 October 2024",
     "text": "01 October 2024\n\nTuesday"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/2024_10_25_Degree_ProgressPlan_Meeting.html",
+    "href": "posts/daily_logs/2024/2024_10_25_Degree_ProgressPlan_Meeting.html",
+    "title": "Masters/Bypass planning",
+    "section": "",
+    "text": "Overview of 2024.10.25 meeting with Steven to discuss/plan Masters/bypass completion."
+  },
+  {
+    "objectID": "posts/daily_logs/2024/2024_10_25_Degree_ProgressPlan_Meeting.html#au24",
+    "href": "posts/daily_logs/2024/2024_10_25_Degree_ProgressPlan_Meeting.html#au24",
+    "title": "Masters/Bypass planning",
+    "section": "AU24",
+    "text": "AU24\n\nFinalize masters committee. Discussing with Kerry on Tuesday (10/29), I think (hope) she’ll agree to join my committee! If not, Jackie would also fit.\nHave first committee meeting. What materials/slides do I need to prepare for this?\n\nNeed to prepare material overviewing my current degree progress and plans for completion\n\nSubmit Plan of Study. Currently need 5.5 credits to complete masters requirements (4.5 if CENV 590 can by counted toward degree – would need approval). What other courses would be beneficial for proposed study?\nThesis focus: role of multiple epigenetic mechanisms and their interactions in environmental memory/stress response in marine invertebrates.\n\nE5: miRNA, miRNA + RNA expression, miRNA/siRNA + DNA methylation\n\nQ: How is collaborative work handled for thesis? E.g., to what extent can E5 work be included in thesis?\n\nE5 work that I’ve completed is fully eligible\n\n\n\nThesis progress and brainstorming\nChapter 1: corals deep-dive (+ deep-dive-expression)\nI’ve currently completed miRNA/siRNA characterization and preliminary expression work. I’m in the process of characterizting patterns of sncRNA + mRNA coexpression. Will also incorporate DNA methylation mapping and sncRNA/methylation interaction analysis.\n\nwere methylation samples sent out? for deep dive\ncould also include coral hDNA methylation in this if I receive the SIFP\nlogical expansion into PhD thesis is looking at time series data\n\nChapter 2: environmental memory in oysters\n\nwe have data for oysters under OA exposure. Described in parents, but not yet touched children. In parents have gene expression and methylation (plus lncRNA from the RNAseq data)\nso I could look into heritability of methylation in oysters\nmethylation data from the offspring already exists!! (i.e., the samples have already been sequenced)\nside note: lab has already looked into barcoding bisulfite-converted DNA, but had limited success because their gene of interest was very long and bisulfite treatment degrades high-molecular-weight DNA. It would be interesting to develop some kind of screening protocol to screen for methylation patterns associate with resilience. (e.g., for broodstock screening)\n\n\n\nTo-Do:\nE5:\n\nFor each miRNA, calculate correlation coefficent with each gene\nLook into miRNA binding again (get software from Jill?)\ninteractions with lncRNA (get data from Zach). Could also do binding here, since lncRNAs may be sponges, precursors, etc.\ncross-species stuff could be interesting – gene orthologs? but can be back burner for now\ncorrelation between methylation in an miRNA-coding region and expression of that miRNA.\n\nGeneral:\n\ncan bring Hollie in now for committee\nschedule meeting with steven, weekly thursdays at 11"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/2024_10_25_Degree_ProgressPlan_Meeting.html#wi25",
+    "href": "posts/daily_logs/2024/2024_10_25_Degree_ProgressPlan_Meeting.html#wi25",
+    "title": "Masters/Bypass planning",
+    "section": "WI25",
+    "text": "WI25\n\nFull draft of Masters Proposal\nQ: To what extant can your thesis work deviate from submitted Proposal?"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/2024_10_25_Degree_ProgressPlan_Meeting.html#sp25",
+    "href": "posts/daily_logs/2024/2024_10_25_Degree_ProgressPlan_Meeting.html#sp25",
+    "title": "Masters/Bypass planning",
+    "section": "SP25",
+    "text": "SP25\n\nSubmit finalized Masters Proposal"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/2024_10_25_Degree_ProgressPlan_Meeting.html#su25",
+    "href": "posts/daily_logs/2024/2024_10_25_Degree_ProgressPlan_Meeting.html#su25",
+    "title": "Masters/Bypass planning",
+    "section": "SU25",
+    "text": "SU25\n\nPossibly Smithsonian fellowship (coral hDNA methylation), 10wks\n\nHow would funding for the remaining ~4wks work for this?"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/2024_10_25_Degree_ProgressPlan_Meeting.html#au25",
+    "href": "posts/daily_logs/2024/2024_10_25_Degree_ProgressPlan_Meeting.html#au25",
+    "title": "Masters/Bypass planning",
+    "section": "AU25",
+    "text": "AU25\n\nMS exam + bypass"
+  },
+  {
+    "objectID": "posts/daily_logs/2024/2024_10_25_Degree_ProgressPlan_Meeting.html#sp25su25",
+    "href": "posts/daily_logs/2024/2024_10_25_Degree_ProgressPlan_Meeting.html#sp25su25",
+    "title": "Masters/Bypass planning",
+    "section": "SP25/SU25",
+    "text": "SP25/SU25\n\nSubmit finalized Masters Proposal"
   }
 ]
