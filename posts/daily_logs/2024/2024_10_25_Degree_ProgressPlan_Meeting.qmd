@@ -51,7 +51,7 @@ Chapter 2: environmental memory in oysters
 
 -   side note: lab has already looked into barcoding bisulfite-converted DNA, but had limited success because their gene of interest was very long and bisulfite treatment degrades high-molecular-weight DNA. It would be interesting to develop some kind of screening protocol to screen for methylation patterns associate with resilience. (e.g., for broodstock screening)
 
-### To-Do: 
+### To-Do:
 
 E5:
 

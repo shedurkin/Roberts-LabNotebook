@@ -59,4 +59,4 @@ Integrative:
 
     -   treatments resulted in global-level changes to gbM and gene expression, but correlation between gbM and expression was limited or absent -- so **what is the role of methylation if it doesn't directly regulate gene expression**?
 
--   Ying et al. (2022) propose that **transposons are the primary targets of DNA methylation in cnidarians**
+-   Ying et al. (2022) propose that **transposons are the primary targets of DNA methylation in cnidarians.** They confirm that, in cnidarians, global methylation levels are both much lower and more variable than in vertebrates. They also note that methylation was localize in gene bodies, but particulalry within

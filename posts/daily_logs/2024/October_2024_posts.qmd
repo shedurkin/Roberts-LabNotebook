@@ -23,6 +23,24 @@ format:
 
 #### Monday
 
+-   SWED101 class and HW
+
+-   trying to fix computer problem -- black screen after I log in for 5-10 min, then takes 10-20min to start up, open first apps, etc. Disabled some unnecessary start up programs, ran Disk Cleanup, looked at some anti-virus softwares.
+
+-   Lab meeting, equity and inclusion focused
+
+-   emails
+
+-   QSCI482 Office Hours
+
+-   Received Charlotte Magnum Housing Award for SICB!
+
+-   registered for SICB, bought flight tickets, posted some requests looking for hotel roommate(s). Submitted another travel award request
+
+-   Collected reimbursement details and posted to Slack purchasing channel
+
+-   poked around Sam's lab notebook and github issues for the CEABIGR offspring methylation data Steven and I discussed last Friday -- think I found it [here](https://github.com/RobertsLab/resources/issues/1517) and [here](https://github.com/RobertsLab/resources/issues/1961) (note: CEABIGR offspring appear to be called CEASMALLR -- cute!)
+
 ## 25 October 2024
 
 #### Friday
