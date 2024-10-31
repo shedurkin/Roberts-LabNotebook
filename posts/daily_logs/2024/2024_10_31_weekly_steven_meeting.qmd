@@ -41,7 +41,7 @@ engine: knitr
 
 [General:]{.underline}
 
-For first committee meeting I should have overview of what I\'ve done, what I will do, outline what success means for me in the committee, what kind of feedback I want/prefer, etc. Basically as much info as I can give them. Will need to review the slide deck with Steven before (e.g. late november). Should discuss current funding plan/resources in slide deck, timeline, etc.
+For first committee meeting I should have overview of what I've done, what I will do, outline what success means for me in the committee, what kind of feedback I want/prefer, etc. Basically as much info as I can give them. Will need to review the slide deck with Steven before (e.g. late november). Should discuss current funding plan/resources in slide deck, timeline, etc.
 
 [E5:]{.underline}
 

@@ -21,9 +21,8 @@ format:
 
 -   emails (TAing)
 
-```{=html}
-<!-- -->
-```
+-   
+
 -   seminar + TGIT
 
 -   oyster checks
