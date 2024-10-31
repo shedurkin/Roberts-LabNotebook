@@ -11,13 +11,54 @@ format:
 
 #### Thursday
 
+-   trying to generate some basic distance correlation matrices for miRNA-mRNA pairs (in E5 dde), but getting stuck actually accessing a distance correlation calculation! Can't install any of the correlation statistic R packages I've tried (energy, distcor, etc.). Will need to make a github issue.
+
+-   SWED101 class
+
+-   [Weekly meeting with Steven](./2024_10_31_weekly_steven_meeting.qmd), including preliminary discussion of committee meeting requirements and planning for tomorrow's E5 meeting
+
+-   troubleshooting the [Raven package installation issues](https://github.com/RobertsLab/resources/issues/2000) with Sam -- seems to be related to Raven having an outdated version of GSL.
+
+-   emails (TAing)
+
+```{=html}
+<!-- -->
+```
+-   seminar + TGIT
+
+-   oyster checks
+
 ## 30 October 2024
 
 #### Wednesday
 
+-   SWED101 class
+
+-   found SICB roommate, getting registered for hotel room
+
+-   Confirmed Hollie can be on committee!
+
+-   emailed Hilborn's contact (michael) about coral stuff
+
+-   looking again into correlation summary -- think I know what to do, just need to actually code it
+
+-   lit review for Hilborn review paper
+
+-   read/replied to some github issues
+
 ## 29 October 2024
 
 #### Tuesday
+
+-   SWED101 class
+
+-   meeting w/ Kerry -- she agreed to be on committee!!!! I have a committee!!!!!
+
+    -   now i need to confirm Hollie and schedule first meeting, preferably in Nov/early Dec
+
+-   meeting w/ Minyan about midterm grading
+
+-   adding normalized sRNA summary for Apul to E5, looking into more basic options than WGCNA for preliminarily summarizing correlation between miRNA and mRNA
 
 ## 28 October 2024
 

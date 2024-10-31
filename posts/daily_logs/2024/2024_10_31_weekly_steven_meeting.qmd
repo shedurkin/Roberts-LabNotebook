@@ -1,0 +1,56 @@
+---
+title: "October 31 Weekly Steven Meeting"
+author: "Kathleen Durkin"
+date: "2024-10-31"
+categories: ["monthly goals"]
+format:
+  html:
+    toc: true
+engine: knitr
+---
+
+## Updates/Progress for the week:
+
+-   Registered for SICB, booked flights, found Charlotte Magnum program roommate, and booked hotel through CM program.
+
+-   I have a thesis committee! Kerry Naish agreed to join as second SAFS Graduate Faculty member and Hollie Putnam also confirmed she can join.
+
+-   Dealt with some of the requirements for formalizing committee. Confirmed there's no special requirements to have a member outside of UW, filled out current progress on Plan of Study, found forms to for committee and Plan of Study milestones completion.
+
+-   Found CEASMALLR data
+
+-   Reran ShortStack for all 3 E5 species (some differences form og ShortStack runs in deep-dive)
+
+-   Getting help from Jill with accessing miRanda software for target/binding prediction
+
+-   Set meeting with Zach to discuss miRNA-lncRNA interaction investigation
+
+-   Set up code to create distance correlation matrix of miRNA-mRNA expression correlations, but having trouble installing the R packages I need.
+
+-   TAing and midterm proctoring/grading.
+
+## Meeting Action Items:
+
+-   SICB reimbursements
+
+-   Discuss expectations for first committee meeting
+
+-   Plan for E5 meeting tommorrow
+
+## Meeting notes:
+
+[General:]{.underline}
+
+For first committee meeting I should have overview of what I\'ve done, what I will do, outline what success means for me in the committee, what kind of feedback I want/prefer, etc. Basically as much info as I can give them. Will need to review the slide deck with Steven before (e.g. late november). Should discuss current funding plan/resources in slide deck, timeline, etc.
+
+[E5:]{.underline}
+
+Post in E5 slack to prompt for tomorrow. Goal for next 2 weeks is to nail down the methods. So ask everyone to write up their planned methods  and hypotheses in the methods section. Basically want to provide structure for reaching the end goals of the paper. Check in on methylation status.
+
+At some point should do some cleanup of the expression repo (e.g. the Wiki).
+
+Tell people to be using the updated ShortStack outputs
+
+[CEASMALLR:]{.underline}
+
+metadata \*should\* be somewhere in the ceasmallr repo. Should poke around to make sure I can find and differentiate the metadata. 
