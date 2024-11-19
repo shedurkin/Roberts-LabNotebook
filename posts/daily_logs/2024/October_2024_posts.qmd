@@ -21,7 +21,7 @@ format:
 
 -   emails (TAing)
 
--   
+-   emailed to schedule first committee meeting
 
 -   seminar + TGIT
 

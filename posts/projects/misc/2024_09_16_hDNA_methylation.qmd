@@ -2,7 +2,7 @@
 title: "Lit Review: DNA methylation mapping with hDNA"
 author: "Kathleen Durkin"
 date: "last-modified"
-categories: ["pacific_oyster"]
+categories: ["misc"]
 format:
   html:
     toc: true
@@ -165,7 +165,7 @@ Here's a comparison of different methylation mapping tools/methods based on **co
 #### **Comparison Table**
 
 | **Method**                 | **Cost**     | **Degraded/Low-Quantity DNA**                   | **Partial Cytosine Deamination**   | **How Established**                  |
-|----------------------------|--------------|-------------------------------------------------|------------------------------------|--------------------------------------|
+|--------------|--------------|-----------------|--------------|--------------|
 | **WGBS**                   | High         | Less suitable                                   | Sensitive to incomplete conversion | Gold standard, very well established |
 | **Targeted BS**            | Moderate     | Better suited                                   | Sensitive to incomplete conversion | Well established                     |
 | **EM-Seq**                 | Moderate     | Suitable                                        | Avoids bisulfite-induced damage    | Newer, gaining popularity            |

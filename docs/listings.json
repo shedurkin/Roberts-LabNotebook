@@ -9,40 +9,11 @@
     ]
   },
   {
-    "listing": "/posts/projects/pacific_cod.html",
-    "items": [
-      "/posts/projects/pacific_cod/2024_04_29_methylation_subsampling.html",
-      "/posts/projects/pacific_cod/2024_04_25_methylation_subsampling.html",
-      "/posts/projects/pacific_cod/2024_03_19_RNAseq_prelim_kallistoDESeq2.html",
-      "/posts/projects/pacific_cod/2024_03_04_RNAseq_QC_trimming.html",
-      "/posts/projects/pacific_cod/2023_12_13_pacific_cod.html",
-      "/posts/projects/pacific_cod/2023_12_14_pacific_cod.html",
-      "/posts/projects/pacific_cod/2023_12_07_pacific_cod.html",
-      "/posts/projects/pacific_cod/2023_11_02_pacific_cod.html",
-      "/posts/projects/pacific_cod/2023_10_13_pacific_cod.html"
-    ]
-  },
-  {
-    "listing": "/posts/projects/misc.html",
-    "items": [
-      "/posts/projects/misc/2024_09_16_hDNA_methylation.html",
-      "/posts/projects/misc/2024_06_18_NSF_GRFP_info.html",
-      "/posts/projects/misc/2024_02_22_quarto_features.html",
-      "/posts/projects/misc/2024_03_27_GNM569awk.html",
-      "/posts/projects/misc/2024_02_28_oyster_sampling.html",
-      "/posts/projects/misc/2024_01_30_Ideas.html",
-      "/posts/projects/misc/2024_02_26_oyster_sampling_materials.html",
-      "/posts/projects/misc/2024_02_22_paper_organization.html",
-      "/posts/projects/misc/2024_02_08_bedtools_gffvbed.html",
-      "/posts/projects/misc/2024_01_02_SICB.html",
-      "/posts/projects/misc/2024_01_02_TTS.html"
-    ]
-  },
-  {
     "listing": "/posts/projects/E5_coral.html",
     "items": [
-      "/posts/projects/E5_coral/2024_10_01_sRNA_DNA_methylation_interactions.html",
       "/posts/projects/E5_coral/2024_10_22_shortstack_4.1.0_reruns.html",
+      "/posts/projects/E5_coral/2024_11_11_updated_sRNA_summaries.html",
+      "/posts/projects/E5_coral/2024_10_01_sRNA_DNA_methylation_interactions.html",
       "/posts/projects/E5_coral/2024_07_19_mRNA_targetID_programs.html",
       "/posts/projects/E5_coral/2024_06_04_ShortStack_mature_v_star.html",
       "/posts/projects/E5_coral/2024_05_17_shortstack_mirdeep2_comparisons.html",
@@ -58,6 +29,7 @@
   {
     "listing": "/daily_log.html",
     "items": [
+      "/posts/daily_logs/2024/November_2024_posts.html",
       "/posts/daily_logs/2024/October_2024_posts.html",
       "/posts/daily_logs/2024/2024_10_31_weekly_steven_meeting.html",
       "/posts/daily_logs/2024/2024_10_25_Degree_ProgressPlan_Meeting.html",
@@ -88,8 +60,40 @@
     ]
   },
   {
+    "listing": "/posts/projects/misc.html",
+    "items": [
+      "/posts/projects/misc/2024_09_16_hDNA_methylation.html",
+      "/posts/projects/misc/2024_11_08_first_committee_meeting.html",
+      "/posts/projects/misc/2024_06_18_NSF_GRFP_info.html",
+      "/posts/projects/misc/2024_02_22_quarto_features.html",
+      "/posts/projects/misc/2024_03_27_GNM569awk.html",
+      "/posts/projects/misc/2024_02_28_oyster_sampling.html",
+      "/posts/projects/misc/2024_01_30_Ideas.html",
+      "/posts/projects/misc/2024_02_26_oyster_sampling_materials.html",
+      "/posts/projects/misc/2024_02_22_paper_organization.html",
+      "/posts/projects/misc/2024_02_08_bedtools_gffvbed.html",
+      "/posts/projects/misc/2024_01_02_SICB.html",
+      "/posts/projects/misc/2024_01_02_TTS.html"
+    ]
+  },
+  {
+    "listing": "/posts/projects/pacific_cod.html",
+    "items": [
+      "/posts/projects/pacific_cod/2024_04_29_methylation_subsampling.html",
+      "/posts/projects/pacific_cod/2024_04_25_methylation_subsampling.html",
+      "/posts/projects/pacific_cod/2024_03_19_RNAseq_prelim_kallistoDESeq2.html",
+      "/posts/projects/pacific_cod/2024_03_04_RNAseq_QC_trimming.html",
+      "/posts/projects/pacific_cod/2023_12_13_pacific_cod.html",
+      "/posts/projects/pacific_cod/2023_12_14_pacific_cod.html",
+      "/posts/projects/pacific_cod/2023_12_07_pacific_cod.html",
+      "/posts/projects/pacific_cod/2023_11_02_pacific_cod.html",
+      "/posts/projects/pacific_cod/2023_10_13_pacific_cod.html"
+    ]
+  },
+  {
     "listing": "/posts/projects/pacific_oyster.html",
     "items": [
+      "/posts/projects/pacific_oyster/2024_11_08_diptrip_updates_summary.html",
       "/posts/projects/pacific_oyster/2024_08_09_diptrip_survivorship_round2.html",
       "/posts/projects/pacific_oyster/2024_08_02_diptrip_survivorship_round1.html",
       "/posts/projects/pacific_oyster/2024_07_29_diptrip_sampling.html",
