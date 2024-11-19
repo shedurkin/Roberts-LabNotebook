@@ -178,6 +178,9 @@ ul.task-list li input[type="checkbox"] {
 <li><p><a href="https://github.com/urol-e5/deep-dive-expression/tree/main/E-Peve/output/03.1-Peve-sRNA-summary">Peve</a></p></li>
 <li><p><a href="https://github.com/urol-e5/deep-dive-expression/tree/main/F-Ptuh/output/03.1-Ptuh-sRNA-summary">Ptuh</a></p></li>
 </ul>
+<p>As a reminder, normalization and variance stabilization are two different transformations that serve different purposes.</p>
+<p><strong>Normalizing</strong> the transcript counts <strong>adjusts for differences in library size</strong> or sequencing depth, but <strong>retains count-like properties</strong>. Normalized counts are most useful for things like visualizing expression levels and differential expression analysis.</p>
+<p><strong>Variance stabilization</strong> aims to make the variance of the transformed data approximately independent of the mean, <strong>reducing heteroscedasticity</strong> (the relationship between variance and mean) and “smoothing” out the variance at low counts. Notably, the transformed data is <strong>no longer on the original count scale</strong>. The transformation makes the variance roughly constant across the range of counts, which makes it easier to interpret patterns in the data visually. Variance stabilized data is most useful for exploratory data analysis, like PCA, clustering, and heatmaps, and is also the transformation we’ll want to use before WGCNA.</p>
 <p>Here’s some of the figures generated in these summary docs</p>
 <section id="total-transcripts-raw" class="level2">
 <h2 class="anchored" data-anchor-id="total-transcripts-raw">Total transcripts (raw)</h2>

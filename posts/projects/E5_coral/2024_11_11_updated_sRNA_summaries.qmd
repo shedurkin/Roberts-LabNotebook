@@ -32,6 +32,12 @@ count matrices:
 
 -   [Ptuh](https://github.com/urol-e5/deep-dive-expression/tree/main/F-Ptuh/output/03.1-Ptuh-sRNA-summary)
 
+As a reminder, normalization and variance stabilization are two different transformations that serve different purposes.
+
+**Normalizing** the transcript counts **adjusts for differences in library size** or sequencing depth, but **retains count-like properties**. Normalized counts are most useful for things like visualizing expression levels and differential expression analysis.
+
+**Variance stabilization** aims to make the variance of the transformed data approximately independent of the mean, **reducing heteroscedasticity** (the relationship between variance and mean) and "smoothing" out the variance at low counts. Notably, the transformed data is **no longer on the original count scale**. The transformation makes the variance roughly constant across the range of counts, which makes it easier to interpret patterns in the data visually. Variance stabilized data is most useful for exploratory data analysis, like PCA, clustering, and heatmaps, and is also the transformation we'll want to use before WGCNA.
+
 Here's some of the figures generated in these summary docs
 
 ## Total transcripts (raw)
