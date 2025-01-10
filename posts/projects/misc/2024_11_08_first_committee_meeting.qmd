@@ -1,0 +1,42 @@
+---
+title: "Outlining Plans for First Committee Meeting"
+author: "Kathleen Durkin"
+date: "2024-11-08"
+categories: ["misc"]
+format:
+  html:
+    toc: true
+    code-fold: true
+engine: knitr
+#bibliography: ../../../references.bib
+---
+
+Steven Roberts (PI), Kerry Naish, Hollie Putnam
+
+Plan for bypass:
+
+-   Form committee
+
+-   First committee meeting
+
+-   Plan of study
+
+-   Thesis proposal
+
+-   Thesis
+
+-   General exam
+
+Funding:
+
+Thesis Work:
+
+**Epigenetic mechanisms of stress response/environmental memory in marine invertebrates**
+
+E5 project -- deep-dive:
+
+Hypotheses:
+
+-   As previously suggested in other coral species, miRNAs will be little conserved among our three study species
+
+**Heritability/inheritance of differential DNA methylation in virginica oysters**

@@ -1,0 +1,14 @@
+{
+  "hash": "a506308d68ce866035ffab006b6a1656",
+  "result": {
+    "markdown": "---\ntitle: \"Outlining Plans for First Committee Meeting\"\nauthor: \"Kathleen Durkin\"\ndate: \"2024-11-08\"\ncategories: [\"misc\"]\nformat:\n  html:\n    toc: true\n    code-fold: true\nengine: knitr\n#bibliography: ../../../references.bib\n---\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
