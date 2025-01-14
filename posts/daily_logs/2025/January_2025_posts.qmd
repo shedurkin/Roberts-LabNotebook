@@ -67,6 +67,14 @@ format:
 
 #### Monday
 
+-   **1 hr** -- SWED102 class
+
+-   **6 hr** -- misc work for QSCI381 (file modification, putting together Lab pages and .Rmd Keys, setting up Gradescope Assignment 1 for my sections, prepping Lab materials for today, creating a helper doc for .Rmd -\> PDF render and Gradescope submission, editing all Assignment pages to include note about Gradescope submission for my sections, create ED Discussion Announcement about Gradescope for my sections, etc.)
+
+-   **2.5 hr** -- QSCI 381 Lab
+
+Daily Total: **9.5 hr**
+
 ## 10 January 2025
 
 #### Friday
