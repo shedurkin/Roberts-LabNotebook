@@ -59,9 +59,33 @@ format:
 
 #### Wednesday
 
+-   **1 hr** -- SWED102 class
+
+-   **0.5 hr** -- SED102 HW
+
+-   **1 hr** -- miscellaneous (emails, writing thank you letters for ARCS fellowship donors, etc.)
+
+-   **1 hr** -- QSCI381 miscellaneous work (responding to student emails, reviewing recent discussion posts, fixing Assignment 1 rubric, grading first few Assignment 1 submissions to check that Canvas and Gradescope are linked appropriately, looked thru Assignment 2 and Lab 2 for 381 meeting tomorrow)
+
+-   **2.5 hr** -- QSCI381 Office Hours
+
+-   **2.5 hr** -- FSH513 research (compiling relevant papers, setting up notes structure, start lit review)
+
+Daily total: **8.5 hr**
+
 ## 14 January 2025
 
 #### Tuesday
+
+-   **1 hr** -- SWED102 class
+
+-   **1 hr** -- SWED102 HW
+
+-   **2.5 hr** -- QSCI381 Lab
+
+-   **4.5 hr** -- misc work for QSCI381 (figuring out how to link Canvas and Gradescope Assignments and implementing, creating Assignment 1 key, creating .Rmd templates for student use for Assignment 1, Lab 1, Lab 2, and posting all in appropriate Canvas pages, answering student emails)
+
+Daily total: **9 hr**
 
 ## 13 January 2025
 
