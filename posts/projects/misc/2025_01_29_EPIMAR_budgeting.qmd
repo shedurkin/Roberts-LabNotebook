@@ -1,0 +1,38 @@
+---
+title: "EPIMAR 2025 Budgeting"
+author: "Kathleen Durkin"
+date: "2025-01-29"
+categories: ["misc"]
+format:
+  html:
+    toc: true
+    code-fold: true
+engine: knitr
+#bibliography: ../../../references.bib
+---
+
+I submitted an abstract to the 2025 conference for Epigenetics in Marine and Aquatic Research (EPIMAR) and, after learning Steven is a member of the EPIMAR team, it seems likely I'll be able to present!
+
+The funding sources available to me through the department, and college are:
+
+-   FINS Graduate Student Travel Award
+
+-   College of Environment Student Travel Fund
+
+-   Graduate School Conference Presentation Awards
+
+-   GPSS Travel Grants
+
+I'm not an active participant in FINS and I've already received the Graduate School award within the last year (for SICB earlier this month), so the two I'm still eligible for are:
+
+-   College of Environment Student Travel Fund (up to \$1500): <https://environment.uw.edu/students/current-students/scholarships-funding/travel-fund/>
+
+-   GPSS Travel Grants (up to \$500): <https://depts.washington.edu/gpss/travel-grants/>
+
+The CoE application requires a detailed budget request, so today I compiled estimates for registration costs, roundtrip airfare, lodging, and food, using current rates for flights and hotels. I also ensured the lodging/food estimates are well within the per-diem limitations for Barcelona.
+
+[EPIMAR 2025 Budget](https://docs.google.com/spreadsheets/d/1GuNdxFpeoh1lXlhZgxcE5onIHZ6i-b77PtL83mYqsEQ/edit?gid=2070203042#gid=2070203042)
+
+I think I can further minimize lodging costs by either splitting a hotel room with other E5 folks (Jill and/or Danielle may be attending and interested in splitting) or by choosing a hostel instead of hotel room (this is much less preferable to me).
+
+I also could reduce flight costs if I chose to extend my trip using personal time. the May 26 - May 31 timeframe results in pretty expensive flight costs (\~\$1100). Extending the trip with personal time (i.e. a vacation) could bring airfare below \$900 by flying on cheaper days.
