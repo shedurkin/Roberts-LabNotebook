@@ -1,0 +1,154 @@
+---
+title: "Deep-dive Expression Project Planning"
+author: "Kathleen Durkin"
+date: "2025-01-30"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Now that we've completed a lot of the foundational work for the E5 deep-dive expression project (e.g. sRNA & lncRNA ID, RNA and sRNA expression summaries, preliminary target prediction and coexpression work, etc.), I want to clarify our focus for project completion.
+
+[deep-dive-expression repo](https://github.com/urol-e5/deep-dive-expression)\
+[manuscript](https://docs.google.com/document/d/1vlWJiuaxKuh6q6XOBVBrGsZkmf6R_JpJMO6wDIGzdx0/edit?tab=t.0#heading=h.gxujq2yyuafv)\
+[project meeting notes](https://docs.google.com/document/d/1Fdd6xC9tJmAf9Iydcf3er-YwabKmwK3jGVw4ppfxfhM/edit?tab=t.0#heading=h.5xpib71go7rb)\
+[hypotheses brainstorming document](https://docs.google.com/document/d/14WayiHQLe3_5_aS_d4dEZj5mt1DuHvV21JpR4a96uhg/edit?tab=t.0)
+
+### **Hypotheses:**
+
+#### **Gene expression and sRNA**
+
+-   sRNA that bind to genes and are inversely correlated with expression - regulate those genes
+
+-   There will be a suite of genes that a sRNA regulates that have similar function
+
+-   Some lncRNAs that act as sponges (bind) sRNA will impact gene expression sRNA regulate
+
+-   A subset of lncRNAs will regulate mRNA as evident by correlation
+
+-   some lncRNAs may act as miRNA precursors -- expect they will contain the full pre-miRNA
+
+-   Lack of DNA methylation in a given will result in increased alternative isoforms
+
+#### **Gene expression and DNA methylation**
+
+-   Housekeeping genes: positive relationship between expression and GBM
+
+-   plastic/environmentally responsive genes: negative relationship between expression and GBM
+
+#### **sRNA and DNA methylation**
+
+-   miRNAs modulate DNA methylation by binding to the mRNA encoding methylation machinery (e.g., DNMTs)
+
+    -   For miRNA that target methylation machinery, expect negative relationship miRNA expression and global methylation
+
+-   siRNA modulate DNA methylation through RNA-directed DNA methylation by binding to genomic region and recruiting protein machinery to direct methylation
+
+    -   Expect positive relationship between siRNA binding in a genomic region and methylation of that region
+
+-   siRNAs could also play a role in guiding DNA methylation to silence transposable elements
+
+    -   Expect siRNA binding to TEs
+
+#### **Gene expression and histones**
+
+### **Data:** 
+
+[RNA sequencing]{.underline}
+
+-   gene expression
+
+-   lncRNA ID & expression
+
+[sRNA sequencing]{.underline}
+
+-   miRNA ID & expression
+
+-   siRNA ID & expression
+
+-   piRNA ID & expression (if desired)
+
+[WGBS (in progress)]{.underline}
+
+-   DNA methylation mapping
+
+Some H4 data
+
+### **Completed work:**
+
+The below summary is for A.pulchra only.
+
+All data processing for RNAseq and sRNAseq (including filtering, trimming, lncRNA ID, sRNA ID, summarizing to count matrices, and functional annotation) has been completed.
+
+**genes-ncRNA:**
+
+Two methods of miRNA-mRNA target prediction (miRanda and RNAhybrid) have been performed, and the miRanda results have been used in combination with Pearson's Correlation to generate coexpression/interaction network. This interaction network has also been functionally annotated.
+
+**genes-WGBS:**
+
+none
+
+**ncRNA-WGBS:**
+
+I've looked for miRNA binding to genes that encode DNA methylation machinery (none found).
+
+**other:**
+
+Zoe has also run Orthofinder to facilitate cross-species comparisons
+
+### **Goals/To-Do (general):**
+
+*Ensure I'm using the SMART framework (SMART: Specific, Measurable, Attainable, Relevant, and Time-bound)*
+
+Some goals are formulated to directly address one of the hypotheses listed above, and (for now) should be performed on A.pulchra data only.
+
+1.  *"sRNA that bind to genes and are inversely correlated with expression - regulate those genes"*\
+    Use gene-miRNA interaction network to create some basic figures summarizing nature and extent of interactions (e.g. how many genes with how many miRNAs, how many genes does a single RNA usually interact with and vice versa, how many positive vs. negative relationships are there)
+
+2.  *"There will be a suite of genes that a sRNA regulates that have similar function"*\
+    Use functional annotation of the gene-miRNA interaction network to identify putative function of each miRNA based on function of associated genes.
+
+3.   For predicted miRNA targets, compare functional composition of targets to functional composition of full reference.\
+    (Basically, I want to see whether miRNAs preferentially regulate any functional classes).
+
+4.  Formally name each miRNA, matching the names assigned during deep-dive when possible.
+
+5.  If an miRNA is formally described (e.g. mir-100), compare/contrast its described function with the putative function determined during (2)
+
+6.  *"Some lncRNAs that act as sponges (bind) sRNA will impact gene expression sRNA regulate"\
+    *Use miRanda to predict miRNA-lncRNA binding and evaluate correlated expression of putative binding pairs to generate miRNA-lncRNA interaction network.
+
+7.  *"A subset of lncRNAs will regulate mRNA as evident by correlation"*\
+    Evaluate correlated expression of lncRNA and mRNA.
+
+8.  *"some lncRNAs may act as miRNA precursors -- expect they will contain the full pre-miRNA "*\
+    Use BLAST to search for lncRNAs that fully contain pre-miRNA sequences.
+
+9.  Using simulated WGBS data, prep pipeline to summarize methylation (whole genome methylation levels, GBM/distribution across genome features, etc.)
+
+10. *"Housekeeping genes: positive relationship between expression and GBM"* and *"plastic/environmentally responsive genes: negative relationship between expression and GBM"*\
+    Using simulated WGBS data, prep pipeline to delimit genes by function (housekeeping vs. responsive) evaluate relationship of both classes with gene body methylation.
+
+11. *"siRNA modulate DNA methylation through RNA-directed DNA methylation by binding to genomic region and recruiting protein machinery to direct methylation"*\
+    Use miRanda/RNAhybrid to predict siRNA binding to the genome. Using simulated WGBS data, prep pipeline to test whether siRNA binding is significantly associated with methylation
+
+12. siRNAs could also play a role in guiding DNA methylation to silence transposable elements
+
+    Use miRanda/RNAhybrid to predict siRNA binding to TEs. Evaluate correlated expression of siRNAs and TEs (expecting a negative relationship).
+
+Multiomics?
+
+At some point we'll need to a) replicate these analyses on Peve and Ptuh, and b) run some cross species comparisons
+
+### **Goals/Plan for Friday (1/31) meeting:**
+
+-   Clarify involvement/role of E5 molecular group members -- ensure everyone who is/would like to be involved in deep-dive expression manuscript has something to be working on. Assign out goals/tasks if people
+
+-   Define the overarching lens/focus of the manuscript
+
+-   Once tasks are assigned to individuals and a rough timeline is selected, add tasks as Github issues
+
+-   Add current progress to manuscript?

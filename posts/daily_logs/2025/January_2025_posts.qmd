@@ -11,9 +11,39 @@ format:
 
 #### Friday
 
+-   0.5 hr - prep for E5 meeting
+
+-   1 hr -- E5 meeting
+
+-   1 hr -- SWED102 class
+
+-   
+
 ## 30 January 2025
 
 #### Thursday
+
+Early start to the day to prep for FISH513 today and E5 tomorrow
+
+-   **2 hr** -- brainstorming/project planning for E5 meeting tomorrow
+
+-   **1 hr** -- SWED102 class
+
+-   **2 hr** -- FISH513 lit review  + slides creation for presentation today
+
+-   **0.5 hr** -- QSCI381 weekly meeting
+
+-   **0.5 hr** -- lunch/meeting visiting prospective grad students
+
+-   **1 hr** -- lab meeting
+
+-   **2 hr** -- FISH513
+
+-   **0.5 hr** -- prep meeting w Steven for E5 meeting tomorrow
+
+-   **2 hr** -- Seminar + TGIT + meeting/talking with prospective grad students
+
+Daily total: **11.5 hr**
 
 ## 29 January 2025
 
@@ -28,6 +58,10 @@ format:
 -   **1.5 hr** -- misc. related to [EPIMAR 2025](../../projects/misc/2025_01_29_EPIMAR_budgeting.qmd)
 
 -   **0.5 hr** -- notebook post and daily log updates
+
+-   **1.5 hr** -- FISH513 compiling GCRMN and WoRMS info for presentation tomorrow, adding to slides
+
+Daily total: **9.5 hr**
 
 ## 28 January 2025
 
@@ -158,7 +192,7 @@ Daily total: **8.5 hrs**
 Weekly Overview:
 
 |                 | Monday | Tuesday | Wednesday | Thursday | Friday | TOTALS                   |
-|----------|----------|----------|----------|----------|----------|-------------|
+|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
 | **Classes**     | 1      | 2       | 4         | 6        | 2      | **15**                   |
 | **TAing**       | 8.5    | 7       | 3.5       | 1        | 2.5    | **22.5**                 |
 | **Thesis work** | 0      | 0       | 1         | 3        | 4      | **8**                    |
