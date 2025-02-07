@@ -72,10 +72,10 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       page: 25,
     pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -145,7 +145,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
+    <div class="quarto-title column-page">
       <h1 class="title">University of Washington, SAFS – Roberts Lab</h1>
                       </div>
   </div>
@@ -154,11 +154,9 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(92)</span></div><div class="category" data-category="E5-coral">E5-coral <span class="quarto-category-count">(15)</span></div><div class="category" data-category="daily log">daily log <span class="quarto-category-count">(10)</span></div><div class="category" data-category="misc">misc <span class="quarto-category-count">(6)</span></div><div class="category" data-category="miscellaneous">miscellaneous <span class="quarto-category-count">(7)</span></div><div class="category" data-category="monthly goals">monthly goals <span class="quarto-category-count">(20)</span></div><div class="category" data-category="onboarding">onboarding <span class="quarto-category-count">(1)</span></div><div class="category" data-category="pacifc-cod">pacifc-cod <span class="quarto-category-count">(9)</span></div><div class="category" data-category="pacific_oyster">pacific_oyster <span class="quarto-category-count">(19)</span></div></div></div>
+    
 <!-- main -->
-<div class="quarto-about-trestles column-page-left">
+<div class="quarto-about-trestles column-page">
   <div class="about-entity">
     <img src="./images/SICB-headshot-circlecrop.png" class="about-image
   rounded " style="width: 20em;">
@@ -178,7 +176,7 @@ ul.task-list li input[type="checkbox"] {
   </a>
 </div>
   </div>
-  <div class="about-contents"><main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+  <div class="about-contents"><main class="content quarto-banner-title-block column-page" id="quarto-document-content">
 <section id="welcome-to-my-lab-notebook" class="level2">
 <h2 data-anchor-id="welcome-to-my-lab-notebook">Welcome to my lab notebook!</h2>
 <p>My name is Kathleen, I joined the Roberts Lab at the University of Washington’s School of Aquatic and Fishery Sciences (SAFS) in September 2023 to pursue my PhD. I’m broadly interested in understanding how marine invertebrates respond to stress, with a focus on different types of epigenetic modification (methylation, ncRNAs, etc.). You can see what I’m working on right now at the top-right corner!</p>
@@ -278,13 +276,6 @@ Deep-dive expression: A.pul miRNA methylation machinery
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('E5-coral'); return false;">
-E5-coral
-</div>
-</div>
-<a href="./posts/projects/E5_coral/2025_02_07_deepdive_methyl_machinery.html">
 <div class="listing-description">
 One way miRNAs and DNA methylation can interact to influence expression is through miRNAs influencing the…
 </div>
@@ -312,13 +303,6 @@ February 2025, Daily Log
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('monthly goals'); return false;">
-monthly goals
-</div>
-</div>
-<a href="./posts/daily_logs/2025/February_2025_posts.html">
 <div class="listing-description">
 <strong>1 hr</strong> – SWED102 class
 </div>
@@ -346,13 +330,6 @@ February 2025, Monthly Goals
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('monthly goals'); return false;">
-monthly goals
-</div>
-</div>
-<a href="./posts/daily_logs/2025/February_2025_goals.html">
 <div class="listing-description">
 <strong>Complete E5 tasks set at Jan.&nbsp;31 2025 E5 Molecular meeting<br>
 Mine include:</strong>
@@ -381,13 +358,6 @@ January 2025, Daily Log
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('monthly goals'); return false;">
-monthly goals
-</div>
-</div>
-<a href="./posts/daily_logs/2025/January_2025_posts.html">
 <div class="listing-description">
 <strong>0.5 hr</strong> - prep for E5 meeting
 </div>
@@ -415,13 +385,6 @@ Deep-dive Expression Project Planning
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('E5-coral'); return false;">
-E5-coral
-</div>
-</div>
-<a href="./posts/projects/E5_coral/2025_01_30_project_planning.html">
 <div class="listing-description">
 Now that we’ve completed a lot of the foundational work for the E5 deep-dive expression…
 </div>
@@ -449,13 +412,6 @@ EPIMAR 2025 Budgeting
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('misc'); return false;">
-misc
-</div>
-</div>
-<a href="./posts/projects/misc/2025_01_29_EPIMAR_budgeting.html">
 <div class="listing-description">
 I submitted an abstract…
 </div>
@@ -483,13 +439,6 @@ January 2025, Monthly Goals
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('monthly goals'); return false;">
-monthly goals
-</div>
-</div>
-<a href="./posts/daily_logs/2025/January_2025_goals.html">
 <div class="listing-description">
 <strong>Log activities daily in Lab Notebook.</strong><br>
 Last quarter I got overwhelmed with work and stopped posting my daily activities in my lab notebook. I want to reinstate that habit!
@@ -518,13 +467,6 @@ November 2024, Daily Log
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('monthly goals'); return false;">
-monthly goals
-</div>
-</div>
-<a href="./posts/daily_logs/2024/November_2024_posts.html">
 <div class="listing-description">
 adding methods to E5 expression manuscript
 </div>
@@ -552,13 +494,6 @@ Rerunning ShortStack for deep-dive-expression
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('E5-coral'); return false;">
-E5-coral
-</div>
-</div>
-<a href="./posts/projects/E5_coral/2024_10_22_shortstack_4.1.0_reruns.html">
 <div class="listing-description">
 We performed sRNA discovery for <em>A. pulchra</em>, <em>P. evermanni</em>, and <em>P. tuahiniensis</em> (formerly identified as <em>P. meandrina</em>) as part of the E5 <code>deep-dive</code> …<em></em><em></em><em></em><em></em><code></code><span class="citation" data-cites="axtell2013"></span><em></em><em></em>
 </div>
@@ -586,13 +521,6 @@ sRNA expression summaries
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('E5-coral'); return false;">
-E5-coral
-</div>
-</div>
-<a href="./posts/projects/E5_coral/2024_11_11_updated_sRNA_summaries.html">
 <div class="listing-description">
 I summarized sRNA expression for all…
 </div>
@@ -620,13 +548,6 @@ Lit Review: DNA methylation mapping with hDNA
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('misc'); return false;">
-misc
-</div>
-</div>
-<a href="./posts/projects/misc/2024_09_16_hDNA_methylation.html">
 <div class="listing-description">
 Literatur…
 </div>
@@ -654,13 +575,6 @@ Outlining Plans for First Committee Meeting
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('misc'); return false;">
-misc
-</div>
-</div>
-<a href="./posts/projects/misc/2024_11_08_first_committee_meeting.html">
 <div class="listing-description">
 
 </div>
@@ -688,13 +602,6 @@ Dip/Trip Hardening, Experimental Summary
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacific_oyster'); return false;">
-pacific_oyster
-</div>
-</div>
-<a href="./posts/projects/pacific_oyster/2024_11_08_diptrip_updates_summary.html">
 <div class="listing-description">
 As a reminder, this project involved hardening adult diploid and triploid Pacific oysters with a…
 </div>
@@ -722,13 +629,6 @@ October 2024, Daily Log
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('monthly goals'); return false;">
-monthly goals
-</div>
-</div>
-<a href="./posts/daily_logs/2024/October_2024_posts.html">
 <div class="listing-description">
 trying to generate some basic distance correlation matrices for miRNA-mRNA pairs (in E5 dde), but getting stuck…
 </div>
@@ -756,13 +656,6 @@ October 31 Weekly Steven Meeting
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('monthly goals'); return false;">
-monthly goals
-</div>
-</div>
-<a href="./posts/daily_logs/2024/2024_10_31_weekly_steven_meeting.html">
 <div class="listing-description">
 Registered for SICB, booked flights, found Charlotte Magnum program roommate, and booked hotel through CM program.
 </div>
@@ -790,13 +683,6 @@ Masters/Bypass Progress and Planning
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('monthly goals'); return false;">
-monthly goals
-</div>
-</div>
-<a href="./posts/daily_logs/2024/2024_10_25_Degree_ProgressPlan_Meeting.html">
 <div class="listing-description">
 Overview of 2024.10.25 meeting with Steven to discuss/plan Masters/bypass completion.
 </div>
@@ -824,13 +710,6 @@ Lit Review: Understanding interactions of sRNA and DNA methylation
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('E5-coral'); return false;">
-E5-coral
-</div>
-</div>
-<a href="./posts/projects/E5_coral/2024_10_01_sRNA_DNA_methylation_interactions.html">
 <div class="listing-description">
 
 </div>
@@ -858,13 +737,6 @@ September 2024, Daily Log
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('monthly goals'); return false;">
-monthly goals
-</div>
-</div>
-<a href="./posts/daily_logs/2024/September_2024_posts.html">
 <div class="listing-description">
 class
 </div>
@@ -892,13 +764,6 @@ September 2024, Monthly Goals
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('monthly goals'); return false;">
-monthly goals
-</div>
-</div>
-<a href="./posts/daily_logs/2024/September_2024_goals.html">
 <div class="listing-description">
 Have finalized masters thesis committee
 </div>
@@ -926,13 +791,6 @@ Dip/Trip Hardening, Survivorship Round 2
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacific_oyster'); return false;">
-pacific_oyster
-</div>
-</div>
-<a href="./posts/projects/pacific_oyster/2024_08_09_diptrip_survivorship_round2.html">
 <div class="listing-description">
 Second attempt at a survivorship test with my remaining hardened diploid and triploid oysters (see first survivorship test here). See all details and original data collection in physical lab…
 </div>
@@ -960,13 +818,6 @@ Dip/Trip Hardening, Survivorship Round 1
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacific_oyster'); return false;">
-pacific_oyster
-</div>
-</div>
-<a href="./posts/projects/pacific_oyster/2024_08_02_diptrip_survivorship_round1.html">
 <div class="listing-description">
 Conducted extreme stress…
 </div>
@@ -994,13 +845,6 @@ Sampling hardened diploid and triploid oysters
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacific_oyster'); return false;">
-pacific_oyster
-</div>
-</div>
-<a href="./posts/projects/pacific_oyster/2024_07_29_diptrip_sampling.html">
 <div class="listing-description">
 Sampled each of the four treatment groups of the diploid and triploid thermal hardening experiment. As a reminder, diploid and triploid Pacific oysters were…
 </div>
@@ -1028,13 +872,6 @@ Mortality check of hardened diploid and triploid oysters
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacific_oyster'); return false;">
-pacific_oyster
-</div>
-</div>
-<a href="./posts/projects/pacific_oyster/2024_07_28_diptrip_mortalities.html">
 <div class="listing-description">
 I transferred the hardened diploid and triploid oysters from Point Whitney to an FTR 208 seawater tank held at 20C on July 23 (see post). They’ve now had a few days to acclimate to the tank, so I checked…
 </div>
@@ -1062,13 +899,6 @@ July 2024, Daily Log
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('daily log'); return false;">
-daily log
-</div>
-</div>
-<a href="./posts/daily_logs/2024/July_2024_posts.html">
 <div class="listing-description">
 partial water change (~10 gallons) in both the FTR seawater tanks, added Instant Algae to both.
 </div>
@@ -1096,13 +926,6 @@ Some oyster exams and disections
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacific_oyster'); return false;">
-pacific_oyster
-</div>
-</div>
-<a href="./posts/projects/pacific_oyster/2024_07_24_oyster_examinations.html">
 <div class="listing-description">
 Some notes and pictures from working with the FTR-stored oysters today.
 </div>
@@ -1130,13 +953,6 @@ Point Whitney: Transporting KD oysters
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacific_oyster'); return false;">
-pacific_oyster
-</div>
-</div>
-<a href="./posts/projects/pacific_oyster/2024_07_23_Point_Whitney.html">
 <div class="listing-description">
 Shorter trip to Point Whitney today to bring my hardened dip/trip oysters back to FTR and grab a few things.
 </div>
@@ -1164,13 +980,6 @@ Programs for identifying miRNA targets
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('E5-coral'); return false;">
-E5-coral
-</div>
-</div>
-<a href="./posts/projects/E5_coral/2024_07_19_mRNA_targetID_programs.html">
 <div class="listing-description">
 miRanda
 </div>
@@ -1198,13 +1007,6 @@ Extreme stress test trial #2
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacific_oyster'); return false;">
-pacific_oyster
-</div>
-</div>
-<a href="./posts/projects/pacific_oyster/2024_07_15_stress_test_trial2.html">
 <div class="listing-description">
 Second trial of an extreme…
 </div>
@@ -1232,13 +1034,6 @@ Extreme stress test trial #1
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacific_oyster'); return false;">
-pacific_oyster
-</div>
-</div>
-<a href="./posts/projects/pacific_oyster/2024_07_11_stress_test_trial.html">
 <div class="listing-description">
 Trial run of extreme stress test using the extra untreated, diploid “13” oysters currently stored in seawater cold room in FTR.<br>
 <br>
@@ -1268,13 +1063,6 @@ July 2024, Monthly Goals
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('monthly goals'); return false;">
-monthly goals
-</div>
-</div>
-<a href="./posts/daily_logs/2024/July_2024_goals.html">
 <div class="listing-description">
 
 </div>
@@ -1302,13 +1090,6 @@ Point Whitney: Stress treatments
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacific_oyster'); return false;">
-pacific_oyster
-</div>
-</div>
-<a href="./posts/projects/pacific_oyster/2024_07_08_Point_Whitney.html">
 <div class="listing-description">
 Another day at Point Whitney doing stress hardening
 </div>
@@ -1336,13 +1117,6 @@ Point Whitney: Stress treatments
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacific_oyster'); return false;">
-pacific_oyster
-</div>
-</div>
-<a href="./posts/projects/pacific_oyster/2024_07_05_Point_Whitney.html">
 <div class="listing-description">
 Another day at Point Whitney doing stress hardening
 </div>
@@ -1370,13 +1144,6 @@ Point Whitney: Stress treatments, clearance rate trials
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacific_oyster'); return false;">
-pacific_oyster
-</div>
-</div>
-<a href="./posts/projects/pacific_oyster/2024_07_03_Point_Whitney.html">
 <div class="listing-description">
 Another day at Point Whitney doing stress hardening and clearance rate trials
 </div>
@@ -1404,13 +1171,6 @@ June 2024, Daily Log
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('daily log'); return false;">
-daily log
-</div>
-</div>
-<a href="./posts/daily_logs/2024/June_2024_posts.html">
 <div class="listing-description">
 admin for Point Whitney field work
 </div>
@@ -1438,13 +1198,6 @@ Point Whitney: Stress treatments, clearance rate trials
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacific_oyster'); return false;">
-pacific_oyster
-</div>
-</div>
-<a href="./posts/projects/pacific_oyster/2024_07_01_Point_Whitney.html">
 <div class="listing-description">
 Field day at Point Whitney to continue hardening stress treatments
 </div>
@@ -1472,13 +1225,6 @@ Point Whitney: Hardening Treatments
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacific_oyster'); return false;">
-pacific_oyster
-</div>
-</div>
-<a href="./posts/projects/pacific_oyster/2024_06_28_Point_Whitney.html">
 <div class="listing-description">
 Today Ariana and I did stress hardening treatments for several oyster cohorts.
 </div>
@@ -1506,13 +1252,6 @@ Resazurin assay notes/questions
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacific_oyster'); return false;">
-pacific_oyster
-</div>
-</div>
-<a href="./posts/projects/pacific_oyster/2024_06_25_Resazurin.html">
 <div class="listing-description">
 Resazurin notes from Colby:
 </div>
@@ -1540,13 +1279,6 @@ Point Whitney: Experimental Setup
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacific_oyster'); return false;">
-pacific_oyster
-</div>
-</div>
-<a href="./posts/projects/pacific_oyster/2024_06_25_Point_Whitney.html">
 <div class="listing-description">
 Today we did a rough inventory of what diploid/triploid…
 </div>
@@ -1574,13 +1306,6 @@ Lit Review: Energetics
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacific_oyster'); return false;">
-pacific_oyster
-</div>
-</div>
-<a href="./posts/projects/pacific_oyster/2024_06_20_Energetics.html">
 <div class="listing-description">
 …<em></em>
 </div>
@@ -1608,13 +1333,6 @@ Lit Review: Experimental design questions
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacific_oyster'); return false;">
-pacific_oyster
-</div>
-</div>
-<a href="./posts/projects/pacific_oyster/2024_06_20_experimental_design_questions.html">
 <div class="listing-description">
 Addressing some questions/notes raised during preliminary project planning
 </div>
@@ -1642,13 +1360,6 @@ Preliminary Project Outline
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacific_oyster'); return false;">
-pacific_oyster
-</div>
-</div>
-<a href="./posts/projects/pacific_oyster/2024_06_19_Project_Outline.html">
 <div class="listing-description">
 <strong>Acclimation:</strong> Hold in lab ambient conditions for 2 weeks. Measure size and body condition.
 </div>
@@ -1676,13 +1387,6 @@ NSF GRFP, the aquaculture question
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('misc'); return false;">
-misc
-</div>
-</div>
-<a href="./posts/projects/misc/2024_06_18_NSF_GRFP_info.html">
 <div class="listing-description">
 Research eligibility guidelines, according to the Program Solicitation:
 </div>
@@ -1710,13 +1414,6 @@ Testing out some cool Quarto features
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('miscellaneous'); return false;">
-miscellaneous
-</div>
-</div>
-<a href="./posts/projects/misc/2024_02_22_quarto_features.html">
 <div class="listing-description">
 After looking through one of Sarah’s posts I noticed she has some super cool features included in her Quarto digital lab notebook, so I’m…
 </div>
@@ -1744,13 +1441,6 @@ June 2024, Monthly Goals
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('monthly goals'); return false;">
-monthly goals
-</div>
-</div>
-<a href="./posts/daily_logs/2024/June_2024_goals.html">
 <div class="listing-description">
 ✔️ Finalize committee selection and send out email requests
 </div>
@@ -1778,13 +1468,6 @@ May 2024, Daily Log
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('daily log'); return false;">
-daily log
-</div>
-</div>
-<a href="./posts/daily_logs/2024/May_2024_posts.html">
 <div class="listing-description">
 E5 meeting
 </div>
@@ -1812,13 +1495,6 @@ ShortStack: mature vs.&nbsp;star sequences incorrect?
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('E5-coral'); return false;">
-E5-coral
-</div>
-</div>
-<a href="./posts/projects/E5_coral/2024_06_04_ShortStack_mature_v_star.html">
 <div class="listing-description">
 See E5 deep-dive Github issue #49
 </div>
@@ -1846,13 +1522,6 @@ Comparing ShortStack outputs to miRdeep2
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('E5-coral'); return false;">
-E5-coral
-</div>
-</div>
-<a href="./posts/projects/E5_coral/2024_05_17_shortstack_mirdeep2_comparisons.html">
 <div class="listing-description">
 Both ShortStack and miRdeep2 are programs for identifying both known and novel miRNAs from a dataset based on an input database of known miRNAs and on expected…
 </div>
@@ -1880,13 +1549,6 @@ Summarizing and visualizing ShortStack outputs
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('E5-coral'); return false;">
-E5-coral
-</div>
-</div>
-<a href="./posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html">
 <div class="listing-description">
 Rendered code:
 </div>
@@ -1914,13 +1576,6 @@ May 2024, Monthly Goals
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('monthly goals'); return false;">
-monthly goals
-</div>
-</div>
-<a href="./posts/daily_logs/2024/May_2024_goals.html">
 <div class="listing-description">
 🟡 Select my committee members
 </div>
@@ -1948,13 +1603,6 @@ April 2024, Daily Log
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('daily log'); return false;">
-daily log
-</div>
-</div>
-<a href="./posts/daily_logs/2024/April_2024_posts.html">
 <div class="listing-description">
 trying to make some figures for cod DEGs
 </div>
@@ -1982,13 +1630,6 @@ Tissue subsampling for WGBS (cont.)
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacifc-cod'); return false;">
-pacifc-cod
-</div>
-</div>
-<a href="./posts/projects/pacific_cod/2024_04_29_methylation_subsampling.html">
 <div class="listing-description">
 We’re planning on sending out samples for whole genome…
 </div>
@@ -2016,13 +1657,6 @@ Tissue subsampling for WGBS (methylation work)
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacifc-cod'); return false;">
-pacifc-cod
-</div>
-</div>
-<a href="./posts/projects/pacific_cod/2024_04_25_methylation_subsampling.html">
 <div class="listing-description">
 We’re planning on sending out samples for whole genome bisulfite sequencing (WGBS) to examine methlation in our cod samples. Today I subsampled all of the liver tissue.
 </div>
@@ -2050,13 +1684,6 @@ April 2024, Monthly Goals
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('monthly goals'); return false;">
-monthly goals
-</div>
-</div>
-<a href="./posts/daily_logs/2024/April_2024_goals.html">
 <div class="listing-description">
 I’m out for a little over a week this month (March 6-15), so I have a more limited set of goals
 </div>
@@ -2084,13 +1711,6 @@ March 2024, Daily Log
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('daily log'); return false;">
-daily log
-</div>
-</div>
-<a href="./posts/daily_logs/2024/March_2024_posts.html">
 <div class="listing-description">
 class (GNM569)
 </div>
@@ -2118,13 +1738,6 @@ Learning awk for GNM569
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('misc'); return false;">
-misc
-</div>
-</div>
-<a href="./posts/projects/misc/2024_03_27_GNM569awk.html">
 <div class="listing-description">
 This quarter I’m taking GENOME569, which covers developing bioinformatic workflows for high-throughput sequencing. Today we briefly covered some of the…<br>
 </div>
@@ -2152,13 +1765,6 @@ RNAseq data preliminary kallisto and DESeq2
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacifc-cod'); return false;">
-pacifc-cod
-</div>
-</div>
-<a href="./posts/projects/pacific_cod/2024_03_19_RNAseq_prelim_kallistoDESeq2.html">
 <div class="listing-description">
 Pacific cod RNAseq raw read QC
 </div>
@@ -2186,13 +1792,6 @@ March 2024, Monthly Goals
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('monthly goals'); return false;">
-monthly goals
-</div>
-</div>
-<a href="./posts/daily_logs/2024/March_2024_goals.html">
 <div class="listing-description">
 ✔️ Set up RNAseq DGE analysis pipeline for when we get the cod RNAseq data back.
 </div>
@@ -2220,13 +1819,6 @@ RNAseq data FastQC and trimming
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacifc-cod'); return false;">
-pacifc-cod
-</div>
-</div>
-<a href="./posts/projects/pacific_cod/2024_03_04_RNAseq_QC_trimming.html">
 <div class="listing-description">
 Data recieved from Azenta Feb.&nbsp;21, 2024 (project 30-943133806) (see Sam’s notebook post).
 </div>
@@ -2254,13 +1846,6 @@ February 2024, Daily Log
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('daily log'); return false;">
-daily log
-</div>
-</div>
-<a href="./posts/daily_logs/2024/February_2024_posts.html">
 <div class="listing-description">
 lab meeting, discussed sections “Maple Sugar Moon” and “Witch Hazel” from <em>Braiding Sweetgras</em>s
 </div>
@@ -2288,13 +1873,6 @@ Oyster Sampling @ Point Whitney – Lifestage Carryover Project
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('miscellaneous'); return false;">
-miscellaneous
-</div>
-</div>
-<a href="./posts/projects/misc/2024_02_28_oyster_sampling.html">
 <div class="listing-description">
 We (Eric, Grace L., Ariana, and I) spent the day at the Point Whitney research station, performing a reciprocal heat stress treatment and sampling on 4 Pacific oyster (<em>Crassostr…</em>
 </div>
@@ -2322,13 +1900,6 @@ Ideas/Questions Log
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('miscellaneous'); return false;">
-miscellaneous
-</div>
-</div>
-<a href="./posts/projects/misc/2024_01_30_Ideas.html">
 <div class="listing-description">
 My favorite part of science is constantly interacting with papers/presentations/people that prompt new ideas and questions about the…
 </div>
@@ -2356,13 +1927,6 @@ Materials for oyster sampling 2/28/24
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('miscellaneous'); return false;">
-miscellaneous
-</div>
-</div>
-<a href="./posts/projects/misc/2024_02_26_oyster_sampling_materials.html">
 <div class="listing-description">
 On Wednesday I’m going with Ariana, Eric, Grace L. to the hatchery to help them with sampling. I collected the following materials and stored them in the conference room…
 </div>
@@ -2390,13 +1954,6 @@ Google sheets template for organizing allllllll the papers
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('miscellaneous'); return false;">
-miscellaneous
-</div>
-</div>
-<a href="./posts/projects/misc/2024_02_22_paper_organization.html">
 <div class="listing-description">
 As I’ve started reading more and more papers over the last few months I’ve been thinking more about how to keep track of all the information input. I’m still in the early…
 </div>
@@ -2424,13 +1981,6 @@ Testing bedtools: gff vs bed input file
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('misc'); return false;">
-misc
-</div>
-</div>
-<a href="./posts/projects/misc/2024_02_08_bedtools_gffvbed.html">
 <div class="listing-description">
 While writing some script to generate a transcriptome fasta using a CDS gff and scaffold genome, I ran into the question of how exactly the bedtools getfasta tool handles gff and bed file inputs. While both gff and bed files list…
 </div>
@@ -2458,13 +2008,6 @@ Generating a genes fasta for P. evermanni
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('E5-coral'); return false;">
-E5-coral
-</div>
-</div>
-<a href="./posts/projects/E5_coral/2024_02_07_Peve_transcriptome.html">
 <div class="listing-description">
 In the process of running kallisto on the three E5 deep dive species, we realized that there’s no transcriptome FASTA available for <em>P. evermanni</em>.…
 </div>
@@ -2492,13 +2035,6 @@ RNAseq abundance quantification (A.Pulchra, P.evermanni, P.meandrina)
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('E5-coral'); return false;">
-E5-coral
-</div>
-</div>
-<a href="./posts/projects/E5_coral/2024_02_06_RNAseq_kallisto.html">
 <div class="listing-description">
 I’m currently working on trying a few types of gene expression analysis with the E5 RNAseq and sRNAseq data we have for <em>A. Pulchra</em>, <em>P. evermanni</em>, and <em>P. meandrina,</em> but before I can do any analysis work we need abundance count matrices for the RNAseq data from each of the three species. This notebook post is a write up of the steps…<em></em><br>
 </div>
@@ -2526,13 +2062,6 @@ February 2024, Monthly Goals
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('monthly goals'); return false;">
-monthly goals
-</div>
-</div>
-<a href="./posts/daily_logs/2024/February_2024_goals.html">
 <div class="listing-description">
 My favorite part of January was, by far, SICB! I really loved going to my first big, more specialized conference, and I got to hear about <em>so</em> …
 </div>
@@ -2560,13 +2089,6 @@ January 2024, Daily Log
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('daily log'); return false;">
-daily log
-</div>
-</div>
-<a href="./posts/daily_logs/2024/January_2024_posts.html">
 <div class="listing-description">
 Class and classwork
 </div>
@@ -2594,13 +2116,6 @@ P.evermanni RNAseq kallisto debugging
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('E5-coral'); return false;">
-E5-coral
-</div>
-</div>
-<a href="./posts/projects/E5_coral/2024_01_31_Peve_kallisto.html">
 <div class="listing-description">
 I’m currently trying to quantify RNA abundances using RNAseq data from the three E5 deep dive species, and I’m running into some issues for <em>P. evermanni</em>.
 </div>
@@ -2628,13 +2143,6 @@ SICB 2024
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('miscellaneous'); return false;">
-miscellaneous
-</div>
-</div>
-<a href="./posts/projects/misc/2024_01_02_SICB.html">
 <div class="listing-description">
 <strong>MISS Grant Writing Workshop</strong>
 </div>
@@ -2662,13 +2170,6 @@ Reviewing Text-To-Speech Tools
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('miscellaneous'); return false;">
-miscellaneous
-</div>
-</div>
-<a href="./posts/projects/misc/2024_01_02_TTS.html">
 <div class="listing-description">
 updated Jan 10, 2024
 </div>
@@ -2696,13 +2197,6 @@ January 2024, Monthly Goals
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('monthly goals'); return false;">
-monthly goals
-</div>
-</div>
-<a href="./posts/daily_logs/2024/January_2024_goals.html">
 <div class="listing-description">
 Happy New Year!
 </div>
@@ -2730,13 +2224,6 @@ December 2023, Daily Log
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('daily log'); return false;">
-daily log
-</div>
-</div>
-<a href="./posts/daily_logs/2023/December_2023_posts.html">
 <div class="listing-description">
 Lab meeting – Grace, Ariana, and Chris gave practice talks/outlines for SICB next week
 </div>
@@ -2764,13 +2251,6 @@ Samples lists for cod RNAseq and methylation
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacifc-cod'); return false;">
-pacifc-cod
-</div>
-</div>
-<a href="./posts/projects/pacific_cod/2023_12_13_pacific_cod.html">
 <div class="listing-description">
 Compiled spreadsheets for the samples we plan to send for RNAseq and methylation.
 </div>
@@ -2798,13 +2278,6 @@ Finish pulling/subsampling for cod RNAseq
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacifc-cod'); return false;">
-pacifc-cod
-</div>
-</div>
-<a href="./posts/projects/pacific_cod/2023_12_14_pacific_cod.html">
 <div class="listing-description">
 Subsampled the four selected gill samples for RNAseq (in blue below) to retain half of the sample for methylation work later. Pulled the four selected spleen samples…
 </div>
@@ -2832,13 +2305,6 @@ Sampling liver samples for RNAseq
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacifc-cod'); return false;">
-pacifc-cod
-</div>
-</div>
-<a href="./posts/projects/pacific_cod/2023_12_07_pacific_cod.html">
 <div class="listing-description">
 Started sampling cod liver tissue samples for RNAseq. (excluded samples with intestinal tapeworms) – bolding indicates sampled this morning (~30mg), and then stored at -80*C.
 </div>
@@ -2866,13 +2332,6 @@ December 2023, Monthly Goals
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('monthly goals'); return false;">
-monthly goals
-</div>
-</div>
-<a href="./posts/daily_logs/2023/December_2023_goals.html">
 <div class="listing-description">
 (Note, I’ll likely be out/less productive over the Christmas holiday)
 </div>
@@ -2900,13 +2359,6 @@ P.meandrina sRNA: miRdeep2 and 3 species sRNA comparison
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('E5-coral'); return false;">
-E5-coral
-</div>
-</div>
-<a href="./posts/projects/E5_coral/2023_12_05_E5_coral.html">
 <div class="listing-description">
 The <em>P.meandrina</em> miRdeep2 finished running!
 </div>
@@ -2934,13 +2386,6 @@ November 2023, Daily Log
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('daily log'); return false;">
-daily log
-</div>
-</div>
-<a href="./posts/daily_logs/2023/November_2023_posts.html">
 <div class="listing-description">
 Lab meeting, kept working on P.meandrina sRNA investigation
 </div>
@@ -2968,13 +2413,6 @@ P.meandrina sRNA: MirMachine, ShortStack
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('E5-coral'); return false;">
-E5-coral
-</div>
-</div>
-<a href="./posts/projects/E5_coral/2023_11_30_E5_coral.html">
 <div class="listing-description">
 More on P.meandrina sRNA investigation
 </div>
@@ -3002,13 +2440,6 @@ P.meandrina sRNA: trimming, miRTrace, BLASTn
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('E5-coral'); return false;">
-E5-coral
-</div>
-</div>
-<a href="./posts/projects/E5_coral/2023_11_14_E5_coral.html">
 <div class="listing-description">
 Modified Sam’s code for <em>P.meandrina</em> sRNA trimming, miRTrace, and BLASTn.
 </div>
@@ -3036,13 +2467,6 @@ November 2023, Monthly Goals
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('monthly goals'); return false;">
-monthly goals
-</div>
-</div>
-<a href="./posts/daily_logs/2023/November_2023_goals.html">
 <div class="listing-description">
 Let’s set some goals for the month of November (note, I’ll be out on vacation for a few days this month over the Thanksgiving holiday)
 </div>
@@ -3070,13 +2494,6 @@ Cod Sample Size
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacifc-cod'); return false;">
-pacifc-cod
-</div>
-</div>
-<a href="./posts/projects/pacific_cod/2023_11_02_pacific_cod.html">
 <div class="listing-description">
 Calculated necessary sample size for cod RNA sequencing, given an assumed coefficient of variation and detectable difference in expression – view document here.
 </div>
@@ -3104,13 +2521,6 @@ October 2023, Monthly Goals
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('monthly goals'); return false;">
-monthly goals
-</div>
-</div>
-<a href="./posts/daily_logs/2023/October_2023_goals.html">
 <div class="listing-description">
 I’ve had the chance to settle in and talk with Steven about possible directions for the near future, so let’s put some stuff in writing!
 </div>
@@ -3138,13 +2548,6 @@ Cod Temp/Growth Analysis
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('pacifc-cod'); return false;">
-pacifc-cod
-</div>
-</div>
-<a href="./posts/projects/pacific_cod/2023_10_13_pacific_cod.html">
 <div class="listing-description">
 I finished the code temp/growth analysis assigned by Steven, code and output pdf can be found on lab github.
 </div>
@@ -3172,13 +2575,6 @@ October 2023, Daily Log
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('daily log'); return false;">
-daily log
-</div>
-</div>
-<a href="./posts/daily_logs/2023/October_2023_posts.html">
 <div class="listing-description">
 <strong>Questions for Science Hour:</strong>
 </div>
@@ -3206,13 +2602,6 @@ Formatting digital lab notebook
 </h3>
 <div class="listing-subtitle">
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('onboarding'); return false;">
-onboarding
-</div>
-</div>
-<a href="./posts/daily_logs/2023/September_2023/Sept_29_2023/index.html">
 <div class="listing-description">
 I…
 </div>
