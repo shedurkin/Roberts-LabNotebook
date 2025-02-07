@@ -1,0 +1,64 @@
+---
+title: "January 2025, Monthly Goals"
+author: "Kathleen Durkin"
+date: "2025-02-05"
+categories: ["monthly goals"]
+format:
+  html
+---
+
+## **February goals**
+
+-   **Complete E5 tasks set at [Jan. 31 2025 E5 Molecular meeting](https://docs.google.com/document/d/1Fdd6xC9tJmAf9Iydcf3er-YwabKmwK3jGVw4ppfxfhM/edit?tab=t.0#heading=h.ypc3i81lq7yf)\
+    Mine include:**
+
+    -   "There will be a suite of genes that a sRNA regulates that have similar function"\
+        Use functional annotation of the gene-miRNA interaction network to identify putative function of each miRNA based on function of associated genes. Kathleen Durkin
+
+    -   For predicted miRNA targets, compare functional composition of targets to functional composition of full reference. \
+        (Basically, I want to see whether miRNAs preferentially regulate any functional classes).
+
+    -   If an miRNA is formally described (e.g. mir-100), compare/contrast its described function with the putative function determined during (2)
+
+    -   "Some lncRNAs that act as sponges (bind) sRNA will impact gene expression sRNA regulate"\
+        Use miRanda to predict miRNA-lncRNA binding and evaluate correlated expression of putative binding pairs to generate miRNA-lncRNA interaction network.
+
+    -   "siRNA modulate DNA methylation through RNA-directed DNA methylation by binding to genomic region and recruiting protein machinery to direct methylation"\
+        Use miRanda/RNAhybrid to predict siRNA binding to the genome. Using simulated WGBS data, prep pipeline to test whether siRNA binding is significantly associated with methylation
+
+    -   siRNAs could also play a role in guiding DNA methylation to silence transposable elements\
+        Use miRanda/RNAhybrid to predict siRNA binding to TEs. Evaluate correlated expression of siRNAs and TEs (expecting a negative relationship).
+
+-   **Complete the following tasks for A.pulchra time series data (in preparation for EPIMAR talk in May):**
+
+    -   evaluate patterns of binding and coexpression among miRNA, lncRNA, and genes
+
+    -   explore additional putative interactions (e.g. 3+)
+
+    -   annotate function through interacting genes
+
+    -   infer additional functional information through relationships with host and/or symbiont physiology data (e.g. WGCNA, edgeR)
+
+    -   start incorporating WGCNA data
+
+-   **Continue all January goals to maintain time management and logging habits:**
+
+    -   Log activities daily in Lab Notebook
+
+    -   Log all data analysis work (e.g. running a WGCNA) in dedicated post in appropriate project page.
+
+    -   Spend maximum 50 hours/week working. Log daily hours in Lab Notebook.
+
+    -   
+
+## Review January goals
+
+-   **Log activities daily in Lab Notebook.**\
+    Last quarter I got overwhelmed with work and stopped posting my daily activities in my lab notebook. I want to reinstate that habit!
+
+-   **Log all data analysis work (e.g. running a WGCNA) in dedicated post in appropriate project page.**\
+    Similar to the first goal, I've been relying on Github to log all the analysis work I've been doing. That work should also be detailed in my lab notebook.
+
+-   **Spend maximum 50 hours/week working. Log daily hours in Lab Notebook.**\
+    Last quarter, with the intensive TA position, grant applications, committee prep, and transitioning to E5 expression work/leadership, I worked a *lot*, and I was really burned out by the end of the quarter. I want to hold myself accountable to a more manageable work schedule this quarter. This time logging will begin my first week back from SICB (Monday, Jan 13). I expect my time breakdown to be roughly:\
+    **20hr/wk** classes (SWED 101, FISH 513); **15hr/wk** TAing (QSCI 381); **15hr/wk** thesis work.

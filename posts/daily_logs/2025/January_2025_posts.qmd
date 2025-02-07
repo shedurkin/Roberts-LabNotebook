@@ -32,7 +32,7 @@ Daily total: **9.5 hr**
 Weekly Overview:
 
 |                 | Monday | Tuesday | Wednesday | Thursday | Friday  | TOTALS                 |
-|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+|-----------------|--------|---------|-----------|----------|---------|------------------------|
 | **Classes**     | 1      | 1       | 3         | 5        | 3.5     | **13.5**               |
 | **TAing**       | 8.5    | 3.5     | 4.5       | 0.5      | 0.5     | **17.5**               |
 | **Thesis work** | 0      | 3.5     | 2         | 3.5      | 2.5     | **11.5**               |
@@ -55,7 +55,7 @@ Early start to the day to prep for FISH513 today and E5 tomorrow
 
 -   **1 hr** -- SWED102 class
 
--   **2 hr** -- FISH513 lit review  + slides creation for presentation today
+-   **2 hr** -- FISH513 lit review + slides creation for presentation today
 
 -   **0.5 hr** -- QSCI381 weekly meeting
 
@@ -218,7 +218,7 @@ Daily total: **8.5 hrs**
 Weekly Overview:
 
 |                 | Monday | Tuesday | Wednesday | Thursday | Friday | TOTALS                   |
-|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+|-----------------|--------|---------|-----------|----------|--------|--------------------------|
 | **Classes**     | 1      | 2       | 4         | 6        | 2      | **15**                   |
 | **TAing**       | 8.5    | 7       | 3.5       | 1        | 2.5    | **22.5**                 |
 | **Thesis work** | 0      | 0       | 1         | 3        | 4      | **8**                    |

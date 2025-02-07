@@ -55,7 +55,7 @@ Now that we've completed a lot of the foundational work for the E5 deep-dive exp
 
 #### **Gene expression and histones**
 
-### **Data:** 
+### **Data:**
 
 [RNA sequencing]{.underline}
 
@@ -111,7 +111,7 @@ Some goals are formulated to directly address one of the hypotheses listed above
 2.  *"There will be a suite of genes that a sRNA regulates that have similar function"*\
     Use functional annotation of the gene-miRNA interaction network to identify putative function of each miRNA based on function of associated genes.
 
-3.   For predicted miRNA targets, compare functional composition of targets to functional composition of full reference.\
+3.  For predicted miRNA targets, compare functional composition of targets to functional composition of full reference.\
     (Basically, I want to see whether miRNAs preferentially regulate any functional classes).
 
 4.  Formally name each miRNA, matching the names assigned during deep-dive when possible.
@@ -124,7 +124,7 @@ Some goals are formulated to directly address one of the hypotheses listed above
 7.  *"A subset of lncRNAs will regulate mRNA as evident by correlation"*\
     Evaluate correlated expression of lncRNA and mRNA.
 
-8.  *"some lncRNAs may act as miRNA precursors -- expect they will contain the full pre-miRNA "*\
+8.  *"some lncRNAs may act as miRNA precursors -- expect they will contain the full pre-miRNA"*\
     Use BLAST to search for lncRNAs that fully contain pre-miRNA sequences.
 
 9.  Using simulated WGBS data, prep pipeline to summarize methylation (whole genome methylation levels, GBM/distribution across genome features, etc.)
