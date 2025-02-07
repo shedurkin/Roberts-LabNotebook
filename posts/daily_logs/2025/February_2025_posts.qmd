@@ -71,6 +71,12 @@ format:
 
 #### Friday
 
+2 hr -- E5 work
+
+1.5 hr -- SWED102 class
+
+1 hr -- catch up on E5 github issues and on [lab RSS feed issue](https://github.com/RobertsLab/resources/issues/2090#issuecomment-2643821466). Tried adding the `feed` option to every overview .qmd page (e.g. the E5_coral.qmd)
+
 ## 06 February 2025
 
 #### Thursday
