@@ -10,7 +10,7 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/projects.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Thu, 30 Jan 2025 01:11:13 GMT</lastBuildDate>
+<lastBuildDate>Fri, 07 Feb 2025 19:41:20 GMT</lastBuildDate>
 <item>
   <title>E5 Coral</title>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</link>
@@ -61,7 +61,41 @@ Reading Time
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-categories="E5-coral" data-listing-date-sort="1731975655000" data-listing-file-modified-sort="1731975655784" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-title-sort="Rerunning ShortStack for deep-dive-expression" data-listing-filename-sort="2024_10_22_shortstack_4.1.0_reruns.qmd">
+<tr data-index="0" data-categories="E5-coral" data-listing-date-sort="1738915200000" data-listing-file-modified-sort="1738947602509" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-title-sort="Deep-dive expression: A.pul miRNA methylation machinery" data-listing-filename-sort="2025_02_07_deepdive_methyl_machinery.qmd">
+<td>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
+</td>
+<td>
+<span class="listing-date">Feb 7, 2025</span>
+</td>
+<td>
+<a href="../../posts/projects/E5_coral/2025_02_07_deepdive_methyl_machinery.html" class="title listing-title">Deep-dive expression: A.pul miRNA methylation machinery</a>
+</td>
+<td>
+<span class="listing-categories">E5-coral</span>
+</td>
+<td>
+<span class="listing-reading-time">6 min</span>
+</td>
+</tr>
+<tr data-index="1" data-categories="E5-coral" data-listing-date-sort="1738224000000" data-listing-file-modified-sort="1738740855245" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-title-sort="Deep-dive Expression Project Planning" data-listing-filename-sort="2025_01_30_project_planning.qmd">
+<td>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
+</td>
+<td>
+<span class="listing-date">Jan 30, 2025</span>
+</td>
+<td>
+<a href="../../posts/projects/E5_coral/2025_01_30_project_planning.html" class="title listing-title">Deep-dive Expression Project Planning</a>
+</td>
+<td>
+<span class="listing-categories">E5-coral</span>
+</td>
+<td>
+<span class="listing-reading-time">5 min</span>
+</td>
+</tr>
+<tr data-index="2" data-categories="E5-coral" data-listing-date-sort="1731975655000" data-listing-file-modified-sort="1731975655784" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-title-sort="Rerunning ShortStack for deep-dive-expression" data-listing-filename-sort="2024_10_22_shortstack_4.1.0_reruns.qmd">
 <td>
 <span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_10_22_shortstack_4.1.0_reruns_files/figure-html/unnamed-chunk-1-1.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
@@ -78,7 +112,7 @@ Reading Time
 <span class="listing-reading-time">6 min</span>
 </td>
 </tr>
-<tr data-index="1" data-categories="E5-coral" data-listing-date-sort="1731312000000" data-listing-file-modified-sort="1731976330589" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="sRNA expression summaries" data-listing-filename-sort="2024_11_11_updated_sRNA_summaries.qmd">
+<tr data-index="3" data-categories="E5-coral" data-listing-date-sort="1731312000000" data-listing-file-modified-sort="1731976330589" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="sRNA expression summaries" data-listing-filename-sort="2024_11_11_updated_sRNA_summaries.qmd">
 <td>
 <span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/https:/github.com/urol-e5/deep-dive-expression/raw/main/D-Apul/code/03.1-Apul-sRNA-summary_files/figure-gfm/transcript-counts-plot-1.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
@@ -95,7 +129,7 @@ Reading Time
 <span class="listing-reading-time">2 min</span>
 </td>
 </tr>
-<tr data-index="2" data-categories="E5-coral" data-listing-date-sort="1730153983000" data-listing-file-modified-sort="1730153983213" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Lit Review: Understanding interactions of sRNA and DNA methylation" data-listing-filename-sort="2024_10_01_sRNA_DNA_methylation_interactions.qmd">
+<tr data-index="4" data-categories="E5-coral" data-listing-date-sort="1730153983000" data-listing-file-modified-sort="1730153983213" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Lit Review: Understanding interactions of sRNA and DNA methylation" data-listing-filename-sort="2024_10_01_sRNA_DNA_methylation_interactions.qmd">
 <td>
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
@@ -112,7 +146,7 @@ Reading Time
 <span class="listing-reading-time">3 min</span>
 </td>
 </tr>
-<tr data-index="3" data-categories="E5-coral" data-listing-date-sort="1721372400000" data-listing-file-modified-sort="1722013864840" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Programs for identifying miRNA targets" data-listing-filename-sort="2024_07_19_mRNA_targetID_programs.qmd">
+<tr data-index="5" data-categories="E5-coral" data-listing-date-sort="1721372400000" data-listing-file-modified-sort="1722013864840" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Programs for identifying miRNA targets" data-listing-filename-sort="2024_07_19_mRNA_targetID_programs.qmd">
 <td>
 <span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/Screenshot 2024-07-19 165134.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
@@ -129,7 +163,7 @@ Reading Time
 <span class="listing-reading-time">2 min</span>
 </td>
 </tr>
-<tr data-index="4" data-categories="E5-coral" data-listing-date-sort="1717398000000" data-listing-file-modified-sort="1718760353410" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="ShortStack: mature vs. star sequences incorrect?" data-listing-filename-sort="2024_06_04_ShortStack_mature_v_star.qmd">
+<tr data-index="6" data-categories="E5-coral" data-listing-date-sort="1717398000000" data-listing-file-modified-sort="1718760353410" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="ShortStack: mature vs. star sequences incorrect?" data-listing-filename-sort="2024_06_04_ShortStack_mature_v_star.qmd">
 <td>
 <span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/Screenshot (248).png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
@@ -146,7 +180,7 @@ Reading Time
 <span class="listing-reading-time">3 min</span>
 </td>
 </tr>
-<tr data-index="5" data-categories="E5-coral" data-listing-date-sort="1715929200000" data-listing-file-modified-sort="1717523821272" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-title-sort="Comparing ShortStack outputs to miRdeep2" data-listing-filename-sort="2024_05_17_shortstack_mirdeep2_comparisons.qmd">
+<tr data-index="7" data-categories="E5-coral" data-listing-date-sort="1715929200000" data-listing-file-modified-sort="1717523821272" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-title-sort="Comparing ShortStack outputs to miRdeep2" data-listing-filename-sort="2024_05_17_shortstack_mirdeep2_comparisons.qmd">
 <td>
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
@@ -163,7 +197,7 @@ Reading Time
 <span class="listing-reading-time">7 min</span>
 </td>
 </tr>
-<tr data-index="6" data-categories="E5-coral" data-listing-date-sort="1715842800000" data-listing-file-modified-sort="1715992876606" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Summarizing and visualizing ShortStack outputs" data-listing-filename-sort="2024_05_16_shortstack_visualizations.qmd">
+<tr data-index="8" data-categories="E5-coral" data-listing-date-sort="1715842800000" data-listing-file-modified-sort="1715992876606" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Summarizing and visualizing ShortStack outputs" data-listing-filename-sort="2024_05_16_shortstack_visualizations.qmd">
 <td>
 <span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/https:/github.com/urol-e5/deep-dive/blob/main/D-Apul/output/13.2.1-Apul-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase/figures/Apul_ShortStack_miRNA_histogram.png?raw=true" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
@@ -180,7 +214,7 @@ Reading Time
 <span class="listing-reading-time">2 min</span>
 </td>
 </tr>
-<tr data-index="7" data-categories="E5-coral" data-listing-date-sort="1707292800000" data-listing-file-modified-sort="1718837976592" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-title-sort="Generating a genes fasta for P. evermanni" data-listing-filename-sort="2024_02_07_Peve_transcriptome.qmd">
+<tr data-index="9" data-categories="E5-coral" data-listing-date-sort="1707292800000" data-listing-file-modified-sort="1718837976592" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-title-sort="Generating a genes fasta for P. evermanni" data-listing-filename-sort="2024_02_07_Peve_transcriptome.qmd">
 <td>
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
@@ -197,7 +231,7 @@ Reading Time
 <span class="listing-reading-time">7 min</span>
 </td>
 </tr>
-<tr data-index="8" data-categories="E5-coral" data-listing-date-sort="1707206400000" data-listing-file-modified-sort="1707421872450" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="RNAseq abundance quantification (A.Pulchra, P.evermanni, P.meandrina)" data-listing-filename-sort="2024_02_06_RNAseq_kallisto.qmd">
+<tr data-index="10" data-categories="E5-coral" data-listing-date-sort="1707206400000" data-listing-file-modified-sort="1707421872450" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="RNAseq abundance quantification (A.Pulchra, P.evermanni, P.meandrina)" data-listing-filename-sort="2024_02_06_RNAseq_kallisto.qmd">
 <td>
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
@@ -214,7 +248,7 @@ Reading Time
 <span class="listing-reading-time">3 min</span>
 </td>
 </tr>
-<tr data-index="9" data-categories="E5-coral" data-listing-date-sort="1706688000000" data-listing-file-modified-sort="1706825073165" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="P.evermanni RNAseq kallisto debugging" data-listing-filename-sort="2024_01_31_Peve_kallisto.qmd">
+<tr data-index="11" data-categories="E5-coral" data-listing-date-sort="1706688000000" data-listing-file-modified-sort="1706825073165" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="P.evermanni RNAseq kallisto debugging" data-listing-filename-sort="2024_01_31_Peve_kallisto.qmd">
 <td>
 <span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/Screenshot (228).png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
@@ -231,7 +265,7 @@ Reading Time
 <span class="listing-reading-time">3 min</span>
 </td>
 </tr>
-<tr data-index="10" data-categories="E5-coral" data-listing-date-sort="1701763200000" data-listing-file-modified-sort="1702493743748" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-title-sort="P.meandrina sRNA: miRdeep2 and 3 species sRNA comparison" data-listing-filename-sort="2023_12_05_E5_coral.qmd">
+<tr data-index="12" data-categories="E5-coral" data-listing-date-sort="1701763200000" data-listing-file-modified-sort="1702493743748" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-title-sort="P.meandrina sRNA: miRdeep2 and 3 species sRNA comparison" data-listing-filename-sort="2023_12_05_E5_coral.qmd">
 <td>
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
@@ -248,7 +282,7 @@ Reading Time
 <span class="listing-reading-time">13 min</span>
 </td>
 </tr>
-<tr data-index="11" data-categories="E5-coral" data-listing-date-sort="1701331200000" data-listing-file-modified-sort="1702493147072" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="P.meandrina sRNA: MirMachine, ShortStack" data-listing-filename-sort="2023_11_30_E5_coral.qmd">
+<tr data-index="13" data-categories="E5-coral" data-listing-date-sort="1701331200000" data-listing-file-modified-sort="1702493147072" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="P.meandrina sRNA: MirMachine, ShortStack" data-listing-filename-sort="2023_11_30_E5_coral.qmd">
 <td>
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
@@ -265,7 +299,7 @@ Reading Time
 <span class="listing-reading-time">1 min</span>
 </td>
 </tr>
-<tr data-index="12" data-categories="E5-coral" data-listing-date-sort="1699948800000" data-listing-file-modified-sort="1702493095500" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="P.meandrina sRNA: trimming, miRTrace, BLASTn" data-listing-filename-sort="2023_11_14_E5_coral.qmd">
+<tr data-index="14" data-categories="E5-coral" data-listing-date-sort="1699948800000" data-listing-file-modified-sort="1702493095500" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="P.meandrina sRNA: trimming, miRTrace, BLASTn" data-listing-filename-sort="2023_11_14_E5_coral.qmd">
 <td>
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
@@ -290,7 +324,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</guid>
-  <pubDate>Thu, 30 Jan 2025 01:11:13 GMT</pubDate>
+  <pubDate>Fri, 07 Feb 2025 19:41:20 GMT</pubDate>
 </item>
 <item>
   <title>Pacific Cod</title>
@@ -506,7 +540,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod.html</guid>
-  <pubDate>Thu, 30 Jan 2025 01:11:13 GMT</pubDate>
+  <pubDate>Fri, 07 Feb 2025 19:41:20 GMT</pubDate>
 </item>
 <item>
   <title>Pacific Oyster</title>
@@ -896,7 +930,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster.html</guid>
-  <pubDate>Thu, 30 Jan 2025 01:11:13 GMT</pubDate>
+  <pubDate>Fri, 07 Feb 2025 19:41:20 GMT</pubDate>
 </item>
 <item>
   <title>Miscellaneous</title>
@@ -1170,7 +1204,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.html</guid>
-  <pubDate>Thu, 30 Jan 2025 01:11:13 GMT</pubDate>
+  <pubDate>Fri, 07 Feb 2025 19:41:20 GMT</pubDate>
 </item>
 </channel>
 </rss>

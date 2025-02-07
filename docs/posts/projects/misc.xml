@@ -1,0 +1,1760 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Kathleen&#39;s Lab Notebook</title>
+<link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.html</link>
+<atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.3.433</generator>
+<lastBuildDate>Wed, 29 Jan 2025 08:00:00 GMT</lastBuildDate>
+<item>
+  <title>EPIMAR 2025 Budgeting</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2025_01_29_EPIMAR_budgeting.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I submitted an abstract to the 2025 conference for Epigenetics in Marine and Aquatic Research (EPIMAR) and, after learning Steven is a member of the EPIMAR team, it seems likely I’ll be able to present!</p>
+<p>The funding sources available to me through the department, and college are:</p>
+<ul>
+<li><p>FINS Graduate Student Travel Award</p></li>
+<li><p>College of Environment Student Travel Fund</p></li>
+<li><p>Graduate School Conference Presentation Awards</p></li>
+<li><p>GPSS Travel Grants</p></li>
+</ul>
+<p>I’m not an active participant in FINS and I’ve already received the Graduate School award within the last year (for SICB earlier this month), so the two I’m still eligible for are:</p>
+<ul>
+<li><p>College of Environment Student Travel Fund (up to $1500): <a href="https://environment.uw.edu/students/current-students/scholarships-funding/travel-fund/" class="uri">https://environment.uw.edu/students/current-students/scholarships-funding/travel-fund/</a></p></li>
+<li><p>GPSS Travel Grants (up to $500): <a href="https://depts.washington.edu/gpss/travel-grants/" class="uri">https://depts.washington.edu/gpss/travel-grants/</a></p></li>
+</ul>
+<p>The CoE application requires a detailed budget request, so today I compiled estimates for registration costs, roundtrip airfare, lodging, and food, using current rates for flights and hotels. I also ensured the lodging/food estimates are well within the per-diem limitations for Barcelona.</p>
+<p><a href="https://docs.google.com/spreadsheets/d/1GuNdxFpeoh1lXlhZgxcE5onIHZ6i-b77PtL83mYqsEQ/edit?gid=2070203042#gid=2070203042">EPIMAR 2025 Budget</a></p>
+<p>I think I can further minimize lodging costs by either splitting a hotel room with other E5 folks (Jill and/or Danielle may be attending and interested in splitting) or by choosing a hostel instead of hotel room (this is much less preferable to me).</p>
+<p>I also could reduce flight costs if I chose to extend my trip using personal time. the May 26 - May 31 timeframe results in pretty expensive flight costs (~$1100). Extending the trip with personal time (i.e.&nbsp;a vacation) could bring airfare below $900 by flying on cheaper days.</p>
+
+
+
+ ]]></description>
+  <category>misc</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2025_01_29_EPIMAR_budgeting.html</guid>
+  <pubDate>Wed, 29 Jan 2025 08:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Lit Review: DNA methylation mapping with hDNA</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_09_16_hDNA_methylation.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Literature review on DNA methylation mapping of historical DNA (hDNA), collected from museum specimens. Prepping for SIFP proposal to work with Andrea Quattrini at the Smithsonian NMNH.</p>
+<section id="what-is-hdna" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-hdna">What is hDNA?</h3>
+<p><span class="citation" data-cites="raxworthy_mining_2021">Raxworthy and Smith (2021)</span> define <strong>historical DNA (hDNA) as “the DNA fortuitously contained in the tissues of traditional voucher specimens that are stored in museums and herbaria,” usually &lt;200 years old</strong>. Importantly, this is distinguished from ancient DNA (aDNA), which is “DNA recovered from organic material (e.g., bone, plant matter, environmental samples, and subfossils) that is preserved under natural conditions” and is often much older, more degraded, and lower quantity than hDNA. It is also distinguished from tissues collected expressly as DNA samples (and their extracts), which Raxworthy and Smith term “modern DNA.”</p>
+<p>For the purposes of this proposal, hDNA would potentially be collected from <strong>dried and liquid-stored coral specimens</strong>, preferably those collected ≥100 year ago. This age preference has two reasonings. First, beginning in the early 1900s many museum specimens were “fixed” (preserved as fluid voucher specimens) in formalin, a formaldehyde solution, which we now know presents many complications for DNA work. Second, for this project the value of museum archives lies in their collections of specimens that <strong>predate the serious impacts of anthropogenic climate change</strong> and environmental disturbance. Older specimens will yield epigenomes more useful for comparison to those of modern counterparts.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/Screenshot 2024-09-16 174607.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><span class="citation" data-cites="raxworthy_mining_2021">Raxworthy and Smith (2021)</span></figcaption>
+</figure>
+</div>
+</section>
+<section id="challenges-of-working-with-hdna" class="level3">
+<h3 class="anchored" data-anchor-id="challenges-of-working-with-hdna">Challenges of working with hDNA</h3>
+<p>There are a lot of challenges to working with hDNA in general.</p>
+<section id="contamination" class="level4">
+<h4 class="anchored" data-anchor-id="contamination">Contamination</h4>
+<p>Contamination with exogenous DNA (from an organism other than the specimen itself) can happen at any point during the collection, processing, transport, storage, or additional handling of the specimen.</p>
+</section>
+<section id="dna-degradation" class="level4">
+<h4 class="anchored" data-anchor-id="dna-degradation">DNA degradation</h4>
+<p>Both dry- and wet-stored specimens stored at room temperature gradually lose high molecular weight DNA and overall DNA quantity over time. In addition, specimens stored in alcohol can suffer hydrolytic damage if alcohol concentration drops due to evaporative loss (which is a universal problem for large collections). For fixed specimens, formalin can cause cross-linkages between DNA and other protein/DNA molecules and cause increased DNA damage like deamination and depurination. (<span class="citation" data-cites="raxworthy_mining_2021">Raxworthy and Smith (2021)</span>)</p>
+</section>
+<section id="cytosine-deamination" class="level4">
+<h4 class="anchored" data-anchor-id="cytosine-deamination">Cytosine deamination</h4>
+<p>Particularly relevant to this proposed project, DNA also undergoes cytosine deamination overtime. This is a spontaneous process in which cytosine residues are converted into uracil or hydroxyuracil. These are then observed as C-T and G-A transitions when deaminated cytosines are incorporated into a polymerase chain reaction (PCR). Notably, while “unmethylated cytosines are deaminated into uracils, causing CpG → UpG modifications; methylated cytosines, on the other hand, are deaminated into thymines at a faster pace, which results in CpG → TpG patterns.” (<span class="citation" data-cites="niiranen_epigenomic_2022">Niiranen et al. (2022)</span>)</p>
+<p>This is super important in the consideration of hDNA for DNA methylation work, because the methods we use to map DNA methylation also use a CpG → UpG modification. The most common tool used to map DNA methylation is Whole Genome Bisulfite Sequencing (WGBS), which converts unmethylated cytosines into uracils, which are then sequenced as thymine (CpG → UpG → TpG). Remaining CpGs represent the methylated cytosines of the original sequence. That means deaminated cytosines, either methylated or unmethylated, would appear to be unmethylated following WGBS since all deaminated cytosines would ultimately be sequenced as TpG.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What is the timescale of cytosine deamination? Would specimens 100-200 years old have experienced sufficient cytosine deamination to significantly affect methylation mapping? How does the answer to this vary across preservation mediums (dry, alcohol, formalin)?</p>
+</div>
+</div>
+</section>
+</section>
+<section id="previous-methylation-work-using-hdna" class="level3">
+<h3 class="anchored" data-anchor-id="previous-methylation-work-using-hdna">Previous methylation work using hDNA</h3>
+<p>I’ve only found one paper so far that has trialed hDNA methylation mapping, and the authors also conclude they are the only example (at the time of publishing, in 2019).</p>
+<p><span class="citation" data-cites="rubi_museum_2020">Rubi, Knowles, and Dantzer (2020)</span></p>
+<ul>
+<li><p>75 specimens of mice (40 white-footed mice <em>(Peromyscus leucopus noveboracensis</em>) and 35 woodland deer mice (<em>Peromyscus maniculatus gracilis</em>))</p></li>
+<li><p>traditional museum skull preparations (dried skulls stored at room temperature)</p></li>
+<li><p>Collected in same locality in Menominee county, Michigan, over three collecting periods spanning 76 years (1940, 2003, and 2013–2016)</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/Screenshot 2024-09-16 174756.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><span class="citation" data-cites="raxworthy_mining_2021">Raxworthy and Smith (2021)</span></figcaption>
+</figure>
+</div>
+<ul>
+<li><p>For the older specimens (13yo and 76yo), improved sequencing results decreased quickly past 5X read depth. In other words, while 5X depthwas a big improvement on 1X, 10X depth was not much different from 5X. This suggests that <strong>higher sequencing depth is important when working with old material, but has diminishing returns.</strong></p></li>
+<li><p>Interestingly, while the youngest specimens (0-3yo) yielded much higher global methylation rates than the older groups (13yo and 76yo), the two older groups did not have significantly different global methylation rates. So while new material is much more successful, <strong>past ~10 years all older material has similar global methylation rates?</strong></p></li>
+<li><p>Regional methylation patterns did not differ significantly due to specimen age</p></li>
+<li><p>There was no notable signal of read end deamination. However, this may be the result of including a double digestion step, which cleaves DNA at both ends and may have “cut off” the more highly deaminated read ends. The slightly reduced global methylation rate of the 76yo group, in comparison to the 0-3 yo group, <strong>may indicate cytosine deamination in the oldest group</strong>.</p></li>
+<li><p><strong>Recommends steps to reduce sequencing of deaminated sites</strong> (e.g.&nbsp;a double-digestions step, as included in this study, or uracil-DNA-glycosylase and endonuclease VIII, which can be used to remove uracils prior to bisulfite treatment, preventing the sequencing of unmethylated cystosines that have been deaminated into uracil)</p></li>
+<li><p>Recommendations for increasing yield from historic specimens:</p>
+<ul>
+<li><p><strong>Reduce size selection window</strong> to compensate for DNA fragmentation. Note that, while selecting smaller fragments would increase yield, it may also reduce the number of homologous loci sequenced across individuals, which may reduce ability to compare methylation patterns if sample size is low.</p></li>
+<li><p>Steps to minimize DNA degradation during bisulfite treatment, e.g.&nbsp;<strong>shortening bisulfite incubation time</strong>. Note, however, that this could also reduce conversion efficiency.</p></li>
+<li><p>Could <strong>remove the double digestion step</strong>, as this may have contributed to DNA fragmentation issues. Note, however, that this may lead to more issues with read-end deamination signal, as discussed above</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="methods-for-dna-methylation-mapping" class="level3">
+<h3 class="anchored" data-anchor-id="methods-for-dna-methylation-mapping">Methods for DNA methylation mapping</h3>
+<p>ChatGPT Summary:</p>
+<p>Here’s a comparison of different methylation mapping tools/methods based on <strong>cost</strong>, <strong>suitability for degraded/low-quantity DNA</strong>, <strong>use with partial cytosine deamination</strong>, and <strong>how established</strong> the method is:</p>
+<section id="whole-genome-bisulfite-sequencing-wgbs" class="level4">
+<h4 class="anchored" data-anchor-id="whole-genome-bisulfite-sequencing-wgbs"><strong>Whole Genome Bisulfite Sequencing (WGBS)</strong></h4>
+<ul>
+<li><p><strong>Cost</strong>: High. WGBS sequences the entire genome after bisulfite treatment, making it the most expensive option due to the amount of sequencing required.</p></li>
+<li><p><strong>Use with degraded/low-quantity DNA</strong>: Less suited for highly degraded DNA or very low quantities due to the need for large amounts of starting material and good quality DNA.</p></li>
+<li><p><strong>Use with partial cytosine deamination</strong>: WGBS relies on bisulfite treatment, which deaminates unmethylated cytosines to uracil (later read as thymine). Partial deamination could lead to incomplete conversion, impacting accuracy.</p></li>
+<li><p><strong>How well established</strong>: Very well established. WGBS is considered the gold standard for methylome analysis, providing comprehensive genome-wide methylation data.</p></li>
+</ul>
+</section>
+<section id="targeted-bisulfite-sequencing-targeted-bs" class="level4">
+<h4 class="anchored" data-anchor-id="targeted-bisulfite-sequencing-targeted-bs"><strong>Targeted Bisulfite Sequencing (Targeted BS)</strong></h4>
+<ul>
+<li><p><strong>Cost</strong>: Moderate to high, depending on the number of regions targeted. It is more cost-effective than WGBS since only specific regions are sequenced.</p></li>
+<li><p><strong>Use with degraded/low-quantity DNA</strong>: Better suited for degraded or low-quantity DNA compared to WGBS because it focuses on specific regions, requiring less input material.</p></li>
+<li><p><strong>Use with partial cytosine deamination</strong>: Similar to WGBS, it relies on bisulfite conversion, so incomplete conversion can affect results. However, focusing on smaller regions may allow more control and validation of conversion efficiency.</p></li>
+<li><p><strong>How well established</strong>: Well established. Targeted BS is widely used for focused methylation studies, especially in candidate regions like promoters or CpG islands.</p></li>
+</ul>
+</section>
+<section id="enzymatic-methyl-seq-em-seq" class="level4">
+<h4 class="anchored" data-anchor-id="enzymatic-methyl-seq-em-seq"><strong>Enzymatic Methyl-seq (EM-Seq)</strong></h4>
+<ul>
+<li><p><strong>Cost</strong>: Moderate. EM-Seq offers a more cost-effective alternative to WGBS with a similar level of genomic coverage but without bisulfite treatment.</p></li>
+<li><p><strong>Use with degraded/low-quantity DNA</strong>: More suitable than WGBS for degraded or low-quantity DNA because it uses an enzyme-based approach that is gentler than harsh bisulfite treatment.</p></li>
+<li><p><strong>Use with partial cytosine deamination</strong>: EM-Seq avoids bisulfite-induced cytosine deamination by using enzymatic conversion, making it ideal when bisulfite’s harsh chemical treatment might cause issues, including incomplete conversion.</p></li>
+<li><p><strong>How well established</strong>: Relatively new. EM-Seq is a promising alternative to bisulfite-based methods but is not yet as widely adopted as WGBS or Targeted BS.</p></li>
+</ul>
+</section>
+<section id="target-enriched-em-seq" class="level4">
+<h4 class="anchored" data-anchor-id="target-enriched-em-seq"><strong>Target Enriched EM-Seq</strong></h4>
+<ul>
+<li><p><strong>Cost</strong>: Moderate, less than WGBS but more than basic bisulfite methods.</p></li>
+<li><p><strong>Use with degraded/low-quantity DNA</strong>: More suited for degraded DNA since the enzyme-based method is gentler.</p></li>
+<li><p><strong>Partial cytosine deamination</strong>: Avoids bisulfite-induced damage, reducing errors tied to incomplete deamination.</p></li>
+<li><p><strong>How established</strong>: New but growing in popularity as an alternative to bisulfite sequencing, especially for focused regions.</p></li>
+</ul>
+</section>
+<section id="uracil-dna-glycosylase-udg-treatment" class="level4">
+<h4 class="anchored" data-anchor-id="uracil-dna-glycosylase-udg-treatment"><strong>Uracil-DNA Glycosylase (UDG) Treatment</strong></h4>
+<ul>
+<li><p><strong>Cost</strong>: Variable, typically added on to bisulfite sequencing workflows (e.g., WGBS or Targeted BS).</p></li>
+<li><p><strong>Use with degraded/low-quantity DNA</strong>: UDG treatment is part of a preprocessing step to improve the accuracy of bisulfite sequencing but does not make it inherently better for degraded/low-quantity DNA.</p></li>
+<li><p><strong>Use with partial cytosine deamination</strong>: UDG treatment improves bisulfite sequencing by removing uracils generated from deaminated cytosines, which helps prevent errors from cytosine deamination that occur before bisulfite treatment. This leads to more accurate differentiation between methylated and unmethylated cytosines.</p></li>
+<li><p><strong>How well established</strong>: Well established, but UDG treatment is typically used in combination with other methods (e.g., WGBS) to improve accuracy rather than being a standalone method.</p></li>
+</ul>
+</section>
+<section id="methylation-sensitive-amplified-fragment-length-polymorphism-ms-aflp" class="level4">
+<h4 class="anchored" data-anchor-id="methylation-sensitive-amplified-fragment-length-polymorphism-ms-aflp"><strong>Methylation-Sensitive Amplified Fragment Length Polymorphism (MS-AFLP)</strong></h4>
+<ul>
+<li><p><strong>Cost</strong>: Low to moderate. MS-AFLP is a more affordable technique compared to sequencing-based approaches.</p></li>
+<li><p><strong>Use with degraded/low-quantity DNA</strong>: More suitable for degraded or low-quantity DNA, as it is based on PCR amplification and restriction digestion, which requires less starting material than sequencing-based approaches.</p></li>
+<li><p><strong>Use with partial cytosine deamination</strong>: MS-AFLP does not use bisulfite treatment, so partial deamination is not an issue. However, it depends on restriction enzymes sensitive to methylation status, so results can be impacted by incomplete digestion.</p></li>
+<li><p><strong>How well established</strong>: Long established but less widely used in high-resolution methylation studies compared to sequencing methods like WGBS. It’s an older method useful for specific applications, such as detecting overall methylation patterns or comparing methylation between samples.</p></li>
+</ul>
+</section>
+<section id="methylated-cpg-binding-domain-sequencing-mbd-seq" class="level4">
+<h4 class="anchored" data-anchor-id="methylated-cpg-binding-domain-sequencing-mbd-seq"><strong>Methylated CpG Binding Domain Sequencing (MBD-seq)</strong></h4>
+<ul>
+<li><p><strong>Cost</strong>: Moderate. MBD-seq involves selective enrichment of methylated DNA, followed by sequencing, making it less expensive than whole-genome methods like WGBS but potentially more expensive than targeted approaches depending on the depth of sequencing required.</p></li>
+<li><p><strong>Use with degraded/low-quantity DNA</strong>: More tolerant of low-quantity DNA than WGBS, but highly degraded DNA can be problematic, as larger fragments are better for efficient methylated DNA capture.</p></li>
+<li><p><strong>Use with partial cytosine deamination</strong>: Not impacted by cytosine deamination because MBD-seq relies on binding to methylated CpG sites via a protein domain, not on chemical conversion. This makes it more robust when bisulfite-induced errors might be an issue.</p></li>
+<li><p><strong>How well established</strong>: Well established, though less commonly used than bisulfite sequencing-based methods like WGBS. MBD-seq is often used for cost-effective, genome-wide methylation profiling without full bisulfite sequencing.</p></li>
+</ul>
+</section>
+<section id="methylrad" class="level4">
+<h4 class="anchored" data-anchor-id="methylrad"><strong>MethylRAD</strong></h4>
+<ul>
+<li><p><strong>Cost</strong>: Low to moderate. MethylRAD uses methylation-sensitive restriction enzymes to digest and sequence methylated DNA regions, making it more cost-effective than sequencing-based approaches that require bisulfite conversion or whole-genome coverage.</p></li>
+<li><p><strong>Use with degraded/low-quantity DNA</strong>: Suitable for low-quantity DNA because it relies on restriction digestion and PCR amplification, but highly degraded DNA may still cause issues if fragments are too short to be efficiently digested.</p></li>
+<li><p><strong>Use with partial cytosine deamination</strong>: Not affected by cytosine deamination since MethylRAD does not use bisulfite treatment. Instead, it depends on restriction enzyme sensitivity to methylation, so it avoids issues related to incomplete bisulfite conversion.</p></li>
+<li><p><strong>How well established</strong>: Relatively new but gaining traction. It’s not as widely adopted as WGBS but is becoming a popular, cost-effective alternative for methylation analysis, particularly for comparative methylation studies.</p></li>
+</ul>
+</section>
+<section id="comparison-table" class="level4">
+<h4 class="anchored" data-anchor-id="comparison-table"><strong>Comparison Table</strong></h4>
+<table class="table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 23%">
+<col style="width: 19%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Method</strong></th>
+<th><strong>Cost</strong></th>
+<th><strong>Degraded/Low-Quantity DNA</strong></th>
+<th><strong>Partial Cytosine Deamination</strong></th>
+<th><strong>How Established</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>WGBS</strong></td>
+<td>High</td>
+<td>Less suitable</td>
+<td>Sensitive to incomplete conversion</td>
+<td>Gold standard, very well established</td>
+</tr>
+<tr class="even">
+<td><strong>Targeted BS</strong></td>
+<td>Moderate</td>
+<td>Better suited</td>
+<td>Sensitive to incomplete conversion</td>
+<td>Well established</td>
+</tr>
+<tr class="odd">
+<td><strong>EM-Seq</strong></td>
+<td>Moderate</td>
+<td>Suitable</td>
+<td>Avoids bisulfite-induced damage</td>
+<td>Newer, gaining popularity</td>
+</tr>
+<tr class="even">
+<td><strong>Target Enriched EM-Seq</strong></td>
+<td>Moderate</td>
+<td>Suitable</td>
+<td>Avoids bisulfite-induced damage</td>
+<td>Newer, promising</td>
+</tr>
+<tr class="odd">
+<td><strong>UDG Treatment</strong> (w/BS)</td>
+<td>Variable</td>
+<td>Neutral impact</td>
+<td>Improves bisulfite accuracy</td>
+<td>Well established with WGBS</td>
+</tr>
+<tr class="even">
+<td><strong>MS-AFLP</strong></td>
+<td>Low/Moderate</td>
+<td>Suitable</td>
+<td>Not impacted by deamination</td>
+<td>Older, less common</td>
+</tr>
+<tr class="odd">
+<td><strong>MBD-seq</strong></td>
+<td>Moderate</td>
+<td>Suitable for low-quantity, less for degraded</td>
+<td>Not impacted</td>
+<td>Well established but less common</td>
+</tr>
+<tr class="even">
+<td><strong>MethylRAD</strong></td>
+<td>Low/Moderate</td>
+<td>Suitable, but not ideal for highly degraded DNA</td>
+<td>Not impacted</td>
+<td>Newer, cost-effective, growing</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="summary" class="level4">
+<h4 class="anchored" data-anchor-id="summary">Summary</h4>
+<ul>
+<li><p><strong>Cost</strong>: WGBS remains the most expensive method, while MethylRAD and MS-AFLP are among the least expensive. MBD-seq is a mid-range option that provides genome-wide methylation information without full sequencing.</p></li>
+<li><p><strong>Degraded/low-quantity DNA</strong>: MethylRAD and MBD-seq handle low-quantity DNA better than WGBS, but highly degraded samples may still present challenges for both.</p></li>
+<li><p><strong>Partial cytosine deamination</strong>: MBD-seq and MethylRAD are unaffected by partial cytosine deamination because they don’t rely on bisulfite conversion.</p></li>
+<li><p><strong>How established</strong>: WGBS is the gold standard, while MBD-seq is a well-established alternative for methylation profiling. MethylRAD is newer but growing in popularity due to its cost-effectiveness and potential for comparative studies.</p></li>
+</ul>
+</section>
+</section>
+<section id="nanopore-sequencing" class="level3">
+<h3 class="anchored" data-anchor-id="nanopore-sequencing">Nanopore Sequencing</h3>
+<p>An option that Steven mentioned as potentially useful is Nanopore sequencing. In this method, DNA (or RNA) molecules are fed through a nanopore, a tiny hole embedded in a membrane that separates two chambers of electrolyte solution. When a voltage is applied, an enzyme pushes the DNA molecule through the nanopore and fluctuations in the electric current are tracked. Specialized software can then be used to assign nucleotide at each position based on the current fluctuations.</p>
+<p>While Nanopore sequencing was originally developed for standard DNA sequencing, softwares have been developed that can interpret Nanopore read data to identify methylated nucleotides (e.g., <span class="citation" data-cites="ahsan_signal_2024">Ahsan et al. (2024)</span>). This has many advantages over WGBS that could be really useful for working with hDNA.</p>
+<p>As a reminder, the biggest hurdles when working with hDNA are likely to be 1) low DNA quantity, and 2) low DNA quality, including spontaneous cytosine deamination that converts CpG sites to either UpGs (unmethylated) or TpGs (methylated). Nanopore sequencing reads and detects nucleotides from a single DNA molecule at a time, meaning it <strong>works with much lower quantities of DNA</strong> than traditional sequencing methods. This also means that DNA amplification (i.e., PCR) is not required, so there are no biases introduced prior to sequencing. In addition, since Nanopore sequencing requires no modification of the DNA (e.g., bisulfite conversion), there is no introduced deamination, meaning <strong>deaminated cytosines will not be confused with intact methylated and unmethylated cytosines</strong>. Finally, as the cherry on top, Oxford Nanopore Technologies <a href="https://nanoporetech.com/news/oxford-nanopore-announces-breakthrough-technology-performance-to-deliver-complete-human-genomes-and-richer-multiomic-data-in-london-calling-tech-update">announced</a> just a few months ago that they now have “the ability to detect damaged DNA bases, including genomic Uracil (dU) at 96.34% accuracy.” This means that, not only will Nanopore sequencing distinguish between intact and deaminated cytosines, it should be able to <strong>differentiate between deaminated cytosines (deaminated CpG → UpG) and deaminated methylated cytosines (CpG → TpG)!</strong></p>
+<p>I couldn’t find a description of the analysis changes that allow ONT to detect damaged DNA, but if that update is not yet publicly available, I also found a paper describing how to detect Uracil in DNA <span class="citation" data-cites="bekesi_detection_2021">Békési et al. (2021)</span>, which would similarly allow you to discriminate cytosine deamination of methylated and unmethylated cytosine.</p>
+</section>
+<section id="notes-for-sifp-project" class="level3">
+<h3 class="anchored" data-anchor-id="notes-for-sifp-project">Notes for SIFP project:</h3>
+<ul>
+<li><p>If I’m trying to do a validation-type paper, which might hold the most water given how little hDNA methylation work has been done, would be best to use specimens of same species, collected from same location over multiple time points (ideally same reef).</p></li>
+<li><p>Seems like big concerns are dealing with fragmented DNA and cytosine deamination. EM-Seq seems like the best option for addressing both of those, and it may be abit cheaper than WGBS! Only downside is that it’s not as well established, so I’m not sure how that might affect data analysis (are there existing tools?) or reporting/interpreting results.</p></li>
+</ul>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-ahsan_signal_2024" class="csl-entry">
+Ahsan, Mian Umair, Anagha Gouru, Joe Chan, Wanding Zhou, and Kai Wang. 2024. <span>“A Signal Processing and Deep Learning Framework for Methylation Detection Using <span>Oxford</span> <span>Nanopore</span> Sequencing.”</span> <em>Nature Communications</em> 15 (1): 1448. <a href="https://doi.org/10.1038/s41467-024-45778-y">https://doi.org/10.1038/s41467-024-45778-y</a>.
+</div>
+<div id="ref-bekesi_detection_2021" class="csl-entry">
+Békési, Angéla, Eszter Holub, Hajnalka Laura Pálinkás, and Beáta G. Vértessy. 2021. <span>“Detection of <span>Genomic</span> <span>Uracil</span> <span>Patterns</span>.”</span> <em>International Journal of Molecular Sciences</em> 22 (8): 3902. <a href="https://doi.org/10.3390/ijms22083902">https://doi.org/10.3390/ijms22083902</a>.
+</div>
+<div id="ref-niiranen_epigenomic_2022" class="csl-entry">
+Niiranen, Laura, Dawid Leciej, Hanna Edlund, Carolina Bernhardsson, Magdalena Fraser, Federico Sánchez Quinto, Karl-Heinz Herzig, Mattias Jakobsson, Jarosław Walkowiak, and Olaf Thalmann. 2022. <span>“Epigenomic <span>Modifications</span> in <span>Modern</span> and <span>Ancient</span> <span>Genomes</span>.”</span> <em>Genes</em> 13 (2): 178. <a href="https://doi.org/10.3390/genes13020178">https://doi.org/10.3390/genes13020178</a>.
+</div>
+<div id="ref-raxworthy_mining_2021" class="csl-entry">
+Raxworthy, Christopher J., and Brian Tilston Smith. 2021. <span>“Mining Museums for Historical <span>DNA</span>: Advances and Challenges in Museomics.”</span> <em>Trends in Ecology &amp; Evolution</em> 36 (11): 1049–60. <a href="https://doi.org/10.1016/j.tree.2021.07.009">https://doi.org/10.1016/j.tree.2021.07.009</a>.
+</div>
+<div id="ref-rubi_museum_2020" class="csl-entry">
+Rubi, Tricia L., L. Lacey Knowles, and Ben Dantzer. 2020. <span>“Museum Epigenomics: <span>Characterizing</span> Cytosine Methylation in Historic Museum Specimens.”</span> <em>Molecular Ecology Resources</em> 20 (5): 1161–70. <a href="https://doi.org/10.1111/1755-0998.13115">https://doi.org/10.1111/1755-0998.13115</a>.
+</div>
+</div></section></div> ]]></description>
+  <category>misc</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_09_16_hDNA_methylation.html</guid>
+  <pubDate>Fri, 08 Nov 2024 19:16:03 GMT</pubDate>
+</item>
+<item>
+  <title>Outlining Plans for First Committee Meeting</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_11_08_first_committee_meeting.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+
+ ]]></description>
+  <category>misc</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_11_08_first_committee_meeting.html</guid>
+  <pubDate>Fri, 08 Nov 2024 08:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>NSF GRFP, the aquaculture question</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_06_18_NSF_GRFP_info.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Research eligibility guidelines, according to the <a href="https://new.nsf.gov/funding/opportunities/nsf-graduate-research-fellowship-program-grfp/nsf23-605/solicitation#elig">Program Solicitation</a>:</p>
+<p>b) Ineligible areas of study</p>
+<p>Individuals are <strong>not eligible to apply if they will be enrolled in graduate study focused on clinical practice, counseling, social work, patient-oriented research, epidemiological and medical behavioral studies, outcomes research, and health services research</strong>. Ineligible study includes pharmacologic, non-pharmacologic, and behavioral interventions for disease or disorder prevention, prophylaxis, diagnosis, therapy, or treatment. Research to provide evidence leading to a scientific basis for consideration of a change in health policy or standard of care is not eligible. <strong>Graduate study focused on community, public, or global health, or other population-based research including medical intervention trials is also not eligible.</strong></p>
+<p>c) Ineligible proposed research</p>
+<p>(i) Research for which the goals are directly human disease- or health-related, including the etiology, diagnosis, and/or treatment of disease or disorder is not eligible for support. Research activities using animal models of disease, for developing or testing of drugs or other procedures for treatment of disease or disorder are not eligible.</p>
+<p>(ii) Research focused on basic questions in plant pathology are eligible, however, <strong>applied studies focused on maximizing production in agricultural plants or impacts on food safety, are not eligible.</strong></p>
+<p>(iii) Research with implications that inform policy is eligible. Research with the expressed intent to influence, advocate for, or effect specific policy outcomes is not eligible.</p>
+<p>d) Limited exceptions to ineligible proposed research</p>
+<p>(i) Certain areas of bioengineering research directed at medical use are eligible. These include research projects in bioengineering to aid persons with disabilities, or to diagnose or treat human disease or disorder, provided they apply engineering principles to problems in medicine while primarily advancing engineering knowledge. Applicants planning to study and conduct research in these areas of bioengineering should select biomedical engineering as the field of study.</p>
+<p>(ii) Certain areas of materials research directed at development of materials for use in biological or biomedical systems are eligible, provided they are focused on furthering fundamental materials research.</p>
+<p>(iii) Certain areas of research with etiology-, diagnosis-, or treatment-related goals that advance fundamental knowledge in engineering, mathematical, physical, computer or information sciences, are eligible for support.</p>
+<p>Aquaculture and other forms of animal farming is not specifically mentioned, but the emphasis seems to be that r<strong>esearch should be intended to advance fundamental knowledge</strong>. Since aquaculture is inherently <em>applied</em>, it’s probably best to steer clear in the proposal.</p>
+
+
+
+ ]]></description>
+  <category>misc</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_06_18_NSF_GRFP_info.html</guid>
+  <pubDate>Tue, 18 Jun 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Testing out some cool Quarto features</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_22_quarto_features.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>After looking through one of Sarah’s posts I noticed she has some super cool features included in <a href="https://sarahtanja.github.io/quarto-blog/">her Quarto digital lab notebook</a>, so I’m doing a deep dive into the Quarto documentation!</p>
+<section id="embedding-source-code" class="level3">
+<h3 class="anchored" data-anchor-id="embedding-source-code"><a href="https://quarto.org/docs/output-formats/html-code.html#code-tools">Embedding source code</a></h3>
+<p>You can allow readers of a webpage to view all of the code used to create that HTML by including in the YAML:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1">format:</span>
+<span id="cb1-2">  html:</span>
+<span id="cb1-3">    code-tools:</span>
+<span id="cb1-4">      source: true</span></code></pre></div>
+<p>In the rendered HTML you’ll see an “&lt;/&gt; Code” icon next to the post title, and clicking this icon will show the page’s source code!</p>
+<p>(Since all of the code for this post should now be viewable directly from the HTML, I won’t be inserting code chunks for any other sections to show what code to use for each feature. )</p>
+</section>
+<section id="bootstrap-icons" class="level3">
+<h3 class="anchored" data-anchor-id="bootstrap-icons"><a href="https://icons.getbootstrap.com/">Bootstrap icons</a></h3>
+<p>There are soooooo many cute icons to choose from (not really Quarto-specific, but you can use them in Quarto docs)</p>
+</section>
+<section id="tabsets" class="level3">
+<h3 class="anchored" data-anchor-id="tabsets"><a href="https://quarto.org/docs/output-formats/html-basics.html#tabsets">Tabsets</a></h3>
+<p>You can use tabsets to display sets of related information, separated by some features (e.g., programming language, treatment, species)</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" aria-controls="tabset-1-1" aria-selected="true">Python</a></li><li class="nav-item"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" aria-controls="tabset-1-2" aria-selected="false">R</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" aria-labelledby="tabset-1-1-tab">
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> even_or_odd(number):</span>
+<span id="cb2-2">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> number <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>:</span>
+<span id="cb2-3">        result <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"even"</span></span>
+<span id="cb2-4">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span>:</span>
+<span id="cb2-5">        result <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"odd"</span></span>
+<span id="cb2-6">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> result</span></code></pre></div>
+</div>
+<div id="tabset-1-2" class="tab-pane" aria-labelledby="tabset-1-2-tab">
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">even_or_odd <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(number) {</span>
+<span id="cb3-2">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (number <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%%</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) {</span>
+<span id="cb3-3">    result <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"even"</span></span>
+<span id="cb3-4">  } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> {</span>
+<span id="cb3-5">    result <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"odd"</span></span>
+<span id="cb3-6">  }</span>
+<span id="cb3-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(result)</span>
+<span id="cb3-8">}</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>You can also <em>group</em> tabsets by the tab names, so that when you switch tabs in one tabset, the other grouped tabsets will also switch to the same tab!</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" aria-controls="tabset-2-1" aria-selected="true">Python</a></li><li class="nav-item"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" aria-controls="tabset-2-2" aria-selected="false">R</a></li><li class="nav-item"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" aria-controls="tabset-2-3" aria-selected="false">Bash</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-2-1" class="tab-pane active" aria-labelledby="tabset-2-1-tab">
+<p>An ok programming language</p>
+</div>
+<div id="tabset-2-2" class="tab-pane" aria-labelledby="tabset-2-2-tab">
+<p>The far superior programming language</p>
+</div>
+<div id="tabset-2-3" class="tab-pane" aria-labelledby="tabset-2-3-tab">
+<p>Bane of my existence</p>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" aria-controls="tabset-3-1" aria-selected="true">Python</a></li><li class="nav-item"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" aria-controls="tabset-3-2" aria-selected="false">R</a></li><li class="nav-item"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" aria-controls="tabset-3-3" aria-selected="false">Bash</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-3-1" class="tab-pane active" aria-labelledby="tabset-3-1-tab">
+<p>A kind of snake</p>
+</div>
+<div id="tabset-3-2" class="tab-pane" aria-labelledby="tabset-3-2-tab">
+<p>The sound a pirate makes</p>
+</div>
+<div id="tabset-3-3" class="tab-pane" aria-labelledby="tabset-3-3-tab">
+<p>Bane of my existence</p>
+</div>
+</div>
+</div>
+</section>
+<section id="in-text-annotation" class="level3">
+<h3 class="anchored" data-anchor-id="in-text-annotation"><a href="https://quarto.org/docs/output-formats/html-basics.html#commenting">In-text annotation</a></h3>
+<p>You can enable in-text annotations in a post! Try highlighting a word – the options “Annotate” and “Highlight” should pop up (though you’ll need an account with <a href="https://web.hypothes.is/">hypothesis.is</a> to use this feature – there are also options for instead using <a href="https://utteranc.es/">Utteranc</a>es or <a href="https://giscus.app/">Giscus</a> for in-text annotation))</p>
+</section>
+<section id="figures" class="level3">
+<h3 class="anchored" data-anchor-id="figures"><a href="https://quarto.org/docs/authoring/figures.html">Figures</a></h3>
+<p>There are a bunch of different ways to attach links and captions to text/images very easily, and to quickly generate sets of figures.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://www.fisheries.noaa.gov/species/staghorn-coral"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/https:/www.fisheries.noaa.gov/s3/styles/full_width/s3/2021-11/Acropora_cervicornis_staghorn_coral.jpg?itok=8sYkq8lb" class="img-fluid figure-img" width="400"></a></p>
+<figcaption class="figure-caption">Dead man walking</figcaption>
+</figure>
+</div>
+</section>
+<section id="videos" class="level3">
+<h3 class="anchored" data-anchor-id="videos">Videos</h3>
+<p>You can directly embed videos!</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/xfr64zoBTAQ?feature=shared" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</section>
+<section id="diagrams" class="level3">
+<h3 class="anchored" data-anchor-id="diagrams"><a href="https://quarto.org/docs/authoring/diagrams.html#overview">Diagrams</a></h3>
+<p>There are two types of diagrams that are supported by Quarto, Mermaid and Graphviz, and they both have webtools you can use to more easily design a diagram and get the code needed to generate it</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A[Hard edge] --&gt; B(Round edge)
+  B --&gt; C{Decision}
+  C --&gt; D[Result one]
+  C --&gt; E[Result two]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="embedding-from-other-postsdocuments" class="level3">
+<h3 class="anchored" data-anchor-id="embedding-from-other-postsdocuments"><a href="https://quarto.org/docs/authoring/notebook-embed.html">Embedding from other posts/documents</a></h3>
+<p>There are awhole bunch of ways to embed figures/code outputs/etc. from other documents in your notebook into a new post (see more at above link).</p>
+</section>
+<section id="callouts" class="level3">
+<h3 class="anchored" data-anchor-id="callouts"><a href="https://quarto.org/docs/authoring/callouts.html">Callouts</a></h3>
+<p>You can insert 5 diffferent types of callout blocks in your text to draw attention to certain information! (I think this is super cool!)</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that there are five types of callouts, including: <code>note</code></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>warning</code></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>important</code></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip with Title
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>tip</code></p>
+<p>(This is an example of a callout with a title)</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Expand To Learn About Collapse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>and <code>caution</code></p>
+<p>This is an example of a ‘folded’ caution callout that can be expanded by the user. You can use <code>collapse="true"</code> to collapse it by default or <code>collapse="false"</code> to make a collapsible callout that is expanded by default.</p>
+</div>
+</div>
+</div>
+<p>You can also adjust the appearance of callouts in your doc</p>
+</section>
+<section id="code-annotation" class="level3">
+<h3 class="anchored" data-anchor-id="code-annotation"><a href="https://quarto.org/docs/authoring/code-annotation.html#overview">Code annotation</a></h3>
+<p>You can insert footnote-like in-code anotations. This seems potentially redundant if you have good commenting in your code but it could still help make code explanations more digestible. You can also adjust how the annotation will appear using the <code>code-annotations:</code> command in the document YAML.</p>
+<div class="sourceCode" id="annotated-cell-2" style="background: #f1f3f5;"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="annotated-cell-2-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(palmerpenguins)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-3" class="code-annotation-target">penguins <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-2-4" class="code-annotation-target">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="annotated-cell-2-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">bill_ratio =</span> bill_depth_mm <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> bill_length_mm,</span>
+<span id="annotated-cell-2-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">bill_area  =</span> bill_depth_mm <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> bill_length_mm</span>
+<span id="annotated-cell-2-7">  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-annotation="1" data-code-lines="3">Take <code>penguins</code>, and then,</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-annotation="2" data-code-lines="4,5,6,7">add new columns for the bill ratio and bill area.</span>
+</dd>
+</dl>
+</section>
+<section id="author-tools" class="level3">
+<h3 class="anchored" data-anchor-id="author-tools"><a href="https://quarto.org/docs/authoring/front-matter.html#overview">Author tools</a></h3>
+<p>There are a whooooolllllleeee bunch of different options for specifying different author/article information that’s normally included in scientific publications (authors, affiliations, corresponding, copyright, orcid ID, abstract, keywords, etc.). Here are some of the options I think I’m most likely to use in day-to-day notebook posts:</p>
+<p>In-text citations:</p>
+<p>Triploid oysters experience higher mortality under multiple-stressor conditions than diploids <span class="citation" data-cites="george_triploid_2023">(George et al. 2023)</span></p>
+
+
+<!-- -->
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-george_triploid_2023" class="csl-entry">
+George, Matthew N., Olivia Cattau, Mollie A. Middleton, Delaney Lawson, Brent Vadopalas, Mackenzie Gavery, and Steven B. Roberts. 2023. <span>“Triploid <span>Pacific</span> Oysters Exhibit Stress Response Dysregulation and Elevated Mortality Following Heatwaves.”</span> <em>Global Change Biology</em> 29 (24): 6969–87. <a href="https://doi.org/10.1111/gcb.16880">https://doi.org/10.1111/gcb.16880</a>.
+</div>
+</div></section></div> ]]></description>
+  <category>miscellaneous</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_22_quarto_features.html</guid>
+  <pubDate>Tue, 04 Jun 2024 19:46:32 GMT</pubDate>
+</item>
+<item>
+  <title>Learning awk for GNM569</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_03_27_GNM569awk.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>This quarter I’m taking GENOME569, which covers developing bioinformatic workflows for high-throughput sequencing. Today we briefly covered some of the primaries of Unix, and I realized I’ve never learned awk or written awk commands fro scratch! These are some awk practice problems from the class to hopefully help me get up to speed.<br>
+</p>
+<section id="practice-file" class="level2">
+<h2 class="anchored" data-anchor-id="practice-file">Practice file:</h2>
+<p>grep_sed_example1.txt</p>
+<pre><code>Experiment notes:
+We are using the hg19 genome build
+The cell line is A549
+A549 cells have a KRAS G12C mutation
+Another cell line is MCF7</code></pre>
+</section>
+<section id="grep" class="level2">
+<h2 class="anchored" data-anchor-id="grep">grep</h2>
+<section id="find-the-lines-that-mention-cell" class="level3">
+<h3 class="anchored" data-anchor-id="find-the-lines-that-mention-cell">Find the lines that mention “cell”:</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">$</span> grep <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cell"</span> grep_sed_example1.txt</span></code></pre></div>
+</div>
+<pre><code>The cell line is A549
+A549 cells have a KRAS G12C mutation
+Another cell line is MCF7</code></pre>
+<p>“cell”: This is the regular expression pattern to match. It simply looks for the string “cell” within each line of the file.</p>
+</section>
+<section id="find-the-lines-that-talk-about-a549" class="level3">
+<h3 class="anchored" data-anchor-id="find-the-lines-that-talk-about-a549">Find the lines that talk about “A549”:</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">$</span> grep <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"A549"</span> grep_sed_example1.txt</span></code></pre></div>
+</div>
+<pre><code>The cell line is A549
+A549 cells have a KRAS G12C mutation</code></pre>
+<p>“A549”: This pattern matches the string “A549” within each line of the file.</p>
+</section>
+<section id="find-the-lines-that-talk-about-either-a549-or-mcf7" class="level3">
+<h3 class="anchored" data-anchor-id="find-the-lines-that-talk-about-either-a549-or-mcf7">Find the lines that talk about either A549 or MCF7:</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">$</span> grep <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-E</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"A549|MCF7"</span> grep_sed_example1.txt</span></code></pre></div>
+</div>
+<pre><code>The cell line is A549
+A549 cells have a KRAS G12C mutation
+Another cell line is MCF7</code></pre>
+<p>-E: Enables extended regular expressions, allowing the use of the | (OR) operator.</p>
+<p>“A549|MCF7”: This pattern matches lines containing either “A549” or “MCF7”.</p>
+</section>
+<section id="find-the-lines-that-end-with-a-cell-line-id-i.e.-a549-or-mcf7" class="level3">
+<h3 class="anchored" data-anchor-id="find-the-lines-that-end-with-a-cell-line-id-i.e.-a549-or-mcf7">Find the lines that end with a cell line id (i.e., A549 or MCF7):</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">$</span> grep <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-E</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"A549$|MCF7$"</span> grep_sed_example1.txt</span></code></pre></div>
+</div>
+<pre><code>Another cell line is MCF7</code></pre>
+<p>-E: Enables extended regular expressions, allowing the use of the $ anchor to match the end of a line and the use of the | (OR) operator</p>
+<p>“A549$|MCF7$”: This pattern matches lines that end ($) with either “A549” or “MCF7”.</p>
+</section>
+</section>
+<section id="sed" class="level2">
+<h2 class="anchored" data-anchor-id="sed">sed</h2>
+<p>Note that sed will not make a permanent edit to the original file unless you specifically instruct it to do so using the -i option. Default behavior is to just output the modified text to standard output.</p>
+<section id="change-instances-of-a549-to-mcf7" class="level3">
+<h3 class="anchored" data-anchor-id="change-instances-of-a549-to-mcf7">Change instances of A549 to MCF7:</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">$</span> sed <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'s/A549/MCF7/g'</span> grep_sed_example1.txt</span></code></pre></div>
+</div>
+<pre><code>Experiment notes:
+We are using the hg19 genome build
+The cell line is MCF7
+MCF7 cells have a KRAS G12C mutation
+Another cell line is MCF7</code></pre>
+<p>s: This is the substitute command in sed, which is used to perform substitutions.</p>
+<p>/A549/MCF7/: This is the substitution operation. It finds all occurrences of “A549” and replaces them with “MCF7”.</p>
+<p>g: This is the global flag, which tells sed to perform the substitution globally within each line, not just the first occurrence.</p>
+</section>
+<section id="change-only-the-second-instance-of-a549-to-a549_lung" class="level3">
+<h3 class="anchored" data-anchor-id="change-only-the-second-instance-of-a549-to-a549_lung">Change only the second instance of A549 to A549_LUNG:</h3>
+</section>
+<section id="change-instances-of-a549-to-mcf7-but-without-stating-a549" class="level3">
+<h3 class="anchored" data-anchor-id="change-instances-of-a549-to-mcf7-but-without-stating-a549">Change instances of A549 to MCF7, but without stating “A549”:</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">$</span> sed <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'s/[A-Z][0-9]\{3\}/MCF7/g'</span> grep_sed_example1.txt</span></code></pre></div>
+</div>
+<pre><code>Experiment notes:
+We are using the hg19 genome build
+The cell line is MCF7
+MCF7 cells have a KRAS G12C mutation
+Another cell line is MCF7</code></pre>
+<p>[A-Z]: Matches any uppercase letter from A to Z.</p>
+<p>[0-9]: Matches any digit from 0 to 9.</p>
+<p>\{3\}: Specifies that the previous pattern (digit) should occur exactly three times.</p>
+<p>/MCF7/: Replaces the matched pattern with “MCF7”.</p>
+<p>g: This flag is used for global substitution, ensuring all occurrences within each line are replaced.</p>
+</section>
+<section id="how-can-i-make-multiple-changes-in-a-single-line" class="level3">
+<h3 class="anchored" data-anchor-id="how-can-i-make-multiple-changes-in-a-single-line">How can I make multiple changes in a single line?</h3>
+<p>-e: This option allows you to specify multiple sed commands in one line. Each -e flag indicates the beginning of a new sed command.</p>
+<p>Then you can just sequentially use the expressions you want to apply!</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>misc</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_03_27_GNM569awk.html</guid>
+  <pubDate>Wed, 27 Mar 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Oyster Sampling @ Point Whitney – Lifestage Carryover Project</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_28_oyster_sampling.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>We (Eric, Grace L., Ariana, and I) spent the day at the Point Whitney research station, performing a reciprocal heat stress treatment and sampling on 4 Pacific oyster (<em>Crassostrea gigas</em>) life stages (spat, seed, juvenile, adult) for Eric’s thesis work. See <a href="../../../posts/projects/misc/2024_02_26_oyster_sampling_materials.html">previous post for materials</a> and <a href="https://ahuffmyer.github.io/ASH_Putnam_Lab_Notebook/Lifestage-Carryover-Project-Sampling/">Ariana’s post</a> for project details.</p>
+<p><u>Organism:</u> Pacific oyster (<em>Crassostrea gigas</em>)</p>
+<p><u>Lifestages:</u> Seed, Spat, Juvenile, Adult</p>
+<p>For each of the four life stages, Eric had already performed an original conditioning treatment. We an additiol reciprocal exposure to acute stress. For example, half of the spat “control” group was exposed to the 32*C “high” stress, half of the “control” group was left in ambient temperature, half of the “treated” spat group was exposed to the 32*C “high” stress, and half of the “treated” spat group was left in ambient.</p>
+<p><u>Conditioning treatment groups:</u> Control, Treated</p>
+<p><u>Acute stress treatment groups:</u> Ambient, High (32*C)</p>
+<p><u>Possible treatment group combinations:</u> Control/Ambient, Control/High, Treated/Ambient, Treated/High</p>
+<p>For each age class, each set of treatment conditions was sampled. Sampling was performed slightly differently for each age, due to size restrictions:</p>
+<table class="table">
+<colgroup>
+<col style="width: 2%">
+<col style="width: 97%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Age class</th>
+<th>Sampling approach (for <u><strong>each</strong></u> of the 4 treatment combinations)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Spat</td>
+<td><p>Overview: 17 samples per treatment combination (RNA n=6, DNA n=6, frozen n=5) from 17 animals</p>
+<p>For each treatment set, sampled 6 animals for RNA preservation, 6 animals for DNA preservation, and 5 animals to be flash frozen (e.g., for lipid work). <em>Whole animals</em> were preserved, since the spat are too small to easily extract tissue from the shell.</p></td>
+</tr>
+<tr class="even">
+<td>Seed</td>
+<td><p>Overview: 17 samples per treatment combination (RNA n=6, DNA n=6, frozen n=5) from 17 animals</p>
+<p>For each treatment set, sampled 6 animals for RNA preservation, 6 animals for DNA preservation, and 5 animals to be flash frozen (e.g., for lipid work). Seed are larger than spat, so we were able to crack open the shell of each animal and preserve the <em>whole animal tissue</em>.</p></td>
+</tr>
+<tr class="odd">
+<td>Juvenile</td>
+<td><p>Overview: 17 samples per treatment combination (RNA n=6, DNA n=6, frozen n=5) from 17 animals</p>
+<p>For each treatment set, sampled 6 animals for RNA preservation, 6 animals for DNA preservation, and 5 animals to be flash frozen (e.g., for lipid work). Juveniles are large enough to open the shell and differentiate between tissue types, but too small to split gill tissue into multiple samples, so <em>the entire gill tissue</em> of each animal was sampled.</p></td>
+</tr>
+<tr class="even">
+<td>Adult</td>
+<td><p>Overview: 24 samples per treatment combination (RNA n=8, DNA n=8, frozen n=8) from 8 animals</p>
+<p>For each treatment set, sampled 8 animals total. From each animal, <em>gill tissue was extracted and separated into three portions,</em> which were preserved for RNA, DNA, and flash frozen. This means we have “sets” of samples for the adults (e.g.&nbsp;a sample preserved for RNA work is associated with a sample preserved for DNA and a sample that was flash frozen, since all three are from the same animal), with a total of 24 samples for each treatment combination.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 16%">
+<col style="width: 13%">
+<col style="width: 16%">
+<col style="width: 13%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Control/Ambient</th>
+<th>Control/High</th>
+<th>Treated/Ambient</th>
+<th>Treated/High</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Spat</strong></td>
+<td>RNA: 6<br>
+DNA: 6<br>
+frozen: 5</td>
+<td>RNA: 6<br>
+DNA: 6<br>
+frozen: 5</td>
+<td>RNA: 6<br>
+DNA: 6<br>
+frozen: 5</td>
+<td>RNA: 6<br>
+DNA: 6<br>
+frozen: 5</td>
+<td><p>RNA: 24<br>
+DNA: 24<br>
+frozen: 20</p>
+<p>68 total</p></td>
+</tr>
+<tr class="even">
+<td><strong>Seed</strong></td>
+<td>RNA: 6<br>
+DNA: 6<br>
+frozen: 5</td>
+<td>RNA: 6<br>
+DNA: 6<br>
+frozen: 5</td>
+<td>RNA: 6<br>
+DNA: 6<br>
+frozen: 5</td>
+<td>RNA: 6<br>
+DNA: 6<br>
+frozen: 5</td>
+<td><p>RNA: 24<br>
+DNA: 24<br>
+frozen: 20</p>
+<p>68 total</p></td>
+</tr>
+<tr class="odd">
+<td><strong>Juvenile</strong></td>
+<td>RNA: 6<br>
+DNA: 6<br>
+frozen: 5</td>
+<td>RNA: 6<br>
+DNA: 6<br>
+frozen: 5</td>
+<td>RNA: 6<br>
+DNA: 6<br>
+frozen: 5</td>
+<td>RNA: 6<br>
+DNA: 6<br>
+frozen: 5</td>
+<td><p>RNA: 24<br>
+DNA: 24<br>
+frozen: 20</p>
+<p>68 total</p></td>
+</tr>
+<tr class="even">
+<td><strong>Adult</strong></td>
+<td>RNA: 8<br>
+DNA: 8<br>
+frozen: 8</td>
+<td>RNA: 8<br>
+DNA: 8<br>
+frozen: 8</td>
+<td>RNA: 8<br>
+DNA: 8<br>
+frozen: 8</td>
+<td>RNA: 8<br>
+DNA: 8<br>
+frozen: 8</td>
+<td><p>RNA: 32<br>
+DNA: 32<br>
+frozen: 32</p>
+<p>96 total</p></td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td><p>RNA: 26<br>
+DNA: 26<br>
+frozen: 23</p>
+<p>75 total</p></td>
+<td><p>RNA: 26<br>
+DNA: 26<br>
+frozen: 23</p>
+<p>75 total</p></td>
+<td><p>RNA: 26<br>
+DNA: 26<br>
+frozen: 23</p>
+<p>75 total</p></td>
+<td><p>RNA: 26<br>
+DNA: 26<br>
+frozen: 23</p>
+<p>75 total</p></td>
+<td><p>RNA: 104<br>
+DNA: 104<br>
+frozen: 92</p>
+<p><strong>300 total samples</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/IMG_8128.jpg" class="img-fluid figure-img" width="500"></p>
+<figcaption class="figure-caption">The oysters (each age class and treatment group in individual tubes or bags)</figcaption>
+</figure>
+</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 64.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/IMG_8129.jpg" class="img-fluid figure-img" width="890"></p>
+<figcaption class="figure-caption">Sampling station</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 36.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/IMG_8130.jpg" class="img-fluid figure-img" width="500"></p>
+<figcaption class="figure-caption">Sampling station</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/IMG_8138.jpg" class="img-fluid figure-img" width="695"></p>
+<figcaption class="figure-caption">A juvenile oyster during sampling</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/IMG_8139.jpg" class="img-fluid figure-img" width="695"></p>
+<figcaption class="figure-caption">Oysters post-sampling</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+
+
+
+ ]]></description>
+  <category>miscellaneous</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_28_oyster_sampling.html</guid>
+  <pubDate>Wed, 28 Feb 2024 08:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Ideas/Questions Log</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_30_Ideas.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>My favorite part of science is constantly interacting with papers/presentations/people that prompt new ideas and questions about the stuff I’m working in, and I want to make sure I don’t forget things when that happens. This is my brain dump of thoughts/questions I want to remember and reference in the future!</p>
+<section id="ideas" class="level2">
+<h2 class="anchored" data-anchor-id="ideas">Ideas</h2>
+<ul>
+<li>At SICB, Jackie talked about how coral life history traits may cause “mismatch” of heat-acclimatized and non-acclimatized eggs and sperm (bc eggs are developing during summer/bleaching season, while sperm don’t start developing till months later). Study something similar in oysters (if their life history makes sense)? Interesting to think about possible <strong>epigenetic mismatch of gametes</strong>…</li>
+<li>study set of multiple stressors and/or multiple generations on methylation/expression/phenotype/etc. (e.g.&nbsp;Feiner et al.&nbsp;2022, set of chemical and thermal environmental stressors on daphnia to investigate epigenetic heritability)</li>
+<li>In same daphnia paper (Feiner er al.&nbsp;2022), saw responses to naturally occurring stressors were more inherited than those to non-naturally occurring ones — possible suggestion of <strong>underlying preadaptation towards certain epigenetic modifications</strong> that helps allow them to be passed on successfully and retained?</li>
+<li>keep in mind MHW conditions (sudden dramatic swings), not just slow warming creep of climate crisis</li>
+<li>If epigeneitc modification is heritable, what are <strong>epigenetic impacts of releasing captive/bred stock</strong> back into wild?</li>
+<li>Is it possible to study gene expression/methylation/ncRNA in <strong>ancient DNA</strong>? A study investigating gene expression or epigenetic modifications over the course of ancient climate change (e.g.&nbsp;end of last ice age) would be soooooo cool</li>
+</ul>
+</section>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">Questions</h2>
+<ul>
+<li><p>Need to look more into <strong>epigenetic reprogramming</strong> – how does it work, mechanistically? How does it differ among taxa, especially between model organisms and inverts? How would it differ among sexual reproduction and the many forms of asexual reproduction?</p></li>
+<li><p><strong>Heritability of ncRNA-related epigenetic changes?</strong></p></li>
+<li><p>While reading <a href="https://doi.org/10.1111/gcb.16880">George et al.&nbsp;2023</a>, I noticed they used heat shock to induce triploidy in their Pacific oysters (referenced Yamamoto et al.&nbsp;1988, which showed you can apply a heat shock of 35*C to 20*C-acclimated larvae during meiosis to induce triploidy). Raised the question of whether this can/does happen in the wild? And if it’s possible to achieve triploidy-inducing heat shock conditions in the wild, does that mean that climate change/increased incidence of MHW will begin shifting wild oyster populations to more triploids, and thus affect fertility/reproductive viability of wild pops?</p></li>
+<li><p>A common way of producing triploid oyster stocks nowadays is crossing tetraploid and diploid oysters (genertes 100% triploid offspring without the mortality associated with heat-shock or chemically induced triploidy). We know that induced-triploids are less robust to temperature/aerial exposure stress than diploids (George et al.&nbsp;2023). <strong>Is it possible that, in induced triploids, the heat/chemical shock at an early life stage epigenetically “primes” them poorly</strong>? Epigenetic modifications and genetic adaptations to stress are heritable, though, so how do tetraploidXdiploid triploids fare under stress conditions, and can this be modulated by the acclimation/adaptation of the parents?</p></li>
+<li><p>During some preliminary lit review on Pacific cod and MHW related mortality, I read that overall warming and early-year MHWs can affect the timing of marine primary production (e.g.&nbsp;phytoplankton reproduction and abundance). Oysters feed on phytoplankton through filter feeding – <strong>does that mean that, as oceans warm, oysters may be facing more starvation stress?</strong> Especially if there ends up being a “mismatch” of spawning and primary production?</p></li>
+<li><p><strong>Does polyploidy affect the way you analyze and compare gene expression data?</strong> Since a triploid would have an extra set of chromosomes, could that affect number of transcripts even if [# transcripts expressed per chromosome] didnt change?</p></li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>miscellaneous</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_30_Ideas.html</guid>
+  <pubDate>Tue, 27 Feb 2024 19:48:07 GMT</pubDate>
+</item>
+<item>
+  <title>Materials for oyster sampling 2/28/24</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_26_oyster_sampling_materials.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>On Wednesday I’m going with Ariana, Eric, Grace L. to the hatchery to help them with sampling. I collected the following materials and stored them in the conference room (FTR 230) for us to grab them on Wednesday before driving over. Note that the tubes are currently unlabeled, so if any of us has time today or tomorrow we’ll want to label them with indelible marker (see details in <a href="https://github.com/RobertsLab/resources/issues/1817">the github issue</a>)</p>
+<ul>
+<li><p>spray bottles of DI H2O, 10% bleach, and 70% ethanol</p></li>
+<li><p>500mL of 70% ethanol</p></li>
+<li><p>RNA later (250mL received in 2023, additional that may be expired)</p></li>
+<li><p>waterproof markers, pens, pencils</p></li>
+<li><p>4 tweezers</p></li>
+<li><p>5 razors</p></li>
+<li><p>4 oyster shucking knives (two with broken tips?)</p></li>
+<li><p>bench covers</p></li>
+<li><p>gloves (1box ea S,M,L)</p></li>
+<li><p>pipettors (P10, P200, P1000) with 1 box tips each</p></li>
+<li><p>tubes (snap cap and screw cap, currently unlabeled)</p></li>
+</ul>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/.png" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/IMG_8123.jpg" class="img-fluid" width="700"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/IMG_8124.jpg" class="img-fluid" width="700"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/IMG_8125.jpg" class="img-fluid" width="700"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/.png" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/IMG_8126.jpg" class="img-fluid" width="700"></p>
+
+
+
+ ]]></description>
+  <category>miscellaneous</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_26_oyster_sampling_materials.html</guid>
+  <pubDate>Mon, 26 Feb 2024 21:19:45 GMT</pubDate>
+</item>
+<item>
+  <title>Google sheets template for organizing allllllll the papers</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_22_paper_organization.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>As I’ve started reading more and more papers over the last few months I’ve been thinking more about how to keep track of all the information input. I’m still in the early stages of my projects, so it’s difficult to know exactly which papers might be useful for future project planning, lit reviews, writing, etc. I recently started using a new method to organize all of my papers, so I thought I’d share!</p>
+<section id="step-1-zotero" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-zotero">Step 1: Zotero</h3>
+<p>I started using the reference manager Zotero in December and I really like being able to annotate papers, generate notes, and assign tags. My workflow when I find a new paper I’m interested in is to first read the abstract, add the paper to my Zotero library, and assign tags related to how I might plan on using the paper (e.g.&nbsp;species name, relevant methods) . I also always assign the tag “unread,” and then change it to “read” once I’ve finished reading/annotating.</p>
+<p>However, Zotero doesn’t have an easy way to view the tags, notes, or some types of metadata associated with multiple papers at the same time. Since I’m a very visual person, I want a way to view, sort, and search the key information from all of my papers at the same time. After asking for suggestions in the lab Slack, Chris sent me a Sheets template that I’ve been testing out!</p>
+</section>
+<section id="step-2-google-sheets" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-google-sheets">Step 2: Google Sheets</h3>
+<p><a href="https://docs.google.com/spreadsheets/d/1kVvoM0zN4B2HWa04zXlOgJzptutfuxkU50Ny3Rp1BHw/edit?usp=sharing">Original template</a> (from Chris)</p>
+<p><a href="https://docs.google.com/spreadsheets/d/1y2bPvPm6MpkF2q6CGqsYnvArUU61ZP2w4jUlDJBdrQg/edit?usp=sharing">My current document</a></p>
+<p>My current setup for this document looks like this:</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/Screenshot (230).png" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/Screenshot (231).png" class="img-fluid"></p>
+<p>The metadata recorded in the Sheets document is a little redundant because all of my papers are already stored in my Zotero library, but it ensures I’m recording information for the right paper.</p>
+<p>Here’s a look at all of the options for the different categorical variables:</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/.png" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/Screenshot (235).png" class="img-fluid"></p>
+<p>With these options I can search by project, study type, and relevance, and keep track of how thoroughly I’ve read a source in my library.</p>
+<p>I’m still in the early stages of implementing this document, but so far I really like it! While I was brainstorming the oyster project experimental design I had to reference a few papers and the Sheets document made it much easier to quickly go through many papers and the information I’d identified as most helpful, without having to individually click on each paper to view its associated metadata/notes. I still need to transfer everything i currently have in my Zotero library to the Sheets doc, but I think having this system in place before I really get into the weeds of reading dozens/hundreds of papers for thesis writing will be super helpful!</p>
+
+
+</section>
+
+ ]]></description>
+  <category>miscellaneous</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_22_paper_organization.html</guid>
+  <pubDate>Thu, 22 Feb 2024 23:40:19 GMT</pubDate>
+</item>
+<item>
+  <title>Testing bedtools: gff vs bed input file</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_08_bedtools_gffvbed.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>While writing some script to <a href="../../../posts/projects/E5_coral/2024_02_07_Peve_transcriptome.html">generate a transcriptome fasta</a> using a CDS gff and scaffold genome, I ran into the question of how exactly the bedtools getfasta tool handles gff and bed file inputs. While both gff and bed files list basically the same types of sequence information, they list the genomic coordinates of the sequences slightly differently. gff files use a 1-based system, while bed files use a 0-based system (for details on how those differ, see this <a href="https://www.biostars.org/p/84686/">website post</a> that I found helpful!). Bedtools states in the documentation for it’s <a href="https://bedtools.readthedocs.io/en/latest/content/tools/getfasta.html">getfasta</a> function that gff files are accepted as input, but it isn’t made clear whether bedtools will treat the genomic coordinates in a gff file as 1-based, or as the o-based system used in bedtool’s more standard file format, bed.</p>
+<p>To test whether bedtools can appropriately identify and parse both gff and bed files, I wrote some quick test files to run through bedtools getfasta.</p>
+<p>Write the test files:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"></span>
+<span id="cb1-2"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-e</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"&gt;Porites_evermani_scaffold_1"</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> test_input.fasta</span>
+<span id="cb1-3"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-e</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"AAAGGGTTTCCCAAAGGGTTTCCC"</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;&gt;</span> test_input.fasta</span>
+<span id="cb1-4"></span>
+<span id="cb1-5"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-e</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Porites_evermani_scaffold_1\tGmove\tCDS\t1\t5\t.\t-\t.\tParent=Peve_00000001"</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> test_input.gff</span>
+<span id="cb1-6"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-e</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Porites_evermani_scaffold_1\tGmove\tCDS\t11\t15\t.\t-\t.\tParent=Peve_00000001"</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;&gt;</span> test_input.gff</span>
+<span id="cb1-7"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-e</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Porites_evermani_scaffold_1\tGmove\tCDS\t20\t20\t.\t-\t.\tParent=Peve_00000002"</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;&gt;</span> test_input.gff</span>
+<span id="cb1-8"></span>
+<span id="cb1-9"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-e</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Porites_evermani_scaffold_1\t0\t5\t.\t.\t-\tGmove\tCDS\t.\tParent=Peve_00000001"</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> test_input.bed</span>
+<span id="cb1-10"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-e</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Porites_evermani_scaffold_1\t10\t15\t.\t.\t-\tGmove\tCDS\t.\tParent=Peve_00000001"</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;&gt;</span> test_input.bed</span>
+<span id="cb1-11"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-e</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Porites_evermani_scaffold_1\t19\t20\t.\t.\t-\tGmove\tCDS\t.\tParent=Peve_00000002"</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;&gt;</span> test_input.bed</span>
+<span id="cb1-12"></span>
+<span id="cb1-13"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">export</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">PATH</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>/home/shared/bedops_linux_x86_64-v2.4.41/bin:<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$PATH</span></span>
+<span id="cb1-14"></span>
+<span id="cb1-15"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${bedops}</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">/gff2bed</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--do-not-sort</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> test_input.gff <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> test_input_gfftobed.bed</span></code></pre></div>
+</div>
+<p>Run through bedtools getfasta:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">source</span> .bashvars</span>
+<span id="cb2-2"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> ~/deep-dive/E-Peve/data</span>
+<span id="cb2-3"></span>
+<span id="cb2-4"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${bedtools}</span> getfasta <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-fi</span> test_input.fasta <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-bed</span> test_input.gff <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-fo</span> test_gff_to_fasta.fasta</span>
+<span id="cb2-5"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${bedtools}</span> getfasta <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-fi</span> test_input.fasta <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-bed</span> test_input.bed <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-fo</span> test_bed_to_fasta.fasta</span>
+<span id="cb2-6"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${bedtools}</span> getfasta <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-fi</span> test_input.fasta <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-bed</span> test_input_gfftobed.bed <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-fo</span> test_gff_to_bed_to_fasta.fasta</span>
+<span id="cb2-7"></span>
+<span id="cb2-8"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span> test_gff_to_fasta.fasta</span>
+<span id="cb2-9"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span></span>
+<span id="cb2-10"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span> test_bed_to_fasta.fasta</span>
+<span id="cb2-11"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span></span>
+<span id="cb2-12"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span> test_gff_to_bed_to_fasta.fasta</span></code></pre></div>
+</div>
+<p>Output:</p>
+<pre><code>&gt;Porites_evermani_scaffold_1:0-5 AAAGG 
+&gt;Porites_evermani_scaffold_1:10-15 CCAAA 
+&gt;Porites_evermani_scaffold_1:19-20 T  
+
+&gt;Porites_evermani_scaffold_1:0-5 AAAGG 
+&gt;Porites_evermani_scaffold_1:10-15 CCAAA 
+&gt;Porites_evermani_scaffold_1:19-20 T  
+
+&gt;Porites_evermani_scaffold_1:0-5 AAAGG 
+&gt;Porites_evermani_scaffold_1:10-15 CCAAA 
+&gt;Porites_evermani_scaffold_1:19-20 T</code></pre>
+<p>All three files resulted in identical FASTA outputs ! That provides support for bedtools being able to accurately identify which file format is input, and to then appropriately parse the genomic coordinates listed based on the file type!</p>
+
+
+
+ ]]></description>
+  <category>misc</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_08_bedtools_gffvbed.html</guid>
+  <pubDate>Thu, 08 Feb 2024 08:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>SICB 2024</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_02_SICB.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="sicb-day-1" class="level2">
+<h2 class="anchored" data-anchor-id="sicb-day-1">SICB Day 1</h2>
+<p><strong>MISS Grant Writing Workshop</strong></p>
+<ul>
+<li>(notes <a href="https://docs.google.com/document/d/1_OzDwwrB3_MgcHZMNjwzF8FmA6CmD3FxBc-V2bGYIhQ/edit">here</a>)</li>
+</ul>
+<p><strong>MISS Figures and Illustrations Workshop</strong></p>
+</section>
+<section id="sicb-day-2" class="level2">
+<h2 class="anchored" data-anchor-id="sicb-day-2">SICB Day 2</h2>
+<p><strong>Facultatively sypmbiotic species as models for exploring immune-symbiosis interplay (Lauren Fuess)</strong></p>
+<p><strong>Tracking heavy metals during bleaching stress and recovery in Hawaiin reef-building corals (Callum Backstrom)</strong></p>
+<ul>
+<li>Go Callum!</li>
+</ul>
+<p><strong>Reacclimation to normal temperature failed to restore gamete performance in heatwave-exposed urchins (Jazcenya Gonzalez)</strong></p>
+<ul>
+<li><p>Could apply this to our systems – heatwave conditions instead of persistent higher temps, and include the reacclimation component</p></li>
+<li><p>Detrimental generational impacts – sperm speed and motility decreased (along with a couple of other metrics) and, while fertilization was maintained, embryo development was significantly negatively impacted</p></li>
+</ul>
+<p><strong>It’s about time: Unraveling the molecualr clocks of fiddler crab embryos and larvae (Caitlin BrabbleRose)</strong></p>
+<ul>
+<li><p>Fidler crabs have <em>internal</em> circadian and/or circitidal clock – exhibit specific behavior in lab, even when separated from external cues!! Woah!!</p></li>
+<li><p>Possible differential expression of some genes due to circadian and/or circitidal patterns!</p></li>
+</ul>
+<p><strong>Transcriptomic responses of gecarcinid land crabs to acute and prolonged desiccation stress (Victoria Watson-Zink)</strong></p>
+<p><strong>Patterns of intergenerational DNA methylation inheritance in Acropora (Christopher Peterson)</strong></p>
+<ul>
+<li><p>allele-specific methylation design</p></li>
+<li><p>methylation heritability varied among the crosses (among two Acropora species and their hybrids)</p></li>
+<li><p>Possibly some methylation is heritable and some isn’t – why?</p></li>
+<li><p>A whole bunch of different mathematical analyses of their methylation data</p></li>
+</ul>
+<p><strong>Building an ‘epigenetic clock’: Utelizing DNA methylation patterns to predict age in fish (Emma Strand)</strong></p>
+<ul>
+<li><p>Look into Gloucester marine genomic institute (in Boston)</p></li>
+<li><p>Whole genome bisulfate sequencing</p></li>
+<li><p>Elastic net penalized regression model</p></li>
+<li><p>Prelim data, but looks like there <em>may</em> be some methylation sites that can be used to predict age</p></li>
+</ul>
+<p><strong>Integrating genetics, phenotype, and physiology in a hybrid population of Plethodon (Kyle MOxley)</strong></p>
+<p><strong>Understanding the impacts of nutrient pollution on an urban coral in a n era of climate change (Caroline Fleming Ianniello)</strong></p>
+<ul>
+<li><p>Wow, coral species Astrangia poculata is a temperate coral species that lives in super urban areas – they’re even found in harbors of NYC!</p></li>
+<li><p>No apparent effect of nitrogen alone on basal metabolic rate</p></li>
+<li><p>However, significant metabolic depression when you combine nitrogen in form of ammonium with temperatures. Also see significant bleaching in combo.</p></li>
+<li><p>Preferentially uptakes ammonium to nitrate</p></li>
+</ul>
+<p><strong>Comparative analyses of long non-coding RNA activity in three corla species (Zachary Bengtsson)</strong></p>
+<ul>
+<li><p>Go Zach!</p></li>
+<li><p>True sequence siilarity vs.&nbsp;conserved regions?</p></li>
+</ul>
+<p><strong>Toxin tales: alkaloid load correlates with gene expression differences in poison frogs (Aurora Alvarez-Buylla)</strong></p>
+<p><strong>Global change in the sensory landscape: Color signal evolution across changing light environments (John David Curlis)</strong></p>
+<p><strong>Impacts of marine heatwaves on coral environmental memory and cross-generational acclimatization (Danielle Becker)</strong></p>
+<ul>
+<li><p>Remember phenotypic plasticity can be adaptive and maladaptive</p></li>
+<li><p>Rather than use static heat stress, could try more realistically mimicking MHWs by using cyclic temps with higher max (mimic daily temp cycle)</p></li>
+<li><p>Parental exposure to MHW conditions does impact larval survivorship under thermal stress – environmental memory</p></li>
+<li><p>This is a Putnam lab person! works w Ariana</p></li>
+</ul>
+<p><strong>Characterizing dark gene functions in corals through microscopy and sRNA-seq approaches (Kevin Wong)</strong></p>
+<ul>
+<li>Super cool!</li>
+</ul>
+<p><strong>Symbionts to the rescue: Symbiodiiaceae facilitate coral survival in extreme bay environments (Maya Powell)</strong></p>
+<p><strong>Fine-scale morphological plasticity in staghorn corals as a function of flow, light, and genotype (Maya Gomez)</strong></p>
+</section>
+<section id="sicb-day-3" class="level2">
+<h2 class="anchored" data-anchor-id="sicb-day-3">SICB Day 3</h2>
+<p><strong>Immune response of Pycnopodia helianthoides to sea star wasting disease (Grace Crandall)</strong></p>
+<ul>
+<li>Go Grace!</li>
+</ul>
+<!-- -->
+<ul>
+<li>Can you see DEGs in absence of stress, just related to normal function?</li>
+</ul>
+<p><strong>Identifying genes mediating local adaptation using targeted vs.&nbsp;whole-genome approaches (Nathan Rank)</strong></p>
+<p><strong>Optimal foraging height of arboreal lizards: the role of visual acuity (Steven Adolph)</strong></p>
+<p>^ This is one of my professors from undergrad!</p>
+<p><strong>Active tension driven soft coral pulsing: Exploring emergent behavior through elasticity and tension (Matea Santiago)</strong></p>
+<ul>
+<li>Exploring polyp movement differences across species?</li>
+</ul>
+<p><strong>A multi-omics approach investigating regulation of symbiont state in a facultatively symbiotic coral (Erin Borbee)</strong></p>
+<ul>
+<li><p>Changes in symbiont density associated with changes in immunity, BUT since tropical corals depend on symbionts, changes in symbiont density are often related to stress/disease – how to disentangle how symbiont density alone is related to immunity.</p></li>
+<li><p>Use facultative coral (A. paculata) which is not obligate and can healthily host range of symbiont densities, unrelated to stress</p></li>
+<li><p>Used mixed colonies (both brown and white sections in same individual), did transcriptomics, immune assays, microbiome, genotyping (to validate genetically identical samples, not chimeric)</p></li>
+<li><p>NO DEGs or differences in immune assays between brown and white colonies (remember, no treatment here, just comparing different symbiont-load sections of within the same individual)</p></li>
+<li><p>BUT past work using completely brown and completely white individuals of same species DID find significant differences in immune assays!</p></li>
+<li><p>I really like and am interested in conducting this type of multi-omics work!</p></li>
+</ul>
+<p><strong>Cross-ocean coral transplantation to restore resilience in Caribbean reefs (Mikhail Matz)</strong></p>
+<ul>
+<li><p>That Caribbean coral paper I was looking for: Evolutionary history drives biogeographic patterns of coral reef resilience</p></li>
+<li><p>Super interesting talk, discussing reasons why cross-ocean transplant may be appropriate/necessary for Caribbean reefs. Basically, because of super low recruitment and low diversity in Caribbean reefs, almost every reef in the Caribbean is ecologically extinct (not meeting replacement levels). The a) low native diversity, b) existing high native prevalence of disease, c) 11th hour situation, mean that transplant from the <em>much</em> more reproductive Indo-Pacific could be appropriate to preserve existence of reef habitat at all in Caribbean.</p></li>
+<li><p>I really like how this presenter, who is clearly well established in career, didn’t use any excessive or complicated jargon in their talk, but were still super engaging and interesting. A nice reprieve after so many pretty formally-spoken talks yesterday</p></li>
+<li><p>What kind of consideration needs to be given to the (few, but present) Caribbean reefs that are still stable and ecologically viable? Introduced super-recruiters would definitely outcompete the natives there</p></li>
+</ul>
+<p><strong>Leveraging coral disease ’omics datasets for disease classification and predictive modeling (Laura Mydlarz)</strong></p>
+<p><strong>Identifying shared and host-specific transcriptome charictaristics of the cnidarian-algal mutualism (Madison Emery)</strong></p>
+<ul>
+<li><p>The algal symbiosis mutualism has evolved separately several times in Cnidaria – woah!</p></li>
+<li><p>Didn’t realize there’s a jellyfish taxa of cnidarians with obligate symbionts</p></li>
+<li><p>In Cassiopeia (facultative) the symbiotic individual seem to mount more damaging (to the host) immune responses than the aposymbiotic individuals (so individuals with symbionts are <em>less</em> likely to survive)</p></li>
+<li><p>Between two species with different symbiont evolutions, more than half of the DEOGs were differentially expressed in <em>different directions!</em></p></li>
+</ul>
+<p><strong>Tolerance of infection could support resilience at multiple levels (James Adelman)</strong></p>
+<p><strong>Resilience to high temperature and hypoxia in fish: view from the genome and epigenome (Patricia Schulte)</strong></p>
+<p><strong>Interplay of acclimatization and adaptation modulates resilience to climate change in marine inverts (Hollie Putnam)</strong></p>
+</section>
+<section id="sicb-day-4" class="level2">
+<h2 class="anchored" data-anchor-id="sicb-day-4">SICB Day 4</h2>
+<p><strong>Biological springs are most energy efficient when loaded and unloaded at equal rates (Mark Ilton)</strong></p>
+<p>^ One of my undergad profs!</p>
+<p><strong>Chasing squishy and crunchy invaders: eDNA for dynamic invasive species surveillance in tide pools (Emily Lancaster)</strong></p>
+<ul>
+<li>Shells of dead animals (e.g.&nbsp;bivalves) can still shed eDNA, even if the body tissue is gone – woah!</li>
+</ul>
+<p><strong>Antarctic marine benthic communities: Image transects reveal lower abundances in Eastern than Western (Kenneth Halanych)</strong></p>
+<p><strong>Striking gold: Successes in rare species detection using eDNA, acoustics, and visual surveys (Corinne Richards-Zawacki)</strong></p>
+<p><strong>A multiomic approach to understand tradeoffs between symbiosis and immunity in a reef-building coral (Maria Valadez Ingersoll)</strong></p>
+<ul>
+<li>Single cell RNAseq and SPLiTseq</li>
+</ul>
+<p><strong>Genome skimming resolves east Pacific Pocillopora species diversity and population differentiation (Michael Connelly)</strong></p>
+<p><strong>Plasticity in response to temperatures magnitude and fluctuation – from coloration to thermal tolerance (Austin Hoffman)</strong></p>
+<ul>
+<li>Could do something like this, have two treatment axes, one for set of mean temps, one for set of temp variations</li>
+</ul>
+<p><strong>Genetic underpinnings of developmental plasticity and acute thermal responses in a coastal copepod (Alison Hall)</strong></p>
+<ul>
+<li>Differences in total detected DEGs can always be influenced bu underlying genetic variation in samples</li>
+</ul>
+<p><strong>Multigenerational plasticity to hypoxia and acidification in Atlantic silversides (Medidia menidia) (Christopher Murray)</strong></p>
+<ul>
+<li>transcriptional front loading</li>
+</ul>
+<p><strong>Approaches for minimally invasive long-term ecological montiering (Christine Mantegna)</strong></p>
+<ul>
+<li>Go Chris!!!</li>
+</ul>
+<p><strong>Seasonal variation in thermal tolerance and hypoxia tolerance of a threatened minnow and congener (Jessica Reemeyer)</strong></p>
+<ul>
+<li><p>Really interesting general question: it’s common to study more common species to infer info about closely-related imperiled species. But how trustworthy is this? How transferrable are conclusions about thermal tolerance (etc.) between closely related species?</p></li>
+<li><p>Are corals and other marine inverts commonly affect by DO levels Is it even relevant (aka is DO variable in marine environments in the same way it is in freshwater)?</p></li>
+<li><p>The very closely related species <em>didn’t</em> respond in exactly the same way, suggesting we can’t always use “surrogate” species – study your species if possible!</p></li>
+</ul>
+<p><strong>Rapid change in a rainforest anole: results from the first six years of a translocation experiment (Michael Logan)</strong></p>
+<ul>
+<li>Really cool talk an being able to directly track phenotypic change/adaptation of translocated lizards</li>
+</ul>
+<p><strong>Variable warm temperature elevates thermal tolerance but impairs freshwater tolerance in killifish (Michelle Monette)</strong></p>
+<section id="cnidarian-social" class="level3">
+<h3 class="anchored" data-anchor-id="cnidarian-social">Cnidarian Social</h3>
+<p>Spoke with Carly Kenkel and another woman whose name I can’t remember now 😅, and the other person told us about her recent work with anemones studying the effect of estrogen pollution – super interesting! So far they haven’t seen any direct effect on the anemone host or anemone fertility/reproduction, which we might normally expect based on role of estrogen in vertebrates. There was, however, a significant effect on the symbiont populations – in presence of estrogen, symbionts were increasingly photosynthetically efficient – woah! The effect was so strong that they could actually see differences in the color of the water the anemones were held in because of increased levels of algae in the water. Increasing estrogen levels led to this gradient of increasingly green water 😮. Also touched on studying impact of sediment suspension (affects symbiont productivity and/or polyp feeding?)</p>
+<p>We also talked a bit about the possibility of coral polyps in the same aggregate colony sharing the “symbiont load,” and related nutrients, which could explain when some species have “patchy” symbiont distribution around colony. Apparently there’s a kind of plant that grows in/near salty water and, to rid itself of excess salt, basically picks a leaf to die and sends all the salt there, leaving the rest of the plant healthy. Maybe similar stuff happens in corals?</p>
+</section>
+</section>
+<section id="sicb-day-5" class="level2">
+<h2 class="anchored" data-anchor-id="sicb-day-5">SICB Day 5</h2>
+<p><strong>The importance of life history strategies in the recovery of corals after thermal stress (Jacqueline Padilla-Gamino)</strong></p>
+<ul>
+<li><p>Super interesting idea! Basically, maybe the combination of MHW and differing egg/sperm developmental timelines are causing egg/sperm mismatch when spawning happens!</p></li>
+<li><p>Eggs take a long time to develop and start in late summer, and thus are already in development during MHW/bleaching events. Sperm, however, as “cheap” and don’t start developing until March, so never experience bleaching before the spawning season in early summer. That means that, during spawning, you can end up with bleaching-affected eggs trying to match with unstressed sperm – maybe that “mismatch” is causing problems!</p></li>
+<li><p>Bred bleached (B) and non-bleached (NB) corals. Found that BxB corals and NBxNB corals were most successful in larval development, while BxNB and NBxB corals didn’t do as well. Support for this possible mismatch problem</p></li>
+<li><p>While I’m sure this is at least partially because of bleaching-related stress effects of the viability of the eggs or something similar, this is making me think about the possible role of epigenetics here. We know that environmental conditions can be associated with epigenetic modifications like methylation, and that such epigenetic modifications can also take place in the gametes and thus become heritable. Is it possible that there are epigenetic modifications happening in the eggs during these bleaching events that are not happening to the sperm, and that this “mismatch” of the epigenome is less successful that the combination of two stress-modified gametes (BxB) or of two non-modified gametes (NBxNB)?</p></li>
+</ul>
+<p><strong>Assessing physiological and molecular plasticity in the early stages of Porites astreoides (Florence Fields)</strong></p>
+<p><strong>Intraspecific variation in thermal tolerance in the endangered Caribbean coral, Acropora palmata (Holland Elder)</strong></p>
+<ul>
+<li>Keep in mind bleaching, like other stress reponses, is continuous, not binary!</li>
+</ul>
+<p><strong>The butterfly(fish) effect: Using Caetodontidae territories as bioindicators (Corrine Avidan)</strong></p>
+<p><strong>Microbial predictors of bleacing in Great Barrier Reef Acropora millepora (Karim Primov)</strong></p>
+<p><strong>Iron wars over ligand soup: Exploring chemical crosstalk in Symbiodiniaceae-bacteria interactions (Hannah Reich)</strong></p>
+<ul>
+<li><p>Bacteria can help eukaryotic partners (like algae) access hard-to-get iron</p></li>
+<li><p>Possible connection here to Callum’s talk about impacts of heavy metal contamination on coral/holobiont?</p></li>
+</ul>
+<p><strong>Environmental drivers of coral-associated algal and microbial communities across multiple scales (Coleen Bove)</strong></p>
+
+
+</section>
+
+ ]]></description>
+  <category>miscellaneous</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_02_SICB.html</guid>
+  <pubDate>Thu, 04 Jan 2024 08:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Reviewing Text-To-Speech Tools</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_02_TTS.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>updated Jan 10, 2024</p>
+<p>I get very fidgety when I have to sit and read papers for hours on end, and I’ve found that being able to listen to content while occupying my hands with a mindless task (origami, weaving, embroidery,doodling, etc.) really helps me stay engaged for longer periods of time. With this in mind I’ve been looking for a text-to-speech tool that would enable me to listen to academic papers, textbooks, etc.! I’m hoping this could really improve my lit review workflow, especially since many of the papers I’m reading right now are reviews with fewer tables/figures that sometimes complicate applying TTS to academic material. Here’s a review of some of the services I’ve tried so far:</p>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p><u>Speechify is ultimately the winner for me</u>. Even though it seems exorbitantly expensive, it’s also the option with the most features I find useful and the best voice options, which means it’s most likely to be truly useful in my lit review workflow.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><a href="../../../posts/projects/misc/2024_01_02_TTS.html#audemic">Audemic</a></th>
+<th><a href="../../../posts/projects/misc/2024_01_02_TTS.html#voice-dream">Voice Dream</a></th>
+<th><a href="../../../posts/projects/misc/2024_01_02_TTS.html#speechify">Speechify</a></th>
+<th><a href="../../../posts/projects/misc/2024_01_02_TTS.html#listening.io">Listening.io</a></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Price</strong></td>
+<td>$11/mo OR $118/yr</td>
+<td>$80/yr</td>
+<td>$140/yr</td>
+<td>Unlimited: $20/mo OR $140/yr</td>
+</tr>
+<tr class="even">
+<td><strong>Free version?</strong></td>
+<td></td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td><strong>Free trial</strong></td>
+<td>5 papers</td>
+<td>3 days</td>
+<td>3 days</td>
+<td>2 week</td>
+</tr>
+<tr class="even">
+<td><strong>Voice quality</strong></td>
+<td><span style="color:green;">Great</span></td>
+<td><span style="color:red;">Poor</span></td>
+<td><span style="color:green;">Great</span></td>
+<td><span style="color:green;">Good</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Multi-device</strong></td>
+<td><span style="color:green;">Yes</span></td>
+<td><span style="color:red;">No</span></td>
+<td><span style="color:green;">Yes</span></td>
+<td><span style="color:green;">Yes</span></td>
+</tr>
+<tr class="even">
+<td><strong>AI summarization</strong></td>
+<td><span style="color:green;">Yes</span></td>
+<td><span style="color:red;">No</span></td>
+<td><span style="color:green;">Yes</span></td>
+<td><span style="color:red;">No</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Skips citations etc.</strong></td>
+<td><span style="color:green;">Yes</span></td>
+<td><span style="color:orange;">Yes (ish)</span></td>
+<td><span style="color:green;">Yes</span></td>
+<td><span style="color:green;">Yes</span></td>
+</tr>
+<tr class="even">
+<td><strong>In-text annotation</strong></td>
+<td><span style="color:green;">Yes</span></td>
+<td><span style="color:green;">Yes</span></td>
+<td><span style="color:red;">No</span></td>
+<td><span style="color:green;">Yes</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Viewing settings (e.g.&nbsp;font, text size)</strong></td>
+<td><span style="color:green;">Yes</span></td>
+<td><span style="color:green;">Yes</span></td>
+<td><span style="color:green;">Yes</span></td>
+<td><span style="color:red;">No</span></td>
+</tr>
+<tr class="even">
+<td><strong>Tracks place in-text</strong></td>
+<td><span style="color:red;">No</span></td>
+<td><span style="color:green;">Yes</span></td>
+<td><span style="color:green;">Yes</span></td>
+<td><span style="color:green;">Yes</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Offline option</strong></td>
+<td><span style="color:red;">No</span></td>
+<td></td>
+<td><span style="color:green;">Yes</span></td>
+<td><span style="color:green;">Yes</span></td>
+</tr>
+<tr class="even">
+<td><strong>Zotero import</strong></td>
+<td><span style="color:orange;">Yes (ish)</span></td>
+<td><span style="color:red;">No</span></td>
+<td><span style="color:red;">No</span></td>
+<td><span style="color:red;">No</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Navigable sections</strong></td>
+<td><span style="color:green;">Yes</span></td>
+<td><span style="color:orange;">Yes (ish)</span></td>
+<td><span style="color:red;">No</span></td>
+<td><span style="color:green;">Yes</span></td>
+</tr>
+<tr class="even">
+<td><strong>Easy to view OG document</strong></td>
+<td><span style="color:red;">No</span></td>
+<td><span style="color:green;">Yes</span></td>
+<td><span style="color:green;">Yes</span></td>
+<td><span style="color:red;">No</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="audemic" class="level2">
+<h2 class="anchored" data-anchor-id="audemic"><a href="https://www.audemic.io">Audemic</a></h2>
+<p><strong>Price:</strong> $10.99/mo OR $118/yr</p>
+<p><strong>Free Trial:</strong> 5 papers</p>
+<p><strong>Features:</strong></p>
+<ul>
+<li><p>Can import pdfs directly from Zotero (though kind of buggy)</p></li>
+<li><p>Has navigable sectioning of PDFs, and you can reorder the sections (e.g.&nbsp;skipping Methods) as you like</p></li>
+<li><p>Generates a high-level summary of the document</p></li>
+<li><p>Skips in-text citations</p></li>
+<li><p>Can annotate/highlight in-text</p></li>
+<li><p>Can change the background color, font, and reading speed</p></li>
+<li><p>Multi-device</p></li>
+</ul>
+<p>I have mixed feelings about Audemic. I liked a lot of things about the narration itself. Some of the voice options were very <span style="color:green;"><strong>human-like</strong></span> and easy to listen to, and it did a pretty good (though not perfect) job of <span style="color:green;"><strong>pronouncing uncommon jargon</strong></span>. On the other hand, I disliked several aspects of how it displays the content you’ve uploaded while it’s narrating it. Upon uploading a pdf, all of the text is extracted and displayed in a sectioned <span style="color:red;"><strong>viewing pane that is completely removed from the original pdf</strong></span> (see below). That means that, in order to refer to figures or find “where” what you’re listening to is in the original document , you have to navigate to a completely separate pane to view the original pdf. Audemic also <span style="color:red;"><strong>doesn’t track in-text</strong></span> where the reader is at that time, so it’s very difficult to find where you are in the text. Finally, there are a couple annoying things, like <span style="color:orange;"><strong>buggy Zotero uploading</strong></span> and being <span style="color:orange;"><strong>unable to switch “voice” without re-uploading</strong></span> the document.</p>
+<p>Overall, given the many features I find annoying and the still-high price tag, <u>I’m not sure Audemic is worth the money, but it is the most human-like option I’ve found so far.</u></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/images/Audemic.png" class="img-fluid"></p>
+</section>
+<section id="voice-dream" class="level2">
+<h2 class="anchored" data-anchor-id="voice-dream"><a href="https://www.voicedream.com/">Voice Dream</a></h2>
+<p><strong>Price:</strong> $80/yr</p>
+<p><strong>Free Trial:</strong> 3 days (but can’t try without providing payment info😑)</p>
+<p><strong>Features:</strong></p>
+<ul>
+<li><p>Offline access and multi-device, and available as an iOS app</p></li>
+<li><p>Skips in-text citations</p></li>
+<li><p>Can annotate/highlight in-text</p></li>
+<li><p>Can change the background color, font, and reading speed</p></li>
+<li><p>Many options for customizing text navigation</p></li>
+</ul>
+<p>Honestly I came into Voice Dream kind of biased against it, because I think its recent price hike, from a one-time fee of $30 (April 2023) to $80/yr, and its requirement of payment info to access the free trial are kind of scummy practices. Objectively though, it does seem like a decent option.</p>
+<p>The real strengths of Voice Dream seem to lie in its <span style="color:green;"><strong>customizable text navigation features</strong></span>. For example, you can <span style="color:green;"><strong>choose your forward and backward “skip” buttons</strong></span> to skip by different time intervals, by paragraph, by heading, etc. You can <span style="color:green;"><strong>set a timer</strong></span> for how long the narration will read, and can change a variety of <span style="color:green;"><strong>visual settings</strong></span> (font, spacing, background color, etc.). When reading you can choose to view the text in either a <span style="color:green;"><strong>plain text viewing pane or in the original document</strong></span> and both options support an <span style="color:green;"><strong>in-text speech cursor</strong></span> to show where the narration is.</p>
+<p>However, several of the boasted features fell flat to me. While there are a ton of voices to choose from, all of the ones I tried are much <span style="color:red;"><strong>more synth-sounding</strong></span> than Audemic, in both tone and inflection. <span style="color:red;"><strong>Pronunciation of jargon</strong></span> is also not as good as Audemic, though there does seem to be a feature for correcting pronunciation of individual words. As in Audemic, your <span style="color:red;"><strong>voice selection is document-specific</strong></span>, so you have to re-select the voice you want every time. While the website claims Voice Dream skips citations and superfluous text, when I uploaded a pdf and tried listening it <span style="color:red;"><strong>didn’t skip either of these</strong></span>. It also <span style="color:red;"><strong>didn’t identify sections</strong></span> for my uploaded pdf (e.g.&nbsp;Abstract, Intro, etc.), so I couldn’t use the section navigation option. On top of these disappointing features, some features are missing entirely. Voice Dream has <span style="color:red;"><strong>no web app</strong></span>, so you can’t listen from a PC or Android, and there’s <span style="color:red;"><strong>no option to import directly from Zotero</strong></span> or PaperPile, meaning manual upload is required.</p>
+<p>Ultimately I know the quality of the voice is going to be much more important for my retention than text navigation features, so <u>I don’t think Voice Dream is a good option for me</u>. The voices are just too robotic, especially in comparison with Audemic.</p>
+</section>
+<section id="speechify" class="level2">
+<h2 class="anchored" data-anchor-id="speechify"><a href="https://speechify.com/">Speechify</a></h2>
+<p><strong>Price:</strong> $140/yr</p>
+<p><strong>Free Trial:</strong> 3 days (with providing payment info😑), but there’s also a free basic plan that you can use for as long as you want!</p>
+<p><strong>Features:</strong></p>
+<ul>
+<li><p>Multi-device, and can add files and listen from both web app and iOS app</p></li>
+<li><p>Can connect to Canvas to add class-related docs directly</p></li>
+<li><p>Can generate AI summary</p></li>
+<li><p>Options to skip a whole bunch of in-text stuff (headers/footers, citations, brackets, braces, urls, footnotes)</p></li>
+<li><p>Has an ambient sound option!</p></li>
+<li><p>Can change text appearance.</p></li>
+<li><p>Tracks where in-text the narration is</p></li>
+<li><p>Offline option, though the available voices are more limited and less human-like</p></li>
+<li><p>Can change reading speed</p></li>
+<li><p>Integrated chatGPT, so you can ask it questions inside the speechify app and listen to the responses</p></li>
+</ul>
+<p>Just like Voice Dream, I didn’t want to like Speechify when I first started trying it out. It’s <span style="color:red;"><strong>very expensive</strong></span>, and the price was increased in the last month from an already high $120/yr to a staggering $140/yr. After trying it out, though, <u>I think this may be my favorite option!</u></p>
+<p>Speechify has all of the standard text navigation/viewing options (<span style="color:green;"><strong>in-text tracker, can view original document or transcribed reading pane with viewing features, adjustable reading speed, skip citations+</strong></span>, etc.), but there are two features that really stand out to me. The first is that a lot of the <span style="color:green;"><strong>voices are very lifelike</strong></span> and easy for me to listen to, which is really important to me. The second is their <span style="color:green;"><strong>ambient sound option</strong></span>, which allows you to play background sound (e.g.&nbsp;music on Spotify, white noise) at an automatically lowered volume while the app narrates text on top. This is super cool for me! I’ve been looking for something like this for a really long time, because when I work out I want to play music with a suitable beat, but I also want to listen to audiobooks or something because I get bored quickly – that’s exactly what this feature does! The last cool feature that also deserves a mention is Speechify’s AI integration. You can generate <span style="color:green;"><strong>AI summaries</strong></span> of any document, and you can ask questions to <span style="color:green;"><strong>chatGPT in the speechify app</strong></span> and then listen to the responses.</p>
+<p>Most of my annoyances with Speechify are pretty minor. Like most of the other options, Speechify <span style="color:red;"><strong>doesn’t have a way to upload documents directly from Zotero</strong></span> (or any other reference manager), which makes the process more tedious. There’s also <span style="color:red;"><strong>no feature to separate text into navigable sections</strong></span> (e.g.&nbsp;Intro, Methods), and you <span style="color:red;"><strong>can’t annotate in-app</strong></span>, so you’d need to switch to a different tool to make notes, highlight, etc.</p>
+</section>
+<section id="listening.io" class="level2">
+<h2 class="anchored" data-anchor-id="listening.io"><a href="https://www.listening.io/#built-for-papers">Listening.io</a></h2>
+<p><strong>Price:</strong> $20/mo OR $140/yr</p>
+<p><strong>Free Trial:</strong> 2wk</p>
+<p><strong>Features:</strong></p>
+<ul>
+<li><p>Multi-device, with web app and iOS app. Upload/manage papers from web app and listen from iOS.</p></li>
+<li><p>Navigable sections and other text navigation options</p></li>
+<li><p>Skips citations</p></li>
+<li><p>Can notify them of word mispronunciations for correction</p></li>
+<li><p>Adjustable reading speed</p></li>
+<li><p>In-app notetaking, with direct export of notes available</p></li>
+<li><p>Chrome extension to send papers directly to listening.io as you find them</p></li>
+</ul>
+<p>Listening.io seems to be a newer, <span style="color:red;"><strong>less established</strong></span> TTS tool that has a lot of nice features. Like most of the other options I’ve looked at it has <span style="color:green;"><strong>text navigation, adjustable reading speed, in-app notetaking, skips citations, and is multi-device</strong></span>. It has also has a nice <span style="color:green;"><strong>chrome extension</strong></span>, which allows you to send papers directly from the source websites, and has some nice <span style="color:green;"><strong>life-like voices</strong></span>.</p>
+<p>There are some features that are missing though. There <span style="color:red;"><strong>no way to change the background color, font, and text size</strong></span>, and there’s <span style="color:red;"><strong>no option to see the original pdf</strong></span> instead of a transcribed reading window. It also <span style="color:red;"><strong>takes a while to upload new files</strong></span> (~3 min/doc), which could quickly get annoying, and there are <span style="color:red;"><strong>no options for integrating with any popular reference managers</strong></span>.</p>
+<p>Listening.io seems like a decent option, but considering it has the same exorbitant price as Speechify <u>it’s a little underwhelming. Ultimately, I don’t think it’s worth the money.</u></p>
+
+
+</section>
+
+ ]]></description>
+  <category>miscellaneous</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_02_TTS.html</guid>
+  <pubDate>Tue, 02 Jan 2024 08:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>

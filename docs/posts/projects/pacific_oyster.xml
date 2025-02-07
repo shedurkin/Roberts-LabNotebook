@@ -1,0 +1,2863 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Kathleen&#39;s Lab Notebook</title>
+<link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster.html</link>
+<atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.3.433</generator>
+<lastBuildDate>Fri, 08 Nov 2024 08:00:00 GMT</lastBuildDate>
+<item>
+  <title>Dip/Trip Hardening, Experimental Summary</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_11_08_diptrip_updates_summary.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>As a reminder, this project involved hardening adult diploid and triploid Pacific oysters with a regular thermal stress treatment (35C for 4hrs, 2x a week, for 2 weeks), then performing two consecutive survivorship trials. See details in other posts in this project directory.</p>
+<p>Since the second survivorship trial I have kept all surviving oysters in their individual containers on benchtop in a standard lab room (maintained at 18-20C). I changed the water in each cup regularly, maintaing a roughly 1:6 ratio of oyster: water volume. Water used was dechlorinated tap water mixed with Instant Ocean to ~25psu salinity. Notably, no algae or either food has been added during water changes – the oysters were last fed just before Survivorship Round 2 (August 9 2024). For the first few weeks I changed the water every 1-2 days. Once I felt sure that latent effect of the survivorship trial had presented themselves I began extending the time between water changes to ~1 week. I noticed little change in mortality following the increased time between water changes, so I’m assuming there is sufficient ambient air-water exchange to prevent asphyxiation between changes.</p>
+<p>General observations (see details in pictures and paper lab notebook):</p>
+<ul>
+<li><p>After a few weeks some oysters began losing color in their shells, with the brown exterior layer flaking off into their water.</p></li>
+<li><p>A few oysters eventually developed brown-colored water between changes, with a foul smell. This generally preceded mortality.</p></li>
+<li><p>One oyster (India 03) had cloudy water during mortality checks and water changes on 09/11. I sampled and checked under the scope and <em>think</em> I may have seen sperm (but, since there was no movement, it’s hard to be sure). This was following a warm few days, which also increased temps in the lab, so I think India 03 may have spawned.</p></li>
+</ul>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">#####################</span></span>
+<span id="cb1-2"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">### Load Packages </span><span class="al" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">###</span></span>
+<span id="cb1-3"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">#####################</span></span>
+<span id="cb1-4"></span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
+<span id="cb1-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggrepel)</span>
+<span id="cb1-7"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(dplyr)</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyr)</span>
+<span id="cb5-2"></span>
+<span id="cb5-3"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">#################</span></span>
+<span id="cb5-4"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">### Load Data </span><span class="al" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">###</span></span>
+<span id="cb5-5"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">#################</span></span>
+<span id="cb5-6"></span>
+<span id="cb5-7">round2 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../../../../../Data/Pacific_oysters/2024_11_09_Survivorship_Round2.csv"</span>)</span>
+<span id="cb5-8"></span>
+<span id="cb5-9"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">####################</span></span>
+<span id="cb5-10"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">### Data Munging </span><span class="al" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">###</span></span>
+<span id="cb5-11"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">####################</span></span>
+<span id="cb5-12"></span>
+<span id="cb5-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Convert mort_date to Date format</span></span>
+<span id="cb5-14">round2 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> round2 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mort_date =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.Date</span>(mort_date, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">format=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"%m/%d/%Y"</span>))</span>
+<span id="cb5-16"></span>
+<span id="cb5-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Calculate the total number of original samples in each group</span></span>
+<span id="cb5-18">group_totals <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> round2 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-19">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(group) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-20">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">total_samples =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">n</span>(), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.groups =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'drop'</span>)</span>
+<span id="cb5-21"></span>
+<span id="cb5-22"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Generate a sequence of dates covering the entire period</span></span>
+<span id="cb5-23">date_seq <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(round2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>mort_date, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(round2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>mort_date, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"day"</span>)</span>
+<span id="cb5-24"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add the date before start of experiment, to show original 0% mortality</span></span>
+<span id="cb5-25">date_seq <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.Date</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"2024-08-08"</span>), date_seq)</span>
+<span id="cb5-26"></span>
+<span id="cb5-27"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create a data frame with all combinations of treatment group and date</span></span>
+<span id="cb5-28">round2_full <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">expand.grid</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unique</span>(round2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>group), </span>
+<span id="cb5-29">                           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">date =</span> date_seq)</span>
+<span id="cb5-30"></span>
+<span id="cb5-31"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Aggregate the data by group and date to get daily death counts</span></span>
+<span id="cb5-32">round2_daily <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> round2 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-33">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(group, mort_date) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-34">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">deaths =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">n</span>(), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.groups =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'drop'</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-35">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rename</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">date =</span> mort_date)</span>
+<span id="cb5-36"></span>
+<span id="cb5-37"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Join the aggregated daily deaths with the full date range</span></span>
+<span id="cb5-38">round2_cumulative <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> round2_full <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-39">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">left_join</span>(round2_daily, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"group"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"date"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-40">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">deaths =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ifelse</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">is.na</span>(deaths), <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, deaths)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span>  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Replace NA with 0 for days with no deaths</span></span>
+<span id="cb5-41">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(group) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-42">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrange</span>(date) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-43">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cumulative_deaths =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cumsum</span>(deaths)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-44">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ungroup</span>()</span>
+<span id="cb5-45"></span>
+<span id="cb5-46"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Join with group totals to calculate cumulative deaths as a percentage</span></span>
+<span id="cb5-47">round2_cumulative <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> round2_cumulative <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-48">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">left_join</span>(group_totals, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"group"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-49">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cumulative_death_percentage =</span> (cumulative_deaths <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> total_samples) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)</span>
+<span id="cb5-50"></span>
+<span id="cb5-51"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># retrieve metadata associated with groups</span></span>
+<span id="cb5-52">metadata <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> round2 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-53">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(group, cattle_tag, round1_treatment, round2_treatment) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-54">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">distinct</span>()</span>
+<span id="cb5-55"></span>
+<span id="cb5-56">round2_cumulative_metadata <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> round2_cumulative <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-57">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">left_join</span>(metadata, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"group"</span>)</span>
+<span id="cb5-58"></span>
+<span id="cb5-59"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">################</span></span>
+<span id="cb5-60"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">### Plot Data ##</span></span>
+<span id="cb5-61"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">################</span></span>
+<span id="cb5-62"></span>
+<span id="cb5-63">labels_df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> round2_cumulative_metadata <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-64">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(group) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-65">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(date <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(date)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-66">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ungroup</span>()</span>
+<span id="cb5-67"></span>
+<span id="cb5-68"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(round2_cumulative_metadata, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> date, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> cumulative_death_percentage, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> group, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> round1_treatment)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-69">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#geom_point() +</span></span>
+<span id="cb5-70">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-71">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> round2_treatment) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-72">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_text_repel</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> labels_df, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> group), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.5</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">nudge_x =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.3</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">check_overlap =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-73">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cumulative mortality from Survivorship Round 2"</span>,</span>
+<span id="cb5-74">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Time"</span>,</span>
+<span id="cb5-75">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cumulative mortality (%)"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-76">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_11_08_diptrip_updates_summary_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>As of 8/22 we’re sitting at roughly 50% mortality in the round 2 stressed oysters and roughly 10% mortality in the controls. Interestingly, while there doesn’t appear to be any difference among the original hardening groups, the round 1 survivorship does seem to have had a hardening effect!</p>
+<p>Several possible explanations for this observation:</p>
+<p>The original hardening did have an effect, but it was too subtle to see with our reduced sample sizes</p>
+<p>The original hardening was too long ago – it’s effects were short-term and are no longer manifest, 4 weeks later</p>
+<p>The original hardening was performed at too low a temperature to see an effect at 42C stress. The original hardening was done at 35C, while survivorship round 1 was at 42C, the same temperature the oysters then experienced during this survivorship round. My brief review of other papers that attempted hardening in bivalves did suggest that hardening was most effective when conditions were similar to those the organism would experience during an extreme stress event post-hardening</p>
+
+
+</section>
+
+ ]]></description>
+  <category>pacific_oyster</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_11_08_diptrip_updates_summary.html</guid>
+  <pubDate>Fri, 08 Nov 2024 08:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Dip/Trip Hardening, Survivorship Round 2</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_08_09_diptrip_survivorship_round2.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Second attempt at a survivorship test with my remaining hardened diploid and triploid oysters (see first survivorship test <a href="../../../posts/projects/pacific_oyster/2024_08_02_diptrip_survivorship_round1.html">here</a>). See all details and original data collection in physical lab notebook, digital copy of mortality and meta data <a href="https://docs.google.com/spreadsheets/d/1e0EcJ3Jrjq-a_IehlJsX7WaRoSG3tCUWKyWhY5yJfMs/edit?gid=0#gid=0">here</a>.</p>
+<p>As a reminder, I have diploid and triploid Pacific oysters that were hardened using 6 treatments of 35C for 4hours, over the course of 2 weeks. After 2 weeks of recovery they were brought back to FTR, acclimated, sampled, and used in a survivorship test of 42C Resazurin for 4hours. However, since I made the mistake of pooling all oysters in each treatment group, I compromised independence, making the results statistically meaningless. During this second attempt at a survivorship trial I’ll keep all individual oysters in separate containers, and I won’t be using Resazurin, since the ambient temp Resazurin groups in the first survivorship test still saw high mortality. For the purposes of this second survivorship test, survivorship round 1 will essentially be treated like an additional hardening treatment.</p>
+<section id="survivorship-round-2-protocol" class="level2">
+<h2 class="anchored" data-anchor-id="survivorship-round-2-protocol">Survivorship Round 2 Protocol</h2>
+<ol type="1">
+<li><p>Preheated 15 gallon bucket of seawater (mixed to ~25psu using dechlorinated tap water and Instant Ocean) to 42C using a rod heater.</p></li>
+<li><p>Evenly split the remaining oysters in all survivorship round 1 groups into two even groups, maintaining size distributions. Assigned a randomly selected label to each group. Each oyster will be individually labelled with the alphanumeric of GroupLabel##.</p>
+<table class="table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 12%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Original hardening bag</th>
+<th>Round 1 treatment</th>
+<th>Round 2 treatment</th>
+<th>Label</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>045</td>
+<td>control (20C)</td>
+<td>control (20C)</td>
+<td>Kilo</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>045</td>
+<td>control (20C)</td>
+<td>stress (42C)</td>
+<td>Foxtrot</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td>045</td>
+<td>stress (42C)</td>
+<td>control (20C)</td>
+<td>Echo</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>045</td>
+<td>stress (42C)</td>
+<td>stress (42C)</td>
+<td>India</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>060</td>
+<td>control (20C)</td>
+<td>control (20C)</td>
+<td>Bravo</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>060</td>
+<td>control (20C)</td>
+<td>stress (42C)</td>
+<td>Alpha</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>060</td>
+<td>stress (42C)</td>
+<td>control (20C)</td>
+<td>Oscar</td>
+<td>11</td>
+</tr>
+<tr class="even">
+<td>060</td>
+<td>stress (42C)</td>
+<td>stress (42C)</td>
+<td>November</td>
+<td>11</td>
+</tr>
+<tr class="odd">
+<td>064</td>
+<td>control (20C)</td>
+<td>control (20C)</td>
+<td>Charlie</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>064</td>
+<td>control (20C)</td>
+<td>stress (42C)</td>
+<td>Papa</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>064</td>
+<td>stress (42C)</td>
+<td>control (20C)</td>
+<td>Hotel</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>064</td>
+<td>stress (42C)</td>
+<td>stress (42C)</td>
+<td>Golf</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>065</td>
+<td>control (20C)</td>
+<td>control (20C)</td>
+<td>Mike</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>065</td>
+<td>control (20C)</td>
+<td>stress (42C)</td>
+<td>Juliett</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>065</td>
+<td>stress (42C)</td>
+<td>control (20C)</td>
+<td>Lima</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td>065</td>
+<td>stress (42C)</td>
+<td>stress (42C)</td>
+<td>Delta</td>
+<td>8</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Measured the volume of each oyster by placing in a graduated cylinder of seawater and calculating volume difference. Then placed each oyster in an appropriately sized container. Want to maintain a roughly 1:5 oyster to water volume ratio (1:4 was insufficient to cover some of the heavily cupped oysters), so each container needed to hold at least 6x the oyster volume. Used mix of plastic cups with lids and glass graduated cylinders of several sizes to hold all oysters.</p></li>
+<li><p>Filled each cup with seawater of the appropriate temperature (20C or 42C), maintaining a 1:5 oyster:water volume ratio. I also set a minimum water volume of 15mL to ensure the smaller oysters were still fully covered. Filled cups in random order, placing 42C cups in the 42C incubator once filled. 20C cups were left on countertop. Filling took ~30min.</p></li>
+<li><p>Once all cups were filled, began the survivorship test. Checked all cups for mortality every hour. Ended test at 5hours, after roughly 30% of stressed oysters had died.</p></li>
+<li><p>Removed all oysters from 42C incubator. Replaced the water in all cups with 20C seawater, filling to a 1:6 volume ratio to reduce risk of hypoxia during recovery.</p></li>
+<li><p>Checked for mortality in all oysters daily, and replaced all oysters’ water with fresh 20C seawater daily. Note that no food is added to seawater, so last time these oysters were fed was Aug.&nbsp;6, during their recovery from survivorship round 1.</p></li>
+</ol>
+</section>
+<section id="update-822" class="level2">
+<h2 class="anchored" data-anchor-id="update-822">Update 8/22</h2>
+<p>As of 8/22 we’re sitting at roughly 50% mortality in the round 2 stressed oysters and roughly 10% mortality in the controls. Interestingly, while there doesn’t appear to be any difference among the original hardening groups, the round 1 survivorship does seem to have had a hardening effect!</p>
+<p>Several possible explanations for this observation:</p>
+<ol type="1">
+<li><p>The original hardening did have an effect, but it was too subtle to see with our reduced sample sizes</p></li>
+<li><p>The original hardening was too long ago – it’s effects were short-term and are no longer manifest, 4 weeks later</p></li>
+<li><p>The original hardening was performed at too low a temperature to see an effect at 42C stress. The original hardening was done at 35C, while survivorship round 1 was at 42C, the same temperature the oysters then experienced during this survivorship round. My brief <a href="./2024_06_20_experimental_design_questions">review</a> of other papers that attempted hardening in bivalves did suggest that hardening was most effective when conditions were similar to those the organism would experience during an extreme stress event post-hardening.</p></li>
+</ol>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">#####################</span></span>
+<span id="cb1-2"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">### Load Packages </span><span class="al" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">###</span></span>
+<span id="cb1-3"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">#####################</span></span>
+<span id="cb1-4"></span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
+<span id="cb1-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggrepel)</span>
+<span id="cb1-7"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(dplyr)</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyr)</span>
+<span id="cb5-2"></span>
+<span id="cb5-3"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">#################</span></span>
+<span id="cb5-4"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">### Load Data </span><span class="al" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">###</span></span>
+<span id="cb5-5"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">#################</span></span>
+<span id="cb5-6"></span>
+<span id="cb5-7">round2 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../../../../../Data/Pacific_oysters/2024_08_22_Survivorship_Round2.csv"</span>)</span>
+<span id="cb5-8"></span>
+<span id="cb5-9"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">####################</span></span>
+<span id="cb5-10"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">### Data Munging </span><span class="al" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">###</span></span>
+<span id="cb5-11"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">####################</span></span>
+<span id="cb5-12"></span>
+<span id="cb5-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Convert mort_date to Date format</span></span>
+<span id="cb5-14">round2 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> round2 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mort_date =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.Date</span>(mort_date, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">format=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"%m/%d/%Y"</span>))</span>
+<span id="cb5-16"></span>
+<span id="cb5-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Calculate the total number of original samples in each group</span></span>
+<span id="cb5-18">group_totals <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> round2 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-19">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(group) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-20">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">total_samples =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">n</span>(), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.groups =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'drop'</span>)</span>
+<span id="cb5-21"></span>
+<span id="cb5-22"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Generate a sequence of dates covering the entire period</span></span>
+<span id="cb5-23">date_seq <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(round2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>mort_date, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(round2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>mort_date, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"day"</span>)</span>
+<span id="cb5-24"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add the date before start of experiment, to show original 0% mortality</span></span>
+<span id="cb5-25">date_seq <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.Date</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"2024-08-08"</span>), date_seq)</span>
+<span id="cb5-26"></span>
+<span id="cb5-27"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create a data frame with all combinations of treatment group and date</span></span>
+<span id="cb5-28">round2_full <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">expand.grid</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unique</span>(round2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>group), </span>
+<span id="cb5-29">                           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">date =</span> date_seq)</span>
+<span id="cb5-30"></span>
+<span id="cb5-31"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Aggregate the data by group and date to get daily death counts</span></span>
+<span id="cb5-32">round2_daily <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> round2 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-33">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(group, mort_date) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-34">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">deaths =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">n</span>(), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.groups =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'drop'</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-35">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rename</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">date =</span> mort_date)</span>
+<span id="cb5-36"></span>
+<span id="cb5-37"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Join the aggregated daily deaths with the full date range</span></span>
+<span id="cb5-38">round2_cumulative <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> round2_full <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-39">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">left_join</span>(round2_daily, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"group"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"date"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-40">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">deaths =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ifelse</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">is.na</span>(deaths), <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, deaths)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span>  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Replace NA with 0 for days with no deaths</span></span>
+<span id="cb5-41">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(group) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-42">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrange</span>(date) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-43">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cumulative_deaths =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cumsum</span>(deaths)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-44">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ungroup</span>()</span>
+<span id="cb5-45"></span>
+<span id="cb5-46"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Join with group totals to calculate cumulative deaths as a percentage</span></span>
+<span id="cb5-47">round2_cumulative <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> round2_cumulative <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-48">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">left_join</span>(group_totals, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"group"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-49">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cumulative_death_percentage =</span> (cumulative_deaths <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> total_samples) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)</span>
+<span id="cb5-50"></span>
+<span id="cb5-51"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># retrieve metadata associated with groups</span></span>
+<span id="cb5-52">metadata <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> round2 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-53">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(group, cattle_tag, round1_treatment, round2_treatment) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-54">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">distinct</span>()</span>
+<span id="cb5-55"></span>
+<span id="cb5-56">round2_cumulative_metadata <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> round2_cumulative <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-57">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">left_join</span>(metadata, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"group"</span>)</span>
+<span id="cb5-58"></span>
+<span id="cb5-59"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">################</span></span>
+<span id="cb5-60"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">### Plot Data ##</span></span>
+<span id="cb5-61"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">################</span></span>
+<span id="cb5-62"></span>
+<span id="cb5-63">labels_df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> round2_cumulative_metadata <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-64">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(group) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-65">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(date <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(date)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-66">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ungroup</span>()</span>
+<span id="cb5-67"></span>
+<span id="cb5-68"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(round2_cumulative_metadata, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> date, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> cumulative_death_percentage, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> group, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> round1_treatment)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-69">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#geom_point() +</span></span>
+<span id="cb5-70">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-71">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> round2_treatment) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-72">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_text_repel</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> labels_df, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> group), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.5</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">nudge_x =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.3</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">check_overlap =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-73">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cumulative mortality from Survivorship Round 2"</span>,</span>
+<span id="cb5-74">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Time"</span>,</span>
+<span id="cb5-75">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cumulative mortality (%)"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-76">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_08_09_diptrip_survivorship_round2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Faceted by Round 2 treatment, color indicates Round 1 treatment (i.e.&nbsp;“second hardening”)</p>
+
+
+</section>
+
+ ]]></description>
+  <category>pacific_oyster</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_08_09_diptrip_survivorship_round2.html</guid>
+  <pubDate>Fri, 09 Aug 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Dip/Trip Hardening, Survivorship Round 1</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_08_02_diptrip_survivorship_round1.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Conducted extreme stress survivorship test (42C for 4hrs) on hardened adult diploid and triploid Pacific oysters, in Resazurin to moniter respiration. See all experiment details in physical lab notebook</p>
+<p>Note: After conducting this survivorship test, realized during discussion with Ariana that pooling the oysters of each treatment group in this little liquid volume doesn’t maintain independence, effectively bringing sample size of each treatment to 1. Will need to redo with remaining oysters.</p>
+<section id="experiment-planning-81" class="level2">
+<h2 class="anchored" data-anchor-id="experiment-planning-81">Experiment planning (8/1)</h2>
+<ol type="1">
+<li><p>Separate treatment groups into two, maintaining size distribution. For each oyster bag (e.g., bag 045), sorted all oysters into the size classes defined during <a href="../../../posts/projects/pacific_oyster/2024_07_29_diptrip_sampling.html">sampling</a>, then split each size class into two groups of equal number. Randomly assign one group to survivorship “control” and one to survivorship “treatment”</p></li>
+<li><p>Measure approximate volume of each newly created oyster group by placing oysters in a graduated cylinder of a known volume of seawater and noting the difference.</p></li>
+</ol>
+<pre><code>Keeping in line with Colby's Resazurin experiments, I want to maintain a ratio of roughly 1:4 of oyster volume to Resazurin volume.
+
+| source bag | group           | \# oysters | volume (mL) | resazurin volume |
+|------------|-----------------|------------|-------------|------------------|
+| 045        | control (20C)   | 31         | 200         | 800              |
+| 045        | treatment (42C) | 31         | 200         | 800              |
+| 060        | control (20C)   | 23         | 150         | 600              |
+| 060        | treatment (42C) | 24         | 150         | 600              |
+| 064        | control (20C)   | 19         | 250         | 1000             |
+| 064        | treatment (42C) | 19         | 250         | 1000             |
+| 065        | control (20C)   | 25         | 275         | 1100             |
+| 065        | treatment (42C) | 25         | 275         | 1100             |</code></pre>
+</section>
+<section id="survivorship-test-82" class="level2">
+<h2 class="anchored" data-anchor-id="survivorship-test-82">Survivorship test (8/2)</h2>
+<ol type="1">
+<li><p>Heated 2 15 gallon buckets of seawater to 42C using rod heaters. One used to mix heated Resaurin, one used to “preheat” stress treatment oysters before start of survivorship trial.</p></li>
+<li><p>Mix 2 batches of Resazurin, one with the heated 42C seawater, one with ambient temp 20C seawater. Want to maintain 1:4 ratio of oyster volume to Resazurin volume, so needed 3.75L 42C Resazurin and 3.75L 20C Resazurin.</p>
+<p><u>3.75L Resazurin reagents:</u></p>
+<ul>
+<li><p>3701.25 mL 42C seawater</p></li>
+<li><p>37.5 mL A6 antibiotic</p></li>
+<li><p>7.5 mL stock resazurin</p></li>
+<li><p>3.75 mL DMSO</p></li>
+</ul></li>
+<li><p>Add appropriate volume and temperature of Resazurin to each labelled treatment container (see above table for volumes). Also include extra container of oyster-free Resazurin at both 42C and 20C as control.</p></li>
+<li><p>Add oysters to respective treatment group containers. Oysters going into the 42C treatment were swirled in the 42C seawater for ~30sec before adding to 42C Resazurin, to minimize temperature change upon addition. Place 42C containers in incubator set to 42C, to maintain temperature throughout test.</p></li>
+<li><p>Left oysters in treatment for 4 hours, sampling and measuring Resazurin every ~20min.</p></li>
+<li><p>After survivorship test concluded, rinsed all oyster groups in ambient seawater to remove residual Resazurin and placed in 8 separate, labelled mesh bags. Placed back in 20C seawater tank in FTR 208.</p></li>
+<li><p>After 1 hr checked all bags for mortality, and continued to check once a day for 1wk.</p></li>
+</ol>
+<p><a href="https://docs.google.com/spreadsheets/d/1RJ78y5iGYIPtnm9noCcP6m2AjOoFEiCR2MkG3hwspco/edit?gid=0#gid=0">Resazurin data</a></p>
+<p><a href="https://docs.google.com/spreadsheets/d/1fu7ywbEO53oRh5pGiFUgTpugNA0cD2InWDVh1ciD-5E/edit?gid=0#gid=0">Mortality data</a></p>
+</section>
+<section id="sampling-resazurin" class="level2">
+<h2 class="anchored" data-anchor-id="sampling-resazurin">Sampling Resazurin</h2>
+<p>Pipette 150uL from each container onto a 96 well plate and place in microreader. Run Colby Resazurin program. Emptied, rinsed, and dried plate after 8th round of measurements and continued using.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.2.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># load data</span></span>
+<span id="cb4-2">resazurin_OG <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../../../../../Data/Pacific_oysters/2024_08_02_diptrip_resazurin_compiled.csv"</span>)</span>
+<span id="cb4-3"></span>
+<span id="cb4-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># remove any NA measurement values</span></span>
+<span id="cb4-5">resazurin <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> resazurin_OG[<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">is.na</span>(resazurin_OG<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Measurement),]</span>
+<span id="cb4-6"></span>
+<span id="cb4-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># set specified order of the groups</span></span>
+<span id="cb4-8">resazurin<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Group <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(resazurin<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Group, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"045T"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"060T"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"064T"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"065T"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"045C"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"060C"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"064C"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"065C"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"TNO"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"CNO"</span>))</span>
+<span id="cb4-9"></span>
+<span id="cb4-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># plot</span></span>
+<span id="cb4-11"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(resazurin, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> Time, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> Measurement, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> Group, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> Group)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Resazurin measurements over time"</span>,</span>
+<span id="cb4-15">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Time"</span>,</span>
+<span id="cb4-16">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Measurement"</span>,</span>
+<span id="cb4-17">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Group"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-18">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_08_02_diptrip_survivorship_round1_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>pacific_oyster</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_08_02_diptrip_survivorship_round1.html</guid>
+  <pubDate>Fri, 02 Aug 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Sampling hardened diploid and triploid oysters</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_07_29_diptrip_sampling.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Sampled each of the four treatment groups of the diploid and triploid thermal hardening experiment. As a reminder, diploid and triploid Pacific oysters were hardened using 6 treatments of 35C for 4 hours over the course of two weeks. This was followed by a 2 week recovery period, transfer to FTR, and several day acclimation period.</p>
+<p>Sampled 16 oysters from each bag, four from each size class</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Size class</th>
+<th>length range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0mm - 35mm</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>36mm - 42mm</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>43mm - 49mm</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>50mm -</td>
+</tr>
+</tbody>
+</table>
+<p>Full sampling details can be found in my physical lab notebook.</p>
+<p>Took 5 tissue samples from each oyster:</p>
+<table class="table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 8%">
+<col style="width: 6%">
+<col style="width: 10%">
+<col style="width: 32%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>tube label prefix</th>
+<th>tube color</th>
+<th>test type</th>
+<th>reagent</th>
+<th>storage method</th>
+<th>tissue type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>E</td>
+<td>orange/yellow</td>
+<td>enzyme</td>
+<td>500mL SEI buffer</td>
+<td>flash frozen in travel liquid nitrogen, stored at -80C</td>
+<td>gill</td>
+</tr>
+<tr class="even">
+<td>R</td>
+<td>red</td>
+<td>RNA</td>
+<td>500mL RNA Later</td>
+<td>refrigerated for 24hr, then stored at -80C</td>
+<td>gill</td>
+</tr>
+<tr class="odd">
+<td>D</td>
+<td>blue</td>
+<td>DNA</td>
+<td>500mL 70% ethanol</td>
+<td>refrigerated for 24hr, then stored at -80C</td>
+<td>gill, but will take mantle if too little gill tissue</td>
+</tr>
+<tr class="even">
+<td>G</td>
+<td>green</td>
+<td></td>
+<td>none</td>
+<td>flash frozen in travel liquid nitrogen, stored at -80C</td>
+<td>gill</td>
+</tr>
+<tr class="odd">
+<td>M</td>
+<td>purple</td>
+<td></td>
+<td>none</td>
+<td>flash frozen in travel liquid nitrogen, stored at -80C</td>
+<td>mantle</td>
+</tr>
+</tbody>
+</table>
+<p>All tubes stored in -80C freezer in boxes labelled “KD diploid/triploid hardening”</p>
+<p>See all sampling notes <a href="https://docs.google.com/spreadsheets/d/1WVn_HcfZYoSktAjkbuCGHtzrT3mpy6ngJXK7XZGpVqk/edit?gid=0#gid=0">here</a></p>
+<p>Took individual pictures of all oysters with poor body condition or developed gonads, and checked gonad samples under microscope to check egg or sperm and egg development. Generally, the triploid groups had many more oysters with develped gonads than the diploids, and the diploids seemed to be more sickly (more shell deterioration, less usable tissue, etc.). Discarded remaining tissue and shells after sampling.</p>
+<p>Also, all groups had a couple additional dead oysters identified while sorting and selecting oysters for sampling.</p>
+
+
+
+ ]]></description>
+  <category>pacific_oyster</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_07_29_diptrip_sampling.html</guid>
+  <pubDate>Mon, 29 Jul 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Mortality check of hardened diploid and triploid oysters</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_07_28_diptrip_mortalities.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="checking-mortalities" class="level2">
+<h2 class="anchored" data-anchor-id="checking-mortalities">Checking mortalities</h2>
+<p>I transferred the hardened diploid and triploid oysters from Point Whitney to an FTR 208 seawater tank held at 20C on July 23 (see <a href="../../../posts/projects/pacific_oyster/2024_07_23_Point_Whitney.html">post</a>). They’ve now had a few days to acclimate to the tank, so I checked post-hardening mortality, making note of size as well.</p>
+<p>To check a bag I emptied it onto a counter and sorted by live/dead. Evaluated whether alive or dead by squeezing lightly on hinge and, for any oysters that gaped, prodding lightly with metal tool. Lack of response indicated death. I took a picture of all oysters, separated by live or dead, with a ruler, then measured the length of each manually with a caliper. Removed and discarded dead oysters/shells.</p>
+<p><a href="https://docs.google.com/spreadsheets/d/1zvq3cIyN-kI8eTnX96CSJhre9aA-Rj9POYtFrEdOtac/edit?gid=61126976#gid=61126976">Mortality and size data</a></p>
+<p>Pictures below – oysters lying above the caliper are dead, below are live</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/Bag045.jpg" class="img-fluid figure-img" width="400"></p>
+<figcaption class="figure-caption">Bag 045 – 81/100 surviving (~20% mortality)</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/Bag060.jpg" class="img-fluid figure-img" width="400"></p>
+<figcaption class="figure-caption">Bag 060 – 65/100 surviving (~35% mortality)</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/Bag064.jpg" class="img-fluid figure-img" width="400"></p>
+<figcaption class="figure-caption">Bag 064 – 61/100 surviving (~40% mortality)</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/Bag065.jpg" class="img-fluid figure-img" width="400"></p>
+<figcaption class="figure-caption">Bag 065 – 68/100 surviving (~30% mortality)</figcaption>
+</figure>
+</div>
+<p>During sampling I want to sample a roughly even size distribution from each group. To standardize, I set four size classes based on the average lower quartile, median, and upper quartiles of surviving oysters in each group.</p>
+<table class="table">
+<colgroup>
+<col style="width: 35%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Bag 045</th>
+<th>Bag 060</th>
+<th>Bag 064</th>
+<th>Bag 065</th>
+<th>Average</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>lower quartile (mm)</strong></td>
+<td>32</td>
+<td>31</td>
+<td>38</td>
+<td>39.75</td>
+<td>35.2</td>
+</tr>
+<tr class="even">
+<td><strong>median (mm)</strong></td>
+<td>39</td>
+<td>36</td>
+<td>45</td>
+<td>47</td>
+<td>41.8</td>
+</tr>
+<tr class="odd">
+<td><strong>upper quartile (mm)</strong></td>
+<td>45</td>
+<td>44</td>
+<td>56</td>
+<td>51.25</td>
+<td>49.1</td>
+</tr>
+</tbody>
+</table>
+<p>Size classes:</p>
+<p>Round to nearest mm</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Size class</th>
+<th>length range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0mm - 35mm</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>36mm - 42mm</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>43mm - 49mm</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>50mm -</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+ ]]></description>
+  <category>pacific_oyster</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_07_28_diptrip_mortalities.html</guid>
+  <pubDate>Sun, 28 Jul 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Some oyster exams and disections</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_07_24_oyster_examinations.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Some notes and pictures from working with the FTR-stored oysters today.</p>
+<section id="white-spotting-in-extreme-stress-bags" class="level3">
+<h3 class="anchored" data-anchor-id="white-spotting-in-extreme-stress-bags">White spotting in extreme stress bags</h3>
+<p>I noticed some tiny white dots covering portions of some oysters in the extreme stress trial bags (Trial 1 stressed bag, and Trial 2 stressed bag). See pictures below. After talking with Ariana we decided they’re probably just an odd type of tunicate. I rubbed off as much as I could, but I noted there do seem to be tiny holes left below where the dots were. Put the oysters back in the left FTR seawater tank.</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9398.jpg" class="img-fluid" width="300"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9402.jpg" class="img-fluid" width="300"></p>
+</section>
+<section id="dissecting-a-diptrip" class="level3">
+<h3 class="anchored" data-anchor-id="dissecting-a-diptrip">Dissecting a dip/trip</h3>
+<p>My hardening experiment oysters are a wide range of sizes, so it’s likely I’ll be able to take more detailed tissue samples (e.g., specific tissue types, multiple samples from the same tissue). I want to open a larger oyster to see the anatomy clearly and get a sense of where everything is. I also want to check the reproductive maturity of some oysters from the hatchery.</p>
+<p>To do this, pulled a large untreated diploid (bag “13”) and large untreated triploid (bag “Bird - Extra”) for dissection.</p>
+<section id="diploid" class="level4">
+<h4 class="anchored" data-anchor-id="diploid">Diploid</h4>
+<ul>
+<li><strong>No developed gonad</strong> in the diploid</li>
+</ul>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9410.jpg" class="img-fluid" width="700"></p>
+<ul>
+<li><p>The diploid had some serious <strong>shell deterioration</strong>, particularly around the hinge. Looks to be the work of some kind of boring parasite that left the shell riddled with orange-something filled holes. The shell broke very easily and separated into layers. Notably, there was no obvious sign of this deterioration on the exterior of the shell.</p>
+<p>Took a look at some of the orange substance under the scope:</p></li>
+</ul>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9420.jpg" class="img-fluid"></p>
+</section>
+<section id="triploid" class="level4">
+<h4 class="anchored" data-anchor-id="triploid">Triploid</h4>
+<ul>
+<li>The triploid had a <strong>developed gonad</strong>!</li>
+</ul>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9407.jpg" class="img-fluid"></p>
+<p>Took a gamete sample and examined under the scope:</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9418-01.jpg" class="img-fluid" width="700"></p>
+<p>It’s female! The eggs seem viable but underdeveloped – many have a vaguely tear-drop shape, rather than a filled-out circle.</p>
+<p>This is just one diploid and triploid, but it’s interesting that the triploid is the only one with gametes. This could either mean that (a) the “Bird” oysters are not actually triploids, or (b) this is a case of a triploid not actually being sterile. Even though triploids are touted as being sterile, I’ve actually read a few papers noting triploids developing gametes in the field and, relevantly, triploid mortality being associated with fecund triploids! <span class="citation" data-cites="houssin2019">Houssin et al. (2019)</span> <span class="citation" data-cites="j.brianik2023">J. Brianik and Allam (2023)</span></p>
+
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-houssin2019" class="csl-entry">
+Houssin, Maryline, Suzanne Trancart, Lucie Denechere, Elise Oden, Beatrice Adeline, Mélanie Lepoitevin, and Pierre-Hugues Pitel. 2019. <span>“Abnormal Mortality of Triploid Adult Pacific Oysters: Is There a Correlation with High Gametogenesis in Normandy, France?”</span> <em>Aquaculture</em> 505 (April): 63–71. <a href="https://doi.org/10.1016/j.aquaculture.2019.02.043">https://doi.org/10.1016/j.aquaculture.2019.02.043</a>.
+</div>
+<div id="ref-j.brianik2023" class="csl-entry">
+J. Brianik, Christopher, and Bassem Allam. 2023. <span>“The Need for More Information on the Resistance to Biological and Environmental Stressors in Triploid Oysters.”</span> <em>Aquaculture</em> 577 (December): 739913. <a href="https://doi.org/10.1016/j.aquaculture.2023.739913">https://doi.org/10.1016/j.aquaculture.2023.739913</a>.
+</div>
+</div></section></div> ]]></description>
+  <category>pacific_oyster</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_07_24_oyster_examinations.html</guid>
+  <pubDate>Wed, 24 Jul 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Point Whitney: Transporting KD oysters</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_07_23_Point_Whitney.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Shorter trip to Point Whitney today to bring my hardened dip/trip oysters back to FTR and grab a few things.</p>
+<section id="oysters" class="level3">
+<h3 class="anchored" data-anchor-id="oysters">Oysters</h3>
+<p>My hardened diploid/triploid oysters finished their 2 week recovery period yesterday, so today I brought them back to the lab for sampling and an extreme stress survivorship test. The oysters were packed in a cooler with ice, sandwiched between layers of wet paper/cardboard and foam, so that the oysters never came in direct contact with ice. They were packed like this for ~4 hours before I got them back to FTR and placed them in the right seawater tank in the FTR cold room. The tank contains seawater made from freshwater and Instant Sea, mixed to a salinity of ~27 psu, and held at 20C. These conditions were selected to match the ambient salinity and temperature the oysters experienced at Point Whitney for the last month. I also added roughly 15mL of Instant Algae once the oysters were placed in the tank, diluted before addition.</p>
+</section>
+<section id="other-pw-tasks" class="level3">
+<h3 class="anchored" data-anchor-id="other-pw-tasks">Other PW tasks</h3>
+<p>I also took probe measurements from the dock and upweller we’ve been using (see picture below), and then packed both the probe and a new HOBO temperature logger to bring back to FTR. Added probe measurements to my ongoing <a href="https://docs.google.com/spreadsheets/d/1EssYgZ8fZl4V9PLlYWtEGXSeln1L4JUM0bqT_MYv6cI/edit?gid=0#gid=0">spreadsheet</a>.</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9391.jpg" class="img-fluid" width="700"></p>
+</section>
+<section id="ucarferry" class="level3">
+<h3 class="anchored" data-anchor-id="ucarferry">Ucar/ferry</h3>
+<p>Submitted ferry receipts for reimbursement 7/24</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9405.jpg" class="img-fluid" width="500"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>pacific_oyster</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_07_23_Point_Whitney.html</guid>
+  <pubDate>Tue, 23 Jul 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Extreme stress test trial #2</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_07_15_stress_test_trial2.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Second trial of an extreme stress test on our extra Pacific oysters. The experimental setup of Trial 1 didn’t work well, and ended up stress the oysters at the sublethal35-38C, instead of a lethal temp of 43C.</p>
+<p>This time I’ll be using full bucket of water with a heater + thermostat, instead of warming water in the incubator. This should heat the water faster and better regulate the temperature following addition of oysters.</p>
+<section id="trial-2-protocol" class="level3">
+<h3 class="anchored" data-anchor-id="trial-2-protocol">Trial 2 protocol</h3>
+<ol type="1">
+<li><p>Filled two clean white plastic buckets with roughly 20L of seawater from the cold seawater tank in FTR. Placed digital thermostats and thermometers in both. To one bucket (the “treatment” bucket), added a rod heater decoupled from the thermostat. Heated the treatment bucket to 43C by manually monitoring the temperature and turning off heater once at temperature.</p>
+<p><strong>Notes:</strong> I noticed while heating the treatment bucket that water at the top of the bucket warmed faster than water at the bottom. I added an additional thermostat so that one thermostat sensor was attached to the bottom of the bucket and one was attached the top of the bucket (see pictures). To ensure even heating, I manually mixed the water during heating until the two thermostats were within 1C of each other, repeating whenever the thermostats diverged by more than 1C. Whenever I mixed the treatment bucket, I would also mix the control bucket.</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9303.jpg" class="img-fluid" width="500"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9304.jpg" class="img-fluid" width="500"></p></li>
+<li><p>Isolated two groups of 10 oysters from bag “13” (untreated diploid), selecting similarly sized sets of oysters, and placed in small mesh bags. Randomly assigned one bag to treatment and one to control. Labelled each with a labelled 15mL tube placed inside bag and colored zip ties attached to the bag (didn’t have any waterproof bag tags). Yellow and black is 43C group, blue and black is control. Measured length of each oyster in each group using a manual caliper, then placed back in respective labelled bags and placed bags in cold seawater tank for roughly 1hr</p>
+<p><strong>Notes:</strong> Noticed a few dead oysters in the source bag “13”, all on the small side.</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9300.jpg" class="img-fluid" width="500"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9302.jpg" class="img-fluid" width="500"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9301.jpg" class="img-fluid" width="500"></p></li>
+<li><p>Once the treatment seawater bucket was at 43C, I began the stress trial. I placed the “treatment” bag of oysters in the 43C bucket, and the “control” bag of oysters in the bucket of ambient water (roughly 17C). The oysters remained in their respective buckets for 1 hr (16:30 - 17:30, 7/15/2024).</p>
+<p>I maintained the treatment water temperature of 43C by manually monitoring the thermostats and thermometer. When any of these temperature gauges dropped below 42C (a 1C variation) I turned the heater back on until all three temperature gauges were again at 43C. I also mixed the water the entire time the heater was on, to ensure even heating, and ensured the bag of oysters was not touching the heating element itself. I had to turn the heater on roughly every 15 minutes to maintain temperature.</p>
+<p><strong>Notes:</strong> The thermostat whose sensor was at the top of the treatment bucket consistently displayed a temperature 1C below the thermostat placed at the bottom of the bucket. I’m not sure if this is because the top layer of water lost heat faster or because of a calibration difference in the thermostats. This means, however, that a drop below 42C in the top thermostat generally meant a drop to 42C in the bottom of the bucket, which means water at the bottom of the bucket likely never dropped below 42C.</p></li>
+<li><p>After the 1hr treatment, placed both bags of oysters back in the cold seawater tank in FTR.</p>
+<p>Unplugged all heaters and thermostats, emptied both buckets of seawater into the drains in the seawater room, and rinsed both with DI water.</p></li>
+<li><p>Monitor oysters in both groups for mortality once per day at roughly noon for the next 2 weeks. To check mortality, remove bag of oysters from tank, empty bag onto table. An empty shell or gaping with no response to stimulation (prodding with metal tool) indicates mortality.</p></li>
+</ol>
+</section>
+<section id="mortality" class="level3">
+<h3 class="anchored" data-anchor-id="mortality">Mortality</h3>
+<p>Checked bags daily at roughly noon for mortality. Mortality evaluated by prodding oysters and squeezing lightly at base of hinge. Empty shells or oysters that gaped and remained open during stimulation were considered dead.</p>
+<table class="table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 39%">
+<col style="width: 46%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Date</th>
+<th>Time</th>
+<th>Control (mm length of dead oyster(s))</th>
+<th>Extreme stress (mm length of dead oyster(s))</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>7/16</td>
+<td>12:30</td>
+<td>-</td>
+<td>25, 27</td>
+</tr>
+<tr class="even">
+<td>7/17</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>7/18</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>7/19</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>7/20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+ ]]></description>
+  <category>pacific_oyster</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_07_15_stress_test_trial2.html</guid>
+  <pubDate>Mon, 15 Jul 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Extreme stress test trial</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_07_11_stress_test_trial.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Trial run of extreme stress test using the extra untreated, diploid “13” oysters currently stored in seawater cold room in FTR.<br>
+<br>
+</p>
+<section id="plan" class="level3">
+<h3 class="anchored" data-anchor-id="plan">Plan</h3>
+<p>Place oysters in 43C seawater for 1hr, then remove and return to ambient. Check daily for mortality for ~2wks.</p>
+</section>
+<section id="trial-protocol" class="level3">
+<h3 class="anchored" data-anchor-id="trial-protocol">Trial protocol</h3>
+<ol type="1">
+<li><p>Filled a clean tripour container with 700 mL of seawater from the cold seawater tank in FTR. Placed in the incubator at 42C at roughly <strong>13:00 7/11/2024</strong>.</p></li>
+<li><p>Isolated two groups of 10 oysters from bag “13” (untreated diploid), selecting similarly sized sets of oysters. Placed the two groups into small mesh bags, then placed back in the cold seawater tank (~10C) in FTR. Selected and grouped oysters at roughly <strong>15:00 7/11/2024</strong>.</p>
+<p><strong>Note:</strong> …at 17:30 the seawater still isn’t at 43C. Incubator is now empty so setting the incubator to 44C, covered the tripour with plastic wrap to prevent evaporation, and leaving it to finish preheating overnight. Will hopefully be able to finish this stress tomorrow.</p></li>
+<li><p>Randomly assigned one bag to treatment and one to control. Labelled each with a labelled 15mL tube placed inside bag and a colored zip tie attached to the bag (didn’t have any waterproof bag tags). Red is 43C group and blue is control. Measured length of each oyster in each group using a caliper, then placed back in respective labelled bags. Roughly <strong>11:30 7/12/2024.</strong></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9275.jpg" class="img-fluid" width="500"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9276.jpg" class="img-fluid" width="500"></p></li>
+</ol>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9278.jpg" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9279.jpg" class="img-fluid" width="500"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9280.jpg" class="img-fluid" width="500"></p>
+<ol start="4" type="1">
+<li><p>Placed control oysters in tripour containing 700mL seawater from FTR tank, ambient temperature (13C). Left on table in cold room for 1 hr (<strong>11:47 - 12:47 7/12/2024</strong>), then placed oysters back into FTR tank.</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9281.jpg" class="img-fluid" width="500"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9287.jpg" class="img-fluid" width="500"><br>
+Placed treatment oysters in tripour of warm seawater (~25C) for 10 seconds, then placed in tipour of 700mL seawater heated to 43C. Left in incubator set to 43.5C for 1 hr (<strong>11:51 - 12:53 7/12/2024</strong>). After 1 hr, removed and placed back into FTR tank.</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9286.jpg" class="img-fluid" width="500"><br>
+I dipped the treatment oysters into warmed water before treatment because I was worried about them bringing down the treatment temperature when added. Unfortunately, this attempt didn’t do enough to prevent the treatment water cooling, because <strong>at the end of the 1 hr treatment the water was only ~38C</strong>, despite being held in the heated incubator the whole time.</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9288.jpg" class="img-fluid" width="500"></p></li>
+<li><p>Check oysters in both groups for mortality once per day at roughly noon for the next 2 weeks. To check mortality, remove bag of oysters from tank, empty bag onto table. An empty shell or gaping with no response to stimulation (prodding with metal tool) indicates mortality.</p></li>
+</ol>
+</section>
+<section id="notes" class="level3">
+<h3 class="anchored" data-anchor-id="notes">Notes</h3>
+<p>Big takeaway is that I need to rethink the heating mechanism. It took a whole day for 700mL of water to be heated from 13C to 43C in the incubator, and the incubator is also unable to keep the water at correct temperature after adding oysters. Part of this problem could be solved by having two tripours heated all the way to 43C and using one to “preheat” the oysters before completing the full treatment in the second cup, but I still think we’d end up with the same problem of not staying at 43.</p>
+<p><br>
+The <strong>rod heaters used at PW seem much faster</strong> and capable of maintaining a steady temp, but they also have to be used with a greater water volume. Maybe the stress test should be done in a <strong>bucket of heated seawater</strong>? Should only take a 2-3 hrs to heat bucket to 43 with one of those rods, the larger water volume means <strong>temp would be way less reduced</strong> by addition of oysters, and the rod heater would more quickly bring the water back up to 43 if needed.</p>
+<p>As for this current stress test trial, I’m not really sure what to do about this. If the oysters were only in 35-38C water for the entire hour then it was more like the hardening treatmetnt and I’d guess won’t be very lethal. I think I’ll check mortality daily through the weekend, and if there’s no significant mortality in either group by Monday I’ll retry the stress test.</p>
+</section>
+<section id="mortality" class="level3">
+<h3 class="anchored" data-anchor-id="mortality">Mortality</h3>
+<p>Checked bags daily at roughly noon for mortality. Mortality evaluated by prodding oysters and squeezing lightly at base of hinge. Empty shells or oysters that gaped and remained open during stimulation were considered dead.</p>
+<table class="table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 39%">
+<col style="width: 46%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Date</th>
+<th>Time</th>
+<th>Control (mm length of dead oyster(s))</th>
+<th>Extreme stress (mm length of dead oyster(s))</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>7/13</td>
+<td>13:00</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>7/14</td>
+<td>11:15</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td>7/15</td>
+<td>12:00</td>
+<td>30</td>
+<td>29, 30</td>
+</tr>
+</tbody>
+</table>
+<p>Notes: First mortalities on 7/15 (3 days after stress) in the smallest oysters, but see mortalities in both stress and control groups.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>pacific_oyster</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_07_11_stress_test_trial.html</guid>
+  <pubDate>Thu, 11 Jul 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Point Whitney: Stress treatments</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_07_08_Point_Whitney.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Another day at Point Whitney doing stress hardening</p>
+<ul>
+<li><p>KD dioploid/triploid stress hardening</p></li>
+<li><p>New seed hardening (35C, FW, and 35C FW)</p></li>
+<li><p>New seed hardening with immune stress (Poly IC)</p></li>
+<li><p><a href="https://docs.google.com/spreadsheets/d/1EssYgZ8fZl4V9PLlYWtEGXSeln1L4JUM0bqT_MYv6cI/edit?gid=0#gid=0">Probe measurements</a></p></li>
+</ul>
+<section id="stress-hardening" class="level3">
+<h3 class="anchored" data-anchor-id="stress-hardening">Stress hardening</h3>
+<p>Treatments I did today:</p>
+<table class="table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Experiment</th>
+<th>Bags (cattle tag #s)</th>
+<th>Treatment</th>
+<th>Start time</th>
+<th>End time</th>
+<th>Duration</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>KD diploid/triploid</td>
+<td>60, 65</td>
+<td>35C seawater</td>
+<td>11:05</td>
+<td>15:05</td>
+<td>4 hr</td>
+</tr>
+<tr class="even">
+<td>New seed</td>
+<td>56, 66</td>
+<td>freshwater</td>
+<td>10:09</td>
+<td>11:09</td>
+<td>1 hr</td>
+</tr>
+<tr class="odd">
+<td>New seed</td>
+<td>30, 47</td>
+<td>35C seawater</td>
+<td>11:07</td>
+<td>12:09</td>
+<td>1 hr</td>
+</tr>
+<tr class="even">
+<td>New seed</td>
+<td>75, 76</td>
+<td>35C freshwater</td>
+<td>12:14</td>
+<td>13:15</td>
+<td>1 hr</td>
+</tr>
+<tr class="odd">
+<td>New seed</td>
+<td>49, 50</td>
+<td>Poly IC</td>
+<td>10:15</td>
+<td>12:15</td>
+<td>2 hr</td>
+</tr>
+</tbody>
+</table>
+<p>I took probe measurements from the upweller holding the KD oysters, the upweller holding the broodstock, the dock, and from each of the stress treatment containers. See raw data in the “Notebook photos” section, and digitally entered data <a href="https://docs.google.com/spreadsheets/d/1EssYgZ8fZl4V9PLlYWtEGXSeln1L4JUM0bqT_MYv6cI/edit?gid=0#gid=0">here</a>.</p>
+<p>It was a hot day today! Temp off the dock reached &gt;24C at midday.</p>
+<p>The fluorometer still isn’t working, submitted support request form online to Turner Designs.</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9205.JPG" class="img-fluid"></p>
+</section>
+<section id="notebook-photos" class="level3">
+<h3 class="anchored" data-anchor-id="notebook-photos">Notebook photos</h3>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9206.jpg" class="img-fluid"></p>
+</section>
+<section id="ucarferry-receipts" class="level3">
+<h3 class="anchored" data-anchor-id="ucarferry-receipts">Ucar/ferry receipts</h3>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9209.jpg" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9201.jpg" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9202.jpg" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>pacific_oyster</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_07_08_Point_Whitney.html</guid>
+  <pubDate>Mon, 08 Jul 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Point Whitney: Stress treatments</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_07_05_Point_Whitney.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Another day at Point Whitney doing stress hardening</p>
+<ul>
+<li><p>KD dioploid/triploid stress hardening</p></li>
+<li><p>New seed hardening (35C, FW, and 35C FW)</p></li>
+<li><p>New seed hardening with immune stress (Poly IC)</p></li>
+<li><p><a href="https://docs.google.com/spreadsheets/d/1EssYgZ8fZl4V9PLlYWtEGXSeln1L4JUM0bqT_MYv6cI/edit?gid=0#gid=0">Probe measurements</a></p></li>
+</ul>
+<section id="stress-hardening" class="level3">
+<h3 class="anchored" data-anchor-id="stress-hardening">Stress hardening</h3>
+<p>Treatments I did today:</p>
+<table class="table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 20%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Experiment</th>
+<th>Bags (cattle tag #s)</th>
+<th>Treatment</th>
+<th>Start time</th>
+<th>End time</th>
+<th>Duration</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>KD diploid/triploid</td>
+<td>60, 65</td>
+<td>35C seawater</td>
+<td>11:37</td>
+<td>15:45</td>
+<td>~4 hr</td>
+</tr>
+<tr class="even">
+<td>New seed</td>
+<td>56, 66</td>
+<td>freshwater</td>
+<td>11:25</td>
+<td>12:25</td>
+<td>1 hr</td>
+</tr>
+<tr class="odd">
+<td>New seed</td>
+<td>30, 47</td>
+<td>35C seawater</td>
+<td>11:40</td>
+<td>13:40</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>New seed</td>
+<td>75, 76</td>
+<td>35C freshwater</td>
+<td>12:53</td>
+<td>13:53</td>
+<td>1 hr</td>
+</tr>
+<tr class="odd">
+<td>New seed</td>
+<td>49, 50</td>
+<td>Poly IC</td>
+<td>15:17</td>
+<td>16:17</td>
+<td>1 hr</td>
+</tr>
+</tbody>
+</table>
+<p>My notes say I exposed the new seed 35C group for 2 hours (11:40 - 13:40), so I either wrote down the end time incorrectly or mistakenly hardened this group for two hours, instead of the intended one hour. I would guess it’s the former, but I couldn’t say for sure.</p>
+<p>I also only had time to do the Poly IC immune hardening for 1 hr today, instead of the usual 2.</p>
+<p>I took probe measurements from the upweller holding the KD oysters, the upweller holding the broodstock, the dock, and from each of the stress treatment containers. See raw data in the “Notebook photos” section, and digitally entered data <a href="https://docs.google.com/spreadsheets/d/1EssYgZ8fZl4V9PLlYWtEGXSeln1L4JUM0bqT_MYv6cI/edit?gid=0#gid=0">here</a>.</p>
+</section>
+<section id="notebook-photos" class="level3">
+<h3 class="anchored" data-anchor-id="notebook-photos">Notebook photos</h3>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9183.jpg" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9184.jpg" class="img-fluid"></p>
+</section>
+<section id="ucarferry-receipts" class="level3">
+<h3 class="anchored" data-anchor-id="ucarferry-receipts">Ucar/ferry receipts</h3>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9181.jpg" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9208.jpg" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>pacific_oyster</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_07_05_Point_Whitney.html</guid>
+  <pubDate>Fri, 05 Jul 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Point Whitney: Stress treatments, clearance rate trials</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_07_03_Point_Whitney.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Another day at Point Whitney doing stress hardening and clearance rate trials</p>
+<ul>
+<li><p>KD dioploid/triploid stress hardening</p></li>
+<li><p>New seed hardening (35C, FW, and 35C FW)</p></li>
+<li><p><a href="https://docs.google.com/spreadsheets/d/1EssYgZ8fZl4V9PLlYWtEGXSeln1L4JUM0bqT_MYv6cI/edit?gid=0#gid=0">Probe measurements</a></p></li>
+<li><p>Clearance rate trials</p></li>
+</ul>
+<p>We also took two bags of oysters (the “13” diploid untreated, and the “Bird - Extra” triploid untreated) back to the FTR lab to use in some Resazurin trials. Transported in plastic cooler with ice packs, placed in the seawater tank in FTR. Out of water for ~5hrs.</p>
+<section id="stress-hardening" class="level3">
+<h3 class="anchored" data-anchor-id="stress-hardening">Stress hardening</h3>
+<p>Treatments I did today:</p>
+<table class="table">
+<caption>Water still took <em>forever</em> (~3 hr) to heat up to 35C. We’re putting one heater on a timer so it will hopefully pre-heat the water for me before I arrive on Friday</caption>
+<colgroup>
+<col style="width: 22%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 14%">
+<col style="width: 13%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Experiment</th>
+<th>Bags (cattle tag #s)</th>
+<th>Treatment</th>
+<th>Start time</th>
+<th>End time</th>
+<th>Duration</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>KD diploid/triploid</td>
+<td>60, 65</td>
+<td>35C seawater</td>
+<td>12:27</td>
+<td>16:27</td>
+<td>4 hr</td>
+</tr>
+<tr class="even">
+<td>New seed</td>
+<td>56, 66</td>
+<td>freshwater</td>
+<td>10:12</td>
+<td>11:12</td>
+<td>1 hr</td>
+</tr>
+<tr class="odd">
+<td>New seed</td>
+<td>30, 47</td>
+<td>35C seawater</td>
+<td>12:31</td>
+<td>13:31</td>
+<td>1 hr</td>
+</tr>
+<tr class="even">
+<td>New seed</td>
+<td>75, 76</td>
+<td>35C freshwater</td>
+<td>13:35</td>
+<td>14:35</td>
+<td>1 hr</td>
+</tr>
+</tbody>
+</table>
+<p>I took probe measurements from the three holer (the one holding the KD oysters) and dock, and from each of the stress treatment containers. See raw data in the “Notebook photos” section, and digitally entered data <a href="https://docs.google.com/spreadsheets/d/1EssYgZ8fZl4V9PLlYWtEGXSeln1L4JUM0bqT_MYv6cI/edit?gid=0#gid=0">here</a>.</p>
+</section>
+<section id="clearance-rate-trials" class="level3">
+<h3 class="anchored" data-anchor-id="clearance-rate-trials">Clearance rate trials</h3>
+<section id="trial-3" class="level4">
+<h4 class="anchored" data-anchor-id="trial-3">Trial 3</h4>
+<p>Another round of clearance rate trials. This time I wanted to try oysters at a range of sizes. Selected 3 oysters of a range of sizes from both the “13” diploid cohort and the “Bird” triploid cohort (untreated). Placed each oyster in 700mL of algae-rich seawater (sourced from black tub and diluted until algae content was just below the quantifiable level of 199 ug/L using the FluoroSense fluorometer). Monitored for ~1hr at roughly 10min intervals. Took triplicate fluorometer readings each time.</p>
+<p>See data entered here, or original data in the below notebook photos.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/Trial 3.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Note: values shown are the third of each set of triplicate measurements from each time point (column “Fluoro3” in the raw datasheet)</figcaption>
+</figure>
+</div>
+<p>As expected, the small oysters (13 26mm and Bird 24mm) have a much lower clearance rate. Interestingly though, all of the larger oysters (13 75mm, 13 88mm, Bird 61mm, and Bird 76mm) see to have pretty similar clearance rates, with the Bird 61mm oyster actually beating the others at most time points!</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9158.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Trial 3 oysters. “Bird” triploid untreated (top) and “13” diploid untreated (bottom)</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9163.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Trial 3 setup</figcaption>
+</figure>
+</div>
+<p>Overall, since the fluorometer is non-invasive and very easy to use, it seems like the best option may just be to measure clearance rate of the full cohorts (i.e.&nbsp;place the full treatment bags in algae-rich water and monitor feeding). The oysters don’t always open to feed and the fluorometer doesn’t seem sensitive/consistent enough to use with smaller sample sizes.</p>
+<p>Unfortunately the FluoroSense fluorometer stopped working at roughly 15:15. It’s only displaying 0 readings, even for my control solution which was consistently reading at ~180 and was visibly clouded with algae. Matt and I tried recalibrating the fluorometer using the 800ppb Rhodamine calibration solution, but saw no change. There’s no visible damage, the display is functioning normally, and the blue fluorescence light is still working as usual, so I’m really not sure what the issue is :(</p>
+</section>
+</section>
+<section id="notebook-photos" class="level3">
+<h3 class="anchored" data-anchor-id="notebook-photos">Notebook photos</h3>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/datasheet1_07_03_2024.jpg" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/datasheet2_07_03_2024.jpg" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/datasheet3_07_03_2024.jpg" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/datasheet4_07_03_2024.jpg" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/datasheet5_07_03_2024.jpg" class="img-fluid"></p>
+</section>
+<section id="ucarferry-reciepts" class="level3">
+<h3 class="anchored" data-anchor-id="ucarferry-reciepts">Ucar/ferry reciepts</h3>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/ferry_reciepts.jpg" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/ucar_checkout-02.jpg" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/ucar_checkin-02.jpg" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>pacific_oyster</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_07_03_Point_Whitney.html</guid>
+  <pubDate>Wed, 03 Jul 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Point Whitney: Stress treatments, clearance rate trials</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_07_01_Point_Whitney.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Field day at Point Whitney to continue hardening stress treatments</p>
+<ul>
+<li><p>KD dioploid/triploid stress hardening</p></li>
+<li><p>New seed hardening (35C, FW, and 35C FW)</p></li>
+<li><p><a href="https://docs.google.com/spreadsheets/d/1EssYgZ8fZl4V9PLlYWtEGXSeln1L4JUM0bqT_MYv6cI/edit?gid=0#gid=0">Probe measurements</a></p></li>
+<li><p>Clearance rate trials</p></li>
+</ul>
+<section id="stress-hardening" class="level3">
+<h3 class="anchored" data-anchor-id="stress-hardening">Stress hardening</h3>
+<p>Treatments I did today:</p>
+<table class="table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Experiment</th>
+<th>Bags (cattle tag #s)</th>
+<th>Treatment</th>
+<th>Start time</th>
+<th>End time</th>
+<th>Duration</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>KD diploid/triploid</td>
+<td>60, 65</td>
+<td>35C seawater</td>
+<td>13:10</td>
+<td>16:57</td>
+<td>~4 hr</td>
+</tr>
+<tr class="even">
+<td>New seed</td>
+<td>56, 66</td>
+<td>freshwater</td>
+<td>11:19</td>
+<td>12:19</td>
+<td>1 hr</td>
+</tr>
+<tr class="odd">
+<td>New seed</td>
+<td>30, 47</td>
+<td>35C seawater</td>
+<td>13:14</td>
+<td>14:17</td>
+<td>1 hr</td>
+</tr>
+<tr class="even">
+<td>New seed</td>
+<td>75, 76</td>
+<td>35C freshwater</td>
+<td>14:07</td>
+<td>15:07</td>
+<td>1 hr</td>
+</tr>
+</tbody>
+</table>
+<p>It took a bit longer than expected to heat the seawater tank to 35C – 2.5hrs, even with three heaters! I had to cut the 4hr treatment a few minutes short to make my ferry and return the Ucar on time. To budget extra heating time I modified my Wednesday and Friday Ucar reservations to check out an hour earlier.</p>
+<p>I took probe measurements from the three holer and dock, and from each of the stress treatment containers. See raw data in the “Notebook photos” section, and digitally entered data <a href="https://docs.google.com/spreadsheets/d/1EssYgZ8fZl4V9PLlYWtEGXSeln1L4JUM0bqT_MYv6cI/edit?gid=0#gid=0">here</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9129.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">35C seawater tank</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9128.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">35C freshwater bucket</figcaption>
+</figure>
+</div>
+</section>
+<section id="clearance-rate-trials" class="level3">
+<h3 class="anchored" data-anchor-id="clearance-rate-trials">Clearance rate trials</h3>
+<p>We’re interested in potentially using clearance rate (the rate at which an oyster removes algae from the water) as a measure of stress. The hatchery has a fluorometer that can be easily used to quantify chlorophyll A (and thus, algal levels) in real time, so I wanted to try using it to measure clearance rate.</p>
+<p><a href="https://docs.google.com/spreadsheets/d/1vyTBfkfhaLdnIoF1lEjogi5L56VB6xdcsXvcqvHP2rU/edit?gid=0#gid=0">Digitally stored data</a></p>
+<section id="trial-1" class="level4">
+<h4 class="anchored" data-anchor-id="trial-1">Trial 1</h4>
+<ul>
+<li><p>One untreated, diploid oyster (“13” cohort, 66 mm); One untreated, triploid oyster (“Bird” cohort, 64 mm)</p></li>
+<li><p>Placed each in 1000ml dilution of algae-rich seawater (200ml algal water from black tub, 800 mL of seawater)</p></li>
+<li><p>Measured fluorometry at regular intervals</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9126.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Trial 1</figcaption>
+</figure>
+</div>
+<p>Quick chart below of Trial 1 fluorometry readings (blue is 13, red is Bird)</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/chart.png" class="img-fluid"></p>
+<p>The algae levels dropped <em>much</em> more quickly than I expected in both ploidies, from in the hundred to in the tens in the first 30 minutes. Monitoring clearance rate would have to be done at much shorter time intervals. Also noticed that the fluorometer is not perfectly accurate (e.g., reading <em>increased</em> at one point, which I don’t think should be possible).</p>
+</section>
+<section id="trial-2" class="level4">
+<h4 class="anchored" data-anchor-id="trial-2">Trial 2</h4>
+<ul>
+<li><p>One untreated, diploid oyster (“13” cohort); One untreated, triploid oyster (“Bird” cohort); Once control cup with no oyster</p></li>
+<li><p>Placed each oyster in 700ml dilution of algae-rich seawater (100ml algal water from black tub, 600 mL of seawater). Just did serial dilutions until I got a quantifiable fluorometry reading.</p></li>
+<li><p>Measured fluorometry at regular intervals</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9130.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Trial 2</figcaption>
+</figure>
+</div>
+<p>Quick chart below of Trial 2 fluorometry readings (blue is 13, red is Bird, yellow is control)</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/chart (1).png" class="img-fluid"></p>
+<p>Takeaways:</p>
+<ul>
+<li><p>Fluorometer readings dropped slightly over the course of an hour in the control – maybe algae just die off at low levels? Not sure if that would affect chlorophyll levels though…</p></li>
+<li><p>The diploid “13” oyster didn’t seem to consume any algae. I noticed during the trial that oyster looked fully closed during most of the trial, while the “Bird” oyster was clearly opened. If we want to use clearance rate experimentally, we’d need to have a backup plan for oysters that don’t want to feed.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9134.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">“Bird” oysters (right) much more open than “13” oyster (left)</figcaption>
+</figure>
+</div>
+<p>I also noticed after the trial that the “Bird” oyster I was using actually had a second, smaller oyster fused to it (see below), which may have affected the rate of decrease.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9136.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">small second oyster attached to Trial 2 “Bird” oyster</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="notebook-photos" class="level3">
+<h3 class="anchored" data-anchor-id="notebook-photos">Notebook photos</h3>
+<p>See notes from the day and original probe measurements and clearance rate trial data below</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/datasheet1_07_01_2024.jpg" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/datasheet2_07_01_2024.jpg" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/datasheet3_07_01_2024.jpg" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/datasheet4_07_01_2024.jpg" class="img-fluid"></p>
+</section>
+<section id="ucarferry-receipts" class="level3">
+<h3 class="anchored" data-anchor-id="ucarferry-receipts">Ucar/ferry receipts</h3>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/ferry_receipts.jpg" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/ucar_checkin-01.jpg" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/ucar_checkout-01.jpg" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/ucar_dash.jpg" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>pacific_oyster</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_07_01_Point_Whitney.html</guid>
+  <pubDate>Mon, 01 Jul 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Point Whitney: Hardening Treatments</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_06_28_Point_Whitney.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Today Ariana and I did stress hardening treatments for several oyster cohorts.</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9109.jpg" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9110.jpg" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9111.jpg" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9112.jpg" class="img-fluid"></p>
+
+
+
+ ]]></description>
+  <category>pacific_oyster</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_06_28_Point_Whitney.html</guid>
+  <pubDate>Fri, 28 Jun 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Resazurin assay notes/questions</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_06_25_Resazurin.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Resazurin notes from Colby:</p>
+<ul>
+<li>See Colby’s notebook posts <a href="https://genefish.wordpress.com/2024/06/21/procedure-results-of-resazurin-dilution/">here</a></li>
+</ul>
+<!-- -->
+<ul>
+<li><p>Dilutions don't seem to affect results (e.g.&nbsp;magnitude in difference). Note color change in lower dilutions first, note color changes in stressed oysters and bigger oysters faster.&nbsp;</p></li>
+<li><p>More dilution leads to faster evaporation</p></li>
+<li><p>Ask ariana about bringing some of my source cohorts back to lab for resazurin trials</p></li>
+<li><p>Would be nice at some point to validate the resazurin assay wit a better understood metric for respiration</p></li>
+<li><p>Should do a bit of lit review on resazurin assay, how it’s been applied till now, how it works</p></li>
+</ul>
+<p>Big Questions:&nbsp;</p>
+<ol type="1">
+<li>Does the resazurin compound affect the oysters? What about at different dilutions?</li>
+</ol>
+<!-- -->
+<ol start="2" type="1">
+<li>Does resazurin continue color changing when oysters are removed?</li>
+</ol>
+<!-- -->
+<ol start="3" type="1">
+<li>How to do assay with larger oysters? Can we keep them in larger beakers and then just extract Resazurin samples from each to quantify in spectrophotometer?</li>
+</ol>
+<!-- -->
+<ol start="4" type="1">
+<li>Ratio of oyster size to resazurin volume? How to normalize for oysters of different sizes?</li>
+</ol>
+<!-- -->
+<ol start="5" type="1">
+<li>What is the "limit" of the resazurin? I.e. at what point is the color change reached its maximum difference, so that no more color change is possible even during continued respiration?</li>
+</ol>
+
+
+
+ ]]></description>
+  <category>pacific_oyster</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_06_25_Resazurin.html</guid>
+  <pubDate>Thu, 27 Jun 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Point Whitney: Experimental Setup</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_06_25_Point_Whitney.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Today we did a rough inventory of what diploid/triploid families we had at Point Whitney, selected two cohorts for the stress priming experiment, and counted, measured, and separated 200 individuals from each cohort for stress hardening.</p>
+<section id="compiling-and-measuring-treatment-groups" class="level3">
+<h3 class="anchored" data-anchor-id="compiling-and-measuring-treatment-groups">Compiling and measuring treatment groups</h3>
+<p>I counted 200 oysters from the bag “Effort C - Bird, Extra” (adult, triploid, untreated) and 200 from bag “13” (adult, diploid, untreated), making an effort to select roughly the same size class (20mm - 60mm in length). I then measured the length of each with calipers and separated into four treatment bags of 100 oysters each (2 bags of triploids, 2 bags of diploids). Oysters were not individually labelled/tagged. See photos of the datasheets below and <a href="https://docs.google.com/spreadsheets/d/1zvq3cIyN-kI8eTnX96CSJhre9aA-Rj9POYtFrEdOtac/edit?usp=sharing">digital spreadsheets here</a>.</p>
+<p><u>Observations:</u></p>
+<p>The diploids were generally a bit bigger, there were more oysters larger than the desired size range (20mm - 60mm), and there were more dead oysters. There were also several instances in both groups of two oysters fused together, and these were excluded from the oysters compiled for the experiment.6</p>
+<p><u>Length summary stats (mm):</u></p>
+<table class="table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Bag</strong></td>
+<td><strong>Sample size</strong></td>
+<td><strong>Min</strong></td>
+<td><strong>Max</strong></td>
+<td><strong>Range</strong></td>
+<td><strong>Mean</strong></td>
+<td><strong>Median</strong></td>
+</tr>
+<tr class="even">
+<td>triploid control</td>
+<td>100</td>
+<td>23</td>
+<td>65</td>
+<td>42</td>
+<td>35.62</td>
+<td>34</td>
+</tr>
+<tr class="odd">
+<td>triploid treatment</td>
+<td>100</td>
+<td>23</td>
+<td>54</td>
+<td>31</td>
+<td>32.47</td>
+<td>30</td>
+</tr>
+<tr class="even">
+<td>diploid control</td>
+<td>100</td>
+<td>18</td>
+<td>60</td>
+<td>42</td>
+<td>37.42</td>
+<td>36</td>
+</tr>
+<tr class="odd">
+<td>diploid treatment</td>
+<td>100</td>
+<td>21</td>
+<td>65</td>
+<td>44</td>
+<td>39.77</td>
+<td>38</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/datasheet1_2024_06_25.JPG" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/datasheet2_2024_06_25.JPG" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/datasheet3_2024_06_25.JPG" class="img-fluid"></p>
+<p>Bags are green mesh, and were labelled with a number (Bag 1, Bag 2, Bag 3, Bag 4), ploidy (triploid or diploid), and treatment group (control or treatment), as well as the identifier “UW-KD, Roberts” to distinguish our bags from others in the hatchery. For each bag, one tag was placed inside the bag and an identical tag was attached to the exterior with a zip tie.</p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td>Bag 1</td>
+<td>triploid</td>
+<td>control</td>
+</tr>
+<tr class="even">
+<td>Bag 2</td>
+<td>triploid</td>
+<td>treatment</td>
+</tr>
+<tr class="odd">
+<td>Bag 3</td>
+<td>diploid</td>
+<td>control</td>
+</tr>
+<tr class="even">
+<td>Bag 4</td>
+<td>diploid</td>
+<td>treatment</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/tag_bag1.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">sample bag tag</figcaption>
+</figure>
+</div>
+</section>
+<section id="stress-hardening-plan" class="level3">
+<h3 class="anchored" data-anchor-id="stress-hardening-plan">Stress hardening plan</h3>
+<p>Oysters are being held at “ambient” in outdoor tank at the Point Whitney Shellfish Laboratory, with water temperature held at 22C.</p>
+<p>The stress hardening regime will involve placing the treatment oysters (100 triploid and 100 diploid) in a heated tank for four hour sessions, three times a week, for two weeks. After a hardening session they will be placed back in the ambient tanks.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><u>Temperature</u>: 35C</p>
+<p><u>Time</u>: 4 hours per session</p>
+<p><u>Frequency</u>: 3 times/week for two weeks. Choosing to do hardening sessions on Monday, Wednesday, Friday for convenience.</p>
+</div>
+</div>
+</div>
+<ul>
+<li><p>First hardening session on Wednesday, 06/26/2024, performed by Steven.</p></li>
+<li><p>Second hardening session on Friday, 06/28/2024, will be performed by Ariana.</p></li>
+<li><p>I think the rest (Mon 07/01/2024, Wed 07/03/2024, Fri 07/05/2024, Mon 07/08/2024) will be done by me.</p></li>
+</ul>
+</section>
+<section id="ucar-rentalmileage-details" class="level3">
+<h3 class="anchored" data-anchor-id="ucar-rentalmileage-details">UCar rental/mileage details</h3>
+<p>Quick overview of Ucar rental and ferry reciepts. I also want to get an estimate of my transport costs for one day at the hatchery.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/ucar_checkout.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">UCar checkout</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/ucar_checkin.JPG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">UCar dash at check in</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/ferry_reciept_1.jpeg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">ferry receipt out</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/ferry_reciept_2.jpeg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">ferry receipt back</figcaption>
+</figure>
+</div>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td>UCar max <a href="https://facilities.uw.edu/services/rates/fleet">daily rate</a> (5+ hrs):</td>
+<td style="text-align: right;">$34.45</td>
+</tr>
+<tr class="even">
+<td>Mileage (110 miles x $0.34/mile):</td>
+<td style="text-align: right;">$37.40</td>
+</tr>
+<tr class="odd">
+<td>Ferries (out and back):</td>
+<td style="text-align: right;">$44.50</td>
+</tr>
+<tr class="even">
+<td>Total cost:</td>
+<td style="text-align: right;"><strong>$116.35</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Would it be cheaper to drive all the way around, to avoid ferry costs?</strong></p>
+<p>Roundtrip mileage if I take the ferry route: 120 miles (~4 hours)<br>
+Roundtrip mileage if I take the long way around: 240 miles (~5 hours)<br>
+Mileage difference: 120 miles = $40.80</p>
+<p>So driving the long, ferry-free route would have essentially the same additional mileage cost as the ferry fees. In other words, <strong>it would cost the same</strong>. Since The ferry route saves some time and involves less driving, I’m going to stick with it.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>pacific_oyster</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_06_25_Point_Whitney.html</guid>
+  <pubDate>Tue, 25 Jun 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Lit Review: Energetics</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_06_20_Energetics.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>The oyster project will involve evaluating some metric(s) of body condition or energy storage (e.g.&nbsp;glycogen content) in attempt to ID condition indicative of stress tolerance <em>before</em> the stress occurs. This necessitates some understanding of energetics in invertebrates (which I don’t currently have) – to the literature!</p>
+<section id="developmental-cost-theory" class="level2">
+<h2 class="anchored" data-anchor-id="developmental-cost-theory">Developmental cost theory</h2>
+<p><span class="citation" data-cites="marshall_developmental_2020">(Marshall et al. 2020)</span></p>
+<ul>
+<li><p>higher temperatures increase metabolic rate and decrease development time, but the extent to which temperature affects these factors is <em>different</em>, meaning overall costs of development increase with any deviation from optimal development temperature (above or below). At warmer temps, metabolic rate increases faster than development time can decrease</p></li>
+<li><p>costs of development are more severely affected by temperature deviations than survival is.</p></li>
+<li><p>temperature dependence of development rate is the parameter with greatest influence on the costs of development in relation to optimal temperature.</p></li>
+</ul>
+</section>
+<section id="energy-homeostasis-to-assess-stress-tolerance" class="level2">
+<h2 class="anchored" data-anchor-id="energy-homeostasis-to-assess-stress-tolerance">Energy homeostasis to assess stress tolerance</h2>
+<p><span class="citation" data-cites="sokolova_energy_2012">(Sokolova et al. 2012)</span></p>
+<p>The most basic description of energy balance can be summarized as</p>
+<p>C = P + R + U + F</p>
+<p>Consumption (energy acquired), Production (energy incorporated), Respiration (maintenance costs), U is excreted metabolism products (e.g.&nbsp;Urea), and unutilized Food energy (excreted as well)</p>
+<ul>
+<li>“Importantly, the net energy exchange and energy balance of an organism depends not only on the amount of the available food, but also on the <strong>rates of its incorporation and metabolic conversio</strong>n that channel the energy flux to different processes.”</li>
+</ul>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/https:/ars.els-cdn.com/content/image/1-s2.0-S0141113612000712-gr1.jpg" class="img-fluid"></p>
+<ul>
+<li><p>“the ability (or lack thereof) to sustain aerobic scope emerges as a major criterion that distinguishes between moderate and extreme stress”</p>
+<ul>
+<li><p>transition to anaerobiosis occurs because of limitations in oxygen uptake/transport</p></li>
+<li><p>could aerobic metabolism be a useful biomarker? How does one measure aerobic metabolism? I guess it wouldn’t be super useful as a preemptive indicator of resiliance/preparedness/tolerance, since changes to aerobic metabolism happen <em>during</em> stress</p></li>
+</ul></li>
+<li><p><u>low-moderate stress (pejus):</u> Compensation. Accelerated metabolism/ATP turnover to provide additional energy in support of cellular maintenance/damage repair, and accompanying increase in feeding or changes in energy allocation. Also often fueled by utilizing energy stores (e.g.&nbsp;glycogen and lipid stores).</p>
+<p><u>extreme stress (pessimism):</u> Conservation. Slow-down of metabolism and physiological activity to conserve energy resources and reduce accumulation of intracellular waste from compensatory activity. All available energy devoted to somatic maintenance, rather than growth, reproduction, or storage. In extreme cases, may enter metabolically arrested state, temporarily suppressing activity below maintenance levels to conserve energy until normal function becomes possible. <strong>This metabolic arrest is particularly common in animals native to extreme environments (e.g.&nbsp;the intertidal)</strong></p></li>
+</ul>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-marshall_developmental_2020" class="csl-entry">
+Marshall, Dustin J., Amanda K. Pettersen, Michael Bode, and Craig R. White. 2020. <span>“Developmental Cost Theory Predicts Thermal Environment and Vulnerability to Global Warming.”</span> <em>Nature Ecology &amp; Evolution</em> 4 (3): 406–11. <a href="https://doi.org/10.1038/s41559-020-1114-9">https://doi.org/10.1038/s41559-020-1114-9</a>.
+</div>
+<div id="ref-sokolova_energy_2012" class="csl-entry">
+Sokolova, Inna M., Markus Frederich, Rita Bagwe, Gisela Lannig, and Alexey A. Sukhotin. 2012. <span>“Energy Homeostasis as an Integrative Tool for Assessing Limits of Environmental Stress Tolerance in Aquatic Invertebrates.”</span> <em>Marine Environmental Research</em> 79 (August): 1–15. <a href="https://doi.org/10.1016/j.marenvres.2012.04.003">https://doi.org/10.1016/j.marenvres.2012.04.003</a>.
+</div>
+</div></section></div> ]]></description>
+  <category>pacific_oyster</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_06_20_Energetics.html</guid>
+  <pubDate>Thu, 20 Jun 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Lit Review: Experimental design questions</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_06_20_experimental_design_questions.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Addressing some questions/notes raised during preliminary project planning</p>
+<section id="gametogenisisspawning-conditions" class="level3">
+<h3 class="anchored" data-anchor-id="gametogenisisspawning-conditions">Gametogenisis/spawning conditions</h3>
+<p>We’d need to make sure they don’t spawn, so need to do some digging into what conditions might induce spawning. Would be important during priming stage.</p>
+<p>In hatchery settings:</p>
+<ul>
+<li><p>“In the Pacific Northwest, <strong>the Pacific oyster may be induced to spawn and viable gametes may be obtained at any time during the year</strong>. Year-round spawning is possible because the Pacific oyster normally does not completely spawn out in all Pacific Northwest estuarine areas, generally too cool to induce complete spawning.”</p>
+<p>Conditioning: Oyster with sufficient glycogen stores held at <strong>18-20C for 4 weeks</strong> to develop mature gametes. These conditioned oysters will be prime for induced spawning for the next 2-4 weeks.</p>
+<p>Initiating spawning: Raise water to 25C, then to 30C over 30min period. Then <strong>fluctuate between 25C and 30C</strong>. <strong>Addition of gametes</strong> to the water can also induce spawning, presumably because of some hormone signaling.</p>
+<p><span class="citation" data-cites="breese1975">(Breese and Malouf 1975)</span></p></li>
+</ul>
+<p>In natural/outplant conditions:</p>
+<ul>
+<li><p>In France’s Thau Lagoon, which is characterized by no tidal amplitude (oysters remain submerged), high summer temps and salinities (&gt;26C and 36 PSU), low phytoplankton concentration, and high oyster growth rates.</p>
+<p>“<strong>gametogenesis intensity (GSI, fecundity) was correlated to the abundance of diatoms</strong>”</p>
+<p>“spawning in C. gigas does not occur below a daily seawater temperature of <strong>17-18°C”</strong>, but also noted that mass spawning in the warm Thau Lagoon occurred at a much higher temp of 22C, likely because of the water’s higher average temperature and/or the absence of a tide cycle that would expose the oysters to dessication or aerial temperature stress. So there’s some <strong>room for thermal acclimatization/adaptation in the spawning trigger</strong>!</p>
+<p>Other possible spawning triggers include phytoplankton concentration, lunar cycle, and presence of thunder storms.</p>
+<p><span class="citation" data-cites="ubertini_gametogenesis_2017">(Ubertini et al. 2017)</span></p></li>
+</ul>
+<p>Experimental testing:</p>
+<ul>
+<li><p>Experimental testing of environmental conditions impact on gametogenisis (gonadal development/broodstock conditioning)</p>
+<p><strong>Fastest gonadal development (oocyte maturation) at 22C (first mature oocytes in 19 days)</strong></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/https:/ars.els-cdn.com/content/image/1-s2.0-S0044848601008985-gr4.jpg" class="img-fluid"></p>
+<p><span class="citation" data-cites="chavez-villalba_broodstock_2002">(Chávez-Villalba et al. 2002)</span></p></li>
+</ul>
+<p>Summary: Generally speaking, gametogenisis is prompted by a minimum temperature of 17C - 18C in the presence of sufficient energy storage. Fastest maturation happens around 22C, with spawning triggered by warmer temperatures than used during conditioning (e.g., 25C to 30C). If we’re acclimatizing in the 25C range there will likely be resultant gametogenisis, but conditioning for ~2 weeks is sufficiently short to prevent full gonadal maturation (“ripening”) and subsequent spawning. Not entirely clear though what happens if you hold at 20C for 2 weeks and then drop back down in temp – would gametogenisis continue?</p>
+</section>
+<section id="hardening-timeline" class="level3">
+<h3 class="anchored" data-anchor-id="hardening-timeline">Hardening timeline</h3>
+<p>Should look at all the hardening papers to try to assess best timeline (e.g.&nbsp;how long to harden, how long to wait between hardening and stress)</p>
+<table class="table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 8%">
+<col style="width: 10%">
+<col style="width: 26%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Species</th>
+<th>Age</th>
+<th>Source</th>
+<th>Hardening regime</th>
+<th>Outcome</th>
+<th>Paper</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Manila clam (R. philippinarum)</td>
+<td>adult</td>
+<td>wild caught</td>
+<td>28C or 30C for 2 hrs, recover for 12 hrs, stress test of 30C or 32C 1wk</td>
+<td>30C hardening improved survival at 30C stress</td>
+<td><span class="citation" data-cites="zhang_metabolomic_2023">(Zhang, Nie, and Yan 2023)</span></td>
+</tr>
+<tr class="even">
+<td>Olympia oyster (O. lurida)</td>
+<td>juvenile</td>
+<td>hatchery</td>
+<td>15C or 21C 2wks, plus tide treatment (submerged &amp; exposed for 6hr each, 2x/day). MHW 15C, 18C, 1C, and 24C for 72hr. Survivors outplanted 9months</td>
+<td>no effects on short-term mortality, but hardening improved outplanting survival. Temp hardening inhibited growth.</td>
+<td><span class="citation" data-cites="shukla_resisting_2023">(Shukla 2023)</span></td>
+</tr>
+<tr class="odd">
+<td>Kumamoto oyster (C. sikamea)</td>
+<td>juvenile</td>
+<td>hatchery</td>
+<td>15C or 21C 2wks, plus tide treatment (submerged &amp; exposed for 6hr each, 2x/day). MHW 15C, 18C, 1C, and 24C for 72hr.</td>
+<td>no effects on mortality, temp hardening inhibited growth</td>
+<td><span class="citation" data-cites="shukla_resisting_2023">(Shukla 2023)</span></td>
+</tr>
+<tr class="even">
+<td>Pacific oyster (C. gigas)</td>
+<td>juvenile</td>
+<td>hatchery</td>
+<td>15C or 21C 2wks, plus tide treatment (submerged &amp; exposed for 6hr each, 2x/day). MHW 15C, 18C, 1C, and 24C for 72hr.</td>
+<td>no effects on mortality, tidal hardening improved growth.</td>
+<td><span class="citation" data-cites="shukla_resisting_2023">(Shukla 2023)</span></td>
+</tr>
+<tr class="odd">
+<td>California mussel (M. californianus)</td>
+<td>adult</td>
+<td>wild caught</td>
+<td>hardened at 25C, 30C, or 35C for 2hr, recovered at 14C for 1-28 days, then stress test 40C for 2hr</td>
+<td>30C and 35C improved survival for 2-3 weeks, but effect gone by day 28</td>
+<td><span class="citation" data-cites="moyen_single_2020">(Moyen et al. 2020)</span></td>
+</tr>
+<tr class="even">
+<td>Sydney rock oyster (S. glomerata)</td>
+<td>adult</td>
+<td>hatchery</td>
+<td>Four ~2hr emmersion hardening at 30C and 40C, each separated by 1wk, then MHW of emmersed at 50C for 2hr</td>
+<td>40C hardening improved survival and growth, as did control+antibiotics</td>
+<td><span class="citation" data-cites="scanes_acclimation_2023">(Scanes et al. 2023)</span></td>
+</tr>
+<tr class="odd">
+<td>Pearl oyster (P. maxima)</td>
+<td>adult</td>
+<td>wild caught</td>
+<td>two iterations of 28C or 32C for 3 days, with 3 day recovery for each</td>
+<td>Changes in enzyme activity for antioxidents, biomineralization, metabolism</td>
+<td><span class="citation" data-cites="he_repeated_2021">(He et al. 2021)</span></td>
+</tr>
+<tr class="even">
+<td>species of tropical oyster (I. nucleus)</td>
+<td></td>
+<td>wild caught</td>
+<td>reciprocal cross of air (26C and 40C, 4hrs) X water (26C and 35C, 4hrs)</td>
+<td>Hardening increased thermal tolerance and lethal range, respiration, hsp70 expression</td>
+<td><span class="citation" data-cites="giomi_importance_2016">(Giomi et al. 2016)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="citation" data-cites="zhang_metabolomic_2023">(Zhang, Nie, and Yan 2023)</span>:</p>
+<p>Wild-caught adult Manila clams acclimated at 13.5C for 1 week, increased by 1C per day to 18C, then maintained for 1 week. Then hardened at 28C or 30C for 2 hours, then left to recover at 18C for 12 hours. Then subjected to extreme stress test (increase 2C/hr), either 30C or 32C for one week. Found that 30C hardening significantly improved survival time at 30C stress, but 28C did not (in comparison to non-hardened). Also, hardening made no difference at the 32C stress test. Maybe this means that it’s best to harden at temperature of stress test (i.e.&nbsp;harden at temperature expected to experience in MHW conditions)?</p>
+<p><span class="citation" data-cites="shukla_resisting_2023">(Shukla 2023)</span>:</p>
+<p>Juvenile O. lurida, juvenile C. sikamea, and juvenile C. gigas from hatchery. Acclimated at 15C, treatment groups hardened at 21C (0.5C/hr) for 2 weeks. In both control and temperature treatment, also included a tide treatment, in which oysters were intermittently submerged and exposed for 6hr each, twice a day. After hardening, recovered at immerged at 15C for 24hr. MHW treatments (reached at 0.5C/hr) were 15C, 18C, 1C, and 24C, no tidal component, for 72hr. Surviving O. lurida were outplanted in Sacramento for 9 months (March 2022 - Dec.&nbsp;2022).</p>
+<p>Very little mortality (&lt;10%) in all species/treatments during hardening/MHW test, and no significant effect of temp or tidal hardening on MHW survival. In O. lurida and C. sikamea, temp hardening had a negative impact on growth (i.e.&nbsp;15C control was largest). However, in C. gigas, temp hardening had no effect on growth and tidal hardening improved growth. In outplanting, all O. lurida with tidal hardening died, but those hardened at 21C (fully submerged) had much higher survival than control (15C submerged).</p>
+<p><span class="citation" data-cites="moyen_single_2020">(Moyen et al. 2020)</span>:</p>
+<p>Adult, wild-caught M. californianus hardened at 25C, 30C, or 35C for 2hr, then recovered at 14C for 1-28 days, then underwent stress test at 40C for 2hr. Following stress test, back in 14C and monitered for 4 weeks. 30C hardening conferred improved heat tolerance for 14 days, and the 35C hardening improved survival for 21 days after extreme stress, but effect gone by day 28.</p>
+<p>This experimental design has a great component of waiting 4 weeks after extreme stress to evaluate mortality. I really like this idea, since stress could kill after the actual event is over. Also, test temperatures selected because 25C was lowest temp at which HSPs are upregulated in species, 35C is ~1C below species’ critical temperature of cardiac function, and 40C is avg lethal temp in species. Also has a cool graph of # days between heat stress bouts.</p>
+<p>“Heat hardening has typically been defined as a transient response that confers improved heat tolerance immediately after the initial heat-stress bout for up to 32 h [9,12,13,39,40], while longer-lasting improvements in heat tolerance are termed as heat acclimation.”</p>
+<p><span class="citation" data-cites="scanes_acclimation_2023">(Scanes et al. 2023)</span>:</p>
+<p>Australian adult, hatchery-reared S. glomerata acclimated for 1 week at 23C. Two emmersion heat treatments, 30C and 40C. First hardening 1.5hr, back to ambient 1 wk, then three more hardening treatments of 2 hrs each, separated by 1 wk each time (total of 4 hardening treatments over 4 weeks). Simulated MHW 1wk after final hardening, kept at emmersed 50C for 2hr. Monitered for 48 hr, then checked at day 8 and 16. Also note there’s an antibiotic group, since study investigates pathogen load.</p>
+<p>40C hardening improved survival and growth, but 30C did not. Also, control+antibiotic oysters had improved survival. Suggests hardening may be bolstering capacity to repel pathogenic bacteria as one mechanism of improving post-HW survival.</p>
+<p><span class="citation" data-cites="he_repeated_2021">(He et al. 2021)</span>:</p>
+<p>Adult, wild-caught P. maxima oysters acclimated at 24C for 1 day, then exposed to MHW conditions at 28C and 32C for 3 days, 3 days recovery, followed by another exposure and recovery. Note that 36C treatment also attempted but saw 100% mortality. Observed significant changes in activities of antioxidant enzymes, biomineralization-related enzymes, and energy-metabolizing enzymes. Note this isn’t actually a hardening experiment, it’s a repeat MHW exposure experiment. It’s energetics-focused though, so should probably read in more depth at some point.</p>
+<p><span class="citation" data-cites="giomi_importance_2016">(Giomi et al. 2016)</span>:</p>
+<p>Wild-caught tropical oyster I. nucleus, acclimated at 26C for 1month. Emmersed at 26C (control) and 40C for 4 hrs, then immersed again in 26C and 35C (reciprocal exposure setup, 4 treatment combos total). Temperature-induced mortality rate and 50% lethal temp then measured, plus respirometry and hsp70 mRNA expression. Thermal tolerance, lethal temperature threshold, and oxygen consumption rates significantly improved in heat-stressed group (40C-26c and 40C-35C), and hsp70 expression increased. Interestingly though, <strong>feeding rates following stress were much lower in the heat-stressed groups</strong>.</p>
+<p>Similar resilience evaluation approach to what we’re thinking in own project (quantifying temperature induced mortality and 50% lethal temp as a biomarker)</p>
+<ol type="1">
+<li><p>MHW definition is pretty distinct, would need to decide what type of scenario to simulate</p></li>
+<li><p>Need to figure out sample sizes for whatever tests I want to do. Would be benefited by running some test assays before starting experiment. A bunch of these assays have been used with Pacific oysters already, so could find those and make a table or something.&nbsp;</p></li>
+<li><p>Apparently heartbeat is potentially a better metric for metabolic rate than respiration, and is nondestructive</p></li>
+<li><p>Should also keep in mind that genetic composition can completely change the true sample size (e.g., if triploids and diploids are siblings)</p></li>
+</ol>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-breese1975" class="csl-entry">
+Breese, Wilbur P, and Robert E Malouf. 1975. <span>“Hatchery Manual for the Pacific Oyster.”</span> <em>Oregon State University Sea Grant College Program</em> Agricultural Experiment Station (443). <a href="https://ir.library.oregonstate.edu/downloads/db78td066">https://ir.library.oregonstate.edu/downloads/db78td066</a>.
+</div>
+<div id="ref-chavez-villalba_broodstock_2002" class="csl-entry">
+Chávez-Villalba, Jorge, Julien Pommier, Jimmy Andriamiseza, Stéphane Pouvreau, Jean Barret, Jean-Claude Cochard, and Marcel Le Pennec. 2002. <span>“Broodstock Conditioning of the Oyster <em><span>Crassostrea</span> Gigas</em>: Origin and Temperature Effect.”</span> <em>Aquaculture</em> 214 (1): 115–30. <a href="https://doi.org/10.1016/S0044-8486(01)00898-5">https://doi.org/10.1016/S0044-8486(01)00898-5</a>.
+</div>
+<div id="ref-giomi_importance_2016" class="csl-entry">
+Giomi, Folco, Concetta Mandaglio, Monthon Ganmanee, Guo-Dong Han, Yun-Wei Dong, Gray A. Williams, and Gianluca Sarà. 2016. <span>“The Importance of Thermal History: Costs and Benefits of Heat Exposure in a Tropical, Rocky Shore Oyster.”</span> <em>Journal of Experimental Biology</em> 219 (5): 686–94. <a href="https://doi.org/10.1242/jeb.128892">https://doi.org/10.1242/jeb.128892</a>.
+</div>
+<div id="ref-he_repeated_2021" class="csl-entry">
+He, Guixiang, Xiaolong Liu, Yang Xu, Jian Liang, Yuewen Deng, Yuehuan Zhang, and Liqiang Zhao. 2021. <span>“Repeated Exposure to Simulated Marine Heatwaves Enhances the Thermal Tolerance in Pearl Oysters.”</span> <em>Aquatic Toxicology</em> 239 (October): 105959. <a href="https://doi.org/10.1016/j.aquatox.2021.105959">https://doi.org/10.1016/j.aquatox.2021.105959</a>.
+</div>
+<div id="ref-moyen_single_2020" class="csl-entry">
+Moyen, Nicole E., Rachel L. Crane, George N. Somero, and Mark W. Denny. 2020. <span>“A Single Heat-Stress Bout Induces Rapid and Prolonged Heat Acclimation in the <span>California</span> Mussel, <span>Mytilus</span> Californianus.”</span> <em>Proceedings of the Royal Society B: Biological Sciences</em> 287 (1940): 20202561. <a href="https://doi.org/10.1098/rspb.2020.2561">https://doi.org/10.1098/rspb.2020.2561</a>.
+</div>
+<div id="ref-scanes_acclimation_2023" class="csl-entry">
+Scanes, Elliot, Nachshon Siboni, Brendon Rees, and Justin R. Seymour. 2023. <span>“Acclimation in Intertidal Animals Reduces Potential Pathogen Load and Increases Survival Following a Heatwave.”</span> <em>iScience</em> 26 (6): 106813. <a href="https://doi.org/10.1016/j.isci.2023.106813">https://doi.org/10.1016/j.isci.2023.106813</a>.
+</div>
+<div id="ref-shukla_resisting_2023" class="csl-entry">
+Shukla, Priya. 2023. <span>“Resisting <span>Global</span> <span>Change</span>: <span>Oyster</span> <span>Aquaculture</span> and <span>Disease</span> in an <span>Era</span> of <span>Marine</span> <span>Heatwaves</span>.”</span> Ph.{D}., United States – California: University of California, Davis. <a href="https://www.proquest.com/docview/2866287372/abstract/EBD70E28DEFC40CDPQ/1">https://www.proquest.com/docview/2866287372/abstract/EBD70E28DEFC40CDPQ/1</a>.
+</div>
+<div id="ref-ubertini_gametogenesis_2017" class="csl-entry">
+Ubertini, Martin, Franck Lagarde, Serge Mortreux, Patrik Le Gall, Claude Chiantella, Annie Fiandrino, Ismaël Bernard, Stéphane Pouvreau, and Emmanuelle Roque d’Orbcastel. 2017. <span>“Gametogenesis, Spawning Behavior and Larval Abundance of the <span>Pacific</span> Oyster <em><span>Crassostrea</span> Gigas</em> in the <span>Thau</span> Lagoon: <span>Evidence</span> of an Environment-Dependent Strategy.”</span> <em>Aquaculture</em> 473 (April): 51–61. <a href="https://doi.org/10.1016/j.aquaculture.2017.01.025">https://doi.org/10.1016/j.aquaculture.2017.01.025</a>.
+</div>
+<div id="ref-zhang_metabolomic_2023" class="csl-entry">
+Zhang, Yanming, Hongtao Nie, and Xiwu Yan. 2023. <span>“Metabolomic Analysis Provides New Insights into the Heat-Hardening Response of <span>Manila</span> Clam (<em><span>Ruditapes</span> Philippinarum</em>) to High Temperature Stress.”</span> <em>Science of The Total Environment</em> 857 (January): 159430. <a href="https://doi.org/10.1016/j.scitotenv.2022.159430">https://doi.org/10.1016/j.scitotenv.2022.159430</a>.
+</div>
+</div></section></div> ]]></description>
+  <category>pacific_oyster</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_06_20_experimental_design_questions.html</guid>
+  <pubDate>Thu, 20 Jun 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Preliminary Project Outline</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_06_19_Project_Outline.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="say-i-had-100-diploids-and-100-triploids" class="level3">
+<h3 class="anchored" data-anchor-id="say-i-had-100-diploids-and-100-triploids">Say I had 100 diploids and 100 triploids…</h3>
+<p><strong>Acclimation:</strong> Hold in lab ambient conditions for 2 weeks. Measure size and body condition.</p>
+<p><strong>Priming:</strong> Control (50 2N, 50 3N), expose to 25C 6hr/day for 2 weeks (50 2N, 50 3N)</p>
+<p><strong>Sample:</strong> Evaluate mortality, size, and body condition of all oysters. Retain 10 samples from each ploidy/treatment combo (40 total). Resazurin assay. Evaluate reproductive stage. Tissue samples to be used for assay(s) of choice (e.g.&nbsp;glycogen content) and, ideally, some reserved for RNAseq.</p>
+<p><strong>Recovery:</strong> Hold at ambient for 2 weeks</p>
+<p><strong>MHW simulation:</strong> Ramp up to 30C and hold remaining oysters (40 2N control, 40 3N control; 40 2N hardened, 40 3N hardened) at 30C for 72 hours. At end, note mortality.&nbsp;</p>
+<ul>
+<li><p>If &lt;10 live individuals remaining in each treatment combo: Sample remaining oysters as described above.</p></li>
+<li><p>If &gt;10 live individuals in all treatment combos: Sample remaining oysters from each group, keeping at least 10 in each combo. Perform survivorship test with n=10 from each combo (2N control, 3N control, 2N hardened, 3N hardened), holding at 40C until mortality and noting time to mortality for each.&nbsp;</p></li>
+</ul>
+</section>
+<section id="questionsnotes" class="level3">
+<h3 class="anchored" data-anchor-id="questionsnotes">Questions/Notes:</h3>
+<ol type="1">
+<li>We'd need to make sure they don't spawn, so need to do some digging into what conditions might induce spawning. Would be important during priming stage.</li>
+<li>MHW definition is pretty distinct, would need to decide what type of scenario to simulate</li>
+<li>Need to figure out sample sizes for whatever tests I want to do. Would be benefitted by running some test assays before starting experiment. A bunch of these assays have been used with Pacific oysters already, so could find those and make a table or something.&nbsp;</li>
+<li>Apparently heartbeat is potentially a better metric for metabolic rate than respiration, and is nondestructive</li>
+<li>Acute stress test could be a good biomarker itself. Aka take an oyster after hardening and see how long it survives at 35C, monitoring heartbeat and stuff. Would, of course, also want to do preliminary tests</li>
+<li>Should also keep in mind that genetic composition can completely change the true sample size (e.g., if triploids and diploids are siblings)</li>
+<li>Should look at all the hardening papers to try to assess best timeline (e.g.&nbsp;how long to harden, how long to wait between hardening and stress)</li>
+</ol>
+
+
+</section>
+
+ ]]></description>
+  <category>pacific_oyster</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_06_19_Project_Outline.html</guid>
+  <pubDate>Wed, 19 Jun 2024 07:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>
