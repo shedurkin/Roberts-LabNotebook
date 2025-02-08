@@ -71,11 +71,21 @@ format:
 
 #### Friday
 
-2 hr -- E5 work
+**2 hr** -- E5 work
 
-1.5 hr -- SWED102 class
+**1.5 hr** -- SWED102 class
 
-1 hr -- catch up on E5 github issues and on [lab RSS feed issue](https://github.com/RobertsLab/resources/issues/2090#issuecomment-2643821466). Tried adding the `feed` option to every overview .qmd page (e.g. the E5_coral.qmd)
+**1 hr** -- catch up on E5 github issues and on [lab RSS feed issue](https://github.com/RobertsLab/resources/issues/2090#issuecomment-2643821466). Think we figured it out, so my daily updates and notebook posts should hopefully show up in the `notebook-entries` slack channel!
+
+**1 hr** -- FSH513 meeting w Ray
+
+**0.5 hr** -- SWED102 quiz and second writing assignment
+
+**0.5 hr** -- QSCI381 Ed discussion responses
+
+**3 hr** -- E5 work. Updated gene expression summaries, lncRNA-miRNA binding (miRanda still running), plus lit review into cnidarian/plant miRNA binding and into siRNA binding (in prep for running siRNA target prediction)
+
+Daily total: **9.5 hr**
 
 ## 06 February 2025
 
