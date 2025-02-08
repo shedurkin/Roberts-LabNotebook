@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Kathleen Durkin">
+<meta name="dcterms.date" content="2025-02-07">
+
+<title>Kathleen’s Lab Notebook - Deep-dive expression: Gene expression summary (for Hisat gene counts)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Kathleen’s Lab Notebook</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../daily_log.html" rel="" target="">
+ <span class="menu-text">Daily Notebook Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../projects.html" rel="" target="">
+ <span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/shedurkin" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:kdurkin1@uw.edu" rel="" target=""><i class="bi bi-envelope" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Deep-dive expression: Gene expression summary (for Hisat gene counts)</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">E5-coral</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Kathleen Durkin </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 7, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#apul-rna-summary-hisat" id="toc-apul-rna-summary-hisat" class="nav-link active" data-scroll-target="#apul-rna-summary-hisat">03.01-Apul-RNA-summary-Hisat</a>
+  <ul class="collapse">
+  <li><a href="#install-and-load-packages" id="toc-install-and-load-packages" class="nav-link" data-scroll-target="#install-and-load-packages">0.0.1 Install and load packages</a></li>
+  </ul></li>
+  <li><a href="#unnormalized-data" id="toc-unnormalized-data" class="nav-link" data-scroll-target="#unnormalized-data">1 Unnormalized data</a>
+  <ul class="collapse">
+  <li><a href="#load-count-data" id="toc-load-count-data" class="nav-link" data-scroll-target="#load-count-data">1.1 Load count data</a></li>
+  <li><a href="#count-data-munging" id="toc-count-data-munging" class="nav-link" data-scroll-target="#count-data-munging">1.2 Count data munging</a></li>
+  <li><a href="#expression-levels" id="toc-expression-levels" class="nav-link" data-scroll-target="#expression-levels">1.3 Expression levels</a></li>
+  <li><a href="#transcript-counts" id="toc-transcript-counts" class="nav-link" data-scroll-target="#transcript-counts">1.4 Transcript counts</a></li>
+  <li><a href="#most-common-biological-processes" id="toc-most-common-biological-processes" class="nav-link" data-scroll-target="#most-common-biological-processes">1.5 Most common biological processes</a></li>
+  </ul></li>
+  <li><a href="#normalized-counts" id="toc-normalized-counts" class="nav-link" data-scroll-target="#normalized-counts">2 Normalized counts</a>
+  <ul class="collapse">
+  <li><a href="#normalize-counts-with-deseq2" id="toc-normalize-counts-with-deseq2" class="nav-link" data-scroll-target="#normalize-counts-with-deseq2">2.1 Normalize counts with DESeq2</a>
+  <ul class="collapse">
+  <li><a href="#plot-unnormalized-data" id="toc-plot-unnormalized-data" class="nav-link" data-scroll-target="#plot-unnormalized-data">2.1.1 Plot unnormalized data</a></li>
+  <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">2.1.2 Metadata</a></li>
+  <li><a href="#deseq-object" id="toc-deseq-object" class="nav-link" data-scroll-target="#deseq-object">2.1.3 DESeq object</a></li>
+  </ul></li>
+  <li><a href="#plot-normalized-data" id="toc-plot-normalized-data" class="nav-link" data-scroll-target="#plot-normalized-data">2.2 Plot normalized data</a></li>
+  <li><a href="#plot-variance-stabilized-data" id="toc-plot-variance-stabilized-data" class="nav-link" data-scroll-target="#plot-variance-stabilized-data">2.3 Plot variance stabilized data</a></li>
+  <li><a href="#normalized-expression-levels" id="toc-normalized-expression-levels" class="nav-link" data-scroll-target="#normalized-expression-levels">2.4 Normalized expression levels</a></li>
+  <li><a href="#normalized-transcript-counts" id="toc-normalized-transcript-counts" class="nav-link" data-scroll-target="#normalized-transcript-counts">2.5 Normalized transcript counts</a></li>
+  <li><a href="#pca-of-variance-stabilized-data" id="toc-pca-of-variance-stabilized-data" class="nav-link" data-scroll-target="#pca-of-variance-stabilized-data">2.6 PCA of variance stabilized data</a></li>
+  <li><a href="#sample-clustering" id="toc-sample-clustering" class="nav-link" data-scroll-target="#sample-clustering">2.7 Sample clustering</a></li>
+  <li><a href="#heatmaps" id="toc-heatmaps" class="nav-link" data-scroll-target="#heatmaps">2.8 Heatmaps</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+<p>Generating update summary of Apul gene expression using counts generated through Hisat with the <em>A.pulchra</em> genome. (Existing summary used counts summarized using kallisto and the <em>A.millipora</em> transcriptome)</p>
+<p>Code recorded below in case github links change.</p>
+<p><strong>Total gene counts (normalized):</strong></p>
+<p><img src="https://github.com/urol-e5/deep-dive-expression/raw/main/D-Apul/code/03.01-Apul-RNA-summary-Hisat_files/figure-gfm/norm-transcript-counts-plot-1.png" class="img-fluid"></p>
+<p><img src="https://github.com/urol-e5/deep-dive-expression/raw/main/D-Apul/code/03.01-Apul-RNA-summary-Hisat_files/figure-gfm/norm-expression-level-histograms-1.png" class="img-fluid"></p>
+<p><img src="https://github.com/urol-e5/deep-dive-expression/raw/main/D-Apul/code/03.01-Apul-RNA-summary-Hisat_files/figure-gfm/PCA-1.png" class="img-fluid"></p>
+<p><img src="https://github.com/urol-e5/deep-dive-expression/raw/main/D-Apul/code/03.01-Apul-RNA-summary-Hisat_files/figure-gfm/sample-clustering-1.png" class="img-fluid"></p>
+<section id="apul-rna-summary-hisat" class="level1">
+<h1><a href="https://github.com/urol-e5/deep-dive-expression/blob/main/D-Apul/code/03.01-Apul-RNA-summary-Hisat.md#15-most-common-biological-processes">03.01-Apul-RNA-summary-Hisat</a></h1>
+<p>Gene expression summary for <em>Acropora pulchra</em> RNA-seq data.</p>
+<ul>
+<li><p>trimmed reads generated in <code>deep-dive</code> project, trimming and QC details in <code>01-Apul-RNA-trimming-FastQC</code></p></li>
+<li><p>Reads aligned to <em>Acropora pulchra</em> genome (unpub)</p></li>
+<li><p>Count matrix generated in <code>07-Apul-Hisat</code></p></li>
+</ul>
+<section id="install-and-load-packages" class="level3">
+<h3 class="anchored" data-anchor-id="install-and-load-packages">0.0.1 Install and load packages</h3>
+<pre><code>library(tidyverse) library(ggplot2) library(reshape2) library(magrittr) library(DESeq2) library(RColorBrewer) library(pheatmap)</code></pre>
+</section>
+</section>
+<section id="unnormalized-data" class="level1">
+<h1>1 Unnormalized data</h1>
+<section id="load-count-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-count-data">1.1 Load count data</h2>
+<p>Load in and format the count matrix.</p>
+<pre><code># Read in counts data. This is a gene-level counts matrix generated from kallisto transcript abundances using Trinity Apul_counts_RNA_OG &lt;- read_delim("../output/07-Apul-Hisat/Apul-gene_count_matrix.csv")  head(Apul_counts_RNA_OG)</code></pre>
+<pre><code># A tibble: 6 × 6   gene_id  `RNA-ACR-140` `RNA-ACR-145` `RNA-ACR-150` `RNA-ACR-173` `RNA-ACR-178`   &lt;chr&gt;            &lt;dbl&gt;         &lt;dbl&gt;         &lt;dbl&gt;         &lt;dbl&gt;         &lt;dbl&gt; 1 FUN_035…           553           340           256           485           510 2 FUN_035…          2486           775           743          1250          1092 3 FUN_035…            46             6            25            41            29 4 FUN_035…           183           252            48            78            73 5 FUN_035…          1519           311           555           990           370 6 FUN_035…          1764          1297          1035          1763          1360 </code></pre>
+<pre><code># Read in ID mapping of A.pulchra mRNA and associated functional annotations Apul_IDmapping &lt;- read_delim("../output/02-Apul-reference-annotation/Apulcra-genome-mRNA-IDmapping-2024_12_12.tab") %&gt;%   select(-...1) head(Apul_IDmapping)</code></pre>
+<pre><code># A tibble: 6 × 7   V1                V3         V13 Protein.names Organism Gene.Ontology..biolo…¹   &lt;chr&gt;             &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt;                  1 ntLink_4:1155-15… P350… 4.96e-86 Histone H2A   Acropor… &lt;NA&gt;                   2 ntLink_4:2660-34… P842… 5.03e-93 Histone H3    Urechis… &lt;NA&gt;                   3 ntLink_4:4515-68… P350… 6.65e-78 Histone H2A   Acropor… &lt;NA&gt;                   4 ntLink_4:7096-78… P842… 4.03e-93 Histone H3    Urechis… &lt;NA&gt;                   5 ntLink_4:8474-96… P350… 7.49e-82 Histone H2A   Acropor… &lt;NA&gt;                   6 ntLink_4:11162-1… P842… 4.03e-93 Histone H3    Urechis… &lt;NA&gt;                   # ℹ abbreviated name: ¹​Gene.Ontology..biological.process. # ℹ 1 more variable: Gene.Ontology.IDs &lt;chr&gt; </code></pre>
+<pre><code># Read in table that associates each mRNA genomic location with it's gene ID Apul_geneIDs &lt;- read_delim("../output/15-Apul-annotate-UTRs/Apul-mRNA-FUNids.txt", col_names = FALSE) %&gt;%   select(X1,X4) Apul_geneIDs$X4 &lt;- gsub("Parent=","",Apul_geneIDs$X4) head(Apul_geneIDs)</code></pre>
+<pre><code># A tibble: 6 × 2   X1                   X4           &lt;chr&gt;                &lt;chr&gt;      1 ntLink_0:1104-7056   FUN_000001 2 ntLink_0:10214-15286 FUN_000002 3 ntLink_0:32056-33275 FUN_000003 4 ntLink_0:34823-42794 FUN_000004 5 ntLink_0:45952-51024 FUN_000005 6 ntLink_0:61628-78213 FUN_000006 </code></pre>
+</section>
+<section id="count-data-munging" class="level2">
+<h2 class="anchored" data-anchor-id="count-data-munging">1.2 Count data munging</h2>
+<pre><code># We need to modify this data frame so that the row names are actually row names, instead of comprising the first column Apul_counts_RNA &lt;- Apul_counts_RNA_OG %&gt;%   column_to_rownames(var = "gene_id")  # Additional formatting # Round all estimated counts to integers Apul_counts_RNA &lt;- round(Apul_counts_RNA, digits = 0)  # Remove all transcripts with 5 or fewer counts in all samples Apul_counts_RNA &lt;- Apul_counts_RNA[!apply(Apul_counts_RNA, 1, function(row) all(row &lt; 6)), ]  # Remove the "RNA-" portion of the column names, to leave just the sample names colnames(Apul_counts_RNA) &lt;- sub("RNA-", "", colnames(Apul_counts_RNA))  # Reorder the columns into alphabetical order (to make it easier to create an associated metadata spreadsheet) Apul_counts_RNA &lt;- Apul_counts_RNA[, order(colnames(Apul_counts_RNA))]  write.table(Apul_counts_RNA, file = "../output/03.01-Apul-RNA-summary-Hisat/Apul_RNA_Hisat_counts_formatted.txt", row.names = TRUE, col.names = TRUE)  Apul_sample_names &lt;- names(Apul_counts_RNA)  head(Apul_counts_RNA)</code></pre>
+<pre><code>           ACR-140 ACR-145 ACR-150 ACR-173 ACR-178 FUN_035039     553     340     256     485     510 FUN_035038    2486     775     743    1250    1092 FUN_035031      46       6      25      41      29 FUN_035030     183     252      48      78      73 FUN_035033    1519     311     555     990     370 FUN_035032    1764    1297    1035    1763    1360 </code></pre>
+<pre><code>Apul_sample_names</code></pre>
+<pre><code>[1] "ACR-140" "ACR-145" "ACR-150" "ACR-173" "ACR-178" </code></pre>
+<pre><code># Add gene IDs to the IDmapping Apul_IDmapping &lt;- left_join(Apul_IDmapping, Apul_geneIDs, by = c("V1" = "X1"))  Apul_counts_GO &lt;- Apul_counts_RNA %&gt;%   rownames_to_column(var = "geneID") %&gt;%   left_join(Apul_IDmapping, by = c("geneID" = "X4"))  write.table(Apul_counts_GO, "../output/03.01-Apul-RNA-summary-Hisat/Apul_RNA_Hisat_counts_formatted.txt", sep = '\t', row.names = TRUE, col.names = TRUE, quote = FALSE)  head(Apul_counts_GO)</code></pre>
+<pre><code>      geneID ACR-140 ACR-145 ACR-150 ACR-173 ACR-178                         V1 1 FUN_035039     553     340     256     485     510                       &lt;NA&gt; 2 FUN_035038    2486     775     743    1250    1092                       &lt;NA&gt; 3 FUN_035031      46       6      25      41      29                       &lt;NA&gt; 4 FUN_035030     183     252      48      78      73 ptg000025l:3084856-3086902 5 FUN_035033    1519     311     555     990     370                       &lt;NA&gt; 6 FUN_035032    1764    1297    1035    1763    1360                       &lt;NA&gt;           V3      V13 Protein.names Organism Gene.Ontology..biological.process. 1       &lt;NA&gt;       NA          &lt;NA&gt;     &lt;NA&gt;                               &lt;NA&gt; 2       &lt;NA&gt;       NA          &lt;NA&gt;     &lt;NA&gt;                               &lt;NA&gt; 3       &lt;NA&gt;       NA          &lt;NA&gt;     &lt;NA&gt;                               &lt;NA&gt; 4 A0A2B4RNI3 2.04e-25          &lt;NA&gt;     &lt;NA&gt;                               &lt;NA&gt; 5       &lt;NA&gt;       NA          &lt;NA&gt;     &lt;NA&gt;                               &lt;NA&gt; 6       &lt;NA&gt;       NA          &lt;NA&gt;     &lt;NA&gt;                               &lt;NA&gt;   Gene.Ontology.IDs 1              &lt;NA&gt; 2              &lt;NA&gt; 3              &lt;NA&gt; 4              &lt;NA&gt; 5              &lt;NA&gt; 6              &lt;NA&gt; </code></pre>
+</section>
+<section id="expression-levels" class="level2">
+<h2 class="anchored" data-anchor-id="expression-levels">1.3 Expression levels</h2>
+<p>Plot histograms of the expression levels in each sample</p>
+<pre><code># Melt the count matrix into long format Apul_counts_melted &lt;- melt(Apul_counts_RNA, variable.name = "sample", value.name = "counts")  # Plot the expression level histograms for each sample ggplot(Apul_counts_melted, aes(x = counts)) +   geom_histogram(binwidth = 1, fill = "#408EC6", color = "black") +   scale_x_log10() +  # Optional: Log-transform the x-axis for better visualization   facet_wrap(~sample, scales = "free_y") +   labs(title = "Gene Expression Level Histogram for Each Sample",        x = "Expression Level (Counts)",        y = "Frequency") +   theme_minimal()</code></pre>
+</section>
+<section id="transcript-counts" class="level2">
+<h2 class="anchored" data-anchor-id="transcript-counts">1.4 Transcript counts</h2>
+<p>First let's check the total number of transcripts in each sample – keep in mind this expression data has <em>not</em> been normalized yet, so there may be different totals for each sample</p>
+<pre><code># Calculate the total number of transcripts for each sample total_transcripts &lt;- colSums(Apul_counts_RNA)  # Create a data frame for plotting total_transcripts_df &lt;- data.frame(sample = names(total_transcripts),                                    totals = total_transcripts)  # Plot the total number of transcripts for each sample ggplot(total_transcripts_df, aes(x = sample, y = totals)) +   geom_bar(stat = "identity", fill = "#408EC6", color = "black") +   labs(title = "Total Number of Transcripts per Sample",        x = "Sample",        y = "Total Transcripts") +   theme_minimal() +   theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate x-axis labels for readability</code></pre>
+<p>Now let's check the number of unique transcripts in each sample – that is, how many genes are expressed in each sample? This should be pretty much the same across samples, even without normalization.</p>
+<pre><code># Calculate the number of unique transcripts (non-zero counts) for each sample unique_transcripts &lt;- colSums(Apul_counts_RNA &gt; 0)  # Create a data frame for plotting unique_transcripts_df &lt;- data.frame(sample = names(unique_transcripts),                                     uniques = unique_transcripts)  # Plot the total number of unique transcripts for each sample ggplot(unique_transcripts_df, aes(x = sample, y = uniques)) +   geom_bar(stat = "identity", fill = "#408EC6", color = "black") +   labs(title = "Total Number of Unique Expressed Transcripts per Sample",        x = "Sample",        y = "Unique Transcripts") +   theme_minimal() +   theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate x-axis labels for readability</code></pre>
+</section>
+<section id="most-common-biological-processes" class="level2">
+<h2 class="anchored" data-anchor-id="most-common-biological-processes">1.5 Most common biological processes</h2>
+<p>Similar to the plot generated in <code>02-Apul-reference-annotation</code>, let's plot the biological processes most represented in these samples' expression</p>
+<pre><code># Rename the `Gene.Ontology..biological.process.` column to `Biological_Process` colnames(Apul_counts_GO)[colnames(Apul_counts_GO) == "Gene.Ontology..biological.process."] &lt;- "Biological_Process"  # Separate the `Biological_Process` column into individual biological processes data_separated &lt;- unlist(strsplit(Apul_counts_GO$Biological_Process, split = ";"))  # Trim whitespace from the biological processes data_separated &lt;- gsub("^\\s+|\\s+$", "", data_separated)  # Count the occurrences of each biological process process_counts &lt;- table(data_separated) process_counts &lt;- data.frame(Biological_Process = names(process_counts), Count = as.integer(process_counts)) process_counts &lt;- process_counts[order(-process_counts$Count), ]  # Select the 20 most predominant biological processes top_20_processes &lt;- process_counts[1:20, ]  # Create a color palette for the bars bar_colors &lt;- rainbow(nrow(top_20_processes))  # Create a staggered vertical bar plot with different colors for each bar barplot(top_20_processes$Count, names.arg = rep("", nrow(top_20_processes)), col = bar_colors,         ylim = c(0, max(top_20_processes$Count) * 1.25),         main = "Occurrences of the 20 Most Predominant Biological Processes", xlab = "Biological Process", ylab = "Count")</code></pre>
+<pre><code># Create a separate plot for the legend png("../output/03.01-Apul-RNA-summary-Hisat/GOlegend.png", width = 800, height = 600) par(mar = c(0, 0, 0, 0)) plot.new() legend("center", legend = top_20_processes$Biological_Process, fill = bar_colors, cex = 1, title = "Biological Processes") dev.off()</code></pre>
+<pre><code>png    2  </code></pre>
+<pre><code>knitr::include_graphics("../output/03.01-Apul-RNA-summary-Hisat/GOlegend.png")</code></pre>
+<pre><code>rm ../output/03.01-Apul-RNA-summary-Hisat/GOlegend.png</code></pre>
+</section>
+</section>
+<section id="normalized-counts" class="level1">
+<h1>2 Normalized counts</h1>
+<section id="normalize-counts-with-deseq2" class="level2">
+<h2 class="anchored" data-anchor-id="normalize-counts-with-deseq2">2.1 Normalize counts with DESeq2</h2>
+<section id="plot-unnormalized-data" class="level3">
+<h3 class="anchored" data-anchor-id="plot-unnormalized-data">2.1.1 Plot unnormalized data</h3>
+<pre><code>Apul_counts_RNA %&gt;%   pivot_longer( cols = everything(), names_to = "sample", values_to = "count") %&gt;%   ggplot(., aes(x = sample, y = count)) +   geom_violin() +    geom_point(alpha = 0.2) +   theme_minimal() +   labs(title = "Unnormalized transcript counts",        x = "Sample",        y = "count")</code></pre>
+<p>We definitely need to normalize this data!</p>
+</section>
+<section id="metadata" class="level3">
+<h3 class="anchored" data-anchor-id="metadata">2.1.2 Metadata</h3>
+<p>DESeq2 requires a metadata data frame as input. I don't have sample metadata though so, since we're just doing DESeq2 for normalization purposes (not analysis purposes), I'm just going to create a dummy sheet</p>
+<pre><code>Apul_sample_names &lt;- colnames(Apul_counts_RNA)  Apul_metadata_RNA &lt;- data.frame(Sample = Apul_sample_names,                             Species = rep("A.pulchra", 5)) rownames(Apul_metadata_RNA) &lt;- Apul_sample_names  head(Apul_metadata_RNA)</code></pre>
+<pre><code>         Sample   Species ACR-140 ACR-140 A.pulchra ACR-145 ACR-145 A.pulchra ACR-150 ACR-150 A.pulchra ACR-173 ACR-173 A.pulchra ACR-178 ACR-178 A.pulchra </code></pre>
+</section>
+<section id="deseq-object" class="level3">
+<h3 class="anchored" data-anchor-id="deseq-object">2.1.3 DESeq object</h3>
+<pre><code># Calculate DESeq object dds_Apul_RNA &lt;- DESeqDataSetFromMatrix(countData = Apul_counts_RNA,                               colData = Apul_metadata_RNA,                               design = ~ 1)   # Run differential expression analysis  # (Note that this DESeq() function runs all necessary steps, including data normalization,  # estimating size factors, estimating dispersions, gene-wise dispersion estimates, mean-dispersion  # relationship, final dispersion estimates, fitting model, and testing) # Using design = ~1 because we don't have treatment groups  dds_Apul_RNA &lt;- DESeq(dds_Apul_RNA)</code></pre>
+<p>It's worth noting here that I'm actually going to be doing two different types of transformation on the counts data, which serve different purposes.</p>
+<ul>
+<li><p>First is <strong>normalizing</strong> the transcript counts, which adjusts for differences in library size or sequencing depth, but retains count-like properties. Normalized counts are most useful for things like visualizing expression levels and differential expression analysis.</p></li>
+<li><p>Second is <strong>variance stabilizing</strong> the counts data, which aims to make the variance of the transformed data approximately independent of the mean, reducing heteroscedasticity (the relationship between variance and mean) and "smoothing" out the variance at low counts. Notably, the transformed data is <em>no longer on the original count scale</em>. The transformation makes the variance roughly constant across the range of counts, which makes it easier to interpret patterns in the data visually. Variance stabilized data is most useful for exploratory data analysis, like PCA, clustering, and heatmaps, and is also the transformation we'll want to use before WGCNA.</p></li>
+</ul>
+<pre><code># extract normalized counts # (normalization is automatically performed by deseq2) Apul_counts_RNA_norm &lt;- counts(dds_Apul_RNA, normalized=TRUE) %&gt;% data.frame()  write.table(Apul_counts_RNA_norm, file = "../output/03.01-Apul-RNA-summary-Hisat/Apul_counts_RNA_normalized.txt", sep = "\t", row.names = TRUE, col.names = TRUE, quote = FALSE)   # variance stabilized data vsd_Apul_RNA &lt;- varianceStabilizingTransformation(dds_Apul_RNA, blind=TRUE) wpn_vsd_Apul_RNA &lt;- getVarianceStabilizedData(dds_Apul_RNA) rv_wpn_Apul_RNA &lt;- rowVars(wpn_vsd_Apul_RNA, useNames=TRUE)  Apul_counts_RNA_vsd &lt;- data.frame(wpn_vsd_Apul_RNA) write.table(Apul_counts_RNA_vsd, file = "../output/03.01-Apul-RNA-summary-Hisat/Apul_counts_RNA_variancestabilized.txt", sep = "\t", row.names = TRUE, col.names = TRUE,quote = FALSE)  q75_wpn_Apul_RNA &lt;- quantile(rowVars(wpn_vsd_Apul_RNA, useNames=TRUE), .75)  # 75th quantile variability Apul_counts_RNA_vsd_q75 &lt;- wpn_vsd_Apul_RNA[ rv_wpn_Apul_RNA &gt; q75_wpn_Apul_RNA, ] %&gt;% data.frame # filter to retain only the most variable genes write.table(Apul_counts_RNA_vsd_q75, file = "../output/03.01-Apul-RNA-summary-Hisat/Apul_counts_RNA_variancestabilized_q75.txt", sep = "\t", row.names = TRUE, col.names = TRUE,quote = FALSE)  q95_wpn_Apul_RNA &lt;- quantile(rowVars(wpn_vsd_Apul_RNA, useNames=TRUE), .95)  # 95th quantile variability Apul_counts_RNA_vsd_q95 &lt;- wpn_vsd_Apul_RNA[ rv_wpn_Apul_RNA &gt; q95_wpn_Apul_RNA, ] %&gt;% data.frame # filter to retain only the most variable genes write.table(Apul_counts_RNA_vsd_q95, file = "../output/03.01-Apul-RNA-summary-Hisat/Apul_counts_RNA_variancestabilized_q95.txt", sep = "\t", row.names = TRUE, col.names = TRUE,quote = FALSE)</code></pre>
+</section>
+</section>
+<section id="plot-normalized-data" class="level2">
+<h2 class="anchored" data-anchor-id="plot-normalized-data">2.2 Plot normalized data</h2>
+<pre><code>Apul_counts_RNA_norm_long &lt;- Apul_counts_RNA_norm %&gt;%   mutate(     Gene_id = row.names(Apul_counts_RNA_norm)   ) %&gt;%   pivot_longer(-Gene_id)  Apul_counts_RNA_norm_long %&gt;%   ggplot(., aes(x = name, y = value)) +   geom_violin() +   geom_point() +   theme_bw() +   theme(     axis.text.x = element_text( angle = 90)   ) +   ylim(0, NA) +   labs(     title = "Normalized Expression",     x = "Sample",     y = "Normalized counts"   )</code></pre>
+</section>
+<section id="plot-variance-stabilized-data" class="level2">
+<h2 class="anchored" data-anchor-id="plot-variance-stabilized-data">2.3 Plot variance stabilized data</h2>
+<pre><code>Apul_counts_RNA_vsd_long &lt;- Apul_counts_RNA_vsd %&gt;%   mutate(     Gene_id = row.names(Apul_counts_RNA_vsd)   ) %&gt;%   pivot_longer(-Gene_id)  Apul_counts_RNA_vsd_long %&gt;%   ggplot(., aes(x = name, y = value)) +   geom_violin() +   geom_point() +   theme_bw() +   theme(     axis.text.x = element_text( angle = 90)   ) +   ylim(0, NA) +   labs(     title = "Variance Stabilized Expression",     x = "Sample",     y = "Variance stabilized data"   )</code></pre>
+</section>
+<section id="normalized-expression-levels" class="level2">
+<h2 class="anchored" data-anchor-id="normalized-expression-levels">2.4 Normalized expression levels</h2>
+<p>Plot histograms of the normalized expression levels in each sample</p>
+<pre><code># Melt the count matrix into long format Apul_counts_norm_melted &lt;- melt(Apul_counts_RNA_norm, variable.name = "sample", value.name = "counts")  # Plot the expression level histograms for each sample ggplot(Apul_counts_norm_melted, aes(x = counts)) +   geom_histogram(binwidth = 1, fill = "#408EC6", color = "black") +   scale_x_log10() +  # Optional: Log-transform the x-axis for better visualization   facet_wrap(~sample, scales = "free_y") +   labs(title = "Gene Expression Level Histogram for Each Sample",        x = "Expression Level (Counts)",        y = "Frequency") +   theme_minimal()</code></pre>
+</section>
+<section id="normalized-transcript-counts" class="level2">
+<h2 class="anchored" data-anchor-id="normalized-transcript-counts">2.5 Normalized transcript counts</h2>
+<p>Check the total number of transcripts in each sample – now that we've normalized the data these totals should be similar</p>
+<pre><code># Calculate the total number of transcripts for each sample total_transcripts_norm &lt;- colSums(Apul_counts_RNA_norm)  # Create a data frame for plotting total_transcripts_norm_df &lt;- data.frame(sample = names(total_transcripts_norm),                                    totals = total_transcripts_norm)  # Plot the total number of transcripts for each sample ggplot(total_transcripts_norm_df, aes(x = sample, y = totals)) +   geom_bar(stat = "identity", fill = "#408EC6", color = "black") +   labs(title = "Total Number of Transcripts per Sample",        x = "Sample",        y = "Total Transcripts") +   theme_minimal() +   theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate x-axis labels for readability</code></pre>
+</section>
+<section id="pca-of-variance-stabilized-data" class="level2">
+<h2 class="anchored" data-anchor-id="pca-of-variance-stabilized-data">2.6 PCA of variance stabilized data</h2>
+<pre><code>plotPCA(vsd_Apul_RNA, intgroup="Sample")</code></pre>
+</section>
+<section id="sample-clustering" class="level2">
+<h2 class="anchored" data-anchor-id="sample-clustering">2.7 Sample clustering</h2>
+<pre><code>sample_dists &lt;- dist(t(assay(vsd_Apul_RNA))) pheatmap(as.matrix(sample_dists), clustering_distance_rows = "euclidean",           clustering_distance_cols = "euclidean", main="Sample Clustering")</code></pre>
+</section>
+<section id="heatmaps" class="level2">
+<h2 class="anchored" data-anchor-id="heatmaps">2.8 Heatmaps</h2>
+<p>Of most variable variance stabilized genes</p>
+<pre><code># 75th quantile heat_colors &lt;- rev(brewer.pal(12, "RdYlBu")) pheatmap(Apul_counts_RNA_vsd_q75,           cluster_rows = TRUE,          cluster_cols = TRUE,          show_rownames = TRUE,          show_colnames = TRUE,          color = heat_colors,          scale="row")</code></pre>
+<pre><code># 95th quantile pheatmap(Apul_counts_RNA_vsd_q95,           cluster_rows = TRUE,          cluster_cols = TRUE,          show_rownames = TRUE,          show_colnames = TRUE,          color = heat_colors,          scale="row")</code></pre>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">This notebook is built using <a href="https://quarto.org/">Quarto</a></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
