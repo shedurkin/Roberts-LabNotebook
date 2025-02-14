@@ -51,21 +51,75 @@ format:
 
 #### Friday
 
+-   1.5 hr -- E5 work, adding coexpression consideration to comparison of target prediction parameters
+
+-   1.5 hr -- E5 meeting -- meeting notes here
+
+-   1.5 hr -- SWED102 class
+
+-   2 hr -- QSCI381 weekly office hours
+
+-   
+
 ## 13 February 2025
 
 #### Thursday
+
+-   1 hr -- ran [comparison of miRanda target prediction](../../projects/E5_coral/2025_02_13_deepdive_miRanda_comparisons.qmd) using different inputs and filtering
+
+-   1.5 hr -- SWED102 class
+
+-   1 hr -- FSH513 data consolidation and digitization
+
+-   0.5 hr -- QSCI381 weekly meeting
+
+-   1.5 hr -- Lab picture and Lab meeting
+
+-   2 hr -- FSH513 class
+
+-   2.5 hr -- QSCI381 Misc. Inbox exchange w student about Quiz regrading, Ed discussion exchange w Tsering, creating updated docs for Assignment/Lab 7 and 8 and updating all of the Assignment and Lab Canvas pages. Looked through Assignment 9 stuff and messaged Steven about discrepancies. Added gradescope assignments
+
+Daily total: **10 hrs**
 
 ## 12 February 2025
 
 #### Wednesday
 
+Gave myself ✨food poisoning✨, so just focused on trying to finish grading today. Moved normal office hours to Friday.
+
+-   1 hr -- SWED102 class
+
+-   4 hr -- QSCI381 grading
+
 ## 11 February 2025
 
 #### Tuesday
 
+-   1 hr -- SWED102 class
+
+-   2 hr -- E5 work, doing some reading on expected miRNA behavior (binding and location of targets) in cnidarians
+
+-   2.5 hr -- QSCI381 Lab
+
+-   0.5 hr -- weekly meeting w/ Steven
+
+-   2 hr -- QSCI381 grading
+
 ## 10 February 2025
 
 #### Monday
+
+-   **0.5 hr** -- QSCI381 catch up on Ed discussion and Canvas Inbox stuff from the weekend
+
+-   **1 hr** - SWED102 class
+
+-   **3 hr** -- QSCI381 fix this week's assignment and lab pages (need to ask Tsering if she is still able to help w this), skim this week's course content, skim this week's Assignment 5 and Lab 5 and work through any problems I'm not sure about, additional misc prep for Lab
+
+-   **2.5 hr** -- QSCI381 Lab
+
+-   **2 hr** -- QSCI381 grading
+
+daily total: **9 hr**
 
 ## 07 February 2025
 
@@ -86,6 +140,18 @@ format:
 **3 hr** -- E5 work. Updated gene expression summaries, lncRNA-miRNA binding (miRanda still running), plus lit review into cnidarian/plant miRNA binding and into siRNA binding (in prep for running siRNA target prediction)
 
 Daily total: **9.5 hr**
+
+Weekly overview:
+
+|                 | Monday | Tuesday  | Wednesday | Thursday | Friday  | TOTALS               |
+|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| **Classes**     | 2.5    | 1        | 3         | 4        | 3       | **13.5**             |
+| **TAing**       | 5.5    | 9.5      | 2         | 1        | 0.5     | **18.5**             |
+| **Thesis work** | 0      | 1        | 2         | 0        | 6       | **9**                |
+| **Misc.**       | 0      | 1        | 0         | 3        | 0       | **4**                |
+| **TOTALS**      | **8**  | **12.5** | **7**     | **8**    | **9.5** | [**45**]{.underline} |
+
+This week I hit the hours/week goal nicely, but my allocation is a bit skewed. I'm spending more time on TAing and less time on thesis work than I'd like. While I'm still within the 20hr/wk slot allowable for my TA position, I'd like to bring the hours down to 15hr/wk to allow more time for my own research.
 
 ## 06 February 2025
 
@@ -111,17 +177,17 @@ Daily total: **8 hr**
 
 #### Wednesday
 
--   1 hr -- SWED 102
+-   **1 hr** -- SWED 102
 
--   2 hr -- QSCI381 office hours
+-   **2 hr** -- QSCI381 office hours
 
--   2 hr -- FSH513 summarizing CRGMN 2020 primary findings & adding to slides, looking inot data/methods of HeatCRD data
+-   **2 hr** -- FSH513 summarizing CRGMN 2020 primary findings & adding to slides, looking inot data/methods of HeatCRD data
 
--   1 hr -- misc. catch up on emails, lab/E5 github issues, lab/E5 slack messages
+-   **1 hr** -- misc. catch up on emails, lab/E5 github issues, lab/E5 slack messages
 
--   0.5 hr -- heard from Andrea that I'm likely to receive SIFP (though not yet official)! Read through all of my submitted application materials to refamiliarze myself with the work I proposed.
+-   **0.5 hr** -- heard from Andrea that I'm likely to receive SIFP (though not yet official)! Read through all of my submitted application materials to re-familiarze myself with the work I proposed.
 
--   0.5 hr -- new goals for February
+-   **0.5 hr** -- new goals for February
 
 Daily total: **7 hrs**
 
