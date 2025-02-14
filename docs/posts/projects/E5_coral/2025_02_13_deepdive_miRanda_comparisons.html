@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Kathleen Durkin">
+<meta name="dcterms.date" content="2025-02-13">
+
+<title>Kathleen’s Lab Notebook - Deep-dive expression: A.pul miRanda comparisons</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Kathleen’s Lab Notebook</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../daily_log.html" rel="" target="">
+ <span class="menu-text">Daily Notebook Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../projects.html" rel="" target="">
+ <span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/shedurkin" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:kdurkin1@uw.edu" rel="" target=""><i class="bi bi-envelope" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Deep-dive expression: A.pul miRanda comparisons</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">E5-coral</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Kathleen Durkin </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 13, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#apul-miranda-input-comparisons" id="toc-apul-miranda-input-comparisons" class="nav-link" data-scroll-target="#apul-miranda-input-comparisons">24-Apul-miRanda-input-comparisons</a></li>
+  <li><a href="#mirna-and-full-mrna-coding-sequences" id="toc-mirna-and-full-mrna-coding-sequences" class="nav-link" data-scroll-target="#mirna-and-full-mrna-coding-sequences">1 miRNA and full mRNA coding sequences</a>
+  <ul class="collapse">
+  <li><a href="#get-mrna-fasta" id="toc-get-mrna-fasta" class="nav-link" data-scroll-target="#get-mrna-fasta">1.1 Get mRNA fasta</a></li>
+  <li><a href="#run-miranda" id="toc-run-miranda" class="nav-link" data-scroll-target="#run-miranda">1.2 Run miRanda</a></li>
+  <li><a href="#summarize-results" id="toc-summarize-results" class="nav-link" data-scroll-target="#summarize-results">1.3 Summarize results</a></li>
+  </ul></li>
+  <li><a href="#mirna-and-mrna-3utrs" id="toc-mirna-and-mrna-3utrs" class="nav-link" data-scroll-target="#mirna-and-mrna-3utrs">2 miRNA and mRNA 3'UTRs</a></li>
+  <li><a href="#examine-coexpression" id="toc-examine-coexpression" class="nav-link" data-scroll-target="#examine-coexpression">3 Examine coexpression</a>
+  <ul class="collapse">
+  <li><a href="#full-mrna" id="toc-full-mrna" class="nav-link" data-scroll-target="#full-mrna">3.1 full mRNA</a></li>
+  <li><a href="#utr" id="toc-utr" class="nav-link" data-scroll-target="#utr">3.2 3'UTR</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+<p>Up to this point, our miRNA target prediction has been primarily performed using the tool miRanda, which requires only seed binding, with 3’UTR regions as input. However, there is growing evidence that cnidarian miRNA binding functions similarly to plants, requiring near-full complementarity and to act primarily through target cleavage, which can occur at any location in the mRNA sequence (not just the 3’UTR). This would mean our current miRanda target predictions are both a) not sufficiently restricted to fll complementarity, and b) incorrectly limited to the 3’UTR.</p>
+<p>I check what happens when we adjust those parameters</p>
+<section id="summary" class="level1">
+<h1>Summary</h1>
+<p>How does different input and/or complementarity filtering affect # putative interactions:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Input</th>
+<th>unfiltered</th>
+<th>filtered for complementarity</th>
+<th>% retained</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>3'UTR</td>
+<td>6109</td>
+<td>13</td>
+<td>0.213 %</td>
+</tr>
+<tr class="even">
+<td>full mRNA</td>
+<td>19133057</td>
+<td>143</td>
+<td>0.000747 %</td>
+</tr>
+</tbody>
+</table>
+<p>For different filters, how many putative interactions <em>also show significant coexpression</em>?</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Input</th>
+<th>21bp</th>
+<th>21bp, &gt;=3 mismatch</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>3'UTR</td>
+<td>58 (3.4% of all 21bp)</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>full mRNA</td>
+<td>3767 (3.7% of all 21bp)</td>
+<td>6 (4.2% of all 21bp,&gt;=3mis)</td>
+</tr>
+</tbody>
+</table>
+<p>Note that, in general, only ~1/3 of significant coexpressions have a <em>negative</em> relationship (which would support functional target cleavage)</p>
+<p>Note also that some putative interactions examined above weren't included in the PCC table</p>
+<p>Next steps:</p>
+<ul>
+<li><p>discuss w team – should we look for both miRNAs that function through target cleavage (full complementary, full coding sequence) <em>and</em> miRNAs that function through "canonical" translational silencing (seed complementarity, 3'UTR)?</p></li>
+<li><p>Run same comparison using BLAST and/or RNAhybrid as the tool. I'm still not 100% clear on what sequence features miRanda takes into consideration, and any that <em>are</em> included will have been based on mammalian miRNAs. It may be more appropriate to use a different tool</p></li>
+<li><p>if we decide to shift target prediction requirements, need to rerun all target prediction done thus far :(</p></li>
+</ul>
+<p>Code included below</p>
+</section>
+<section id="apul-miranda-input-comparisons" class="level1">
+<h1><a href="https://github.com/urol-e5/deep-dive-expression/blob/main/D-Apul/code/24-Apul-miRanda-input-comparisons.md">24-Apul-miRanda-input-comparisons</a></h1>
+</section>
+<section id="mirna-and-full-mrna-coding-sequences" class="level1">
+<h1>1 miRNA and full mRNA coding sequences</h1>
+<p>Inputs:</p>
+<ul>
+<li><p>FASTA of A.pulchra mRNA coding sequences</p></li>
+<li><p>FASTA of A.pulchra mature miRNAs</p></li>
+</ul>
+<section id="get-mrna-fasta" class="level2">
+<h2 class="anchored" data-anchor-id="get-mrna-fasta">1.1 Get mRNA fasta</h2>
+<pre><code>/home/shared/bedtools2/bin/bedtools getfasta \ -fi "../data/Apulchra-genome.fa" \ -bed "../data/Apulcra-genome-mRNA_only.gff" \ -fo "../data/24-Apul-miRanda-input-comparisons/Apul_mRNA_full.fa"</code></pre>
+</section>
+<section id="run-miranda" class="level2">
+<h2 class="anchored" data-anchor-id="run-miranda">1.2 Run miRanda</h2>
+<pre><code># Same settings we've been using:  # score cutoff &gt;100 # energy cutoff &lt;-10 # strict binding  /home/shared/miRanda-3.3a/src/miranda \ ../output/17-Apul-miRNA-lncRNA-BLASTs-RNAhybrid/Apul_ShortStack_4.1.0_mature.fasta \ ../data/24-Apul-miRanda-input-comparisons/Apul_mRNA_full.fa \ -sc 100 \ -en -10 \ -strict \ -out ../output/24-Apul-miRanda-input-comparisons/Apul-miRanda-mRNA_full-strict_all.tab</code></pre>
+</section>
+<section id="summarize-results" class="level2">
+<h2 class="anchored" data-anchor-id="summarize-results">1.3 Summarize results</h2>
+<p>Let's look at the output</p>
+<pre><code>echo "miranda run finished!" echo "Counting number of interacting miRNA-lncRNA pairs"  zgrep -c "Performing Scan" ../output/24-Apul-miRanda-input-comparisons/Apul-miRanda-mRNA_full-strict_all.tab  echo "Parsing output" grep -A 1 "Scores for this hit:" ../output/24-Apul-miRanda-input-comparisons/Apul-miRanda-mRNA_full-strict_all.tab | sort | grep '&gt;' &gt; ../output/24-Apul-miRanda-input-comparisons/Apul-miRanda-mRNA_full-strict-parsed.txt  echo "counting number of putative interactions predicted (can include multiple interactions between single miRNA-lncRNA pair)" wc -l ../output/24-Apul-miRanda-input-comparisons/Apul-miRanda-mRNA_full-strict_all.tab</code></pre>
+<pre><code>## miranda run finished! ## Counting number of interacting miRNA-lncRNA pairs ## 1421433 ## Parsing output ## counting number of putative interactions predicted (can include multiple interactions between single miRNA-lncRNA pair) ## 19133057 ../output/24-Apul-miRanda-input-comparisons/Apul-miRanda-mRNA_full-strict_all.tab </code></pre>
+<p>This is a lot of putative interactions! Note though, that miRanda only requires complementarity of a 8bp seed region of the miRNA. We instead want to look for binding with full or near-full complementarity. Let's look at how many putative interactions are predicted for a binding length of at least 21 nucleotides (the length of our smallest mature miRNA).</p>
+<pre><code>echo "number of putative interactions of at least 21 nucleotides" awk -F'\t' '$7 &gt;= 21' ../output/24-Apul-miRanda-input-comparisons/Apul-miRanda-mRNA_full-strict-parsed.txt | wc -l echo "" echo "check some:" awk -F'\t' '$7 &gt;= 21' ../output/24-Apul-miRanda-input-comparisons/Apul-miRanda-mRNA_full-strict-parsed.txt | head -5</code></pre>
+<pre><code>## number of putative interactions of at least 21 nucleotides ## 101744 ##  ## check some: ## &gt;Cluster_10051.mature::ptg000016l:7795530-7795551(+) ntLink_6:10104556-10114024  154.00  -19.94  2 21    1466 1493   25  68.00%  72.00% ## &gt;Cluster_10051.mature::ptg000016l:7795530-7795551(+) ntLink_6:10104556-10114024  155.00  -21.12  2 21    8084 8107   21  66.67%  76.19% ## &gt;Cluster_10051.mature::ptg000016l:7795530-7795551(+) ntLink_6:10351674-10369781  147.00  -17.81  2 21    2265 2289   22  59.09%  72.73% ## &gt;Cluster_10051.mature::ptg000016l:7795530-7795551(+) ntLink_6:10392093-10402892  157.00  -20.28  2 21    4608 4632   22  77.27%  77.27% ## &gt;Cluster_10051.mature::ptg000016l:7795530-7795551(+) ntLink_6:10597160-10611657  159.00  -19.58  2 21    7110 7133   21  71.43%  76.19% </code></pre>
+<p>The header for this output is formatted as:</p>
+<p>mirna Target Score Energy-Kcal/Mol Query-Aln(start-end) Subject-Al(Start-End) Al-Len Subject-Identity Query-Identity</p>
+<p>We can see from the percent identities (last 2 entries) that this number includes alignments with multiple mismatches. Let's filter again to reduce the number of permissible mismatches. Let's say we want no more than 3 mismatches (a gap is counted as a mismatch). For an alignment of 21 nucleotides, this would be an percent identity of (21-3)/21 = 85.7%. The miRNA is our "subject", so we will filter by column 8.</p>
+<pre><code>echo "number of putative interactions of at least 21 nucleotides, with at most 3 mismatches" awk -F'\t' '$7 &gt;= 21' ../output/24-Apul-miRanda-input-comparisons/Apul-miRanda-mRNA_full-strict-parsed.txt | awk -F'\t' '$8 &gt;= 85' | wc -l echo "" echo "check some:" awk -F'\t' '$7 &gt;= 21' ../output/24-Apul-miRanda-input-comparisons/Apul-miRanda-mRNA_full-strict-parsed.txt | awk -F'\t' '$8 &gt;= 85' | head -5</code></pre>
+<pre><code>## number of putative interactions of at least 21 nucleotides, with at most 3 mismatches ## 143 ##  ## check some: ## &gt;Cluster_10057.mature::ptg000016l:8599884-8599905(-) ptg000017l:7171736-7192592  174.00  -21.36  2 21    13035 13058 21  85.71%  85.71% ## &gt;Cluster_10093.mature::ptg000016l:11751407-11751428(-)   ptg000007l:5326404-5332924  179.00  -25.97  2 21    658 681 21  85.71%  85.71% ## &gt;Cluster_10228.mature::ptg000017l:7471168-7471190(+) ntLink_8:9921794-9928534    179.00  -26.55  2 22    872 896 22  86.36%  86.36% ## &gt;Cluster_10228.mature::ptg000017l:7471168-7471190(+) ptg000019l:1503591-1507594  188.00  -31.70  2 22    3554 3577   21  85.71%  95.24% ## &gt;Cluster_10228.mature::ptg000017l:7471168-7471190(+) ptg000039l:790628-797014    188.00  -25.92  2 22    5693 5716   21  90.48%  90.48% </code></pre>
+<p>So filtering for full or near-full complementarity reduced the number of putative interactions between miRNA and full mRNA sequences from 19133057 to 143.</p>
+</section>
+</section>
+<section id="mirna-and-mrna-3utrs" class="level1">
+<h1>2 miRNA and mRNA 3'UTRs</h1>
+<p>Now let's see how filtering changes the outputs of miRanda run with only the 3'UTR mRNA region (the input we have been using up till now)</p>
+<p>Unfiltered:</p>
+<pre><code>wc -l ../output/09-Apul-mRNA-miRNA-interactions/miranda_strict_all_1kb_parsed_apul_updated.txt</code></pre>
+<pre><code>## 6109 ../output/09-Apul-mRNA-miRNA-interactions/miranda_strict_all_1kb_parsed_apul_updated.txt </code></pre>
+<p>Filter for alignment &gt;=21 nucleotides:</p>
+<pre><code>echo "number of putative interactions of at least 21 nucleotides" awk -F'\t' '$7 &gt;= 21' ../output/09-Apul-mRNA-miRNA-interactions/miranda_strict_all_1kb_parsed_apul_updated.txt | wc -l echo "" echo "check some:" awk -F'\t' '$7 &gt;= 21' ../output/09-Apul-mRNA-miRNA-interactions/miranda_strict_all_1kb_parsed_apul_updated.txt | head -5</code></pre>
+<pre><code>## number of putative interactions of at least 21 nucleotides ## 1699 ##  ## check some: ## &gt;Cluster_10051.mature::ptg000016l:7795530-7795551(+) FUN_002849::ntLink_8:6882212-6883212    158.00  -21.97  2 21    278 301 21  66.67%  85.71% ## &gt;Cluster_10051.mature::ptg000016l:7795530-7795551(+) FUN_018974::ptg000012l:15854445-15855445    155.00  -23.11  2 21    894 920 24  62.50%  75.00% ## &gt;Cluster_10051.mature::ptg000016l:7795530-7795551(+) FUN_019124::ptg000012l:17452953-17453953    147.00  -22.09  2 21    783 810 25  60.00%  68.00% ## &gt;Cluster_10051.mature::ptg000016l:7795530-7795551(+) FUN_023335::ptg000017l:6446983-6447355  150.00  -22.25  2 21    171 197 24  62.50%  75.00% ## &gt;Cluster_10051.mature::ptg000016l:7795530-7795551(+) FUN_024352::ptg000018l:5339775-5340775  162.00  -20.97  2 21    96 122  24  75.00%  75.00% </code></pre>
+<p>Filter again for &lt;=3 mismatches:</p>
+<pre><code>echo "number of putative interactions of at least 21 nucleotides, with at most 3 mismatches" awk -F'\t' '$7 &gt;= 21' ../output/09-Apul-mRNA-miRNA-interactions/miranda_strict_all_1kb_parsed_apul_updated.txt | awk -F'\t' '$8 &gt;= 85' | wc -l echo "" echo "check some:" awk -F'\t' '$7 &gt;= 21' ../output/09-Apul-mRNA-miRNA-interactions/miranda_strict_all_1kb_parsed_apul_updated.txt | awk -F'\t' '$8 &gt;= 85' | head -5</code></pre>
+<pre><code>## number of putative interactions of at least 21 nucleotides, with at most 3 mismatches ## 13 ##  ## check some: ## &gt;Cluster_10228.mature::ptg000017l:7471168-7471190(+) FUN_022919::ptg000017l:1483036-1484036  183.00  -28.35  2 22    69 94   23  86.96%  86.96% ## &gt;Cluster_10228.mature::ptg000017l:7471168-7471190(+) FUN_027647::ptg000021l:8285525-8286525  174.00  -25.86  2 21    101 125 21  85.71%  85.71% ## &gt;Cluster_10228.mature::ptg000017l:7471168-7471190(+) FUN_040282::ptg000031l:6265207-6266207  183.00  -30.15  2 21    525 550 22  86.36%  86.36% ## &gt;Cluster_10419.mature::ptg000018l:2286829-2286850(+) FUN_016674::ptg000011l:6193740-6194740  174.00  -21.33  2 21    904 927 21  85.71%  85.71% ## &gt;Cluster_15775.mature::ptg000025l:7472581-7472603(-) FUN_022318::ptg000016l:7511874-7512874  180.00  -21.41  2 22    573 596 21  85.71%  85.71% </code></pre>
+<p>When only mRNA 3'UTR regions are used as input, filtering for full/near-full complementarity reduces the number of putative interactions from 6109 to 13.</p>
+</section>
+<section id="examine-coexpression" class="level1">
+<h1>3 Examine coexpression</h1>
+<p>Now that we've found putative interactions with high complementarity, we need to validate miRNA function by examining patterns of coexpression. We'd expect a putatively-interacting miRNA-mRNA pair to be highly coexpressed, and we'd expect a negative relationship to indicate target cleavage.</p>
+<section id="full-mrna" class="level2">
+<h2 class="anchored" data-anchor-id="full-mrna">3.1 full mRNA</h2>
+<pre><code>library(readr) library(dplyr)</code></pre>
+<pre><code>##  ## Attaching package: 'dplyr'  ## The following objects are masked from 'package:stats': ##  ##     filter, lag  ## The following objects are masked from 'package:base': ##  ##     intersect, setdiff, setequal, union </code></pre>
+<pre><code># Read in data  # miRNA-mRNA Pearsons correlation coefficients miRNA_mRNA_PCC &lt;- read.csv("../output/09-Apul-mRNA-miRNA-interactions/Apul-PCC_miRNA_mRNA.csv")  # miRNA-mRNA_full miRanda output miRNA_mRNA_miRanda &lt;- read_delim("../output/24-Apul-miRanda-input-comparisons/Apul-miRanda-mRNA_full-strict-parsed.txt", col_names=FALSE)</code></pre>
+<pre><code>## Rows: 617982 Columns: 9  ## ── Column specification ──────────────────────────────────────────────────────── ## Delimiter: "\t" ## chr (6): X1, X2, X5, X6, X8, X9 ## dbl (3): X3, X4, X7 ##  ## ℹ Use `spec()` to retrieve the full column specification for this data. ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message. </code></pre>
+<pre><code>colnames(miRNA_mRNA_miRanda) &lt;- c("mirna", "Target", "Score", "Energy_Kcal_Mol", "Query_Aln", "Subject_Aln", "Al_Len", "Subject_Identity", "Query_Identity")  # format miRNA and mRNA names geneIDs &lt;- read_delim("../output/15-Apul-annotate-UTRs/Apul-mRNA-FUNids.txt", col_names=FALSE)</code></pre>
+<pre><code>## Rows: 36447 Columns: 5 ## ── Column specification ──────────────────────────────────────────────────────── ## Delimiter: "\t" ## chr (5): X1, X2, X3, X4, X5 ##  ## ℹ Use `spec()` to retrieve the full column specification for this data. ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message. </code></pre>
+<pre><code>geneIDs$X4 &lt;- gsub("Parent=", "", geneIDs$X4)  miRNA_mRNA_miRanda$mirna &lt;- gsub("&gt;", "", miRNA_mRNA_miRanda$mirna) miRNA_mRNA_miRanda$mirna &lt;- gsub("\\..*", "", miRNA_mRNA_miRanda$mirna)  miRNA_mRNA_miRanda &lt;- left_join(miRNA_mRNA_miRanda, geneIDs, by=c("Target" = "X1")) miRNA_mRNA_miRanda &lt;- select(miRNA_mRNA_miRanda, -X2,-X3,-X5)  # Finally, create a column that conatins both the miRNA and interacting mRNA miRNA_mRNA_PCC$interaction &lt;- paste(miRNA_mRNA_PCC$miRNA, "_", miRNA_mRNA_PCC$mRNA) miRNA_mRNA_miRanda$interaction &lt;- paste(miRNA_mRNA_miRanda$mirna, "_", miRNA_mRNA_miRanda$X4)  # Annotate w PCC info  miRNA_mRNA_miRanda &lt;- left_join(miRNA_mRNA_miRanda, miRNA_mRNA_PCC, by="interaction")</code></pre>
+<pre><code># Filter to high complementarity putative targets target_21bp &lt;- miRNA_mRNA_miRanda[miRNA_mRNA_miRanda$Al_Len &gt; 20,] target_21bp_3mis &lt;- target_21bp[target_21bp$Subject_Identity&gt;85,]  # How many w significant correlation? nrow(target_21bp %&gt;% filter(p_value &lt; 0.05))</code></pre>
+<pre><code>## [1] 3787 </code></pre>
+<pre><code>nrow(target_21bp %&gt;% filter(p_value &lt; 0.05))/nrow(target_21bp)</code></pre>
+<pre><code>## [1] 0.03722087 </code></pre>
+<pre><code>nrow(target_21bp_3mis %&gt;% filter(p_value &lt; 0.05))</code></pre>
+<pre><code>## [1] 6 </code></pre>
+<pre><code>nrow(target_21bp_3mis %&gt;% filter(p_value &lt; 0.05))/nrow(target_21bp_3mis)</code></pre>
+<pre><code>## [1] 0.04195804 </code></pre>
+<pre><code># Plot correlation values hist(target_21bp$PCC.cor)</code></pre>
+<pre><code>hist(target_21bp[target_21bp$p_value &lt; 0.05,]$PCC.cor)</code></pre>
+<pre><code>hist(target_21bp_3mis$PCC.cor)</code></pre>
+<pre><code>hist(target_21bp_3mis[target_21bp_3mis$p_value &lt; 0.05,]$PCC.cor)</code></pre>
+</section>
+<section id="utr" class="level2">
+<h2 class="anchored" data-anchor-id="utr">3.2 3'UTR</h2>
+<pre><code># Read in data  # miRNA-mRNA_full miRanda output miRNA_3UTR_miRanda &lt;- read_delim("../output/09-Apul-mRNA-miRNA-interactions/miranda_strict_all_1kb_parsed_apul_updated.txt", col_names=FALSE)</code></pre>
+<pre><code>## Rows: 6109 Columns: 9 ## ── Column specification ──────────────────────────────────────────────────────── ## Delimiter: "\t" ## chr (6): X1, X2, X5, X6, X8, X9 ## dbl (3): X3, X4, X7 ##  ## ℹ Use `spec()` to retrieve the full column specification for this data. ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message. </code></pre>
+<pre><code>colnames(miRNA_3UTR_miRanda) &lt;- c("mirna", "Target", "Score", "Energy_Kcal_Mol", "Query_Aln", "Subject_Aln", "Al_Len", "Subject_Identity", "Query_Identity")  miRNA_3UTR_miRanda$mirna &lt;- gsub("&gt;", "", miRNA_3UTR_miRanda$mirna) miRNA_3UTR_miRanda$mirna &lt;- gsub("\\..*", "", miRNA_3UTR_miRanda$mirna) miRNA_3UTR_miRanda$Target &lt;- gsub("::.*", "", miRNA_3UTR_miRanda$Target)  # Finally, create a column that conatins both the miRNA and interacting mRNA miRNA_3UTR_miRanda$interaction &lt;- paste(miRNA_3UTR_miRanda$mirna, "_", miRNA_3UTR_miRanda$Target)  # Annotate w PCC info  miRNA_3UTR_miRanda &lt;- left_join(miRNA_3UTR_miRanda, miRNA_mRNA_PCC, by="interaction")</code></pre>
+<pre><code># Filter to high complementarity putative targets target_3UTR_21bp &lt;- miRNA_3UTR_miRanda[miRNA_3UTR_miRanda$Al_Len &gt; 20,] target_3UTR_21bp_3mis &lt;- target_3UTR_21bp[target_3UTR_21bp$Subject_Identity&gt;85,]  # How many w significant correlation? nrow(target_3UTR_21bp %&gt;% filter(p_value &lt; 0.05))</code></pre>
+<pre><code>## [1] 58 </code></pre>
+<pre><code>nrow(target_3UTR_21bp %&gt;% filter(p_value &lt; 0.05))/nrow(target_3UTR_21bp)</code></pre>
+<pre><code>## [1] 0.03413773 </code></pre>
+<pre><code>nrow(target_3UTR_21bp_3mis %&gt;% filter(p_value &lt; 0.05))</code></pre>
+<pre><code>## [1] 0 </code></pre>
+<pre><code>nrow(target_3UTR_21bp_3mis %&gt;% filter(p_value &lt; 0.05))/nrow(target_3UTR_21bp_3mis)</code></pre>
+<pre><code>## [1] 0 </code></pre>
+<pre><code># Plot correlation values hist(target_3UTR_21bp$PCC.cor)</code></pre>
+<pre><code>hist(target_3UTR_21bp[target_3UTR_21bp$p_value &lt; 0.05,]$PCC.cor)</code></pre>
+<pre><code># hist(target_3UTR_21bp_3mis$PCC.cor) # hist(target_3UTR_21bp_3mis[target_3UTR_21bp_3mis$p_value &lt; 0.05,]$PCC.cor)</code></pre>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">This notebook is built using <a href="https://quarto.org/">Quarto</a></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
