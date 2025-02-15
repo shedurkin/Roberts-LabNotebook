@@ -51,33 +51,51 @@ format:
 
 #### Friday
 
--   1.5 hr -- E5 work, adding coexpression consideration to comparison of target prediction parameters
+-   **2 hr** -- E5 work, adding coexpression consideration to comparison of target prediction parameters, meeting prep
 
--   1.5 hr -- E5 meeting -- meeting notes here
+-   **1.5 hr** -- E5 meeting -- meeting notes [here](https://docs.google.com/document/d/1Fdd6xC9tJmAf9Iydcf3er-YwabKmwK3jGVw4ppfxfhM/edit?tab=t.0#heading=h.upfrtc9mnidd)
 
--   1.5 hr -- SWED102 class
+-   **1.5 hr** -- SWED102 class
 
--   2 hr -- QSCI381 weekly office hours
+-   **2 hr** -- QSCI381 weekly office hours
 
--   
+-   **2 hr** -- FSH513 data digitization
+
+-   **0.5 hr** -- QSCI381 answering canvas inbox and ed discussion messages
+
+-   **1 hr** -- misc (emails, lab notebook updates, etc.)
+
+Daily total: **10.5 hr**
+
+Weekly summary:
+
+|                 | Monday | Tuesday | Wednesday | Thursday | Friday   | TOTALS                 |
+|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| **Classes**     | 1      | 1       | 1         | 4.5      | 3.5      | **11**                 |
+| **TAing**       | 8      | 4.5     | 4         | 3        | 2.5      | **22**                 |
+| **Thesis work** | 0      | 2.5     | 0         | 2.5      | 3.5      | **8.5**                |
+| **Misc.**       | 0      | 0       | 0         | 0        | 1        | **1**                  |
+| **TOTALS**      | **9**  | **8**   | **5**     | **10**   | **10.5** | [**42.5**]{.underline} |
+
+Similar to last week, which I'm actually happy with since I was sick for one of the days this week! My TA hours were higher though, which is not the direction I want them to be moving. Some of this time was setup for the next few weeks, so hopefully that helps.
 
 ## 13 February 2025
 
 #### Thursday
 
--   1 hr -- ran [comparison of miRanda target prediction](../../projects/E5_coral/2025_02_13_deepdive_miRanda_comparisons.qmd) using different inputs and filtering
+-   **1 hr** -- E5 ran [comparison of miRanda target prediction](../../projects/E5_coral/2025_02_13_deepdive_miRanda_comparisons.qmd) using different inputs and filtering
 
--   1.5 hr -- SWED102 class
+-   **1.5 hr** -- SWED102 class
 
--   1 hr -- FSH513 data consolidation and digitization
+-   **1 hr** -- FSH513 data consolidation and digitization
 
--   0.5 hr -- QSCI381 weekly meeting
+-   **0.5 hr** -- QSCI381 weekly meeting
 
--   1.5 hr -- Lab picture and Lab meeting
+-   **1.5 hr** -- Lab picture and Lab meeting
 
--   2 hr -- FSH513 class
+-   **2 hr** -- FSH513 class
 
--   2.5 hr -- QSCI381 Misc. Inbox exchange w student about Quiz regrading, Ed discussion exchange w Tsering, creating updated docs for Assignment/Lab 7 and 8 and updating all of the Assignment and Lab Canvas pages. Looked through Assignment 9 stuff and messaged Steven about discrepancies. Added gradescope assignments
+-   **2.5 hr** -- QSCI381 Misc. Canvas inbox messages, Ed discussion messaging w Tsering, creating updated docs for Assignment/Lab 7 and 8 and updating all of the Assignment and Lab Canvas pages. Looked through Assignment 9 stuff and messaged Steven about discrepancies. Added gradescope assignments
 
 Daily total: **10 hrs**
 
@@ -87,23 +105,27 @@ Daily total: **10 hrs**
 
 Gave myself ✨food poisoning✨, so just focused on trying to finish grading today. Moved normal office hours to Friday.
 
--   1 hr -- SWED102 class
+-   **1 hr** -- SWED102 class
 
--   4 hr -- QSCI381 grading
+-   **4 hr** -- QSCI381 grading
+
+Daily total: **5 hrs**
 
 ## 11 February 2025
 
 #### Tuesday
 
--   1 hr -- SWED102 class
+-   **1 hr** -- SWED102 class
 
--   2 hr -- E5 work, doing some reading on expected miRNA behavior (binding and location of targets) in cnidarians
+-   **2 hr** -- E5 work, doing some reading on expected miRNA behavior (binding and location of targets) in cnidarians
 
--   2.5 hr -- QSCI381 Lab
+-   **2.5 hr** -- QSCI381 Lab
 
--   0.5 hr -- weekly meeting w/ Steven
+-   **0.5 hr** -- weekly meeting w/ Steven
 
--   2 hr -- QSCI381 grading
+-   **2 hr** -- QSCI381 grading
+
+Daily total: **8 hrs**
 
 ## 10 February 2025
 
