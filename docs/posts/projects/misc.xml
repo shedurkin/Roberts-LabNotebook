@@ -10,7 +10,48 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Wed, 29 Jan 2025 08:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 19 Feb 2025 08:00:00 GMT</lastBuildDate>
+<item>
+  <title>Opening an RStudio instance in Klone</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2025_02_19_klone_rstudio.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="general-instructions" class="level2">
+<h2 class="anchored" data-anchor-id="general-instructions">General instructions:</h2>
+<p>Open Cygwin (or other Unix tool)</p>
+<pre><code>ssh kdurkin1@klone.hyak.uw.edu</code></pre>
+<p>Enter UW NetID password and complete the DUO prompt</p>
+<p>Once I’ve accessed Klone, I’m in the <code>/mmfs1/home/kdurkin1</code> directory. All of the Roberts lab resources, however, are located in the <code>/gscratch/srlab/</code> directory</p>
+<pre><code>cd /gscratch/srlab/</code></pre>
+<p>I have my own subdirectory, <code>/gscratch/srlab/kdurkin1</code></p>
+<p>To launch an RStudio server, run the .job file I have stored in my directory (edit if necessary using <code>nano</code>):</p>
+<pre><code>cd /gscratch/srlab/kdurkin1
+sbatch rstudio-server-ckpt.job
+cat *.out</code></pre>
+<p>Open the output file, follow instructions by opening the directed ssh tunnel and signing in via NetID, then opening a webpage at the provided web address</p>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<p>Potentially helpful commands:</p>
+<p><code>hyakalloc</code> : shows me what computational resources I have access to</p>
+<p><code>squeue | grep kdurkin1</code> : shows what jobs I have running</p>
+<p><a href="https://robertslab.github.io/resources/klone_RStudio-Server/">Klone instructions (handbook)</a><br>
+<a href="https://washington.zoom.us/rec/share/tM_4zmytAnDQrPoIxqDH0Q7RpaZviXcs9ih7ypUPSJCbaQc0Kwa6NnsqdeMvkvdF.P4qX95_arDgBeGMF">Video walkthrough</a><br>
+<a href="https://github.com/RobertsLab/resources/issues/2066">My github issue troubleshooting this process</a><br>
+</p>
+
+
+</section>
+
+ ]]></description>
+  <category>misc</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2025_02_19_klone_rstudio.html</guid>
+  <pubDate>Wed, 19 Feb 2025 08:00:00 GMT</pubDate>
+</item>
 <item>
   <title>EPIMAR 2025 Budgeting</title>
   <dc:creator>Kathleen Durkin</dc:creator>

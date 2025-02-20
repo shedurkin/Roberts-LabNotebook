@@ -1,0 +1,14 @@
+{
+  "hash": "648f131a7c157c275e4be3e941e84e5f",
+  "result": {
+    "markdown": "---\ntitle: \"Opening an RStudio instance in Klone\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-02-19\"\ncategories: [\"misc\"]\nformat:\n  html:\n    toc: true\n    code-fold: true\nengine: knitr\n#bibliography: ../../../references.bib\n---\n\n\n## General instructions:\n\nOpen Cygwin (or other Unix tool)\n\n```         \nssh kdurkin1@klone.hyak.uw.edu\n```\n\nEnter UW NetID password and complete the DUO prompt\n\nOnce I've accessed Klone, I'm in the `/mmfs1/home/kdurkin1` directory. All of the Roberts lab resources, however, are located in the `/gscratch/srlab/` directory\n\n```         \ncd /gscratch/srlab/\n```\n\nI have my own subdirectory, `/gscratch/srlab/kdurkin1`\n\nTo launch an RStudio server, run the .job file I have stored in my directory (edit if necessary using `nano`):\n\n```         \ncd /gscratch/srlab/kdurkin1\nsbatch rstudio-server-ckpt.job\ncat *.out\n```\n\nOpen the output file, follow instructions by opening the directed ssh tunnel and signing in via NetID, then opening a webpage at the provided web address\n\n## Resources\n\nPotentially helpful commands:\n\n`hyakalloc` : shows me what computational resources I have access to\n\n`squeue | grep kdurkin1` : shows what jobs I have running\n\n[Klone instructions (handbook)](https://robertslab.github.io/resources/klone_RStudio-Server/)\\\n[Video walkthrough](https://washington.zoom.us/rec/share/tM_4zmytAnDQrPoIxqDH0Q7RpaZviXcs9ih7ypUPSJCbaQc0Kwa6NnsqdeMvkvdF.P4qX95_arDgBeGMF)\\\n[My github issue troubleshooting this process](https://github.com/RobertsLab/resources/issues/2066)\\\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

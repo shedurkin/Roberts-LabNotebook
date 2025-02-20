@@ -1,0 +1,52 @@
+---
+title: "Opening an RStudio instance in Klone"
+author: "Kathleen Durkin"
+date: "2025-02-19"
+categories: ["misc"]
+format:
+  html:
+    toc: true
+    code-fold: true
+engine: knitr
+#bibliography: ../../../references.bib
+---
+
+## General instructions:
+
+Open Cygwin (or other Unix tool)
+
+```         
+ssh kdurkin1@klone.hyak.uw.edu
+```
+
+Enter UW NetID password and complete the DUO prompt
+
+Once I've accessed Klone, I'm in the `/mmfs1/home/kdurkin1` directory. All of the Roberts lab resources, however, are located in the `/gscratch/srlab/` directory
+
+```         
+cd /gscratch/srlab/
+```
+
+I have my own subdirectory, `/gscratch/srlab/kdurkin1`
+
+To launch an RStudio server, run the .job file I have stored in my directory (edit if necessary using `nano`):
+
+```         
+cd /gscratch/srlab/kdurkin1
+sbatch rstudio-server-ckpt.job
+cat *.out
+```
+
+Open the output file, follow instructions by opening the directed ssh tunnel and signing in via NetID, then opening a webpage at the provided web address
+
+## Resources
+
+Potentially helpful commands:
+
+`hyakalloc` : shows me what computational resources I have access to
+
+`squeue | grep kdurkin1` : shows what jobs I have running
+
+[Klone instructions (handbook)](https://robertslab.github.io/resources/klone_RStudio-Server/)\
+[Video walkthrough](https://washington.zoom.us/rec/share/tM_4zmytAnDQrPoIxqDH0Q7RpaZviXcs9ih7ypUPSJCbaQc0Kwa6NnsqdeMvkvdF.P4qX95_arDgBeGMF)\
+[My github issue troubleshooting this process](https://github.com/RobertsLab/resources/issues/2066)\

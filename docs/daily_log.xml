@@ -10,7 +10,7 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/daily_log.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Wed, 19 Feb 2025 03:27:24 GMT</lastBuildDate>
+<lastBuildDate>Thu, 20 Feb 2025 23:52:25 GMT</lastBuildDate>
 <item>
   <title>February 2025, Daily Log</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -60,12 +60,33 @@
 <h2 class="anchored" data-anchor-id="february-2025-6">20 February 2025</h2>
 <section id="thursday-1" class="level4">
 <h4 class="anchored" data-anchor-id="thursday-1">Thursday</h4>
+<ul>
+<li><p><strong>1.5 hr</strong> – SWED102</p></li>
+<li><p><strong>1.5 hr</strong> – troubleshooting launching an Rstudio server through Klone – got it to work! And was able to run correlation analyses, whcih is the whole reason I needed to use Klone. Yay!</p></li>
+<li><p><strong>1 hr</strong> – weekly lab meeting. discussed Zach’s lncRNA paper and Klone</p></li>
+<li><p><strong>2 hr</strong> – FSH513 lity review on coral historical baselines (“prehuman” and pre-1980, when first mass bleaching event was recorded). Also, some reading on the concept of “shifting baselines,” which will likely be relevant to final FISH513 manuscript</p></li>
+<li><p><strong>0.5 hr</strong> – QSCI381 weekly meeting</p></li>
+<li><p><strong>2 hr</strong> – FSH513 class</p></li>
+</ul>
+<p>Daily total: <strong>8.5 hr</strong></p>
 </section>
 </section>
 <section id="february-2025-7" class="level2">
 <h2 class="anchored" data-anchor-id="february-2025-7">19 February 2025</h2>
 <section id="wednesday-1" class="level4">
 <h4 class="anchored" data-anchor-id="wednesday-1">Wednesday</h4>
+<ul>
+<li><p><strong>1.5 hr</strong> – SWED102 HW and weekly Quiz</p></li>
+<li><p><strong>1.5 hr</strong> – SWED102 class</p></li>
+<li><p><strong>1.5 hr</strong> – FSH513 finished digitizing data from GCRMN 2020 hard coral cover figure, read into R and plotted</p></li>
+<li><p><strong>2 hrs</strong> – degree stuff. Looked over my Plan of Study again and realized that the Degree Audit tool is inaccurate – I actually need ~12 additional credits of graded coursework, not the ~5 I thought I had left. I decided on FISH546 (Bioinformatics), CSE416 (Machine Learning), and FISH 544 (Conservation Genetics) to meet the credit requirement and sent my M.S. Plan of Study to committee members for signing.</p></li>
+<li><p><strong>1 hr</strong> – Read lncRNA paper for Lab Meeting tomorrow (Deng et al., 2022, doi: 10.1007/s11160-022-09734-7, selected by Zach)</p></li>
+<li><p><strong>2 hrs</strong> – QSCI381 Office Hours</p></li>
+<li><p><strong>0.5 hr</strong> – FSH513 wrote up methods thus far. Will need to do more lit review before writing discussion, focusing on potential gaps in the GCRMN report (e.g.&nbsp;how much had reefs already declined by 1980, when this dataset starts?)</p></li>
+<li><p><strong>1 hr</strong> – E5, read through some of my sources to double check that miRanda isn’t making any mammal-specific sequence feature assumptions (other than the seed region) – don’t think it is. Read through current state of deep dive expression manuscript + comments/to-do.</p></li>
+<li><p><strong>1.5 hr</strong> – trying to launch an RStudio instance through Klone again, still getting same issue as in January. Details in the <a href="https://github.com/RobertsLab/resources/issues/2066">github issue</a> and my <a href="../../../posts/projects/misc/2025_02_19_klone_rstudio.html">notebook post</a></p></li>
+</ul>
+<p>Daily total: <strong>12.5 hrs</strong></p>
 </section>
 </section>
 <section id="february-2025-8" class="level2">
@@ -386,7 +407,7 @@
  ]]></description>
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/February_2025_posts.html</guid>
-  <pubDate>Wed, 19 Feb 2025 03:27:24 GMT</pubDate>
+  <pubDate>Thu, 20 Feb 2025 23:52:25 GMT</pubDate>
 </item>
 <item>
   <title>February 2025, Monthly Goals</title>

@@ -35,9 +35,43 @@ format:
 
 #### Thursday
 
+-   **1.5 hr** -- SWED102
+
+-   **1.5 hr** -- troubleshooting launching an Rstudio server through Klone -- got it to work! And was able to run correlation analyses, whcih is the whole reason I needed to use Klone. Yay!
+
+-   **1 hr** -- weekly lab meeting. discussed Zach's lncRNA paper and Klone
+
+-   **2 hr** -- FSH513 lity review on coral historical baselines ("prehuman" and pre-1980, when first mass bleaching event was recorded). Also, some reading on the concept of "shifting baselines," which will likely be relevant to final FISH513 manuscript
+
+-   **0.5 hr** -- QSCI381 weekly meeting
+
+-   **2 hr** -- FSH513 class
+
+Daily total: **8.5 hr**
+
 ## 19 February 2025
 
 #### Wednesday
+
+-   **1.5 hr** -- SWED102 HW and weekly Quiz
+
+-   **1.5 hr** -- SWED102 class
+
+-   **1.5 hr** -- FSH513 finished digitizing data from GCRMN 2020 hard coral cover figure, read into R and plotted
+
+-   **2 hrs** -- degree stuff. Looked over my Plan of Study again and realized that the Degree Audit tool is inaccurate -- I actually need \~12 additional credits of graded coursework, not the \~5 I thought I had left. I decided on FISH546 (Bioinformatics), CSE416 (Machine Learning), and FISH 544 (Conservation Genetics) to meet the credit requirement and sent my M.S. Plan of Study to committee members for signing.
+
+-   **1 hr** -- Read lncRNA paper for Lab Meeting tomorrow (Deng et al., 2022, doi: 10.1007/s11160-022-09734-7, selected by Zach)
+
+-   **2 hrs** -- QSCI381 Office Hours
+
+-   **0.5 hr** -- FSH513 wrote up methods thus far. Will need to do more lit review before writing discussion, focusing on potential gaps in the GCRMN report (e.g. how much had reefs already declined by 1980, when this dataset starts?)
+
+-   **1 hr** -- E5, read through some of my sources to double check that miRanda isn't making any mammal-specific sequence feature assumptions (other than the seed region) -- don't think it is. Read through current state of deep dive expression manuscript + comments/to-do.
+
+-   **1.5 hr** -- trying to launch an RStudio instance through Klone again, still getting same issue as in January. Details in the [github issue](https://github.com/RobertsLab/resources/issues/2066) and my [notebook post](../../projects/misc/2025_02_19_klone_rstudio.qmd)
+
+Daily total: **12.5 hrs**
 
 ## 18 February 2025
 
