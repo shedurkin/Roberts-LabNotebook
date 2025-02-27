@@ -19,17 +19,57 @@ format:
 
 #### Wednesday
 
+-   **5 hr** -- QSCI381 grading
+
+-   **1 hr** -- SWED102 class
+
+-   **2 hr** -- QSCI381 office hours
+
+-   **4 hr** -- E5 stuff. Wrapping up deep-dive-expression and timeseries-molecular reruns of miRanda and PCC with expanded inputs and additional post-miranda complementarity filters, plotting in cytoscape, etc.
+
+Daily total: **12 hrs**
+
 ## 25 February 2025
 
 #### Tuesday
+
+-   **4 hr** -- QSCI381 Grading
+
+-   **1 hr** -- SWED102 class
+
+-   **2 hr** -- QSCI381 Lab
+
+-   **1 hr**-- E5 plots, summary
+
+-   **1 hr** -- weekly meeting w Steven
+
+Daily total: **9 hrs**
 
 ## 24 February 2025
 
 #### Monday
 
+-   **3 hr** -- SWED102 HW and test prep
+
+-   **1 hr** -- SWED102 class and exam
+
+-   **1 hr** -- misc start of the week emails, canvas inbox, slack, and ed discussion checks
+
+-   **1 hr** -- QSCI381 Lab Prep
+
+-   **2 hr** -- QSCI381 Lab
+
+-   **1 hr** -- QSCI381 grading
+
+Daily total: **9 hrs**
+
 ## 21 February 2025
 
 #### Friday
+
+-   1 hr -- SWED102 class
+
+-   9 hr -- E5 coding
 
 ## 20 February 2025
 
