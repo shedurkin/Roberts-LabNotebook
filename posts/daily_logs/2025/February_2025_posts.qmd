@@ -4,16 +4,111 @@ author: "Kathleen Durkin"
 date: "last-modified"
 categories: ["monthly goals"]
 format:
-  html
+  html:
+    code-fold: true
+execute:
+  warning: false
 ---
 
 ## 28 February 2025
 
 #### Friday
 
+-   2 hr -- E5 work, siRNA BLASTs, looking into existing TE annotation
+
+-   1.5 hr -- E5 molecular biweekly meeting -- meeting notes [here](https://docs.google.com/document/d/1Fdd6xC9tJmAf9Iydcf3er-YwabKmwK3jGVw4ppfxfhM/edit?tab=t.0)
+
+-   1.5 hr -- SWED102 class
+
+-   1 hr -- updating lab notebook for the week (e.g. summarizing weekly hours)
+
+[**Weekly summary:**]{.underline}
+
+|                 | Monday | Tuesday | Wednesday | Thursday | Friday | TOTALS |
+|-----------------|--------|---------|-----------|----------|--------|--------|
+| **Classes**     | 4      | 1       | 1         | 1.5      | 1.5    | 9      |
+| **TAing**       | 4      | 6       | 7         | 1        | 0      | 18     |
+| **Thesis work** | 0      | 2       | 4         | 7        | 3.5    | 16\.   |
+| **Misc.**       | 1      | 0       | 0         | 3.5      | 1      | 5.5    |
+| **TOTALS**      | 9      | 9       | 12        | 13       |        |        |
+
+##### 
+
+[**2 month summary**]{.underline}
+
+```{r}
+library(googlesheets4)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+hours <- read_sheet("https://docs.google.com/spreadsheets/d/1iGCiQlMPibYPxe2w_sVP0_9L6kkd0rxkxO5Kq71IR6o/edit?gid=0#gid=0")
+hours <- hours[!is.na(hours$Totals),]
+hours$Weekday <- factor(hours$Weekday, levels = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday"))
+
+avg_daily <- mean(hours$Totals)
+
+avg_weekly <- hours %>%
+  group_by(Week) %>%
+  summarise(weekly_total = sum(Totals)) %>%
+  summarise(avg_weekly_total = mean(weekly_total)) %>%
+  pull(avg_weekly_total)
+
+paste0("My daily average is ", round(avg_daily,1), " hours, with a weekly average of ", round(avg_weekly,1), " hours.")
+
+# Plot weekly hours over time
+weekly_totals <- hours %>%
+  group_by(Week) %>%
+  summarise(Total_Hours = sum(Totals))
+
+ggplot(weekly_totals, aes(x = Week, y = Total_Hours, group = 1)) +
+  geom_line() +
+  geom_point() +
+  theme_minimal() +
+  labs(title = "Total Hours per Week Over Time", x = "Week", y = "Total Hours") +
+  ylim(0,55) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# Plot hours by weekday for each week
+ggplot(hours, aes(x = Weekday, y = Totals, group = Week, color = Week)) +
+  geom_line() +
+  geom_point() +
+  theme_minimal() +
+  labs(title = "Daily Hours per Week", x = "Weekday", y = "Total Hours") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# Stacked bars of average hours each weekday by category
+hours_long <- hours %>%
+  select(Weekday, Classes, TAing, `Thesis work`, Misc.) %>%
+  pivot_longer(cols = -Weekday, names_to = "Category", values_to = "Hours") %>%
+  group_by(Weekday, Category) %>%
+  summarise(Avg_Hours = mean(Hours)) %>%
+  ungroup()
+
+ggplot(hours_long, aes(x = Weekday, y = Avg_Hours, fill = Category)) +
+  geom_bar(stat = "identity") +
+  theme_minimal() +
+  labs(title = "Average Hours per Weekday by Category", x = "Weekday", y = "Average Hours") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+This is pretty interesting! My weekly hours have stayed pretty consistent over the last two months and, while daily hours vary by day and week, the average breakdown of my hours by day and category makes a lot of sense! My TAing work is heavily front-loaded at the beginning of the week, since I teach labs and host office hours Mon/Tues/Wed and have to finish grading by Wed. Classes remain pretty consistent throughout, with a peak on Thursday when FSH513 meets. My research hours increase over the week as TAing commitments drop off, peaking on Fridays when my day is almost completely clear of other commitments.
+
 ## 27 February 2025
 
 #### Thursday
+
+-   **1.5 hr** -- SWED102 class
+
+-   **1 hr** -- QSCI381 weekly meeting
+
+-   **1.5 hr** -- Lab meeting, cleaning/organizing in lab
+
+-   **7 hrs** -- E5 work. Readings on siRNA features and softwares, figuring out how to handle ShortStack's output of lcusters but *not* siRNA sequences
+
+-   **2 hr** -- seminar + tgit
+
+Daily total: **13 hr**
 
 ## 26 February 2025
 
@@ -67,9 +162,25 @@ Daily total: **9 hrs**
 
 #### Friday
 
--   1 hr -- SWED102 class
+-   **1 hr** -- SWED102 class
 
--   9 hr -- E5 coding
+-   **9 hr** -- E5 coding
+
+Daily total: **10 hr**
+
+Weekly summary:
+
+|                 | Monday\* | Tuesday  | Wednesday | Thursday | Friday | TOTALS                 |
+|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| **Classes**     | 0        | 1        | 5         | 5.5      | 1      | **12.5**               |
+| **TAing**       | 2        | 10.5     | 2         | 0.5      | 0      | **15**                 |
+| **Thesis work** | 0        | 1        | 4.5       | 2.5      | 9      | **17**                 |
+| **Misc.**       | 0        | 0        | 1         | 0        | 0      | **1**                  |
+| **TOTALS**      | **2**    | **12.5** | **12.5**  | **8.5**  | **10** | [**45.5**]{.underline} |
+
+\* Federal holiday (Presidents' Day)
+
+This was a good week! Despite the federal holiday I spent less time on classes than expected, hit my desired TAing hours exactly, and was able to spend a little extra time on research. Ideally I should have reduced my overall hours a bit more, since I would proportionally want 40 hrs in a 4-day work week.
 
 ## 20 February 2025
 
@@ -81,7 +192,7 @@ Daily total: **9 hrs**
 
 -   **1 hr** -- weekly lab meeting. discussed Zach's lncRNA paper and Klone
 
--   **2 hr** -- FSH513 lity review on coral historical baselines ("prehuman" and pre-1980, when first mass bleaching event was recorded). Also, some reading on the concept of "shifting baselines," which will likely be relevant to final FISH513 manuscript
+-   **2 hr** -- FSH513 lit review on coral historical baselines ("prehuman" and pre-1980, when first mass bleaching event was recorded). Also, some reading on the concept of "shifting baselines," which will likely be relevant to final FISH513 manuscript
 
 -   **0.5 hr** -- QSCI381 weekly meeting
 
@@ -117,15 +228,15 @@ Daily total: **12.5 hrs**
 
 #### Tuesday
 
--   1 hr -- SWED102 class
+-   **1 hr** -- SWED102 class
 
--   2.5 hr -- QSCI381 lab
+-   **2.5 hr** -- QSCI381 lab
 
--   1 hr -- weekly lab meeting w Steven
+-   **1 hr** -- weekly lab meeting w Steven
 
--   0.5 hr -- QSCI381 Ed discussion/Canvas Inbox
+-   **0.5 hr** -- QSCI381 Ed discussion/Canvas Inbox
 
--   7.5 hr -- QSCI381 Assignment 5 grading
+-   **7.5 hr** -- QSCI381 Assignment 5 grading
 
 Daily total: **12.5 hrs**
 
