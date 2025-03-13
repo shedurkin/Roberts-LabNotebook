@@ -1,0 +1,211 @@
+---
+title: "March 2025, Daily Log"
+author: "Kathleen Durkin"
+date: "last-modified"
+categories: ["monthly goals"]
+format:
+  html:
+    code-fold: true
+execute:
+  warning: false
+---
+
+## 31 March 2025
+
+#### Monday
+
+## 28 March 2025
+
+#### Friday
+
+## 27 March 2025
+
+#### Thursday
+
+## 26 March 2025
+
+#### Wednesday
+
+## 25 March 2025
+
+#### Tuesday
+
+## 24 March 2025
+
+#### Monday
+
+## 21 March 2025
+
+#### Friday
+
+## 20 March 2025
+
+#### Thursday
+
+## 19 March 2025
+
+#### Wednesday
+
+## 18 March 2025
+
+#### Tuesday
+
+## 17 March 2025
+
+#### Monday
+
+## 14 March 2025
+
+#### Friday
+
+## 13 March 2025
+
+#### Thursday
+
+**1.5 hr** -- SWED102 final prep
+
+**1 hr** -- SWED 102 final exam
+
+**0.5 hr** -- QSCI381 weekly meeting
+
+**1 hr** -- QSCI381 handling late (+extension) assignment submissions and grading, some email questions, tallying extra credit Ed discussion responses
+
+**2 hr** -- Lab meeting + creatigng template materials for Roberts Lab website undergraduate guide
+
+## 12 March 2025
+
+#### Wednesday
+
+**1.5 hr** -- SWED102 class
+
+**2 hr** -- SWED102, second version of skrivuppgift 2 writing assignment
+
+**3 hr** -- SWED102 catch up on last HW assignments
+
+**2 hr** -- QSCI381 office hours
+
+**3 hr** -- E5 timeseries, running module-module comparisons, see WGCNA summary [here](../../projects/E5_coral/2025_03_11_timeseries_WGCNA.qmd)
+
+Daily total: **11.5 h**
+
+## 11 March 2025
+
+#### Tuesday
+
+-   **2 hr** -- QSCI381 grading Assignment 8
+
+-   **1.5 hr** -- SWED102 class
+
+-   **1 hr** -- QSCI 381 ed discussion, canvas inbox, regrade requests
+
+-   **1 hr** -- Adding timepoints to E5 timeseries WGCNA, looking into shared modules being correlated with temp and timepoint. No correlation w solar radiation of rainfall suggests temp should be driving differential gene expression by timepoint. DGE analysis showed TP2 and TP4 as having most DEGs, but TP2 and TP3 have the two temperature extremes (highest and lowest) and are the only TPs significantly correlated with modules of gene expression. Maybe this is because both hot and cold extremes are handled by the same pathways, so TP2 and 3 have very similar "dealing with temp stress" expression profiles that contrast with TP1 and 4 "we're at a comfortable temp" expression profiles?
+
+    Also notable, while TP2 and TP3 are significantly correlated with some of the same modules, they have opposite expression profile (upregulation vs. downregulation! Does this suggest that, while both warm and cool temperature stress may be associated with similar pathways, the way those pathways are modulated in differs when in response to different types of temp stress (e.g. gene is upregulated in response to heat stress and downregulated in response to cold stress)?
+
+-   **2 hr** -- QSCI381 lab
+
+-   **0.5 hr** -- weekly meeting w Steven
+
+-   **0.5 hr** -- Just announced that Trump admin gutted the Department of Education, leaving it at \~50% of original workforce, so I finally took a moment to check on my student loans and download digital copies of all relevant documentation, just in case.
+
+-   **2.5 hr** -- working on E5 timeseries WGCNA (fixing data prep, correlating WGCNA modules, etc)
+
+Daily total: **11 hrs**
+
+## 10 March 2025
+
+#### Monday
+
+-   **1 hr** -- SWED102 class
+
+-   **0.5 hr** -- go through weekend's emails/canvas inbox messages/ed discussion posts
+
+-   **4 hrs** -- QSCI 381 lab prep (reviewing weekly material, creating lab 9 key, updating canvas lab pages that were out of date, creating exam prep material for review this week)
+
+-   **2.5 hr** -- QSCI381 lab
+
+-   **6 hr** -- QSCI381 grading assignment 8
+
+-   **1 hr** -- QSCI381 misc (checked Assignment 9 key, created Assignment 9 gradescope submission form and Canvas assignment, linked them, updated due dates bc last day of instruction falls on a friday, sent some announcements about assignment 9 and my lab sections)
+
+Daily total: **15 hours**
+
+## 07 March 2025
+
+#### Friday
+
+-   **1 hr** -- SWED102 class
+
+-   **3 hr** -- SWED102 writing assignment 2 and quiz
+
+-   **4 hr** -- Stand up for Science rally at Seattle Center
+
+Daily total: **8 hr**
+
+## 06 March 2025
+
+#### Thursday
+
+-   **1 hr** -- SWED102 class
+
+-   **1.5 hr** -- FISH513 lit review/compilations
+
+-   **0.5 hr** -- QSCI381 weekly meeting (just Tsering today)
+
+-   **1 hr** -- Lab meeting
+
+-   **2 hr** -- FISH513 class
+
+-   **1 hr** -- SWED102 skrivuppgift 2 work
+
+-   **1 hr** -- attended department Q&A for the current knowledge/status of school, college, and university in the context of the EOs and federal ganecy changes
+
+Daily Total: **8 hr**
+
+Went home a bit early because the Q&A meeting stressed me tf out (even though it was largely neutral) and I need to take a long walk.
+
+## 05 March 2025
+
+#### Wednesday
+
+-   **1 hr** -- SWED102
+
+-   **2 hr** -- E5 timeseries, rerunning some WGCNAs with environmental variables incorporated, plotting eigengene expressions over time, tryign to debug Cytoscape export -- might just switch to different interaction network tool that I can use in R
+
+-   **1 hr** -- meeting w Ariana about EPIMAR (travel details and timeseries stuff)
+
+-   **3 hr** -- QSCI381 finish grading assignment 7 (looonng assignment this week)
+
+-   **2 hr** -- QSCI381 office hours -- I included reviewing the Assignment 8 key during this time to check for errors -- looks good!
+
+Daily total: **9 hrs**
+
+## 04 March 2025
+
+#### Tuesday
+
+-   **1.5 hr** -- SWED102 class
+
+-   **2.5 hr** -- QSCI381 Lab
+
+-   **6 hr** -- QSCI381 grading Assignment 7
+
+Daily total: **10 hr**
+
+## 03 March 2025
+
+#### Monday
+
+-   **1 hr** -- misc. start-of-week catching up on emails, canvas inbox, ed discussion, slack
+
+-   **1 hr** -- SWED102 class
+
+-   **2 hr** -- QSCI381 prep for Lab
+
+-   **2 hr** -- QSCI381 lab
+
+-   **2 hr** -- QSCI381 had to create an entirely new Assignment 7 key bc the one Tsering made had errors in like half of the questions
+
+-   **2 hr** -- QSCI381 grading
+
+Daily total: **10 hr**
