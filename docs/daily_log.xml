@@ -10,7 +10,7 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/daily_log.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Thu, 13 Mar 2025 23:17:50 GMT</lastBuildDate>
+<lastBuildDate>Wed, 19 Mar 2025 01:50:26 GMT</lastBuildDate>
 <item>
   <title>March 2025, Daily Log</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -78,18 +78,37 @@
 <h2 class="anchored" data-anchor-id="march-2025-9">18 March 2025</h2>
 <section id="tuesday-1" class="level4">
 <h4 class="anchored" data-anchor-id="tuesday-1">Tuesday</h4>
+<ul>
+<li><p><strong>2.5 hrs</strong> – Booking travel for EPIMAR 2025, paying for registration, compiling relevant documentation for conference attendance and acceptance, receipts, etc. and submitting materials to TREQ for reimbursement. Will not be booking lodging for now because may utilize the PI lodging once the PI meeting is over</p></li>
+<li><p><strong>0.5 hr</strong> – QSCI381 misc</p></li>
+<li><p><strong>6 hrs</strong> – E5 EPIMAR stuff. Doing more checks of module eigengene behavior across different environmental/physiological variables, finding and saving important dataframes from WGCNA analysis, generating list of testable hypotheses to focus on answering during EPIMAR presentation.</p></li>
+<li><p><strong>0.5 hr</strong> – weekly meeting w Steven</p></li>
+</ul>
+<p>Daily total: <strong>9.5 hr</strong></p>
 </section>
 </section>
 <section id="march-2025-10" class="level2">
 <h2 class="anchored" data-anchor-id="march-2025-10">17 March 2025</h2>
 <section id="monday-2" class="level4">
 <h4 class="anchored" data-anchor-id="monday-2">Monday</h4>
+<ul>
+<li><strong>7 hrs</strong> – QSCI381 Grading Assignment 9, answering a bunch of messages from students about the friday due date, looking over final exam key to prep for grading</li>
+</ul>
+<p>Daily total: <strong>7 hrs</strong></p>
 </section>
 </section>
 <section id="march-2025-11" class="level2">
 <h2 class="anchored" data-anchor-id="march-2025-11">14 March 2025</h2>
 <section id="friday-2" class="level4">
 <h4 class="anchored" data-anchor-id="friday-2">Friday</h4>
+<ul>
+<li><p><strong>2 hr</strong> – E5 deep-dive expression work, trying different approach for siRNA fasta</p></li>
+<li><p><strong>1 hr</strong> – E5 biweekly meeting</p></li>
+<li><p><strong>1.5 hr</strong> – SWED102 class</p></li>
+<li><p><strong>3 hr</strong> – E5, reading again how ShortStack considers siRNA/IDs siRNA clusters (still not entirely clear to me). Lit review on siRNA in general.</p></li>
+</ul>
+<p>It’s not actually that late in the day, but I just realized I’m over my (self-imposed) 50 hr/wk limit, so ending for the day.</p>
+<p>Daily total: <strong>7.5 hr</strong></p>
 </section>
 </section>
 <section id="march-2025-12" class="level2">
@@ -101,6 +120,8 @@
 <p><strong>0.5 hr</strong> – QSCI381 weekly meeting</p>
 <p><strong>1 hr</strong> – QSCI381 handling late (+extension) assignment submissions and grading, some email questions, tallying extra credit Ed discussion responses</p>
 <p><strong>2 hr</strong> – Lab meeting + creatigng template materials for Roberts Lab website undergraduate guide</p>
+<p><strong>2 hr</strong> – E5 timeseries work</p>
+<p>Daily total: <strong>8 hr</strong></p>
 </section>
 </section>
 <section id="march-2025-13" class="level2">
@@ -124,7 +145,10 @@
 <li><p><strong>1.5 hr</strong> – SWED102 class</p></li>
 <li><p><strong>1 hr</strong> – QSCI 381 ed discussion, canvas inbox, regrade requests</p></li>
 <li><p><strong>1 hr</strong> – Adding timepoints to E5 timeseries WGCNA, looking into shared modules being correlated with temp and timepoint. No correlation w solar radiation of rainfall suggests temp should be driving differential gene expression by timepoint. DGE analysis showed TP2 and TP4 as having most DEGs, but TP2 and TP3 have the two temperature extremes (highest and lowest) and are the only TPs significantly correlated with modules of gene expression. Maybe this is because both hot and cold extremes are handled by the same pathways, so TP2 and 3 have very similar “dealing with temp stress” expression profiles that contrast with TP1 and 4 “we’re at a comfortable temp” expression profiles?</p>
-<p>Also notable, while TP2 and TP3 are significantly correlated with some of the same modules, they have opposite expression profile (upregulation vs.&nbsp;downregulation! Does this suggest that, while both warm and cool temperature stress may be associated with similar pathways, the way those pathways are modulated in differs when in response to different types of temp stress (e.g.&nbsp;gene is upregulated in response to heat stress and downregulated in response to cold stress)?</p></li>
+<p><del>Also notable, while TP2 and TP3 are significantly correlated with some of the same modules, they have opposite expression profile (upregulation vs.&nbsp;downregulation! Does this suggest that, while both warm and cool temperature stress may be associated with similar pathways, the way those pathways are modulated in differs when in response to different types of temp stress (e.g.&nbsp;gene is upregulated in response to heat stress and downregulated in response to cold stress)?</del></p>
+<ul>
+<li>Edit 3/18/2025 – realized after plotting out eigengenes of each module that this ^^ is a misinterpretation of the heatmap – shared modules between TP2 and TP3 actually have <em>matching</em> expression profiles. This suggests shared pathways for both warm and cool temperature response and that the pathways are modulated in <em>similar</em> ways in response to both forms of temperature change.</li>
+</ul></li>
 <li><p><strong>2 hr</strong> – QSCI381 lab</p></li>
 <li><p><strong>0.5 hr</strong> – weekly meeting w Steven</p></li>
 <li><p><strong>0.5 hr</strong> – Just announced that Trump admin gutted the Department of Education, leaving it at ~50% of original workforce, so I finally took a moment to check on my student loans and download digital copies of all relevant documentation, just in case.</p></li>
@@ -224,7 +248,7 @@
  ]]></description>
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/March_2025_posts.html</guid>
-  <pubDate>Thu, 13 Mar 2025 23:17:50 GMT</pubDate>
+  <pubDate>Wed, 19 Mar 2025 01:50:26 GMT</pubDate>
 </item>
 <item>
   <title>February 2025, Daily Log</title>
