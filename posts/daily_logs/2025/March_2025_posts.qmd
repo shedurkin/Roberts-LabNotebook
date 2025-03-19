@@ -50,13 +50,39 @@ execute:
 
 #### Tuesday
 
+-   **2.5 hrs** -- Booking travel for EPIMAR 2025, paying for registration, compiling relevant documentation for conference attendance and acceptance, receipts, etc. and submitting materials to TREQ for reimbursement. Will not be booking lodging for now because may utilize the PI lodging once the PI meeting is over
+
+-   **0.5 hr** -- QSCI381 misc
+
+-   **6 hrs** -- E5 EPIMAR stuff. Doing more checks of module eigengene behavior across different environmental/physiological variables, finding and saving important dataframes from WGCNA analysis, generating list of testable hypotheses to focus on answering during EPIMAR presentation.
+
+-   **0.5 hr** -- weekly meeting w Steven
+
+Daily total: **9.5 hr**
+
 ## 17 March 2025
 
 #### Monday
 
+-   **7 hrs** -- QSCI381 Grading Assignment 9, answering a bunch of messages from students about the friday due date, looking over final exam key to prep for grading
+
+Daily total: **7 hrs**
+
 ## 14 March 2025
 
 #### Friday
+
+-   **2 hr** -- E5 deep-dive expression work, trying different approach for siRNA fasta
+
+-   **1 hr** -- E5 biweekly meeting
+
+-   **1.5 hr** -- SWED102 class
+
+-   **3 hr** -- E5, reading again how ShortStack considers siRNA/IDs siRNA clusters (still not entirely clear to me). Lit review on siRNA in general.
+
+It's not actually that late in the day, but I just realized I'm over my (self-imposed) 50 hr/wk limit, so ending for the day.
+
+Daily total: **7.5 hr**
 
 ## 13 March 2025
 
@@ -71,6 +97,10 @@ execute:
 **1 hr** -- QSCI381 handling late (+extension) assignment submissions and grading, some email questions, tallying extra credit Ed discussion responses
 
 **2 hr** -- Lab meeting + creatigng template materials for Roberts Lab website undergraduate guide
+
+**2 hr** -- E5 timeseries work
+
+Daily total: **8 hr**
 
 ## 12 March 2025
 
@@ -100,7 +130,9 @@ Daily total: **11.5 h**
 
 -   **1 hr** -- Adding timepoints to E5 timeseries WGCNA, looking into shared modules being correlated with temp and timepoint. No correlation w solar radiation of rainfall suggests temp should be driving differential gene expression by timepoint. DGE analysis showed TP2 and TP4 as having most DEGs, but TP2 and TP3 have the two temperature extremes (highest and lowest) and are the only TPs significantly correlated with modules of gene expression. Maybe this is because both hot and cold extremes are handled by the same pathways, so TP2 and 3 have very similar "dealing with temp stress" expression profiles that contrast with TP1 and 4 "we're at a comfortable temp" expression profiles?
 
-    Also notable, while TP2 and TP3 are significantly correlated with some of the same modules, they have opposite expression profile (upregulation vs. downregulation! Does this suggest that, while both warm and cool temperature stress may be associated with similar pathways, the way those pathways are modulated in differs when in response to different types of temp stress (e.g. gene is upregulated in response to heat stress and downregulated in response to cold stress)?
+    ~~Also notable, while TP2 and TP3 are significantly correlated with some of the same modules, they have opposite expression profile (upregulation vs. downregulation! Does this suggest that, while both warm and cool temperature stress may be associated with similar pathways, the way those pathways are modulated in differs when in response to different types of temp stress (e.g. gene is upregulated in response to heat stress and downregulated in response to cold stress)?~~
+
+    -   Edit 3/18/2025 -- realized after plotting out eigengenes of each module that this \^\^ is a misinterpretation of the heatmap -- shared modules between TP2 and TP3 actually have *matching* expression profiles. This suggests shared pathways for both warm and cool temperature response and that the pathways are modulated in *similar* ways in response to both forms of temperature change.
 
 -   **2 hr** -- QSCI381 lab
 
