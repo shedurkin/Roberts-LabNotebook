@@ -14,37 +14,71 @@ execute:
 
 #### Monday
 
+-   1 hr -- SWED103 class
+
+-   3 hrs -- catch up on misc tasks from my week out. Registration details, SIFP details (formally accept, contact andrea, etc.), catch up on slack messages and emails, set up planner for the quarter, check course syllabi/expectations/due dates, etc.
+
+-   4 hr -- trialing Ariana's machine learning approach w time series Apul phys data and gene/miRNA counts. See work [here](../../projects/E5_coral/2025_03_31_timeseries_ML.qmd)
+
 ## 28 March 2025
 
 #### Friday
+
+Out
 
 ## 27 March 2025
 
 #### Thursday
 
+Out
+
 ## 26 March 2025
 
 #### Wednesday
+
+Out
 
 ## 25 March 2025
 
 #### Tuesday
 
+Out
+
 ## 24 March 2025
 
 #### Monday
+
+Out
+
+-   3 hrs -- QSCI381 finished grading final exam (did this on Sunday, but counting it as part of this workweek)
+
+-   Recieved official notice of recieving SIFP!!!! The first fellowship I've won in grad school!!!!! Will be coordinating with Andrea once I'm back from vacation to go over details
 
 ## 21 March 2025
 
 #### Friday
 
+-   **10.5 hr** -- QSCI381 grading final exam
+
 ## 20 March 2025
 
 #### Thursday
 
+-   **5 hr** -- EPIMAR, prep for lab meeting, trying out a bunch of different visualizations to see what makes sense (cytoscape network, bubble plots, etc.)
+
+-   **0.5 hr** -- QSCI381 grading meeting
+
+-   **2 hr** -- lab meeting, talking about timeseries data synthesis/focus for EPIMAR
+
+Daily total: **7.5 hr**
+
 ## 19 March 2025
 
 #### Wednesday
+
+-   **12 hrs** -- E5 timeseries data -- functional enrichment of modules, annotating putative miRNA interaction, etc.
+
+Daily total: **12 hr**
 
 ## 18 March 2025
 
