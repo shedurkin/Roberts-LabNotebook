@@ -1,5 +1,5 @@
 ---
-title: "Timeseries molecular: A.pul phenotype and gene/miRNA machine learning"
+title: "Timeseries molecular: A.pul phenotype and gene/miRNA machine learning -- Part 1"
 author: "Kathleen Durkin"
 date: "2025-03-31"
 categories: ["E5-coral"]
@@ -15,7 +15,7 @@ bibliography: ../../../references.bib
 [Code](https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/code/22-Apul-miRNA-mRNA-machine-learning.Rmd)\
 [Rendered code](https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/code/22-Apul-miRNA-mRNA-machine-learning.md)
 
-I\'d like to see whether phenotype can predict gene and/or miRNA expression, will be testing this using the ML approach Ariana has been trialing (see her mRNA-WGBS ML post here: <https://ahuffmyer.github.io/ASH_Putnam_Lab_Notebook/E5-timeseries-molecular-mRNA-WGBS-machine-learning-analysis-Part-1/>)
+I'd like to see whether phenotype can predict gene and/or miRNA expression, will be testing this using the ML approach Ariana has been trialing (see her mRNA-WGBS ML post here: <https://ahuffmyer.github.io/ASH_Putnam_Lab_Notebook/E5-timeseries-molecular-mRNA-WGBS-machine-learning-analysis-Part-1/>)
 
 Inputs:
 
@@ -29,7 +29,7 @@ Inputs:
 
 -   
 
-Note that I\'ll start by using phenotype (e.g. biomass, respiration) as the predictor, which is suitable for understanding *how external factors drive gene expression changes.*
+Note that I'll start by using phenotype (e.g. biomass, respiration) as the predictor, which is suitable for understanding *how external factors drive gene expression changes.*
 
 If, instead, we wanted to build some sort of predictive model, where *gene expression could be used to predict phenotype*, we could switch so that gene counts are used as the predictors.
 
@@ -257,7 +257,7 @@ Remove ACR-173, timepoint 3 sample from analysis. This is Azenta sample 1B2.
 Apul_genes_filt <- Apul_genes_filt %>%   select(!`1B2_ACR-173_TP3`)  Apul_miRNA_filt <- Apul_miRNA_filt %>%   select(!`1B2_ACR-173_TP3`)  metadata <- metadata %>%   filter(Sample != "1B2_ACR-173_TP3")
 ```
 
-We also do not have phys data for colony 1B9 ACR-265 at TP4, so I\'ll remove that here as well.
+We also do not have phys data for colony 1B9 ACR-265 at TP4, so I'll remove that here as well.
 
 ```         
 Apul_genes_filt <- Apul_genes_filt%>%   select(!`1B9_ACR-265_TP4`)  Apul_miRNA_filt <- Apul_miRNA_filt%>%   select(!`1B9_ACR-265_TP4`)  metadata <- metadata %>%   filter(Sample != "1B9_ACR-265_TP4")
@@ -401,7 +401,7 @@ vsd_miRNA <- assay(vsd_miRNA) head(vsd_miRNA, 3) #view transformed gene count da
 
 # **3 Feature selection**
 
-We have a large number of genes, so we\'ll reduce dimensionality using PCA. Note that, since we only have a few phenotypes of interest, we don\'t need to reduce this dataset
+We have a large number of genes, so we'll reduce dimensionality using PCA. Note that, since we only have a few phenotypes of interest, we don't need to reduce this dataset
 
 First need to remove any genes/miRNA that are invariant
 
@@ -429,7 +429,7 @@ colnames(vsd_merged[, apply(vsd_merged, 2, var) == 0])
 ##  [1] "FUN_002873" "FUN_000675" "FUN_000696" "FUN_000732" "FUN_000780" ##  [6] "FUN_000804" "FUN_000805" "FUN_000808" "FUN_000840" "FUN_000841" ## [11] "FUN_000936" "FUN_001813" "FUN_005801" "FUN_006990" "FUN_006991" ## [16] "FUN_008788" "FUN_009193" "FUN_011084" "FUN_013317" "FUN_013915" ## [21] "FUN_015197" "FUN_016825" "FUN_019362" "FUN_019400" "FUN_023532" ## [26] "FUN_025493" "FUN_026386" "FUN_026452" "FUN_027886" "FUN_030163" ## [31] "FUN_032965" "FUN_033045" "FUN_034668" "FUN_035219" "FUN_035616" ## [36] "FUN_035884" "FUN_036141" "FUN_036423" "FUN_039232" "FUN_039257" ## [41] "FUN_040044" "FUN_040130" "FUN_042351" "FUN_043742" "FUN_003407" ## [46] "FUN_007954" "FUN_010106" "FUN_011370" "FUN_013836" "FUN_015936" ## [51] "FUN_019027" "FUN_020080" "FUN_020084" "FUN_020088" "FUN_020639" ## [56] "FUN_020669" "FUN_020695" "FUN_020713" "FUN_020719" "FUN_020915" ## [61] "FUN_021209" "FUN_021247" "FUN_021265" "FUN_021271" "FUN_021274" ## [66] "FUN_021313" "FUN_021316" "FUN_021367" "FUN_021391" "FUN_021394" ## [71] "FUN_021427" "FUN_037387" "FUN_038781" "FUN_042170"
 ```
 
-Removed 74 invariant genes. I was worried we lost miRNA, but it looks like everything removed was a gene (prefix \"FUN\")!
+Removed 74 invariant genes. I was worried we lost miRNA, but it looks like everything removed was a gene (prefix "FUN")!
 
 Reduce dimensionality (genes+miRNA)
 
@@ -443,7 +443,7 @@ Reduce dimensionality (genes+miRNA)
 
 We have 27 gene/miRNA expression PCs
 
-Select physiological metrics of interest. For now we\'ll focus on biomass (\"Host_AFDW.mg.cm2\"), protein (\"prot_mg.mgafdw\"), and respiration (\"Rd\"). These are all metrics of host energy storage and expenditure.
+Select physiological metrics of interest. For now we'll focus on biomass ("Host_AFDW.mg.cm2"), protein ("prot_mg.mgafdw"), and respiration ("Rd"). These are all metrics of host energy storage and expenditure.
 
 ```         
 # Assign sample IDs to row names rownames(phys) <- phys$Sample  # Select metrics phys_selection <- phys %>% select(Host_AFDW.mg.cm2, prot_mg.mgafdw, Rd)  # Make sure the phys rownames are in the same order as the gene/miRNA rownames phys_selection <- phys_selection[rownames(merged_pcs),]
@@ -497,7 +497,7 @@ ggplot(performance_results, aes(x = PC, y = R2)) +   geom_point(color = "darkred
 
 ![](https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/code/22-Apul-miRNA-mRNA-machine-learning_files/figure-gfm/unnamed-chunk-23-1.png?raw=true)
 
-Keep in mind that, while we ran the model with physiological predictors, we\'re really interested in the genes/miRNA associated with these predictors
+Keep in mind that, while we ran the model with physiological predictors, we're really interested in the genes/miRNA associated with these predictors
 
 View components associated with gene/miRNA PCs
 
@@ -519,7 +519,7 @@ print(top_genes%>%filter(Merged_PC=="PC9"))
 ## # A tibble: 20 × 3 ## # Groups:   Merged_PC [1] ##    gene_miRNA   Merged_PC Loading ##    <chr>        <chr>       <dbl> ##  1 FUN_023262   PC9       -0.0227 ##  2 FUN_016918   PC9        0.0198 ##  3 FUN_007014   PC9       -0.0194 ##  4 FUN_031632   PC9        0.0192 ##  5 FUN_035523   PC9        0.0188 ##  6 FUN_041996   PC9        0.0188 ##  7 FUN_006731   PC9       -0.0186 ##  8 FUN_022897   PC9       -0.0185 ##  9 FUN_043835   PC9        0.0184 ## 10 FUN_004465   PC9        0.0183 ## 11 FUN_014188   PC9       -0.0183 ## 12 FUN_034114   PC9       -0.0181 ## 13 FUN_024741   PC9       -0.0181 ## 14 FUN_006446   PC9       -0.0179 ## 15 FUN_018629   PC9       -0.0178 ## 16 FUN_013857   PC9       -0.0178 ## 17 Cluster_4034 PC9        0.0176 ## 18 FUN_039308   PC9       -0.0175 ## 19 FUN_012117   PC9        0.0175 ## 20 FUN_000459   PC9       -0.0174
 ```
 
-Interesting, there\'s an miRNA in there!
+Interesting, there's an miRNA in there!
 
 View predicted vs actual gene expression values to evaluate model.
 

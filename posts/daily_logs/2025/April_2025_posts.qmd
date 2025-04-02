@@ -1,0 +1,107 @@
+---
+title: "April 2025, Daily Log"
+author: "Kathleen Durkin"
+date: "last-modified"
+categories: ["monthly goals"]
+format:
+  html:
+    code-fold: true
+execute:
+  warning: false
+---
+
+## 30 April 2025
+
+#### Wednesday
+
+## 29 April 2025
+
+#### Tuesday
+
+## 28 April 2025
+
+#### Monday
+
+## 25 April 2025
+
+#### Friday
+
+## 24 April 2025
+
+#### Thursday
+
+## 23 April 2025
+
+#### Wednesday
+
+## 22 April 2025
+
+#### Tuesday
+
+## 21 April 2025
+
+#### Monday
+
+## 18 April 2025
+
+#### Friday
+
+## 17 April 2025
+
+#### Thursday
+
+## 16 April 2025
+
+#### Wednesday
+
+## 15 April 2025
+
+#### Tuesday
+
+## 14 April 2025
+
+#### Monday
+
+## 11 April 2025
+
+#### Friday
+
+## 10 April 2025
+
+#### Thursday
+
+## 09 April 2025
+
+#### Wednesday
+
+## 08 April 2025
+
+#### Tuesday
+
+## 07 April 2025
+
+#### Monday
+
+## 04 April 2025
+
+#### Friday
+
+## 03 April 2025
+
+#### Thursday
+
+## 02 April 2025
+
+#### Wednesday
+
+## 01 April 2025
+
+#### Tuesday
+
+-   1 hr -- SWED103 class
+
+-   1.5 hr -- FISH546 class
+
+-   1 hr -- misc admin stuff. paid tuition, emailed w Andrea, slack messages, etc.
+
+-   5 hr -- working with timeseries stuff, see posts: [timeseries ML pt.2](../../projects/E5_coral/2025_04_01_timeseries_ML 2.qmd), [timeseries FA/FE](../../projects/E5_coral/2025_04_01_timeseries_FA_FE.qmd)

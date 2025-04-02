@@ -11,6 +11,8 @@
   {
     "listing": "/posts/projects/E5_coral.html",
     "items": [
+      "/posts/projects/E5_coral/2025_04_01_timeseries_FA_FE.html",
+      "/posts/projects/E5_coral/2025_04_01_timeseries_ML_2.html",
       "/posts/projects/E5_coral/2025_03_31_timeseries_ML.html",
       "/posts/projects/E5_coral/2025_03_11_timeseries_WGCNA.html",
       "/posts/projects/E5_coral/2025_02_13_deepdive_miRanda_comparisons.html",
@@ -35,6 +37,7 @@
   {
     "listing": "/daily_log.html",
     "items": [
+      "/posts/daily_logs/2025/April_2025_posts.html",
       "/posts/daily_logs/2025/March_2025_posts.html",
       "/posts/daily_logs/2025/February_2025_posts.html",
       "/posts/daily_logs/2025/February_2025_goals.html",
