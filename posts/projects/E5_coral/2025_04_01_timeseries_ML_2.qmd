@@ -23,17 +23,11 @@ This time I ran the ML model with miRNA expression as the predictor and gene exp
 
 A couple miRNA pop out as notably highly predictive of gene expression, but all of the top 20 miRNA are important
 
-![](https://github.com/urol-e5/timeseries_molecular/raw/main/D-Apul/code/22-Apul-miRNA-mRNA-machine-learning_files/figure-gfm/unnamed-chunk-32-1.png)
+![](images/top-20-predictive-mirna-features.png)Many gene PCs are highly explained by miRNA expression, with 11 gene PCs of R^2^ \>\~0.75
 
-Many gene PCs are highly explained by miRNA expression, with 11 gene PCs of R^2^ \>\~0.75
+![](images/model-performance-across-gene-expression-pcs-mirna.png)We can then look at which genes are included in highly predicted PCs. For example, in PC11, the most highly predicted PC, we see an R^2^ of 0.996 and extremely strong model performance
 
-![](https://github.com/urol-e5/timeseries_molecular/raw/main/D-Apul/code/22-Apul-miRNA-mRNA-machine-learning_files/figure-gfm/unnamed-chunk-33-1.png)
-
-We can then look at which genes are included in highly predicted PCs. For example, in PC11, the most highly predicted PC, we see an R^2^ of 0.996 and extremely strong model performance
-
-![](https://github.com/urol-e5/timeseries_molecular/raw/main/D-Apul/code/22-Apul-miRNA-mRNA-machine-learning_files/figure-gfm/unnamed-chunk-36-1.png)
-
-Here are the top 20 genes included in PC11:
+![](images/predicted-v-actual-pc11.png)Here are the top 20 genes included in PC11:
 
 ```         
 ## # A tibble: 20 × 3
@@ -64,9 +58,7 @@ Here are the top 20 genes included in PC11:
 
 We can also look at which miRNA most contributed to predicting expression for PC11
 
-![](https://github.com/urol-e5/timeseries_molecular/raw/main/D-Apul/code/22-Apul-miRNA-mRNA-machine-learning_files/figure-gfm/unnamed-chunk-37-1.png)
-
-We see that, rather than a single miRNA being primarily responsible for predicting PC11 expression, many are involved with high importance, suggesting a complex interaction network
+![](images/top-mirna-predictors-for-pc11.png)We see that, rather than a single miRNA being primarily responsible for predicting PC11 expression, many are involved with high importance, suggesting a complex interaction network
 
 ### Code copied below in case of file path changes:
 

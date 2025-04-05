@@ -234,12 +234,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="results" class="level1">
 <h1>Results</h1>
 <p>A couple miRNA pop out as notably highly predictive of gene expression, but all of the top 20 miRNA are important</p>
-<p><img src="https://github.com/urol-e5/timeseries_molecular/raw/main/D-Apul/code/22-Apul-miRNA-mRNA-machine-learning_files/figure-gfm/unnamed-chunk-32-1.png" class="img-fluid"></p>
-<p>Many gene PCs are highly explained by miRNA expression, with 11 gene PCs of R<sup>2</sup> &gt;~0.75</p>
-<p><img src="https://github.com/urol-e5/timeseries_molecular/raw/main/D-Apul/code/22-Apul-miRNA-mRNA-machine-learning_files/figure-gfm/unnamed-chunk-33-1.png" class="img-fluid"></p>
-<p>We can then look at which genes are included in highly predicted PCs. For example, in PC11, the most highly predicted PC, we see an R<sup>2</sup> of 0.996 and extremely strong model performance</p>
-<p><img src="https://github.com/urol-e5/timeseries_molecular/raw/main/D-Apul/code/22-Apul-miRNA-mRNA-machine-learning_files/figure-gfm/unnamed-chunk-36-1.png" class="img-fluid"></p>
-<p>Here are the top 20 genes included in PC11:</p>
+<p><img src="images/top-20-predictive-mirna-features.png" class="img-fluid">Many gene PCs are highly explained by miRNA expression, with 11 gene PCs of R<sup>2</sup> &gt;~0.75</p>
+<p><img src="images/model-performance-across-gene-expression-pcs-mirna.png" class="img-fluid">We can then look at which genes are included in highly predicted PCs. For example, in PC11, the most highly predicted PC, we see an R<sup>2</sup> of 0.996 and extremely strong model performance</p>
+<p><img src="images/predicted-v-actual-pc11.png" class="img-fluid">Here are the top 20 genes included in PC11:</p>
 <pre><code>## # A tibble: 20 × 3
 ## # Groups:   Genes_PC [1]
 ##    gene       Genes_PC Loading
@@ -265,8 +262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ## 19 FUN_020597 PC11      0.0180
 ## 20 FUN_032877 PC11      0.0180</code></pre>
 <p>We can also look at which miRNA most contributed to predicting expression for PC11</p>
-<p><img src="https://github.com/urol-e5/timeseries_molecular/raw/main/D-Apul/code/22-Apul-miRNA-mRNA-machine-learning_files/figure-gfm/unnamed-chunk-37-1.png" class="img-fluid"></p>
-<p>We see that, rather than a single miRNA being primarily responsible for predicting PC11 expression, many are involved with high importance, suggesting a complex interaction network</p>
+<p><img src="images/top-mirna-predictors-for-pc11.png" class="img-fluid">We see that, rather than a single miRNA being primarily responsible for predicting PC11 expression, many are involved with high importance, suggesting a complex interaction network</p>
 <section id="code-copied-below-in-case-of-file-path-changes" class="level3">
 <h3 class="anchored" data-anchor-id="code-copied-below-in-case-of-file-path-changes">Code copied below in case of file path changes:</h3>
 <p>I’d like to see whether phenotype can predict gene and/or miRNA expression, will be testing this using the ML approach Ariana has been trialing (see her mRNA-WGBS ML post here: https://ahuffmyer.github.io/ASH_Putnam_Lab_Notebook/E5-timeseries-molecular-mRNA-WGBS-machine-learning-analysis-Part-1/)</p>

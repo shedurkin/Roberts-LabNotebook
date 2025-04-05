@@ -10,7 +10,7 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/daily_log.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Wed, 02 Apr 2025 00:52:10 GMT</lastBuildDate>
+<lastBuildDate>Sat, 05 Apr 2025 02:21:33 GMT</lastBuildDate>
 <item>
   <title>April 2025, Daily Log</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -132,12 +132,38 @@
 <h2 class="anchored" data-anchor-id="april-2025-18">04 April 2025</h2>
 <section id="friday-3" class="level4">
 <h4 class="anchored" data-anchor-id="friday-3">Friday</h4>
+<ul>
+<li>2 h – working on thesis proposal</li>
+</ul>
 </section>
 </section>
 <section id="april-2025-19" class="level2">
 <h2 class="anchored" data-anchor-id="april-2025-19">03 April 2025</h2>
 <section id="thursday-3" class="level4">
 <h4 class="anchored" data-anchor-id="thursday-3">Thursday</h4>
+<ul>
+<li><p>1 hr – SWED103</p></li>
+<li><p>1 hr – FISH546</p></li>
+<li><p>0.5 – quick meetings w Mark and Sam to talk about SIFP/GRFP funding</p></li>
+<li><p>1.5 hr – Lab meeting:</p></li>
+</ul>
+<pre><code>-   Schedule annual meting w Steven
+
+-   ~~reschedule weekly/biweekly meetings w Steven~~
+
+-   ~~Need to be submitting monthly reports for RA position (see form in handbook)~~
+
+-   ~~Ping Ariana for meeting about ML work~~
+
+-   ~~check lab website to make sure I've added my recent presentations/papers~~
+
+-   add pOverA filtering to ML
+
+-   ~~Did some last additions and polishing to the Undergraduate Guide for the lab website~~</code></pre>
+<ul>
+<li><p>1 hr – FISH546 finished assignment 1 and week 1 questions</p></li>
+<li><p>1.5 hr – SWED103 hmwk, discussion posts, weekly quiz</p></li>
+</ul>
 </section>
 </section>
 <section id="april-2025-20" class="level2">
@@ -164,7 +190,45 @@
  ]]></description>
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/April_2025_posts.html</guid>
-  <pubDate>Wed, 02 Apr 2025 00:52:10 GMT</pubDate>
+  <pubDate>Sat, 05 Apr 2025 02:21:33 GMT</pubDate>
+</item>
+<item>
+  <title>April 2025, Monthly Goals</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/April_2025_goals.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="april-goals" class="level2">
+<h2 class="anchored" data-anchor-id="april-goals">April Goals</h2>
+<ul>
+<li><p>Wrap up E5 deep dive tasks</p></li>
+<li><p>complete draft for E5 deep dive paper</p></li>
+<li><p>Complete a workable EPIMAR presnetation</p></li>
+<li><p>Complete MS thesis proposal</p></li>
+<li><p>Set another committee meeting to review progress, summer plans, send proposal draft, etc.</p></li>
+<li><p>Plan for SIFP summer fellowship</p>
+<ul>
+<li><p>Set dates</p></li>
+<li><p>Figure out where research funding will be coming from (Andrea? Steven? both?), what the $ amount needed will be, etc.</p></li>
+<li><p>Set timeline (due dates for sample select, QCing, prep, sequencing, data analysis, etc.)</p></li>
+<li><p>Figure out where sequencing will be done (does LAB have own Promethion or does it need to be out-of-house?) and what approximate cost will be</p></li>
+<li><p>Complete Smithsonian onboarding (security check, getting set up for ID, etc.)</p></li>
+<li><p>Look into housing (may need to wait till May for better availability)</p></li>
+<li><p>Figure out how SIFP living stipend will merge with SAFS funding/insurance</p></li>
+</ul></li>
+<li><p>Reminder: Submit <a href="https://docs.google.com/forms/d/e/1FAIpQLSd162whQvdjHRkhDHJJf9A59VhLCjJEqaZ7VqKYaixx7rYnFg/viewform">RA reporting form</a> at end of month (can enter “NSF” in the Funding Source section)</p></li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>monthly goals</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/April_2025_goals.html</guid>
+  <pubDate>Wed, 02 Apr 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>March 2025, Daily Log</title>
@@ -3827,49 +3891,6 @@ I also did a fair bit of work for the E5 project in April that I wasn’t planni
   <category>daily log</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/April_2024_posts.html</guid>
   <pubDate>Tue, 30 Apr 2024 07:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>April 2024, Monthly Goals</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/April_2024_goals.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="reviewing-march-goals" class="level2">
-<h2 class="anchored" data-anchor-id="reviewing-march-goals">Reviewing March Goals</h2>
-<p>I’m out for a little over a week this month (March 6-15), so I have a more limited set of goals</p>
-<p>✔️ Write a draft proposal for the oyster project</p>
-<p>✔️ Finish DGE analysis for cod project</p>
-<p>🟡 Write full methods section draft (both experimental and analysis sections) for the cod manuscript (part of pubathon)</p>
-<p>❌ Start a planning document for the oyster project in the same style as Ariana showed us during lab meeting (see <a href="../../../posts/daily_logs/2024/February_2024_posts.html#february-2024-20">daily post</a>)</p>
-<p>✔️ Connect with Laura to get details on the cod project’s experimental setup/implementation (Rollover from February)</p>
-<section id="back-burner-goals-again" class="level4">
-<h4 class="anchored" data-anchor-id="back-burner-goals-again">Back-burner goals (again)</h4>
-<ul>
-<li>Look into several grants/funding sources that I may want to apply for over the next year or so (GRFP, Fulbright, etc.)</li>
-</ul>
-<p>I think March went well! It was definitely a bit less productive that February – I was out for a bit, and Spring Break-related lab absences meant some work was slowed down. Regardless, I got some through some important stuff for the cod and oyster projects. I wrote a <a href="https://docs.google.com/document/d/1MRz_vSXEINmXkxV1CS9xZRQf1_rR_5IEXXyaJmXxYcg/edit">proposal for the oyster project</a> (for class), which was really helpful for me to get my current understanding of the project on paper. The project will definitely be changing a bit from what I wrote, but I really appreciated the first step. I’ve taken the cod RNAseq data through all the basic DGE analysis using DESeq2. Now I need to tackle the GO analysis and look into using WGCNA to examine coexpression. I have probably half of a preliminary methods section of the <a href="https://docs.google.com/document/d/1CrTyvBxRCPPmQ5h3x3-Bhh3-2bV7tBmfjbXUyEb7ufs/edit">cod manuscript</a> done. I haven’t made a planning doc for the oyster experiment, largely because I’ve still been feeling very unclear on how exactly the project implementation is going to work. Hopefully I’ll be able to resolve that this month. Finally, I was able to meet with Laura about the cod project! She had some great suggestions for selecting methylation samples and for doing a more advanced analysis of the RNAseq data!</p>
-</section>
-</section>
-<section id="april-goals" class="level2">
-<h2 class="anchored" data-anchor-id="april-goals">April Goals</h2>
-<p>Now that spring quarter is upon us, I need to start focusing more on degree progress (rather than just project progress). I’m also going to keep my goals conservative, since I’m taking two more time-intensive courses this month.</p>
-<ul>
-<li><p>Select my committee members</p></li>
-<li><p>Start masters thesis proposal</p></li>
-<li><p>Perform GO annotation analysis of cod RNAseq data</p></li>
-<li><p>Start a planning document for the oyster project in the same style as Ariana showed us during lab meeting (see <a href="../../../posts/daily_logs/2024/February_2024_posts.html#february-2024-20">daily post</a>) (rollover)</p></li>
-</ul>
-
-
-</section>
-
- ]]></description>
-  <category>monthly goals</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/April_2024_goals.html</guid>
-  <pubDate>Thu, 04 Apr 2024 07:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

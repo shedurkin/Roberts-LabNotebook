@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -151,22 +185,34 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#load-libraries" id="toc-load-libraries" class="nav-link active" data-scroll-target="#load-libraries"><strong>1 Load libraries</strong></a></li>
-  <li><a href="#load-and-prep-data" id="toc-load-and-prep-data" class="nav-link" data-scroll-target="#load-and-prep-data"><strong>2 Load and prep data</strong></a>
+  <li><a href="#results" id="toc-results" class="nav-link active" data-scroll-target="#results">Results</a>
   <ul class="collapse">
-  <li><a href="#counts-filtering" id="toc-counts-filtering" class="nav-link" data-scroll-target="#counts-filtering"><strong>2.1 Counts filtering</strong></a></li>
-  <li><a href="#physiology-filtering" id="toc-physiology-filtering" class="nav-link" data-scroll-target="#physiology-filtering"><strong>2.2 Physiology filtering</strong></a></li>
-  <li><a href="#assign-metadata-and-arrange-order-of-columns" id="toc-assign-metadata-and-arrange-order-of-columns" class="nav-link" data-scroll-target="#assign-metadata-and-arrange-order-of-columns"><strong>2.3 Assign metadata and arrange order of columns</strong></a></li>
-  <li><a href="#conduct-variance-stabilized-transformation" id="toc-conduct-variance-stabilized-transformation" class="nav-link" data-scroll-target="#conduct-variance-stabilized-transformation"><strong>2.4 Conduct variance stabilized transformation</strong></a>
+  <li><a href="#code-copied-below-in-case-of-file-path-changes" id="toc-code-copied-below-in-case-of-file-path-changes" class="nav-link" data-scroll-target="#code-copied-below-in-case-of-file-path-changes">Code copied below in case of file path changes:</a></li>
+  </ul></li>
+  <li><a href="#load-libraries" id="toc-load-libraries" class="nav-link" data-scroll-target="#load-libraries">Load libraries</a></li>
+  <li><a href="#load-and-prep-data" id="toc-load-and-prep-data" class="nav-link" data-scroll-target="#load-and-prep-data">Load and prep data</a>
   <ul class="collapse">
-  <li><a href="#genes" id="toc-genes" class="nav-link" data-scroll-target="#genes"><strong>2.4.1 Genes:</strong></a></li>
-  <li><a href="#mirna" id="toc-mirna" class="nav-link" data-scroll-target="#mirna"><strong>2.4.2 miRNA:</strong></a></li>
+  <li><a href="#counts-filtering" id="toc-counts-filtering" class="nav-link" data-scroll-target="#counts-filtering">Counts filtering</a></li>
+  <li><a href="#physiology-filtering" id="toc-physiology-filtering" class="nav-link" data-scroll-target="#physiology-filtering">Physiology filtering</a></li>
+  <li><a href="#assign-metadata-and-arrange-order-of-columns" id="toc-assign-metadata-and-arrange-order-of-columns" class="nav-link" data-scroll-target="#assign-metadata-and-arrange-order-of-columns">Assign metadata and arrange order of columns</a></li>
+  <li><a href="#conduct-variance-stabilized-transformation" id="toc-conduct-variance-stabilized-transformation" class="nav-link" data-scroll-target="#conduct-variance-stabilized-transformation">Conduct variance stabilized transformation</a>
+  <ul class="collapse">
+  <li><a href="#genes" id="toc-genes" class="nav-link" data-scroll-target="#genes">Genes:</a></li>
+  <li><a href="#mirna" id="toc-mirna" class="nav-link" data-scroll-target="#mirna">miRNA:</a></li>
   </ul></li>
-  <li><a href="#combine-counts-data" id="toc-combine-counts-data" class="nav-link" data-scroll-target="#combine-counts-data"><strong>2.5 Combine counts data</strong></a></li>
+  <li><a href="#combine-counts-data" id="toc-combine-counts-data" class="nav-link" data-scroll-target="#combine-counts-data">Combine counts data</a></li>
   </ul></li>
-  <li><a href="#feature-selection" id="toc-feature-selection" class="nav-link" data-scroll-target="#feature-selection"><strong>3 Feature selection</strong></a></li>
-  <li><a href="#the-model" id="toc-the-model" class="nav-link" data-scroll-target="#the-model"><strong>4 The model</strong></a></li>
-  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><strong>5 Results</strong></a></li>
+  <li><a href="#feature-selection" id="toc-feature-selection" class="nav-link" data-scroll-target="#feature-selection">Feature selection</a>
+  <ul class="collapse">
+  <li><a href="#genes-mirna" id="toc-genes-mirna" class="nav-link" data-scroll-target="#genes-mirna">Genes + miRNA</a></li>
+  <li><a href="#genes-only" id="toc-genes-only" class="nav-link" data-scroll-target="#genes-only">Genes only</a></li>
+  <li><a href="#physiological-metrics" id="toc-physiological-metrics" class="nav-link" data-scroll-target="#physiological-metrics">Physiological metrics</a></li>
+  </ul></li>
+  <li><a href="#phenotype-to-predict-genemirna-expression" id="toc-phenotype-to-predict-genemirna-expression" class="nav-link" data-scroll-target="#phenotype-to-predict-genemirna-expression">Phenotype to predict gene/miRNA expression</a>
+  <ul class="collapse">
+  <li><a href="#the-model" id="toc-the-model" class="nav-link" data-scroll-target="#the-model">The model</a></li>
+  <li><a href="#results-1" id="toc-results-1" class="nav-link" data-scroll-target="#results-1">Results</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -179,190 +225,512 @@ ul.task-list li input[type="checkbox"] {
 <p><a href="https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/code/22-Apul-miRNA-mRNA-machine-learning.Rmd">Code</a><br>
 <a href="https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/code/22-Apul-miRNA-mRNA-machine-learning.md">Rendered code</a></p>
 <p>I’d like to see whether phenotype can predict gene and/or miRNA expression, will be testing this using the ML approach Ariana has been trialing (see her mRNA-WGBS ML post here: <a href="https://ahuffmyer.github.io/ASH_Putnam_Lab_Notebook/E5-timeseries-molecular-mRNA-WGBS-machine-learning-analysis-Part-1/" class="uri">https://ahuffmyer.github.io/ASH_Putnam_Lab_Notebook/E5-timeseries-molecular-mRNA-WGBS-machine-learning-analysis-Part-1/</a>)</p>
+<section id="results" class="level1">
+<h1>Results</h1>
+<p>I filtered, variance stabilized, and combined the raw gene counts and miRNA counts. Then, due to the high number, I reduced this combined expression data to PCs of similar expression. For phenotype, I used host biomass, host protein, and respiration, all of which are indicators of host energy storage and expenditure. I ran the ML model using phenotypes as the predictor and expression PCs as the response.</p>
+<p>Protein was most predictive of expression, with respiration also highly predictive. Interestingly, biomass did not contribute much!</p>
+<p><img src="images/Top-20-Predictive-Phys-Features.png" class="img-fluid"></p>
+<p>None of the gene PCs were well-predicted by phenotype, with the highest R<sup>2</sup> value sitting at 0.177 (~18% of variance in the PCs explained by phenotype).</p>
+<p><img src="images/Model-Performance-Across-Gene-Expression-PCs.png" class="img-fluid">Also, most of the expression PCs (21/31) had NA R<sup>2</sup> values, which I believe is related to low variance in the phenotype metrics, particularly the protein phenotype</p>
+<pre><code>&gt; apply(merged_pcs, 2, var)</code></pre>
+<pre><code>      PC1       PC2       PC3       PC4       PC5       PC6       PC7       PC8       PC9      PC10      PC11      PC12      PC13      PC14      PC15      PC16      PC17 
+5801.1357 2808.7631 2370.6702 1990.1140 1760.0861 1627.7522 1317.6404 1274.2452 1078.4045 1034.5725  976.4311  937.5277  891.5255  796.3490  779.2450  699.0609  676.0976 
+     PC18      PC19      PC20      PC21      PC22      PC23      PC24      PC25      PC26      PC27      PC28      PC29      PC30      PC31 
+ 650.9711  620.9733  606.8573  591.2129  575.7182  550.6815  528.1735  519.2895  506.3591  474.2105  467.2894  454.2832  436.9429  423.9563 </code></pre>
+<pre><code>&gt; apply(phys_selection, 2, var)</code></pre>
+<pre><code>Host_AFDW.mg.cm2   prot_mg.mgafdw               Rd 
+      0.33627626       0.01063323       0.03545622 </code></pre>
+<p>We can look at model performance for specific expression PCs. For example, here’s PC9, which is the best-predicted PC (highest R<sup>2</sup> value)</p>
+<p><img src="images/Predicted-v-Actual-PC9.png" class="img-fluid">We can also look at the top miRNA/genes associated with it. This was interesting because there is an miRNA that pops out (Cluster_4034)!</p>
+<pre><code>## # A tibble: 20 × 3
+## # Groups:   Merged_PC [1]
+##    gene_miRNA   Merged_PC Loading
+##    &lt;chr&gt;        &lt;chr&gt;       &lt;dbl&gt;
+##  1 FUN_023262   PC9       -0.0227
+##  2 FUN_016918   PC9        0.0198
+##  3 FUN_007014   PC9       -0.0194
+##  4 FUN_031632   PC9        0.0192
+##  5 FUN_035523   PC9        0.0188
+##  6 FUN_041996   PC9        0.0188
+##  7 FUN_006731   PC9       -0.0186
+##  8 FUN_022897   PC9       -0.0185
+##  9 FUN_043835   PC9        0.0184
+## 10 FUN_004465   PC9        0.0183
+## 11 FUN_014188   PC9       -0.0183
+## 12 FUN_034114   PC9       -0.0181
+## 13 FUN_024741   PC9       -0.0181
+## 14 FUN_006446   PC9       -0.0179
+## 15 FUN_018629   PC9       -0.0178
+## 16 FUN_013857   PC9       -0.0178
+## 17 Cluster_4034 PC9        0.0176
+## 18 FUN_039308   PC9       -0.0175
+## 19 FUN_012117   PC9        0.0175
+## 20 FUN_000459   PC9       -0.0174</code></pre>
+<section id="code-copied-below-in-case-of-file-path-changes" class="level3">
+<h3 class="anchored" data-anchor-id="code-copied-below-in-case-of-file-path-changes">Code copied below in case of file path changes:</h3>
 <p>Inputs:</p>
 <ul>
 <li><p>RNA counts matrix (raw): <code>../output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv</code></p></li>
 <li><p>sRNA/miRNA counts matrix (raw): <code>../output/03.10-D-Apul-sRNAseq-expression-DESeq2/Apul_miRNA_ShortStack_counts_formatted.txt</code></p></li>
 <li><p>sample metadata: <code>../../M-multi-species/data/rna_metadata.csv</code></p></li>
-<li><p>physiological data: <a href="https://github.com/urol-e5/timeseries/raw/refs/heads/master/time_series_analysis/Output/master_timeseries.csv" class="uri">https://github.com/urol-e5/timeseries/raw/refs/heads/master/time_series_analysis/Output/master_timeseries.csv</a></p></li>
-<li></li>
+<li><p>physiological data: https://github.com/urol-e5/timeseries/raw/refs/heads/master/time_series_analysis/Output/master_timeseries.csv</p></li>
 </ul>
 <p>Note that I’ll start by using phenotype (e.g.&nbsp;biomass, respiration) as the predictor, which is suitable for understanding <em>how external factors drive gene expression changes.</em></p>
 <p>If, instead, we wanted to build some sort of predictive model, where <em>gene expression could be used to predict phenotype</em>, we could switch so that gene counts are used as the predictors.</p>
+</section>
+</section>
 <section id="load-libraries" class="level1">
-<h1><strong>1 Load libraries</strong></h1>
-<pre><code>library(tidyverse)</code></pre>
-<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ── ## ✔ dplyr     1.1.4     ✔ readr     2.1.5 ## ✔ forcats   1.0.0     ✔ stringr   1.5.1 ## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1 ## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1 ## ✔ purrr     1.0.2      ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ── ## ✖ dplyr::filter() masks stats::filter() ## ✖ dplyr::lag()    masks stats::lag() ## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-<pre><code>library(ggplot2) library(DESeq2)</code></pre>
-<pre><code>## Loading required package: S4Vectors ## Loading required package: stats4 ## Loading required package: BiocGenerics ##  ## Attaching package: 'BiocGenerics' ##  ## The following objects are masked from 'package:lubridate': ##  ##     intersect, setdiff, union ##  ## The following objects are masked from 'package:dplyr': ##  ##     combine, intersect, setdiff, union ##  ## The following objects are masked from 'package:stats': ##  ##     IQR, mad, sd, var, xtabs ##  ## The following objects are masked from 'package:base': ##  ##     anyDuplicated, aperm, append, as.data.frame, basename, cbind, ##     colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find, ##     get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply, ##     match, mget, order, paste, pmax, pmax.int, pmin, pmin.int, ##     Position, rank, rbind, Reduce, rownames, sapply, setdiff, sort, ##     table, tapply, union, unique, unsplit, which.max, which.min ##  ##  ## Attaching package: 'S4Vectors' ##  ## The following objects are masked from 'package:lubridate': ##  ##     second, second&lt;- ##  ## The following objects are masked from 'package:dplyr': ##  ##     first, rename ##  ## The following object is masked from 'package:tidyr': ##  ##     expand ##  ## The following objects are masked from 'package:base': ##  ##     expand.grid, I, unname ##  ## Loading required package: IRanges ##  ## Attaching package: 'IRanges' ##  ## The following object is masked from 'package:lubridate': ##  ##     %within% ##  ## The following objects are masked from 'package:dplyr': ##  ##     collapse, desc, slice ##  ## The following object is masked from 'package:purrr': ##  ##     reduce ##  ## Loading required package: GenomicRanges ## Loading required package: GenomeInfoDb ## Loading required package: SummarizedExperiment ## Loading required package: MatrixGenerics ## Loading required package: matrixStats ##  ## Attaching package: 'matrixStats' ##  ## The following object is masked from 'package:dplyr': ##  ##     count ##  ##  ## Attaching package: 'MatrixGenerics' ##  ## The following objects are masked from 'package:matrixStats': ##  ##     colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse, ##     colCounts, colCummaxs, colCummins, colCumprods, colCumsums, ##     colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs, ##     colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats, ##     colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds, ##     colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads, ##     colWeightedMeans, colWeightedMedians, colWeightedSds, ##     colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet, ##     rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods, ##     rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps, ##     rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins, ##     rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks, ##     rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars, ##     rowWeightedMads, rowWeightedMeans, rowWeightedMedians, ##     rowWeightedSds, rowWeightedVars ##  ## Loading required package: Biobase ## Welcome to Bioconductor ##  ##     Vignettes contain introductory material; view with ##     'browseVignettes()'. To cite Bioconductor, see ##     'citation("Biobase")', and for packages 'citation("pkgname")'. ##  ##  ## Attaching package: 'Biobase' ##  ## The following object is masked from 'package:MatrixGenerics': ##  ##     rowMedians ##  ## The following objects are masked from 'package:matrixStats': ##  ##     anyMissing, rowMedians</code></pre>
-<pre><code>library(igraph)</code></pre>
-<pre><code>##  ## Attaching package: 'igraph' ##  ## The following object is masked from 'package:GenomicRanges': ##  ##     union ##  ## The following object is masked from 'package:IRanges': ##  ##     union ##  ## The following object is masked from 'package:S4Vectors': ##  ##     union ##  ## The following objects are masked from 'package:BiocGenerics': ##  ##     normalize, path, union ##  ## The following objects are masked from 'package:lubridate': ##  ##     %--%, union ##  ## The following objects are masked from 'package:dplyr': ##  ##     as_data_frame, groups, union ##  ## The following objects are masked from 'package:purrr': ##  ##     compose, simplify ##  ## The following object is masked from 'package:tidyr': ##  ##     crossing ##  ## The following object is masked from 'package:tibble': ##  ##     as_data_frame ##  ## The following objects are masked from 'package:stats': ##  ##     decompose, spectrum ##  ## The following object is masked from 'package:base': ##  ##     union</code></pre>
-<pre><code>library(psych)</code></pre>
-<pre><code>##  ## Attaching package: 'psych' ##  ## The following object is masked from 'package:SummarizedExperiment': ##  ##     distance ##  ## The following object is masked from 'package:GenomicRanges': ##  ##     distance ##  ## The following objects are masked from 'package:IRanges': ##  ##     distance, reflect ##  ## The following objects are masked from 'package:ggplot2': ##  ##     %+%, alpha</code></pre>
-<pre><code>library(tidygraph)</code></pre>
-<pre><code>##  ## Attaching package: 'tidygraph' ##  ## The following object is masked from 'package:igraph': ##  ##     groups ##  ## The following objects are masked from 'package:IRanges': ##  ##     active, slice ##  ## The following objects are masked from 'package:S4Vectors': ##  ##     active, rename ##  ## The following object is masked from 'package:stats': ##  ##     filter</code></pre>
-<pre><code>library(ggraph) library(WGCNA)</code></pre>
-<pre><code>## Loading required package: dynamicTreeCut ## Loading required package: fastcluster ##  ## Attaching package: 'fastcluster' ##  ## The following object is masked from 'package:stats': ##  ##     hclust ##  ##  ##  ## Attaching package: 'WGCNA' ##  ## The following object is masked from 'package:IRanges': ##  ##     cor ##  ## The following object is masked from 'package:S4Vectors': ##  ##     cor ##  ## The following object is masked from 'package:stats': ##  ##     cor</code></pre>
-<pre><code>library(edgeR)</code></pre>
-<pre><code>## Loading required package: limma ##  ## Attaching package: 'limma' ##  ## The following object is masked from 'package:DESeq2': ##  ##     plotMA ##  ## The following object is masked from 'package:BiocGenerics': ##  ##     plotMA</code></pre>
-<pre><code>library(reshape2)</code></pre>
-<pre><code>##  ## Attaching package: 'reshape2' ##  ## The following object is masked from 'package:tidyr': ##  ##     smiths</code></pre>
-<pre><code>library(ggcorrplot) library(corrplot)</code></pre>
-<pre><code>## corrplot 0.94 loaded</code></pre>
-<pre><code>library(rvest)</code></pre>
-<pre><code>##  ## Attaching package: 'rvest' ##  ## The following object is masked from 'package:readr': ##  ##     guess_encoding</code></pre>
-<pre><code>library(purrr) library(pheatmap) library(glmnet)</code></pre>
-<pre><code>## Loading required package: Matrix ##  ## Attaching package: 'Matrix' ##  ## The following object is masked from 'package:S4Vectors': ##  ##     expand ##  ## The following objects are masked from 'package:tidyr': ##  ##     expand, pack, unpack ##  ## Loaded glmnet 4.1-8</code></pre>
-<pre><code>library(caret)</code></pre>
-<pre><code>## Loading required package: lattice ##  ## Attaching package: 'caret' ##  ## The following object is masked from 'package:purrr': ##  ##     lift</code></pre>
-<pre><code>library(factoextra)</code></pre>
-<pre><code>## Welcome! Want to learn more? See two factoextra-related books at https://goo.gl/ve3WBa</code></pre>
-<pre><code>library(vegan)</code></pre>
-<pre><code>## Loading required package: permute ##  ## Attaching package: 'permute' ##  ## The following object is masked from 'package:igraph': ##  ##     permute ##  ## This is vegan 2.6-8 ##  ## Attaching package: 'vegan' ##  ## The following object is masked from 'package:caret': ##  ##     tolerance ##  ## The following object is masked from 'package:psych': ##  ##     pca ##  ## The following object is masked from 'package:igraph': ##  ##     diversity</code></pre>
-<pre><code>library(ggfortify)</code></pre>
+<h1>Load libraries</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DESeq2)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidygraph)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(WGCNA)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(edgeR)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pheatmap)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggfortify)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="load-and-prep-data" class="level1">
-<h1><strong>2 Load and prep data</strong></h1>
+<h1>Load and prep data</h1>
 <p>Load in count matrices for RNAseq.</p>
-<pre><code># raw gene counts data (will filter and variance stabilize) Apul_genes &lt;- read_csv("../output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv")</code></pre>
-<pre><code>## Rows: 44371 Columns: 41 ## ── Column specification ──────────────────────────────────────────────────────── ## Delimiter: "," ## chr  (1): gene_id ## dbl (40): 1A1, 1A10, 1A12, 1A2, 1A8, 1A9, 1B1, 1B10, 1B2, 1B5, 1B9, 1C10, 1C... ##  ## ℹ Use `spec()` to retrieve the full column specification for this data. ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre><code>Apul_genes &lt;- as.data.frame(Apul_genes)  # format gene IDs as rownames (instead of a column) rownames(Apul_genes) &lt;- Apul_genes$gene_id Apul_genes &lt;- Apul_genes%&gt;%select(!gene_id)   # load and format metadata metadata &lt;- read_csv("../../M-multi-species/data/rna_metadata.csv")%&gt;%select(AzentaSampleName, ColonyID, Timepoint) %&gt;%   filter(grepl("ACR", ColonyID))</code></pre>
-<pre><code>## New names: ## Rows: 117 Columns: 19 ## ── Column specification ## ──────────────────────────────────────────────────────── Delimiter: "," chr ## (13): SampleName, WellNumber, AzentaSampleName, ColonyID, Timepoint, Sam... dbl ## (5): SampleNumber, Plate, TotalAmount-ng, Volume-uL, Conc-ng.uL lgl (1): ## MethodUsedForSpectrophotometry ## ℹ Use `spec()` to retrieve the full column specification for this data. ℹ ## Specify the column types or set `show_col_types = FALSE` to quiet this message. ## • `` -&gt; `...19`</code></pre>
-<pre><code>metadata$Sample &lt;- paste(metadata$AzentaSampleName, metadata$ColonyID, metadata$Timepoint, sep = "_")  colonies &lt;- unique(metadata$ColonyID)  # Load physiological data phys&lt;-read_csv("https://github.com/urol-e5/timeseries/raw/refs/heads/master/time_series_analysis/Output/master_timeseries.csv")%&gt;%filter(colony_id_corr %in% colonies)%&gt;%   select(colony_id_corr, species, timepoint, site, Host_AFDW.mg.cm2, Sym_AFDW.mg.cm2, Am, AQY, Rd, Ik, Ic, calc.umol.cm2.hr, cells.mgAFDW, prot_mg.mgafdw, Ratio_AFDW.mg.cm2, Total_Chl, Total_Chl_cell, cre.umol.mgafdw)</code></pre>
-<pre><code>## Rows: 448 Columns: 46 ## ── Column specification ──────────────────────────────────────────────────────── ## Delimiter: "," ## chr (10): colony_id, colony_id_corr, species, timepoint, month, site, nutrie... ## dbl (36): cre.umol.mgprot, Host_AFDW.mg.cm2, Sym_AFDW.mg.cm2, Host_DW.mg.cm2... ##  ## ℹ Use `spec()` to retrieve the full column specification for this data. ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre><code># format timepoint phys$timepoint &lt;- gsub("timepoint", "TP", phys$timepoint) #add column with full sample info phys &lt;- merge(phys, metadata, by.x = c("colony_id_corr", "timepoint"), by.y = c("ColonyID", "Timepoint")) %&gt;%   select(-AzentaSampleName)     #add site information into metadata  metadata$Site&lt;-phys$site[match(metadata$ColonyID, phys$colony_id_corr)]   # Rename gene column names to include full sample info (as in miRNA table) colnames(Apul_genes) &lt;- metadata$Sample[match(colnames(Apul_genes), metadata$AzentaSampleName)]  # raw miRNA counts (will filter and variance stabilize) Apul_miRNA &lt;- read.table(file = "../output/03.10-D-Apul-sRNAseq-expression-DESeq2/Apul_miRNA_ShortStack_counts_formatted.txt", header = TRUE, sep = "\t", check.names = FALSE)</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># raw gene counts data (will filter and variance stabilize)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Apul_genes <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../output/02.20-D-Apul-RNAseq-alignment-HiSat2/apul-gene_count_matrix.csv"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Apul_genes <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(Apul_genes)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># format gene IDs as rownames (instead of a column)</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(Apul_genes) <span class="ot">&lt;-</span> Apul_genes<span class="sc">$</span>gene_id</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>Apul_genes <span class="ot">&lt;-</span> Apul_genes<span class="sc">%&gt;%</span><span class="fu">select</span>(<span class="sc">!</span>gene_id)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># load and format metadata</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../M-multi-species/data/rna_metadata.csv"</span>)<span class="sc">%&gt;%</span><span class="fu">select</span>(AzentaSampleName, ColonyID, Timepoint) <span class="sc">%&gt;%</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">"ACR"</span>, ColonyID))</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>metadata<span class="sc">$</span>Sample <span class="ot">&lt;-</span> <span class="fu">paste</span>(metadata<span class="sc">$</span>AzentaSampleName, metadata<span class="sc">$</span>ColonyID, metadata<span class="sc">$</span>Timepoint, <span class="at">sep =</span> <span class="st">"_"</span>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>colonies <span class="ot">&lt;-</span> <span class="fu">unique</span>(metadata<span class="sc">$</span>ColonyID)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Load physiological data</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>phys<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"https://github.com/urol-e5/timeseries/raw/refs/heads/master/time_series_analysis/Output/master_timeseries.csv"</span>)<span class="sc">%&gt;%</span><span class="fu">filter</span>(colony_id_corr <span class="sc">%in%</span> colonies)<span class="sc">%&gt;%</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(colony_id_corr, species, timepoint, site, Host_AFDW.mg.cm2, Sym_AFDW.mg.cm2, Am, AQY, Rd, Ik, Ic, calc.umol.cm2.hr, cells.mgAFDW, prot_mg.mgafdw, Ratio_AFDW.mg.cm2, Total_Chl, Total_Chl_cell, cre.umol.mgafdw)</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co"># format timepoint</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>phys<span class="sc">$</span>timepoint <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"timepoint"</span>, <span class="st">"TP"</span>, phys<span class="sc">$</span>timepoint)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co">#add column with full sample info</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>phys <span class="ot">&lt;-</span> <span class="fu">merge</span>(phys, metadata, <span class="at">by.x =</span> <span class="fu">c</span>(<span class="st">"colony_id_corr"</span>, <span class="st">"timepoint"</span>), <span class="at">by.y =</span> <span class="fu">c</span>(<span class="st">"ColonyID"</span>, <span class="st">"Timepoint"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>AzentaSampleName)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co">#add site information into metadata </span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>metadata<span class="sc">$</span>Site<span class="ot">&lt;-</span>phys<span class="sc">$</span>site[<span class="fu">match</span>(metadata<span class="sc">$</span>ColonyID, phys<span class="sc">$</span>colony_id_corr)]</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename gene column names to include full sample info (as in miRNA table)</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Apul_genes) <span class="ot">&lt;-</span> metadata<span class="sc">$</span>Sample[<span class="fu">match</span>(<span class="fu">colnames</span>(Apul_genes), metadata<span class="sc">$</span>AzentaSampleName)]</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="co"># raw miRNA counts (will filter and variance stabilize)</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>Apul_miRNA <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">"../output/03.10-D-Apul-sRNAseq-expression-DESeq2/Apul_miRNA_ShortStack_counts_formatted.txt"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">check.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <section id="counts-filtering" class="level2">
-<h2 class="anchored" data-anchor-id="counts-filtering"><strong>2.1 Counts filtering</strong></h2>
+<h2 class="anchored" data-anchor-id="counts-filtering">Counts filtering</h2>
 <p>Ensure there are no genes or miRNAs with 0 counts across all samples.</p>
-<pre><code>nrow(Apul_genes)</code></pre>
-<pre><code>## [1] 44371</code></pre>
-<pre><code>Apul_genes_filt&lt;-Apul_genes %&gt;%      mutate(Total = rowSums(.[, 1:40]))%&gt;%     filter(!Total==0)%&gt;%     dplyr::select(!Total)  nrow(Apul_genes_filt)</code></pre>
-<pre><code>## [1] 35869</code></pre>
-<pre><code># miRNAs nrow(Apul_miRNA)</code></pre>
-<pre><code>## [1] 51</code></pre>
-<pre><code>Apul_miRNA_filt&lt;-Apul_miRNA %&gt;%      mutate(Total = rowSums(.[, 1:40]))%&gt;%     filter(!Total==0)%&gt;%     dplyr::select(!Total)  nrow(Apul_miRNA_filt)</code></pre>
-<pre><code>## [1] 51</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(Apul_genes)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>Apul_genes_filt<span class="ot">&lt;-</span>Apul_genes <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>     <span class="fu">mutate</span>(<span class="at">Total =</span> <span class="fu">rowSums</span>(.[, <span class="dv">1</span><span class="sc">:</span><span class="dv">40</span>]))<span class="sc">%&gt;%</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>Total<span class="sc">==</span><span class="dv">0</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">!</span>Total)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(Apul_genes_filt)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># miRNAs</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(Apul_miRNA)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>Apul_miRNA_filt<span class="ot">&lt;-</span>Apul_miRNA <span class="sc">%&gt;%</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>     <span class="fu">mutate</span>(<span class="at">Total =</span> <span class="fu">rowSums</span>(.[, <span class="dv">1</span><span class="sc">:</span><span class="dv">40</span>]))<span class="sc">%&gt;%</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>Total<span class="sc">==</span><span class="dv">0</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">!</span>Total)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(Apul_miRNA_filt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Removing genes with only 0 counts reduced number from 44371 to 35869. Retained all 51 miRNAs.</p>
 <p>Will not be performing pOverA filtering for now, since LM should presumabily incorporate sample representation</p>
 </section>
 <section id="physiology-filtering" class="level2">
-<h2 class="anchored" data-anchor-id="physiology-filtering"><strong>2.2 Physiology filtering</strong></h2>
+<h2 class="anchored" data-anchor-id="physiology-filtering">Physiology filtering</h2>
 <p>Run PCA on physiology data to see if there are phys outliers</p>
 <p>Export data for PERMANOVA test.</p>
-<pre><code>test&lt;-as.data.frame(phys) test&lt;-test[complete.cases(test), ]</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>test<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(phys)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>test<span class="ot">&lt;-</span>test[<span class="fu">complete.cases</span>(test), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Build PERMANOVA model.</p>
-<pre><code>scaled_test &lt;-prcomp(test%&gt;%select(where(is.numeric)), scale=TRUE, center=TRUE) fviz_eig(scaled_test)</code></pre>
-<pre><code># scale data vegan &lt;- scale(test%&gt;%select(where(is.numeric)))  # PerMANOVA  permanova&lt;-adonis2(vegan ~ timepoint*site, data = test, method='eu') permanova</code></pre>
-<pre><code>## Permutation test for adonis under reduced model ## Permutation: free ## Number of permutations: 999 ##  ## adonis2(formula = vegan ~ timepoint * site, data = test, method = "eu") ##          Df SumOfSqs      R2      F Pr(&gt;F)     ## Model     7   208.16 0.43731 2.9976  0.001 *** ## Residual 27   267.84 0.56269                   ## Total    34   476.00 1.00000                   ## --- ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-<pre><code>pca1&lt;-ggplot2::autoplot(scaled_test, data=test, frame.colour="timepoint", loadings=FALSE,  colour="timepoint", shape="site", loadings.label.colour="black", loadings.colour="black", loadings.label=FALSE, frame=FALSE, loadings.label.size=5, loadings.label.vjust=-1, size=5) +    geom_text(aes(x = PC1, y = PC2, label = paste(colony_id_corr, timepoint)), vjust = -0.5)+   theme_classic()+    theme(legend.text = element_text(size=18),           legend.position="right",         plot.background = element_blank(),         legend.title = element_text(size=18, face="bold"),          axis.text = element_text(size=18),          axis.title = element_text(size=18,  face="bold"));pca1</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>scaled_test <span class="ot">&lt;-</span><span class="fu">prcomp</span>(test<span class="sc">%&gt;%</span><span class="fu">select</span>(<span class="fu">where</span>(is.numeric)), <span class="at">scale=</span><span class="cn">TRUE</span>, <span class="at">center=</span><span class="cn">TRUE</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_eig</span>(scaled_test)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># scale data</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>vegan <span class="ot">&lt;-</span> <span class="fu">scale</span>(test<span class="sc">%&gt;%</span><span class="fu">select</span>(<span class="fu">where</span>(is.numeric)))</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># PerMANOVA </span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>permanova<span class="ot">&lt;-</span><span class="fu">adonis2</span>(vegan <span class="sc">~</span> timepoint<span class="sc">*</span>site, <span class="at">data =</span> test, <span class="at">method=</span><span class="st">'eu'</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>permanova</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pca1<span class="ot">&lt;-</span>ggplot2<span class="sc">::</span><span class="fu">autoplot</span>(scaled_test, <span class="at">data=</span>test, <span class="at">frame.colour=</span><span class="st">"timepoint"</span>, <span class="at">loadings=</span><span class="cn">FALSE</span>,  <span class="at">colour=</span><span class="st">"timepoint"</span>, <span class="at">shape=</span><span class="st">"site"</span>, <span class="at">loadings.label.colour=</span><span class="st">"black"</span>, <span class="at">loadings.colour=</span><span class="st">"black"</span>, <span class="at">loadings.label=</span><span class="cn">FALSE</span>, <span class="at">frame=</span><span class="cn">FALSE</span>, <span class="at">loadings.label.size=</span><span class="dv">5</span>, <span class="at">loadings.label.vjust=</span><span class="sc">-</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">5</span>) <span class="sc">+</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> PC1, <span class="at">y =</span> PC2, <span class="at">label =</span> <span class="fu">paste</span>(colony_id_corr, timepoint)), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(<span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>), </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">legend.position=</span><span class="st">"right"</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>, <span class="at">face=</span><span class="st">"bold"</span>), </span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>), </span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">18</span>,  <span class="at">face=</span><span class="st">"bold"</span>));pca1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Remove ACR-173, timepoint 3 sample from analysis. This is Azenta sample 1B2.</p>
-<pre><code>Apul_genes_filt &lt;- Apul_genes_filt %&gt;%   select(!`1B2_ACR-173_TP3`)  Apul_miRNA_filt &lt;- Apul_miRNA_filt %&gt;%   select(!`1B2_ACR-173_TP3`)  metadata &lt;- metadata %&gt;%   filter(Sample != "1B2_ACR-173_TP3")</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>Apul_genes_filt <span class="ot">&lt;-</span> Apul_genes_filt <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="st">`</span><span class="at">1B2_ACR-173_TP3</span><span class="st">`</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>Apul_miRNA_filt <span class="ot">&lt;-</span> Apul_miRNA_filt <span class="sc">%&gt;%</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="st">`</span><span class="at">1B2_ACR-173_TP3</span><span class="st">`</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> metadata <span class="sc">%&gt;%</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Sample <span class="sc">!=</span> <span class="st">"1B2_ACR-173_TP3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>We also do not have phys data for colony 1B9 ACR-265 at TP4, so I’ll remove that here as well.</p>
-<pre><code>Apul_genes_filt &lt;- Apul_genes_filt%&gt;%   select(!`1B9_ACR-265_TP4`)  Apul_miRNA_filt &lt;- Apul_miRNA_filt%&gt;%   select(!`1B9_ACR-265_TP4`)  metadata &lt;- metadata %&gt;%   filter(Sample != "1B9_ACR-265_TP4")</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Apul_genes_filt <span class="ot">&lt;-</span> Apul_genes_filt<span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="st">`</span><span class="at">1B9_ACR-265_TP4</span><span class="st">`</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>Apul_miRNA_filt <span class="ot">&lt;-</span> Apul_miRNA_filt<span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="st">`</span><span class="at">1B9_ACR-265_TP4</span><span class="st">`</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> metadata <span class="sc">%&gt;%</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Sample <span class="sc">!=</span> <span class="st">"1B9_ACR-265_TP4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="assign-metadata-and-arrange-order-of-columns" class="level2">
-<h2 class="anchored" data-anchor-id="assign-metadata-and-arrange-order-of-columns"><strong>2.3 Assign metadata and arrange order of columns</strong></h2>
+<h2 class="anchored" data-anchor-id="assign-metadata-and-arrange-order-of-columns">Assign metadata and arrange order of columns</h2>
 <p>Order metadata the same as the column order in the gene matrix.</p>
-<pre><code>list&lt;-colnames(Apul_genes_filt) list&lt;-as.factor(list)  metadata$Sample&lt;-as.factor(metadata$Sample)  # Re-order the levels metadata$Sample &lt;- factor(as.character(metadata$Sample), levels=list) # Re-order the data.frame metadata_ordered &lt;- metadata[order(metadata$Sample),] metadata_ordered$Sample</code></pre>
-<pre><code>##  [1] 1A1_ACR-173_TP1  1A10_ACR-145_TP4 1A12_ACR-237_TP3 1A2_ACR-244_TP4  ##  [5] 1A8_ACR-186_TP2  1A9_ACR-244_TP2  1B1_ACR-225_TP3  1B10_ACR-150_TP4 ##  [9] 1B5_ACR-229_TP1  1C10_ACR-173_TP4 1C4_ACR-139_TP4  1D10_ACR-265_TP2 ## [13] 1D3_ACR-225_TP4  1D4_ACR-237_TP4  1D6_ACR-229_TP2  1D8_ACR-237_TP2  ## [17] 1D9_ACR-229_TP4  1E1_ACR-265_TP3  1E3_ACR-150_TP2  1E5_ACR-139_TP3  ## [21] 1E9_ACR-237_TP1  1F11_ACR-173_TP2 1F4_ACR-150_TP3  1F8_ACR-145_TP3  ## [25] 1G5_ACR-244_TP3  1H11_ACR-225_TP1 1H12_ACR-186_TP3 1H6_ACR-225_TP2  ## [29] 1H7_ACR-229_TP3  1H8_ACR-186_TP4  2B2_ACR-145_TP1  2B3_ACR-139_TP2  ## [33] 2C1_ACR-244_TP1  2C2_ACR-139_TP1  2D2_ACR-150_TP1  2E2_ACR-186_TP1  ## [37] 2F1_ACR-265_TP1  2G1_ACR-145_TP2  ## 38 Levels: 1A1_ACR-173_TP1 1A10_ACR-145_TP4 ... 2G1_ACR-145_TP2</code></pre>
-<pre><code># Make sure the miRNA colnames are also in the same order as the gene colnames Apul_miRNA_filt &lt;- Apul_miRNA_filt[, colnames(Apul_genes_filt)]</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>list<span class="ot">&lt;-</span><span class="fu">colnames</span>(Apul_genes_filt)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>list<span class="ot">&lt;-</span><span class="fu">as.factor</span>(list)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>metadata<span class="sc">$</span>Sample<span class="ot">&lt;-</span><span class="fu">as.factor</span>(metadata<span class="sc">$</span>Sample)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-order the levels</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>metadata<span class="sc">$</span>Sample <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">as.character</span>(metadata<span class="sc">$</span>Sample), <span class="at">levels=</span>list)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-order the data.frame</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>metadata_ordered <span class="ot">&lt;-</span> metadata[<span class="fu">order</span>(metadata<span class="sc">$</span>Sample),]</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>metadata_ordered<span class="sc">$</span>Sample</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sure the miRNA colnames are also in the same order as the gene colnames</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>Apul_miRNA_filt <span class="ot">&lt;-</span> Apul_miRNA_filt[, <span class="fu">colnames</span>(Apul_genes_filt)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Metadata and gene count matrix are now ordered the same.</p>
 </section>
 <section id="conduct-variance-stabilized-transformation" class="level2">
-<h2 class="anchored" data-anchor-id="conduct-variance-stabilized-transformation"><strong>2.4 Conduct variance stabilized transformation</strong></h2>
+<h2 class="anchored" data-anchor-id="conduct-variance-stabilized-transformation">Conduct variance stabilized transformation</h2>
 <p>VST should be performed on our two input datasets (gene counts and miRNA counts) separately</p>
 <section id="genes" class="level3">
-<h3 class="anchored" data-anchor-id="genes"><strong>2.4.1 Genes:</strong></h3>
-<pre><code>#Set DESeq2 design dds_genes &lt;- DESeqDataSetFromMatrix(countData = Apul_genes_filt,                               colData = metadata_ordered,                               design = ~Timepoint+ColonyID)</code></pre>
-<pre><code>## converting counts to integer mode  ## Warning in DESeqDataSet(se, design = design, ignoreRank): some variables in ## design formula are characters, converting to factors  ##   Note: levels of factors in the design contain characters other than ##   letters, numbers, '_' and '.'. It is recommended (but not required) to use ##   only letters, numbers, and delimiters '_' or '.', as these are safe characters ##   for column names in R. [This is a message, not a warning or an error]</code></pre>
+<h3 class="anchored" data-anchor-id="genes">Genes:</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Set DESeq2 design</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>dds_genes <span class="ot">&lt;-</span> <span class="fu">DESeqDataSetFromMatrix</span>(<span class="at">countData =</span> Apul_genes_filt,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">colData =</span> metadata_ordered,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">design =</span> <span class="sc">~</span>Timepoint<span class="sc">+</span>ColonyID)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Check size factors.</p>
-<pre><code>SF.dds_genes &lt;- estimateSizeFactors(dds_genes) #estimate size factors to determine if we can use vst  to transform our data. Size factors should be less than 4 for us to use vst</code></pre>
-<pre><code>##   Note: levels of factors in the design contain characters other than ##   letters, numbers, '_' and '.'. It is recommended (but not required) to use ##   only letters, numbers, and delimiters '_' or '.', as these are safe characters ##   for column names in R. [This is a message, not a warning or an error]</code></pre>
-<pre><code>print(sizeFactors(SF.dds_genes)) #View size factors</code></pre>
-<pre><code>##  1A1_ACR-173_TP1 1A10_ACR-145_TP4 1A12_ACR-237_TP3  1A2_ACR-244_TP4  ##        0.7568024        0.7700354        1.4234168        0.6403634  ##  1A8_ACR-186_TP2  1A9_ACR-244_TP2  1B1_ACR-225_TP3 1B10_ACR-150_TP4  ##        1.1214880        1.2047491        1.4207289        1.4020164  ##  1B5_ACR-229_TP1 1C10_ACR-173_TP4  1C4_ACR-139_TP4 1D10_ACR-265_TP2  ##        1.6051212        0.7138877        1.1896990        1.1370395  ##  1D3_ACR-225_TP4  1D4_ACR-237_TP4  1D6_ACR-229_TP2  1D8_ACR-237_TP2  ##        0.6728303        1.0536139        1.0902785        0.8698195  ##  1D9_ACR-229_TP4  1E1_ACR-265_TP3  1E3_ACR-150_TP2  1E5_ACR-139_TP3  ##        0.6692241        1.0722951        1.1788615        1.2207644  ##  1E9_ACR-237_TP1 1F11_ACR-173_TP2  1F4_ACR-150_TP3  1F8_ACR-145_TP3  ##        1.0408338        1.0442345        1.4020713        0.7941250  ##  1G5_ACR-244_TP3 1H11_ACR-225_TP1 1H12_ACR-186_TP3  1H6_ACR-225_TP2  ##        1.6118118        1.4234168        0.6115323        0.7941250  ##  1H7_ACR-229_TP3  1H8_ACR-186_TP4  2B2_ACR-145_TP1  2B3_ACR-139_TP2  ##        1.3288255        1.2192334        1.1021148        1.4414683  ##  2C1_ACR-244_TP1  2C2_ACR-139_TP1  2D2_ACR-150_TP1  2E2_ACR-186_TP1  ##        0.6638831        1.1950136        0.7798443        0.6222376  ##  2F1_ACR-265_TP1  2G1_ACR-145_TP2  ##        0.9538723        0.8204576</code></pre>
-<pre><code>all(sizeFactors(SF.dds_genes)) &lt; 4</code></pre>
-<pre><code>## Warning in all(sizeFactors(SF.dds_genes)): coercing argument of type 'double' ## to logical  ## [1] TRUE</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>SF.dds_genes <span class="ot">&lt;-</span> <span class="fu">estimateSizeFactors</span>(dds_genes) <span class="co">#estimate size factors to determine if we can use vst  to transform our data. Size factors should be less than 4 for us to use vst</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">sizeFactors</span>(SF.dds_genes)) <span class="co">#View size factors</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">sizeFactors</span>(SF.dds_genes)) <span class="sc">&lt;</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>All size factors are less than 4, so we can use VST transformation.</p>
-<pre><code>vsd_genes &lt;- vst(dds_genes, blind=TRUE) #apply a variance stabilizing transformation to minimize effects of small counts and normalize with respect to library size vsd_genes &lt;- assay(vsd_genes) head(vsd_genes, 3) #view transformed gene count data for the first three genes in the dataset.  </code></pre>
-<pre><code>##            1A1_ACR-173_TP1 1A10_ACR-145_TP4 1A12_ACR-237_TP3 1A2_ACR-244_TP4 ## FUN_002326        6.207893         6.133639         5.751040        5.403964 ## FUN_002315        4.946774         5.242300         5.164311        4.946774 ## FUN_002316        4.946774         4.946774         5.164311        4.946774 ##            1A8_ACR-186_TP2 1A9_ACR-244_TP2 1B1_ACR-225_TP3 1B10_ACR-150_TP4 ## FUN_002326        5.292863        5.280744        5.779288         5.698269 ## FUN_002315        4.946774        4.946774        4.946774         4.946774 ## FUN_002316        4.946774        4.946774        4.946774         4.946774 ##            1B5_ACR-229_TP1 1C10_ACR-173_TP4 1C4_ACR-139_TP4 1D10_ACR-265_TP2 ## FUN_002326        5.151650         6.142146        5.282841         5.670053 ## FUN_002315        4.946774         4.946774        4.946774         4.946774 ## FUN_002316        4.946774         4.946774        4.946774         5.190111 ##            1D3_ACR-225_TP4 1D4_ACR-237_TP4 1D6_ACR-229_TP2 1D8_ACR-237_TP2 ## FUN_002326        5.975256        6.102690        5.195262        5.931837 ## FUN_002315        4.946774        4.946774        4.946774        4.946774 ## FUN_002316        4.946774        4.946774        5.195262        5.224889 ##            1D9_ACR-229_TP4 1E1_ACR-265_TP3 1E3_ACR-150_TP2 1E5_ACR-139_TP3 ## FUN_002326        5.263696        5.556731        5.284375        5.352679 ## FUN_002315        4.946774        4.946774        4.946774        4.946774 ## FUN_002316        4.946774        4.946774        4.946774        4.946774 ##            1E9_ACR-237_TP1 1F11_ACR-173_TP2 1F4_ACR-150_TP3 1F8_ACR-145_TP3 ## FUN_002326        5.974779         5.613433        5.698254        5.808464 ## FUN_002315        4.946774         5.200667        4.946774        4.946774 ## FUN_002316        4.946774         5.305373        4.946774        4.946774 ##            1G5_ACR-244_TP3 1H11_ACR-225_TP1 1H12_ACR-186_TP3 1H6_ACR-225_TP2 ## FUN_002326        5.235671         5.751040         5.414526        5.808464 ## FUN_002315        4.946774         5.164311         4.946774        4.946774 ## FUN_002316        4.946774         5.164311         4.946774        4.946774 ##            1H7_ACR-229_TP3 1H8_ACR-186_TP4 2B2_ACR-145_TP1 2B3_ACR-139_TP2 ## FUN_002326        5.171905        5.278764        5.756809        5.320502 ## FUN_002315        4.946774        4.946774        4.946774        4.946774 ## FUN_002316        4.946774        4.946774        4.946774        4.946774 ##            2C1_ACR-244_TP1 2C2_ACR-139_TP1 2D2_ACR-150_TP1 2E2_ACR-186_TP1 ## FUN_002326        5.395858        5.357000        6.360417        5.410519 ## FUN_002315        4.946774        4.946774        4.946774        4.946774 ## FUN_002316        4.946774        4.946774        4.946774        4.946774 ##            2F1_ACR-265_TP1 2G1_ACR-145_TP2 ## FUN_002326        6.077068        5.582917 ## FUN_002315        4.946774        4.946774 ## FUN_002316        4.946774        5.351050</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>vsd_genes <span class="ot">&lt;-</span> <span class="fu">vst</span>(dds_genes, <span class="at">blind=</span><span class="cn">TRUE</span>) <span class="co">#apply a variance stabilizing transformation to minimize effects of small counts and normalize with respect to library size</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>vsd_genes <span class="ot">&lt;-</span> <span class="fu">assay</span>(vsd_genes)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(vsd_genes, <span class="dv">3</span>) <span class="co">#view transformed gene count data for the first three genes in the dataset.  </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="mirna" class="level3">
-<h3 class="anchored" data-anchor-id="mirna"><strong>2.4.2 miRNA:</strong></h3>
-<pre><code>#Set DESeq2 design dds_miRNA &lt;- DESeqDataSetFromMatrix(countData = Apul_miRNA_filt,                               colData = metadata_ordered,                               design = ~Timepoint+ColonyID)</code></pre>
-<pre><code>## Warning in DESeqDataSet(se, design = design, ignoreRank): some variables in ## design formula are characters, converting to factors  ##   Note: levels of factors in the design contain characters other than ##   letters, numbers, '_' and '.'. It is recommended (but not required) to use ##   only letters, numbers, and delimiters '_' or '.', as these are safe characters ##   for column names in R. [This is a message, not a warning or an error]</code></pre>
+<h3 class="anchored" data-anchor-id="mirna">miRNA:</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Set DESeq2 design</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>dds_miRNA <span class="ot">&lt;-</span> <span class="fu">DESeqDataSetFromMatrix</span>(<span class="at">countData =</span> Apul_miRNA_filt,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">colData =</span> metadata_ordered,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">design =</span> <span class="sc">~</span>Timepoint<span class="sc">+</span>ColonyID)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Check size factors.</p>
-<pre><code>SF.dds_miRNA &lt;- estimateSizeFactors(dds_miRNA) #estimate size factors to determine if we can use vst  to transform our data. Size factors should be less than 4 for us to use vst</code></pre>
-<pre><code>##   Note: levels of factors in the design contain characters other than ##   letters, numbers, '_' and '.'. It is recommended (but not required) to use ##   only letters, numbers, and delimiters '_' or '.', as these are safe characters ##   for column names in R. [This is a message, not a warning or an error]</code></pre>
-<pre><code>print(sizeFactors(SF.dds_miRNA)) #View size factors</code></pre>
-<pre><code>##  1A1_ACR-173_TP1 1A10_ACR-145_TP4 1A12_ACR-237_TP3  1A2_ACR-244_TP4  ##        1.4375773        0.4873497        1.1278371        1.3906883  ##  1A8_ACR-186_TP2  1A9_ACR-244_TP2  1B1_ACR-225_TP3 1B10_ACR-150_TP4  ##        1.4576506        3.6175606        0.6314484        0.5933158  ##  1B5_ACR-229_TP1 1C10_ACR-173_TP4  1C4_ACR-139_TP4 1D10_ACR-265_TP2  ##        3.4568168        0.3494818        0.2635332        1.6883200  ##  1D3_ACR-225_TP4  1D4_ACR-237_TP4  1D6_ACR-229_TP2  1D8_ACR-237_TP2  ##        3.3510894        1.6862052        3.0187618        1.6095839  ##  1D9_ACR-229_TP4  1E1_ACR-265_TP3  1E3_ACR-150_TP2  1E5_ACR-139_TP3  ##        1.6452632        0.4710913        2.5273448        0.1018135  ##  1E9_ACR-237_TP1 1F11_ACR-173_TP2  1F4_ACR-150_TP3  1F8_ACR-145_TP3  ##        0.8833733        1.4438548        1.9140909        0.3982620  ##  1G5_ACR-244_TP3 1H11_ACR-225_TP1 1H12_ACR-186_TP3  1H6_ACR-225_TP2  ##        2.2537502        0.8044495        0.4593767        1.8545938  ##  1H7_ACR-229_TP3  1H8_ACR-186_TP4  2B2_ACR-145_TP1  2B3_ACR-139_TP2  ##        1.0932705        0.8296064        0.8877596        1.8683207  ##  2C1_ACR-244_TP1  2C2_ACR-139_TP1  2D2_ACR-150_TP1  2E2_ACR-186_TP1  ##        1.1967504        1.3986634        0.5117454        0.3091478  ##  2F1_ACR-265_TP1  2G1_ACR-145_TP2  ##        0.2926522        1.8710888</code></pre>
-<pre><code>all(sizeFactors(SF.dds_miRNA)) &lt; 4</code></pre>
-<pre><code>## Warning in all(sizeFactors(SF.dds_miRNA)): coercing argument of type 'double' ## to logical  ## [1] TRUE</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>SF.dds_miRNA <span class="ot">&lt;-</span> <span class="fu">estimateSizeFactors</span>(dds_miRNA) <span class="co">#estimate size factors to determine if we can use vst  to transform our data. Size factors should be less than 4 for us to use vst</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">sizeFactors</span>(SF.dds_miRNA)) <span class="co">#View size factors</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">sizeFactors</span>(SF.dds_miRNA)) <span class="sc">&lt;</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>All size factors are less than 4, so we can use VST transformation.</p>
-<pre><code>vsd_miRNA &lt;- varianceStabilizingTransformation(dds_miRNA, blind=TRUE) #apply a variance stabilizing transformation to minimize effects of small counts and normalize with respect to library size. Using varianceStabilizingTransformation() instead of vst() because few input genes</code></pre>
-<pre><code>##   Note: levels of factors in the design contain characters other than ##   letters, numbers, '_' and '.'. It is recommended (but not required) to use ##   only letters, numbers, and delimiters '_' or '.', as these are safe characters ##   for column names in R. [This is a message, not a warning or an error]</code></pre>
-<pre><code>vsd_miRNA &lt;- assay(vsd_miRNA) head(vsd_miRNA, 3) #view transformed gene count data for the first three genes in the dataset.</code></pre>
-<pre><code>##              1A1_ACR-173_TP1 1A10_ACR-145_TP4 1A12_ACR-237_TP3 1A2_ACR-244_TP4 ## Cluster_1819        6.241577         6.333406         5.156288        5.908382 ## Cluster_1832       10.316256         9.391572         8.609063        9.421515 ## Cluster_1833        5.019572         5.227543         5.666254        4.708296 ##              1A8_ACR-186_TP2 1A9_ACR-244_TP2 1B1_ACR-225_TP3 1B10_ACR-150_TP4 ## Cluster_1819        5.961721        6.625229        5.117430         4.816702 ## Cluster_1832        9.738252        9.242548        9.850665         8.546454 ## Cluster_1833        3.036811        1.259803        5.567643         3.858641 ##              1B5_ACR-229_TP1 1C10_ACR-173_TP4 1C4_ACR-139_TP4 1D10_ACR-265_TP2 ## Cluster_1819        5.993518         5.812294        5.412800         5.943860 ## Cluster_1832       10.008435         9.403449        9.653634         8.534568 ## Cluster_1833        5.542640         3.692640        5.755228         1.259803 ##              1D3_ACR-225_TP4 1D4_ACR-237_TP4 1D6_ACR-229_TP2 1D8_ACR-237_TP2 ## Cluster_1819        4.599786        4.853289        6.114836        5.781585 ## Cluster_1832        9.763673        9.191750        9.883012        8.663557 ## Cluster_1833        4.861042        5.917452        3.840651        5.324054 ##              1D9_ACR-229_TP4 1E1_ACR-265_TP3 1E3_ACR-150_TP2 1E5_ACR-139_TP3 ## Cluster_1819        5.484665        5.491651        6.223934        4.596699 ## Cluster_1832        9.392642        9.147975        9.048323        8.803360 ## Cluster_1833        3.534570        5.622057        1.259803        1.259803 ##              1E9_ACR-237_TP1 1F11_ACR-173_TP2 1F4_ACR-150_TP3 1F8_ACR-145_TP3 ## Cluster_1819        4.704752         6.036720        5.082222        5.964592 ## Cluster_1832        8.369793        10.053070        8.644804        9.082451 ## Cluster_1833        4.704752         4.401916        3.394119        4.466381 ##              1G5_ACR-244_TP3 1H11_ACR-225_TP1 1H12_ACR-186_TP3 1H6_ACR-225_TP2 ## Cluster_1819        5.549014         4.752323         6.258346        4.904013 ## Cluster_1832       10.258012         9.575661         9.907531        9.859495 ## Cluster_1833        1.259803         4.880505         4.834599        4.646739 ##              1H7_ACR-229_TP3 1H8_ACR-186_TP4 2B2_ACR-145_TP1 2B3_ACR-139_TP2 ## Cluster_1819        5.655634        5.262690        5.761459        5.359165 ## Cluster_1832        9.533533       10.045883        8.055823        9.894246 ## Cluster_1833        3.853406        5.789521        1.259803        3.808839 ##              2C1_ACR-244_TP1 2C2_ACR-139_TP1 2D2_ACR-150_TP1 2E2_ACR-186_TP1 ## Cluster_1819        5.708977        5.336131        5.574679        6.363739 ## Cluster_1832        9.373366        9.647408        8.160674        9.424801 ## Cluster_1833        5.613494        4.438563        3.600868        1.259803 ##              2F1_ACR-265_TP1 2G1_ACR-145_TP2 ## Cluster_1819        5.891542        5.239293 ## Cluster_1832        9.202346        9.119796 ## Cluster_1833        1.259803        4.241552</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>vsd_miRNA <span class="ot">&lt;-</span> <span class="fu">varianceStabilizingTransformation</span>(dds_miRNA, <span class="at">blind=</span><span class="cn">TRUE</span>) <span class="co">#apply a variance stabilizing transformation to minimize effects of small counts and normalize with respect to library size. Using varianceStabilizingTransformation() instead of vst() because few input genes</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>vsd_miRNA <span class="ot">&lt;-</span> <span class="fu">assay</span>(vsd_miRNA)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(vsd_miRNA, <span class="dv">3</span>) <span class="co">#view transformed gene count data for the first three genes in the dataset.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="combine-counts-data" class="level2">
-<h2 class="anchored" data-anchor-id="combine-counts-data"><strong>2.5 Combine counts data</strong></h2>
-<pre><code># Extract variance stabilized counts as dataframes # want samples in rows, genes/miRNAs in columns datExpr_genes &lt;- as.data.frame(t(vsd_genes)) datExpr_miRNA &lt;- as.data.frame(t(vsd_miRNA))  # Double check the row names (sample names) are in same order rownames(datExpr_genes) == rownames(datExpr_miRNA)</code></pre>
-<pre><code>##  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE ## [16] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE ## [31] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
-<pre><code># Combine vst gene counts and vst miRNA counts by rows (sample names) vsd_merged &lt;- cbind(datExpr_genes, datExpr_miRNA)</code></pre>
+<h2 class="anchored" data-anchor-id="combine-counts-data">Combine counts data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract variance stabilized counts as dataframes</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># want samples in rows, genes/miRNAs in columns</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>vsd_genes <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">t</span>(vsd_genes))</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>vsd_miRNA <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">t</span>(vsd_miRNA))</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Double check the row names (sample names) are in same order</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(vsd_genes) <span class="sc">==</span> <span class="fu">rownames</span>(vsd_miRNA)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine vst gene counts and vst miRNA counts by rows (sample names)</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>vsd_merged <span class="ot">&lt;-</span> <span class="fu">cbind</span>(vsd_genes, vsd_miRNA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="feature-selection" class="level1">
-<h1><strong>3 Feature selection</strong></h1>
+<h1>Feature selection</h1>
+<section id="genes-mirna" class="level2">
+<h2 class="anchored" data-anchor-id="genes-mirna">Genes + miRNA</h2>
 <p>We have a large number of genes, so we’ll reduce dimensionality using PCA. Note that, since we only have a few phenotypes of interest, we don’t need to reduce this dataset</p>
 <p>First need to remove any genes/miRNA that are invariant</p>
-<pre><code>vsd_merged_filt &lt;- vsd_merged[, apply(vsd_merged, 2, var) &gt; 0]  ncol(vsd_merged)</code></pre>
-<pre><code>## [1] 35920</code></pre>
-<pre><code>ncol(vsd_merged_filt)</code></pre>
-<pre><code>## [1] 35846</code></pre>
-<pre><code>colnames(vsd_merged[, apply(vsd_merged, 2, var) == 0])</code></pre>
-<pre><code>##  [1] "FUN_002873" "FUN_000675" "FUN_000696" "FUN_000732" "FUN_000780" ##  [6] "FUN_000804" "FUN_000805" "FUN_000808" "FUN_000840" "FUN_000841" ## [11] "FUN_000936" "FUN_001813" "FUN_005801" "FUN_006990" "FUN_006991" ## [16] "FUN_008788" "FUN_009193" "FUN_011084" "FUN_013317" "FUN_013915" ## [21] "FUN_015197" "FUN_016825" "FUN_019362" "FUN_019400" "FUN_023532" ## [26] "FUN_025493" "FUN_026386" "FUN_026452" "FUN_027886" "FUN_030163" ## [31] "FUN_032965" "FUN_033045" "FUN_034668" "FUN_035219" "FUN_035616" ## [36] "FUN_035884" "FUN_036141" "FUN_036423" "FUN_039232" "FUN_039257" ## [41] "FUN_040044" "FUN_040130" "FUN_042351" "FUN_043742" "FUN_003407" ## [46] "FUN_007954" "FUN_010106" "FUN_011370" "FUN_013836" "FUN_015936" ## [51] "FUN_019027" "FUN_020080" "FUN_020084" "FUN_020088" "FUN_020639" ## [56] "FUN_020669" "FUN_020695" "FUN_020713" "FUN_020719" "FUN_020915" ## [61] "FUN_021209" "FUN_021247" "FUN_021265" "FUN_021271" "FUN_021274" ## [66] "FUN_021313" "FUN_021316" "FUN_021367" "FUN_021391" "FUN_021394" ## [71] "FUN_021427" "FUN_037387" "FUN_038781" "FUN_042170"</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>vsd_merged_filt <span class="ot">&lt;-</span> vsd_merged[, <span class="fu">apply</span>(vsd_merged, <span class="dv">2</span>, var) <span class="sc">&gt;</span> <span class="dv">0</span>]</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(vsd_merged)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(vsd_merged_filt)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(vsd_merged[, <span class="fu">apply</span>(vsd_merged, <span class="dv">2</span>, var) <span class="sc">==</span> <span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Removed 74 invariant genes. I was worried we lost miRNA, but it looks like everything removed was a gene (prefix “FUN”)!</p>
 <p>Reduce dimensionality (genes+miRNA)</p>
-<pre><code># Perform PCA on gene+miRNA expression matrix pca_merged &lt;- prcomp(vsd_merged_filt, scale. = TRUE)  # Select top PCs that explain most variance (e.g., top 50 PCs) explained_var &lt;- summary(pca_merged)$importance[2, ]  # Cumulative variance explained num_pcs &lt;- min(which(cumsum(explained_var) &gt; 0.95))  # Keep PCs that explain 95% variance  merged_pcs &lt;- as.data.frame(pca_merged$x[, 1:num_pcs])  # Extract selected PCs  dim(merged_pcs)</code></pre>
-<pre><code>## [1] 38 31</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform PCA on gene+miRNA expression matrix</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>pca_merged <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(vsd_merged_filt, <span class="at">scale. =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Select top PCs that explain most variance (e.g., top 50 PCs)</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>explained_var <span class="ot">&lt;-</span> <span class="fu">summary</span>(pca_merged)<span class="sc">$</span>importance[<span class="dv">2</span>, ]  <span class="co"># Cumulative variance explained</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>num_pcs <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="fu">which</span>(<span class="fu">cumsum</span>(explained_var) <span class="sc">&gt;</span> <span class="fl">0.95</span>))  <span class="co"># Keep PCs that explain 95% variance</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>merged_pcs <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(pca_merged<span class="sc">$</span>x[, <span class="dv">1</span><span class="sc">:</span>num_pcs])  <span class="co"># Extract selected PCs</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(merged_pcs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>We have 27 gene/miRNA expression PCs</p>
+</section>
+<section id="genes-only" class="level2">
+<h2 class="anchored" data-anchor-id="genes-only">Genes only</h2>
+<p>To investigate gene expression separately from miRNA expression, reduce dimensionality of genes alone.</p>
+<p>Remove any genes that are invariant</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>vsd_genes_filt <span class="ot">&lt;-</span> vsd_genes[, <span class="fu">apply</span>(vsd_genes, <span class="dv">2</span>, var) <span class="sc">&gt;</span> <span class="dv">0</span>]</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(vsd_genes)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(vsd_genes_filt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Removed 74 invariant genes.</p>
+<p>Reduce dimensionality</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform PCA on gene expression matrix</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>pca_genes <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(vsd_genes_filt, <span class="at">scale. =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Select top PCs that explain most variance (e.g., top 50 PCs)</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>explained_var_genes <span class="ot">&lt;-</span> <span class="fu">summary</span>(pca_genes)<span class="sc">$</span>importance[<span class="dv">2</span>, ]  <span class="co"># Cumulative variance explained</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>num_pcs_genes <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="fu">which</span>(<span class="fu">cumsum</span>(explained_var_genes) <span class="sc">&gt;</span> <span class="fl">0.95</span>))  <span class="co"># Keep PCs that explain 95% variance</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>genes_pcs <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(pca_genes<span class="sc">$</span>x[, <span class="dv">1</span><span class="sc">:</span>num_pcs_genes])  <span class="co"># Extract selected PCs</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(genes_pcs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="physiological-metrics" class="level2">
+<h2 class="anchored" data-anchor-id="physiological-metrics">Physiological metrics</h2>
 <p>Select physiological metrics of interest. For now we’ll focus on biomass (“Host_AFDW.mg.cm2”), protein (“prot_mg.mgafdw”), and respiration (“Rd”). These are all metrics of host energy storage and expenditure.</p>
-<pre><code># Assign sample IDs to row names rownames(phys) &lt;- phys$Sample  # Select metrics phys_selection &lt;- phys %&gt;% select(Host_AFDW.mg.cm2, prot_mg.mgafdw, Rd)  # Make sure the phys rownames are in the same order as the gene/miRNA rownames phys_selection &lt;- phys_selection[rownames(merged_pcs),]</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign sample IDs to row names</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(phys) <span class="ot">&lt;-</span> phys<span class="sc">$</span>Sample</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Select metrics</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>phys_selection <span class="ot">&lt;-</span> phys <span class="sc">%&gt;%</span> <span class="fu">select</span>(Host_AFDW.mg.cm2, prot_mg.mgafdw, Rd)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sure the phys rownames are in the same order as the gene/miRNA rownames</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>phys_selection <span class="ot">&lt;-</span> phys_selection[<span class="fu">rownames</span>(merged_pcs),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="the-model" class="level1">
-<h1><strong>4 The model</strong></h1>
+</section>
+<section id="phenotype-to-predict-genemirna-expression" class="level1">
+<h1>Phenotype to predict gene/miRNA expression</h1>
+<section id="the-model" class="level2">
+<h2 class="anchored" data-anchor-id="the-model">The model</h2>
 <p>Train elastic models to predict gene expression PCs from phys data.</p>
-<pre><code>train_models &lt;- function(response_pcs, predictor_pcs) {   models &lt;- list()      for (pc in colnames(response_pcs)) {     y &lt;- response_pcs[[pc]]  # Gene expression PC     X &lt;- as.matrix(predictor_pcs)  # Phys as predictors          # Train elastic net model (alpha = 0.5 for mix of LASSO &amp; Ridge)     model &lt;- cv.glmnet(X, y, alpha = 0.5)          models[[pc]] &lt;- model   }      return(models) }  # Train models predicting gene expression PCs from phys data models &lt;- train_models(merged_pcs, phys_selection)</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>train_models <span class="ot">&lt;-</span> <span class="cf">function</span>(response_pcs, predictor_pcs) {</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  models <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (pc <span class="cf">in</span> <span class="fu">colnames</span>(response_pcs)) {</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> response_pcs[[pc]]  <span class="co"># Gene expression PC</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    X <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(predictor_pcs)  <span class="co"># Phys as predictors</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Train elastic net model (alpha = 0.5 for mix of LASSO &amp; Ridge)</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    model <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(X, y, <span class="at">alpha =</span> <span class="fl">0.5</span>)</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    models[[pc]] <span class="ot">&lt;-</span> model</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(models)</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Train models predicting gene expression PCs from phys data</span></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>models <span class="ot">&lt;-</span> <span class="fu">train_models</span>(merged_pcs, phys_selection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Extract feature importance.</p>
-<pre><code>get_feature_importance &lt;- function(models) {   importance_list &lt;- lapply(models, function(model) {     coefs &lt;- as.matrix(coef(model, s = "lambda.min"))[-1, , drop = FALSE]  # Convert to regular matrix &amp; remove intercept          # Convert to data frame     coefs_df &lt;- data.frame(Feature = rownames(coefs), Importance = as.numeric(coefs))          return(coefs_df)   })      # Combine feature importance across all predicted gene PCs   importance_df &lt;- bind_rows(importance_list) %&gt;%     group_by(Feature) %&gt;%     summarize(MeanImportance = mean(abs(Importance)), .groups = "drop") %&gt;%     arrange(desc(MeanImportance))      return(importance_df) }  feature_importance &lt;- get_feature_importance(models) head(feature_importance, 20)  # Top predictive phys features</code></pre>
-<pre><code>## # A tibble: 3 × 2 ##   Feature          MeanImportance ##   &lt;chr&gt;                     &lt;dbl&gt; ## 1 Rd                         6.17 ## 2 prot_mg.mgafdw             5.57 ## 3 Host_AFDW.mg.cm2           1.84</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>get_feature_importance <span class="ot">&lt;-</span> <span class="cf">function</span>(models) {</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  importance_list <span class="ot">&lt;-</span> <span class="fu">lapply</span>(models, <span class="cf">function</span>(model) {</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    coefs <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(<span class="fu">coef</span>(model, <span class="at">s =</span> <span class="st">"lambda.min"</span>))[<span class="sc">-</span><span class="dv">1</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]  <span class="co"># Convert to regular matrix &amp; remove intercept</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert to data frame</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    coefs_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Feature =</span> <span class="fu">rownames</span>(coefs), <span class="at">Importance =</span> <span class="fu">as.numeric</span>(coefs))</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(coefs_df)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Combine feature importance across all predicted gene PCs</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>  importance_df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(importance_list) <span class="sc">%&gt;%</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Feature) <span class="sc">%&gt;%</span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">MeanImportance =</span> <span class="fu">mean</span>(<span class="fu">abs</span>(Importance)), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(MeanImportance))</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(importance_df)</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>feature_importance <span class="ot">&lt;-</span> <span class="fu">get_feature_importance</span>(models)</span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(feature_importance, <span class="dv">20</span>)  <span class="co"># Top predictive phys features</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Evaluate performance.</p>
-<pre><code>evaluate_model_performance &lt;- function(models, response_pcs, predictor_pcs) {   results &lt;- data.frame(PC = colnames(response_pcs), R2 = NA)      for (pc in colnames(response_pcs)) {     y &lt;- response_pcs[[pc]]     X &lt;- as.matrix(predictor_pcs)          model &lt;- models[[pc]]     preds &lt;- predict(model, X, s = "lambda.min")          R2 &lt;- cor(y, preds)^2  # R-squared metric     results[results$PC == pc, "R2"] &lt;- R2   }      return(results) }  performance_results &lt;- evaluate_model_performance(models, merged_pcs, phys_selection) summary(performance_results$R2)</code></pre>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's  ## 0.06090 0.08104 0.10599 0.10721 0.12691 0.15641      21</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>evaluate_model_performance <span class="ot">&lt;-</span> <span class="cf">function</span>(models, response_pcs, predictor_pcs) {</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">PC =</span> <span class="fu">colnames</span>(response_pcs), <span class="at">R2 =</span> <span class="cn">NA</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (pc <span class="cf">in</span> <span class="fu">colnames</span>(response_pcs)) {</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> response_pcs[[pc]]</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    X <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(predictor_pcs)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    model <span class="ot">&lt;-</span> models[[pc]]</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    preds <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, X, <span class="at">s =</span> <span class="st">"lambda.min"</span>)</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>    R2 <span class="ot">&lt;-</span> <span class="fu">cor</span>(y, preds)<span class="sc">^</span><span class="dv">2</span>  <span class="co"># R-squared metric</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>    results[results<span class="sc">$</span>PC <span class="sc">==</span> pc, <span class="st">"R2"</span>] <span class="ot">&lt;-</span> R2</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>performance_results <span class="ot">&lt;-</span> <span class="fu">evaluate_model_performance</span>(models, merged_pcs, phys_selection)</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(performance_results<span class="sc">$</span>R2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="results" class="level1">
-<h1><strong>5 Results</strong></h1>
+<section id="results-1" class="level2">
+<h2 class="anchored" data-anchor-id="results-1">Results</h2>
 <p>Plot results.</p>
-<pre><code># Select top 20 predictive phys features top_features &lt;- feature_importance %&gt;% top_n(20, MeanImportance)  # Plot ggplot(top_features, aes(x = reorder(Feature, MeanImportance), y = MeanImportance)) +   geom_bar(stat = "identity", fill = "steelblue") +   coord_flip() +  # Flip for readability   theme_minimal() +   labs(title = "Top 20 Predictive Phys Features",        x = "Physiological Metric",        y = "Mean Importance")</code></pre>
-<p><img src="https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/code/22-Apul-miRNA-mRNA-machine-learning_files/figure-gfm/unnamed-chunk-22-1.png?raw=true" class="img-fluid"></p>
-<pre><code>ggplot(performance_results, aes(x = PC, y = R2)) +   geom_point(color = "darkred", size = 3) +   geom_hline(yintercept = mean(performance_results$R2, na.rm = TRUE), linetype = "dashed", color = "blue") +   theme_minimal() +   labs(title = "Model Performance Across Gene Expression PCs",        x = "Gene Expression PC",        y = "R² (Variance Explained)") +   theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate labels</code></pre>
-<pre><code>## Warning: Removed 21 rows containing missing values or values outside the scale range ## (`geom_point()`).</code></pre>
-<p><img src="https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/code/22-Apul-miRNA-mRNA-machine-learning_files/figure-gfm/unnamed-chunk-23-1.png?raw=true" class="img-fluid"></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select top 20 predictive phys features</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>top_features <span class="ot">&lt;-</span> feature_importance <span class="sc">%&gt;%</span> <span class="fu">top_n</span>(<span class="dv">20</span>, MeanImportance)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(top_features, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Feature, MeanImportance), <span class="at">y =</span> MeanImportance)) <span class="sc">+</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span>  <span class="co"># Flip for readability</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Top 20 Predictive Phys Features"</span>,</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Physiological Metric"</span>,</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Mean Importance"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(performance_results, <span class="fu">aes</span>(<span class="at">x =</span> PC, <span class="at">y =</span> R2)) <span class="sc">+</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"darkred"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(performance_results<span class="sc">$</span>R2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Model Performance Across Gene Expression PCs"</span>,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Gene Expression PC"</span>,</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"R² (Variance Explained)"</span>) <span class="sc">+</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))  <span class="co"># Rotate labels</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Keep in mind that, while we ran the model with physiological predictors, we’re really interested in the genes/miRNA associated with these predictors</p>
 <p>View components associated with gene/miRNA PCs</p>
-<pre><code># Get the PCA rotation (loadings) matrix from the original gene/miRNA PCA merged_loadings &lt;- pca_merged$rotation  # Each column corresponds to a PC  # Convert to data frame and reshape for plotting merged_loadings_df &lt;- as.data.frame(merged_loadings) %&gt;%   rownames_to_column(var = "gene_miRNA") %&gt;%   pivot_longer(-gene_miRNA, names_to = "Merged_PC", values_to = "Loading")  # View top CpGs contributing most to each PC top_genes &lt;- merged_loadings_df %&gt;%   group_by(Merged_PC) %&gt;%   arrange(desc(abs(Loading))) %&gt;%   slice_head(n = 20)  # Select top 10 CpGs per PC  print(top_genes)</code></pre>
-<pre><code>## # A tibble: 760 × 3 ## # Groups:   Merged_PC [38] ##    gene_miRNA Merged_PC Loading ##    &lt;chr&gt;      &lt;chr&gt;       &lt;dbl&gt; ##  1 FUN_007064 PC1       -0.0129 ##  2 FUN_014752 PC1       -0.0129 ##  3 FUN_015256 PC1       -0.0129 ##  4 FUN_008915 PC1       -0.0129 ##  5 FUN_034091 PC1       -0.0129 ##  6 FUN_034489 PC1       -0.0129 ##  7 FUN_038509 PC1       -0.0129 ##  8 FUN_014524 PC1       -0.0129 ##  9 FUN_033051 PC1       -0.0129 ## 10 FUN_001532 PC1       -0.0129 ## # ℹ 750 more rows</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the PCA rotation (loadings) matrix from the original gene/miRNA PCA</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>merged_loadings <span class="ot">&lt;-</span> pca_merged<span class="sc">$</span>rotation  <span class="co"># Each column corresponds to a PC</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to data frame and reshape for plotting</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>merged_loadings_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(merged_loadings) <span class="sc">%&gt;%</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">"gene_miRNA"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>gene_miRNA, <span class="at">names_to =</span> <span class="st">"Merged_PC"</span>, <span class="at">values_to =</span> <span class="st">"Loading"</span>)</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="co"># View top CpGs contributing most to each PC</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>top_genes <span class="ot">&lt;-</span> merged_loadings_df <span class="sc">%&gt;%</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Merged_PC) <span class="sc">%&gt;%</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="fu">abs</span>(Loading))) <span class="sc">%&gt;%</span></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">20</span>)  <span class="co"># Select top 10 CpGs per PC</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(top_genes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>View top 20 miRNA/genes associated with PC9 (the PC with the highest R^2)</p>
-<pre><code>print(top_genes%&gt;%filter(Merged_PC=="PC9"))</code></pre>
-<pre><code>## # A tibble: 20 × 3 ## # Groups:   Merged_PC [1] ##    gene_miRNA   Merged_PC Loading ##    &lt;chr&gt;        &lt;chr&gt;       &lt;dbl&gt; ##  1 FUN_023262   PC9       -0.0227 ##  2 FUN_016918   PC9        0.0198 ##  3 FUN_007014   PC9       -0.0194 ##  4 FUN_031632   PC9        0.0192 ##  5 FUN_035523   PC9        0.0188 ##  6 FUN_041996   PC9        0.0188 ##  7 FUN_006731   PC9       -0.0186 ##  8 FUN_022897   PC9       -0.0185 ##  9 FUN_043835   PC9        0.0184 ## 10 FUN_004465   PC9        0.0183 ## 11 FUN_014188   PC9       -0.0183 ## 12 FUN_034114   PC9       -0.0181 ## 13 FUN_024741   PC9       -0.0181 ## 14 FUN_006446   PC9       -0.0179 ## 15 FUN_018629   PC9       -0.0178 ## 16 FUN_013857   PC9       -0.0178 ## 17 Cluster_4034 PC9        0.0176 ## 18 FUN_039308   PC9       -0.0175 ## 19 FUN_012117   PC9        0.0175 ## 20 FUN_000459   PC9       -0.0174</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(top_genes<span class="sc">%&gt;%</span><span class="fu">filter</span>(Merged_PC<span class="sc">==</span><span class="st">"PC9"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Interesting, there’s an miRNA in there!</p>
 <p>View predicted vs actual gene expression values to evaluate model.</p>
-<pre><code># Choose a gene expression PC to visualize (e.g., the most predictable one) best_pc &lt;- performance_results$PC[which.max(performance_results$R2)]  # Extract actual and predicted values for that PC actual_values &lt;- merged_pcs[[best_pc]] predicted_values &lt;- predict(models[[best_pc]], as.matrix(phys_selection), s = "lambda.min")  # Create data frame prediction_df &lt;- data.frame(   Actual = actual_values,   Predicted = predicted_values )  # Scatter plot with regression line ggplot(prediction_df, aes(x = Actual, y = lambda.min)) +   geom_point(color = "blue", alpha = 0.7) +   geom_smooth(method = "lm", color = "red", se = FALSE) +   theme_minimal() +   labs(title = paste("Predicted vs. Actual for", best_pc),        x = "Actual Gene Expression PC",        y = "Predicted Gene Expression PC") +   annotate("text", x = min(actual_values), y = max(predicted_values),             label = paste("R² =", round(max(performance_results$R2, na.rm=TRUE), 3)),             hjust = 0, color = "black", size = 5)</code></pre>
-<pre><code>## `geom_smooth()` using formula = 'y ~ x'</code></pre>
-<p><img src="https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/code/22-Apul-miRNA-mRNA-machine-learning_files/figure-gfm/unnamed-chunk-26-1.png?raw=true" class="img-fluid"></p>
-<pre><code>## `geom_smooth()` using formula = 'y ~ x'</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose a gene expression PC to visualize (e.g., the most predictable one)</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>best_pc <span class="ot">&lt;-</span> performance_results<span class="sc">$</span>PC[<span class="fu">which.max</span>(performance_results<span class="sc">$</span>R2)]</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract actual and predicted values for that PC</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>actual_values <span class="ot">&lt;-</span> merged_pcs[[best_pc]]</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>predicted_values <span class="ot">&lt;-</span> <span class="fu">predict</span>(models[[best_pc]], <span class="fu">as.matrix</span>(phys_selection), <span class="at">s =</span> <span class="st">"lambda.min"</span>)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create data frame</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>prediction_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">Actual =</span> actual_values,</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">Predicted =</span> predicted_values</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot with regression line</span></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(prediction_df, <span class="fu">aes</span>(<span class="at">x =</span> Actual, <span class="at">y =</span> lambda.min)) <span class="sc">+</span></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Predicted vs. Actual for"</span>, best_pc),</span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Actual Gene Expression PC"</span>,</span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Predicted Gene Expression PC"</span>) <span class="sc">+</span></span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fu">min</span>(actual_values), <span class="at">y =</span> <span class="fu">max</span>(predicted_values), </span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">"R² ="</span>, <span class="fu">round</span>(<span class="fu">max</span>(performance_results<span class="sc">$</span>R2, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="dv">3</span>)), </span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">5</span>)</span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using formula = 'y ~ x'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -86,9 +86,37 @@ execute:
 
 #### Friday
 
+-   2 h -- working on thesis proposal
+
 ## 03 April 2025
 
 #### Thursday
+
+-   1 hr -- SWED103
+
+-   1 hr -- FISH546
+
+-   0.5 -- quick meetings w Mark and Sam to talk about SIFP/GRFP funding
+
+-    1.5 hr -- Lab meeting:
+
+    -   Schedule annual meting w Steven
+
+    -   ~~reschedule weekly/biweekly meetings w Steven~~
+
+    -   ~~Need to be submitting monthly reports for RA position (see form in handbook)~~
+
+    -   ~~Ping Ariana for meeting about ML work~~
+
+    -   ~~check lab website to make sure I've added my recent presentations/papers~~
+
+    -   add pOverA filtering to ML
+
+    -   ~~Did some last additions and polishing to the Undergraduate Guide for the lab website~~
+
+-   1 hr -- FISH546 finished assignment 1 and week 1 questions
+
+-   1.5 hr -- SWED103 hmwk, discussion posts, weekly quiz
 
 ## 02 April 2025
 
