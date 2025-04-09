@@ -177,7 +177,7 @@ div.csl-indent {
 <h1><strong>Multiplexing:</strong></h1>
 <p>PromethION and MionION platforms support multiplexing, where DNA is tagged with sample-specific barcodes during library prep, allowing multiple samples to be run simultaneously on a single flow cell. Since flow cells are the most expensive component of nanopore sequencing by far, multiplexing could dramatically reduce the sequencing cost per sample.</p>
 <p>According to <span class="citation" data-cites="rubi_museum_2020">Rubi, Knowles, and Dantzer (<a href="#ref-rubi_museum_2020" role="doc-biblioref">2020</a>)</span>, while recommended minimum read depth for methylation analysis is 10X, their hDNA samples showed little difference in # of CpG positions for a minimum read depth of 5X and 10X. So our goal should be a minimum of 10X depth, but lower could be acceptable?</p>
-<p><span class="citation" data-cites="deng2024">(<a href="#ref-deng2024" role="doc-biblioref"><strong>deng2024?</strong></a>)</span> used a PromethION for WGS of the human genome and multiplexed 3 samples per cell, incorporating a cell wash to improve performance, and generated 154 Gb of output with a final mean read depth of 12X. This tracks with ONT's specifications of 100-200 Gb output gDNA reads from a PromethION flow cell. NOTE though that the human genome is *much* larger than a coral genome.&nbsp;</p>
+<p><span class="citation" data-cites="deng_p646_2024">Deng et al. (<a href="#ref-deng_p646_2024" role="doc-biblioref">2024</a>)</span> used a PromethION for WGS of the human genome and multiplexed 3 samples per cell, incorporating a cell wash to improve performance, and generated 154 Gb of output with a final mean read depth of 12X. This tracks with ONT’s specifications of 100-200 Gb output gDNA reads from a PromethION flow cell. NOTE though that the human genome is *much* larger than a coral genome.&nbsp;</p>
 <p>If we assume an output of 150 Gb (150,000 Mb), how many samples could be multiplexed while maintaining minimum read depth?<br>
 </p>
 <p>Human genome: 3,000 Mb<br>
@@ -190,7 +190,7 @@ Sequencing output: 150,000 Mb<br>
 <strong>Multiplexing max = 30 samples/flow cell</strong><br>
 </p>
 <p>Say we want 3 time points (e.g., 100yo, 50yo, &lt;20yo). Probably need a minimum of n=5 for each, so minimum of N=15.</p>
-<p>I think we'd easily be able to run all 15 samples on a single flow cell! Since flow cells are only sold in packs of 4, we'll also end up with extra to do more sequencing if desired/possible.&nbsp;</p>
+<p>I think we’d easily be able to run all 15 samples on a single flow cell! Since flow cells are only sold in packs of 4, we’ll also end up with extra to do more sequencing if desired/possible.&nbsp;</p>
 </section>
 <section id="choosing-library-prep" class="level1">
 <h1><strong>Choosing library prep</strong></h1>
@@ -239,14 +239,17 @@ Sequencing output: 150,000 Mb<br>
 </tr>
 </tbody>
 </table>
-<p>So estimated cost of library prep and sequencing for N=15 samples on a PromethION sequencing platform is <strong>$5,195</strong>. Note that this could be reduced by a few hundred dollars by buying a 24-reaction library prep kit, but it's dramatically more cost effective to buy the 96-reaction kit. That also gives us plenty of wiggle room for unsuccessful library prep or sequencing.</p>
-<p>Note that this doesn't take DNA extraction and QC into account. I'll need to talk to Andrea about this portion since the LAB has some community-available resources and the number of samples I'll extract/QC will be strongly influenced by extraction success.</p>
+<p>So estimated cost of library prep and sequencing for N=15 samples on a PromethION sequencing platform is <strong>$5,195</strong>. Note that this could be reduced by a few hundred dollars by buying a 24-reaction library prep kit, but it’s dramatically more cost effective to buy the 96-reaction kit. That also gives us plenty of wiggle room for unsuccessful library prep or sequencing.</p>
+<p>Note that this doesn’t take DNA extraction and QC into account. I’ll need to talk to Andrea about this portion since the LAB has some community-available resources and the number of samples I’ll extract/QC will be strongly influenced by extraction success.</p>
 
 
 
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-deng_p646_2024" class="csl-entry" role="listitem">
+Deng, Wayne Xianding, Monika Sun, Pauline Ng, Premal Shah, Kate Im, and Akash Kumar. 2024. <span>“P646: <span>Development</span> of an Affordable Rapid Human Genome Sequencing Assay Using Long Read <span>PromethiON</span> 2.”</span> <em>Genetics in Medicine Open</em> 2: 101552. <a href="https://doi.org/10.1016/j.gimo.2024.101552">https://doi.org/10.1016/j.gimo.2024.101552</a>.
+</div>
 <div id="ref-rubi_museum_2020" class="csl-entry" role="listitem">
 Rubi, Tricia L., L. Lacey Knowles, and Ben Dantzer. 2020. <span>“Museum Epigenomics: <span>Characterizing</span> Cytosine Methylation in Historic Museum Specimens.”</span> <em>Molecular Ecology Resources</em> 20 (5): 1161–70. <a href="https://doi.org/10.1111/1755-0998.13115">https://doi.org/10.1111/1755-0998.13115</a>.
 </div>
