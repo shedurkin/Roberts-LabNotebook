@@ -1,0 +1,31 @@
+---
+title: "SIFP 2025"
+about:
+  id: description
+  template: jolla
+  image: "../../images/Smithsonian.png"
+  image-shape: rectangle
+  # links:
+  #   - icon: github
+  #     text: Github
+  #     href: https://github.com/urol-e5
+listing: 
+  contents: SIFP_2025
+  sort: "date desc"
+  type: table
+#  categories: true
+  sort-ui: false
+  filter-ui: false
+  fields: [image, date, title, categories, reading-time]
+  feed: true
+page-layout: full
+title-block-banner: true
+format:
+  html
+---
+
+::: {#description}
+I'll be completing a project at the National Museum of Natual History as part of the Smithsonian Institution Fellowship Program (SIFP) during Summer 2025, under the advisorship of Dr. Andrea Quattrini!
+
+I'll be benchmarking Nanopore direct sequencing as a method for mapping hDNA methylation in archival coral specimens.
+:::

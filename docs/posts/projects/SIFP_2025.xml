@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Kathleen&#39;s Lab Notebook</title>
+<link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025.html</link>
+<atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.3.433</generator>
+<lastBuildDate>Wed, 09 Apr 2025 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>SIFP Project Planning</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_04_09_SIFP_planning.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I’m meeting with Andrea tomorrow to discuss the SIFP project, so I spent some time researching the Nanopore direct sequencing workflow and associated costs.</p>
+<section id="multiplexing" class="level1">
+<h1><strong>Multiplexing:</strong></h1>
+<p>PromethION and MionION platforms support multiplexing, where DNA is tagged with sample-specific barcodes during library prep, allowing multiple samples to be run simultaneously on a single flow cell. Since flow cells are the most expensive component of nanopore sequencing by far, multiplexing could dramatically reduce the sequencing cost per sample.</p>
+<p>According to <span class="citation" data-cites="rubi_museum_2020">Rubi, Knowles, and Dantzer (2020)</span>, while recommended minimum read depth for methylation analysis is 10X, their hDNA samples showed little difference in # of CpG positions for a minimum read depth of 5X and 10X. So our goal should be a minimum of 10X depth, but lower could be acceptable?</p>
+<p><span class="citation" data-cites="deng2024">(<strong>deng2024?</strong>)</span> used a PromethION for WGS of the human genome and multiplexed 3 samples per cell, incorporating a cell wash to improve performance, and generated 154 Gb of output with a final mean read depth of 12X. This tracks with ONT's specifications of 100-200 Gb output gDNA reads from a PromethION flow cell. NOTE though that the human genome is *much* larger than a coral genome.&nbsp;</p>
+<p>If we assume an output of 150 Gb (150,000 Mb), how many samples could be multiplexed while maintaining minimum read depth?<br>
+</p>
+<p>Human genome: 3,000 Mb<br>
+10X read depth: 30,000 Mb<br>
+Sequencing output: 150,000 Mb<br>
+Multiplexing max = 5 samples/flow cell</p>
+<p>Coral genome: 500 Mb<br>
+10X read depth: 5,000 Mb<br>
+Sequencing output: 150,000 Mb<br>
+<strong>Multiplexing max = 30 samples/flow cell</strong><br>
+</p>
+<p>Say we want 3 time points (e.g., 100yo, 50yo, &lt;20yo). Probably need a minimum of n=5 for each, so minimum of N=15.</p>
+<p>I think we'd easily be able to run all 15 samples on a single flow cell! Since flow cells are only sold in packs of 4, we'll also end up with extra to do more sequencing if desired/possible.&nbsp;</p>
+</section>
+<section id="choosing-library-prep" class="level1">
+<h1><strong>Choosing library prep</strong></h1>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/nanopore_library_prep.PNG" class="img-fluid"></p>
+<p>Rapid (ligation-free) library prep kit seems best. Of the methylation-friendly options, it requires the least input DNA (still kind of high though? 100ng?). It also has barcode options to support multiplexing!</p>
+</section>
+<section id="cost-estimate" class="level1">
+<h1><strong>Cost estimate:</strong></h1>
+<p>Assuming minimum N=15 on a PromethION, incorporating multiplexing to reduce cost/sample.</p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td>Item</td>
+<td># rxns/unit</td>
+<td>Price ($/unit)</td>
+<td># units</td>
+<td>Total cost</td>
+</tr>
+<tr class="even">
+<td><a href="https://store.nanoporetech.com/us/rapid-barcoding-sequencing-kit-96-v14.html">Rapid Barcoding Kit 96 V14</a></td>
+<td>96</td>
+<td>1100</td>
+<td>1</td>
+<td>1100</td>
+</tr>
+<tr class="odd">
+<td><a href="https://store.nanoporetech.com/us/promethion-flow-cell-packs-r10-4-1-m-version-2025.html">PromethION Flow Cell Packs (R10.4.1)</a></td>
+<td>1 pack: 4 cells</td>
+<td>3980</td>
+<td>1</td>
+<td>3980</td>
+</tr>
+<tr class="even">
+<td><a href="https://store.nanoporetech.com/us/productDetail/?id=flow-cell-wash">Flow Cell Wash Kit</a></td>
+<td>6</td>
+<td>115</td>
+<td>1</td>
+<td>115</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>5,195</strong></td>
+</tr>
+</tbody>
+</table>
+<p>So estimated cost of library prep and sequencing for N=15 samples on a PromethION sequencing platform is <strong>$5,195</strong>. Note that this could be reduced by a few hundred dollars by buying a 24-reaction library prep kit, but it's dramatically more cost effective to buy the 96-reaction kit. That also gives us plenty of wiggle room for unsuccessful library prep or sequencing.</p>
+<p>Note that this doesn't take DNA extraction and QC into account. I'll need to talk to Andrea about this portion since the LAB has some community-available resources and the number of samples I'll extract/QC will be strongly influenced by extraction success.</p>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-rubi_museum_2020" class="csl-entry">
+Rubi, Tricia L., L. Lacey Knowles, and Ben Dantzer. 2020. <span>“Museum Epigenomics: <span>Characterizing</span> Cytosine Methylation in Historic Museum Specimens.”</span> <em>Molecular Ecology Resources</em> 20 (5): 1161–70. <a href="https://doi.org/10.1111/1755-0998.13115">https://doi.org/10.1111/1755-0998.13115</a>.
+</div>
+</div></section></div> ]]></description>
+  <category>SIFP_2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_04_09_SIFP_planning.html</guid>
+  <pubDate>Wed, 09 Apr 2025 07:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>

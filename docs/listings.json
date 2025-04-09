@@ -3,6 +3,7 @@
     "listing": "/projects.html",
     "items": [
       "/posts/projects/E5_coral.html",
+      "/posts/projects/SIFP_2025.html",
       "/posts/projects/pacific_cod.html",
       "/posts/projects/pacific_oyster.html",
       "/posts/projects/misc.html"
@@ -11,6 +12,7 @@
   {
     "listing": "/posts/projects/E5_coral.html",
     "items": [
+      "/posts/projects/E5_coral/2025_04_08_dde_miranda_FE.html",
       "/posts/projects/E5_coral/2025_04_04_timeseries_ML_3.html",
       "/posts/projects/E5_coral/2025_04_01_timeseries_FA_FE.html",
       "/posts/projects/E5_coral/2025_04_01_timeseries_ML_2.html",
@@ -130,6 +132,12 @@
       "/posts/projects/pacific_oyster/2024_06_20_Energetics.html",
       "/posts/projects/pacific_oyster/2024_06_20_experimental_design_questions.html",
       "/posts/projects/pacific_oyster/2024_06_19_Project_Outline.html"
+    ]
+  },
+  {
+    "listing": "/posts/projects/SIFP_2025.html",
+    "items": [
+      "/posts/projects/SIFP_2025/2025_04_09_SIFP_planning.html"
     ]
   }
 ]
