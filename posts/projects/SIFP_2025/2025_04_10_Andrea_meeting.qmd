@@ -45,3 +45,11 @@ Action Items:
 -   likely need 1 week for setup, maybe 2 weeks for first round of extractions/QC. Unsure what the sequencing timeline will be if we have to send it out, but the a PromethION sequencing run takes \~3 days.
 
 -   Ideally I'd get a full round of samples sequenced in first 5 weeks, then be able to do a second round (e.g. work out the kinks with the higher-yield octocoral samples, then try for stony samples)
+
+**Extra from 4/10 Lab Meeting, talking w Shelly:**
+
+-   Contact ONT! They may be able to provide guidance on workflow modifications for using low quantity/quality DNA
+
+-   [Winston Timp](https://bcmb.bs.jhmi.edu/people/winston-timp/), works in developing sequencing tech and has done lots with Nanopore tech. Can try looking through his related publications or contacting (can use Shelly as contact)
+
+-   [Adaptive sampling](https://nanoporetech.com/document/adaptive-sampling)
