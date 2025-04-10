@@ -1,0 +1,47 @@
+---
+title: "4/10 Meeting with Andrea"
+author: "Kathleen Durkin"
+date: "2025-04-10"
+categories: ["SIFP_2025"]
+format:
+  html
+bibliography: ../../../references.bib
+---
+
+Notes from 4/10 meeting with Andrea to discuss SIFP fellowship this summer
+
+Action Items:
+
+**Tenure dates.** Proposal stated 07/01/2025 - 09/12/2025.
+
+-   This works for Andrea!
+
+**Budgeting and sourcing research funds.** What is estimated cost of project (see [here](./2025_04_09_SIFP_planning.qmd) for breakdown of sequencing costs) and how will Andrea and/or Steven be supporting with funding?
+
+-   Materials and reagents for extraction and QC are largely/fully available through the LAB communal resources, so library prep and sequencing are the only costs.
+
+-   200ng (minimum for Nanopore Rapid Barcoding Kit) is a totally feasible DNA quantity. Need to consider though that the DNA will be "dirty," containing mold, symbiont, etc. Need to consider how to clean up and how much total DNA we need to get 200ng of *coral* DNA.
+
+-   LAB doesn't seem to have a nanopore sequencing platform, so we may need to send samples out for sequencing. Need to look into how cost will change. Can still be kept low with multiplexing though.
+
+-   MinION vs. PromethION?
+
+-   Andrea is working with a NOAA scientist, Dan, who is experienced with nanopore sequencing and interested in using it more. Andrea will set up a meeting w him to discuss sequencing options.
+
+-   Andrea can fully support with research funding, and will thus be senior author on resultant papers (notify Steven)
+
+**How/when to begin sourcing specimens?** Does Andrea have an inventory database of some kind so I can begin looking for suitable species and collections dates?
+
+-   Focus on dried specimens, since they yield better DNA quality/quantity than wet-stored. Andrea's been seeing higher DNA yield from octocorals than stony, but octocorals potentially less interesting for enviornmental resilience questions.
+
+-   Since multiplexing will likely keep sequencing costs lows, maybe we could do 15 stony and 15 octo?
+
+-   GBR and maybe Carribean for sourcing old specimens. Maybe we can just use the same specimens as in @connelly_unlocking_2024 , since we know many yielded sufficient DNA for sequencing. None are type specimens, so additional sampling would likely be fine.
+
+-   museum inventory: [https://collections.nmnh.si.edu/search/iz/https://collections.nmnh.si.edu/search/iz/](https://collections.nmnh.si.edu/search/iz/)
+
+**Project timeline.**
+
+-   likely need 1 week for setup, maybe 2 weeks for first round of extractions/QC. Unsure what the sequencing timeline will be if we have to send it out, but the a PromethION sequencing run takes \~3 days.
+
+-   Ideally I'd get a full round of samples sequenced in first 5 weeks, then be able to do a second round (e.g. work out the kinks with the higher-yield octocoral samples, then try for stony samples)
