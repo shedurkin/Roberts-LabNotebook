@@ -1,0 +1,193 @@
+---
+title: "Deep-Dive Expression: Functional comparisons for known miRNA"
+author: "Kathleen Durkin"
+date: "2025-04-10"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+We've determined putative function of our miRNAs by [running functional enrichment on each miRNA's putative targets](./2025_04_09_dde_miranda_miRNA_FE). Now I'd like to compare our putative functions to the function(s) of any miRNA that are previously described.
+
+```{r}
+library(tidyr)
+library(dplyr)
+
+# Read in miRNA with assigned names
+miRNA_named <- read.csv("https://raw.githubusercontent.com/urol-e5/deep-dive-expression/77b55212aaca4763917f67188d9e5e0fd1000c11/D-Apul/output/11-Apul-sRNA-ShortStack_4.1.0-pulchra_genome/ShortStack_out/Apul_Results_mature_named_miRNAs.csv") %>% select(Name, given_miRNA_name)
+
+print(miRNA_named %>% filter(!grepl("novel", given_miRNA_name)))
+```
+
+9 of our 39 miRNA identified by Shortstack are previously described.
+
+```{r}
+# Read in functional enrichment analysis results
+miRNA_FE <- read.csv("https://raw.githubusercontent.com/urol-e5/deep-dive-expression/77b55212aaca4763917f67188d9e5e0fd1000c11/D-Apul/output/09.1-Apul-mRNA-miRNA-interactions-functional-enrichment/miRNA_targets_topGO_FE.csv")
+
+# Function for pulling encriched terms for input miRNA
+FE <- function(miRNA_name){
+  cluster <- miRNA_named %>% filter(given_miRNA_name == miRNA_name) %>% pull(Name)
+  terms <- miRNA_FE %>% filter(miRNA == cluster) %>% select(GO.ID, Term, type)
+  
+  print(terms)
+}
+```
+
+## mir-2022
+
+Functions that are enriched in this miRNA's putative targets:
+
+```{r} 
+FE("apul-mir-2022")
+```
+
+From The Conserved Cnidarian miR-2022 Functions During Nematogenesis B Teefy, A Cho, T Wechsler, C Juliano - The Function of Small RNA Pathways in Cnidarians, 2020:
+
+> "Here, we characterize the function of miR-2022 in Hydra. We identify putative miR-2022 targets and find that these transcripts are **expressed predominantly in nematocytes**, the specialized stinging cells that define the cnidarian phylum. We also show that miR-2022 is likely under the control of the PAX-A transcription factor, which is a conserved regulator of nematogenesis in cnidarians. We hypothesize that **miR-2022 participates in an incoherent feedforward loop to control gene dosage during nematocyte development**. We aim to perform miR-2022 in situ hybridizations and miR-2022 knockdowns to localize and test the function of miR-2022 directly."
+
+@fridrich_ancient_2023 showed that miR-2022 is distinctly expressed in stinging cells, and that miR-2022 knockdown in *Nematostella* inhibits cnidogenisis (development of stinging cnidocyte cells) and defensive capability of juvenile *Nematostella*
+
+@liew_identification_2014 found that predicted targets of miR-2022 in *Stylophera pistillata* are enriched (topGO, FDR pval \< 0.01) for the Biological Processes:
+
+**Immunity:** "GO:0044003: modification by symbiont of host morphology or physiology", "GO:0019048: virus-host interaction"\
+**Cell cycle: "**GO:0010564	: regulation of cell cycle process", "GO:0000281: cytokinesis after mitosis", "GO:2001237: negative regulation of extrinsic apoptotic signaling pathway"\
+**Transport/Signaling:** "GO:0042147: retrograde transport, endosome to Golgi", "GO:0006886: intracellular protein transport", "GO:0051904: pigment granule transport"\
+**Differentiation/development: "**GO:0001822: kidney development", "GO:0030858: positive regulation of epithelial cell differentiation", "GO:0001942: hair follicle development", "GO:0048864: stem cell development", "GO:0021670: lateral ventricle development", "GO:0043588: skin development"
+
+Our enriched terms seem to support the previously described function of miR-2022, since both "startle response" and "tachykinin receptor activity" are directly related to sensation/response, a primary function of nematocytes/cnidocytes!
+
+## mir-2030
+
+Functions that are enriched in this miRNA's putative targets:
+
+```{r}
+FE("apul-mir-2030")
+```
+
+Highly conserved across bilateria
+
+@krishna_deep_2013 found that miR-2030 is expressed throughout the body column of *Hydra magnipapillata* during head regeneration, but \*not\* in the tentacles
+
+however, @moran_cnidarian_2014 found that miR-2030 is expressed *only* in the tentacles in *Nematostella vectensis*
+
+@liew_identification_2014 found that predicted targets of miR-2030 in *Stylophera pistillata* are enriched (topGO, FDR pval \< 0.01) for the Biological Processes:
+
+[**Differentiation/Development:**]{.underline} "GO:0009952: anterior/posterior pattern specification", "GO:0048538: thymus development", "GO:0007283: spermatogenesis", \
+[**Miscellaneous:**]{.underline} "GO:0007030: Golgi organization"
+
+## mir-100
+
+Functions that are enriched in this miRNA's putative targets:
+
+```{r}
+FE("apul-mir-100")
+```
+
+> in humans, miR-100 has been shown to target genes involved in growth and development. Examples include Plk1, a key mitotic checkpoint regulatory protein \[26\]; RBSP3, involved in cell proliferation and myeloid cell differentiation \[27\]; BMPR2, involved in osteogenesis \[94\]; and FRAP1/mTOR, which regulates cell growth \[95\]. (Liew et al, 2014)
+
+@liew_identification_2014 found that predicted targets of miR-100 in *Stylophera pistillata* are enriched (topGO, FDR pval \< 0.01) for the Biological Processes:
+
+**Biomineralisation:** "GO:0060348: bone development"\
+**Transcription:** "GO:0000122: negative regulation of transcription from RNA polymerase II promoter"\
+**Transport/Signaling:** "GO:0006895: Golgi to endosome transport"\
+**Differentiation/Development:** "GO:0035115: embryonic forelimb morphogenesis"\
+**Miscellaneous:** "GO:0009987: cellular process", "GO:0045176: apical protein localization"
+
+## mir-2050
+
+Functions that are enriched in this miRNA's putative targets:
+
+```{r}
+FE("apul-mir-2050")
+```
+
+@grinblat_biogeography_2021 found miR-2050 was highly expressed during spawning in *Fungia fungites*
+
+## mir-2023
+
+Functions that are enriched in this miRNA's putative targets:
+
+```{r}
+FE("apul-mir-2023")
+```
+
+@liew_identification_2014 found that predicted targets of miR-2023 in *Stylophera pistillata* are enriched (topGO, FDR pval \< 0.01) for the Biological Processes:
+
+**Transport/signaling:** "GO:0032869: cellular response to insulin stimulus"\
+**Cell cycle:** "GO:0007049: cell cycle"\
+**Transcription:** "GO:0006397: mRNA processing"\
+**Miscellaneous:** "GO:0042177: negative regulation of protein catabolic process", "GO:0007030: Golgi organization"
+
+## mir-2028
+
+Functions that are enriched in this miRNA's putative targets:
+
+```{r}
+FE("apul-mir-2028")
+```
+
+## mir-2036
+
+Functions that are enriched in this miRNA's putative targets:
+
+```{r}
+FE("apul-mir-2036")
+```
+
+@liew_identification_2014 found that predicted targets of miR-2036 in *Stylophera pistillata* are enriched (topGO, FDR pval \< 0.01) for the Biological Processes:
+
+**Cytoskeleton:** "GO:0030199: collagen fibril organization"\
+**Differentiation/development:** "GO:0021670: lateral ventricle development", "GO:0003323: type B pancreatic cell development", "GO:0045638: negative regulation of myeloid cell differentiation"\
+**Miscellaneous:** "GO:0045766: positive regulation of angiogenesis"
+
+## mir-2025
+
+Functions that are enriched in this miRNA's putative targets:
+
+```{r}
+FE("apul-mir-2025")
+```
+
+## mir-9425
+
+Functions that are enriched in this miRNA's putative targets:
+
+```{r}
+FE("apul-mir-9425")
+```
+
+## 
+
+## apul-mir-novel-34 / miR-2037
+
+```{r}
+FE("apul-mir-novel-34")
+```
+
+@liew_identification_2014 identify a matching miRNA in *Stylophora pistillata* (spi-miR-temp-20) with targets enriched (topGO, FDR pval \< 0.01) for the Biological Processes:
+
+**Immunity:** "GO:0032088: negative regulation of NF-kappaB transcription factor activity"\
+**Cell cycle:** "GO:0042981: regulation of apoptotic process"\
+**Transport/signaling:** "GO:0046330: positive regulation of JNK cascade"\
+**Differentiation/development: "**GO:0061146: Peyer's patch morphogenesis"\
+**Miscellaneous:** "GO:0048169: regulation of long-term neuronal synaptic plasticity", "GO:0008542: visual learning", "GO:0006290: pyrimidine dimer repair"
+
+## apul-mir-novel-9
+
+```{r}
+FE("apul-mir-novel-9")
+```
+
+@gajigan_microrna_2017 identify a miRNA in *Acropora digitifera* (Adi-Mir-Novel-5_3p) that matches our "apul-mir-novel-9". They found this miRNA was differentially expressed in response to thermal stress, and it's predicted targets were enriched (topGO, FDR pval \< 0.05) for:
+
+**Regulation of expression: "**RNA polymerase II transcription corepressor activity", "Histone dephosphorylation", "DNA demethylation", "Positive regulation of transcription RNA poIII promoter", "Transcription, DNA-templeted", "Circadian regulation of gene expression"\
+**Stress response: "**Cytokine production", "Oxidative stress-induced premature senescence", "MyD88-dependent toll-like receptor", "Protein disulfide isomerase activity", "Secretion of lysosomal enzymes", "Adaptive immune response", "Negative regulation of cell cycle"\
+**Repair:** "Positive regulation of DNA repair", "Regulation of nucleotide-excision", "RNA repair" "Oxidative demethylation"\
+**Signaling:** "Receptor catabolic process", "G-protein coupled receptor kinase", "Phosphatidylinositol binding", "GABA receptor binding", "Protein serine/threonine", "cAMP-dependent protein kinase"\
+**Tissue morphogenisis:** "Type I TGFbeta receptor binding", "Embryonic skeletal system morphogene", "Zonula adherens maintenance"\

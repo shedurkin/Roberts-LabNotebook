@@ -10,7 +10,487 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Tue, 08 Apr 2025 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 10 Apr 2025 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Deep-Dive Expression: Functional comparisons for known miRNA</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_04_10_dde_named_miRNA_functions.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>We’ve determined putative function of our miRNAs by <a href="./2025_04_09_dde_miranda_miRNA_FE">running functional enrichment on each miRNA’s putative targets</a>. Now I’d like to compare our putative functions to the function(s) of any miRNA that are previously described.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyr)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyr' was built under R version 4.2.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(dplyr)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'dplyr' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Read in miRNA with assigned names</span></span>
+<span id="cb8-2">miRNA_named <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://raw.githubusercontent.com/urol-e5/deep-dive-expression/77b55212aaca4763917f67188d9e5e0fd1000c11/D-Apul/output/11-Apul-sRNA-ShortStack_4.1.0-pulchra_genome/ShortStack_out/Apul_Results_mature_named_miRNAs.csv"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(Name, given_miRNA_name)</span>
+<span id="cb8-3"></span>
+<span id="cb8-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>(miRNA_named <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"novel"</span>, given_miRNA_name)))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Name given_miRNA_name
+1  Cluster_2859    apul-mir-9425
+2  Cluster_3437    apul-mir-2030
+3  Cluster_4254    apul-mir-2050
+4  Cluster_5012    apul-mir-2023
+5 Cluster_10057    apul-mir-2028
+6 Cluster_10228    apul-mir-2022
+7 Cluster_15316    apul-mir-2025
+8 Cluster_18728     apul-mir-100
+9 Cluster_18772    apul-mir-2036</code></pre>
+</div>
+</div>
+<p>9 of our 39 miRNA identified by Shortstack are previously described.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Read in functional enrichment analysis results</span></span>
+<span id="cb10-2">miRNA_FE <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://raw.githubusercontent.com/urol-e5/deep-dive-expression/77b55212aaca4763917f67188d9e5e0fd1000c11/D-Apul/output/09.1-Apul-mRNA-miRNA-interactions-functional-enrichment/miRNA_targets_topGO_FE.csv"</span>)</span>
+<span id="cb10-3"></span>
+<span id="cb10-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Function for pulling encriched terms for input miRNA</span></span>
+<span id="cb10-5">FE <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(miRNA_name){</span>
+<span id="cb10-6">  cluster <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> miRNA_named <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(given_miRNA_name <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> miRNA_name) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pull</span>(Name)</span>
+<span id="cb10-7">  terms <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> miRNA_FE <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(miRNA <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> cluster) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(GO.ID, Term, type)</span>
+<span id="cb10-8">  </span>
+<span id="cb10-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>(terms)</span>
+<span id="cb10-10">}</span></code></pre></div>
+</div>
+<section id="mir-2022" class="level2">
+<h2 class="anchored" data-anchor-id="mir-2022">mir-2022</h2>
+<p>Functions that are enriched in this miRNA’s putative targets:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">FE</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul-mir-2022"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       GO.ID                                 Term               type
+1 GO:0001964                     startle response Biological.Process
+2 GO:0002218 activation of innate immune response Biological.Process
+3 GO:0005496                      steroid binding Molecular.Function
+4 GO:0004995         tachykinin receptor activity Molecular.Function</code></pre>
+</div>
+</div>
+<p>From The Conserved Cnidarian miR-2022 Functions During Nematogenesis B Teefy, A Cho, T Wechsler, C Juliano - The Function of Small RNA Pathways in Cnidarians, 2020:</p>
+<blockquote class="blockquote">
+<p>“Here, we characterize the function of miR-2022 in Hydra. We identify putative miR-2022 targets and find that these transcripts are <strong>expressed predominantly in nematocytes</strong>, the specialized stinging cells that define the cnidarian phylum. We also show that miR-2022 is likely under the control of the PAX-A transcription factor, which is a conserved regulator of nematogenesis in cnidarians. We hypothesize that <strong>miR-2022 participates in an incoherent feedforward loop to control gene dosage during nematocyte development</strong>. We aim to perform miR-2022 in situ hybridizations and miR-2022 knockdowns to localize and test the function of miR-2022 directly.”</p>
+</blockquote>
+<p><span class="citation" data-cites="fridrich_ancient_2023">Fridrich et al. (2023)</span> showed that miR-2022 is distinctly expressed in stinging cells, and that miR-2022 knockdown in <em>Nematostella</em> inhibits cnidogenisis (development of stinging cnidocyte cells) and defensive capability of juvenile <em>Nematostella</em></p>
+<p><span class="citation" data-cites="liew_identification_2014">Liew et al. (2014)</span> found that predicted targets of miR-2022 in <em>Stylophera pistillata</em> are enriched (topGO, FDR pval &lt; 0.01) for the Biological Processes:</p>
+<p><strong>Immunity:</strong> “GO:0044003: modification by symbiont of host morphology or physiology”, “GO:0019048: virus-host interaction”<br>
+<strong>Cell cycle: “<strong>GO:0010564 : regulation of cell cycle process”, ”GO:0000281: cytokinesis after mitosis”, ”GO:2001237: negative regulation of extrinsic apoptotic signaling pathway”<br>
+</strong>Transport/Signaling:**”GO:0042147: retrograde transport, endosome to Golgi”, “GO:0006886: intracellular protein transport”, “GO:0051904: pigment granule transport”<br>
+</strong>Differentiation/development: “**GO:0001822: kidney development”, “GO:0030858: positive regulation of epithelial cell differentiation”, “GO:0001942: hair follicle development”, “GO:0048864: stem cell development”, “GO:0021670: lateral ventricle development”, “GO:0043588: skin development”</p>
+<p>Our enriched terms seem to support the previously described function of miR-2022, since both “startle response” and “tachykinin receptor activity” are directly related to sensation/response, a primary function of nematocytes/cnidocytes!</p>
+</section>
+<section id="mir-2030" class="level2">
+<h2 class="anchored" data-anchor-id="mir-2030">mir-2030</h2>
+<p>Functions that are enriched in this miRNA’s putative targets:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">FE</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul-mir-2030"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       GO.ID                                  Term               type
+1 GO:0000226 microtubule cytoskeleton organization Biological.Process</code></pre>
+</div>
+</div>
+<p>Highly conserved across bilateria</p>
+<p><span class="citation" data-cites="krishna_deep_2013">Krishna et al. (2013)</span> found that miR-2030 is expressed throughout the body column of <em>Hydra magnipapillata</em> during head regeneration, but *not* in the tentacles</p>
+<p>however, <span class="citation" data-cites="moran_cnidarian_2014">Moran et al. (2014)</span> found that miR-2030 is expressed <em>only</em> in the tentacles in <em>Nematostella vectensis</em></p>
+<p><span class="citation" data-cites="liew_identification_2014">Liew et al. (2014)</span> found that predicted targets of miR-2030 in <em>Stylophera pistillata</em> are enriched (topGO, FDR pval &lt; 0.01) for the Biological Processes:</p>
+<p><u><strong>Differentiation/Development:</strong></u> “GO:0009952: anterior/posterior pattern specification”, “GO:0048538: thymus development”, “GO:0007283: spermatogenesis”,<br>
+<u><strong>Miscellaneous:</strong></u> “GO:0007030: Golgi organization”</p>
+</section>
+<section id="mir-100" class="level2">
+<h2 class="anchored" data-anchor-id="mir-100">mir-100</h2>
+<p>Functions that are enriched in this miRNA’s putative targets:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">FE</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul-mir-100"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       GO.ID                                                   Term
+1 GO:0002224                   toll-like receptor signaling pathway
+2 GO:0006598                            polyamine catabolic process
+3 GO:0001578                           microtubule bundle formation
+4 GO:0006699                         bile acid biosynthetic process
+5 GO:0005471                            ATP:ADP antiporter activity
+6 GO:0003960                       NADPH:quinone reductase activity
+7 GO:0004675 transmembrane receptor protein serine/threonine kin...
+8 GO:0004860                      protein kinase inhibitor activity
+9 GO:0004857                              enzyme inhibitor activity
+                type
+1 Biological.Process
+2 Biological.Process
+3 Biological.Process
+4 Biological.Process
+5 Molecular.Function
+6 Molecular.Function
+7 Molecular.Function
+8 Molecular.Function
+9 Molecular.Function</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>in humans, miR-100 has been shown to target genes involved in growth and development. Examples include Plk1, a key mitotic checkpoint regulatory protein [26]; RBSP3, involved in cell proliferation and myeloid cell differentiation [27]; BMPR2, involved in osteogenesis [94]; and FRAP1/mTOR, which regulates cell growth [95]. (Liew et al, 2014)</p>
+</blockquote>
+<p><span class="citation" data-cites="liew_identification_2014">Liew et al. (2014)</span> found that predicted targets of miR-100 in <em>Stylophera pistillata</em> are enriched (topGO, FDR pval &lt; 0.01) for the Biological Processes:</p>
+<p><strong>Biomineralisation:</strong> “GO:0060348: bone development”<br>
+<strong>Transcription:</strong> “GO:0000122: negative regulation of transcription from RNA polymerase II promoter”<br>
+<strong>Transport/Signaling:</strong> “GO:0006895: Golgi to endosome transport”<br>
+<strong>Differentiation/Development:</strong> “GO:0035115: embryonic forelimb morphogenesis”<br>
+<strong>Miscellaneous:</strong> “GO:0009987: cellular process”, “GO:0045176: apical protein localization”</p>
+</section>
+<section id="mir-2050" class="level2">
+<h2 class="anchored" data-anchor-id="mir-2050">mir-2050</h2>
+<p>Functions that are enriched in this miRNA’s putative targets:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">FE</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul-mir-2050"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        GO.ID                                                   Term
+1  GO:0006836                             neurotransmitter transport
+2  GO:0001843                                    neural tube closure
+3  GO:0015969             guanosine tetraphosphate metabolic process
+4  GO:0000413                  protein peptidyl-prolyl isomerization
+5  GO:0004064                                  arylesterase activity
+6  GO:0005262                               calcium channel activity
+7  GO:0004312                           fatty acid synthase activity
+8  GO:0005539                              glycosaminoglycan binding
+9  GO:0004560                            alpha-L-fucosidase activity
+10 GO:0000977 RNA polymerase II transcription regulatory region s...
+                 type
+1  Biological.Process
+2  Biological.Process
+3  Biological.Process
+4  Biological.Process
+5  Molecular.Function
+6  Molecular.Function
+7  Molecular.Function
+8  Molecular.Function
+9  Molecular.Function
+10 Molecular.Function</code></pre>
+</div>
+</div>
+<p><span class="citation" data-cites="grinblat_biogeography_2021">Grinblat (2021)</span> found miR-2050 was highly expressed during spawning in <em>Fungia fungites</em></p>
+</section>
+<section id="mir-2023" class="level2">
+<h2 class="anchored" data-anchor-id="mir-2023">mir-2023</h2>
+<p>Functions that are enriched in this miRNA’s putative targets:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">FE</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul-mir-2023"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       GO.ID                                Term               type
+1 GO:0004736       pyruvate carboxylase activity Molecular.Function
+2 GO:0005388 P-type calcium transporter activity Molecular.Function</code></pre>
+</div>
+</div>
+<p><span class="citation" data-cites="liew_identification_2014">Liew et al. (2014)</span> found that predicted targets of miR-2023 in <em>Stylophera pistillata</em> are enriched (topGO, FDR pval &lt; 0.01) for the Biological Processes:</p>
+<p><strong>Transport/signaling:</strong> “GO:0032869: cellular response to insulin stimulus”<br>
+<strong>Cell cycle:</strong> “GO:0007049: cell cycle”<br>
+<strong>Transcription:</strong> “GO:0006397: mRNA processing”<br>
+<strong>Miscellaneous:</strong> “GO:0042177: negative regulation of protein catabolic process”, “GO:0007030: Golgi organization”</p>
+</section>
+<section id="mir-2028" class="level2">
+<h2 class="anchored" data-anchor-id="mir-2028">mir-2028</h2>
+<p>Functions that are enriched in this miRNA’s putative targets:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">FE</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul-mir-2028"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       GO.ID                                       Term               type
+1 GO:0000278                         mitotic cell cycle Biological.Process
+2 GO:0004345 glucose-6-phosphate dehydrogenase activity Molecular.Function</code></pre>
+</div>
+</div>
+</section>
+<section id="mir-2036" class="level2">
+<h2 class="anchored" data-anchor-id="mir-2036">mir-2036</h2>
+<p>Functions that are enriched in this miRNA’s putative targets:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">FE</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul-mir-2036"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       GO.ID                                                   Term
+1 GO:0000209                             protein polyubiquitination
+2 GO:0004591 oxoglutarate dehydrogenase (succinyl-transferring) ...
+                type
+1 Biological.Process
+2 Molecular.Function</code></pre>
+</div>
+</div>
+<p><span class="citation" data-cites="liew_identification_2014">Liew et al. (2014)</span> found that predicted targets of miR-2036 in <em>Stylophera pistillata</em> are enriched (topGO, FDR pval &lt; 0.01) for the Biological Processes:</p>
+<p><strong>Cytoskeleton:</strong> “GO:0030199: collagen fibril organization”<br>
+<strong>Differentiation/development:</strong> “GO:0021670: lateral ventricle development”, “GO:0003323: type B pancreatic cell development”, “GO:0045638: negative regulation of myeloid cell differentiation”<br>
+<strong>Miscellaneous:</strong> “GO:0045766: positive regulation of angiogenesis”</p>
+</section>
+<section id="mir-2025" class="level2">
+<h2 class="anchored" data-anchor-id="mir-2025">mir-2025</h2>
+<p>Functions that are enriched in this miRNA’s putative targets:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">FE</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul-mir-2025"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       GO.ID                       Term               type
+1 GO:0001649 osteoblast differentiation Biological.Process</code></pre>
+</div>
+</div>
+</section>
+<section id="mir-9425" class="level2">
+<h2 class="anchored" data-anchor-id="mir-9425">mir-9425</h2>
+<p>Functions that are enriched in this miRNA’s putative targets:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">FE</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul-mir-9425"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       GO.ID                                              Term
+1 GO:0000082             G1/S transition of mitotic cell cycle
+2 GO:0001523                        retinoid metabolic process
+3 GO:0015101 organic cation transmembrane transporter activity
+                type
+1 Biological.Process
+2 Biological.Process
+3 Molecular.Function</code></pre>
+</div>
+</div>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+</section>
+<section id="apul-mir-novel-34-mir-2037" class="level2">
+<h2 class="anchored" data-anchor-id="apul-mir-novel-34-mir-2037">apul-mir-novel-34 / miR-2037</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">FE</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul-mir-novel-34"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        GO.ID                                                   Term
+1  GO:0000266                                  mitochondrial fission
+2  GO:0003360                                  brainstem development
+3  GO:0000413                  protein peptidyl-prolyl isomerization
+4  GO:0002291 T cell activation via T cell receptor contact with ...
+5  GO:0002221         pattern recognition receptor signaling pathway
+6  GO:0004013                        adenosylhomocysteinase activity
+7  GO:0004402                     histone acetyltransferase activity
+8  GO:0005200                 structural constituent of cytoskeleton
+9  GO:0005109                                       frizzled binding
+10 GO:0004758                 serine C-palmitoyltransferase activity
+11 GO:0005245                 voltage-gated calcium channel activity
+                 type
+1  Biological.Process
+2  Biological.Process
+3  Biological.Process
+4  Biological.Process
+5  Biological.Process
+6  Molecular.Function
+7  Molecular.Function
+8  Molecular.Function
+9  Molecular.Function
+10 Molecular.Function
+11 Molecular.Function</code></pre>
+</div>
+</div>
+<p><span class="citation" data-cites="liew_identification_2014">Liew et al. (2014)</span> identify a matching miRNA in <em>Stylophora pistillata</em> (spi-miR-temp-20) with targets enriched (topGO, FDR pval &lt; 0.01) for the Biological Processes:</p>
+<p><strong>Immunity:</strong> “GO:0032088: negative regulation of NF-kappaB transcription factor activity”<br>
+<strong>Cell cycle:</strong> “GO:0042981: regulation of apoptotic process”<br>
+<strong>Transport/signaling:</strong> “GO:0046330: positive regulation of JNK cascade”<br>
+**Differentiation/development: “<strong>GO:0061146: Peyer’s patch morphogenesis”<br>
+</strong>Miscellaneous:**”GO:0048169: regulation of long-term neuronal synaptic plasticity”, “GO:0008542: visual learning”, “GO:0006290: pyrimidine dimer repair”</p>
+</section>
+<section id="apul-mir-novel-9" class="level2">
+<h2 class="anchored" data-anchor-id="apul-mir-novel-9">apul-mir-novel-9</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">FE</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul-mir-novel-9"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       GO.ID                                                   Term
+1 GO:0001745                             compound eye morphogenesis
+2 GO:0001933         negative regulation of protein phosphorylation
+3 GO:0009734                      auxin-activated signaling pathway
+4 GO:0004459                       L-lactate dehydrogenase activity
+5 GO:0004760                  serine-pyruvate transaminase activity
+6 GO:0004742 dihydrolipoyllysine-residue acetyltransferase activ...
+7 GO:0003779                                          actin binding
+                type
+1 Biological.Process
+2 Biological.Process
+3 Biological.Process
+4 Molecular.Function
+5 Molecular.Function
+6 Molecular.Function
+7 Molecular.Function</code></pre>
+</div>
+</div>
+<p><span class="citation" data-cites="gajigan_microrna_2017">Gajigan and Conaco (2017)</span> identify a miRNA in <em>Acropora digitifera</em> (Adi-Mir-Novel-5_3p) that matches our “apul-mir-novel-9”. They found this miRNA was differentially expressed in response to thermal stress, and it’s predicted targets were enriched (topGO, FDR pval &lt; 0.05) for:</p>
+<p><strong>Regulation of expression: “<strong>RNA polymerase II transcription corepressor activity”, ”Histone dephosphorylation”, ”DNA demethylation”, ”Positive regulation of transcription RNA poIII promoter”, ”Transcription, DNA-templeted”, ”Circadian regulation of gene expression”<br>
+</strong>Stress response:”</strong>Cytokine production”, “Oxidative stress-induced premature senescence”, “MyD88-dependent toll-like receptor”, “Protein disulfide isomerase activity”, “Secretion of lysosomal enzymes”, “Adaptive immune response”, “Negative regulation of cell cycle”<br>
+<strong>Repair:</strong> “Positive regulation of DNA repair”, “Regulation of nucleotide-excision”, “RNA repair” “Oxidative demethylation”<br>
+<strong>Signaling:</strong> “Receptor catabolic process”, “G-protein coupled receptor kinase”, “Phosphatidylinositol binding”, “GABA receptor binding”, “Protein serine/threonine”, “cAMP-dependent protein kinase”<br>
+<strong>Tissue morphogenisis:</strong> “Type I TGFbeta receptor binding”, “Embryonic skeletal system morphogene”, “Zonula adherens maintenance”<br>
+</p>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-fridrich_ancient_2023" class="csl-entry">
+Fridrich, Arie, Miguel Salinas-Saaverda, Itamar Kozlolvski, Joachim M. Surm, Eleni Chrysostomou, Abhinandan M. Tripathi, Uri Frank, and Yehu Moran. 2023. <span>“An Ancient Pan-Cnidarian <span class="nocase">microRNA</span> Regulates Stinging Capsule Biogenesis in <em><span>Nematostella</span> Vectensis</em>.”</span> <em>Cell Reports</em> 42 (9): 113072. <a href="https://doi.org/10.1016/j.celrep.2023.113072">https://doi.org/10.1016/j.celrep.2023.113072</a>.
+</div>
+<div id="ref-gajigan_microrna_2017" class="csl-entry">
+Gajigan, Andrian P., and Cecilia Conaco. 2017. <span>“A <span class="nocase">microRNA</span> Regulates the Response of Corals to Thermal Stress.”</span> <em>Molecular Ecology</em> 26 (13): 3472–83. <a href="https://doi.org/10.1111/mec.14130">https://doi.org/10.1111/mec.14130</a>.
+</div>
+<div id="ref-grinblat_biogeography_2021" class="csl-entry">
+Grinblat, Mila. 2021. <span>“Biogeography, Reproductive Biology and Early Development in Scleractinian Corals.”</span> Phd, James Cook University. <a href="https://doi.org/10.25903/5v26-zb37">https://doi.org/10.25903/5v26-zb37</a>.
+</div>
+<div id="ref-krishna_deep_2013" class="csl-entry">
+Krishna, Srikar, Aparna Nair, Sirisha Cheedipudi, Deepak Poduval, Jyotsna Dhawan, Dasaradhi Palakodeti, and Yashoda Ghanekar. 2013. <span>“Deep Sequencing Reveals Unique Small <span>RNA</span> Repertoire That Is Regulated During Head Regeneration in <span>Hydra</span> Magnipapillata.”</span> <em>Nucleic Acids Research</em> 41 (1): 599–616. <a href="https://doi.org/10.1093/nar/gks1020">https://doi.org/10.1093/nar/gks1020</a>.
+</div>
+<div id="ref-liew_identification_2014" class="csl-entry">
+Liew, Yi Jin, Manuel Aranda, Adrian Carr, Sebastian Baumgarten, Didier Zoccola, Sylvie Tambutté, Denis Allemand, Gos Micklem, and Christian R. Voolstra. 2014. <span>“Identification of <span>MicroRNAs</span> in the <span>Coral</span> <span>Stylophora</span> Pistillata.”</span> <em>PLOS ONE</em> 9 (3): e91101. <a href="https://doi.org/10.1371/journal.pone.0091101">https://doi.org/10.1371/journal.pone.0091101</a>.
+</div>
+<div id="ref-moran_cnidarian_2014" class="csl-entry">
+Moran, Yehu, David Fredman, Daniela Praher, Xin Li, Liang Wee, Fabian Rentzsch, Phillip Zamore, Ulrich Technau, and Hervé Seitz. 2014. <span>“Cnidarian <span class="nocase">microRNAs</span> Frequently Regulate Targets by Cleavage.”</span> <em>Genome Research</em> 24 (March). <a href="https://doi.org/10.1101/gr.162503.113">https://doi.org/10.1101/gr.162503.113</a>.
+</div>
+</div></section></div> ]]></description>
+  <category>E5-coral</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_04_10_dde_named_miRNA_functions.html</guid>
+  <pubDate>Thu, 10 Apr 2025 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Deep-Dive Expression: Functional annotation/enrichment of each miRNA’s targets</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_04_09_dde_miranda_miRNA_FE.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+
+ ]]></description>
+  <category>E5-coral</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_04_09_dde_miranda_miRNA_FE.html</guid>
+  <pubDate>Wed, 09 Apr 2025 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Deep-Dive Expression: Functional enrichment of miRNA-mRNA interactions</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -18897,132 +19377,6 @@ font-style: inherit;">${transcriptome_fasta}</span></span></code></pre></div>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_02_07_Peve_transcriptome.html</guid>
   <pubDate>Wed, 07 Feb 2024 08:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>RNAseq abundance quantification (A.Pulchra, P.evermanni, P.meandrina)</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_02_06_RNAseq_kallisto.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>I’m currently working on trying a few types of gene expression analysis with the E5 RNAseq and sRNAseq data we have for <em>A. Pulchra</em>, <em>P. evermanni</em>, and <em>P. meandrina,</em> but before I can do any analysis work we need abundance count matrices for the RNAseq data from each of the three species. This notebook post is a write up of the steps involved in quantifying transcript abundances using kallisto. I’ll only be going step-by-step through the code used for <em>P. meandrina</em>, but the workflow is the same for all three species, and the rendered code for all three species is linked below.<br>
-</p>
-<p><u>Rendered code (.md files):</u><br>
-- <a href="https://github.com/urol-e5/deep-dive/blob/main/D-Apul/code/14-Apul-RNAseq-kallisto.md">A. pulchra</a><br>
-- <a href="https://github.com/urol-e5/deep-dive/blob/main/E-Peve/code/12-Peve-RNAseq-kallisto.md">P. evermanni</a><br>
-- <a href="https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/14-Pmea-RNAseq-kallisto.md">P. meandrina</a></p>
-<p><u>Required Inputs:</u><br>
-- Trimmed RNAseq reads (e.g.&nbsp;<code>.fastq.gz</code>)<br>
-- Transcriptome fasta (e.g.&nbsp;<code>*.fasta</code>, <code>*.fna</code>, <code>*.fa</code>)</p>
-<p><u>Output:</u><br>
-- Counts matrix representing the abundance of sequenced transcripts</p>
-<p><u>Tools/software:</u><br>
-- kallisto v.0.50.1<br>
-- TrinityRNASeq v.2.12.0<br>
-</p>
-<section id="kallisto-workflow" class="level2">
-<h2 class="anchored" data-anchor-id="kallisto-workflow">Kallisto Workflow</h2>
-<section id="download-trimmed-reads-and-transcriptome" class="level3">
-<h3 class="anchored" data-anchor-id="download-trimmed-reads-and-transcriptome">Download <a href="https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/14-Pmea-RNAseq-kallisto.md#download-trimmed-rnaseq-reads">trimmed reads</a> and <a href="https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/14-Pmea-RNAseq-kallisto.md#retrieve-the-reference-transcriptome">transcriptome</a></h3>
-<p>If you don’t already have them in an accessible directory, download the trimmed RNAseq reads and transcriptome file you’ll be using</p>
-</section>
-<section id="build-kallisto-index" class="level3">
-<h3 class="anchored" data-anchor-id="build-kallisto-index">Build <a href="https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/14-Pmea-RNAseq-kallisto.md#building-index">kallisto index</a></h3>
-<p>The first step is to build a kallisto index. In this step, kallisto takes your reference transcriptome as input and breaks each transcript into “k-mers,” or shorter sequences that are k nucleotides long. It then “indexes” these k-mers, storing each k-mer and its transcript association in a data structure for more efficient retrieval during the pseudoalignment step.</p>
-</section>
-<section id="sample-quantification" class="level3">
-<h3 class="anchored" data-anchor-id="sample-quantification">Sample <a href="https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/14-Pmea-RNAseq-kallisto.md#sample-quantification">quantification</a></h3>
-<p>Next is quantification, which take both the index you just constructed and your trimmed RNAseq read, and makes use of pseudoalignment, a process that is much faster and more efficient than aligning each full read to a full transcript. Briefly, each read is broken up into k-mers, which are then mapped to the index to see which indexed transcript k-mers may match the read k-mers. Kallisto then calculates a probability score for each read/transcript pair, evaluating the likelihood that a given read originated from each transcript. These scores are then used to estimate transcript abundance.</p>
-</section>
-<section id="build-count-matrix-for-all-samples" class="level3">
-<h3 class="anchored" data-anchor-id="build-count-matrix-for-all-samples">Build <a href="https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/14-Pmea-RNAseq-kallisto.md#trinity-matrix-with-kallisto-output">count matrix</a> for all samples</h3>
-<p>The kallisto quantification process can only take one sample (i.e., one pair of reads) at a time, so as a last step we build a counts matrix that lists the transcript abundances for all of our samples in a single file.</p>
-</section>
-<section id="summary" class="level3">
-<h3 class="anchored" data-anchor-id="summary">Summary</h3>
-<p><u>A. pulchra:</u><br>
-sample 140 – 47M reads processed (61.4% mapped)<br>
-sample 145 – 42M reads processed (65.3% mapped)<br>
-sample 150 – 43M reads processed (47.0% mapped)<br>
-sample 173 – 47M reads processed (60.7% mapped)<br>
-sample 178 – 42M reads processed (59.3% mapped)<br>
-</p>
-<p><u>P. evermanni:</u><br>
-sample 71 – 50M reads processed (35.3% mapped)<br>
-sample 73 – 51M reads processed (29.8% mapped)<br>
-sample 76 – 49M reads processed (35.6% mapped)<br>
-sample 79 – 49M reads processed (31.9% mapped)<br>
-sample 82 – 48M reads processed (37.3% mapped)</p>
-<p><u>P. meandrina:</u><br>
-sample 47 – 54M reads processed (26.1% mapped)<br>
-sample 48 – 51M reads processed (25.3% mapped)<br>
-sample 50 – 55M reads processed (31.1% mapped)<br>
-sample 53 – 53M reads processed (31.8% mapped)<br>
-sample 57 – 42M reads processed (21.7% mapped)</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <category>E5-coral</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_02_06_RNAseq_kallisto.html</guid>
-  <pubDate>Tue, 06 Feb 2024 08:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>P.evermanni RNAseq kallisto debugging</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_01_31_Peve_kallisto.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>I’m currently trying to quantify RNA abundances using RNAseq data from the three E5 deep dive species, and I’m running into some issues for <em>P. evermanni</em>.</p>
-<p>Links:</p>
-<ul>
-<li><a href="https://github.com/urol-e5/deep-dive/blob/main/E-Peve/code/12-Peve-RNAseq-kallisto.Rmd">code (.Rmd)</a></li>
-<li><a href="https://github.com/urol-e5/deep-dive/blob/main/E-Peve/code/12-Peve-RNAseq-kallisto.md">knitted file (.md)</a></li>
-<li><a href="https://github.com/RobertsLab/resources/issues/1793">github issue</a></li>
-</ul>
-<p>There’s no published transcriptome fasta for <em>P. evermanni</em>, so instead I’m using a published CDS gff file and associated scaffold genome fasta to assemble a de novo reference transcriptome fasta.</p>
-<p>I first used bedtools getfasta to extract fasta sequences for everything listed in the original CDS gff file, but ended up with duplicate sequences, which interferes with kallisto indexing. While trying (and failing) to remove duplicates with the fastx_toolkit fastx_collapser, Steven pointed out that the gff file (image below) I’m using contains sequences labeled as both CDS and mRNA sequences, and suggested I use only those labeled as mRNA.</p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/Screenshot (228).png" class="img-fluid"></p>
-<p>I selected only sequecnes labelled as “mRNA” in the gff, extracted those sequences fastas from the scaffold reference, and was able to successfully build a kallisto index, however I was given a warning that kallisto index had identified 10,722,052 non-ACGUT characters in the 40,389 input sequences (or ~265 non-ACGUT characters per sequence!). Quickly looking through some of the extracted sequence fastas, I found some of them contain long internal stretches of N characters.</p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/Screenshot (229).png" class="img-fluid"></p>
-<p>Sam was able to inform me that this is due to the reference fasta I’m using to extract mRNA fastas. The reference is a scaffold, which characteristically contains arbitrary stretches of Ns connecting known sequences to others in the same region. Steven then also noticed that the gff file seems to be improperly labeled, with mRNA sequences that actually contain several CDS regions <em>and introns</em>, which could interfere with pseudoalignment. Instead, of using the labelled mRNAs, I may need to extract all the sequences labelled as CDS from the gff, obtain sequences fastas, group and concatenate by “Parent” (source mRNA) to exclude all of the introns, and then use those concatenated CDS fasta sequences as a reference for kallisto.</p>
-<p>Some pseudo code for doing this:</p>
-<p>start with original.gff, which contains CDS, mRNA, UTR, etc. sequences</p>
-<p><code>grep -w "CDS" original.gff &gt; filtered.gff</code></p>
-<p>now I have a filtered gff that only contains info for CDS sequences in a format that looks like:</p>
-<p>blahblahblahblahblahblahblah Parent=Peve_00000001<br>
-blahblahblahblahblahblahblah Parent=Peve_00000001<br>
-blahblahblahblahblahblahblah Parent=Peve_00000001<br>
-blahblahblahblahblahblahblah Parent=Peve_00000002<br>
-blahblahblahblahblahblahblah Parent=Peve_00000002<br>
-…</p>
-<p>where each Parent ID (“Parent=Peve_00000001”) groups together CDS sequences that originate from the same mRNA. To get full concatenated fasta sequences for each mRNA I’ll do:</p>
-<pre><code>for i in #LinesInFiltered.gff:
-
-  get parentID of filtered.gff line i
-
-  if parentID not already in final.fasta:
-
-    extract all lines in filtered.gff with parentID
-    bedtools to get each lines' fasta sequence
-    concatenate all of these fastas
-    assign appropriate ID that includes parentID to concatenated fasta
-    add this parentID.fasta to final.fasta</code></pre>
-<p>this final.fasta should contain the same number of sequence fastas as unique parentIDs in filtered.gff</p>
-
-
-
- ]]></description>
-  <category>E5-coral</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_01_31_Peve_kallisto.html</guid>
-  <pubDate>Wed, 31 Jan 2024 08:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

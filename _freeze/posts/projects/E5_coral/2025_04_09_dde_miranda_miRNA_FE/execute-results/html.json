@@ -1,0 +1,14 @@
+{
+  "hash": "17614e98a6f41e402ae6b89872bea11e",
+  "result": {
+    "markdown": "---\ntitle: \"Deep-Dive Expression: Functional annotation/enrichment of each miRNA's targets\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-04-09\"\ncategories: [\"E5-coral\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: FALSE\nengine: knitr\nbibliography: ../../../references.bib\n---\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
