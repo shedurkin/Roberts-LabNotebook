@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -114,7 +148,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page">
+    <div class="quarto-title column-page-left">
       <h1 class="title">Deep-Dive Expression: Functional annotation/enrichment of each miRNA’s targets</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">E5-coral</div>
@@ -146,17 +180,303 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#format-topgo-files" id="toc-format-topgo-files" class="nav-link active" data-scroll-target="#format-topgo-files">1 Format topGO files</a>
+  <ul class="collapse">
+  <li><a href="#read-in-and-format-annotation-files" id="toc-read-in-and-format-annotation-files" class="nav-link" data-scroll-target="#read-in-and-format-annotation-files">1.1 Read in and format annotation files</a></li>
+  <li><a href="#set-up-gene2go-object" id="toc-set-up-gene2go-object" class="nav-link" data-scroll-target="#set-up-gene2go-object">1.2 Set up gene2GO object</a></li>
+  <li><a href="#define-reference-set" id="toc-define-reference-set" class="nav-link" data-scroll-target="#define-reference-set">1.3 Define reference set</a></li>
+  <li><a href="#read-in-pccmiranda-data" id="toc-read-in-pccmiranda-data" class="nav-link" data-scroll-target="#read-in-pccmiranda-data">1.4 Read in PCC/miranda data</a></li>
+  </ul></li>
+  <li><a href="#fa-of-all-mirna-targets" id="toc-fa-of-all-mirna-targets" class="nav-link" data-scroll-target="#fa-of-all-mirna-targets">2 FA of all miRNA targets</a></li>
+  <li><a href="#fe-of-specific-mirnas-targets-all-targets" id="toc-fe-of-specific-mirnas-targets-all-targets" class="nav-link" data-scroll-target="#fe-of-specific-mirnas-targets-all-targets">3 FE of specific miRNA’s targets (all targets)</a></li>
+  <li><a href="#fe-of-specific-mirnas-targets-significant-cor-targets" id="toc-fe-of-specific-mirnas-targets-significant-cor-targets" class="nav-link" data-scroll-target="#fe-of-specific-mirnas-targets-significant-cor-targets">4 FE of specific miRNA’s targets (significant cor targets)</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
 
 
+<p>This code attempts to identify the function of each miRNA by running functional enrichment analysis on each miRNA’s set of target genes.</p>
+<p><a href="https://github.com/urol-e5/deep-dive-expression/blob/main/D-Apul/code/09.1-Apul-mRNA-miRNA-interactions-functional-enrichment.Rmd">Code</a><br>
+<a href="https://github.com/urol-e5/deep-dive-expression/blob/main/D-Apul/code/09.1-Apul-mRNA-miRNA-interactions-functional-enrichment.md?plain=1">Rendered code</a><br>
+<a href="https://github.com/urol-e5/deep-dive-expression/tree/main/D-Apul/output/09.1-Apul-mRNA-miRNA-interactions-functional-enrichment">Output files</a></p>
+<p>Also see post on <a href="../../../posts/projects/E5_coral/2025_04_08_dde_miranda_FE.html">functional enrichment of all targets</a></p>
+<section id="format-topgo-files" class="level1">
+<h1>1 Format topGO files</h1>
+<section id="read-in-and-format-annotation-files" class="level2">
+<h2 class="anchored" data-anchor-id="read-in-and-format-annotation-files">1.1 Read in and format annotation files</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in Apul annotations</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>annot_locations <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"../output/02-Apul-reference-annotation/Apulcra-genome-mRNA-IDmapping-2024_12_12.tab"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove unneeded columns </span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>annot_locations <span class="ot">&lt;-</span> annot_locations <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>X, <span class="sc">-</span>V13)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure there are no duplicate rows</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>annot_locations <span class="ot">&lt;-</span> annot_locations <span class="sc">%&gt;%</span> <span class="fu">distinct</span>()</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(annot_locations)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##                     V1     V3 Protein.names
+## 1   ntLink_4:1155-1537 P35061   Histone H2A
+## 2   ntLink_4:2660-3441 P84239    Histone H3
+## 3   ntLink_4:4515-6830 P35061   Histone H2A
+## 4   ntLink_4:7096-7859 P84239    Histone H3
+## 5   ntLink_4:8474-9669 P35061   Histone H2A
+## 6 ntLink_4:11162-11925 P84239    Histone H3
+##                                     Organism Gene.Ontology..biological.process.
+## 1          Acropora formosa (Staghorn coral)                                   
+## 2 Urechis caupo (Innkeeper worm) (Spoonworm)                                   
+## 3          Acropora formosa (Staghorn coral)                                   
+## 4 Urechis caupo (Innkeeper worm) (Spoonworm)                                   
+## 5          Acropora formosa (Staghorn coral)                                   
+## 6 Urechis caupo (Innkeeper worm) (Spoonworm)                                   
+##                                            Gene.Ontology.IDs
+## 1 GO:0000786; GO:0003677; GO:0005634; GO:0030527; GO:0046982
+## 2 GO:0000786; GO:0003677; GO:0005634; GO:0030527; GO:0046982
+## 3 GO:0000786; GO:0003677; GO:0005634; GO:0030527; GO:0046982
+## 4 GO:0000786; GO:0003677; GO:0005634; GO:0030527; GO:0046982
+## 5 GO:0000786; GO:0003677; GO:0005634; GO:0030527; GO:0046982
+## 6 GO:0000786; GO:0003677; GO:0005634; GO:0030527; GO:0046982</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Looks good!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This file shows each gene as it’s genomic location. We want to use gene IDs to associate genes, so add gene IDs to this annotation table</p>
+<p>Read in file that associates each mRNA genomic location with corresponding gene ID</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mRNA_FUNids <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"../output/15-Apul-annotate-UTRs/Apul-mRNA-FUNids.txt"</span>, <span class="at">header=</span><span class="cn">FALSE</span>, <span class="at">col.names=</span><span class="fu">c</span>(<span class="st">"location"</span>, <span class="st">"type"</span>, <span class="st">"mRNA_ID"</span>, <span class="st">"gene_ID"</span>, <span class="st">"product"</span>), <span class="at">sep=</span><span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove unwanted text from parent column</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>mRNA_FUNids<span class="sc">$</span>gene_ID <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"Parent="</span>, <span class="st">""</span>, mRNA_FUNids<span class="sc">$</span>gene_ID)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Only need to keep mRNA location and gene ID</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>mRNA_FUNids <span class="ot">&lt;-</span> mRNA_FUNids <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(location, gene_ID)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>join with annotation file</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># join</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>annot <span class="ot">&lt;-</span> <span class="fu">left_join</span>(annot_locations, mRNA_FUNids, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"V1"</span> <span class="ot">=</span> <span class="st">"location"</span>))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ensure there are no duplicate rows</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>annot <span class="ot">&lt;-</span> annot <span class="sc">%&gt;%</span> <span class="fu">distinct</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="set-up-gene2go-object" class="level2">
+<h2 class="anchored" data-anchor-id="set-up-gene2go-object">1.2 Set up gene2GO object</h2>
+<p>Want to isolate a list of GO terms per gene</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>gene2go <span class="ot">&lt;-</span> annot <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Gene.Ontology.IDs)) <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(gene_ID, Gene.Ontology.IDs)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>gene2go <span class="ot">&lt;-</span> gene2go <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">GO.ID =</span> Gene.Ontology.IDs)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>gene2go_list <span class="ot">&lt;-</span> <span class="fu">setNames</span>(</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">strsplit</span>(<span class="fu">as.character</span>(gene2go<span class="sc">$</span>GO.ID), <span class="st">";"</span>), </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  gene2go<span class="sc">$</span>gene_ID</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note: I think this means genes that had a Uniprot ID but no GO terms are excluded from this analysis</p>
+</section>
+<section id="define-reference-set" class="level2">
+<h2 class="anchored" data-anchor-id="define-reference-set">1.3 Define reference set</h2>
+<p>Define reference set of genes. This should be all genes <em>found in our samples</em>, NOT all genes in the A.pulchra genome. Some genes (e.g., reproduction pathways) may not be found/expected in our samples for valid biological reasons.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in counts matrix</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Apul_counts <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../output/07-Apul-Hisat/Apul-gene_count_matrix.csv"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Exclude genes with all 0 counts</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>Apul_counts <span class="ot">&lt;-</span> Apul_counts[<span class="fu">rowSums</span>(Apul_counts[, <span class="dv">2</span><span class="sc">:</span><span class="dv">6</span>]) <span class="sc">!=</span> <span class="dv">0</span>, ]</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Select gene IDs of the genes present in our samples</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>all_genes <span class="ot">&lt;-</span> Apul_counts<span class="sc">$</span>gene_id</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(all_genes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 33624</code></pre>
+<p>So we have a reference set of 33624 genes present in our samples.</p>
+</section>
+<section id="read-in-pccmiranda-data" class="level2">
+<h2 class="anchored" data-anchor-id="read-in-pccmiranda-data">1.4 Read in PCC/miranda data</h2>
+<p>This is a table of all putative miRNA-mRNA binding predicted by miRanda, plus Pearsons correlation coefficients for coexpression of each putative binding pair.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../output/09-Apul-mRNA-miRNA-interactions/miranda_PCC_miRNA_mRNA.csv"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##   X         miRNA       mRNA    PCC.cor   p_value adjusted_p_value score energy
+## 1 1  Cluster_5981 FUN_028147  0.6825537 0.2041707        0.9986496   146 -22.19
+## 2 2 Cluster_15340 FUN_013332  0.6371070 0.2476393        0.9986496   158 -23.15
+## 3 3  Cluster_5981 FUN_041253 -0.2250869 0.7158492        0.9986496   153 -20.50
+## 4 4  Cluster_3366 FUN_010827  0.3671005 0.5433145        0.9986496   163 -22.14
+## 5 5  Cluster_3367 FUN_010827  0.5369304 0.3507987        0.9986496   163 -22.14
+## 6 6 Cluster_15340 FUN_003342  0.1096213 0.8607058        0.9986496   154 -20.65
+##   query_start_end subject_start_end total_bp_shared query_similar
+## 1            2 21           185 209              21        66.67%
+## 2            2 20           198 220              19        68.42%
+## 3            2 21           699 719              19        73.68%
+## 4            2 18           346 368              16        81.25%
+## 5            2 18           346 368              16        81.25%
+## 6            2 20           562 585              20        65.00%
+##   subject_similar
+## 1          71.43%
+## 2          84.21%
+## 3          73.68%
+## 4          93.75%
+## 5          93.75%
+## 6          80.00%</code></pre>
+<p>Set function to select genes of interest (ie those that have pvalue &lt; 0.05)</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>topDiffGenes <span class="ot">&lt;-</span> <span class="cf">function</span>(allScore) {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(allScore <span class="sc">&lt;</span> <span class="fl">0.05</span>)}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="fa-of-all-mirna-targets" class="level1">
+<h1>2 FA of all miRNA targets</h1>
+<p>Functional annotation of all putative miRNA targets</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>cor_bind_FA <span class="ot">&lt;-</span> <span class="fu">left_join</span>(data, annot, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"mRNA"</span> <span class="ot">=</span> <span class="st">"gene_ID"</span>)) <span class="sc">%&gt;%</span> <span class="fu">distinct</span>()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(cor_bind_FA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 4657</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(cor_bind_FA[<span class="sc">!</span><span class="fu">is.na</span>(cor_bind_FA<span class="sc">$</span>Gene.Ontology.IDs),])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 923</code></pre>
+<p>Of the 4657 putative miRNA targets predicted by miRanda, 923 have available annotations</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sig_cor_bind_FA <span class="ot">&lt;-</span> cor_bind_FA[cor_bind_FA<span class="sc">$</span>p_value <span class="sc">&lt;</span> <span class="fl">0.05</span>,]</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(sig_cor_bind_FA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 266</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(sig_cor_bind_FA[<span class="sc">!</span><span class="fu">is.na</span>(sig_cor_bind_FA<span class="sc">$</span>Gene.Ontology.IDs),])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 52</code></pre>
+<p>Of the 266 putative miRNA targets predicted by miRanda that are also have significantly correlated expression, only 52 have available annotations. This is an average of 1-2 annotated targets per miRNA. This unfortunately means <strong>functional enrichment analysis will likely be uninformative for most groups of significantly coexpressed targets.</strong></p>
+<p>Save</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(cor_bind_FA, <span class="st">"../output/09.1-Apul-mRNA-miRNA-interactions-functional-enrichment/miRNA_targets_FA.csv"</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(sig_cor_bind_FA, <span class="st">"../output/09.1-Apul-mRNA-miRNA-interactions-functional-enrichment/miRNA_sig_cor_targets_FA.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="fe-of-specific-mirnas-targets-all-targets" class="level1">
+<h1>3 FE of specific miRNA’s targets (all targets)</h1>
+<p>Create topGO function for use with miRNA names</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>miRNA_topGO_FE <span class="ot">&lt;-</span> <span class="cf">function</span>(miRNA.name, input_interactions) {</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Isolate genes in our input module of interest</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  interacting_genes <span class="ot">&lt;-</span> input_interactions <span class="sc">%&gt;%</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(miRNA <span class="sc">==</span> miRNA.name) <span class="sc">%&gt;%</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(mRNA)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(interacting_genes) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create factor for all reference genes, where 1 represents module membership and 0 means the gene is not in module of interest</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    gene_list <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">as.integer</span>(all_genes <span class="sc">%in%</span> interacting_genes))</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">names</span>(gene_list) <span class="ot">&lt;-</span> all_genes</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str</span>(gene_list)</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Biological Process ##</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create topGO object</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>    GO_BP <span class="ot">&lt;-</span> <span class="fu">new</span>(<span class="st">"topGOdata"</span>, </span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>                <span class="at">ontology =</span> <span class="st">"BP"</span>, <span class="co"># Biological Process</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>                <span class="at">allGenes =</span> gene_list,</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>                <span class="at">annot =</span> annFUN.gene2GO, </span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>                <span class="at">gene2GO =</span> gene2go_list,</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>                <span class="at">geneSel=</span>topDiffGenes)</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Run GO enrichment test</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>    GO_BP_FE <span class="ot">&lt;-</span> <span class="fu">runTest</span>(GO_BP, <span class="at">algorithm =</span> <span class="st">"weight01"</span>, <span class="at">statistic =</span> <span class="st">"fisher"</span>)</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># View the results</span></span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>    GO_BP_results <span class="ot">&lt;-</span> <span class="fu">GenTable</span>(GO_BP, <span class="at">Fisher =</span> GO_BP_FE, <span class="at">orderBy =</span> <span class="st">"Fisher"</span>,  <span class="at">topNodes =</span> <span class="dv">100</span>, <span class="at">numChar =</span> <span class="dv">51</span>)</span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Filter by significant results</span></span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>    GO_BP_results<span class="sc">$</span>Fisher<span class="ot">&lt;-</span><span class="fu">as.numeric</span>(GO_BP_results<span class="sc">$</span>Fisher)</span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>    GO_BP_results_sig<span class="ot">&lt;-</span>GO_BP_results[GO_BP_results<span class="sc">$</span>Fisher<span class="sc">&lt;</span><span class="fl">0.05</span>,]</span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Molecular Function ##</span></span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create topGO object</span></span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>    GO_MF <span class="ot">&lt;-</span> <span class="fu">new</span>(<span class="st">"topGOdata"</span>, </span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>                <span class="at">ontology =</span> <span class="st">"MF"</span>, <span class="co"># Molecular Function</span></span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a>                <span class="at">allGenes =</span> gene_list,</span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>                <span class="at">annot =</span> annFUN.gene2GO, </span>
+<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>                <span class="at">gene2GO =</span> gene2go_list,</span>
+<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>                <span class="at">geneSel=</span>topDiffGenes)</span>
+<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Run GO enrichment test</span></span>
+<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>    GO_MF_FE <span class="ot">&lt;-</span> <span class="fu">runTest</span>(GO_MF, <span class="at">algorithm =</span> <span class="st">"weight01"</span>, <span class="at">statistic =</span> <span class="st">"fisher"</span>)</span>
+<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a>    <span class="co"># View the results</span></span>
+<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a>    GO_MF_results <span class="ot">&lt;-</span> <span class="fu">GenTable</span>(GO_MF, <span class="at">Fisher =</span> GO_MF_FE, <span class="at">orderBy =</span> <span class="st">"Fisher"</span>,  <span class="at">topNodes =</span> <span class="dv">100</span>, <span class="at">numChar =</span> <span class="dv">51</span>)</span>
+<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Filter by significant results</span></span>
+<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a>    GO_MF_results<span class="sc">$</span>Fisher<span class="ot">&lt;-</span><span class="fu">as.numeric</span>(GO_MF_results<span class="sc">$</span>Fisher)</span>
+<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a>    GO_MF_results_sig<span class="ot">&lt;-</span>GO_MF_results[GO_MF_results<span class="sc">$</span>Fisher<span class="sc">&lt;</span><span class="fl">0.05</span>,]</span>
+<span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-49"><a href="#cb21-49" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Return</span></span>
+<span id="cb21-50"><a href="#cb21-50" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add type column only if results exist</span></span>
+<span id="cb21-51"><a href="#cb21-51" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">nrow</span>(GO_BP_results_sig) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb21-52"><a href="#cb21-52" aria-hidden="true" tabindex="-1"></a>      GO_BP_results_sig<span class="sc">$</span>type <span class="ot">&lt;-</span> <span class="st">"Biological.Process"</span></span>
+<span id="cb21-53"><a href="#cb21-53" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb21-54"><a href="#cb21-54" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">nrow</span>(GO_MF_results_sig) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb21-55"><a href="#cb21-55" aria-hidden="true" tabindex="-1"></a>      GO_MF_results_sig<span class="sc">$</span>type <span class="ot">&lt;-</span> <span class="st">"Molecular.Function"</span></span>
+<span id="cb21-56"><a href="#cb21-56" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb21-57"><a href="#cb21-57" aria-hidden="true" tabindex="-1"></a>    GO_results <span class="ot">&lt;-</span> <span class="fu">rbind</span>(GO_BP_results_sig, GO_MF_results_sig)</span>
+<span id="cb21-58"><a href="#cb21-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(GO_results)</span>
+<span id="cb21-59"><a href="#cb21-59" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb21-60"><a href="#cb21-60" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Loop through all miRNA and run functional enrichment on the miRNA’s targets (all predicted targets)</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>interacting_miRNAs <span class="ot">&lt;-</span> <span class="fu">unique</span>(cor_bind_FA<span class="sc">$</span>miRNA) <span class="sc">%&gt;%</span> na.omit</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>results_all_targets <span class="ot">&lt;-</span> <span class="cn">NULL</span>  <span class="co"># initialize empty df</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(miRNA <span class="cf">in</span> interacting_miRNAs) {</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Run topGO enrichment function</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  miRNA_results <span class="ot">&lt;-</span> <span class="fu">miRNA_topGO_FE</span>(miRNA, cor_bind_FA)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Only keep results if not empty</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nrow</span>(miRNA_results) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add the miRNA source column</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    miRNA_results<span class="sc">$</span>miRNA <span class="ot">&lt;-</span> miRNA</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Bind to the accumulating results data frame</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>    results_all_targets <span class="ot">&lt;-</span> <span class="fu">rbind</span>(results_all_targets, miRNA_results)</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(results_all_targets)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##        GO.ID                                                   Term Annotated
+## 1 GO:0001745                             compound eye morphogenesis         3
+## 2 GO:0001933         negative regulation of protein phosphorylation         5
+## 3 GO:0009734                      auxin-activated signaling pathway         5
+## 4 GO:0004459                       L-lactate dehydrogenase activity         1
+## 5 GO:0004760                  serine-pyruvate transaminase activity         1
+## 6 GO:0004742 dihydrolipoyllysine-residue acetyltransferase activ...         1
+##   Significant Expected Fisher               type        miRNA
+## 1           1     0.03  0.027 Biological.Process Cluster_5981
+## 2           1     0.05  0.045 Biological.Process Cluster_5981
+## 3           1     0.05  0.045 Biological.Process Cluster_5981
+## 4           1     0.01  0.012 Molecular.Function Cluster_5981
+## 5           1     0.01  0.012 Molecular.Function Cluster_5981
+## 6           1     0.01  0.012 Molecular.Function Cluster_5981</code></pre>
+<p>Save results</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(results_all_targets, <span class="st">"../output/09.1-Apul-mRNA-miRNA-interactions-functional-enrichment/miRNA_all_targets_topGO_FE.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="fe-of-specific-mirnas-targets-significant-cor-targets" class="level1">
+<h1>4 FE of specific miRNA’s targets (significant cor targets)</h1>
+<p>Loop through all miRNA and run functional enrichment on the miRNA’s significantly correlated targets</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>interacting_miRNAs_sig <span class="ot">&lt;-</span> <span class="fu">unique</span>(sig_cor_bind_FA<span class="sc">$</span>miRNA) <span class="sc">%&gt;%</span> na.omit</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>results_sig_cor_targets <span class="ot">&lt;-</span> <span class="cn">NULL</span>  <span class="co"># initialize empty df</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(miRNA <span class="cf">in</span> interacting_miRNAs_sig) {</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Run topGO enrichment function</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  miRNA_results <span class="ot">&lt;-</span> <span class="fu">miRNA_topGO_FE</span>(miRNA, sig_cor_bind_FA)</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Only keep results if not empty</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nrow</span>(miRNA_results) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add the miRNA source column</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    miRNA_results<span class="sc">$</span>miRNA <span class="ot">&lt;-</span> miRNA</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Bind to the accumulating results data frame</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>    results_sig_cor_targets <span class="ot">&lt;-</span> <span class="fu">rbind</span>(results_sig_cor_targets, miRNA_results)</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(results_sig_cor_targets)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##        GO.ID                                           Term Annotated
+## 1 GO:0001947                                  heart looping         4
+## 2 GO:0003341                                cilium movement        22
+## 3 GO:0004842         ubiquitin-protein transferase activity        35
+## 4 GO:0002221 pattern recognition receptor signaling pathway        11
+## 5 GO:0004252             serine-type endopeptidase activity        53
+## 6 GO:0001933 negative regulation of protein phosphorylation         5
+##   Significant Expected Fisher               type         miRNA
+## 1           1     0.00 0.0028 Biological.Process Cluster_19193
+## 2           1     0.02 0.0150 Biological.Process Cluster_10051
+## 3           1     0.02 0.0240 Molecular.Function Cluster_10051
+## 4           1     0.01 0.0077 Biological.Process Cluster_16409
+## 5           1     0.04 0.0370 Molecular.Function Cluster_16409
+## 6           1     0.00 0.0035 Biological.Process  Cluster_3250</code></pre>
+<p>Save results</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(results_sig_cor_targets, <span class="st">"../output/09.1-Apul-mRNA-miRNA-interactions-functional-enrichment/miRNA_sig_cor_targets_topGO_FE.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

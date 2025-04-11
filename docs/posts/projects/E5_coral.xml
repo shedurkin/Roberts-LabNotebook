@@ -142,11 +142,88 @@ background-color: null;
 font-style: inherit;">print</span>(terms)</span>
 <span id="cb10-10">}</span></code></pre></div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Read in functional annotation table</span></span>
+<span id="cb11-2">miRNA_FA <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://raw.githubusercontent.com/urol-e5/deep-dive-expression/refs/heads/main/D-Apul/output/09.1-Apul-mRNA-miRNA-interactions-functional-enrichment/miRNA_targets_FA.csv"</span>)</span>
+<span id="cb11-3"></span>
+<span id="cb11-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Filter to significant correlation of expression</span></span>
+<span id="cb11-5">miRNA_sig_FA <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> miRNA_FA <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb11-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(p_value <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.05</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb11-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">is.na</span>(Gene.Ontology.IDs))</span>
+<span id="cb11-8"></span>
+<span id="cb11-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Function to pull annotated terms for input miRNA</span></span>
+<span id="cb11-10">sig_FA <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(miRNA_name){</span>
+<span id="cb11-11">  cluster <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> miRNA_named <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(given_miRNA_name <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> miRNA_name) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pull</span>(Name)</span>
+<span id="cb11-12">  terms <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> miRNA_sig_FA <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(miRNA <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> cluster) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(Gene.Ontology..biological.process., Gene.Ontology.IDs, mRNA)</span>
+<span id="cb11-13">  </span>
+<span id="cb11-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>(terms)</span>
+<span id="cb11-15">}</span></code></pre></div>
+</div>
 <section id="mir-2022" class="level2">
 <h2 class="anchored" data-anchor-id="mir-2022">mir-2022</h2>
 <p>Functions that are enriched in this miRNA’s putative targets:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">FE</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -159,23 +236,36 @@ font-style: inherit;">"apul-mir-2022"</span>)</span></code></pre></div>
 4 GO:0004995         tachykinin receptor activity Molecular.Function</code></pre>
 </div>
 </div>
-<p>From The Conserved Cnidarian miR-2022 Functions During Nematogenesis B Teefy, A Cho, T Wechsler, C Juliano - The Function of Small RNA Pathways in Cnidarians, 2020:</p>
-<blockquote class="blockquote">
-<p>“Here, we characterize the function of miR-2022 in Hydra. We identify putative miR-2022 targets and find that these transcripts are <strong>expressed predominantly in nematocytes</strong>, the specialized stinging cells that define the cnidarian phylum. We also show that miR-2022 is likely under the control of the PAX-A transcription factor, which is a conserved regulator of nematogenesis in cnidarians. We hypothesize that <strong>miR-2022 participates in an incoherent feedforward loop to control gene dosage during nematocyte development</strong>. We aim to perform miR-2022 in situ hybridizations and miR-2022 knockdowns to localize and test the function of miR-2022 directly.”</p>
-</blockquote>
-<p><span class="citation" data-cites="fridrich_ancient_2023">Fridrich et al. (2023)</span> showed that miR-2022 is distinctly expressed in stinging cells, and that miR-2022 knockdown in <em>Nematostella</em> inhibits cnidogenisis (development of stinging cnidocyte cells) and defensive capability of juvenile <em>Nematostella</em></p>
+<p>Functions of targets with significantly correlated expression:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sig_FA</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul-mir-2022"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                                                                                                                                                                                                                                                                            Gene.Ontology..biological.process.
+1 fibroblast growth factor receptor signaling pathway [GO:0008543]; hatching gland development [GO:0048785]; nervous system development [GO:0007399]; neural crest cell fate commitment [GO:0014034]; neural crest formation [GO:0014029]; positive regulation of DNA-templated transcription [GO:0045893]; Wnt signaling pathway [GO:0016055]
+                                                                                                       Gene.Ontology.IDs
+1 GO:0000981; GO:0003677; GO:0005634; GO:0007399; GO:0008543; GO:0014029; GO:0014034; GO:0016055; GO:0045893; GO:0048785
+        mRNA
+1 FUN_040720</code></pre>
+</div>
+</div>
+<p><span class="citation" data-cites="teefy2020">Teefy (2020)</span> found that predicted targets of miR-2022 are predominantly expressed in nematocytes and that miR-2022 is controlled by PAX-A transcription factor, a regulator of nematogenesis in cnidarians. They hypothesize that “miR-2022 participates in an incoherent feedforward loop to control gene dosage during nematocyte development.”</p>
+<p><span class="citation" data-cites="fridrich_ancient_2023">Fridrich et al. (2023)</span> showed that miR-2022 is predominantly expressed in stinging cells, and that miR-2022 knockdown in <em>Nematostella</em> inhibits cnidogenisis (development of stinging cnidocyte cells) and defensive capabilities in juvenile <em>Nematostella</em></p>
 <p><span class="citation" data-cites="liew_identification_2014">Liew et al. (2014)</span> found that predicted targets of miR-2022 in <em>Stylophera pistillata</em> are enriched (topGO, FDR pval &lt; 0.01) for the Biological Processes:</p>
 <p><strong>Immunity:</strong> “GO:0044003: modification by symbiont of host morphology or physiology”, “GO:0019048: virus-host interaction”<br>
-<strong>Cell cycle: “<strong>GO:0010564 : regulation of cell cycle process”, ”GO:0000281: cytokinesis after mitosis”, ”GO:2001237: negative regulation of extrinsic apoptotic signaling pathway”<br>
-</strong>Transport/Signaling:**”GO:0042147: retrograde transport, endosome to Golgi”, “GO:0006886: intracellular protein transport”, “GO:0051904: pigment granule transport”<br>
-</strong>Differentiation/development: “**GO:0001822: kidney development”, “GO:0030858: positive regulation of epithelial cell differentiation”, “GO:0001942: hair follicle development”, “GO:0048864: stem cell development”, “GO:0021670: lateral ventricle development”, “GO:0043588: skin development”</p>
+<strong>Cell cycle:</strong> “GO:0010564 : regulation of cell cycle process”, “GO:0000281: cytokinesis after mitosis”, “GO:2001237: negative regulation of extrinsic apoptotic signaling pathway”<strong><br>
+Transport/Signaling:</strong> “GO:0042147: retrograde transport, endosome to Golgi”, “GO:0006886: intracellular protein transport”, “GO:0051904: pigment granule transport”<br>
+<strong>Differentiation/development:</strong> “**GO:0001822: kidney development”, “GO:0030858: positive regulation of epithelial cell differentiation”, “GO:0001942: hair follicle development”, “GO:0048864: stem cell development”, “GO:0021670: lateral ventricle development”, “GO:0043588: skin development”</p>
 <p>Our enriched terms seem to support the previously described function of miR-2022, since both “startle response” and “tachykinin receptor activity” are directly related to sensation/response, a primary function of nematocytes/cnidocytes!</p>
 </section>
 <section id="mir-2030" class="level2">
 <h2 class="anchored" data-anchor-id="mir-2030">mir-2030</h2>
 <p>Functions that are enriched in this miRNA’s putative targets:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">FE</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -185,18 +275,32 @@ font-style: inherit;">"apul-mir-2030"</span>)</span></code></pre></div>
 1 GO:0000226 microtubule cytoskeleton organization Biological.Process</code></pre>
 </div>
 </div>
+<p>Functions of targets with significantly correlated expression:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sig_FA</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul-mir-2030"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] Gene.Ontology..biological.process. Gene.Ontology.IDs                 
+[3] mRNA                              
+&lt;0 rows&gt; (or 0-length row.names)</code></pre>
+</div>
+</div>
+<p>(None of apul-mir-2030’s significantly correlated targets are annotated)</p>
 <p>Highly conserved across bilateria</p>
 <p><span class="citation" data-cites="krishna_deep_2013">Krishna et al. (2013)</span> found that miR-2030 is expressed throughout the body column of <em>Hydra magnipapillata</em> during head regeneration, but *not* in the tentacles</p>
 <p>however, <span class="citation" data-cites="moran_cnidarian_2014">Moran et al. (2014)</span> found that miR-2030 is expressed <em>only</em> in the tentacles in <em>Nematostella vectensis</em></p>
 <p><span class="citation" data-cites="liew_identification_2014">Liew et al. (2014)</span> found that predicted targets of miR-2030 in <em>Stylophera pistillata</em> are enriched (topGO, FDR pval &lt; 0.01) for the Biological Processes:</p>
-<p><u><strong>Differentiation/Development:</strong></u> “GO:0009952: anterior/posterior pattern specification”, “GO:0048538: thymus development”, “GO:0007283: spermatogenesis”,<br>
-<u><strong>Miscellaneous:</strong></u> “GO:0007030: Golgi organization”</p>
+<p><strong>Differentiation/Development:</strong> “GO:0009952: anterior/posterior pattern specification”, “GO:0048538: thymus development”, “GO:0007283: spermatogenesis”,<br>
+<strong>Miscellaneous:</strong> “GO:0007030: Golgi organization”</p>
 </section>
 <section id="mir-100" class="level2">
 <h2 class="anchored" data-anchor-id="mir-100">mir-100</h2>
 <p>Functions that are enriched in this miRNA’s putative targets:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">FE</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -224,6 +328,34 @@ font-style: inherit;">"apul-mir-100"</span>)</span></code></pre></div>
 9 Molecular.Function</code></pre>
 </div>
 </div>
+<p>Functions of targets with significantly correlated expression:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sig_FA</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul-mir-100"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       Gene.Ontology..biological.process.
+1 embryonic body morphogenesis [GO:0010172]; fibroblast growth factor receptor signaling pathway [GO:0008543]; G1/S transition of mitotic cell cycle [GO:0000082]; miRNA metabolic process [GO:0010586]; miRNA-mediated gene silencing by inhibition of translation [GO:0035278]; negative regulation of translation [GO:0017148]; neural tube development [GO:0021915]; proteasome-mediated ubiquitin-dependent protein catabolic process [GO:0043161]; protein autoubiquitination [GO:0051865]; protein polyubiquitination [GO:0000209]; regulation of miRNA-mediated gene silencing [GO:0060964]; regulation of neural precursor cell proliferation [GO:2000177]; stem cell proliferation [GO:0072089]
+2 embryonic body morphogenesis [GO:0010172]; fibroblast growth factor receptor signaling pathway [GO:0008543]; G1/S transition of mitotic cell cycle [GO:0000082]; miRNA metabolic process [GO:0010586]; miRNA-mediated gene silencing by inhibition of translation [GO:0035278]; negative regulation of translation [GO:0017148]; neural tube development [GO:0021915]; proteasome-mediated ubiquitin-dependent protein catabolic process [GO:0043161]; protein autoubiquitination [GO:0051865]; protein polyubiquitination [GO:0000209]; regulation of miRNA-mediated gene silencing [GO:0060964]; regulation of neural precursor cell proliferation [GO:2000177]; stem cell proliferation [GO:0072089]
+3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             bile acid biosynthetic process [GO:0006699]
+4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                transposition, DNA-mediated [GO:0006313]
+5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      cell cycle [GO:0007049]; cell division [GO:0051301]; regulation of mitotic cell cycle [GO:0007346]
+                                                                                                                                                                                                                   Gene.Ontology.IDs
+1 GO:0000082; GO:0000209; GO:0000932; GO:0004842; GO:0008270; GO:0008543; GO:0010172; GO:0010586; GO:0017148; GO:0021915; GO:0030371; GO:0035198; GO:0035278; GO:0043161; GO:0051865; GO:0060964; GO:0061630; GO:0072089; GO:2000177
+2 GO:0000082; GO:0000209; GO:0000932; GO:0004842; GO:0008270; GO:0008543; GO:0010172; GO:0010586; GO:0017148; GO:0021915; GO:0030371; GO:0035198; GO:0035278; GO:0043161; GO:0051865; GO:0060964; GO:0061630; GO:0072089; GO:2000177
+3                                                                                                                                                                                                 GO:0006699; GO:0045302; GO:0047742
+4                                                                                                                                                                                                             GO:0003964; GO:0006313
+5                                                                                                                                     GO:0000922; GO:0005737; GO:0005815; GO:0007049; GO:0007346; GO:0019900; GO:0030496; GO:0051301
+        mRNA
+1 FUN_029594
+2 FUN_029602
+3 FUN_011056
+4 FUN_034127
+5 FUN_018376</code></pre>
+</div>
+</div>
 <blockquote class="blockquote">
 <p>in humans, miR-100 has been shown to target genes involved in growth and development. Examples include Plk1, a key mitotic checkpoint regulatory protein [26]; RBSP3, involved in cell proliferation and myeloid cell differentiation [27]; BMPR2, involved in osteogenesis [94]; and FRAP1/mTOR, which regulates cell growth [95]. (Liew et al, 2014)</p>
 </blockquote>
@@ -238,7 +370,7 @@ font-style: inherit;">"apul-mir-100"</span>)</span></code></pre></div>
 <h2 class="anchored" data-anchor-id="mir-2050">mir-2050</h2>
 <p>Functions that are enriched in this miRNA’s putative targets:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">FE</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -268,13 +400,27 @@ font-style: inherit;">"apul-mir-2050"</span>)</span></code></pre></div>
 10 Molecular.Function</code></pre>
 </div>
 </div>
+<p>Functions of targets with significantly correlated expression:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sig_FA</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul-mir-2050"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] Gene.Ontology..biological.process. Gene.Ontology.IDs                 
+[3] mRNA                              
+&lt;0 rows&gt; (or 0-length row.names)</code></pre>
+</div>
+</div>
+<p>(None of apul-mir-2050’s significantly correlated targets are annotated)</p>
 <p><span class="citation" data-cites="grinblat_biogeography_2021">Grinblat (2021)</span> found miR-2050 was highly expressed during spawning in <em>Fungia fungites</em></p>
 </section>
 <section id="mir-2023" class="level2">
 <h2 class="anchored" data-anchor-id="mir-2023">mir-2023</h2>
 <p>Functions that are enriched in this miRNA’s putative targets:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">FE</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -285,6 +431,20 @@ font-style: inherit;">"apul-mir-2023"</span>)</span></code></pre></div>
 2 GO:0005388 P-type calcium transporter activity Molecular.Function</code></pre>
 </div>
 </div>
+<p>Functions of targets with significantly correlated expression:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sig_FA</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul-mir-2023"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] Gene.Ontology..biological.process. Gene.Ontology.IDs                 
+[3] mRNA                              
+&lt;0 rows&gt; (or 0-length row.names)</code></pre>
+</div>
+</div>
+<p>(None of apul-mir-2023’s significantly correlated targets are annotated)</p>
 <p><span class="citation" data-cites="liew_identification_2014">Liew et al. (2014)</span> found that predicted targets of miR-2023 in <em>Stylophera pistillata</em> are enriched (topGO, FDR pval &lt; 0.01) for the Biological Processes:</p>
 <p><strong>Transport/signaling:</strong> “GO:0032869: cellular response to insulin stimulus”<br>
 <strong>Cell cycle:</strong> “GO:0007049: cell cycle”<br>
@@ -295,7 +455,7 @@ font-style: inherit;">"apul-mir-2023"</span>)</span></code></pre></div>
 <h2 class="anchored" data-anchor-id="mir-2028">mir-2028</h2>
 <p>Functions that are enriched in this miRNA’s putative targets:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">FE</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -306,12 +466,28 @@ font-style: inherit;">"apul-mir-2028"</span>)</span></code></pre></div>
 2 GO:0004345 glucose-6-phosphate dehydrogenase activity Molecular.Function</code></pre>
 </div>
 </div>
+<p>Functions of targets with significantly correlated expression:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sig_FA</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul-mir-2028"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                                        Gene.Ontology..biological.process.
+1 mitotic cell cycle [GO:0000278]; positive regulation of NLRP3 inflammasome complex assembly [GO:1900227]
+                                                                                                       Gene.Ontology.IDs
+1 GO:0000278; GO:0000775; GO:0000922; GO:0004722; GO:0005634; GO:0005829; GO:0017018; GO:0046872; GO:0046982; GO:1900227
+        mRNA
+1 FUN_001214</code></pre>
+</div>
+</div>
 </section>
 <section id="mir-2036" class="level2">
 <h2 class="anchored" data-anchor-id="mir-2036">mir-2036</h2>
 <p>Functions that are enriched in this miRNA’s putative targets:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">FE</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -325,6 +501,20 @@ font-style: inherit;">"apul-mir-2036"</span>)</span></code></pre></div>
 2 Molecular.Function</code></pre>
 </div>
 </div>
+<p>Functions of targets with significantly correlated expression:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sig_FA</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul-mir-2036"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] Gene.Ontology..biological.process. Gene.Ontology.IDs                 
+[3] mRNA                              
+&lt;0 rows&gt; (or 0-length row.names)</code></pre>
+</div>
+</div>
+<p>(None of apul-mir-2036’s significantly correlated targets are annotated)</p>
 <p><span class="citation" data-cites="liew_identification_2014">Liew et al. (2014)</span> found that predicted targets of miR-2036 in <em>Stylophera pistillata</em> are enriched (topGO, FDR pval &lt; 0.01) for the Biological Processes:</p>
 <p><strong>Cytoskeleton:</strong> “GO:0030199: collagen fibril organization”<br>
 <strong>Differentiation/development:</strong> “GO:0021670: lateral ventricle development”, “GO:0003323: type B pancreatic cell development”, “GO:0045638: negative regulation of myeloid cell differentiation”<br>
@@ -334,7 +524,7 @@ font-style: inherit;">"apul-mir-2036"</span>)</span></code></pre></div>
 <h2 class="anchored" data-anchor-id="mir-2025">mir-2025</h2>
 <p>Functions that are enriched in this miRNA’s putative targets:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb40" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">FE</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -344,12 +534,26 @@ font-style: inherit;">"apul-mir-2025"</span>)</span></code></pre></div>
 1 GO:0001649 osteoblast differentiation Biological.Process</code></pre>
 </div>
 </div>
+<p>Functions of targets with significantly correlated expression:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sig_FA</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul-mir-2025"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] Gene.Ontology..biological.process. Gene.Ontology.IDs                 
+[3] mRNA                              
+&lt;0 rows&gt; (or 0-length row.names)</code></pre>
+</div>
+</div>
+<p>(None of apul-mir-2025’s significantly correlated targets are annotated)</p>
 </section>
 <section id="mir-9425" class="level2">
 <h2 class="anchored" data-anchor-id="mir-9425">mir-9425</h2>
 <p>Functions that are enriched in this miRNA’s putative targets:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb44" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">FE</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -365,14 +569,27 @@ font-style: inherit;">"apul-mir-9425"</span>)</span></code></pre></div>
 3 Molecular.Function</code></pre>
 </div>
 </div>
-</section>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section"></h2>
+<p>Functions of targets with significantly correlated expression:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sig_FA</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul-mir-9425"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                                                                                                                                              Gene.Ontology..biological.process.
+1 beta-carotene metabolic process [GO:1901810]; carotene catabolic process [GO:0016121]; retinal metabolic process [GO:0042574]; retinoid metabolic process [GO:0001523]; retinol metabolic process [GO:0042572]
+                                                                                           Gene.Ontology.IDs
+1 GO:0001523; GO:0003834; GO:0005829; GO:0010436; GO:0016121; GO:0042572; GO:0042574; GO:0046872; GO:1901810
+        mRNA
+1 FUN_008226</code></pre>
+</div>
+</div>
 </section>
 <section id="apul-mir-novel-34-mir-2037" class="level2">
 <h2 class="anchored" data-anchor-id="apul-mir-novel-34-mir-2037">apul-mir-novel-34 / miR-2037</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb48" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">FE</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -404,17 +621,39 @@ font-style: inherit;">"apul-mir-novel-34"</span>)</span></code></pre></div>
 11 Molecular.Function</code></pre>
 </div>
 </div>
+<p>Functions of targets with significantly correlated expression:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sig_FA</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul-mir-novel-34"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Gene.Ontology..biological.process.
+1 activation of cysteine-type endopeptidase activity involved in apoptotic process [GO:0006919]; apoptotic process [GO:0006915]; cellular response to muramyl dipeptide [GO:0071225]; defense response to bacterium [GO:0042742]; defense response to Gram-positive bacterium [GO:0050830]; detection of bacterium [GO:0016045]; ERK1 and ERK2 cascade [GO:0070371]; I-kappaB kinase/NF-kappaB signaling [GO:0007249]; innate immune response [GO:0045087]; intracellular signal transduction [GO:0035556]; JNK cascade [GO:0007254]; pattern recognition receptor signaling pathway [GO:0002221]; positive regulation of cell death [GO:0010942]; positive regulation of cysteine-type endopeptidase activity involved in apoptotic process [GO:0043280]; positive regulation of dendritic cell antigen processing and presentation [GO:0002606]; positive regulation of ERK1 and ERK2 cascade [GO:0070374]; positive regulation of I-kappaB kinase/NF-kappaB signaling [GO:0043123]; positive regulation of interleukin-1 beta production [GO:0032731]; positive regulation of interleukin-6 production [GO:0032755]; positive regulation of interleukin-8 production [GO:0032757]; positive regulation of JNK cascade [GO:0046330]; positive regulation of macrophage cytokine production [GO:0060907]; positive regulation of NF-kappaB transcription factor activity [GO:0051092]; positive regulation of NIK/NF-kappaB signaling [GO:1901224]; positive regulation of nitric-oxide synthase activity [GO:0051000]; positive regulation of stress-activated MAPK cascade [GO:0032874]; positive regulation of tumor necrosis factor production [GO:0032760]; positive regulation of xenophagy [GO:1904417]; regulation of apoptotic process [GO:0042981]; stress-activated MAPK cascade [GO:0051403]; xenophagy [GO:0098792]
+2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   regulation of biological quality [GO:0065008]
+3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        proteolysis [GO:0006508]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   Gene.Ontology.IDs
+1 GO:0002221; GO:0002606; GO:0005524; GO:0005737; GO:0005829; GO:0005886; GO:0006915; GO:0006919; GO:0007249; GO:0007254; GO:0010942; GO:0016045; GO:0016323; GO:0016324; GO:0032731; GO:0032755; GO:0032757; GO:0032760; GO:0032874; GO:0035556; GO:0038187; GO:0042742; GO:0042802; GO:0042803; GO:0042981; GO:0043123; GO:0043280; GO:0044877; GO:0045087; GO:0045335; GO:0046330; GO:0050700; GO:0050830; GO:0051000; GO:0051092; GO:0051403; GO:0060907; GO:0070371; GO:0070374; GO:0071225; GO:0098792; GO:1901224; GO:1904417
+2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 GO:0004930; GO:0005886; GO:0065008
+3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 GO:0004252; GO:0005576; GO:0006508
+        mRNA
+1 FUN_035124
+2 FUN_001557
+3 FUN_037296</code></pre>
+</div>
+</div>
 <p><span class="citation" data-cites="liew_identification_2014">Liew et al. (2014)</span> identify a matching miRNA in <em>Stylophora pistillata</em> (spi-miR-temp-20) with targets enriched (topGO, FDR pval &lt; 0.01) for the Biological Processes:</p>
 <p><strong>Immunity:</strong> “GO:0032088: negative regulation of NF-kappaB transcription factor activity”<br>
 <strong>Cell cycle:</strong> “GO:0042981: regulation of apoptotic process”<br>
 <strong>Transport/signaling:</strong> “GO:0046330: positive regulation of JNK cascade”<br>
-**Differentiation/development: “<strong>GO:0061146: Peyer’s patch morphogenesis”<br>
-</strong>Miscellaneous:**”GO:0048169: regulation of long-term neuronal synaptic plasticity”, “GO:0008542: visual learning”, “GO:0006290: pyrimidine dimer repair”</p>
+<strong>Differentiation/development:</strong> “GO:0061146: Peyer’s patch morphogenesis”<strong><br>
+Miscellaneous:</strong> “GO:0048169: regulation of long-term neuronal synaptic plasticity”, “GO:0008542: visual learning”, “GO:0006290: pyrimidine dimer repair”</p>
 </section>
 <section id="apul-mir-novel-9" class="level2">
 <h2 class="anchored" data-anchor-id="apul-mir-novel-9">apul-mir-novel-9</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb52" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">FE</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -438,9 +677,37 @@ font-style: inherit;">"apul-mir-novel-9"</span>)</span></code></pre></div>
 7 Molecular.Function</code></pre>
 </div>
 </div>
+<p>Functions of targets with significantly correlated expression:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sig_FA</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul-mir-novel-9"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   Gene.Ontology..biological.process.
+1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  cell cycle [GO:0007049]; cell division [GO:0051301]; regulation of mitotic cell cycle [GO:0007346]
+2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    signal transduction [GO:0007165]
+3 I-kappaB kinase/NF-kappaB signaling [GO:0007249]; intracellular signal transduction [GO:0035556]; negative regulation of cytokine production involved in inflammatory response [GO:1900016]; negative regulation of epithelial cell proliferation [GO:0050680]; negative regulation of fibroblast proliferation [GO:0048147]; negative regulation of I-kappaB kinase/NF-kappaB signaling [GO:0043124]; negative regulation of inflammatory response [GO:0050728]; negative regulation of innate immune response [GO:0045824]; negative regulation of interferon-alpha production [GO:0032687]; negative regulation of interferon-beta production [GO:0032688]; negative regulation of interleukin-1 beta production [GO:0032691]; negative regulation of interleukin-12 production [GO:0032695]; negative regulation of interleukin-6 production [GO:0032715]; negative regulation of NF-kappaB transcription factor activity [GO:0032088]; negative regulation of NIK/NF-kappaB signaling [GO:1901223]; negative regulation of NLRP3 inflammasome complex assembly [GO:1900226]; negative regulation of phosphatidylinositol 3-kinase signaling [GO:0014067]; negative regulation of tumor necrosis factor production [GO:0032720]; regulation of protein ubiquitination [GO:0031396]; response to lipopolysaccharide [GO:0032496]; T cell activation [GO:0042110]
+4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      carboxylic acid metabolic process [GO:0019752]
+5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  cell cycle [GO:0007049]; cell division [GO:0051301]; regulation of mitotic cell cycle [GO:0007346]
+                                                                                                                                                                                                                                                                                                                               Gene.Ontology.IDs
+1                                                                                                                                                                                                                         GO:0005737; GO:0005813; GO:0007049; GO:0007346; GO:0019900; GO:0030496; GO:0051301; GO:0072686; GO:0097431; GO:1990023
+2                                                                                                                                                                                                                                                                                     GO:0003924; GO:0005525; GO:0005886; GO:0007165; GO:0019003
+3 GO:0005524; GO:0005737; GO:0005829; GO:0007249; GO:0014067; GO:0031396; GO:0032088; GO:0032496; GO:0032687; GO:0032688; GO:0032691; GO:0032695; GO:0032715; GO:0032720; GO:0034451; GO:0035556; GO:0036312; GO:0042110; GO:0043124; GO:0043231; GO:0045824; GO:0048147; GO:0048471; GO:0050680; GO:0050728; GO:1900016; GO:1900226; GO:1901223
+4                                                                                                                                                                                                                                                                                                             GO:0004459; GO:0005737; GO:0019752
+5                                                                                                                                                                                                                                                 GO:0000922; GO:0005737; GO:0005815; GO:0007049; GO:0007346; GO:0019900; GO:0030496; GO:0051301
+        mRNA
+1 FUN_024529
+2 FUN_038089
+3 FUN_040522
+4 FUN_006649
+5 FUN_018376</code></pre>
+</div>
+</div>
 <p><span class="citation" data-cites="gajigan_microrna_2017">Gajigan and Conaco (2017)</span> identify a miRNA in <em>Acropora digitifera</em> (Adi-Mir-Novel-5_3p) that matches our “apul-mir-novel-9”. They found this miRNA was differentially expressed in response to thermal stress, and it’s predicted targets were enriched (topGO, FDR pval &lt; 0.05) for:</p>
-<p><strong>Regulation of expression: “<strong>RNA polymerase II transcription corepressor activity”, ”Histone dephosphorylation”, ”DNA demethylation”, ”Positive regulation of transcription RNA poIII promoter”, ”Transcription, DNA-templeted”, ”Circadian regulation of gene expression”<br>
-</strong>Stress response:”</strong>Cytokine production”, “Oxidative stress-induced premature senescence”, “MyD88-dependent toll-like receptor”, “Protein disulfide isomerase activity”, “Secretion of lysosomal enzymes”, “Adaptive immune response”, “Negative regulation of cell cycle”<br>
+<p><strong>Regulation of expression:</strong> “RNA polymerase II transcription corepressor activity”, “Histone dephosphorylation”, “DNA demethylation”, “Positive regulation of transcription RNA poIII promoter”, “Transcription, DNA-templeted”, “Circadian regulation of gene expression”<strong><br>
+Stress response:</strong> “Cytokine production”, “Oxidative stress-induced premature senescence”, “MyD88-dependent toll-like receptor”, “Protein disulfide isomerase activity”, “Secretion of lysosomal enzymes”, “Adaptive immune response”, “Negative regulation of cell cycle”<br>
 <strong>Repair:</strong> “Positive regulation of DNA repair”, “Regulation of nucleotide-excision”, “RNA repair” “Oxidative demethylation”<br>
 <strong>Signaling:</strong> “Receptor catabolic process”, “G-protein coupled receptor kinase”, “Phosphatidylinositol binding”, “GABA receptor binding”, “Protein serine/threonine”, “cAMP-dependent protein kinase”<br>
 <strong>Tissue morphogenisis:</strong> “Type I TGFbeta receptor binding”, “Embryonic skeletal system morphogene”, “Zonula adherens maintenance”<br>
@@ -469,6 +736,9 @@ Liew, Yi Jin, Manuel Aranda, Adrian Carr, Sebastian Baumgarten, Didier Zoccola, 
 <div id="ref-moran_cnidarian_2014" class="csl-entry">
 Moran, Yehu, David Fredman, Daniela Praher, Xin Li, Liang Wee, Fabian Rentzsch, Phillip Zamore, Ulrich Technau, and Hervé Seitz. 2014. <span>“Cnidarian <span class="nocase">microRNAs</span> Frequently Regulate Targets by Cleavage.”</span> <em>Genome Research</em> 24 (March). <a href="https://doi.org/10.1101/gr.162503.113">https://doi.org/10.1101/gr.162503.113</a>.
 </div>
+<div id="ref-teefy2020" class="csl-entry">
+Teefy, Bryan Barrett. 2020. <span>“The Function of Small RNA Pathways in Cnidarians.”</span> PhD thesis, United States – California. <a href="https://www.proquest.com/docview/2503663922/abstract/885C0525BC204266PQ/1">https://www.proquest.com/docview/2503663922/abstract/885C0525BC204266PQ/1</a>.
+</div>
 </div></section></div> ]]></description>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_04_10_dde_named_miRNA_functions.html</guid>
@@ -483,8 +753,873 @@ Moran, Yehu, David Fredman, Daniela Praher, Xin Li, Liang Wee, Fabian Rentzsch, 
 
 
 
+<p>This code attempts to identify the function of each miRNA by running functional enrichment analysis on each miRNA’s set of target genes.</p>
+<p><a href="https://github.com/urol-e5/deep-dive-expression/blob/main/D-Apul/code/09.1-Apul-mRNA-miRNA-interactions-functional-enrichment.Rmd">Code</a><br>
+<a href="https://github.com/urol-e5/deep-dive-expression/blob/main/D-Apul/code/09.1-Apul-mRNA-miRNA-interactions-functional-enrichment.md?plain=1">Rendered code</a><br>
+<a href="https://github.com/urol-e5/deep-dive-expression/tree/main/D-Apul/output/09.1-Apul-mRNA-miRNA-interactions-functional-enrichment">Output files</a></p>
+<p>Also see post on <a href="../../../posts/projects/E5_coral/2025_04_08_dde_miranda_FE.html">functional enrichment of all targets</a></p>
+<section id="format-topgo-files" class="level1">
+<h1>1 Format topGO files</h1>
+<section id="read-in-and-format-annotation-files" class="level2">
+<h2 class="anchored" data-anchor-id="read-in-and-format-annotation-files">1.1 Read in and format annotation files</h2>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Read in Apul annotations</span></span>
+<span id="cb1-2">annot_locations <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.delim</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/02-Apul-reference-annotation/Apulcra-genome-mRNA-IDmapping-2024_12_12.tab"</span>)</span>
+<span id="cb1-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Remove unneeded columns </span></span>
+<span id="cb1-4">annot_locations <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> annot_locations <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>X, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>V13)</span>
+<span id="cb1-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Ensure there are no duplicate rows</span></span>
+<span id="cb1-6">annot_locations <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> annot_locations <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">distinct</span>()</span>
+<span id="cb1-7"></span>
+<span id="cb1-8"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(annot_locations)</span></code></pre></div>
+<pre><code>##                     V1     V3 Protein.names
+## 1   ntLink_4:1155-1537 P35061   Histone H2A
+## 2   ntLink_4:2660-3441 P84239    Histone H3
+## 3   ntLink_4:4515-6830 P35061   Histone H2A
+## 4   ntLink_4:7096-7859 P84239    Histone H3
+## 5   ntLink_4:8474-9669 P35061   Histone H2A
+## 6 ntLink_4:11162-11925 P84239    Histone H3
+##                                     Organism Gene.Ontology..biological.process.
+## 1          Acropora formosa (Staghorn coral)                                   
+## 2 Urechis caupo (Innkeeper worm) (Spoonworm)                                   
+## 3          Acropora formosa (Staghorn coral)                                   
+## 4 Urechis caupo (Innkeeper worm) (Spoonworm)                                   
+## 5          Acropora formosa (Staghorn coral)                                   
+## 6 Urechis caupo (Innkeeper worm) (Spoonworm)                                   
+##                                            Gene.Ontology.IDs
+## 1 GO:0000786; GO:0003677; GO:0005634; GO:0030527; GO:0046982
+## 2 GO:0000786; GO:0003677; GO:0005634; GO:0030527; GO:0046982
+## 3 GO:0000786; GO:0003677; GO:0005634; GO:0030527; GO:0046982
+## 4 GO:0000786; GO:0003677; GO:0005634; GO:0030527; GO:0046982
+## 5 GO:0000786; GO:0003677; GO:0005634; GO:0030527; GO:0046982
+## 6 GO:0000786; GO:0003677; GO:0005634; GO:0030527; GO:0046982</code></pre>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Looks good!</span></span></code></pre></div>
+<p>This file shows each gene as it’s genomic location. We want to use gene IDs to associate genes, so add gene IDs to this annotation table</p>
+<p>Read in file that associates each mRNA genomic location with corresponding gene ID</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">mRNA_FUNids <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.table</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/15-Apul-annotate-UTRs/Apul-mRNA-FUNids.txt"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">header=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col.names=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"location"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"type"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mRNA_ID"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene_ID"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"product"</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sep=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\t</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb4-2"></span>
+<span id="cb4-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Remove unwanted text from parent column</span></span>
+<span id="cb4-4">mRNA_FUNids<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>gene_ID <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gsub</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Parent="</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>, mRNA_FUNids<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>gene_ID)</span>
+<span id="cb4-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Only need to keep mRNA location and gene ID</span></span>
+<span id="cb4-6">mRNA_FUNids <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> mRNA_FUNids <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(location, gene_ID)</span></code></pre></div>
+<p>join with annotation file</p>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># join</span></span>
+<span id="cb5-2">annot <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">left_join</span>(annot_locations, mRNA_FUNids, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V1"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"location"</span>))</span>
+<span id="cb5-3"></span>
+<span id="cb5-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ensure there are no duplicate rows</span></span>
+<span id="cb5-5">annot <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> annot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">distinct</span>()</span></code></pre></div>
+</section>
+<section id="set-up-gene2go-object" class="level2">
+<h2 class="anchored" data-anchor-id="set-up-gene2go-object">1.2 Set up gene2GO object</h2>
+<p>Want to isolate a list of GO terms per gene</p>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">gene2go <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> annot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">is.na</span>(Gene.Ontology.IDs)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(gene_ID, Gene.Ontology.IDs)</span>
+<span id="cb6-2">gene2go <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> gene2go <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rename</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">GO.ID =</span> Gene.Ontology.IDs)</span>
+<span id="cb6-3"></span>
+<span id="cb6-4">gene2go_list <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">setNames</span>(</span>
+<span id="cb6-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">strsplit</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.character</span>(gene2go<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>GO.ID), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">";"</span>), </span>
+<span id="cb6-6">  gene2go<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>gene_ID</span>
+<span id="cb6-7">)</span></code></pre></div>
+<p>Note: I think this means genes that had a Uniprot ID but no GO terms are excluded from this analysis</p>
+</section>
+<section id="define-reference-set" class="level2">
+<h2 class="anchored" data-anchor-id="define-reference-set">1.3 Define reference set</h2>
+<p>Define reference set of genes. This should be all genes <em>found in our samples</em>, NOT all genes in the A.pulchra genome. Some genes (e.g., reproduction pathways) may not be found/expected in our samples for valid biological reasons.</p>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Read in counts matrix</span></span>
+<span id="cb7-2">Apul_counts <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/07-Apul-Hisat/Apul-gene_count_matrix.csv"</span>)</span>
+<span id="cb7-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Exclude genes with all 0 counts</span></span>
+<span id="cb7-4">Apul_counts <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> Apul_counts[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rowSums</span>(Apul_counts[, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>]) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, ]</span>
+<span id="cb7-5"></span>
+<span id="cb7-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Select gene IDs of the genes present in our samples</span></span>
+<span id="cb7-7">all_genes <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> Apul_counts<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>gene_id</span>
+<span id="cb7-8"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">length</span>(all_genes)</span></code></pre></div>
+<pre><code>## [1] 33624</code></pre>
+<p>So we have a reference set of 33624 genes present in our samples.</p>
+</section>
+<section id="read-in-pccmiranda-data" class="level2">
+<h2 class="anchored" data-anchor-id="read-in-pccmiranda-data">1.4 Read in PCC/miranda data</h2>
+<p>This is a table of all putative miRNA-mRNA binding predicted by miRanda, plus Pearsons correlation coefficients for coexpression of each putative binding pair.</p>
+<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">data <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/09-Apul-mRNA-miRNA-interactions/miranda_PCC_miRNA_mRNA.csv"</span>)</span>
+<span id="cb9-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(data)</span></code></pre></div>
+<pre><code>##   X         miRNA       mRNA    PCC.cor   p_value adjusted_p_value score energy
+## 1 1  Cluster_5981 FUN_028147  0.6825537 0.2041707        0.9986496   146 -22.19
+## 2 2 Cluster_15340 FUN_013332  0.6371070 0.2476393        0.9986496   158 -23.15
+## 3 3  Cluster_5981 FUN_041253 -0.2250869 0.7158492        0.9986496   153 -20.50
+## 4 4  Cluster_3366 FUN_010827  0.3671005 0.5433145        0.9986496   163 -22.14
+## 5 5  Cluster_3367 FUN_010827  0.5369304 0.3507987        0.9986496   163 -22.14
+## 6 6 Cluster_15340 FUN_003342  0.1096213 0.8607058        0.9986496   154 -20.65
+##   query_start_end subject_start_end total_bp_shared query_similar
+## 1            2 21           185 209              21        66.67%
+## 2            2 20           198 220              19        68.42%
+## 3            2 21           699 719              19        73.68%
+## 4            2 18           346 368              16        81.25%
+## 5            2 18           346 368              16        81.25%
+## 6            2 20           562 585              20        65.00%
+##   subject_similar
+## 1          71.43%
+## 2          84.21%
+## 3          73.68%
+## 4          93.75%
+## 5          93.75%
+## 6          80.00%</code></pre>
+<p>Set function to select genes of interest (ie those that have pvalue &lt; 0.05)</p>
+<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">topDiffGenes <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(allScore) {</span>
+<span id="cb11-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(allScore <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.05</span>)}</span></code></pre></div>
+</section>
+</section>
+<section id="fa-of-all-mirna-targets" class="level1">
+<h1>2 FA of all miRNA targets</h1>
+<p>Functional annotation of all putative miRNA targets</p>
+<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">cor_bind_FA <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">left_join</span>(data, annot, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mRNA"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene_ID"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">distinct</span>()</span>
+<span id="cb12-2"></span>
+<span id="cb12-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(cor_bind_FA)</span></code></pre></div>
+<pre><code>## [1] 4657</code></pre>
+<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(cor_bind_FA[<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">is.na</span>(cor_bind_FA<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Gene.Ontology.IDs),])</span></code></pre></div>
+<pre><code>## [1] 923</code></pre>
+<p>Of the 4657 putative miRNA targets predicted by miRanda, 923 have available annotations</p>
+<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">sig_cor_bind_FA <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> cor_bind_FA[cor_bind_FA<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>p_value <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.05</span>,]</span>
+<span id="cb16-2"></span>
+<span id="cb16-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(sig_cor_bind_FA)</span></code></pre></div>
+<pre><code>## [1] 266</code></pre>
+<div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(sig_cor_bind_FA[<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">is.na</span>(sig_cor_bind_FA<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Gene.Ontology.IDs),])</span></code></pre></div>
+<pre><code>## [1] 52</code></pre>
+<p>Of the 266 putative miRNA targets predicted by miRanda that are also have significantly correlated expression, only 52 have available annotations. This is an average of 1-2 annotated targets per miRNA. This unfortunately means <strong>functional enrichment analysis will likely be uninformative for most groups of significantly coexpressed targets.</strong></p>
+<p>Save</p>
+<div class="sourceCode" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write.csv</span>(cor_bind_FA, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/09.1-Apul-mRNA-miRNA-interactions-functional-enrichment/miRNA_targets_FA.csv"</span>)</span>
+<span id="cb20-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write.csv</span>(sig_cor_bind_FA, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/09.1-Apul-mRNA-miRNA-interactions-functional-enrichment/miRNA_sig_cor_targets_FA.csv"</span>)</span></code></pre></div>
+</section>
+<section id="fe-of-specific-mirnas-targets-all-targets" class="level1">
+<h1>3 FE of specific miRNA’s targets (all targets)</h1>
+<p>Create topGO function for use with miRNA names</p>
+<div class="sourceCode" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">miRNA_topGO_FE <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(miRNA.name, input_interactions) {</span>
+<span id="cb21-2">  </span>
+<span id="cb21-3">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#Isolate genes in our input module of interest</span></span>
+<span id="cb21-4">  interacting_genes <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> input_interactions <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb21-5">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(miRNA <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> miRNA.name) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb21-6">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pull</span>(mRNA)</span>
+<span id="cb21-7">  </span>
+<span id="cb21-8">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">length</span>(interacting_genes) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) {</span>
+<span id="cb21-9">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create factor for all reference genes, where 1 represents module membership and 0 means the gene is not in module of interest</span></span>
+<span id="cb21-10">    gene_list <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.integer</span>(all_genes <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> interacting_genes))</span>
+<span id="cb21-11">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">names</span>(gene_list) <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_genes</span>
+<span id="cb21-12">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str</span>(gene_list)</span>
+<span id="cb21-13">    </span>
+<span id="cb21-14">    <span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## Biological Process ##</span></span>
+<span id="cb21-15">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create topGO object</span></span>
+<span id="cb21-16">    GO_BP <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">new</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"topGOdata"</span>, </span>
+<span id="cb21-17">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ontology =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"BP"</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Biological Process</span></span>
+<span id="cb21-18">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">allGenes =</span> gene_list,</span>
+<span id="cb21-19">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">annot =</span> annFUN.gene2GO, </span>
+<span id="cb21-20">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">gene2GO =</span> gene2go_list,</span>
+<span id="cb21-21">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geneSel=</span>topDiffGenes)</span>
+<span id="cb21-22">    </span>
+<span id="cb21-23">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Run GO enrichment test</span></span>
+<span id="cb21-24">    GO_BP_FE <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">runTest</span>(GO_BP, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">algorithm =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"weight01"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">statistic =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"fisher"</span>)</span>
+<span id="cb21-25">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># View the results</span></span>
+<span id="cb21-26">    GO_BP_results <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">GenTable</span>(GO_BP, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Fisher =</span> GO_BP_FE, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">orderBy =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Fisher"</span>,  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">topNodes =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">numChar =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">51</span>)</span>
+<span id="cb21-27">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Filter by significant results</span></span>
+<span id="cb21-28">    GO_BP_results<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Fisher<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.numeric</span>(GO_BP_results<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Fisher)</span>
+<span id="cb21-29">    GO_BP_results_sig<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span>GO_BP_results[GO_BP_results<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Fisher<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.05</span>,]</span>
+<span id="cb21-30">    </span>
+<span id="cb21-31">    </span>
+<span id="cb21-32">    <span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## Molecular Function ##</span></span>
+<span id="cb21-33">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create topGO object</span></span>
+<span id="cb21-34">    GO_MF <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">new</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"topGOdata"</span>, </span>
+<span id="cb21-35">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ontology =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"MF"</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Molecular Function</span></span>
+<span id="cb21-36">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">allGenes =</span> gene_list,</span>
+<span id="cb21-37">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">annot =</span> annFUN.gene2GO, </span>
+<span id="cb21-38">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">gene2GO =</span> gene2go_list,</span>
+<span id="cb21-39">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geneSel=</span>topDiffGenes)</span>
+<span id="cb21-40">    </span>
+<span id="cb21-41">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Run GO enrichment test</span></span>
+<span id="cb21-42">    GO_MF_FE <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">runTest</span>(GO_MF, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">algorithm =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"weight01"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">statistic =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"fisher"</span>)</span>
+<span id="cb21-43">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># View the results</span></span>
+<span id="cb21-44">    GO_MF_results <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">GenTable</span>(GO_MF, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Fisher =</span> GO_MF_FE, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">orderBy =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Fisher"</span>,  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">topNodes =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">numChar =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">51</span>)</span>
+<span id="cb21-45">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Filter by significant results</span></span>
+<span id="cb21-46">    GO_MF_results<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Fisher<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.numeric</span>(GO_MF_results<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Fisher)</span>
+<span id="cb21-47">    GO_MF_results_sig<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span>GO_MF_results[GO_MF_results<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Fisher<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.05</span>,]</span>
+<span id="cb21-48">  </span>
+<span id="cb21-49">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Return</span></span>
+<span id="cb21-50">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add type column only if results exist</span></span>
+<span id="cb21-51">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(GO_BP_results_sig) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) {</span>
+<span id="cb21-52">      GO_BP_results_sig<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>type <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Biological.Process"</span></span>
+<span id="cb21-53">    }</span>
+<span id="cb21-54">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(GO_MF_results_sig) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) {</span>
+<span id="cb21-55">      GO_MF_results_sig<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>type <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Molecular.Function"</span></span>
+<span id="cb21-56">    }</span>
+<span id="cb21-57">    GO_results <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rbind</span>(GO_BP_results_sig, GO_MF_results_sig)</span>
+<span id="cb21-58">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>(GO_results)</span>
+<span id="cb21-59">  }</span>
+<span id="cb21-60">}</span></code></pre></div>
+<p>Loop through all miRNA and run functional enrichment on the miRNA’s targets (all predicted targets)</p>
+<div class="sourceCode" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1">interacting_miRNAs <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unique</span>(cor_bind_FA<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>miRNA) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> na.omit</span>
+<span id="cb22-2">results_all_targets <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># initialize empty df</span></span>
+<span id="cb22-3"></span>
+<span id="cb22-4"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span>(miRNA <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> interacting_miRNAs) {</span>
+<span id="cb22-5">  </span>
+<span id="cb22-6">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Run topGO enrichment function</span></span>
+<span id="cb22-7">  miRNA_results <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">miRNA_topGO_FE</span>(miRNA, cor_bind_FA)</span>
+<span id="cb22-8">  </span>
+<span id="cb22-9">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Only keep results if not empty</span></span>
+<span id="cb22-10">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(miRNA_results) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) {</span>
+<span id="cb22-11">    </span>
+<span id="cb22-12">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add the miRNA source column</span></span>
+<span id="cb22-13">    miRNA_results<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>miRNA <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> miRNA</span>
+<span id="cb22-14"></span>
+<span id="cb22-15">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Bind to the accumulating results data frame</span></span>
+<span id="cb22-16">    results_all_targets <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rbind</span>(results_all_targets, miRNA_results)</span>
+<span id="cb22-17">  }</span>
+<span id="cb22-18">}</span></code></pre></div>
+<div class="sourceCode" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(results_all_targets)</span></code></pre></div>
+<pre><code>##        GO.ID                                                   Term Annotated
+## 1 GO:0001745                             compound eye morphogenesis         3
+## 2 GO:0001933         negative regulation of protein phosphorylation         5
+## 3 GO:0009734                      auxin-activated signaling pathway         5
+## 4 GO:0004459                       L-lactate dehydrogenase activity         1
+## 5 GO:0004760                  serine-pyruvate transaminase activity         1
+## 6 GO:0004742 dihydrolipoyllysine-residue acetyltransferase activ...         1
+##   Significant Expected Fisher               type        miRNA
+## 1           1     0.03  0.027 Biological.Process Cluster_5981
+## 2           1     0.05  0.045 Biological.Process Cluster_5981
+## 3           1     0.05  0.045 Biological.Process Cluster_5981
+## 4           1     0.01  0.012 Molecular.Function Cluster_5981
+## 5           1     0.01  0.012 Molecular.Function Cluster_5981
+## 6           1     0.01  0.012 Molecular.Function Cluster_5981</code></pre>
+<p>Save results</p>
+<div class="sourceCode" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write.csv</span>(results_all_targets, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/09.1-Apul-mRNA-miRNA-interactions-functional-enrichment/miRNA_all_targets_topGO_FE.csv"</span>)</span></code></pre></div>
+</section>
+<section id="fe-of-specific-mirnas-targets-significant-cor-targets" class="level1">
+<h1>4 FE of specific miRNA’s targets (significant cor targets)</h1>
+<p>Loop through all miRNA and run functional enrichment on the miRNA’s significantly correlated targets</p>
+<div class="sourceCode" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1">interacting_miRNAs_sig <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unique</span>(sig_cor_bind_FA<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>miRNA) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> na.omit</span>
+<span id="cb26-2">results_sig_cor_targets <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># initialize empty df</span></span>
+<span id="cb26-3"></span>
+<span id="cb26-4"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span>(miRNA <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> interacting_miRNAs_sig) {</span>
+<span id="cb26-5">  </span>
+<span id="cb26-6">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Run topGO enrichment function</span></span>
+<span id="cb26-7">  miRNA_results <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">miRNA_topGO_FE</span>(miRNA, sig_cor_bind_FA)</span>
+<span id="cb26-8">  </span>
+<span id="cb26-9">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Only keep results if not empty</span></span>
+<span id="cb26-10">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(miRNA_results) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) {</span>
+<span id="cb26-11">    </span>
+<span id="cb26-12">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add the miRNA source column</span></span>
+<span id="cb26-13">    miRNA_results<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>miRNA <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> miRNA</span>
+<span id="cb26-14"></span>
+<span id="cb26-15">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Bind to the accumulating results data frame</span></span>
+<span id="cb26-16">    results_sig_cor_targets <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rbind</span>(results_sig_cor_targets, miRNA_results)</span>
+<span id="cb26-17">  }</span>
+<span id="cb26-18">}</span></code></pre></div>
+<div class="sourceCode" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(results_sig_cor_targets)</span></code></pre></div>
+<pre><code>##        GO.ID                                           Term Annotated
+## 1 GO:0001947                                  heart looping         4
+## 2 GO:0003341                                cilium movement        22
+## 3 GO:0004842         ubiquitin-protein transferase activity        35
+## 4 GO:0002221 pattern recognition receptor signaling pathway        11
+## 5 GO:0004252             serine-type endopeptidase activity        53
+## 6 GO:0001933 negative regulation of protein phosphorylation         5
+##   Significant Expected Fisher               type         miRNA
+## 1           1     0.00 0.0028 Biological.Process Cluster_19193
+## 2           1     0.02 0.0150 Biological.Process Cluster_10051
+## 3           1     0.02 0.0240 Molecular.Function Cluster_10051
+## 4           1     0.01 0.0077 Biological.Process Cluster_16409
+## 5           1     0.04 0.0370 Molecular.Function Cluster_16409
+## 6           1     0.00 0.0035 Biological.Process  Cluster_3250</code></pre>
+<p>Save results</p>
+<div class="sourceCode" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write.csv</span>(results_sig_cor_targets, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/09.1-Apul-mRNA-miRNA-interactions-functional-enrichment/miRNA_sig_cor_targets_topGO_FE.csv"</span>)</span></code></pre></div>
 
 
+</section>
 
  ]]></description>
   <category>E5-coral</category>

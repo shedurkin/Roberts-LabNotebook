@@ -39,26 +39,48 @@ FE <- function(miRNA_name){
 }
 ```
 
+```{r}
+# Read in functional annotation table
+miRNA_FA <- read.csv("https://raw.githubusercontent.com/urol-e5/deep-dive-expression/refs/heads/main/D-Apul/output/09.1-Apul-mRNA-miRNA-interactions-functional-enrichment/miRNA_targets_FA.csv")
+
+# Filter to significant correlation of expression
+miRNA_sig_FA <- miRNA_FA %>%
+  filter(p_value < 0.05) %>%
+  filter(!is.na(Gene.Ontology.IDs))
+
+# Function to pull annotated terms for input miRNA
+sig_FA <- function(miRNA_name){
+  cluster <- miRNA_named %>% filter(given_miRNA_name == miRNA_name) %>% pull(Name)
+  terms <- miRNA_sig_FA %>% filter(miRNA == cluster) %>% select(Gene.Ontology..biological.process., Gene.Ontology.IDs, mRNA)
+  
+  print(terms)
+}
+```
+
 ## mir-2022
 
 Functions that are enriched in this miRNA's putative targets:
 
-```{r} 
+```{r}
 FE("apul-mir-2022")
 ```
 
-From The Conserved Cnidarian miR-2022 Functions During Nematogenesis B Teefy, A Cho, T Wechsler, C Juliano - The Function of Small RNA Pathways in Cnidarians, 2020:
+Functions of targets with significantly correlated expression:
 
-> "Here, we characterize the function of miR-2022 in Hydra. We identify putative miR-2022 targets and find that these transcripts are **expressed predominantly in nematocytes**, the specialized stinging cells that define the cnidarian phylum. We also show that miR-2022 is likely under the control of the PAX-A transcription factor, which is a conserved regulator of nematogenesis in cnidarians. We hypothesize that **miR-2022 participates in an incoherent feedforward loop to control gene dosage during nematocyte development**. We aim to perform miR-2022 in situ hybridizations and miR-2022 knockdowns to localize and test the function of miR-2022 directly."
+```{r}
+sig_FA("apul-mir-2022")
+```
 
-@fridrich_ancient_2023 showed that miR-2022 is distinctly expressed in stinging cells, and that miR-2022 knockdown in *Nematostella* inhibits cnidogenisis (development of stinging cnidocyte cells) and defensive capability of juvenile *Nematostella*
+@teefy2020 found that predicted targets of miR-2022 are predominantly expressed in nematocytes and that miR-2022 is controlled by PAX-A transcription factor, a regulator of nematogenesis in cnidarians. They hypothesize that "miR-2022 participates in an incoherent feedforward loop to control gene dosage during nematocyte development."
+
+@fridrich_ancient_2023 showed that miR-2022 is predominantly expressed in stinging cells, and that miR-2022 knockdown in *Nematostella* inhibits cnidogenisis (development of stinging cnidocyte cells) and defensive capabilities in juvenile *Nematostella*
 
 @liew_identification_2014 found that predicted targets of miR-2022 in *Stylophera pistillata* are enriched (topGO, FDR pval \< 0.01) for the Biological Processes:
 
 **Immunity:** "GO:0044003: modification by symbiont of host morphology or physiology", "GO:0019048: virus-host interaction"\
-**Cell cycle: "**GO:0010564	: regulation of cell cycle process", "GO:0000281: cytokinesis after mitosis", "GO:2001237: negative regulation of extrinsic apoptotic signaling pathway"\
-**Transport/Signaling:** "GO:0042147: retrograde transport, endosome to Golgi", "GO:0006886: intracellular protein transport", "GO:0051904: pigment granule transport"\
-**Differentiation/development: "**GO:0001822: kidney development", "GO:0030858: positive regulation of epithelial cell differentiation", "GO:0001942: hair follicle development", "GO:0048864: stem cell development", "GO:0021670: lateral ventricle development", "GO:0043588: skin development"
+**Cell cycle:** "GO:0010564 : regulation of cell cycle process", "GO:0000281: cytokinesis after mitosis", "GO:2001237: negative regulation of extrinsic apoptotic signaling pathway"**\
+Transport/Signaling:** "GO:0042147: retrograde transport, endosome to Golgi", "GO:0006886: intracellular protein transport", "GO:0051904: pigment granule transport"\
+**Differentiation/development:** "\*\*GO:0001822: kidney development", "GO:0030858: positive regulation of epithelial cell differentiation", "GO:0001942: hair follicle development", "GO:0048864: stem cell development", "GO:0021670: lateral ventricle development", "GO:0043588: skin development"
 
 Our enriched terms seem to support the previously described function of miR-2022, since both "startle response" and "tachykinin receptor activity" are directly related to sensation/response, a primary function of nematocytes/cnidocytes!
 
@@ -70,6 +92,14 @@ Functions that are enriched in this miRNA's putative targets:
 FE("apul-mir-2030")
 ```
 
+Functions of targets with significantly correlated expression:
+
+```{r}
+sig_FA("apul-mir-2030")
+```
+
+(None of apul-mir-2030's significantly correlated targets are annotated)
+
 Highly conserved across bilateria
 
 @krishna_deep_2013 found that miR-2030 is expressed throughout the body column of *Hydra magnipapillata* during head regeneration, but \*not\* in the tentacles
@@ -78,8 +108,8 @@ however, @moran_cnidarian_2014 found that miR-2030 is expressed *only* in the te
 
 @liew_identification_2014 found that predicted targets of miR-2030 in *Stylophera pistillata* are enriched (topGO, FDR pval \< 0.01) for the Biological Processes:
 
-[**Differentiation/Development:**]{.underline} "GO:0009952: anterior/posterior pattern specification", "GO:0048538: thymus development", "GO:0007283: spermatogenesis", \
-[**Miscellaneous:**]{.underline} "GO:0007030: Golgi organization"
+**Differentiation/Development:** "GO:0009952: anterior/posterior pattern specification", "GO:0048538: thymus development", "GO:0007283: spermatogenesis",\
+**Miscellaneous:** "GO:0007030: Golgi organization"
 
 ## mir-100
 
@@ -87,6 +117,12 @@ Functions that are enriched in this miRNA's putative targets:
 
 ```{r}
 FE("apul-mir-100")
+```
+
+Functions of targets with significantly correlated expression:
+
+```{r}
+sig_FA("apul-mir-100")
 ```
 
 > in humans, miR-100 has been shown to target genes involved in growth and development. Examples include Plk1, a key mitotic checkpoint regulatory protein \[26\]; RBSP3, involved in cell proliferation and myeloid cell differentiation \[27\]; BMPR2, involved in osteogenesis \[94\]; and FRAP1/mTOR, which regulates cell growth \[95\]. (Liew et al, 2014)
@@ -107,6 +143,14 @@ Functions that are enriched in this miRNA's putative targets:
 FE("apul-mir-2050")
 ```
 
+Functions of targets with significantly correlated expression:
+
+```{r}
+sig_FA("apul-mir-2050")
+```
+
+(None of apul-mir-2050's significantly correlated targets are annotated)
+
 @grinblat_biogeography_2021 found miR-2050 was highly expressed during spawning in *Fungia fungites*
 
 ## mir-2023
@@ -116,6 +160,14 @@ Functions that are enriched in this miRNA's putative targets:
 ```{r}
 FE("apul-mir-2023")
 ```
+
+Functions of targets with significantly correlated expression:
+
+```{r}
+sig_FA("apul-mir-2023")
+```
+
+(None of apul-mir-2023's significantly correlated targets are annotated)
 
 @liew_identification_2014 found that predicted targets of miR-2023 in *Stylophera pistillata* are enriched (topGO, FDR pval \< 0.01) for the Biological Processes:
 
@@ -132,6 +184,12 @@ Functions that are enriched in this miRNA's putative targets:
 FE("apul-mir-2028")
 ```
 
+Functions of targets with significantly correlated expression:
+
+```{r}
+sig_FA("apul-mir-2028")
+```
+
 ## mir-2036
 
 Functions that are enriched in this miRNA's putative targets:
@@ -139,6 +197,14 @@ Functions that are enriched in this miRNA's putative targets:
 ```{r}
 FE("apul-mir-2036")
 ```
+
+Functions of targets with significantly correlated expression:
+
+```{r}
+sig_FA("apul-mir-2036")
+```
+
+(None of apul-mir-2036's significantly correlated targets are annotated)
 
 @liew_identification_2014 found that predicted targets of miR-2036 in *Stylophera pistillata* are enriched (topGO, FDR pval \< 0.01) for the Biological Processes:
 
@@ -154,6 +220,14 @@ Functions that are enriched in this miRNA's putative targets:
 FE("apul-mir-2025")
 ```
 
+Functions of targets with significantly correlated expression:
+
+```{r}
+sig_FA("apul-mir-2025")
+```
+
+(None of apul-mir-2025's significantly correlated targets are annotated)
+
 ## mir-9425
 
 Functions that are enriched in this miRNA's putative targets:
@@ -162,7 +236,11 @@ Functions that are enriched in this miRNA's putative targets:
 FE("apul-mir-9425")
 ```
 
-## 
+Functions of targets with significantly correlated expression:
+
+```{r}
+sig_FA("apul-mir-9425")
+```
 
 ## apul-mir-novel-34 / miR-2037
 
@@ -170,13 +248,19 @@ FE("apul-mir-9425")
 FE("apul-mir-novel-34")
 ```
 
+Functions of targets with significantly correlated expression:
+
+```{r}
+sig_FA("apul-mir-novel-34")
+```
+
 @liew_identification_2014 identify a matching miRNA in *Stylophora pistillata* (spi-miR-temp-20) with targets enriched (topGO, FDR pval \< 0.01) for the Biological Processes:
 
 **Immunity:** "GO:0032088: negative regulation of NF-kappaB transcription factor activity"\
 **Cell cycle:** "GO:0042981: regulation of apoptotic process"\
 **Transport/signaling:** "GO:0046330: positive regulation of JNK cascade"\
-**Differentiation/development: "**GO:0061146: Peyer's patch morphogenesis"\
-**Miscellaneous:** "GO:0048169: regulation of long-term neuronal synaptic plasticity", "GO:0008542: visual learning", "GO:0006290: pyrimidine dimer repair"
+**Differentiation/development:** "GO:0061146: Peyer's patch morphogenesis"**\
+Miscellaneous:** "GO:0048169: regulation of long-term neuronal synaptic plasticity", "GO:0008542: visual learning", "GO:0006290: pyrimidine dimer repair"
 
 ## apul-mir-novel-9
 
@@ -184,10 +268,16 @@ FE("apul-mir-novel-34")
 FE("apul-mir-novel-9")
 ```
 
+Functions of targets with significantly correlated expression:
+
+```{r}
+sig_FA("apul-mir-novel-9")
+```
+
 @gajigan_microrna_2017 identify a miRNA in *Acropora digitifera* (Adi-Mir-Novel-5_3p) that matches our "apul-mir-novel-9". They found this miRNA was differentially expressed in response to thermal stress, and it's predicted targets were enriched (topGO, FDR pval \< 0.05) for:
 
-**Regulation of expression: "**RNA polymerase II transcription corepressor activity", "Histone dephosphorylation", "DNA demethylation", "Positive regulation of transcription RNA poIII promoter", "Transcription, DNA-templeted", "Circadian regulation of gene expression"\
-**Stress response: "**Cytokine production", "Oxidative stress-induced premature senescence", "MyD88-dependent toll-like receptor", "Protein disulfide isomerase activity", "Secretion of lysosomal enzymes", "Adaptive immune response", "Negative regulation of cell cycle"\
+**Regulation of expression:** "RNA polymerase II transcription corepressor activity", "Histone dephosphorylation", "DNA demethylation", "Positive regulation of transcription RNA poIII promoter", "Transcription, DNA-templeted", "Circadian regulation of gene expression"**\
+Stress response:** "Cytokine production", "Oxidative stress-induced premature senescence", "MyD88-dependent toll-like receptor", "Protein disulfide isomerase activity", "Secretion of lysosomal enzymes", "Adaptive immune response", "Negative regulation of cell cycle"\
 **Repair:** "Positive regulation of DNA repair", "Regulation of nucleotide-excision", "RNA repair" "Oxidative demethylation"\
 **Signaling:** "Receptor catabolic process", "G-protein coupled receptor kinase", "Phosphatidylinositol binding", "GABA receptor binding", "Protein serine/threonine", "cAMP-dependent protein kinase"\
 **Tissue morphogenisis:** "Type I TGFbeta receptor binding", "Embryonic skeletal system morphogene", "Zonula adherens maintenance"\
