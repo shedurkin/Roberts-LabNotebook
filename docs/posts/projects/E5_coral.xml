@@ -10,7 +10,1400 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Thu, 10 Apr 2025 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 11 Apr 2025 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Timeseries molecular: A.pul phenotype and gene/miRNA machine learning – Part 4</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_04_11_timeseries_ML_4.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Requested a list of GO terms related to energy usage and storage from ChatGPT4o:<br>
+<br>
+<strong>Energy Usage / Energy Production:</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 34%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>GO Term</th>
+<th>Term Name</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>GO:0006096</strong></td>
+<td><strong>Glycolysis</strong></td>
+<td>Breakdown of glucose to produce ATP.</td>
+</tr>
+<tr class="even">
+<td><strong>GO:0006091</strong></td>
+<td><strong>Generation of precursor metabolites and energy</strong></td>
+<td>Broad, covers glycolysis, TCA cycle, etc.</td>
+</tr>
+<tr class="odd">
+<td><strong>GO:0006099</strong></td>
+<td><strong>Tricarboxylic acid cycle (TCA cycle)</strong></td>
+<td>AKA Krebs cycle — key ATP-generating pathway.</td>
+</tr>
+<tr class="even">
+<td><strong>GO:0006119</strong></td>
+<td><strong>Oxidative phosphorylation</strong></td>
+<td>ATP generation using the mitochondrial electron transport chain.</td>
+</tr>
+<tr class="odd">
+<td><strong>GO:0006635</strong></td>
+<td><strong>Fatty acid beta-oxidation</strong></td>
+<td>Breaks down fats to feed into energy production.</td>
+</tr>
+<tr class="even">
+<td><strong>GO:0009150</strong></td>
+<td><strong>Purine ribonucleotide biosynthetic process</strong></td>
+<td>Important for making ATP and other nucleotides (energy carriers).</td>
+</tr>
+<tr class="odd">
+<td><strong>GO:0030163</strong></td>
+<td><strong>Protein catabolic process</strong></td>
+<td>Energy extraction from proteins, especially during starvation.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Energy Storage:</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 30%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>GO Term</th>
+<th>Term Name</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>GO:0008610</strong></td>
+<td><strong>Lipid biosynthetic process</strong></td>
+<td>Making lipids for energy storage.</td>
+</tr>
+<tr class="even">
+<td><strong>GO:0045721</strong></td>
+<td><strong>Negative regulation of gluconeogenesis</strong></td>
+<td>Helps switch from producing glucose to storing it.</td>
+</tr>
+<tr class="odd">
+<td><strong>GO:0046467</strong></td>
+<td><strong>Membrane lipid catabolic process</strong></td>
+<td>Mobilizing stored energy from lipid stores.</td>
+</tr>
+<tr class="even">
+<td><strong>GO:0016042</strong></td>
+<td><strong>Lipid catabolic process</strong></td>
+<td>General term for fat breakdown.</td>
+</tr>
+<tr class="odd">
+<td><strong>GO:0005975</strong></td>
+<td><strong>Carbohydrate metabolic process</strong></td>
+<td>Storage of energy as glycogen or starch (depending on organism).</td>
+</tr>
+<tr class="even">
+<td><strong>GO:0045722</strong></td>
+<td><strong>Positive regulation of glycolysis</strong></td>
+<td>Promotes glucose usage over storage when energy is needed.</td>
+</tr>
+<tr class="odd">
+<td><strong>GO:0042594</strong></td>
+<td><strong>Response to starvation</strong></td>
+<td>Triggering the usage of energy stores (lipids, proteins, etc.).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bonus Terms (helpful if you want full coverage):</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 34%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>GO Term</th>
+<th>Term Name</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>GO:0046034</strong></td>
+<td><strong>ATP metabolic process</strong></td>
+<td>Directly handling the cell’s energy currency.</td>
+</tr>
+<tr class="even">
+<td><strong>GO:0006094</strong></td>
+<td><strong>Gluconeogenesis</strong></td>
+<td>Building glucose for later use or emergency supply.</td>
+</tr>
+<tr class="odd">
+<td><strong>GO:0006629</strong></td>
+<td><strong>Lipid metabolic process</strong></td>
+<td>Umbrella term for both storage and usage of lipids.</td>
+</tr>
+<tr class="even">
+<td><strong>GO:0032869</strong></td>
+<td><strong>Cellular response to insulin stimulus</strong></td>
+<td>Insulin controls whether energy is stored or used.</td>
+</tr>
+<tr class="odd">
+<td><strong>GO:0006006</strong></td>
+<td><strong>Glucose metabolic process</strong></td>
+<td>General term covering breakdown and storage.</td>
+</tr>
+</tbody>
+</table>
+<p>Then generated a gene set of genes in our time series Apul reads that are annotated with at least one of these terms. This gene set was used in the ML model.<br>
+<br>
+<a href="https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/code/22.1-Apul-miRNA-mRNA-machine-learning-gene_sets.Rmd">Full code</a><br>
+<a href="https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/code/22.1-Apul-miRNA-mRNA-machine-learning-gene_sets.md">Full rendered code</a></p>
+<section id="energy-usagestorage-go-terms" class="level1">
+<h1>7 Energy Usage/Storage (GO terms)</h1>
+<section id="the-model" class="level2">
+<h2 class="anchored" data-anchor-id="the-model">7.1 The model</h2>
+<p>Train elastic models to predict gene expression PCs from miRNA expression</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Train models predicting gene expression PCs from miRNA expression</span></span>
+<span id="cb1-2">models_energy_GO <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">train_models</span>(energy_GO_pcs, vsd_miRNA)</span></code></pre></div>
+<p>Extract feature importance.</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">feature_importance_energy_GO <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">get_feature_importance</span>(models_energy_GO)</span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(feature_importance_energy_GO, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>)  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Top predictive miRNA</span></span></code></pre></div>
+<pre><code>## # A tibble: 20 × 2
+##    Feature       MeanImportance
+##    &lt;chr&gt;                  &lt;dbl&gt;
+##  1 Cluster_17173         0.222 
+##  2 Cluster_5516          0.202 
+##  3 Cluster_17623         0.192 
+##  4 Cluster_2372          0.184 
+##  5 Cluster_17192         0.181 
+##  6 Cluster_9420          0.170 
+##  7 Cluster_9786          0.169 
+##  8 Cluster_14146         0.164 
+##  9 Cluster_5517          0.150 
+## 10 Cluster_14605         0.142 
+## 11 Cluster_3301          0.140 
+## 12 Cluster_1819          0.129 
+## 13 Cluster_17186         0.105 
+## 14 Cluster_14165         0.104 
+## 15 Cluster_10452         0.0935
+## 16 Cluster_9366          0.0924
+## 17 Cluster_4752          0.0864
+## 18 Cluster_4036          0.0862
+## 19 Cluster_1865          0.0838
+## 20 Cluster_3226          0.0816</code></pre>
+<p>Evaluate performance.</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">performance_results_energy_GO <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">evaluate_model_performance</span>(models_energy_GO, energy_GO_pcs, vsd_miRNA)</span>
+<span id="cb4-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summary</span>(performance_results_energy_GO<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>R2)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+##  0.1121  0.5775  0.6554  0.6060  0.7653  0.9519      13</code></pre>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">7.2 Results</h2>
+<p>Plot results.</p>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Select top predictive features</span></span>
+<span id="cb6-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># few enough miRNA that we can show all</span></span>
+<span id="cb6-3">top_features_energy_GO <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> feature_importance_energy_GO <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">top_n</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, MeanImportance)</span>
+<span id="cb6-4"></span>
+<span id="cb6-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Plot</span></span>
+<span id="cb6-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(top_features_energy_GO, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">reorder</span>(Feature, MeanImportance), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> MeanImportance)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_bar</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">stat =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"identity"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"steelblue"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coord_flip</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Flip for readability</span></span>
+<span id="cb6-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"miRNA as Predictive Features"</span>,</span>
+<span id="cb6-11">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"miRNA"</span>,</span>
+<span id="cb6-12">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Mean Importance"</span>)</span></code></pre></div>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.1-Apul-miRNA-mRNA-machine-learning-gene_sets_files_2/figure-gfm/unnamed-chunk-53-1.png" class="img-fluid"></p>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(performance_results_energy_GO, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.factor</span>(PC), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> R2)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"darkred"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_hline</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">yintercept =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(performance_results_energy_GO<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>R2, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linetype =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dashed"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"blue"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Model Performance Across Gene Expression PCs"</span>,</span>
+<span id="cb7-6">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Gene Expression PC"</span>,</span>
+<span id="cb7-7">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"R² (Variance Explained)"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis.text.x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">angle =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">45</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">hjust =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>))  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Rotate labels</span></span></code></pre></div>
+<pre><code>## Warning: Removed 13 rows containing missing values or values outside the scale range
+## (`geom_point()`).</code></pre>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.1-Apul-miRNA-mRNA-machine-learning-gene_sets_files_2/figure-gfm/unnamed-chunk-54-1.png" class="img-fluid"></p>
+<p>View components associated with gene PCs</p>
+<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Get the PCA rotation (loadings) matrix from the original gene PCA</span></span>
+<span id="cb9-2">loadings_energy_GO <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> pca_energy_GO<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>rotation  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Each column corresponds to a PC</span></span>
+<span id="cb9-3"></span>
+<span id="cb9-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Convert to data frame and reshape for plotting</span></span>
+<span id="cb9-5">loadings_energy_GO_df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.data.frame</span>(loadings_energy_GO) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb9-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rownames_to_column</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">var =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb9-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_longer</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>gene, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"energy_GO_PC"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Loading"</span>)</span>
+<span id="cb9-8"></span>
+<span id="cb9-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># View top CpGs contributing most to each PC</span></span>
+<span id="cb9-10">top_genes_energy_GO <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> loadings_energy_GO_df <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb9-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(energy_GO_PC) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb9-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrange</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">desc</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">abs</span>(Loading))) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb9-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">slice_head</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>)  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Select top 10 CpGs per PC</span></span>
+<span id="cb9-14"></span>
+<span id="cb9-15"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>(top_genes_energy_GO)</span></code></pre></div>
+<pre><code>## # A tibble: 800 × 3
+## # Groups:   energy_GO_PC [40]
+##    gene       energy_GO_PC Loading
+##    &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;
+##  1 FUN_028200 PC1           -0.115
+##  2 FUN_040444 PC1           -0.113
+##  3 FUN_017915 PC1           -0.112
+##  4 FUN_001396 PC1            0.109
+##  5 FUN_026618 PC1            0.108
+##  6 FUN_029673 PC1            0.107
+##  7 FUN_023596 PC1           -0.107
+##  8 FUN_000370 PC1            0.106
+##  9 FUN_039293 PC1           -0.106
+## 10 FUN_001160 PC1            0.105
+## # ℹ 790 more rows</code></pre>
+<p>View predicted vs actual gene expression values to evaluate model.</p>
+<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Choose a gene expression PC to visualize (e.g., the most predictable one)</span></span>
+<span id="cb11-2">best_pc_energy_GO <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> performance_results_energy_GO<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>PC[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">which.max</span>(performance_results_energy_GO<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>R2)]</span>
+<span id="cb11-3"></span>
+<span id="cb11-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extract actual and predicted values for that PC</span></span>
+<span id="cb11-5">actual_values_energy_GO <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> energy_GO_pcs[[best_pc_energy_GO]]</span>
+<span id="cb11-6">predicted_values_energy_GO <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">predict</span>(models_energy_GO[[best_pc_energy_GO]], <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.matrix</span>(vsd_miRNA), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">s =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lambda.min"</span>)</span>
+<span id="cb11-7"></span>
+<span id="cb11-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create data frame</span></span>
+<span id="cb11-9">prediction_df_energy_GO <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(</span>
+<span id="cb11-10">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Actual =</span> actual_values_energy_GO,</span>
+<span id="cb11-11">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Predicted =</span> predicted_values_energy_GO</span>
+<span id="cb11-12">)</span>
+<span id="cb11-13"></span>
+<span id="cb11-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Scatter plot with regression line</span></span>
+<span id="cb11-15"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(prediction_df_energy_GO, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> Actual, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> lambda.min)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb11-16">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"blue"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.7</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb11-17">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_smooth</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lm"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"red"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">se =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb11-18">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb11-19">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Predicted vs. Actual for"</span>, best_pc_energy_GO),</span>
+<span id="cb11-20">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Actual Gene Expression PC"</span>,</span>
+<span id="cb11-21">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Predicted Gene Expression PC"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb11-22">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">annotate</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(actual_values_energy_GO), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(predicted_values_energy_GO), </span>
+<span id="cb11-23">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"R² ="</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(performance_results_energy_GO<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>R2, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>), <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)), </span>
+<span id="cb11-24">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">hjust =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = 'y ~ x'</code></pre>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.1-Apul-miRNA-mRNA-machine-learning-gene_sets_files_2/figure-gfm/unnamed-chunk-56-1.png" class="img-fluid"></p>
+<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## `geom_smooth()` using formula = 'y ~ x'</span></span></code></pre></div>
+<p>View top 20 genes associated with the PC with the highest R^2</p>
+<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>(top_genes_energy_GO<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(energy_GO_PC<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span>best_pc_energy_GO))</span></code></pre></div>
+<pre><code>## # A tibble: 20 × 3
+## # Groups:   energy_GO_PC [1]
+##    gene       energy_GO_PC Loading
+##    &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;
+##  1 FUN_042982 PC3           0.176 
+##  2 FUN_008385 PC3           0.140 
+##  3 FUN_036246 PC3           0.139 
+##  4 FUN_014563 PC3           0.134 
+##  5 FUN_011723 PC3          -0.131 
+##  6 FUN_031898 PC3           0.124 
+##  7 FUN_015086 PC3           0.123 
+##  8 FUN_037137 PC3          -0.121 
+##  9 FUN_015261 PC3           0.120 
+## 10 FUN_023676 PC3           0.119 
+## 11 FUN_013363 PC3          -0.118 
+## 12 FUN_014844 PC3          -0.118 
+## 13 FUN_022926 PC3          -0.109 
+## 14 FUN_037111 PC3          -0.107 
+## 15 FUN_014565 PC3           0.104 
+## 16 FUN_040116 PC3          -0.104 
+## 17 FUN_022700 PC3           0.101 
+## 18 FUN_029437 PC3           0.101 
+## 19 FUN_007022 PC3          -0.100 
+## 20 FUN_022927 PC3          -0.0997</code></pre>
+<p>Plot performance for all PCs</p>
+<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Select all PCs with R^2 values above line in plot</span></span>
+<span id="cb16-2">all_pcs_energy_GO <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> performance_results_energy_GO <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(R2 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.75</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pull</span>(PC)</span>
+<span id="cb16-3"></span>
+<span id="cb16-4"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> (pc <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> all_pcs_energy_GO) {</span>
+<span id="cb16-5">  </span>
+<span id="cb16-6">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extract actual and predicted values for that PC</span></span>
+<span id="cb16-7">  actual_values <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> energy_GO_pcs[[pc]]</span>
+<span id="cb16-8">  predicted_values <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">predict</span>(models_energy_GO[[pc]], <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.matrix</span>(vsd_miRNA), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">s =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lambda.min"</span>)</span>
+<span id="cb16-9">  </span>
+<span id="cb16-10">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create data frame</span></span>
+<span id="cb16-11">  prediction_df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(</span>
+<span id="cb16-12">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Actual =</span> actual_values,</span>
+<span id="cb16-13">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Predicted =</span> predicted_values</span>
+<span id="cb16-14">  )</span>
+<span id="cb16-15">  </span>
+<span id="cb16-16">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Scatter plot with regression line</span></span>
+<span id="cb16-17">  plot <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(prediction_df, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> Actual, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> lambda.min)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb16-18">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"blue"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.7</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb16-19">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_smooth</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lm"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"red"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">se =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb16-20">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb16-21">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Predicted vs. Actual for"</span>, pc),</span>
+<span id="cb16-22">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Actual Gene Expression PC"</span>,</span>
+<span id="cb16-23">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Predicted Gene Expression PC"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb16-24">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">annotate</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(actual_values), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(predicted_values), </span>
+<span id="cb16-25">             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"R² ="</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(performance_results_energy_GO[performance_results_energy_GO<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>PC<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span>pc,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>], <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>), <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)), </span>
+<span id="cb16-26">             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">hjust =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>)</span>
+<span id="cb16-27">  </span>
+<span id="cb16-28">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>(plot)</span>
+<span id="cb16-29">}</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = 'y ~ x'</code></pre>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.1-Apul-miRNA-mRNA-machine-learning-gene_sets_files_2/figure-gfm/unnamed-chunk-58-1.png" class="img-fluid"></p>
+<pre><code>## `geom_smooth()` using formula = 'y ~ x'</code></pre>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.1-Apul-miRNA-mRNA-machine-learning-gene_sets_files_2/figure-gfm/unnamed-chunk-58-2.png" class="img-fluid"></p>
+<pre><code>## `geom_smooth()` using formula = 'y ~ x'</code></pre>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.1-Apul-miRNA-mRNA-machine-learning-gene_sets_files_2/figure-gfm/unnamed-chunk-58-3.png" class="img-fluid"></p>
+<pre><code>## `geom_smooth()` using formula = 'y ~ x'</code></pre>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.1-Apul-miRNA-mRNA-machine-learning-gene_sets_files_2/figure-gfm/unnamed-chunk-58-4.png" class="img-fluid"></p>
+<p>We can also look at which miRNA(s) contributed most to predicting gene PCs of interest</p>
+<div class="sourceCode" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">get_feature_importance_for_pc <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(model) {</span>
+<span id="cb21-2">  coefs <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.matrix</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coef</span>(model, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">s =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lambda.min"</span>))[<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, , drop <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>]  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Remove intercept</span></span>
+<span id="cb21-3">  coefs_df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Feature =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rownames</span>(coefs), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Importance =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">abs</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.numeric</span>(coefs)))</span>
+<span id="cb21-4">  </span>
+<span id="cb21-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(coefs_df <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrange</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">desc</span>(Importance)))  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Sort by importance</span></span>
+<span id="cb21-6">}</span>
+<span id="cb21-7"></span>
+<span id="cb21-8"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> (pc <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> all_pcs_energy_GO) {</span>
+<span id="cb21-9">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extract feature importance for the most predictable PC</span></span>
+<span id="cb21-10">  best_pc_model <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> models_energy_GO[[pc]]</span>
+<span id="cb21-11">  best_pc_importance <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">get_feature_importance_for_pc</span>(best_pc_model)</span>
+<span id="cb21-12">  </span>
+<span id="cb21-13">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Plot top most important miRNA for predicting this PC</span></span>
+<span id="cb21-14">  plot <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(best_pc_importance <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">reorder</span>(Feature, Importance), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> Importance)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb21-15">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_bar</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">stat =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"identity"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"steelblue"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb21-16">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coord_flip</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb21-17">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb21-18">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Top miRNA Predictors for"</span>, pc),</span>
+<span id="cb21-19">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"miRNA"</span>,</span>
+<span id="cb21-20">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Importance Score"</span>)</span>
+<span id="cb21-21">  </span>
+<span id="cb21-22">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>(plot)</span>
+<span id="cb21-23">}</span></code></pre></div>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.1-Apul-miRNA-mRNA-machine-learning-gene_sets_files_2/figure-gfm/unnamed-chunk-59-1.png" class="img-fluid"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.1-Apul-miRNA-mRNA-machine-learning-gene_sets_files_2/figure-gfm/unnamed-chunk-59-2.png" class="img-fluid"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.1-Apul-miRNA-mRNA-machine-learning-gene_sets_files_2/figure-gfm/unnamed-chunk-59-3.png" class="img-fluid"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.1-Apul-miRNA-mRNA-machine-learning-gene_sets_files_2/figure-gfm/unnamed-chunk-59-4.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="compare" class="level1">
+<h1>8 Compare</h1>
+<p>Visualize the relative importance of miRNA in predicting expression for these different gene sets:</p>
+<div class="sourceCode" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Perfomr min-max normalization on the mean importance of miRNA for each group</span></span>
+<span id="cb22-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># This will place all along a 0-1 range for comparison purposes</span></span>
+<span id="cb22-3">normalize <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(x) {</span>
+<span id="cb22-4">  (x <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(x)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(x) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(x))</span>
+<span id="cb22-5">}</span>
+<span id="cb22-6"></span>
+<span id="cb22-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Normalize</span></span>
+<span id="cb22-8">top_features_Host_AFDW<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>MeanImportance_norm <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">normalize</span>(top_features_Host_AFDW<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>MeanImportance)</span>
+<span id="cb22-9">top_features_Am<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>MeanImportance_norm <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">normalize</span>(top_features_Am<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>MeanImportance)</span>
+<span id="cb22-10">top_features_ATP_prod_GO<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>MeanImportance_norm <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">normalize</span>(top_features_ATP_prod_GO<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>MeanImportance)</span>
+<span id="cb22-11">top_features_energy_GO<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>MeanImportance_norm <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">normalize</span>(top_features_energy_GO<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>MeanImportance)</span>
+<span id="cb22-12"></span>
+<span id="cb22-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add group labels</span></span>
+<span id="cb22-14">top_features_Host_AFDW <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> top_features_Host_AFDW <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Host_AFDW"</span>)</span>
+<span id="cb22-15">top_features_Am <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> top_features_Am <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Am"</span>)</span>
+<span id="cb22-16">top_features_ATP_prod_GO <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> top_features_ATP_prod_GO <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ATP_prod_GO"</span>)</span>
+<span id="cb22-17">top_features_energy_GO <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> top_features_energy_GO <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"energy_GO"</span>)</span>
+<span id="cb22-18"></span>
+<span id="cb22-19"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Set rows in same order</span></span>
+<span id="cb22-20">top_features_Am <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> top_features_Am[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rownames</span>(top_features_Host_AFDW),]</span>
+<span id="cb22-21">top_features_ATP_prod_GO <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> top_features_ATP_prod_GO[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rownames</span>(top_features_Host_AFDW),]</span>
+<span id="cb22-22">top_features_energy_GO <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> top_features_energy_GO[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rownames</span>(top_features_Host_AFDW),]</span>
+<span id="cb22-23"></span>
+<span id="cb22-24"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Combine</span></span>
+<span id="cb22-25">all_gene_sets <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">bind_rows</span>(top_features_Host_AFDW, top_features_Am, top_features_ATP_prod_GO, top_features_energy_GO)</span>
+<span id="cb22-26"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Remove raw mean importance</span></span>
+<span id="cb22-27">all_gene_sets <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_gene_sets <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span>MeanImportance)</span>
+<span id="cb22-28"></span>
+<span id="cb22-29"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Wide format: rows = miRNAs, columns = groups</span></span>
+<span id="cb22-30">heatmap_df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_gene_sets <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb22-31">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_wider</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_from =</span> group, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_from =</span> MeanImportance_norm)</span>
+<span id="cb22-32"></span>
+<span id="cb22-33">heatmap_df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.data.frame</span>(heatmap_df)</span>
+<span id="cb22-34"></span>
+<span id="cb22-35"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Melt into long format for ggplot</span></span>
+<span id="cb22-36">heatmap_long <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">melt</span>(heatmap_df, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">id.vars =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Feature"</span>)</span>
+<span id="cb22-37"></span>
+<span id="cb22-38"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(heatmap_long, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> variable, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> Feature, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> value)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb22-39">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_tile</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"white"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb22-40">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_gradient</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">low =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"white"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">high =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"red"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb22-41">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb22-42">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Group"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Feature"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Importance"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb22-43">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis.text.x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">angle =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">45</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">hjust =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>))</span></code></pre></div>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.1-Apul-miRNA-mRNA-machine-learning-gene_sets_files_2/figure-gfm/unnamed-chunk-60-1.png" class="img-fluid"></p>
+<p>Cluster by miRNA importance</p>
+<div class="sourceCode" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Make Feature column the rownames and convert to matrix</span></span>
+<span id="cb23-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rownames</span>(heatmap_df) <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> heatmap_df<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Feature</span>
+<span id="cb23-3">heatmap_matrix <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.matrix</span>(heatmap_df[, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>])  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Removes the 'Feature' column</span></span>
+<span id="cb23-4"></span>
+<span id="cb23-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pheatmap</span>(</span>
+<span id="cb23-6">  heatmap_matrix, </span>
+<span id="cb23-7">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cluster_rows =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>,  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Clustering miRNAs (rows) by similarity in importance</span></span>
+<span id="cb23-8">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cluster_cols =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>,  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Clustering groups (columns)</span></span>
+<span id="cb23-9">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">scale =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>,  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># No scaling (since data is already normalized)</span></span>
+<span id="cb23-10">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">show_rownames =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>,  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Show miRNA names</span></span>
+<span id="cb23-11">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">show_colnames =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>,  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Show group names</span></span>
+<span id="cb23-12">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">colorRampPalette</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"white"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"red"</span>))(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>),  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Red gradient for importance</span></span>
+<span id="cb23-13">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">main =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"miRNAs Importance Across Groups"</span>  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Title of the heatmap</span></span>
+<span id="cb23-14">)</span></code></pre></div>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.1-Apul-miRNA-mRNA-machine-learning-gene_sets_files_2/figure-gfm/unnamed-chunk-61-1.png" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>E5-coral</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_04_11_timeseries_ML_4.html</guid>
+  <pubDate>Fri, 11 Apr 2025 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Deep-Dive Expression: Functional comparisons for known miRNA</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -19770,748 +21163,6 @@ aaguucucuuuacagcaagcaugucaaaacaugcuuacugcagagagaacaug</code></pre>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html</guid>
   <pubDate>Thu, 16 May 2024 07:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Generating a genes fasta for P. evermanni</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_02_07_Peve_transcriptome.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>In the process of running <a href="../../../posts/projects/E5_coral/2024_02_06_RNAseq_kallisto.html">kallisto on the three E5 deep dive species</a>, we realized that there’s no transcriptome FASTA available for <em>P. evermanni</em>. That means we need to generate one!</p>
-<p><a href="https://github.com/urol-e5/deep-dive/blob/main/E-Peve/code/12-Peve-RNAseq-kallisto.md">Rendered code</a></p>
-<p><u>Related posts:</u><br>
-<a href="\posts\projects\E5_coral\2024_02_06_RNAseq_kallisto.qmd">RNAseq abundance quantification (A.Pulchra, P.evermanni, P.meandrina)</a><br>
-<a href="\posts\projects\E5_coral\2024_01_31_Peve_kallisto.qmd">P.evermanni RNAseq kallisto debugging</a><br>
-<a href="\posts\projects\misc\2024_02_08_bedtools_gffvbed.qmd">Testing bedtools: gff vs bed input file</a></p>
-<section id="starter-files" class="level3">
-<h3 class="anchored" data-anchor-id="starter-files">Starter files</h3>
-<p>The closest file to a <em>P. evermanni</em> transcriptome that we have is a <em>P.evermanni</em> coding sequence (CDS) gff file, and a corresponding genome scaffolds FASTA.</p>
-<p>head of gff:</p>
-<pre><code>Porites_evermani_scaffold_1 Gmove mRNA 3107 4488 543 - . ID=Peve_00000001;Name=Peve_00000001;start=0;stop=1;cds_size=543 Porites_evermani_scaffold_1 Gmove CDS 3107 3444 . - . Parent=Peve_00000001 
-Porites_evermani_scaffold_1 Gmove CDS 4284 4488 . - . Parent=Peve_00000001</code></pre>
-<p>A gff file lists information that can be used to identify and retrieve specific sequences. The first column lists the region or scaffold of a reference genome in which the sequence can be found; the third identifies which genomic feature (e.g., mRNA, CDS, UTR) the sequence is; and the fourth and fifth are genomic coordinates for the beginning and end of the sequence. Since we have both the coding sequences gff and a reference fasta, we should be able to extract FASTA sequences for all of the relevant sequences in the gff!</p>
-</section>
-<section id="extract-cds-sequences" class="level3">
-<h3 class="anchored" data-anchor-id="extract-cds-sequences">Extract CDS sequences</h3>
-<p>First, it looks like the gff has features labelled a little weirdly. Normally we’d want all of the mRNA sequences, but it looks like this file lists mRNA sequences that include introns. Instead, we want all of the CDS sequences associated with each mRNA (association is denoted in the final column with a parent mRNA ID, e.g.&nbsp;“Parent=Peve_00000001”). That means the first step is to extract all of the CDS sequences from our gff file.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Extract only the CDS sequence lines from the gff</span></span>
-<span id="cb2-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">grep</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-w</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'CDS'</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${transcriptome_gff}</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${transcriptome_gff_filtered}</span></span>
-<span id="cb2-3"></span>
-<span id="cb2-4"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">head</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-n</span> 5 <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${transcriptome_gff_filtered}</span></span></code></pre></div>
-</div>
-<pre><code>Porites_evermani_scaffold_1 Gmove   CDS 3107    3444    .   -   .   Parent=Peve_00000001
-Porites_evermani_scaffold_1 Gmove   CDS 4284    4488    .   -   .   Parent=Peve_00000001
-Porites_evermani_scaffold_1 Gmove   CDS 424479  425361  .   -   .   Parent=Peve_00000002
-Porites_evermani_scaffold_1 Gmove   CDS 426181  426735  .   -   .   Parent=Peve_00000002
-Porites_evermani_scaffold_1 Gmove   CDS 427013  427140  .   -   .   Parent=Peve_00000002</code></pre>
-</section>
-<section id="convert-gff-to-bed" class="level3">
-<h3 class="anchored" data-anchor-id="convert-gff-to-bed">Convert gff to bed</h3>
-<p>Then we convert this filtered CDS gff file to a bed file, which has slightly different formatting. We’re doing this because we’ll be using a tool called bedtools getfasta, which can take both gff and bed files, but which I trust more to appropriately parse bed files (though, see post on whether it can handle gff files correctly as well).</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Ensure bedops can find its dependencies when running</span></span>
-<span id="cb4-2"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">export</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">PATH</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>/home/shared/bedops_linux_x86_64-v2.4.41/bin:<span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$PATH</span></span>
-<span id="cb4-3"></span>
-<span id="cb4-4"><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${bedops}</span><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">/gff2bed</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\</span></span>
-<span id="cb4-5">--do-not-sort <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\</span></span>
-<span id="cb4-6"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${transcriptome_gff_filtered}</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\</span></span>
-<span id="cb4-7"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${transcriptome_bed}</span></span>
-<span id="cb4-8"></span>
-<span id="cb4-9"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">head</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-n</span> 3 <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${transcriptome_gff_filtered}</span></span>
-<span id="cb4-10"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">""</span></span>
-<span id="cb4-11"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">head</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-n</span> 3 <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${transcriptome_bed}</span></span></code></pre></div>
-</div>
-<pre><code>Porites_evermani_scaffold_1 Gmove   CDS 3107    3444    .   -   .   Parent=Peve_00000001
-Porites_evermani_scaffold_1 Gmove   CDS 4284    4488    .   -   .   Parent=Peve_00000001
-Porites_evermani_scaffold_1 Gmove   CDS 424479  425361  .   -   .   Parent=Peve_00000002
-
-Porites_evermani_scaffold_1 3106    3444    .   .   -   Gmove   CDS .   Parent=Peve_00000001
-Porites_evermani_scaffold_1 4283    4488    .   .   -   Gmove   CDS .   Parent=Peve_00000001
-Porites_evermani_scaffold_1 424478  425361  .   .   -   Gmove   CDS .   Parent=Peve_00000002</code></pre>
-</section>
-<section id="generating-a-transcriptome-fasta" class="level3">
-<h3 class="anchored" data-anchor-id="generating-a-transcriptome-fasta">Generating a transcriptome FASTA</h3>
-<p>The basic approach to generating this transcriptome makes use of the fact that each CDS sequence in our bed file is assigned a “parent” mRNA, denoted by a parent Id in the last column (e.g., “Parent=Peve_00000001”). Each sequence with the same parent ID should be used to a) retrieve a FASTA for that sequence, and b) concatenate all of the FASTAs with the same parent ID into a single, labelled gene FASTA. The below code will iterate through our entire bed file and do this for each parent ID and its associated sequences.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Load bash variables into memory</span></span>
-<span id="cb6-2"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">source</span> .bashvars</span>
-<span id="cb6-3"></span>
-<span id="cb6-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Navigate to correct directory and make output file</span></span>
-<span id="cb6-5"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">cd</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${transcriptome_dir}</span></span>
-<span id="cb6-6"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">echo</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${transcriptome_fasta_name}</span></span>
-<span id="cb6-7"></span>
-<span id="cb6-8"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Helper list for processing all parent IDs</span></span>
-<span id="cb6-9"><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">processed_ids</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">()</span></span>
-<span id="cb6-10"></span>
-<span id="cb6-11"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">######################################################</span></span>
-<span id="cb6-12"></span>
-<span id="cb6-13"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Helper function to concatenate and format several bedtools output sequences </span></span>
-<span id="cb6-14"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># into a single, appropriately named contig</span></span>
-<span id="cb6-15"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">concatenate_helper()</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">{</span></span>
-<span id="cb6-16">    <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">local</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">input_bedtools_fastas</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$1</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span></span>
-<span id="cb6-17">    <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">local</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">parent_ID</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$2</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span></span>
-<span id="cb6-18">    <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">local</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">reference_name</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">""</span></span>
-<span id="cb6-19">    <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">local</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">positions</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">""</span></span>
-<span id="cb6-20">    <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">local</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">concatenated_sequences</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">""</span></span>
-<span id="cb6-21"></span>
-<span id="cb6-22">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Read the input line by line</span></span>
-<span id="cb6-23">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">while</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">IFS</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">read</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-r</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">line</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">;</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">do</span></span>
-<span id="cb6-24">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Check if the line starts with "&gt;"</span></span>
-<span id="cb6-25">        <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">[[</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$line</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&gt;"</span><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">*</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">]];</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">then</span></span>
-<span id="cb6-26">            <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Extract reference name and position from the line</span></span>
-<span id="cb6-27">            <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">reference_position</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${line</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">}</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span>  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Remove "&gt;"</span></span>
-<span id="cb6-28">            <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">reference_name</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$(</span><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$reference_position</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cut</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-d:</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-f1</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span id="cb6-29">            <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">position</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$(</span><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$reference_position</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cut</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-d:</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-f2</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span id="cb6-30"></span>
-<span id="cb6-31">            <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Append position to the positions variable</span></span>
-<span id="cb6-32">            <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">positions</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$position</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">,"</span></span>
-<span id="cb6-33">        <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">else</span></span>
-<span id="cb6-34">            <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Concatenate sequences</span></span>
-<span id="cb6-35">            <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">concatenated_sequences</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$line</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span></span>
-<span id="cb6-36">        <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">fi</span></span>
-<span id="cb6-37">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">done</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;&lt;&lt;</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$input_bedtools_fastas</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span></span>
-<span id="cb6-38"></span>
-<span id="cb6-39">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Remove trailing comma from positions</span></span>
-<span id="cb6-40">    <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">positions</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${positions</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%</span>,<span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">}</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span></span>
-<span id="cb6-41"></span>
-<span id="cb6-42">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Output the reformatted result</span></span>
-<span id="cb6-43">    <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&gt;</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$parent_ID</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;"> </span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$reference_name</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">:</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$positions</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span></span>
-<span id="cb6-44">    <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$concatenated_sequences</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span></span>
-<span id="cb6-45"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">}</span></span>
-<span id="cb6-46"></span>
-<span id="cb6-47"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">######################################################</span></span>
-<span id="cb6-48"></span>
-<span id="cb6-49"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Process your input bed file</span></span>
-<span id="cb6-50"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">while</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">IFS</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">read</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-r</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">line</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">;</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">do</span></span>
-<span id="cb6-51"></span>
-<span id="cb6-52">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># pull the parent ID number for the current line of the bed</span></span>
-<span id="cb6-53">    <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">parentID</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$(</span><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$line</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">grep</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-o</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'Parent=Peve_[0-9]\+'</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span id="cb6-54">    </span>
-<span id="cb6-55">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Only continue if you haven't already processed the CDS sequences associated with this parent ID</span></span>
-<span id="cb6-56">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">[[</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">!</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">" </span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${processed_ids</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[@]</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">}</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;"> "</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=~</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">" </span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$parentID</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;"> "</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">]];</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">then</span></span>
-<span id="cb6-57"> </span>
-<span id="cb6-58">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Add the current parentID to the processed list</span></span>
-<span id="cb6-59">        <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">processed_ids</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">(</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$parentID</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span id="cb6-60"></span>
-<span id="cb6-61">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Create temporary files to store intermediate results</span></span>
-<span id="cb6-62">        <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">temp_CDS_bed_file</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$(</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mktemp</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span id="cb6-63">        <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">temp_bedtools_fasta_file</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$(</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mktemp</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span id="cb6-64"></span>
-<span id="cb6-65">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Grab all of the CDS sequences with the same parent ID and write to temporary file</span></span>
-<span id="cb6-66">        <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">grep</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$parentID</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${transcriptome_bed}</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$temp_CDS_bed_file</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span></span>
-<span id="cb6-67"></span>
-<span id="cb6-68">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Use bedtools to extract corresponding FASTAs and write to temporary file</span></span>
-<span id="cb6-69">        <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${programs_array</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span>bedtools<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">]</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">}</span> getfasta <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-fi</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${genome_fasta}</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-bed</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$temp_CDS_bed_file</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-fo</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$temp_bedtools_fasta_file</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span></span>
-<span id="cb6-70"></span>
-<span id="cb6-71">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Use our helper function to concatenate and format all of these CDS fastas into a single contig</span></span>
-<span id="cb6-72">        <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">concatenated_fasta</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$(</span><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">concatenate_helper</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$(</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cat</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$temp_bedtools_fasta_file</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">)</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$parentID</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span id="cb6-73"> </span>
-<span id="cb6-74">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Add the concatenated CDS fasta to our output file on a new line</span></span>
-<span id="cb6-75">        <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$concatenated_fasta</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;&gt;</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${transcriptome_fasta}</span></span>
-<span id="cb6-76"></span>
-<span id="cb6-77">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Remove the temporary files</span></span>
-<span id="cb6-78">        <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">rm</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$temp_CDS_bed_file</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$temp_bedtools_fasta_file</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span></span>
-<span id="cb6-79">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">fi</span></span>
-<span id="cb6-80"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">done</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${transcriptome_bed}</span></span>
-<span id="cb6-81"></span>
-<span id="cb6-82"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># The output file ends up having a blank first line before the data, so delete that unwanted empty first line</span></span>
-<span id="cb6-83"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sed</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-i</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'1{/^$/d}'</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${transcriptome_fasta}</span></span></code></pre></div>
-</div>
-<p>Now we have a transcriptome FASTA the can be used for kallisto abundance quantification!</p>
-
-
-</section>
-
- ]]></description>
-  <category>E5-coral</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_02_07_Peve_transcriptome.html</guid>
-  <pubDate>Wed, 07 Feb 2024 08:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
