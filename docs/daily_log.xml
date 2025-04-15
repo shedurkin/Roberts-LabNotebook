@@ -10,7 +10,7 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/daily_log.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Sat, 05 Apr 2025 02:21:33 GMT</lastBuildDate>
+<lastBuildDate>Mon, 14 Apr 2025 23:09:37 GMT</lastBuildDate>
 <item>
   <title>April 2025, Daily Log</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -96,6 +96,10 @@
 <h2 class="anchored" data-anchor-id="april-2025-12">14 April 2025</h2>
 <section id="monday-2" class="level4">
 <h4 class="anchored" data-anchor-id="monday-2">Monday</h4>
+<ul>
+<li><p>SWED103</p></li>
+<li><p>looking into different housing options for 3 month short term lease/sublease in DC, for Smithsonian fellowship</p></li>
+</ul>
 </section>
 </section>
 <section id="april-2025-13" class="level2">
@@ -190,7 +194,45 @@
  ]]></description>
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/April_2025_posts.html</guid>
-  <pubDate>Sat, 05 Apr 2025 02:21:33 GMT</pubDate>
+  <pubDate>Mon, 14 Apr 2025 23:09:37 GMT</pubDate>
+</item>
+<item>
+  <title>April 15 Steven Meeting</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/2025_04_14_steven meeting.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>See April Goals <a href="../../../posts/daily_logs/2025/April_2025_goals.html">here</a></p>
+<p><strong>Progress:</strong></p>
+<ul>
+<li><p>Completed <a href="../../../posts/projects/SIFP_2025/2025_04_09_SIFP_planning.html">budget planning for SIFP</a>, and <a href="../../../posts/projects/SIFP_2025/2025_04_10_Andrea_meeting.html">met with Andrea</a> to discuss details of fellowship. Will be meeting again early May.</p></li>
+<li><p>Completed several outstanding Github issues for <code>deep-dive-expression</code>. Note, however, that these will also need to be run with the miRanda outputs from searching 5UTR and CDS for targets.</p>
+<ul>
+<li><p>Functional annotation of gene-miRNA interaction network (<a href="https://github.com/urol-e5/deep-dive-expression/issues/22">Github issue</a>, <a href="../../../posts/projects/E5_coral/2025_04_09_dde_miranda_miRNA_FE.html">notebook post</a>)</p></li>
+<li><p>Compare function composition of mRNA targets to full reference (<a href="https://github.com/urol-e5/deep-dive-expression/issues/23">Github issue</a>, <a href="../../../posts/projects/E5_coral/2025_04_08_dde_miranda_FE.html">notebook post</a>)</p></li>
+<li><p>Compare / contrast mRNA target functions (<a href="https://github.com/urol-e5/deep-dive-expression/issues/24">Github issue</a>, <a href="../../../posts/projects/E5_coral/2025_04_10_dde_named_miRNA_functions.html">notebook post</a>)</p></li>
+</ul></li>
+<li><p>Performed several trial runs of Ariana’s ML model with various inputs, see several notebook posts <a href="../../../posts/projects/E5_coral.html">here</a></p></li>
+<li><p>Writing for Thesis Proposal</p></li>
+</ul>
+<p><strong>To-Do:</strong></p>
+<ul>
+<li><p>Keep Writing for Thesis Proposal</p></li>
+<li><p>Update Deep Dive Expression draft</p></li>
+<li><p>Incorporate lncRNA and methylation data into ML model</p></li>
+<li><p>Lit review into ML model</p></li>
+<li><p>EPIMAR presentation</p></li>
+</ul>
+
+
+
+ ]]></description>
+  <category>monthly goals</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/2025_04_14_steven meeting.html</guid>
+  <pubDate>Mon, 14 Apr 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>April 2025, Monthly Goals</title>
@@ -206,18 +248,18 @@
 <ul>
 <li><p>Wrap up E5 deep dive tasks</p></li>
 <li><p>complete draft for E5 deep dive paper</p></li>
-<li><p>Complete a workable EPIMAR presnetation</p></li>
+<li><p>Complete a workable EPIMAR presentation</p></li>
 <li><p>Complete MS thesis proposal</p></li>
 <li><p>Set another committee meeting to review progress, summer plans, send proposal draft, etc.</p></li>
 <li><p>Plan for SIFP summer fellowship</p>
 <ul>
-<li><p>Set dates</p></li>
-<li><p>Figure out where research funding will be coming from (Andrea? Steven? both?), what the $ amount needed will be, etc.</p></li>
+<li><p><del>Set dates</del></p></li>
+<li><p><del>Figure out where research funding will be coming from (Andrea? Steven? both?), what the $ amount needed will be, etc.</del></p></li>
 <li><p>Set timeline (due dates for sample select, QCing, prep, sequencing, data analysis, etc.)</p></li>
 <li><p>Figure out where sequencing will be done (does LAB have own Promethion or does it need to be out-of-house?) and what approximate cost will be</p></li>
-<li><p>Complete Smithsonian onboarding (security check, getting set up for ID, etc.)</p></li>
+<li><p><del>Complete Smithsonian onboarding (security check, getting set up for ID, etc.)</del></p></li>
 <li><p>Look into housing (may need to wait till May for better availability)</p></li>
-<li><p>Figure out how SIFP living stipend will merge with SAFS funding/insurance</p></li>
+<li><p><del>Figure out how SIFP living stipend will merge with SAFS funding/insurance</del></p></li>
 </ul></li>
 <li><p>Reminder: Submit <a href="https://docs.google.com/forms/d/e/1FAIpQLSd162whQvdjHRkhDHJJf9A59VhLCjJEqaZ7VqKYaixx7rYnFg/viewform">RA reporting form</a> at end of month (can enter “NSF” in the Funding Source section)</p></li>
 </ul>
@@ -3645,252 +3687,6 @@ I also did a fair bit of work for the E5 project in April that I wasn’t planni
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/May_2024_goals.html</guid>
   <pubDate>Mon, 13 May 2024 07:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>April 2024, Daily Log</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/April_2024_posts.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="april-2024" class="level2">
-<h2 class="anchored" data-anchor-id="april-2024">30 April 2024</h2>
-<section id="tuesday" class="level4">
-<h4 class="anchored" data-anchor-id="tuesday">Tuesday</h4>
-</section>
-</section>
-<section id="april-2024-1" class="level2">
-<h2 class="anchored" data-anchor-id="april-2024-1">29 April 2024</h2>
-<section id="monday" class="level4">
-<h4 class="anchored" data-anchor-id="monday">Monday</h4>
-</section>
-</section>
-<section id="april-2024-2" class="level2">
-<h2 class="anchored" data-anchor-id="april-2024-2">26 April 2024</h2>
-<section id="friday" class="level4">
-<h4 class="anchored" data-anchor-id="friday">Friday</h4>
-</section>
-</section>
-<section id="april-2024-3" class="level2">
-<h2 class="anchored" data-anchor-id="april-2024-3">25 April 2024</h2>
-<section id="thursday" class="level4">
-<h4 class="anchored" data-anchor-id="thursday">Thursday</h4>
-<ul>
-<li><p>trying to make some figures for cod DEGs</p></li>
-<li><p>class (fsh541) – Laura wasour instructor today!</p></li>
-<li><p>lab meeting</p></li>
-<li><p><a href="../../../posts/projects/pacific_cod/2024_04_25_methylation_subsampling.html">tissue subsampling</a> (cod liver tissue, compiling methylation samples)</p></li>
-</ul>
-</section>
-</section>
-<section id="april-2024-4" class="level2">
-<h2 class="anchored" data-anchor-id="april-2024-4">24 April 2024</h2>
-<section id="wednesday" class="level4">
-<h4 class="anchored" data-anchor-id="wednesday">Wednesday</h4>
-<ul>
-<li><p>class, GNM569 (last class!)</p></li>
-<li><p>continuing cod HISAT run</p></li>
-<li><p>applied for some QSCI TA positions in the fall quarter</p></li>
-</ul>
-</section>
-</section>
-<section id="april-2024-5" class="level2">
-<h2 class="anchored" data-anchor-id="april-2024-5">23 April 2024</h2>
-<section id="tuesday-1" class="level4">
-<h4 class="anchored" data-anchor-id="tuesday-1">Tuesday</h4>
-</section>
-</section>
-<section id="april-2024-6" class="level2">
-<h2 class="anchored" data-anchor-id="april-2024-6">22 April 2024</h2>
-<section id="monday-1" class="level4">
-<h4 class="anchored" data-anchor-id="monday-1">Monday</h4>
-<ul>
-<li><p>class – GNM569</p></li>
-<li><p>E5 analyses … still…</p></li>
-<li><p>finished GNM569 project2</p></li>
-<li><p>classwork for FSH541 tomorrow</p></li>
-</ul>
-</section>
-</section>
-<section id="april-2024-7" class="level2">
-<h2 class="anchored" data-anchor-id="april-2024-7">19 April 2024</h2>
-<section id="friday-1" class="level4">
-<h4 class="anchored" data-anchor-id="friday-1">Friday</h4>
-<ul>
-<li><p>E5 meeting</p></li>
-<li><p>continued rerunning analyses – realized I didn’t use the curated miRBase+cnidarians database from Jill, so I actually need to re-rerun pretty much everything 😭</p></li>
-<li><p>classwork for GNM569</p></li>
-</ul>
-</section>
-</section>
-<section id="april-2024-8" class="level2">
-<h2 class="anchored" data-anchor-id="april-2024-8">18 April 2024</h2>
-<section id="thursday-1" class="level4">
-<h4 class="anchored" data-anchor-id="thursday-1">Thursday</h4>
-<ul>
-<li><p>pubathon</p></li>
-<li><p>class (FSH541)</p></li>
-<li><p>lab meeting, talked about figures</p></li>
-<li><p>continued rerunning E5 sRNA analyses</p></li>
-</ul>
-</section>
-</section>
-<section id="april-2024-9" class="level2">
-<h2 class="anchored" data-anchor-id="april-2024-9">17 April 2024</h2>
-<section id="wednesday-1" class="level4">
-<h4 class="anchored" data-anchor-id="wednesday-1">Wednesday</h4>
-<ul>
-<li><p>class (GNM569)</p></li>
-<li><p>finished mirdeep2 run with merged reads for E5. Tried to get started on the P.meandrina rerun, but I can’t access the reads online? Something’s up with Owl and I can’t access things stored there 😳</p></li>
-<li><p>got references for everything I cited to far in cod manuscript and inserted the in-text citations</p></li>
-<li><p>updated the readme file for the cod repo</p></li>
-<li><p>more working on GO enrichment analysis for the cod rnaseq data. I figured out the annotation/making an ID-GO database step, now I’m trying to do the actual enrichment (nothing about this on the lab website, so trying to look through Matt’s code)</p></li>
-<li><p>reading and quiz for FSH541</p></li>
-</ul>
-</section>
-</section>
-<section id="april-2024-10" class="level2">
-<h2 class="anchored" data-anchor-id="april-2024-10">16 April 2024</h2>
-<section id="tuesday-2" class="level4">
-<h4 class="anchored" data-anchor-id="tuesday-2">Tuesday</h4>
-<ul>
-<li><p>classwork (FSH541)</p></li>
-<li><p>updating cod methylation sample list again, per my discussion with Laura yesterday</p></li>
-<li><p>class (FSH541)</p></li>
-<li><p>lab class (FSH541) – working on getting a HiSat workflow for aligning cod rnaseq reads to genome (note I already have a transcriptome pseduoaliignment and count matrix using kallisto, this is just an exercise)</p></li>
-<li><p>mariners game tonight with the cohort!</p></li>
-</ul>
-</section>
-</section>
-<section id="april-2024-11" class="level2">
-<h2 class="anchored" data-anchor-id="april-2024-11">15 April 2024</h2>
-<section id="monday-2" class="level4">
-<h4 class="anchored" data-anchor-id="monday-2">Monday</h4>
-<ul>
-<li><p>class (GNM569)</p></li>
-<li><p>rerunning BLAST and miRdeep2 with merged P.eve reads. Having some trouble with miRdeep2, I think the merging introduced reads &lt;17bp long, which miRdeep2 doesn’t like.</p></li>
-<li><p>meeting with laura about cod project. discussed adjusting samples selected for methylation to ensure full representation of genetic diversity.</p></li>
-</ul>
-</section>
-</section>
-<section id="april-2024-12" class="level2">
-<h2 class="anchored" data-anchor-id="april-2024-12">12 April 2024</h2>
-<section id="friday-2" class="level4">
-<h4 class="anchored" data-anchor-id="friday-2">Friday</h4>
-<p>Out</p>
-</section>
-</section>
-<section id="april-2024-13" class="level2">
-<h2 class="anchored" data-anchor-id="april-2024-13">11 April 2024</h2>
-<section id="thursday-2" class="level4">
-<h4 class="anchored" data-anchor-id="thursday-2">Thursday</h4>
-<ul>
-<li><p>class (FSH 541)</p></li>
-<li><p>classwork</p></li>
-<li><p>starting on rerunning E5 sRNAseq analyses using merged reads. starting with P.eve.</p></li>
-</ul>
-</section>
-</section>
-<section id="april-2024-14" class="level2">
-<h2 class="anchored" data-anchor-id="april-2024-14">10 April 2024</h2>
-<section id="wednesday-2" class="level4">
-<h4 class="anchored" data-anchor-id="wednesday-2">Wednesday</h4>
-<ul>
-<li><p>GNM569 class</p></li>
-<li><p>last edits for GNM569 project, I’m just pushing what I have and walking the heck away🥴</p></li>
-<li><p>classwork for FSH541</p></li>
-<li><p>methods writing for cod manuscript</p></li>
-</ul>
-</section>
-</section>
-<section id="april-2024-15" class="level2">
-<h2 class="anchored" data-anchor-id="april-2024-15">09 April 2024</h2>
-<section id="tuesday-3" class="level4">
-<h4 class="anchored" data-anchor-id="tuesday-3">Tuesday</h4>
-<ul>
-<li><p>classwork for FSH541</p></li>
-<li><p>FSH541 Lecture</p></li>
-<li><p>FSH541 Lab</p></li>
-<li><p>more working on GNM569 project – at this point I actually never want to look at a terminal window again, so…. this class may be having the wrong effect on me lol</p></li>
-</ul>
-</section>
-</section>
-<section id="april-2024-16" class="level2">
-<h2 class="anchored" data-anchor-id="april-2024-16">08 April 2024</h2>
-<section id="monday-3" class="level4">
-<h4 class="anchored" data-anchor-id="monday-3">Monday</h4>
-<ul>
-<li>Literally just grinding the GNM569 project all day, at this point I’m seeing lines of bash script in my sleep</li>
-</ul>
-</section>
-</section>
-<section id="april-2024-17" class="level2">
-<h2 class="anchored" data-anchor-id="april-2024-17">05 April 2024</h2>
-<section id="friday-3" class="level4">
-<h4 class="anchored" data-anchor-id="friday-3">Friday</h4>
-<ul>
-<li><p>E5 molecular meeting, committed to continuing the sRNA analyses with new merged reads</p></li>
-<li><p>Grinding the GNM569 project for <em>6 hours straight</em> and making almost no progress because the TA is being singularly unhelpful 😭</p></li>
-</ul>
-</section>
-</section>
-<section id="april-2024-18" class="level2">
-<h2 class="anchored" data-anchor-id="april-2024-18">04 April 2024</h2>
-<section id="thursday-3" class="level4">
-<h4 class="anchored" data-anchor-id="thursday-3">Thursday</h4>
-<ul>
-<li><p>pubathon</p></li>
-<li><p>meeting w/ Steven about oyster experimental setup (see notes <a href="https://docs.google.com/document/d/1IgbZgJOcZYKogHhHB1Apst1ihhXzmYLT-fLHrZf0dtc/edit#heading=h.o21bn5ytygqm">here</a>)</p></li>
-<li><p>class (FISH541)</p></li>
-<li><p>updating lab notebook for start of April (new posts/goals docs)</p></li>
-</ul>
-</section>
-</section>
-<section id="april-2024-19" class="level2">
-<h2 class="anchored" data-anchor-id="april-2024-19">03 April 2024</h2>
-<section id="wednesday-3" class="level4">
-<h4 class="anchored" data-anchor-id="wednesday-3">Wednesday</h4>
-<ul>
-<li><p>class (GNM569)</p></li>
-<li><p>classwork for GNM569</p></li>
-<li><p>classwork for FSH541 – readings and quiz</p></li>
-<li><p>meeting with Laura about cod DGE analysis — notes <a href="https://docs.google.com/document/d/1IgbZgJOcZYKogHhHB1Apst1ihhXzmYLT-fLHrZf0dtc/edit#heading=h.fukr5muir45g">here</a></p></li>
-<li><p>making some final edits to cod methylation sample list</p></li>
-<li><p>lab trivia night :)</p></li>
-</ul>
-</section>
-</section>
-<section id="april-2024-20" class="level2">
-<h2 class="anchored" data-anchor-id="april-2024-20">02 April 2024</h2>
-<section id="tuesday-4" class="level4">
-<h4 class="anchored" data-anchor-id="tuesday-4">Tuesday</h4>
-<ul>
-<li><p>FSH541 lecture</p></li>
-<li><p>FSH541 lab</p></li>
-<li><p>some writing on cod manuscript</p></li>
-</ul>
-</section>
-</section>
-<section id="april-2024-21" class="level2">
-<h2 class="anchored" data-anchor-id="april-2024-21">01 April 2024</h2>
-<section id="monday-4" class="level4">
-<h4 class="anchored" data-anchor-id="monday-4">Monday</h4>
-<ul>
-<li><p>class (GNM569)</p></li>
-<li><p>adding experimental metadata to cod DGE analysis and generating some PCAs with size included</p></li>
-<li><p>classwork for FSH541 (reading, quiz)</p></li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <category>daily log</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/April_2024_posts.html</guid>
-  <pubDate>Tue, 30 Apr 2024 07:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

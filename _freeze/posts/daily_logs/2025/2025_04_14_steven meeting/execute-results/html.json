@@ -1,0 +1,14 @@
+{
+  "hash": "6cf68e4f3d8accf5204fc3fdd9cca2be",
+  "result": {
+    "markdown": "---\ntitle: \"April 15 Steven Meeting\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-04-14\"\ncategories: [\"monthly goals\"]\nformat:\n  html:\n    toc: true\nengine: knitr\n---\n\n\nSee April Goals [here](./April_2025_goals.qmd)\n\n**Progress:**\n\n-   Completed [budget planning for SIFP](../../projects/SIFP_2025/2025_04_09_SIFP_planning.qmd), and [met with Andrea](../../projects/SIFP_2025/2025_04_10_Andrea_meeting.qmd) to discuss details of fellowship. Will be meeting again early May.\n\n-   Completed several outstanding Github issues for `deep-dive-expression`. Note, however, that these will also need to be run with the miRanda outputs from searching 5UTR and CDS for targets.\n\n    -   Functional annotation of gene-miRNA interaction network ([Github issue](https://github.com/urol-e5/deep-dive-expression/issues/22), [notebook post](../../projects/E5_coral/2025_04_09_dde_miranda_miRNA_FE.qmd))\n\n    -   Compare function composition of mRNA targets to full reference ([Github issue](https://github.com/urol-e5/deep-dive-expression/issues/23), [notebook post](../../projects/E5_coral/2025_04_08_dde_miranda_FE.qmd))\n\n    -   Compare / contrast mRNA target functions ([Github issue](https://github.com/urol-e5/deep-dive-expression/issues/24), [notebook post](../../projects/E5_coral/2025_04_10_dde_named_miRNA_functions.qmd))\n\n-   Performed several trial runs of Ariana's ML model with various inputs, see several notebook posts [here](../../projects/E5_coral.qmd)\n\n-   Writing for Thesis Proposal\n\n**To-Do:**\n\n-   Keep Writing for Thesis Proposal\n\n-   Update Deep Dive Expression draft\n\n-   Incorporate lncRNA and methylation data into ML model\n\n-   Lit review into ML model\n\n-   EPIMAR presentation\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

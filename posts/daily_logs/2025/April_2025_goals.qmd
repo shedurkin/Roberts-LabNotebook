@@ -13,7 +13,7 @@ format:
 
 -   complete draft for E5 deep dive paper
 
--   Complete a workable EPIMAR presnetation
+-   Complete a workable EPIMAR presentation
 
 -   Complete MS thesis proposal
 
@@ -21,18 +21,18 @@ format:
 
 -   Plan for SIFP summer fellowship
 
-    -   Set dates
+    -   ~~Set dates~~
 
-    -   Figure out where research funding will be coming from (Andrea? Steven? both?), what the \$ amount needed will be, etc.
+    -   ~~Figure out where research funding will be coming from (Andrea? Steven? both?), what the \$ amount needed will be, etc.~~
 
     -   Set timeline (due dates for sample select, QCing, prep, sequencing, data analysis, etc.)
 
     -   Figure out where sequencing will be done (does LAB have own Promethion or does it need to be out-of-house?) and what approximate cost will be
 
-    -   Complete Smithsonian onboarding (security check, getting set up for ID, etc.)
+    -   ~~Complete Smithsonian onboarding (security check, getting set up for ID, etc.)~~
 
     -   Look into housing (may need to wait till May for better availability)
 
-    -   Figure out how SIFP living stipend will merge with SAFS funding/insurance
+    -   ~~Figure out how SIFP living stipend will merge with SAFS funding/insurance~~
 
 -   Reminder: Submit [RA reporting form](https://docs.google.com/forms/d/e/1FAIpQLSd162whQvdjHRkhDHJJf9A59VhLCjJEqaZ7VqKYaixx7rYnFg/viewform) at end of month (can enter "NSF" in the Funding Source section)

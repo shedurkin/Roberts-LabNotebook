@@ -1,0 +1,40 @@
+---
+title: "April 15 Steven Meeting"
+author: "Kathleen Durkin"
+date: "2025-04-14"
+categories: ["monthly goals"]
+format:
+  html:
+    toc: true
+engine: knitr
+---
+
+See April Goals [here](./April_2025_goals.qmd)
+
+**Progress:**
+
+-   Completed [budget planning for SIFP](../../projects/SIFP_2025/2025_04_09_SIFP_planning.qmd), and [met with Andrea](../../projects/SIFP_2025/2025_04_10_Andrea_meeting.qmd) to discuss details of fellowship. Will be meeting again early May.
+
+-   Completed several outstanding Github issues for `deep-dive-expression`. Note, however, that these will also need to be run with the miRanda outputs from searching 5UTR and CDS for targets.
+
+    -   Functional annotation of gene-miRNA interaction network ([Github issue](https://github.com/urol-e5/deep-dive-expression/issues/22), [notebook post](../../projects/E5_coral/2025_04_09_dde_miranda_miRNA_FE.qmd))
+
+    -   Compare function composition of mRNA targets to full reference ([Github issue](https://github.com/urol-e5/deep-dive-expression/issues/23), [notebook post](../../projects/E5_coral/2025_04_08_dde_miranda_FE.qmd))
+
+    -   Compare / contrast mRNA target functions ([Github issue](https://github.com/urol-e5/deep-dive-expression/issues/24), [notebook post](../../projects/E5_coral/2025_04_10_dde_named_miRNA_functions.qmd))
+
+-   Performed several trial runs of Ariana's ML model with various inputs, see several notebook posts [here](../../projects/E5_coral.qmd)
+
+-   Writing for Thesis Proposal
+
+**To-Do:**
+
+-   Keep Writing for Thesis Proposal
+
+-   Update Deep Dive Expression draft
+
+-   Incorporate lncRNA and methylation data into ML model
+
+-   Lit review into ML model
+
+-   EPIMAR presentation
