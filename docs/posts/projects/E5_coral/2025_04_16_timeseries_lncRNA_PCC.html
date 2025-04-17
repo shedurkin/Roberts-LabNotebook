@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Kathleen Durkin">
+<meta name="dcterms.date" content="2025-04-10">
+
+<title>Kathleen’s Lab Notebook - Timeseries: miRNA-lncRNA Coexpression</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Kathleen’s Lab Notebook</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../daily_log.html" rel="" target="">
+ <span class="menu-text">Daily Notebook Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../projects.html" rel="" target="">
+ <span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/shedurkin" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:kdurkin1@uw.edu" rel="" target=""><i class="bi bi-envelope" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Timeseries: miRNA-lncRNA Coexpression</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">E5-coral</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Kathleen Durkin </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 10, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#obtain-pearsons-coefficient-correlation-values" id="toc-obtain-pearsons-coefficient-correlation-values" class="nav-link active" data-scroll-target="#obtain-pearsons-coefficient-correlation-values">0.1 Obtain Pearson’s coefficient correlation values</a></li>
+  <li><a href="#incorporate-miranda-target-prediction-results" id="toc-incorporate-miranda-target-prediction-results" class="nav-link" data-scroll-target="#incorporate-miranda-target-prediction-results">1 Incorporate miRanda target prediction results</a>
+  <ul class="collapse">
+  <li><a href="#full-lncrna" id="toc-full-lncrna" class="nav-link" data-scroll-target="#full-lncrna">1.1 full lncRNA</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">2 Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+<p><a href="https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/code/14.2-Apul-miRNA-lncRNA-coexpression.Rmd">Code</a><br>
+<a href="https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/code/14.2-Apul-miRNA-lncRNA-coexpression.md">Rendered code</a><br>
+<a href="https://github.com/urol-e5/timeseries_molecular/tree/main/D-Apul/output/14.2-Apul-miRNA-lncRNA-coexpression">Output files</a></p>
+<p>I’ve already used miRanda to predict miRNA-lncRNA binding. Now I want to assess coexpression for miRNA-lncRNA pairs using Pearson’s correlation coefficient.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(energy)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now that we’ve found putative interactions, including those with high complementarity, in <code>10-Apul-lncRNA-miRNA-miRanda</code> we need to validate by examining patterns of coexpression. We’d expect a putatively-interacting miRNA-lncRNA pair to be highly coexpressed, and we’d expect a strong negative relationship to indicate either a lncRNA sponging miRNA OR an miRNA targeting lncRNA for degradation.</p>
+<section id="obtain-pearsons-coefficient-correlation-values" class="level2">
+<h2 class="anchored" data-anchor-id="obtain-pearsons-coefficient-correlation-values">0.1 Obtain Pearson’s coefficient correlation values</h2>
+<p>Read in, format, and normalize data</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>miRNA_counts <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"../output/03.10-D-Apul-sRNAseq-expression-DESeq2/Apul_miRNA_ShortStack_counts_formatted.txt"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Simplify column names</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(miRNA_counts) <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"_.*"</span>, <span class="st">""</span>, <span class="fu">colnames</span>(miRNA_counts))</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(miRNA_counts) <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"X"</span>, <span class="st">""</span>, <span class="fu">colnames</span>(miRNA_counts))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove any miRNA with 0 counts across samples </span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>miRNA_counts<span class="ot">&lt;-</span>miRNA_counts <span class="sc">%&gt;%</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Total =</span> <span class="fu">rowSums</span>(.[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]))<span class="sc">%&gt;%</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>Total<span class="sc">==</span><span class="dv">0</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">!</span>Total)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>lncRNA_counts_full <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"../output/08-Apul-lncRNA/counts.txt"</span>, <span class="at">skip=</span><span class="dv">1</span>) </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(lncRNA_counts_full) <span class="ot">&lt;-</span> lncRNA_counts_full<span class="sc">$</span>Geneid</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>lncRNA_counts <span class="ot">&lt;-</span> lncRNA_counts_full <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>Geneid, <span class="sc">-</span>Chr, <span class="sc">-</span>Start, <span class="sc">-</span>End, <span class="sc">-</span>Strand, <span class="sc">-</span>Length)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Format lncRNA column names to match the miRNA names</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(lncRNA_counts) <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"...data."</span>, <span class="st">""</span>, <span class="fu">colnames</span>(lncRNA_counts))</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(lncRNA_counts) <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">".sorted.bam"</span>, <span class="st">""</span>, <span class="fu">colnames</span>(lncRNA_counts))</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Order lncRNA column names to match the miRNA column order</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>lncRNA_counts <span class="ot">&lt;-</span> lncRNA_counts[, <span class="fu">colnames</span>(miRNA_counts)]</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Check that the columns match name and order for both dataframes</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(lncRNA_counts) <span class="sc">==</span> <span class="fu">colnames</span>(miRNA_counts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [16] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [31] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove any lncRNAs with 0 for all samples </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>lncRNA_counts <span class="ot">&lt;-</span> lncRNA_counts <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Total =</span> <span class="fu">rowSums</span>(.[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]))<span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>Total<span class="sc">==</span><span class="dv">0</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">!</span>Total)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to normalize counts (simple RPM normalization)</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>normalize_counts <span class="ot">&lt;-</span> <span class="cf">function</span>(counts) {</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  rpm <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">t</span>(counts) <span class="sc">/</span> <span class="fu">colSums</span>(counts)) <span class="sc">*</span> <span class="fl">1e6</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(rpm)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>miRNA_norm <span class="ot">&lt;-</span> <span class="fu">normalize_counts</span>(miRNA_counts)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>lncRNA_norm <span class="ot">&lt;-</span> <span class="fu">normalize_counts</span>(lncRNA_counts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to calculate PCC and p-value for a pair of vectors</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>calc_pcc <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(x, y, <span class="at">method =</span> <span class="st">"pearson"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">c</span>(<span class="at">PCC =</span> result<span class="sc">$</span>estimate, <span class="at">p_value =</span> result<span class="sc">$</span>p.value))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data frame of all miRNA-lncRNA pairs</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>pairs <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">miRNA =</span> <span class="fu">rownames</span>(miRNA_norm), <span class="at">lncRNA =</span> <span class="fu">rownames</span>(lncRNA_norm))</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate PCC and p-value for each pair</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>pcc_results <span class="ot">&lt;-</span> pairs <span class="sc">%&gt;%</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">pcc_stats =</span> <span class="fu">list</span>(<span class="fu">calc_pcc</span>(miRNA_norm[miRNA,], lncRNA_norm[lncRNA,]))</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_wider</span>(pcc_stats)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust p-values for FDR</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>pcc_results <span class="ot">&lt;-</span> pcc_results <span class="sc">%&gt;%</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">adjusted_p_value =</span> <span class="fu">p.adjust</span>(p_value, <span class="at">method =</span> <span class="st">"fdr"</span>))</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Save as csv</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(pcc_results, <span class="st">"../output/14.2-Apul-miRNA-lncRNA-coexpression/Apul-PCC_miRNA_lncRNA-full.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Check</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in results </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>pcc_results <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../output/14.2-Apul-miRNA-lncRNA-coexpression/Apul-PCC_miRNA_lncRNA-full.csv"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use this code to download the PCC results if needed </span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#pcc_results &lt;- read.csv("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/timeseries_molecular/D-Apul/output/14.2-Apul-miRNA-lncRNA-coexpression/Apul-PCC_miRNA_lncRNA-full.csv")</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(pcc_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 950283</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(pcc_results<span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">abs</span>(PCC.cor) <span class="sc">&gt;</span> <span class="fl">0.90</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(pcc_results <span class="sc">%&gt;%</span> <span class="fu">filter</span>(p_value <span class="sc">&lt;</span> <span class="fl">0.05</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 81605</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(pcc_results <span class="sc">%&gt;%</span> <span class="fu">filter</span>(p_value <span class="sc">&lt;</span> <span class="fl">0.05</span> <span class="sc">&amp;</span> <span class="fu">abs</span>(PCC.cor) <span class="sc">&gt;</span> <span class="fl">0.90</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>of the 950,283 possible miRNA-lncRNA interactions, 3 have a Pearson’s correlation coefficient with a magnitude above 0.9, and 81,605 have a significant correlation (pval&lt;0.05). All of the coefficients with a magnitude &gt;0.9 are significant.</p>
+<p>I find it interesting that so many putative interactions have significant pvalues, but so few have correlation coefficients above 0.9. What does the distribution of significant correlation coefficients look like?</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pcc_results[pcc_results<span class="sc">$</span>p_value <span class="sc">&lt;</span> <span class="fl">0.05</span>,], <span class="fu">aes</span>(<span class="at">x =</span> PCC.cor)) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Density of Significant Correlations"</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Correlation Coefficient"</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density"</span>) <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="./images/14.2-Apul-miRNA-lncRNA-coexpression_files/figure-gfm/unnamed-chunk-5-1.png" class="img-fluid"><!-- --></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pcc_results[pcc_results<span class="sc">$</span>p_value <span class="sc">&lt;</span> <span class="fl">0.05</span>,], <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">abs</span>(PCC.cor))) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Density of Significant Correlations (magnitudes)"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Magnitude of Correlation Coefficient"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density"</span>) <span class="sc">+</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="./images/14.2-Apul-miRNA-lncRNA-coexpression_files/figure-gfm/unnamed-chunk-5-2.png" class="img-fluid"><!-- --></p>
+<p>Mean of the absolute value of correlation for significant correlation coefficients is <code>{r} round(mean(abs(pcc_results[pcc_results$p_value &lt; 0.05,]$PCC.cor)),2)</code></p>
+</section>
+<section id="incorporate-miranda-target-prediction-results" class="level1">
+<h1>1 Incorporate miRanda target prediction results</h1>
+<section id="full-lncrna" class="level2">
+<h2 class="anchored" data-anchor-id="full-lncrna">1.1 full lncRNA</h2>
+<p>I realized that the lncRNA counts matrix includes some duplicate lncRNA, where two or more distinct lncRNA IDs share the exact same genomic coordinates. As far as I can tell all of the duplicate lncRNAs have counts of 0 across all samples, so it was likely just a naming error. This also means the duplicates didn’t affect the correlation calculations above, since I filtered out lncRNAs that had all-0 counts before PCC.</p>
+<p>I’ll need to filter then out though to facilitate joining.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create mapping table that shows the full genomic location for each lncRNA</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>lncRNA_mapping <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">lncRNA =</span> lncRNA_counts_full<span class="sc">$</span>Geneid,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">location =</span> <span class="fu">paste0</span>(lncRNA_counts_full<span class="sc">$</span>Chr, <span class="st">":"</span>, (lncRNA_counts_full<span class="sc">$</span>Start<span class="dv">-1</span>), <span class="st">"-"</span>, lncRNA_counts_full<span class="sc">$</span>End)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Isolate lncRNA that have been repeated</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>repeats <span class="ot">&lt;-</span> lncRNA_mapping[<span class="fu">duplicated</span>(lncRNA_mapping<span class="sc">$</span>location) <span class="sc">|</span> <span class="fu">duplicated</span>(lncRNA_mapping<span class="sc">$</span>location, <span class="at">fromLast =</span> <span class="cn">TRUE</span>), ]</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Isolate the repeated lncRNA counts</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>repeats_counts <span class="ot">&lt;-</span> lncRNA_counts_full <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Geneid <span class="sc">%in%</span> repeats<span class="sc">$</span>lncRNA)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(lncRNA_mapping)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 24181</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(lncRNA_mapping<span class="sc">$</span>location))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 23782</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(lncRNA_mapping) <span class="sc">-</span> <span class="fu">length</span>(<span class="fu">unique</span>(lncRNA_mapping<span class="sc">$</span>location))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 399</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(repeats_counts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##                Geneid      Chr   Start     End Strand Length
+## lncRNA_062 lncRNA_062 ntLink_6 7465722 7467150      +   1429
+## lncRNA_063 lncRNA_063 ntLink_6 7465722 7467150      +   1429
+## lncRNA_071 lncRNA_071 ntLink_6 7548691 7551215      +   2525
+## lncRNA_072 lncRNA_072 ntLink_6 7548691 7551215      +   2525
+## lncRNA_080 lncRNA_080 ntLink_6 9559991 9569239      +   9249
+## lncRNA_081 lncRNA_081 ntLink_6 9559991 9569239      +   9249
+##            ...data.1A10.sorted.bam ...data.1A12.sorted.bam
+## lncRNA_062                       0                       0
+## lncRNA_063                       0                       0
+## lncRNA_071                       0                       0
+## lncRNA_072                       0                       0
+## lncRNA_080                       0                       0
+## lncRNA_081                       0                       0
+##            ...data.1A1.sorted.bam ...data.1A2.sorted.bam ...data.1A8.sorted.bam
+## lncRNA_062                      0                      0                      0
+## lncRNA_063                      0                      0                      0
+## lncRNA_071                      0                      0                      0
+## lncRNA_072                      0                      0                      0
+## lncRNA_080                      0                      0                      0
+## lncRNA_081                      0                      0                      0
+##            ...data.1A9.sorted.bam ...data.1B10.sorted.bam
+## lncRNA_062                      0                       0
+## lncRNA_063                      0                       0
+## lncRNA_071                      0                       0
+## lncRNA_072                      0                       0
+## lncRNA_080                      0                       0
+## lncRNA_081                      0                       0
+##            ...data.1B1.sorted.bam ...data.1B2.sorted.bam ...data.1B5.sorted.bam
+## lncRNA_062                      0                      0                      0
+## lncRNA_063                      0                      0                      0
+## lncRNA_071                      0                      0                      0
+## lncRNA_072                      0                      0                      0
+## lncRNA_080                      0                      0                      0
+## lncRNA_081                      0                      0                      0
+##            ...data.1B9.sorted.bam ...data.1C10.sorted.bam
+## lncRNA_062                      0                       0
+## lncRNA_063                      0                       0
+## lncRNA_071                      0                       0
+## lncRNA_072                      0                       0
+## lncRNA_080                      0                       0
+## lncRNA_081                      0                       0
+##            ...data.1C4.sorted.bam ...data.1D10.sorted.bam
+## lncRNA_062                      0                       0
+## lncRNA_063                      0                       0
+## lncRNA_071                      0                       0
+## lncRNA_072                      0                       0
+## lncRNA_080                      0                       0
+## lncRNA_081                      0                       0
+##            ...data.1D3.sorted.bam ...data.1D4.sorted.bam ...data.1D6.sorted.bam
+## lncRNA_062                      0                      0                      0
+## lncRNA_063                      0                      0                      0
+## lncRNA_071                      0                      0                      0
+## lncRNA_072                      0                      0                      0
+## lncRNA_080                      0                      0                      0
+## lncRNA_081                      0                      0                      0
+##            ...data.1D8.sorted.bam ...data.1D9.sorted.bam ...data.1E1.sorted.bam
+## lncRNA_062                      0                      0                      0
+## lncRNA_063                      0                      0                      0
+## lncRNA_071                      0                      0                      0
+## lncRNA_072                      0                      0                      0
+## lncRNA_080                      0                      0                      0
+## lncRNA_081                      0                      0                      0
+##            ...data.1E3.sorted.bam ...data.1E5.sorted.bam ...data.1E9.sorted.bam
+## lncRNA_062                      0                      0                      0
+## lncRNA_063                      0                      0                      0
+## lncRNA_071                      0                      0                      0
+## lncRNA_072                      0                      0                      0
+## lncRNA_080                      0                      0                      0
+## lncRNA_081                      0                      0                      0
+##            ...data.1F11.sorted.bam ...data.1F4.sorted.bam
+## lncRNA_062                       0                      0
+## lncRNA_063                       0                      0
+## lncRNA_071                       0                      0
+## lncRNA_072                       0                      0
+## lncRNA_080                       0                      0
+## lncRNA_081                       0                      0
+##            ...data.1F8.sorted.bam ...data.1G5.sorted.bam
+## lncRNA_062                      0                      0
+## lncRNA_063                      0                      0
+## lncRNA_071                      0                      0
+## lncRNA_072                      0                      0
+## lncRNA_080                      0                      0
+## lncRNA_081                      0                      0
+##            ...data.1H11.sorted.bam ...data.1H12.sorted.bam
+## lncRNA_062                       0                       0
+## lncRNA_063                       0                       0
+## lncRNA_071                       0                       0
+## lncRNA_072                       0                       0
+## lncRNA_080                       0                       0
+## lncRNA_081                       0                       0
+##            ...data.1H6.sorted.bam ...data.1H7.sorted.bam ...data.1H8.sorted.bam
+## lncRNA_062                      0                      0                      0
+## lncRNA_063                      0                      0                      0
+## lncRNA_071                      0                      0                      0
+## lncRNA_072                      0                      0                      0
+## lncRNA_080                      0                      0                      0
+## lncRNA_081                      0                      0                      0
+##            ...data.2B2.sorted.bam ...data.2B3.sorted.bam ...data.2C1.sorted.bam
+## lncRNA_062                      0                      0                      0
+## lncRNA_063                      0                      0                      0
+## lncRNA_071                      0                      0                      0
+## lncRNA_072                      0                      0                      0
+## lncRNA_080                      0                      0                      0
+## lncRNA_081                      0                      0                      0
+##            ...data.2C2.sorted.bam ...data.2D2.sorted.bam ...data.2E2.sorted.bam
+## lncRNA_062                      0                      0                      0
+## lncRNA_063                      0                      0                      0
+## lncRNA_071                      0                      0                      0
+## lncRNA_072                      0                      0                      0
+## lncRNA_080                      0                      0                      0
+## lncRNA_081                      0                      0                      0
+##            ...data.2F1.sorted.bam ...data.2G1.sorted.bam
+## lncRNA_062                      0                      0
+## lncRNA_063                      0                      0
+## lncRNA_071                      0                      0
+## lncRNA_072                      0                      0
+## lncRNA_080                      0                      0
+## lncRNA_081                      0                      0</code></pre>
+<p>There are 399 duplicate lncRNAs in the counts data</p>
+<p>Since I’ll be using <code>lncRNA_mapping</code> for joining purposes, it must contain only unique genomic locations.</p>
+<p>Deduplicate <code>lncRNA_mapping</code>:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>unique_mapping <span class="ot">&lt;-</span> lncRNA_mapping[<span class="sc">!</span><span class="fu">duplicated</span>(lncRNA_mapping<span class="sc">$</span>location), ]</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(lncRNA_mapping) <span class="sc">-</span> <span class="fu">nrow</span>(unique_mapping)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 399</code></pre>
+<p>Great! Now that we have a mapping file of only our unique lncRNAs, we can proceed to incorporating the miRanda output.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># miRNA-lncRNA_full miRanda output</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>miRNA_lncRNA_miRanda <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"../output/10-Apul-lncRNA-miRNA-miRanda/Apul-miRanda-lncRNA-strict-parsed.txt"</span>, <span class="at">col_names=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## Rows: 178148 Columns: 9
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: "\t"
+## chr (6): X1, X2, X5, X6, X8, X9
+## dbl (3): X3, X4, X7
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(miRNA_lncRNA_miRanda) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"mirna"</span>, <span class="st">"Target"</span>, <span class="st">"Score"</span>, <span class="st">"Energy_Kcal_Mol"</span>, <span class="st">"Query_Aln"</span>, <span class="st">"Subject_Aln"</span>, <span class="st">"Al_Len"</span>, <span class="st">"Subject_Identity"</span>, <span class="st">"Query_Identity"</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># format miRNA names</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>miRNA_lncRNA_miRanda<span class="sc">$</span>mirna <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"&gt;"</span>, <span class="st">""</span>, miRNA_lncRNA_miRanda<span class="sc">$</span>mirna)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>miRNA_lncRNA_miRanda<span class="sc">$</span>mirna <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">..*"</span>, <span class="st">""</span>, miRNA_lncRNA_miRanda<span class="sc">$</span>mirna)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Join with mapping file to annote miRanda results with lncRNA IDs</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>miRNA_lncRNA_miRanda <span class="ot">&lt;-</span> <span class="fu">left_join</span>(miRNA_lncRNA_miRanda, unique_mapping, <span class="at">by=</span><span class="fu">c</span>(<span class="st">"Target"</span> <span class="ot">=</span> <span class="st">"location"</span>))</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a columns that contains both the miRNA and interacting lncRNA</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>pcc_results<span class="sc">$</span>interaction <span class="ot">&lt;-</span> <span class="fu">paste0</span>(pcc_results<span class="sc">$</span>miRNA, <span class="st">":"</span>, pcc_results<span class="sc">$</span>lncRNA)</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>miRNA_lncRNA_miRanda<span class="sc">$</span>interaction <span class="ot">&lt;-</span> <span class="fu">paste0</span>(miRNA_lncRNA_miRanda<span class="sc">$</span>mirna, <span class="st">":"</span>, miRNA_lncRNA_miRanda<span class="sc">$</span>lncRNA)</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Annotate miRanda results w PCC info </span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>miRNA_lncRNA_miRanda <span class="ot">&lt;-</span> <span class="fu">left_join</span>(miRNA_lncRNA_miRanda, pcc_results, <span class="at">by=</span><span class="st">"interaction"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter to high complementarity putative targets</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>target_21bp <span class="ot">&lt;-</span> miRNA_lncRNA_miRanda[miRNA_lncRNA_miRanda<span class="sc">$</span>Al_Len <span class="sc">&gt;</span> <span class="dv">20</span>,]</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>target_21bp_3mis <span class="ot">&lt;-</span> target_21bp[target_21bp<span class="sc">$</span>Subject_Identity<span class="sc">&gt;</span><span class="dv">85</span>,]</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># How many w significant correlation?</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(miRNA_lncRNA_miRanda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 178148</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(miRNA_lncRNA_miRanda <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(PCC.cor)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 115512</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(miRNA_lncRNA_miRanda <span class="sc">%&gt;%</span> <span class="fu">filter</span>(p_value <span class="sc">&lt;</span> <span class="fl">0.05</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 9677</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(target_21bp <span class="sc">%&gt;%</span> <span class="fu">filter</span>(p_value <span class="sc">&lt;</span> <span class="fl">0.05</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 1396</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(target_21bp_3mis <span class="sc">%&gt;%</span> <span class="fu">filter</span>(p_value <span class="sc">&lt;</span> <span class="fl">0.05</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] 0</code></pre>
+<p>For miRNA binding to lncRNA, miRanda predicts 178,148 putative interactions. Of these, 115,512 yield a correlation value (indicating the lncRNA is actually present in our counts data); 9,677 have significant PCCs; 1,396 are &gt;21bp and have signficant PCCs; and 0 are &gt;21bp with &lt;=3 mismatches and have significant PCCs.</p>
+</section>
+</section>
+<section id="summary" class="level1">
+<h1>2 Summary</h1>
+<p>How does different input and/or complementarity filtering affect # putative interactions:</p>
+<p>Reminder summary of miRanda results:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Input</th>
+<th style="text-align: left;">All</th>
+<th style="text-align: left;">21bp</th>
+<th style="text-align: left;">21bp, &gt;=3 mismatch</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">lncRNA</td>
+<td style="text-align: left;">178,148</td>
+<td style="text-align: left;">24,018 (13.48% of total)</td>
+<td style="text-align: left;">22 (0.012% of total)</td>
+</tr>
+</tbody>
+</table>
+<p>For different filters, how many putative interactions <strong><em>also show significant coexpression</em></strong> (PCC pval &lt; 0.05)?</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Input</th>
+<th style="text-align: left;">All</th>
+<th style="text-align: left;">21bp</th>
+<th style="text-align: left;">21bp, &gt;=3 mismatch</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">lncRNA</td>
+<td style="text-align: left;">105,835</td>
+<td style="text-align: left;">14,503 (13.7% of total)</td>
+<td style="text-align: left;">13 (0.012% of total)</td>
+</tr>
+</tbody>
+</table>
+<p>Note that some putative interactions indicated by miRanda are not present in the counts data (i.e.&nbsp;the miRNA and/or lncRNA had 0 counts inour RNAseq data), and are thus excluded from the PCC-filtered data</p>
+<p>Is there a clear “cutoff” for what complementarity parameters are most associated with significant coexpression?</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>significant_df <span class="ot">&lt;-</span> miRNA_lncRNA_miRanda <span class="sc">%&gt;%</span> <span class="fu">filter</span>(p_value <span class="sc">&lt;</span> <span class="fl">0.05</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot with jitter (significant coexpression only)</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(significant_df, <span class="fu">aes</span>(<span class="at">x =</span> Al_Len, </span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">y =</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">"%"</span>, <span class="st">""</span>, Subject_Identity)))) <span class="sc">+</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_2d_filled</span>(<span class="at">contour_var =</span> <span class="st">"density"</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fu">min</span>(significant_df<span class="sc">$</span>Al_Len), <span class="fu">max</span>(significant_df<span class="sc">$</span>Al_Len), <span class="at">by =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Alignment Length (Al_Len)"</span>, </span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Subject Identity (%)"</span>, </span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"2D Density: Alignment Length vs. Subject Identity (p &lt; 0.05)"</span>) <span class="sc">+</span></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="./images/14.2-Apul-miRNA-lncRNA-coexpression_files/figure-gfm/unnamed-chunk-10-1.png" class="img-fluid">Interesting! There are significant coexpressions happening across both metrics of complementarity, but we see clustering between 17 and 20nt alignment length.</p>
+<p>In other words, for all the miRNA-lncRNA binding interactions predicted by miRanda, interactions with high alignment lengths (17-20nt) appear most likely to also show significantly correlated expression.</p>
+<p>There’s also a cluster at the top left corner, showing us that many interactions significant correlations have low alignment lengths but perfect complementarity. this likely represents perfect binding in the seed region.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save putative interactions with significantly correlated coexpression for visualization</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (e.g. creating an interaction network plot in Cytoscape)</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(significant_df, <span class="st">"../output/14.2-Apul-miRNA-lncRNA-coexpression/miRanda-PCC-significant-miRNA_lncRNA.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">This notebook is built using <a href="https://quarto.org/">Quarto</a></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
