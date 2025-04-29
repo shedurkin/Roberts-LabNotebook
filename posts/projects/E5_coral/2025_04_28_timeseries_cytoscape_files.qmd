@@ -1,0 +1,266 @@
+---
+title: "Timeseries molecular: Format input files for Cytoscape"
+author: "Kathleen Durkin"
+date: "2025-04-28"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+For Cytoscape I need two inputs, an "Edges.csv" and a "Nodes.csv".
+
+The "edges"Edges" file should associate each node with all other nodes it connects to. It should also contain edge-specific metadata. For example:
+
+| source   | target | correlation | correlation magnitude | correlation direction | correlation pval | binding pval |
+|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| miR-100  | FUN001 | -0.9        | 0.9                   | -1                    | 0.001            | 0.02         |
+| miR-100  | FUN002 | 0.85        | 0.85                  | 1                     | 0.02             | 0.03         |
+| lncRNA01 | FUN001 | -0.95       | 0.95                  | -1                    | 0.01             | 0.01         |
+
+Note that there may be duplicates in both the "source" and "target" columns, but the combinations of source-target should be unique.
+
+The "Nodes" file contains metadata for every node included in the plot. Importantly, the set of nodes listed int he "Nodes" file should match exactly the set of nodes included in the "Edges" document. For example:
+
+| id       | type   |
+|----------|--------|
+| FUN001   | gene   |
+| FUN002   | gene   |
+| miR-100  | miRNA  |
+| lncRNA01 | lncRNA |
+
+I'll need the following files to compile the Cytoscape inputs:
+
+-   miRNA interaction file (contains binding and coexpression information for miRNA-gene pairs): `timeseries_molecular/D-Apul/output/14.1-Apul-miRNA-mRNA-coexpression-additional_inputs/miRanda-PCC-significant-mRNA_3UTR_5UTR.csv`
+
+-   lncRNA interaction file (contains binding and coexpression information for miRNA-lncRNA pairs): `timeseries_molecular/D-Apul/output/14.2-Apul-miRNA-lncRNA-coexpression/miRanda-PCC-significant-miRNA_lncRNA.csv`
+
+I'm haven't predicted lncRNA-gene interactions at this point, but if I decide to I would also need that file.
+
+Load packages:
+
+```{r}
+library(dplyr)
+library(tidyr)
+```
+
+Load files:
+
+```{r}
+miRNA_gene <- read.csv("https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/D-Apul/output/14.1-Apul-miRNA-mRNA-coexpression-additional_inputs/miRanda-PCC-significant-mRNA_3UTR_5UTR.csv")
+# Remove NA rows
+miRNA_gene <- miRNA_gene %>% filter(!is.na(mirna))
+
+miRNA_lncRNA <- read.csv("https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/D-Apul/output/14.2-Apul-miRNA-lncRNA-coexpression/miRanda-PCC-significant-miRNA_lncRNA.csv")
+```
+
+# All interactions
+
+Format "Edges" file:
+
+```{r}
+# Add correlation magnitude and direction columns
+miRNA_gene$PCC_magnitude <- abs(miRNA_gene$PCC.cor)
+miRNA_gene$PCC_direction <- sign(miRNA_gene$PCC.cor)
+miRNA_gene$Alignment <- paste0(miRNA_gene$Target, ";", miRNA_gene$Query_Aln, ";", miRNA_gene$Subject_Aln)
+# Select columns I want to keep in Edges file
+miRNA_gene_edges <- miRNA_gene %>% select(mirna, X4, Alignment, Energy_Kcal_Mol, Al_Len, Subject_Identity, Query_Identity, PCC.cor, PCC_magnitude, PCC_direction, p_value)
+# rename columns
+miRNA_gene_edges <- miRNA_gene_edges %>% rename(source = mirna, target = X4)
+
+# Add correlation magnitude and direction columns
+miRNA_lncRNA$PCC_magnitude <- abs(miRNA_lncRNA$PCC.cor)
+miRNA_lncRNA$PCC_direction <- sign(miRNA_lncRNA$PCC.cor)
+miRNA_lncRNA$Alignment <- paste0(miRNA_lncRNA$Target, ";", miRNA_lncRNA$Query_Aln, ";", miRNA_lncRNA$Subject_Aln)
+# Select columns I want to keep in Edges file (ensure in same order as in the miRNA_gene_edges file)
+miRNA_lncRNA_edges <- miRNA_lncRNA %>% select(mirna, lncRNA.x, Alignment, Energy_Kcal_Mol, Al_Len, Subject_Identity, Query_Identity, PCC.cor, PCC_magnitude, PCC_direction, p_value)
+# rename columns
+miRNA_lncRNA_edges <- miRNA_lncRNA_edges %>% rename(source = mirna, target = lncRNA.x)
+
+# Combine miRNA-gene edges and miRNA-lncRNA edges
+edges <- rbind(miRNA_gene_edges, miRNA_lncRNA_edges)
+
+# Ensure we have no duplicate rows
+nrow(edges)
+nrow(edges %>% distinct())
+
+# Check formatting/contents
+head(edges)
+```
+
+Format Nodes file:
+
+```{r}
+# Make a df that contains all miRNA, genes, and lncRNA listed in the `source` and `target` columns of `edges`
+nodes <- data.frame(
+  # The `unique` argument ensures we remove duplicates
+  id = unique(unname(unlist(edges[, c("source", "target")])))
+)
+
+# Add column identifying the type of each node (miRNA, lncRNA, or gene)
+nodes <- nodes %>%
+  mutate(type = case_when(
+    grepl("Cluster", id) ~ "miRNA",
+    grepl("FUN", id) ~ "gene",
+    grepl("lncRNA", id) ~ "lncRNA",
+    TRUE ~ "other"
+  ))
+
+# Check formatting/contents
+head(nodes)
+```
+
+# pval \< 0.01
+
+Edges:
+
+```{r}
+edges_pval_0.01 <- edges %>% filter(p_value < 0.01)
+nrow(edges_pval_0.01)
+```
+
+Nodes:
+
+```{r}
+# Make a df that contains all miRNA, genes, and lncRNA listed in the `source` and `target` columns of `edges`
+nodes_pval_0.01 <- data.frame(
+  # The `unique` argument ensures we remove duplicates
+  id = unique(unname(unlist(edges_pval_0.01[, c("source", "target")])))
+)
+
+# Add column identifying the type of each node (miRNA, lncRNA, or gene)
+nodes_pval_0.01 <- nodes_pval_0.01 %>%
+  mutate(type = case_when(
+    grepl("Cluster", id) ~ "miRNA",
+    grepl("FUN", id) ~ "gene",
+    grepl("lncRNA", id) ~ "lncRNA",
+    TRUE ~ "other"
+  ))
+
+```
+
+# \|PCC\| \> 0.5
+
+Edges:
+
+```{r}
+edges_PCC_0.5 <- edges %>% filter(PCC_magnitude > 0.5)
+nrow(edges_PCC_0.5)
+```
+
+Nodes:
+
+```{r}
+# Make a df that contains all miRNA, genes, and lncRNA listed in the `source` and `target` columns of `edges`
+nodes_PCC_0.5 <- data.frame(
+  # The `unique` argument ensures we remove duplicates
+  id = unique(unname(unlist(edges_PCC_0.5[, c("source", "target")])))
+)
+
+# Add column identifying the type of each node (miRNA, lncRNA, or gene)
+nodes_PCC_0.5 <- nodes_PCC_0.5 %>%
+  mutate(type = case_when(
+    grepl("Cluster", id) ~ "miRNA",
+    grepl("FUN", id) ~ "gene",
+    grepl("lncRNA", id) ~ "lncRNA",
+    TRUE ~ "other"
+  ))
+
+```
+
+# \|PCC\| \> 0.8
+
+Edges:
+
+```{r}
+edges_PCC_0.8 <- edges %>% filter(PCC_magnitude > 0.8)
+nrow(edges_PCC_0.8)
+```
+
+Nodes:
+
+```{r}
+# Make a df that contains all miRNA, genes, and lncRNA listed in the `source` and `target` columns of `edges`
+nodes_PCC_0.8 <- data.frame(
+  # The `unique` argument ensures we remove duplicates
+  id = unique(unname(unlist(edges_PCC_0.8[, c("source", "target")])))
+)
+
+# Add column identifying the type of each node (miRNA, lncRNA, or gene)
+nodes_PCC_0.8 <- nodes_PCC_0.8 %>%
+  mutate(type = case_when(
+    grepl("Cluster", id) ~ "miRNA",
+    grepl("FUN", id) ~ "gene",
+    grepl("lncRNA", id) ~ "lncRNA",
+    TRUE ~ "other"
+  ))
+
+```
+
+# Save
+
+Save files
+
+```{r}
+write.csv(edges, "./output/edges_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
+write.csv(nodes, "./output/nodes_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
+write.csv(edges_pval_0.01, "./output/edges_pval_0.01_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
+write.csv(nodes_pval_0.01, "./output/nodes_pval_0.01_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
+write.csv(edges_PCC_0.5, "./output/edges_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
+write.csv(nodes_PCC_0.5, "./output/nodes_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
+write.csv(edges_PCC_0.8, "./output/edges_PCC_0.8_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
+write.csv(nodes_PCC_0.8, "./output/nodes_PCC_0.8_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
+```
+
+# Using Cytoscape
+
+To load a network into Cytoscape:
+
+1. Open Cytoscape and select File > Import > Network from File...
+
+2. Select "Edges" file. Ensure The source and target columns are appropriately identified before loading the file.
+
+3. To load "Nodes" file, select File > Import > Table from File...
+
+# Results
+
+Below is a the network of miRNA-gene and miRNA-lncRNA interactions that are predicted to bind by miRanda, and which have an expression correlation coefficient above 0.5. 
+
+The network is displayed using the yFiles Organic Layout, with nodes colored by type (miRNA = orange, lncRNA = dark blue, gene = light blue), and with edges colored by correlation direction (negative = red, positive = green) and weighted by correlation magnitude.
+
+![](./output/edges_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv.png)
+
+We can see some interesting patterns!
+
+
+![](./output/edges_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv-CLUSTER_4752.png)
+
+Cluster_4752 stands out because it has many putative interactions (mostly genes), with primarily negatively correlated expression. This suggests the miRNA is reducing expression of its target genes through translational repression or mRNA degradation. Note also that this miRNA matches miR-2023.
+
+![](./output/edges_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv-CLUSTER_5603.png)
+
+Cluster_5603 appears to putatively interact with one of the largest proportions of lncRNA. It matches the previously described miRNA "Novel-5_3p".
+
+![](./output/edges_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv-CLUSTER_17192.png)
+
+Cluster_17192 is primarily of interest becasue it matches miR-100, a highly conserved and well described miRNA. It also becomes apparent after isolation that one of the putative gene targets, FUN_014449, has a remarkable number of edges connecting it to Cluster_17192. This indicates that miRanda output a significant likelihood of Cluster_17192 binding to many different location on the mRNA
+
+We can check exactly how many:
+```{r}
+miRNA_gene %>% filter(PCC_magnitude > 0.5 & interaction == "Cluster_17192 _ FUN_014449") %>% nrow()
+```
+
+![](./output/edges_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv-CLUSTER_9532.png)
+
+Cluster_9532 matches miR-2022, about which we actually know a fair bit of functional information!
+
+
+I have a notebook post detailing what functional information we have for previously described miRNA, [here](./2025_04_10_dde_named_miRNA_functions.qmd)
+
+
+
+

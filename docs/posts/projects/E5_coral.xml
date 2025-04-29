@@ -10,7 +10,946 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Wed, 23 Apr 2025 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 28 Apr 2025 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Timeseries molecular: Format input files for Cytoscape</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_04_28_timeseries_cytoscape_files.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>For Cytoscape I need two inputs, an “Edges.csv” and a “Nodes.csv”.</p>
+<p>The “edges”Edges” file should associate each node with all other nodes it connects to. It should also contain edge-specific metadata. For example:</p>
+<table class="table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>source</th>
+<th>target</th>
+<th>correlation</th>
+<th>correlation magnitude</th>
+<th>correlation direction</th>
+<th>correlation pval</th>
+<th>binding pval</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>miR-100</td>
+<td>FUN001</td>
+<td>-0.9</td>
+<td>0.9</td>
+<td>-1</td>
+<td>0.001</td>
+<td>0.02</td>
+</tr>
+<tr class="even">
+<td>miR-100</td>
+<td>FUN002</td>
+<td>0.85</td>
+<td>0.85</td>
+<td>1</td>
+<td>0.02</td>
+<td>0.03</td>
+</tr>
+<tr class="odd">
+<td>lncRNA01</td>
+<td>FUN001</td>
+<td>-0.95</td>
+<td>0.95</td>
+<td>-1</td>
+<td>0.01</td>
+<td>0.01</td>
+</tr>
+</tbody>
+</table>
+<p>Note that there may be duplicates in both the “source” and “target” columns, but the combinations of source-target should be unique.</p>
+<p>The “Nodes” file contains metadata for every node included in the plot. Importantly, the set of nodes listed int he “Nodes” file should match exactly the set of nodes included in the “Edges” document. For example:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>id</th>
+<th>type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>FUN001</td>
+<td>gene</td>
+</tr>
+<tr class="even">
+<td>FUN002</td>
+<td>gene</td>
+</tr>
+<tr class="odd">
+<td>miR-100</td>
+<td>miRNA</td>
+</tr>
+<tr class="even">
+<td>lncRNA01</td>
+<td>lncRNA</td>
+</tr>
+</tbody>
+</table>
+<p>I’ll need the following files to compile the Cytoscape inputs:</p>
+<ul>
+<li><p>miRNA interaction file (contains binding and coexpression information for miRNA-gene pairs): <code>timeseries_molecular/D-Apul/output/14.1-Apul-miRNA-mRNA-coexpression-additional_inputs/miRanda-PCC-significant-mRNA_3UTR_5UTR.csv</code></p></li>
+<li><p>lncRNA interaction file (contains binding and coexpression information for miRNA-lncRNA pairs): <code>timeseries_molecular/D-Apul/output/14.2-Apul-miRNA-lncRNA-coexpression/miRanda-PCC-significant-miRNA_lncRNA.csv</code></p></li>
+</ul>
+<p>I’m haven’t predicted lncRNA-gene interactions at this point, but if I decide to I would also need that file.</p>
+<p>Load packages:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(dplyr)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'dplyr' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyr)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyr' was built under R version 4.2.3</code></pre>
+</div>
+</div>
+<p>Load files:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">miRNA_gene <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/D-Apul/output/14.1-Apul-miRNA-mRNA-coexpression-additional_inputs/miRanda-PCC-significant-mRNA_3UTR_5UTR.csv"</span>)</span>
+<span id="cb8-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Remove NA rows</span></span>
+<span id="cb8-3">miRNA_gene <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> miRNA_gene <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">is.na</span>(mirna))</span>
+<span id="cb8-4"></span>
+<span id="cb8-5">miRNA_lncRNA <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/D-Apul/output/14.2-Apul-miRNA-lncRNA-coexpression/miRanda-PCC-significant-miRNA_lncRNA.csv"</span>)</span></code></pre></div>
+</div>
+<section id="all-interactions" class="level1">
+<h1>All interactions</h1>
+<p>Format “Edges” file:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add correlation magnitude and direction columns</span></span>
+<span id="cb9-2">miRNA_gene<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>PCC_magnitude <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">abs</span>(miRNA_gene<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>PCC.cor)</span>
+<span id="cb9-3">miRNA_gene<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>PCC_direction <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sign</span>(miRNA_gene<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>PCC.cor)</span>
+<span id="cb9-4">miRNA_gene<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Alignment <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste0</span>(miRNA_gene<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Target, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">";"</span>, miRNA_gene<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Query_Aln, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">";"</span>, miRNA_gene<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Subject_Aln)</span>
+<span id="cb9-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Select columns I want to keep in Edges file</span></span>
+<span id="cb9-6">miRNA_gene_edges <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> miRNA_gene <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(mirna, X4, Alignment, Energy_Kcal_Mol, Al_Len, Subject_Identity, Query_Identity, PCC.cor, PCC_magnitude, PCC_direction, p_value)</span>
+<span id="cb9-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># rename columns</span></span>
+<span id="cb9-8">miRNA_gene_edges <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> miRNA_gene_edges <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rename</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">source =</span> mirna, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">target =</span> X4)</span>
+<span id="cb9-9"></span>
+<span id="cb9-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add correlation magnitude and direction columns</span></span>
+<span id="cb9-11">miRNA_lncRNA<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>PCC_magnitude <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">abs</span>(miRNA_lncRNA<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>PCC.cor)</span>
+<span id="cb9-12">miRNA_lncRNA<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>PCC_direction <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sign</span>(miRNA_lncRNA<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>PCC.cor)</span>
+<span id="cb9-13">miRNA_lncRNA<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Alignment <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste0</span>(miRNA_lncRNA<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Target, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">";"</span>, miRNA_lncRNA<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Query_Aln, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">";"</span>, miRNA_lncRNA<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Subject_Aln)</span>
+<span id="cb9-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Select columns I want to keep in Edges file (ensure in same order as in the miRNA_gene_edges file)</span></span>
+<span id="cb9-15">miRNA_lncRNA_edges <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> miRNA_lncRNA <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(mirna, lncRNA.x, Alignment, Energy_Kcal_Mol, Al_Len, Subject_Identity, Query_Identity, PCC.cor, PCC_magnitude, PCC_direction, p_value)</span>
+<span id="cb9-16"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># rename columns</span></span>
+<span id="cb9-17">miRNA_lncRNA_edges <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> miRNA_lncRNA_edges <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rename</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">source =</span> mirna, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">target =</span> lncRNA.x)</span>
+<span id="cb9-18"></span>
+<span id="cb9-19"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Combine miRNA-gene edges and miRNA-lncRNA edges</span></span>
+<span id="cb9-20">edges <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rbind</span>(miRNA_gene_edges, miRNA_lncRNA_edges)</span>
+<span id="cb9-21"></span>
+<span id="cb9-22"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Ensure we have no duplicate rows</span></span>
+<span id="cb9-23"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(edges)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 131951</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(edges <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">distinct</span>())</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 131951</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Check formatting/contents</span></span>
+<span id="cb13-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(edges)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         source     target                             Alignment
+1 Cluster_10452 FUN_000006   ntLink_0:61628-78213;2 19;1286 1308
+2 Cluster_10452 FUN_000006 ntLink_0:61628-78213;2 12;13037 13058
+3 Cluster_10452 FUN_000113   ntLink_4:151074-152269;2 20;900 920
+4 Cluster_10452 FUN_000113   ntLink_4:151074-152269;2 21;211 234
+5 Cluster_10452 FUN_000128   ntLink_4:187657-188852;2 20;900 920
+6 Cluster_10452 FUN_000128   ntLink_4:187657-188852;2 21;211 234
+  Energy_Kcal_Mol Al_Len Subject_Identity Query_Identity   PCC.cor
+1          -15.88     19           63.16%         84.21% 0.3314907
+2          -16.10     10           90.00%         90.00% 0.3314907
+3          -14.47     18           66.67%         77.78% 0.3960556
+4          -17.21     21           66.67%         80.95% 0.3960556
+5          -14.47     18           66.67%         77.78% 0.3471957
+6          -17.21     21           66.67%         80.95% 0.3471957
+  PCC_magnitude PCC_direction    p_value
+1     0.3314907             1 0.03665931
+2     0.3314907             1 0.03665931
+3     0.3960556             1 0.01141128
+4     0.3960556             1 0.01141128
+5     0.3471957             1 0.02816252
+6     0.3471957             1 0.02816252</code></pre>
+</div>
+</div>
+<p>Format Nodes file:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Make a df that contains all miRNA, genes, and lncRNA listed in the `source` and `target` columns of `edges`</span></span>
+<span id="cb15-2">nodes <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(</span>
+<span id="cb15-3">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># The `unique` argument ensures we remove duplicates</span></span>
+<span id="cb15-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">id =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unique</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unname</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unlist</span>(edges[, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"source"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"target"</span>)])))</span>
+<span id="cb15-5">)</span>
+<span id="cb15-6"></span>
+<span id="cb15-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add column identifying the type of each node (miRNA, lncRNA, or gene)</span></span>
+<span id="cb15-8">nodes <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> nodes <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb15-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">case_when</span>(</span>
+<span id="cb15-10">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cluster"</span>, id) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"miRNA"</span>,</span>
+<span id="cb15-11">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"FUN"</span>, id) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene"</span>,</span>
+<span id="cb15-12">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lncRNA"</span>, id) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lncRNA"</span>,</span>
+<span id="cb15-13">    <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"other"</span></span>
+<span id="cb15-14">  ))</span>
+<span id="cb15-15"></span>
+<span id="cb15-16"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Check formatting/contents</span></span>
+<span id="cb15-17"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(nodes)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             id  type
+1 Cluster_10452 miRNA
+2 Cluster_11565 miRNA
+3 Cluster_12081 miRNA
+4 Cluster_12083 miRNA
+5 Cluster_12087 miRNA
+6 Cluster_13327 miRNA</code></pre>
+</div>
+</div>
+</section>
+<section id="pval-0.01" class="level1">
+<h1>pval &lt; 0.01</h1>
+<p>Edges:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">edges_pval_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.01</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> edges <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(p_value <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.01</span>)</span>
+<span id="cb17-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(edges_pval_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.01</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 54950</code></pre>
+</div>
+</div>
+<p>Nodes:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Make a df that contains all miRNA, genes, and lncRNA listed in the `source` and `target` columns of `edges`</span></span>
+<span id="cb19-2">nodes_pval_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.01</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(</span>
+<span id="cb19-3">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># The `unique` argument ensures we remove duplicates</span></span>
+<span id="cb19-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">id =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unique</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unname</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unlist</span>(edges_pval_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.01</span>[, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"source"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"target"</span>)])))</span>
+<span id="cb19-5">)</span>
+<span id="cb19-6"></span>
+<span id="cb19-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add column identifying the type of each node (miRNA, lncRNA, or gene)</span></span>
+<span id="cb19-8">nodes_pval_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.01</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> nodes_pval_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.01</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb19-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">case_when</span>(</span>
+<span id="cb19-10">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cluster"</span>, id) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"miRNA"</span>,</span>
+<span id="cb19-11">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"FUN"</span>, id) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene"</span>,</span>
+<span id="cb19-12">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lncRNA"</span>, id) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lncRNA"</span>,</span>
+<span id="cb19-13">    <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"other"</span></span>
+<span id="cb19-14">  ))</span></code></pre></div>
+</div>
+</section>
+<section id="pcc-0.5" class="level1">
+<h1>|PCC| &gt; 0.5</h1>
+<p>Edges:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1">edges_PCC_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.5</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> edges <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(PCC_magnitude <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>)</span>
+<span id="cb20-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(edges_PCC_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.5</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 16918</code></pre>
+</div>
+</div>
+<p>Nodes:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Make a df that contains all miRNA, genes, and lncRNA listed in the `source` and `target` columns of `edges`</span></span>
+<span id="cb22-2">nodes_PCC_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.5</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(</span>
+<span id="cb22-3">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># The `unique` argument ensures we remove duplicates</span></span>
+<span id="cb22-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">id =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unique</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unname</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unlist</span>(edges_PCC_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.5</span>[, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"source"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"target"</span>)])))</span>
+<span id="cb22-5">)</span>
+<span id="cb22-6"></span>
+<span id="cb22-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add column identifying the type of each node (miRNA, lncRNA, or gene)</span></span>
+<span id="cb22-8">nodes_PCC_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.5</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> nodes_PCC_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.5</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb22-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">case_when</span>(</span>
+<span id="cb22-10">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cluster"</span>, id) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"miRNA"</span>,</span>
+<span id="cb22-11">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"FUN"</span>, id) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene"</span>,</span>
+<span id="cb22-12">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lncRNA"</span>, id) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lncRNA"</span>,</span>
+<span id="cb22-13">    <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"other"</span></span>
+<span id="cb22-14">  ))</span></code></pre></div>
+</div>
+</section>
+<section id="pcc-0.8" class="level1">
+<h1>|PCC| &gt; 0.8</h1>
+<p>Edges:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1">edges_PCC_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.8</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> edges <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(PCC_magnitude <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.8</span>)</span>
+<span id="cb23-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(edges_PCC_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.8</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 87</code></pre>
+</div>
+</div>
+<p>Nodes:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Make a df that contains all miRNA, genes, and lncRNA listed in the `source` and `target` columns of `edges`</span></span>
+<span id="cb25-2">nodes_PCC_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.8</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(</span>
+<span id="cb25-3">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># The `unique` argument ensures we remove duplicates</span></span>
+<span id="cb25-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">id =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unique</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unname</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unlist</span>(edges_PCC_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.8</span>[, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"source"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"target"</span>)])))</span>
+<span id="cb25-5">)</span>
+<span id="cb25-6"></span>
+<span id="cb25-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add column identifying the type of each node (miRNA, lncRNA, or gene)</span></span>
+<span id="cb25-8">nodes_PCC_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.8</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> nodes_PCC_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.8</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb25-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">case_when</span>(</span>
+<span id="cb25-10">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cluster"</span>, id) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"miRNA"</span>,</span>
+<span id="cb25-11">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"FUN"</span>, id) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene"</span>,</span>
+<span id="cb25-12">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lncRNA"</span>, id) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lncRNA"</span>,</span>
+<span id="cb25-13">    <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"other"</span></span>
+<span id="cb25-14">  ))</span></code></pre></div>
+</div>
+</section>
+<section id="save" class="level1">
+<h1>Save</h1>
+<p>Save files</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write.csv</span>(edges, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/edges_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quote =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)</span>
+<span id="cb26-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write.csv</span>(nodes, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/nodes_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quote =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)</span>
+<span id="cb26-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write.csv</span>(edges_pval_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.01</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/edges_pval_0.01_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quote =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)</span>
+<span id="cb26-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write.csv</span>(nodes_pval_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.01</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/nodes_pval_0.01_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quote =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)</span>
+<span id="cb26-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write.csv</span>(edges_PCC_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.5</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/edges_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quote =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)</span>
+<span id="cb26-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write.csv</span>(nodes_PCC_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.5</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/nodes_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quote =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)</span>
+<span id="cb26-7"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write.csv</span>(edges_PCC_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.8</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/edges_PCC_0.8_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quote =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)</span>
+<span id="cb26-8"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write.csv</span>(nodes_PCC_0<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.8</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/nodes_PCC_0.8_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quote =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)</span></code></pre></div>
+</div>
+</section>
+<section id="using-cytoscape" class="level1">
+<h1>Using Cytoscape</h1>
+<p>To load a network into Cytoscape:</p>
+<ol type="1">
+<li><p>Open Cytoscape and select File &gt; Import &gt; Network from File…</p></li>
+<li><p>Select “Edges” file. Ensure The source and target columns are appropriately identified before loading the file.</p></li>
+<li><p>To load “Nodes” file, select File &gt; Import &gt; Table from File…</p></li>
+</ol>
+</section>
+<section id="results" class="level1">
+<h1>Results</h1>
+<p>Below is a the network of miRNA-gene and miRNA-lncRNA interactions that are predicted to bind by miRanda, and which have an expression correlation coefficient above 0.5.</p>
+<p>The network is displayed using the yFiles Organic Layout, with nodes colored by type (miRNA = orange, lncRNA = dark blue, gene = light blue), and with edges colored by correlation direction (negative = red, positive = green) and weighted by correlation magnitude.</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/output/edges_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv.png" class="img-fluid"></p>
+<p>We can see some interesting patterns!</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/output/edges_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv-CLUSTER_4752.png" class="img-fluid"></p>
+<p>Cluster_4752 stands out because it has many putative interactions (mostly genes), with primarily negatively correlated expression. This suggests the miRNA is reducing expression of its target genes through translational repression or mRNA degradation. Note also that this miRNA matches miR-2023.</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/output/edges_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv-CLUSTER_5603.png" class="img-fluid"></p>
+<p>Cluster_5603 appears to putatively interact with one of the largest proportions of lncRNA. It matches the previously described miRNA “Novel-5_3p”.</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/output/edges_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv-CLUSTER_17192.png" class="img-fluid"></p>
+<p>Cluster_17192 is primarily of interest becasue it matches miR-100, a highly conserved and well described miRNA. It also becomes apparent after isolation that one of the putative gene targets, FUN_014449, has a remarkable number of edges connecting it to Cluster_17192. This indicates that miRanda output a significant likelihood of Cluster_17192 binding to many different location on the mRNA</p>
+<p>We can check exactly how many:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1">miRNA_gene <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(PCC_magnitude <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&amp;</span> interaction <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cluster_17192 _ FUN_014449"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 129</code></pre>
+</div>
+</div>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/output/edges_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv-CLUSTER_9532.png" class="img-fluid"></p>
+<p>Cluster_9532 matches miR-2022, about which we actually know a fair bit of functional information!</p>
+<p>I have a notebook post detailing what functional information we have for previously described miRNA, <a href="../../../posts/projects/E5_coral/2025_04_10_dde_named_miRNA_functions.html">here</a></p>
+
+
+</section>
+
+ ]]></description>
+  <category>E5-coral</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_04_28_timeseries_cytoscape_files.html</guid>
+  <pubDate>Mon, 28 Apr 2025 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Timeseries molecular: A.pul, epigenetic features to predict expression. Machine learning – Part 2</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -34033,39 +34972,6 @@ Axtell, Michael J. 2013. <span>“ShortStack: Comprehensive Annotation and Quant
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_10_01_sRNA_DNA_methylation_interactions.html</guid>
   <pubDate>Mon, 28 Oct 2024 22:19:43 GMT</pubDate>
-</item>
-<item>
-  <title>Programs for identifying miRNA targets</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_07_19_mRNA_targetID_programs.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p><a href="https://www.sciencedirect.com/science/article/pii/S0888754322001495#s0055">miRanda</a></p>
-<p>Seems like a solid option, seen it cited in <a href="https://www.sciencedirect.com/science/article/pii/S0888754322001495#s0055">coral miRNA paper</a>, and listed in <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3927079/">review paper</a> <span class="citation" data-cites="peterson_common_2014">Peterson et al. (2014)</span> as one of the OG, more regularly maintained miRNA target prediction programs that takes user sequence input. Most recently updated 2010. Also, available as downloadable software run on linux/unix, so more reproducible than the other main miRNA target prediction softwares which are web based. Only problem is that the miRanda site (<a href="http://www.microrna.org/">www.microrna.org</a>) doesn’t seem to be functional… This is extra weird because the coral miRNA paper that used it was from 2022, which is quite recent.<br>
-<br>
-<a href="https://bioinformaticsworkbook.org/dataAnalysis/SmallRNA/Miranda_miRNA_Target_Prediction.html#gsc.tab=0">miRanda tutorial</a></p>
-<p>Found a <a href="https://regendbase.org/tools/miranda">site</a> that appears to use the miRanda algorithm in a web based tool, and it seems to be functioning normally</p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/Screenshot 2024-07-19 165134.png" class="img-fluid"></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/Screenshot 2024-07-19 165241.png" class="img-fluid"></p>
-<p>I tried emailing the corresponding authors of the miRanda papers, but I’m not confident I’ll hear back. In the meantime I should also look into R package options, which weren’t really covered in the 2014 review I’ve been referencing.</p>
-<section id="mirtarrnaseq" class="level3">
-
-
-
-
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">mirTarRnaSeq</h2><div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-peterson_common_2014" class="csl-entry">
-Peterson, Sarah M., Jeffrey A. Thompson, Melanie L. Ufkin, Pradeep Sathyanarayana, Lucy Liaw, and Clare Bates Congdon. 2014. <span>“Common Features of <span class="nocase">microRNA</span> Target Prediction Tools.”</span> <em>Frontiers in Genetics</em> 5 (February): 23. <a href="https://doi.org/10.3389/fgene.2014.00023">https://doi.org/10.3389/fgene.2014.00023</a>.
-</div>
-</div></section></div> ]]></description>
-  <category>E5-coral</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_07_19_mRNA_targetID_programs.html</guid>
-  <pubDate>Fri, 19 Jul 2024 07:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
