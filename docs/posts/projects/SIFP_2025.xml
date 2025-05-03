@@ -10,7 +10,71 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Thu, 10 Apr 2025 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 02 May 2025 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>5/2 Meeting with Andrea and Dan</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_05_02_Andrea_Dan_meeting.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Meeting with Andrea Quattrini, advisor for SIFP, and Dan MacGuigan, collaborator who has worked a lot with Nanopore sequencing (MinION and PromethION)</p>
+<section id="major-questions" class="level3">
+<h3 class="anchored" data-anchor-id="major-questions">Major Questions:</h3>
+<p><strong>Dealing w fungal contamination?</strong></p>
+<p><strong>Adaptive sampling?</strong></p>
+<p><strong>How many samples can we multiplex?</strong></p>
+<p><strong>Ligation vs rapid sequencing?</strong></p>
+</section>
+<section id="notes" class="level3">
+<h3 class="anchored" data-anchor-id="notes">Notes:</h3>
+<ul>
+<li><p>Smithsonian has a MinION!</p></li>
+<li><p>flow cells have pretty short shelf life, so even if other Smithsonian folks have leftover reagents, will likely need to order new</p></li>
+<li><p>will need a reference genome, both for downstream analyses and for adaptive sampling</p>
+<ul>
+<li><p>could also use a de novo genome from sequencing the recent samples</p></li>
+<li><p>with very fresh tissue, since the genome is p small, could get close to chromosome level genome assembly with nanopore. Andrea notes though that they’ve had a lot of trouble with assembling coral genomes, possibly due to weird genome architecture.</p></li>
+<li><p>So maybe genome assembly could be a bonus if the species we use ends up being straightforward to assemble, but for now we should try to find samples that at least fall in same genus as a published genome. Will be trickier if we’re using octocorals (for the better sequencing)</p></li>
+<li><p>Andrea will look at the collections and available octocoral genomes to see if there’s a good candidate.</p></li>
+</ul></li>
+<li><p>adaptive sampling could help reduce sequencing of contaminants, but might be less useful with degraded dna (short reads can end up being fully sequenced before pores have a chance to kick them out)</p></li>
+<li><p>Will ideally want 20x - 30x coverage for methylation calls. Can probably look into what coverage v depth we want for methylation calling</p></li>
+<li><p>MinION flowcell specs: <a href="https://store.nanoporetech.com/us/flow-cell-r10-4-1-2025.html" class="uri">https://store.nanoporetech.com/us/flow-cell-r10-4-1-2025.html</a></p></li>
+<li><p>could try a test run with minion flongle: <a href="https://nanoporetech.com/products/sequence/flongle" class="uri">https://nanoporetech.com/products/sequence/flongle</a></p></li>
+<li><p>look/ask around about accessing a promethion.</p></li>
+<li><p>With the wash kits you don’t actually run the while library each time, you split it up. SO using wash doesn’t require more library.</p></li>
+<li><p>Will need to check seq length/molarity (Smithsonian has the tools for this)</p></li>
+<li><p>Expect fragmentation to be an issue. In Andrea’s experience, coral hDNA fragments are max ~1000bp. Should look into how fragmentation could/will affect methylation calling. Could think about a size selection? Should ask folks in meeting next week about their experience</p></li>
+<li><p>make a list of things Andrea needs to buy.</p></li>
+</ul>
+</section>
+<section id="my-to-dos" class="level3">
+<h3 class="anchored" data-anchor-id="my-to-dos">My to-dos:</h3>
+<ol type="1">
+<li><p>Look more into what coverage v depth we want for methylation calling</p></li>
+<li><p>Look into how use of fragmented DNA can affect methylation calling, including any differences between MinION and PromethION</p></li>
+<li><p>Looks into accessing a PromethION sequencer at a nearby facility</p>
+<ul>
+<li><p>Johns Hopkins (Baltimore, MD) has a PromethION, but I can’t find additional details for requesting use right now, because the webpage for their <a href="http://grcf.med.jhu.edu/">Genetic Resources Core Facility</a> is down</p></li>
+<li><p>NIH Center for Cancer Research (Bethesda, MD) is close , but it looks like they only allow NIH employees/affiliates to use their <a href="https://ostr.ccr.cancer.gov/resources/provider_details/nih-intramural-sequencing-center-nisc">sequencing facilities</a>. I’d also guess they’re in a lot of tummult right now</p></li>
+<li><p>UW has a Nanopore Sequencing Core which uses a PromethION. Note sure if I can request a quote from them without sample details (e.g.&nbsp;extraction method, dna concentration), but they have a table of cost estimates <a href="https://millerlaboratory.com/uw-nsc.html">here</a>.<br>
+If I’m understanding the “services” correctly, it looks like it’s $1,210/flow cell and ~$40/sample for Barcoding with Rapid Prep libraries. I may also be cheaper if we want to multiplex 4 or more samples on a single flow cell.</p>
+<p>So say we wanted to do 12 samples, multiplex w 4 samples per flow cell: 1210*(3 flow cells) + 40*(12 samples) = $4,110</p>
+<p>Optimistically I think we could do it on just two PromethION flow cells: 1210*2+40*12 = $2,900</p></li>
+</ul></li>
+</ol>
+
+
+</section>
+
+ ]]></description>
+  <category>SIFP_2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_05_02_Andrea_Dan_meeting.html</guid>
+  <pubDate>Fri, 02 May 2025 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>4/10 Meeting with Andrea</title>
   <dc:creator>Kathleen Durkin</dc:creator>

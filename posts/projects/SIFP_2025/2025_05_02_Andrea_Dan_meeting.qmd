@@ -1,0 +1,74 @@
+---
+title: "5/2 Meeting with Andrea and Dan"
+author: "Kathleen Durkin"
+date: "2025-05-02"
+categories: ["SIFP_2025"]
+format:
+  html
+bibliography: ../../../references.bib
+---
+
+Meeting with Andrea Quattrini, advisor for SIFP, and Dan MacGuigan, collaborator who has worked a lot with Nanopore sequencing (MinION and PromethION)
+
+### Major Questions:
+
+**Dealing w fungal contamination?**
+
+**Adaptive sampling?**
+
+**How many samples can we multiplex?**
+
+**Ligation vs rapid sequencing?**
+
+### Notes:
+
+-   Smithsonian has a MinION!
+
+-   flow cells have pretty short shelf life, so even if other Smithsonian folks have leftover reagents, will likely need to order new
+
+-   will need a reference genome, both for downstream analyses and for adaptive sampling
+
+    -   could also use a de novo genome from sequencing the recent samples
+
+    -   with very fresh tissue, since the genome is p small, could get close to chromosome level genome assembly with nanopore. Andrea notes though that they've had a lot of trouble with assembling coral genomes, possibly due to weird genome architecture.
+
+    -   So maybe genome assembly could be a bonus if the species we use ends up being straightforward to assemble, but for now we should try to find samples that at least fall in same genus as a published genome. Will be trickier if we're using octocorals (for the better sequencing)
+
+    -   Andrea will look at the collections and available octocoral genomes to see if there's a good candidate.
+
+-   adaptive sampling could help reduce sequencing of contaminants, but might be less useful with degraded dna (short reads can end up being fully sequenced before pores have a chance to kick them out)
+
+-   Will ideally want 20x - 30x coverage for methylation calls. Can probably look into what coverage v depth we want for methylation calling
+
+-   MinION flowcell specs: <https://store.nanoporetech.com/us/flow-cell-r10-4-1-2025.html>
+
+-   could try a test run with minion flongle: <https://nanoporetech.com/products/sequence/flongle>
+
+-   look/ask around about accessing a promethion.
+
+-   With the wash kits you don't actually run the while library each time, you split it up. SO using wash doesn't require more library.
+
+-   Will need to check seq length/molarity (Smithsonian has the tools for this)
+
+-   Expect fragmentation to be an issue. In Andrea's experience, coral hDNA fragments are max \~1000bp. Should look into how fragmentation could/will affect methylation calling. Could think about a size selection? Should ask folks in meeting next week about their experience
+
+-   make a list of things Andrea needs to buy.
+
+### My to-dos:
+
+1.  Look more into what coverage v depth we want for methylation calling
+
+2.  Look into how use of fragmented DNA can affect methylation calling, including any differences between MinION and PromethION
+
+3.  Looks into accessing a PromethION sequencer at a nearby facility
+
+    -   Johns Hopkins (Baltimore, MD) has a PromethION, but I can't find additional details for requesting use right now, because the webpage for their [Genetic Resources Core Facility](http://grcf.med.jhu.edu/) is down
+
+    -   NIH Center for Cancer Research (Bethesda, MD) is close , but it looks like they only allow NIH employees/affiliates to use their [sequencing facilities](https://ostr.ccr.cancer.gov/resources/provider_details/nih-intramural-sequencing-center-nisc). I'd also guess they're in a lot of tummult right now
+
+    -   UW has a Nanopore Sequencing Core which uses a PromethION. Note sure if I can request a quote from them without sample details (e.g. extraction method, dna concentration), but they have a table of cost estimates [here](https://millerlaboratory.com/uw-nsc.html).\
+        If I'm understanding the "services" correctly, it looks like it's \$1,210/flow cell and \~\$40/sample for Barcoding with Rapid Prep libraries. I may also be cheaper if we want to multiplex 4 or more samples on a single flow cell.
+
+        So say we wanted to do 12 samples, multiplex w 4 samples per flow cell: 1210\*(3 flow cells) + 40\*(12 samples) = \$4,110
+
+        Optimistically I think we could do it on just two PromethION flow cells: 1210\*2+40\*12 = \$2,900
