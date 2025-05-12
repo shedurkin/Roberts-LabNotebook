@@ -1,0 +1,145 @@
+---
+title: "Timeseries molecular: Format input files for Cytoscape -- pt.2"
+author: "Kathleen Durkin"
+date: "2025-05-07"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Continuation of [Timeseries molecular: Format input files for Cytoscape](./2025_04_28_timeseries_cytoscape_files.qmd). I want to add DEG information to nodes.
+
+I'm choosing to add annotations for features that are differentially expressed in a comparison of Timepoint 2 to Timepoint 4, as these are seasonally very divergent, and yield the highest number of DEGs.
+
+I only need to add DEG annotations to the "Nodes" files, which contain metadata for all the features (miRNA, lncRNA, genes) included in my networks.
+
+Input files:
+
+- Cytoscape "Nodes" file, generated in [Timeseries molecular: Format input files for Cytoscape](./2025_04_28_timeseries_cytoscape_files.qmd): `./output/nodes_timeseries_miRNA_lncRNA_genes.csv`
+
+- genes DEGs for Timepoint 2 v Timepoint 4: https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/output/03.00-D-Apul-RNAseq-gene-expression-DESeq2/tp2.v.tp4.results.table.csv
+
+- miRNA DEGs for Timepoint 2 v Timepoint 4: https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/output/03.10-D-Apul-sRNAseq-expression-DESeq2/miRNA_tp2.v.tp4.results.table.csv
+
+- lncRNA DEGs for Timepoint 2 v Timepoint 4: https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/output/03.20-D-Apul-lncRNA-expression-DESeq2/lncRNA_tp2.v.tp4.results.table.csv
+
+# Load packages
+
+```{r}
+library(dplyr)
+library(tidyr)
+```
+
+
+# Read in files
+
+```{r}
+nodes <- read.csv("./output/2025_04_28_timeseries_cytoscape_files/nodes_timeseries_miRNA_lncRNA_genes.csv") %>% select(-X)
+
+# Using raw htmls
+genes_2v4 <- read.csv("https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/D-Apul/output/03.00-D-Apul-RNAseq-gene-expression-DESeq2/tp2.v.tp4.results.table.csv")
+
+miRNA_2v4 <- read.csv("https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/D-Apul/output/03.10-D-Apul-sRNAseq-expression-DESeq2/miRNA_tp2.v.tp4.results.table.csv")
+
+lncRNA_2v4 <- read.csv("https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/D-Apul/output/03.20-D-Apul-lncRNA-expression-DESeq2/lncRNA_tp2.v.tp4.results.table.csv")
+```
+
+Merge DEG files (type will still be denoted by feature name -- "FUNXXXX" for genes, "ClusterXXX" for miRNA, "lncRNAXXX" for lncRNA)
+```{r}
+merged_2v4 <- rbind(genes_2v4, miRNA_2v4, lncRNA_2v4)
+```
+
+Reduce to significantly differentially expressed features (padj < 0.05)
+```{r}
+merged_2v4_sig <- merged_2v4 %>% filter(padj < 0.05)
+
+nrow(merged_2v4_sig[grepl("FUN", merged_2v4_sig$X),])
+nrow(merged_2v4_sig[grepl("Cluster", merged_2v4_sig$X),])
+nrow(merged_2v4_sig[grepl("lncRNA", merged_2v4_sig$X),])
+```
+When comparing expression in Timepoint 2 to Timepoint 4, there are 684 differentially expressed genes, 1 differentially expressed miRNA, and 347 differentially expressed lncRNA
+
+Add to Nodes file
+```{r}
+nodes$DEG_tp2_tp4 <- ifelse(nodes$id %in% merged_2v4_sig$X, "yes", "no")
+
+nrow(nodes[nodes$DEG_tp2_tp4 == "yes" & grepl("FUN", nodes$id),])
+nrow(nodes[nodes$DEG_tp2_tp4 == "yes" & grepl("Cluster", nodes$id),])
+nrow(nodes[nodes$DEG_tp2_tp4 == "yes" & grepl("lncRNA", nodes$id),])
+```
+OF the nodes in our (unfiltered) interaction network, 360 genes, 1 miRNA, and 28 lncRNA are differentially expressed between TP2 and TP4. The genes number is surprising to me, since that means more than half of all the differentially expressed genes are present in our interaction network!
+
+Save
+```{r}
+write.csv(nodes, "./output/2025_05_07_timeseries_cytoscape_files_2/nodes_timeseries_miRNA_lncRNA_genes_DEG2v4.csv", quote=FALSE)
+```
+
+
+
+
+
+Load edges
+```{r}
+edges_PCC_0_7<- read.csv("./output/2025_04_28_timeseries_cytoscape_files/edges_PCC_0.7_timeseries_miRNA_lncRNA_genes.csv") %>% select(-X)
+```
+
+
+Load functional annotations
+```{r}
+FA <- read.table("https://github.com/urol-e5/deep-dive-expression/raw/refs/heads/main/D-Apul/output/02-Apul-reference-annotation/Apulcra-genome-mRNA-IDmapping-2024_12_12.tab", header=TRUE)
+FUNids <- read.table("https://github.com/urol-e5/deep-dive-expression/raw/refs/heads/main/D-Apul/output/15-Apul-annotate-UTRs/Apul-mRNA-FUNids.txt", header=FALSE) %>% select(V1, V4)
+
+FUNids$V4 <- gsub("Parent=", "", FUNids$V4)
+FA <- left_join(FA, FUNids, by=c("V1" = "V1"))
+FA <- FA %>% select(V4, Gene.Ontology.IDs, Gene.Ontology..biological.process.) %>% distinct()
+colnames(FA) <- c("gene_id", "GO_id", "GO_BP")
+```
+
+Join
+```{r}
+edges_PCC_0_7_GO <- left_join(edges_PCC_0_7, FA, by = c("target" = "gene_id"))
+```
+
+Format
+```{r}
+edges_PCC_0.7_GOid <- edges_PCC_0_7_GO %>% 
+  select(-GO_BP) %>%
+  filter(!is.na(GO_id)) %>%
+  separate_rows(GO_id, sep="; ")
+
+edges_PCC_0.7_GOBP <- edges_PCC_0_7_GO %>% 
+  select(-GO_id) %>%
+  filter(!is.na(GO_BP)) %>%
+  separate_rows(GO_BP, sep="; ")
+
+```
+
+Annotate nodes
+```{r}
+nodes_GO <- left_join(nodes, FA, by = c("id" = "gene_id"))
+
+nodes_GOid <- nodes_GO %>%
+  select(-GO_BP) %>%
+  filter(!is.na(GO_id)) %>%
+  separate_rows(GO_id, sep="; ")
+
+nodes_GOBP <- nodes_GO %>%
+  select(-GO_id) %>%
+  filter(!is.na(GO_BP)) %>%
+  separate_rows(GO_BP, sep="; ")
+```
+
+Save
+```{r}
+write.csv(edges_PCC_0.7_GOid, "./output/2025_05_07_timeseries_cytoscape_files_2/edges_PCC_0.7_timeseries_miRNA_lncRNA_genes_DEG2v4_GOid.csv", quote=FALSE)
+write.csv(edges_PCC_0.7_GOBP, "./output/2025_05_07_timeseries_cytoscape_files_2/edges_PCC_0.7_timeseries_miRNA_lncRNA_genes_DEG2v4_GOBP.csv", quote=FALSE)
+
+write.csv(nodes_GOid, "./output/2025_05_07_timeseries_cytoscape_files_2/nodes_timeseries_miRNA_lncRNA_genes_DEG2v4_GOid.csv", quote=FALSE)
+write.csv(nodes_GOBP, "./output/2025_05_07_timeseries_cytoscape_files_2/nodes_timeseries_miRNA_lncRNA_genes_DEG2v4_GOBP.csv", quote=FALSE)
+```
+

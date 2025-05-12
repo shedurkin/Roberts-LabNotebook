@@ -188,6 +188,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#all-interactions" id="toc-all-interactions" class="nav-link active" data-scroll-target="#all-interactions">All interactions</a></li>
   <li><a href="#pval-0.01" id="toc-pval-0.01" class="nav-link" data-scroll-target="#pval-0.01">pval &lt; 0.01</a></li>
   <li><a href="#pcc-0.5" id="toc-pcc-0.5" class="nav-link" data-scroll-target="#pcc-0.5">|PCC| &gt; 0.5</a></li>
+  <li><a href="#pcc-0.6" id="toc-pcc-0.6" class="nav-link" data-scroll-target="#pcc-0.6">|PCC| &gt; 0.6</a></li>
+  <li><a href="#pcc-0.7" id="toc-pcc-0.7" class="nav-link" data-scroll-target="#pcc-0.7">|PCC| &gt; 0.7</a></li>
   <li><a href="#pcc-0.8" id="toc-pcc-0.8" class="nav-link" data-scroll-target="#pcc-0.8">|PCC| &gt; 0.8</a></li>
   <li><a href="#save" id="toc-save" class="nav-link" data-scroll-target="#save">Save</a></li>
   <li><a href="#using-cytoscape" id="toc-using-cytoscape" class="nav-link" data-scroll-target="#using-cytoscape">Using Cytoscape</a></li>
@@ -467,26 +469,26 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="pcc-0.8" class="level1">
-<h1>|PCC| &gt; 0.8</h1>
+<section id="pcc-0.6" class="level1">
+<h1>|PCC| &gt; 0.6</h1>
 <p>Edges:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>edges_PCC_0<span class="fl">.8</span> <span class="ot">&lt;-</span> edges <span class="sc">%&gt;%</span> <span class="fu">filter</span>(PCC_magnitude <span class="sc">&gt;</span> <span class="fl">0.8</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(edges_PCC_0<span class="fl">.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>edges_PCC_0<span class="fl">.6</span> <span class="ot">&lt;-</span> edges <span class="sc">%&gt;%</span> <span class="fu">filter</span>(PCC_magnitude <span class="sc">&gt;</span> <span class="fl">0.6</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(edges_PCC_0<span class="fl">.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 87</code></pre>
+<pre><code>[1] 3539</code></pre>
 </div>
 </div>
 <p>Nodes:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a df that contains all miRNA, genes, and lncRNA listed in the `source` and `target` columns of `edges`</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>nodes_PCC_0<span class="fl">.8</span> <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>nodes_PCC_0<span class="fl">.6</span> <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The `unique` argument ensures we remove duplicates</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="fu">unique</span>(<span class="fu">unname</span>(<span class="fu">unlist</span>(edges_PCC_0<span class="fl">.8</span>[, <span class="fu">c</span>(<span class="st">"source"</span>, <span class="st">"target"</span>)])))</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="fu">unique</span>(<span class="fu">unname</span>(<span class="fu">unlist</span>(edges_PCC_0<span class="fl">.6</span>[, <span class="fu">c</span>(<span class="st">"source"</span>, <span class="st">"target"</span>)])))</span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Add column identifying the type of each node (miRNA, lncRNA, or gene)</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>nodes_PCC_0<span class="fl">.8</span> <span class="ot">&lt;-</span> nodes_PCC_0<span class="fl">.8</span> <span class="sc">%&gt;%</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>nodes_PCC_0<span class="fl">.6</span> <span class="ot">&lt;-</span> nodes_PCC_0<span class="fl">.6</span> <span class="sc">%&gt;%</span></span>
 <span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">type =</span> <span class="fu">case_when</span>(</span>
 <span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grepl</span>(<span class="st">"Cluster"</span>, id) <span class="sc">~</span> <span class="st">"miRNA"</span>,</span>
 <span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grepl</span>(<span class="st">"FUN"</span>, id) <span class="sc">~</span> <span class="st">"gene"</span>,</span>
@@ -495,18 +497,78 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+<section id="pcc-0.7" class="level1">
+<h1>|PCC| &gt; 0.7</h1>
+<p>Edges:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>edges_PCC_0<span class="fl">.7</span> <span class="ot">&lt;-</span> edges <span class="sc">%&gt;%</span> <span class="fu">filter</span>(PCC_magnitude <span class="sc">&gt;</span> <span class="fl">0.7</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(edges_PCC_0<span class="fl">.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 541</code></pre>
+</div>
+</div>
+<p>Nodes:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a df that contains all miRNA, genes, and lncRNA listed in the `source` and `target` columns of `edges`</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>nodes_PCC_0<span class="fl">.7</span> <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The `unique` argument ensures we remove duplicates</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="fu">unique</span>(<span class="fu">unname</span>(<span class="fu">unlist</span>(edges_PCC_0<span class="fl">.7</span>[, <span class="fu">c</span>(<span class="st">"source"</span>, <span class="st">"target"</span>)])))</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Add column identifying the type of each node (miRNA, lncRNA, or gene)</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>nodes_PCC_0<span class="fl">.7</span> <span class="ot">&lt;-</span> nodes_PCC_0<span class="fl">.7</span> <span class="sc">%&gt;%</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">type =</span> <span class="fu">case_when</span>(</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grepl</span>(<span class="st">"Cluster"</span>, id) <span class="sc">~</span> <span class="st">"miRNA"</span>,</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grepl</span>(<span class="st">"FUN"</span>, id) <span class="sc">~</span> <span class="st">"gene"</span>,</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grepl</span>(<span class="st">"lncRNA"</span>, id) <span class="sc">~</span> <span class="st">"lncRNA"</span>,</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"other"</span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="pcc-0.8" class="level1">
+<h1>|PCC| &gt; 0.8</h1>
+<p>Edges:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>edges_PCC_0<span class="fl">.8</span> <span class="ot">&lt;-</span> edges <span class="sc">%&gt;%</span> <span class="fu">filter</span>(PCC_magnitude <span class="sc">&gt;</span> <span class="fl">0.8</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(edges_PCC_0<span class="fl">.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 87</code></pre>
+</div>
+</div>
+<p>Nodes:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a df that contains all miRNA, genes, and lncRNA listed in the `source` and `target` columns of `edges`</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>nodes_PCC_0<span class="fl">.8</span> <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The `unique` argument ensures we remove duplicates</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="fu">unique</span>(<span class="fu">unname</span>(<span class="fu">unlist</span>(edges_PCC_0<span class="fl">.8</span>[, <span class="fu">c</span>(<span class="st">"source"</span>, <span class="st">"target"</span>)])))</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Add column identifying the type of each node (miRNA, lncRNA, or gene)</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>nodes_PCC_0<span class="fl">.8</span> <span class="ot">&lt;-</span> nodes_PCC_0<span class="fl">.8</span> <span class="sc">%&gt;%</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">type =</span> <span class="fu">case_when</span>(</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grepl</span>(<span class="st">"Cluster"</span>, id) <span class="sc">~</span> <span class="st">"miRNA"</span>,</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grepl</span>(<span class="st">"FUN"</span>, id) <span class="sc">~</span> <span class="st">"gene"</span>,</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grepl</span>(<span class="st">"lncRNA"</span>, id) <span class="sc">~</span> <span class="st">"lncRNA"</span>,</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"other"</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 <section id="save" class="level1">
 <h1>Save</h1>
 <p>Save files</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(edges, <span class="st">"./output/edges_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(nodes, <span class="st">"./output/nodes_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(edges_pval_0<span class="fl">.01</span>, <span class="st">"./output/edges_pval_0.01_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(nodes_pval_0<span class="fl">.01</span>, <span class="st">"./output/nodes_pval_0.01_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(edges_PCC_0<span class="fl">.5</span>, <span class="st">"./output/edges_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(nodes_PCC_0<span class="fl">.5</span>, <span class="st">"./output/nodes_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(edges_PCC_0<span class="fl">.8</span>, <span class="st">"./output/edges_PCC_0.8_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(nodes_PCC_0<span class="fl">.8</span>, <span class="st">"./output/nodes_PCC_0.8_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(edges, <span class="st">"./output/2025_04_28_timeseries_cytoscape_files/edges_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(nodes, <span class="st">"./output/2025_04_28_timeseries_cytoscape_files/nodes_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(edges_pval_0<span class="fl">.01</span>, <span class="st">"./output/2025_04_28_timeseries_cytoscape_files/edges_pval_0.01_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(nodes_pval_0<span class="fl">.01</span>, <span class="st">"./output/2025_04_28_timeseries_cytoscape_files/nodes_pval_0.01_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(edges_PCC_0<span class="fl">.5</span>, <span class="st">"./output/2025_04_28_timeseries_cytoscape_files/edges_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(nodes_PCC_0<span class="fl">.5</span>, <span class="st">"./output/2025_04_28_timeseries_cytoscape_files/nodes_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(edges_PCC_0<span class="fl">.6</span>, <span class="st">"./output/2025_04_28_timeseries_cytoscape_files/edges_PCC_0.6_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(nodes_PCC_0<span class="fl">.6</span>, <span class="st">"./output/2025_04_28_timeseries_cytoscape_files/nodes_PCC_0.6_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(edges_PCC_0<span class="fl">.7</span>, <span class="st">"./output/2025_04_28_timeseries_cytoscape_files/edges_PCC_0.7_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(nodes_PCC_0<span class="fl">.7</span>, <span class="st">"./output/2025_04_28_timeseries_cytoscape_files/nodes_PCC_0.7_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(edges_PCC_0<span class="fl">.8</span>, <span class="st">"./output/2025_04_28_timeseries_cytoscape_files/edges_PCC_0.8_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(nodes_PCC_0<span class="fl">.8</span>, <span class="st">"./output/2025_04_28_timeseries_cytoscape_files/nodes_PCC_0.8_timeseries_miRNA_lncRNA_genes.csv"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="using-cytoscape" class="level1">
@@ -532,7 +594,7 @@ Attaching package: 'dplyr'</code></pre>
 <p>Cluster_17192 is primarily of interest becasue it matches miR-100, a highly conserved and well described miRNA. It also becomes apparent after isolation that one of the putative gene targets, FUN_014449, has a remarkable number of edges connecting it to Cluster_17192. This indicates that miRanda output a significant likelihood of Cluster_17192 binding to many different location on the mRNA</p>
 <p>We can check exactly how many:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>miRNA_gene <span class="sc">%&gt;%</span> <span class="fu">filter</span>(PCC_magnitude <span class="sc">&gt;</span> <span class="fl">0.5</span> <span class="sc">&amp;</span> interaction <span class="sc">==</span> <span class="st">"Cluster_17192 _ FUN_014449"</span>) <span class="sc">%&gt;%</span> <span class="fu">nrow</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>miRNA_gene <span class="sc">%&gt;%</span> <span class="fu">filter</span>(PCC_magnitude <span class="sc">&gt;</span> <span class="fl">0.5</span> <span class="sc">&amp;</span> interaction <span class="sc">==</span> <span class="st">"Cluster_17192 _ FUN_014449"</span>) <span class="sc">%&gt;%</span> <span class="fu">nrow</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 129</code></pre>
 </div>

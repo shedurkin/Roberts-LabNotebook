@@ -1,0 +1,59 @@
+---
+title: "5/12 Meeting with OU Lab"
+author: "Kathleen Durkin"
+date: "2025-05-02"
+categories: ["SIFP_2025"]
+format:
+  html
+bibliography: ../../../references.bib
+---
+
+Attendees: "Bingham, Brittany L." [brittany.bingham\@ou.edu](mailto:brittany.bingham@ou.edu){.email}, "Hofman, Courtney A." [courtney.hofman\@ou.edu](mailto:courtney.hofman@ou.edu){.email}, Lilly Parker [lilly.parker\@gmail.com](mailto:lilly.parker@gmail.com){.email}, "Helyar, Sara M." [sara.schaal\@ou.edu](mailto:sara.schaal@ou.edu){.email}
+
+#### **Background:** 
+
+Trying Nanopore sequencing for methylation mapping of ancient bear samples (5500 and 2500 years old, from Alaska, bone and teeth). Using a PromethION.
+
+#### Notes:
+
+-   Used **Ligation kit** instead of Rapid, because Rapid is optimized for longer reads, have not tried Rapid. Note that they did *not* multiplex, so they were using the Ligation kit *without* barcoding. They also had way less DNA than recommended for the kit (\<100ng compared to the recommended 1000ng).
+
+-   For them, adaptive sequencing was not helpful in identifying the short reads. However, they haven't tried using it as an depletion step to exclude known contaminant sequences. Not entirely sure how software would respond to the short reads -- would it try to reject them?
+
+-   Suggest standard **genomic sequencing as a QC step** to identify which samples have the most endogenous content. Could this be done in-house at the Smithsonian?
+
+-   In contrast to Dan's experience (presumably with amplified DNA), they've noted their **unamplified libraries are *not* stable.** With the ligation kit, they've (anecdotally) had \~1hr to get a prepped library to sequencing. They would **strongly recommend we stick with the available MinION**, instead of looking for an outside PromethION, because of the risks of library degradation.
+
+-   They've noted that the **flow cells can be finniky** -- differences in number of functioning pores, pores degrade quickly, etc. Wash step helps output but still issues.
+
+-   Been observing 5-8X coverage to call methlation with some confidence. They've also been working with modern comparisons, and the biggest difference in ancient vs modern samples for methylation calling was coverage. **Haven't noted any major differences introduced by fragmented input**.
+
+-   Biggest issue is that their coverage is spotty -- they get no data for some regions and lots of data for others -- and that their genome isn't fully annotated, so they have little context for some of their coverage.
+
+-   Size select: They haven't been implementing for nanopore, but have for normal Illumina. Using Pippin, better with short reads than bead. Does Rapid Kit already incorporate a size selection?
+
+-   Sawyer 2024 compared EMseq and WGBS for ancient samples, and concluded that WGBS is better for ancient.
+
+-   Overall, **the Nanopore sequencing works -- they got data -- but it just hasn't been cost effective for them**. They're going to be trying WGBS soon. Noted that they also don't know much about other attempts to use Nanopore for aDNA/hDNA methylation mapping, or about how it compares to WGBS/EMSeq. They've heard anecdotally about other labs considering, but there are just no published results (or negative results).
+
+-   Note: they were working with very little DNA (maybe 100ng), highly fragmented, and for a species with a large genome (\~3Gb, close to a human).
+
+-   We may have more success/it may be more cost effective since we have newer/potentially better-preserved specimens, and the genomes are so much shorter. While they were unable to incorporate multiplexing, we likely can with success. Suggested **running a single sample on its own flow cell** first to get a sense of how much output/coverage we'll get. Flongle for this?
+
+#### Takeaways: 
+
+-   Should use Ligation Kit instead of Rapid. Rapid is optimized for longer reads. It also includes "transposase chemistry" which seems to perform some type of DNA shearing, which we don't want with our fragmented reads.
+
+    -   Native Barcoding Kit 24 is same price as Rapid Barcoding Kit 24
+
+    -   [ONT reccommends](https://nanoporetech.com/support/library-prep/rapid-kits/can-i-use-small-dna-fragments-with-the-rapid-kits?filter=fragmented) Rapid Kit not be used with fragments \<500nt
+
+-   Stick with the MinION
+
+-   Having a well-annotated genome is important, so keep that in mind when selecting samples.
+
+-   Prioritize the QC steps to select samples with as much long-read, endogenous DNA as possible
+
+Paper on optemizing short-read sequencing using a MinION and Rapid Barcoding Kit: <https://academic.oup.com/g3journal/article/8/5/1649/6028073>
+
+ONT Document on recommendations for sample quantity/quality: <https://nanoporetech.com/document/input-dna-rna-qc>

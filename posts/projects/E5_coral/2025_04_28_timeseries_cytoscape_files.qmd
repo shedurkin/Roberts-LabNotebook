@@ -172,6 +172,64 @@ nodes_PCC_0.5 <- nodes_PCC_0.5 %>%
 
 ```
 
+# \|PCC\| \> 0.6
+
+Edges:
+
+```{r}
+edges_PCC_0.6 <- edges %>% filter(PCC_magnitude > 0.6)
+nrow(edges_PCC_0.6)
+```
+
+Nodes:
+
+```{r}
+# Make a df that contains all miRNA, genes, and lncRNA listed in the `source` and `target` columns of `edges`
+nodes_PCC_0.6 <- data.frame(
+  # The `unique` argument ensures we remove duplicates
+  id = unique(unname(unlist(edges_PCC_0.6[, c("source", "target")])))
+)
+
+# Add column identifying the type of each node (miRNA, lncRNA, or gene)
+nodes_PCC_0.6 <- nodes_PCC_0.6 %>%
+  mutate(type = case_when(
+    grepl("Cluster", id) ~ "miRNA",
+    grepl("FUN", id) ~ "gene",
+    grepl("lncRNA", id) ~ "lncRNA",
+    TRUE ~ "other"
+  ))
+
+```
+
+# \|PCC\| \> 0.7
+
+Edges:
+
+```{r}
+edges_PCC_0.7 <- edges %>% filter(PCC_magnitude > 0.7)
+nrow(edges_PCC_0.7)
+```
+
+Nodes:
+
+```{r}
+# Make a df that contains all miRNA, genes, and lncRNA listed in the `source` and `target` columns of `edges`
+nodes_PCC_0.7 <- data.frame(
+  # The `unique` argument ensures we remove duplicates
+  id = unique(unname(unlist(edges_PCC_0.7[, c("source", "target")])))
+)
+
+# Add column identifying the type of each node (miRNA, lncRNA, or gene)
+nodes_PCC_0.7 <- nodes_PCC_0.7 %>%
+  mutate(type = case_when(
+    grepl("Cluster", id) ~ "miRNA",
+    grepl("FUN", id) ~ "gene",
+    grepl("lncRNA", id) ~ "lncRNA",
+    TRUE ~ "other"
+  ))
+
+```
+
 # \|PCC\| \> 0.8
 
 Edges:
@@ -206,36 +264,39 @@ nodes_PCC_0.8 <- nodes_PCC_0.8 %>%
 Save files
 
 ```{r}
-write.csv(edges, "./output/edges_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
-write.csv(nodes, "./output/nodes_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
-write.csv(edges_pval_0.01, "./output/edges_pval_0.01_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
-write.csv(nodes_pval_0.01, "./output/nodes_pval_0.01_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
-write.csv(edges_PCC_0.5, "./output/edges_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
-write.csv(nodes_PCC_0.5, "./output/nodes_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
-write.csv(edges_PCC_0.8, "./output/edges_PCC_0.8_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
-write.csv(nodes_PCC_0.8, "./output/nodes_PCC_0.8_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
+write.csv(edges, "./output/2025_04_28_timeseries_cytoscape_files/edges_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
+write.csv(nodes, "./output/2025_04_28_timeseries_cytoscape_files/nodes_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
+write.csv(edges_pval_0.01, "./output/2025_04_28_timeseries_cytoscape_files/edges_pval_0.01_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
+write.csv(nodes_pval_0.01, "./output/2025_04_28_timeseries_cytoscape_files/nodes_pval_0.01_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
+write.csv(edges_PCC_0.5, "./output/2025_04_28_timeseries_cytoscape_files/edges_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
+write.csv(nodes_PCC_0.5, "./output/2025_04_28_timeseries_cytoscape_files/nodes_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
+write.csv(edges_PCC_0.6, "./output/2025_04_28_timeseries_cytoscape_files/edges_PCC_0.6_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
+write.csv(nodes_PCC_0.6, "./output/2025_04_28_timeseries_cytoscape_files/nodes_PCC_0.6_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
+write.csv(edges_PCC_0.7, "./output/2025_04_28_timeseries_cytoscape_files/edges_PCC_0.7_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
+write.csv(nodes_PCC_0.7, "./output/2025_04_28_timeseries_cytoscape_files/nodes_PCC_0.7_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
+write.csv(edges_PCC_0.8, "./output/2025_04_28_timeseries_cytoscape_files/edges_PCC_0.8_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
+write.csv(nodes_PCC_0.8, "./output/2025_04_28_timeseries_cytoscape_files/nodes_PCC_0.8_timeseries_miRNA_lncRNA_genes.csv", quote = FALSE)
 ```
 
 # Using Cytoscape
 
 To load a network into Cytoscape:
 
-1. Open Cytoscape and select File > Import > Network from File...
+1.  Open Cytoscape and select File \> Import \> Network from File...
 
-2. Select "Edges" file. Ensure The source and target columns are appropriately identified before loading the file.
+2.  Select "Edges" file. Ensure The source and target columns are appropriately identified before loading the file.
 
-3. To load "Nodes" file, select File > Import > Table from File...
+3.  To load "Nodes" file, select File \> Import \> Table from File...
 
 # Results
 
-Below is a the network of miRNA-gene and miRNA-lncRNA interactions that are predicted to bind by miRanda, and which have an expression correlation coefficient above 0.5. 
+Below is a the network of miRNA-gene and miRNA-lncRNA interactions that are predicted to bind by miRanda, and which have an expression correlation coefficient above 0.5.
 
 The network is displayed using the yFiles Organic Layout, with nodes colored by type (miRNA = orange, lncRNA = dark blue, gene = light blue), and with edges colored by correlation direction (negative = red, positive = green) and weighted by correlation magnitude.
 
 ![](./output/edges_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv.png)
 
 We can see some interesting patterns!
-
 
 ![](./output/edges_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv-CLUSTER_4752.png)
 
@@ -250,6 +311,7 @@ Cluster_5603 appears to putatively interact with one of the largest proportions 
 Cluster_17192 is primarily of interest becasue it matches miR-100, a highly conserved and well described miRNA. It also becomes apparent after isolation that one of the putative gene targets, FUN_014449, has a remarkable number of edges connecting it to Cluster_17192. This indicates that miRanda output a significant likelihood of Cluster_17192 binding to many different location on the mRNA
 
 We can check exactly how many:
+
 ```{r}
 miRNA_gene %>% filter(PCC_magnitude > 0.5 & interaction == "Cluster_17192 _ FUN_014449") %>% nrow()
 ```
@@ -258,9 +320,4 @@ miRNA_gene %>% filter(PCC_magnitude > 0.5 & interaction == "Cluster_17192 _ FUN_
 
 Cluster_9532 matches miR-2022, about which we actually know a fair bit of functional information!
 
-
 I have a notebook post detailing what functional information we have for previously described miRNA, [here](./2025_04_10_dde_named_miRNA_functions.qmd)
-
-
-
-
