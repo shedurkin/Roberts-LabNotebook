@@ -1,5 +1,5 @@
 ---
-title: "Timeseries molecular: A.pul, epigenetic features to predict expression. Machine learning -- Part 2"
+title: "Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning -- Part 2"
 author: "Kathleen Durkin"
 date: "2025-04-23"
 categories: ["E5-coral"]
