@@ -156,9 +156,17 @@ for (feature in names(top_predictors)) {
 
 #### Notes
 
-This gene stood out to me before because one of its primary predictors is an miRNA. the miRNA Cluster_17173 both putatively binds to FUN_00702 and is strongly negatively correlated based on pairwise PCC. It doesn't match any previously described miRNA (see ShortStack results [here](https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/output/04-Apul-sRNA-discovery-ShortStack/ShortStack_out/Results.txt)).
+This gene stood out to me before because one of its primary predictors is an miRNA.
 
 ![](./images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-7.png)
+
+The miRNA Cluster_17173 both putatively binds to FUN_00702 (with several possible binding configurations) and is strongly negatively correlated based on pairwise PCC (PCC = -0.676).
+
+Cluster_17173 *also* putatively binds to and is strongly positively a correlated with lncRNA_5655, which is the most highly predictive feature for FUN_007022 expression (several possible binding configurations, PCC = 0.522).
+
+Cluster_17173 doesn't match any previously described miRNA (see ShortStack results [here](https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/output/04-Apul-sRNA-discovery-ShortStack/ShortStack_out/Results.txt)).
+
+![](https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files/figure-gfm/unnamed-chunk-72-7.png)
 
 This is also a useful sanity check in general, because we see some "highly predicted" genes are actually just invariant. For example, FUN_026128 was well-predicted by just a couple of lncRNA, which was potentially very interesting.
 
