@@ -10,7 +10,61 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Fri, 02 May 2025 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 12 May 2025 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>5/12 Meeting with OU Lab</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_05_12_meeting.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Attendees: “Bingham, Brittany L.” <a href="mailto:brittany.bingham@ou.edu" class="email">brittany.bingham@ou.edu</a>, “Hofman, Courtney A.” <a href="mailto:courtney.hofman@ou.edu" class="email">courtney.hofman@ou.edu</a>, Lilly Parker <a href="mailto:lilly.parker@gmail.com" class="email">lilly.parker@gmail.com</a>, “Helyar, Sara M.” <a href="mailto:sara.schaal@ou.edu" class="email">sara.schaal@ou.edu</a></p>
+<section id="background" class="level4">
+<h4 class="anchored" data-anchor-id="background"><strong>Background:</strong></h4>
+<p>Trying Nanopore sequencing for methylation mapping of ancient bear samples (5500 and 2500 years old, from Alaska, bone and teeth). Using a PromethION.</p>
+</section>
+<section id="notes" class="level4">
+<h4 class="anchored" data-anchor-id="notes">Notes:</h4>
+<ul>
+<li><p>Used <strong>Ligation kit</strong> instead of Rapid, because Rapid is optimized for longer reads, have not tried Rapid. Note that they did <em>not</em> multiplex, so they were using the Ligation kit <em>without</em> barcoding. They also had way less DNA than recommended for the kit (&lt;100ng compared to the recommended 1000ng).</p></li>
+<li><p>For them, adaptive sequencing was not helpful in identifying the short reads. However, they haven’t tried using it as an depletion step to exclude known contaminant sequences. Not entirely sure how software would respond to the short reads – would it try to reject them?</p></li>
+<li><p>Suggest standard <strong>genomic sequencing as a QC step</strong> to identify which samples have the most endogenous content. Could this be done in-house at the Smithsonian?</p></li>
+<li><p>In contrast to Dan’s experience (presumably with amplified DNA), they’ve noted their <strong>unamplified libraries are <em>not</em> stable.</strong> With the ligation kit, they’ve (anecdotally) had ~1hr to get a prepped library to sequencing. They would <strong>strongly recommend we stick with the available MinION</strong>, instead of looking for an outside PromethION, because of the risks of library degradation.</p></li>
+<li><p>They’ve noted that the <strong>flow cells can be finniky</strong> – differences in number of functioning pores, pores degrade quickly, etc. Wash step helps output but still issues.</p></li>
+<li><p>Been observing 5-8X coverage to call methlation with some confidence. They’ve also been working with modern comparisons, and the biggest difference in ancient vs modern samples for methylation calling was coverage. <strong>Haven’t noted any major differences introduced by fragmented input</strong>.</p></li>
+<li><p>Biggest issue is that their coverage is spotty – they get no data for some regions and lots of data for others – and that their genome isn’t fully annotated, so they have little context for some of their coverage.</p></li>
+<li><p>Size select: They haven’t been implementing for nanopore, but have for normal Illumina. Using Pippin, better with short reads than bead. Does Rapid Kit already incorporate a size selection?</p></li>
+<li><p>Sawyer 2024 compared EMseq and WGBS for ancient samples, and concluded that WGBS is better for ancient.</p></li>
+<li><p>Overall, <strong>the Nanopore sequencing works – they got data – but it just hasn’t been cost effective for them</strong>. They’re going to be trying WGBS soon. Noted that they also don’t know much about other attempts to use Nanopore for aDNA/hDNA methylation mapping, or about how it compares to WGBS/EMSeq. They’ve heard anecdotally about other labs considering, but there are just no published results (or negative results).</p></li>
+<li><p>Note: they were working with very little DNA (maybe 100ng), highly fragmented, and for a species with a large genome (~3Gb, close to a human).</p></li>
+<li><p>We may have more success/it may be more cost effective since we have newer/potentially better-preserved specimens, and the genomes are so much shorter. While they were unable to incorporate multiplexing, we likely can with success. Suggested <strong>running a single sample on its own flow cell</strong> first to get a sense of how much output/coverage we’ll get. Flongle for this?</p></li>
+</ul>
+</section>
+<section id="takeaways" class="level4">
+<h4 class="anchored" data-anchor-id="takeaways">Takeaways:</h4>
+<ul>
+<li><p>Should use Ligation Kit instead of Rapid. Rapid is optimized for longer reads. It also includes “transposase chemistry” which seems to perform some type of DNA shearing, which we don’t want with our fragmented reads.</p>
+<ul>
+<li><p>Native Barcoding Kit 24 is same price as Rapid Barcoding Kit 24</p></li>
+<li><p><a href="https://nanoporetech.com/support/library-prep/rapid-kits/can-i-use-small-dna-fragments-with-the-rapid-kits?filter=fragmented">ONT reccommends</a> Rapid Kit not be used with fragments &lt;500nt</p></li>
+</ul></li>
+<li><p>Stick with the MinION</p></li>
+<li><p>Having a well-annotated genome is important, so keep that in mind when selecting samples.</p></li>
+<li><p>Prioritize the QC steps to select samples with as much long-read, endogenous DNA as possible</p></li>
+</ul>
+<p>Paper on optemizing short-read sequencing using a MinION and Rapid Barcoding Kit: <a href="https://academic.oup.com/g3journal/article/8/5/1649/6028073" class="uri">https://academic.oup.com/g3journal/article/8/5/1649/6028073</a></p>
+<p>ONT Document on recommendations for sample quantity/quality: <a href="https://nanoporetech.com/document/input-dna-rna-qc" class="uri">https://nanoporetech.com/document/input-dna-rna-qc</a></p>
+
+
+</section>
+
+ ]]></description>
+  <category>SIFP_2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_05_12_meeting.html</guid>
+  <pubDate>Mon, 12 May 2025 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>5/2 Meeting with Andrea and Dan</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -73,60 +127,6 @@ If I’m understanding the “services” correctly, it looks like it’s $1,210
  ]]></description>
   <category>SIFP_2025</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_05_02_Andrea_Dan_meeting.html</guid>
-  <pubDate>Fri, 02 May 2025 07:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>5/12 Meeting with OU Lab</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_05_12_meeting.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Attendees: “Bingham, Brittany L.” <a href="mailto:brittany.bingham@ou.edu" class="email">brittany.bingham@ou.edu</a>, “Hofman, Courtney A.” <a href="mailto:courtney.hofman@ou.edu" class="email">courtney.hofman@ou.edu</a>, Lilly Parker <a href="mailto:lilly.parker@gmail.com" class="email">lilly.parker@gmail.com</a>, “Helyar, Sara M.” <a href="mailto:sara.schaal@ou.edu" class="email">sara.schaal@ou.edu</a></p>
-<section id="background" class="level4">
-<h4 class="anchored" data-anchor-id="background"><strong>Background:</strong></h4>
-<p>Trying Nanopore sequencing for methylation mapping of ancient bear samples (5500 and 2500 years old, from Alaska, bone and teeth). Using a PromethION.</p>
-</section>
-<section id="notes" class="level4">
-<h4 class="anchored" data-anchor-id="notes">Notes:</h4>
-<ul>
-<li><p>Used <strong>Ligation kit</strong> instead of Rapid, because Rapid is optimized for longer reads, have not tried Rapid. Note that they did <em>not</em> multiplex, so they were using the Ligation kit <em>without</em> barcoding. They also had way less DNA than recommended for the kit (&lt;100ng compared to the recommended 1000ng).</p></li>
-<li><p>For them, adaptive sequencing was not helpful in identifying the short reads. However, they haven’t tried using it as an depletion step to exclude known contaminant sequences. Not entirely sure how software would respond to the short reads – would it try to reject them?</p></li>
-<li><p>Suggest standard <strong>genomic sequencing as a QC step</strong> to identify which samples have the most endogenous content. Could this be done in-house at the Smithsonian?</p></li>
-<li><p>In contrast to Dan’s experience (presumably with amplified DNA), they’ve noted their <strong>unamplified libraries are <em>not</em> stable.</strong> With the ligation kit, they’ve (anecdotally) had ~1hr to get a prepped library to sequencing. They would <strong>strongly recommend we stick with the available MinION</strong>, instead of looking for an outside PromethION, because of the risks of library degradation.</p></li>
-<li><p>They’ve noted that the <strong>flow cells can be finniky</strong> – differences in number of functioning pores, pores degrade quickly, etc. Wash step helps output but still issues.</p></li>
-<li><p>Been observing 5-8X coverage to call methlation with some confidence. They’ve also been working with modern comparisons, and the biggest difference in ancient vs modern samples for methylation calling was coverage. <strong>Haven’t noted any major differences introduced by fragmented input</strong>.</p></li>
-<li><p>Biggest issue is that their coverage is spotty – they get no data for some regions and lots of data for others – and that their genome isn’t fully annotated, so they have little context for some of their coverage.</p></li>
-<li><p>Size select: They haven’t been implementing for nanopore, but have for normal Illumina. Using Pippin, better with short reads than bead. Does Rapid Kit already incorporate a size selection?</p></li>
-<li><p>Sawyer 2024 compared EMseq and WGBS for ancient samples, and concluded that WGBS is better for ancient.</p></li>
-<li><p>Overall, <strong>the Nanopore sequencing works – they got data – but it just hasn’t been cost effective for them</strong>. They’re going to be trying WGBS soon. Noted that they also don’t know much about other attempts to use Nanopore for aDNA/hDNA methylation mapping, or about how it compares to WGBS/EMSeq. They’ve heard anecdotally about other labs considering, but there are just no published results (or negative results).</p></li>
-<li><p>Note: they were working with very little DNA (maybe 100ng), highly fragmented, and for a species with a large genome (~3Gb, close to a human).</p></li>
-<li><p>We may have more success/it may be more cost effective since we have newer/potentially better-preserved specimens, and the genomes are so much shorter. While they were unable to incorporate multiplexing, we likely can with success. Suggested <strong>running a single sample on its own flow cell</strong> first to get a sense of how much output/coverage we’ll get. Flongle for this?</p></li>
-</ul>
-</section>
-<section id="takeaways" class="level4">
-<h4 class="anchored" data-anchor-id="takeaways">Takeaways:</h4>
-<ul>
-<li><p>Should use Ligation Kit instead of Rapid. Rapid is optimized for longer reads. It also includes “transposase chemistry” which seems to perform some type of DNA shearing, which we don’t want with our fragmented reads.</p>
-<ul>
-<li><p>Native Barcoding Kit 24 is same price as Rapid Barcoding Kit 24</p></li>
-<li><p><a href="https://nanoporetech.com/support/library-prep/rapid-kits/can-i-use-small-dna-fragments-with-the-rapid-kits?filter=fragmented">ONT reccommends</a> Rapid Kit not be used with fragments &lt;500nt</p></li>
-</ul></li>
-<li><p>Stick with the MinION</p></li>
-<li><p>Having a well-annotated genome is important, so keep that in mind when selecting samples.</p></li>
-<li><p>Prioritize the QC steps to select samples with as much long-read, endogenous DNA as possible</p></li>
-</ul>
-<p>Paper on optemizing short-read sequencing using a MinION and Rapid Barcoding Kit: <a href="https://academic.oup.com/g3journal/article/8/5/1649/6028073" class="uri">https://academic.oup.com/g3journal/article/8/5/1649/6028073</a></p>
-<p>ONT Document on recommendations for sample quantity/quality: <a href="https://nanoporetech.com/document/input-dna-rna-qc" class="uri">https://nanoporetech.com/document/input-dna-rna-qc</a></p>
-
-
-</section>
-
- ]]></description>
-  <category>SIFP_2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_05_12_meeting.html</guid>
   <pubDate>Fri, 02 May 2025 07:00:00 GMT</pubDate>
 </item>
 <item>

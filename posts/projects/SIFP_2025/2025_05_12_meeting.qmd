@@ -1,7 +1,7 @@
 ---
 title: "5/12 Meeting with OU Lab"
 author: "Kathleen Durkin"
-date: "2025-05-02"
+date: "2025-05-12"
 categories: ["SIFP_2025"]
 format:
   html
@@ -10,7 +10,7 @@ bibliography: ../../../references.bib
 
 Attendees: "Bingham, Brittany L." [brittany.bingham\@ou.edu](mailto:brittany.bingham@ou.edu){.email}, "Hofman, Courtney A." [courtney.hofman\@ou.edu](mailto:courtney.hofman@ou.edu){.email}, Lilly Parker [lilly.parker\@gmail.com](mailto:lilly.parker@gmail.com){.email}, "Helyar, Sara M." [sara.schaal\@ou.edu](mailto:sara.schaal@ou.edu){.email}
 
-#### **Background:** 
+#### **Background:**
 
 Trying Nanopore sequencing for methylation mapping of ancient bear samples (5500 and 2500 years old, from Alaska, bone and teeth). Using a PromethION.
 
@@ -40,7 +40,7 @@ Trying Nanopore sequencing for methylation mapping of ancient bear samples (5500
 
 -   We may have more success/it may be more cost effective since we have newer/potentially better-preserved specimens, and the genomes are so much shorter. While they were unable to incorporate multiplexing, we likely can with success. Suggested **running a single sample on its own flow cell** first to get a sense of how much output/coverage we'll get. Flongle for this?
 
-#### Takeaways: 
+#### Takeaways:
 
 -   Should use Ligation Kit instead of Rapid. Rapid is optimized for longer reads. It also includes "transposase chemistry" which seems to perform some type of DNA shearing, which we don't want with our fragmented reads.
 
