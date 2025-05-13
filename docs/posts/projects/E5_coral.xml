@@ -10,7 +10,363 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Thu, 08 May 2025 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 12 May 2025 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning – Part 4</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_05_12_timeseries_multiomic_ML_4.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><a href="https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/code/22.3-Apul-multiomic-machine-learning-byTP.Rmd">Code</a></p>
+<p><a href="https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/code/22.3-Apul-multiomic-machine-learning-byTP.md">Rendered Code</a></p>
+<p>For each of the consistently well-predicted genes identified in <a href="../../../posts/projects/E5_coral/2025_05_08_timeseries_multiomic_ML_3.html">my last post</a>, I plotted thegene’s expression with that of its top 5 most important predictors.</p>
+<section id="plot-expression-of-genes-and-their-predictors" class="level1">
+<h1>10 Plot expression of genes and their predictors</h1>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Put predictor expression in format with samples in columns</span></span>
+<span id="cb1-2">full_pred_counts_t <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">t</span>(full_pred_counts)</span>
+<span id="cb1-3"></span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Loop over each feature in the list</span></span>
+<span id="cb1-5"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> (feature <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">names</span>(top_predictors)) {</span>
+<span id="cb1-6">  </span>
+<span id="cb1-7">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Get top 5 predictors for this feature</span></span>
+<span id="cb1-8">  top_df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> top_predictors[[feature]]</span>
+<span id="cb1-9">  predictors <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> top_df<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Predictor</span>
+<span id="cb1-10">  </span>
+<span id="cb1-11">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Combine feature and predictors</span></span>
+<span id="cb1-12">  all_genes <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(feature, predictors)</span>
+<span id="cb1-13">  </span>
+<span id="cb1-14">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Check which genes are actually present</span></span>
+<span id="cb1-15">  present_genes <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_genes[all_genes <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rownames</span>(full_pred_counts_t) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span> all_genes <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rownames</span>(vsd_energetic_state_GO)]</span>
+<span id="cb1-16">  </span>
+<span id="cb1-17">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span>(feature <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rownames</span>(vsd_energetic_state_GO))) {</span>
+<span id="cb1-18">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">warning</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Feature"</span>, feature, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"not found in vsd_energetic_state_GO Skipping..."</span>))</span>
+<span id="cb1-19">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">next</span></span>
+<span id="cb1-20">  }</span>
+<span id="cb1-21"></span>
+<span id="cb1-22">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extract predictor expression (only those present)</span></span>
+<span id="cb1-23">  predictor_expr <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> full_pred_counts_t[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">intersect</span>(predictors, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rownames</span>(full_pred_counts_t)), , drop <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.data.frame</span>()</span>
+<span id="cb1-24"></span>
+<span id="cb1-25">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add the feature expression</span></span>
+<span id="cb1-26">  feature_expr <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> vsd_energetic_state_GO[feature, , drop <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.data.frame</span>()</span>
+<span id="cb1-27">  </span>
+<span id="cb1-28">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Combine into one data frame</span></span>
+<span id="cb1-29">  combined_expr <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rbind</span>(predictor_expr, feature_expr)</span>
+<span id="cb1-30">  combined_expr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Gene <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rownames</span>(combined_expr)</span>
+<span id="cb1-31">  </span>
+<span id="cb1-32">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Convert to long format</span></span>
+<span id="cb1-33">  expr_long <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> combined_expr <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb1-34">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_longer</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>Gene, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Sample"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Expression"</span>)</span>
+<span id="cb1-35">  </span>
+<span id="cb1-36">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Join with sample metadata</span></span>
+<span id="cb1-37">  expr_long <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> expr_long <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb1-38">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">left_join</span>(metadata, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Sample"</span>)</span>
+<span id="cb1-39">  </span>
+<span id="cb1-40">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Plot, with colonies aggregated by timepoint</span></span>
+<span id="cb1-41">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># p &lt;- ggplot(expr_long, aes(x = interaction(Timepoint), y = Expression, color = Gene, group = Gene)) +</span></span>
+<span id="cb1-42">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#   geom_point(alpha = 0.7) +</span></span>
+<span id="cb1-43">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#   geom_smooth(se = FALSE, method = "loess") +</span></span>
+<span id="cb1-44">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#   labs(title = paste("Expression of", feature, "and Top 5 Predictors"),</span></span>
+<span id="cb1-45">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#        x = "Colony-Timepoint",</span></span>
+<span id="cb1-46">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#        y = "Expression") +</span></span>
+<span id="cb1-47">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#   theme_minimal() +</span></span>
+<span id="cb1-48">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#   theme(axis.text.x = element_text(angle = 45, hjust = 1))</span></span>
+<span id="cb1-49">  </span>
+<span id="cb1-50">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Plot, faceted by colony</span></span>
+<span id="cb1-51">  p <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(expr_long, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> Timepoint, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> Expression, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> Gene, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> Gene)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-52">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.7</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-53">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_smooth</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">se =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"loess"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.8</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-54">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>ColonyID) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-55">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Expression of"</span>, feature, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"and Top 5 Predictors by Colony"</span>),</span>
+<span id="cb1-56">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Timepoint"</span>,</span>
+<span id="cb1-57">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Expression"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-58">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-59">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis.text.x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">angle =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">45</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">hjust =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>))</span>
+<span id="cb1-60"></span>
+<span id="cb1-61">  </span>
+<span id="cb1-62">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>(p)</span>
+<span id="cb1-63">}</span></code></pre></div>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-1.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-2.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-3.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-4.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-5.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-6.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-7.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-8.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-9.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-10.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-11.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-12.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-13.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-14.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-15.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-16.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-17.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-18.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-19.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-20.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-21.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-22.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-23.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-24.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-25.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-26.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-27.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-28.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-29.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-30.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-31.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-32.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-33.png" class="img-fluid"><!-- --></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-34.png" class="img-fluid"><!-- --></p>
+
+
+</section>
+
+ ]]></description>
+  <category>E5-coral</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_05_12_timeseries_multiomic_ML_4.html</guid>
+  <pubDate>Mon, 12 May 2025 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning – Part 3</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -41661,415 +42017,6 @@ Use miRanda/RNAhybrid to predict siRNA binding to the genome. Using simulated WG
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_01_30_project_planning.html</guid>
   <pubDate>Thu, 30 Jan 2025 08:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Rerunning ShortStack for deep-dive-expression</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_10_22_shortstack_4.1.0_reruns.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>We performed sRNA discovery for <em>A. pulchra</em>, <em>P. evermanni</em>, and <em>P. tuahiniensis</em> (formerly identified as <em>P. meandrina</em>) as part of the E5 <code>deep-dive</code> initiative. Notably, we used the <em>A. millipora</em> genome as an alignment reference during <em>A. pulchra</em> sRNA discovery because no <em>A. pulchra</em> genome was available at the time. However, collaborators are have now assembled an <em>A. pulchra</em> genome, so we can rerun sRNA discovery with a better reference for use in the <code>deep-dive-expression</code> project. Additionally, the sRNA discovery tool we decided to use, <a href="https://github.com/MikeAxtell/ShortStack">ShortStack</a> <span class="citation" data-cites="axtell2013">Axtell (2013)</span>, has a new update (v.4.1.0) with functionality for visualizing miRNA hairpin structures and generating genome-browser-ready quantitative coverage tracks of aligned small RNAs. These new features could prove useful, so I’m just rerunning ShortStack for all three species, using the <em>pulchra</em> genome for <em>A. pulchra</em> discovery and ShortStack 4.1.0 for all three.</p>
-<p><u><strong>Original <code>deep-dive</code> sRNA discovery, using ShortStack 4.0.3 (for reference):</strong></u></p>
-<p>A. pulchra (using A. millipora genome)</p>
-<ul>
-<li><p><a href="https://github.com/urol-e5/deep-dive/blob/main/D-Apul/code/13.2.1-Apul-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase.Rmd">code</a></p></li>
-<li><p><a href="https://github.com/urol-e5/deep-dive/blob/main/D-Apul/code/13.2.1-Apul-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase.md">knitted .md</a></p></li>
-</ul>
-<p>P. evermanni</p>
-<ul>
-<li><p><a href="https://github.com/urol-e5/deep-dive/blob/main/E-Peve/code/08.2-Peve-sRNAseq-ShortStack-31bp-fastp-merged.Rmd">code</a></p></li>
-<li><p><a href="https://github.com/urol-e5/deep-dive/blob/main/E-Peve/code/08.2-Peve-sRNAseq-ShortStack-31bp-fastp-merged.md">knitted .md</a></p></li>
-</ul>
-<p>P. tuahiniensis (identified here as P. meandrina, using P. meandrina genome)</p>
-<ul>
-<li><p><a href="https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/13.2.1-Pmea-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase.Rmd">code</a></p></li>
-<li><p><a href="https://github.com/urol-e5/deep-dive/blob/main/F-Pmea/code/13.2.1-Pmea-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase.md">knitted .md</a></p></li>
-</ul>
-<p><u><strong><code>deep-dive-expression</code> reruns with ShortStack 4.1.0:</strong></u></p>
-<p>A. pulchra (using A. pulchra genome)</p>
-<ul>
-<li><p><a href="https://github.com/urol-e5/deep-dive-expression/blob/main/D-Apul/code/11-Apul-sRNA-ShortStack_4.1.0-pulchra_genome.Rmd">code</a></p></li>
-<li><p><a href="https://github.com/urol-e5/deep-dive-expression/blob/main/D-Apul/code/11-Apul-sRNA-ShortStack_4.1.0-pulchra_genome.md">knitted .md</a></p></li>
-</ul>
-<p>P. evermanni</p>
-<ul>
-<li><p><a href="https://github.com/urol-e5/deep-dive-expression/blob/main/E-Peve/code/05-Peve-sRNA-ShortStack_4.1.0.Rmd">code</a></p></li>
-<li><p><a href="https://github.com/urol-e5/deep-dive-expression/blob/main/E-Peve/code/05-Peve-sRNA-ShortStack_4.1.0.md">knitted .md</a></p></li>
-</ul>
-<p>P. tuahiniensis (using P. meandrina genome)</p>
-<ul>
-<li><p><a href="https://github.com/urol-e5/deep-dive-expression/blob/main/F-Ptuh/code/05-Ptuh-sRNA-ShortStack_4.1.0.Rmd">code</a></p></li>
-<li><p><a href="https://github.com/urol-e5/deep-dive-expression/blob/main/F-Ptuh/code/05-Ptuh-sRNA-ShortStack_4.1.0.md">knitted .md</a></p></li>
-</ul>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<section id="comparing-original-srna-discovery-to-reruns" class="level3">
-<h3 class="anchored" data-anchor-id="comparing-original-srna-discovery-to-reruns">Comparing original sRNA discovery to reruns</h3>
-<table class="table">
-<caption>A. pulchra</caption>
-<colgroup>
-<col style="width: 26%">
-<col style="width: 27%">
-<col style="width: 25%">
-<col style="width: 18%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: right;">ShortStack 4.0.3<br>
-(A. millipora genome)</th>
-<th style="text-align: right;">ShortStack 4.1.0<br>
-(A. pulchra genome)</th>
-<th style="text-align: right;">𝚫</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Potential miRNA loci</td>
-<td style="text-align: right;">18895</td>
-<td style="text-align: right;">20789</td>
-<td style="text-align: right;">+1894 (10%)</td>
-</tr>
-<tr class="even">
-<td>Identified miRNA</td>
-<td style="text-align: right;">38</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: right;">+1 (2.6%)</td>
-</tr>
-<tr class="odd">
-<td>Database matches</td>
-<td style="text-align: right;">69</td>
-<td style="text-align: right;">131</td>
-<td style="text-align: right;">+62 (90%)</td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<caption>P. evermanni</caption>
-<colgroup>
-<col style="width: 29%">
-<col style="width: 24%">
-<col style="width: 24%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: right;">ShortStack 4.0.3</th>
-<th style="text-align: right;">ShortStack 4.1.0</th>
-<th style="text-align: right;">𝚫</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Potential miRNA loci</td>
-<td style="text-align: right;">16736</td>
-<td style="text-align: right;">16893</td>
-<td style="text-align: right;">+157 (0.9%)</td>
-</tr>
-<tr class="even">
-<td>Identified miRNA</td>
-<td style="text-align: right;">46</td>
-<td style="text-align: right;">45</td>
-<td style="text-align: right;">-1 (2.2%)</td>
-</tr>
-<tr class="odd">
-<td>Database matches</td>
-<td style="text-align: right;">37</td>
-<td style="text-align: right;">38</td>
-<td style="text-align: right;">+1 (2.7%)</td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<caption>P. tuahniensis</caption>
-<colgroup>
-<col style="width: 29%">
-<col style="width: 24%">
-<col style="width: 24%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: right;">ShortStack 4.0.3</th>
-<th style="text-align: right;">ShortStack 4.1.0</th>
-<th style="text-align: right;">𝚫</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Potential miRNA loci</td>
-<td style="text-align: right;">7220</td>
-<td style="text-align: right;">7189</td>
-<td style="text-align: right;">-31 (0.4%)</td>
-</tr>
-<tr class="even">
-<td>Identified miRNA</td>
-<td style="text-align: right;">37</td>
-<td style="text-align: right;">37</td>
-<td style="text-align: right;">none</td>
-</tr>
-<tr class="odd">
-<td>Database matches</td>
-<td style="text-align: right;">96</td>
-<td style="text-align: right;">117</td>
-<td style="text-align: right;">+21 (22%)</td>
-</tr>
-</tbody>
-</table>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Load necessary library</span></span>
-<span id="cb1-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(ggplot2)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.2.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(tidyr)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyr' was built under R version 4.2.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Create the data frame for all species</span></span>
-<span id="cb5-2">miRNA_data <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">data.frame</span>(</span>
-<span id="cb5-3">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">Species =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">rep</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Apul*"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Peve"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Ptuh"</span>), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">each =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>),</span>
-<span id="cb5-4">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">ShortStack_Version =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">rep</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"4.0.3"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"4.1.0"</span>), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">times =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>),</span>
-<span id="cb5-5">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">Potential_miRNA_loci =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">18895</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">20789</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">16736</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">16893</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">7220</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">7189</span>),</span>
-<span id="cb5-6">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">Identified_miRNA =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">38</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">39</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">46</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">45</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">37</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">37</span>),</span>
-<span id="cb5-7">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">Database_matches =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">69</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">131</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">37</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">38</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">96</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">117</span>)</span>
-<span id="cb5-8">)</span>
-<span id="cb5-9"></span>
-<span id="cb5-10"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Reshape the data to long format for facetting</span></span>
-<span id="cb5-11">miRNA_long <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pivot_longer</span>(miRNA_data,</span>
-<span id="cb5-12">                           <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">cols =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Potential_miRNA_loci"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Identified_miRNA"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Database_matches"</span>),</span>
-<span id="cb5-13">                           <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">names_to =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Metric"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">values_to =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Value"</span>)</span>
-<span id="cb5-14">miRNA_long<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Metric <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">factor</span>(miRNA_long<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Metric, </span>
-<span id="cb5-15">                            <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Potential_miRNA_loci"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Identified_miRNA"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Database_matches"</span>))</span>
-<span id="cb5-16"></span>
-<span id="cb5-17"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Facet-wrapped plot for all three metrics</span></span>
-<span id="cb5-18"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(miRNA_long, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> Species, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> Value, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">fill =</span> ShortStack_Version)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb5-19">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_bar</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">stat =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"identity"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">position =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"dodge"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb5-20">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span> Metric, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">scales =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"free_y"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span>  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Facet by Metric and allow different y-axis scales</span></span>
-<span id="cb5-21">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"miRNA Metrics by Species and ShortStack Version"</span>,</span>
-<span id="cb5-22">       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Species"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Value"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb5-23"> <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># scale_fill_manual(values = c("4.0.3" = "blue", "4.1.0" = "red")) +</span></span>
-<span id="cb5-24">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_10_22_shortstack_4.1.0_reruns_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>*Note, Apul also used a different genome for the v.4.1.0 run</p>
-</section>
-<section id="structural-visualizations" class="level3">
-<h3 class="anchored" data-anchor-id="structural-visualizations">Structural visualizations</h3>
-<p>ShortStack 4.1.0 also automatically generates visualizations of the hairpin structure of each identified miRNA, stored as a pdf. As an example, below is the <a href="https://github.com/urol-e5/deep-dive-expression/blob/main/D-Apul/output/11-Apul-sRNA-ShortStack_4.1.0-pulchra_genome/ShortStack_out/strucVis/Cluster_18728.ps.pdf">visualization for A. pulchra Cluster 18728</a>, which was annotated as a valid miRNA and database matched the well-studied miRNA miR-100.<br>
-</p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/Cluster_18728.ps.jpg" class="img-fluid"></p>
-
-
-
-</section>
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-axtell2013" class="csl-entry">
-Axtell, Michael J. 2013. <span>“ShortStack: Comprehensive Annotation and Quantification of Small RNA Genes.”</span> <em>RNA</em> 19 (6): 740–51. <a href="https://doi.org/10.1261/rna.035279.112">https://doi.org/10.1261/rna.035279.112</a>.
-</div>
-</div></section></div> ]]></description>
-  <category>E5-coral</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_10_22_shortstack_4.1.0_reruns.html</guid>
-  <pubDate>Tue, 19 Nov 2024 00:20:55 GMT</pubDate>
 </item>
 </channel>
 </rss>
