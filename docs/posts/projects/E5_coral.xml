@@ -10,7 +10,139 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Mon, 12 May 2025 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 13 May 2025 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning – Lit Review</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_05_13_timeseries_multiomic_ML_lit_review.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Now that I have a set of consistently well-predicted genes related to energetic state (see relevant posts <a href="../../../posts/projects/E5_coral/2025_05_08_timeseries_multiomic_ML_3.html">here</a> and <a href="../../../posts/projects/E5_coral/2025_05_12_timeseries_multiomic_ML_4.html">here</a>), I want to identify genes/predictive networks that may be of particular interest.</p>
+<p>To facilitate that I’ll do a literature search for each of the protein products of my gene set.</p>
+<p>Grab the 28 consistently well-predicted energetic state genes and their annotations:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(dplyr)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyr)</span>
+<span id="cb1-3"></span>
+<span id="cb1-4">highperf_FA <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/D-Apul/output/22.3-Apul-multiomic-machine-learning-byTP/energetic_state_highperf_FA.csv"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>X)</span>
+<span id="cb1-5"></span>
+<span id="cb1-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>(highperf_FA <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(gene, Protein.names))</span></code></pre></div>
+</div>
+<section id="fun_002433-methylglutaconyl-coa-hydratase-mitochondrial-3-mg-coa-hydratase" class="level2">
+<h2 class="anchored" data-anchor-id="fun_002433-methylglutaconyl-coa-hydratase-mitochondrial-3-mg-coa-hydratase">FUN_002433 – Methylglutaconyl-CoA hydratase, mitochondrial (3-MG-CoA hydratase)</h2>
+<p>In humans, 3-MG-CoA hydratase controls a step of breaking down the amino acid leucine.</p>
+<p>Its disregulation has been previously associated with a lncRNA (https://www.genecards.org/cgi-bin/carddisp.pl?gene=LINC00484)</p>
+</section>
+<section id="fun_004083-dipeptidyl-peptidase-2-dpp-ii" class="level2">
+<h2 class="anchored" data-anchor-id="fun_004083-dipeptidyl-peptidase-2-dpp-ii">FUN_004083 – Dipeptidyl peptidase 2 (DPP II)</h2>
+<p>In <em>Aptasia</em>, Dipeptidyl peptidase 2 proteins are less abundant in anemones colonized by symbionts (Sproles et al.&nbsp;2019)</p>
+<p>Various ncRNAs have been implicated in the regulation of dipeptidyl peptidase genes (though not DPP2 specifically)</p>
+</section>
+<section id="fun_001160" class="level2">
+<h2 class="anchored" data-anchor-id="fun_001160">FUN_001160 –</h2>
+</section>
+<section id="fun_001326" class="level2">
+<h2 class="anchored" data-anchor-id="fun_001326">FUN_001326 –</h2>
+</section>
+<section id="fun_001396" class="level2">
+<h2 class="anchored" data-anchor-id="fun_001396">FUN_001396</h2>
+</section>
+<section id="fun_007022-cryptochrome-1" class="level2">
+<h2 class="anchored" data-anchor-id="fun_007022-cryptochrome-1">FUN_007022 – Cryptochrome-1</h2>
+<p>In vertebrates and insects, cryptochromes are involved in regulation fo the circadian rhythm.</p>
+<p>In corals, cryptochromes are likely involved in photoreception. For example, in <em>Acropora millepora</em>, cryptochromes have been reported to be preferentially expressed in light, including some types showing differential expression based on lunar cycle, suggesting a potential role in behavior synchronization, such as mass spawning (Levy et al.&nbsp;2007).</p>
+<p>In plants, cryptochrome expression is linked to expression of miRNA and lncRNA. For example, in the algae <em>Saccharina japonica</em>, expression of a type of cryptochrome is regulated by an miRNA and several lncRNA (Yang et al.&nbsp;2020) (the implicated miRNA does not match Cluster_17173)</p>
+</section>
+<section id="fun_008296" class="level2">
+<h2 class="anchored" data-anchor-id="fun_008296">FUN_008296</h2>
+</section>
+<section id="fun_008934-exostosin-1-multiple-exostoses-protein-1-homolog" class="level2">
+<h2 class="anchored" data-anchor-id="fun_008934-exostosin-1-multiple-exostoses-protein-1-homolog">FUN_008934 – Exostosin-1 (Multiple exostoses protein 1 homolog)</h2>
+</section>
+<section id="fun_011908-fun_041721" class="level2">
+<h2 class="anchored" data-anchor-id="fun_011908-fun_041721">FUN_011908 &amp; FUN_041721</h2>
+</section>
+<section id="fun_012474-fun_034872-lipase-zk262.3" class="level2">
+<h2 class="anchored" data-anchor-id="fun_012474-fun_034872-lipase-zk262.3">FUN_012474 &amp; FUN_034872 – Lipase ZK262.3</h2>
+<p>A lipase identified in <em>C elegans</em>, which putatively enables hydrolase activity as part of lipid catabolic and metabolic processes.</p>
+</section>
+<section id="fun_015434" class="level2">
+<h2 class="anchored" data-anchor-id="fun_015434">FUN_015434</h2>
+</section>
+<section id="fun_023367" class="level2">
+<h2 class="anchored" data-anchor-id="fun_023367">FUN_023367</h2>
+</section>
+<section id="fun_023596" class="level2">
+<h2 class="anchored" data-anchor-id="fun_023596">FUN_023596</h2>
+</section>
+<section id="fun_025232-fun_039293" class="level2">
+<h2 class="anchored" data-anchor-id="fun_025232-fun_039293">FUN_025232 &amp; FUN_039293</h2>
+</section>
+<section id="fun_027948" class="level2">
+<h2 class="anchored" data-anchor-id="fun_027948">FUN_027948</h2>
+</section>
+<section id="fun_028200-26s-proteasome-regulatory-subunit-6b" class="level2">
+<h2 class="anchored" data-anchor-id="fun_028200-26s-proteasome-regulatory-subunit-6b">FUN_028200 – 26S proteasome regulatory subunit 6B</h2>
+<p>26S proteasome regulatory subunit 6B is part of the multiprotein 26S proteasome complex, which removes misfolded or damaged proteins.</p>
+<p>In Aptasia-associated symbionts, 26S proteasome regulatory subunit 6B is upregulated in response to both heat and salinity stress (and their interaction), as are many other types of proteasome subunits (Giovagnoli 2023)</p>
+</section>
+<section id="fun_032220" class="level2">
+<h2 class="anchored" data-anchor-id="fun_032220">FUN_032220</h2>
+</section>
+<section id="fun_035467-fun_035468" class="level2">
+<h2 class="anchored" data-anchor-id="fun_035467-fun_035468">FUN_035467 &amp; FUN_035468</h2>
+</section>
+<section id="fun_037573" class="level2">
+<h2 class="anchored" data-anchor-id="fun_037573">FUN_037573</h2>
+</section>
+<section id="fun_040784" class="level2">
+<h2 class="anchored" data-anchor-id="fun_040784">FUN_040784</h2>
+</section>
+<section id="fun_041710-propionyl-coa-carboxylase-alpha-chain" class="level2">
+<h2 class="anchored" data-anchor-id="fun_041710-propionyl-coa-carboxylase-alpha-chain">FUN_041710 – Propionyl-CoA carboxylase alpha chain</h2>
+<p>In the teleost fish <em>Paralichthys olivaceus</em>, Propionyl-CoA carboxylase alpha chain gene expression is putatively regulated via a network of miRNA and lncRNA that is differentially expressed based on fertility status (Mang et al.&nbsp;2021)</p>
+</section>
+<section id="fun_042949-fun_042950-tnf-receptor-associated-factor-2-traf2" class="level2">
+<h2 class="anchored" data-anchor-id="fun_042949-fun_042950-tnf-receptor-associated-factor-2-traf2">FUN_042949 &amp; FUN_042950 – TNF receptor-associated factor 2 (TRAF2)</h2>
+<p>In general, tumor necrosis factors (TNFs) play a role in apoptosis, and are associated with immune response. TRAF2, specifically, suppresses apoptosis and necroptosis (Petersen et al.&nbsp;2015) In humans, dysregulation of TNFs and TRAFs is implicated in several cancer types. TRAF2 has also been implicated as part of an immune regulation network that is modulated by both miRNA and lncRNA (Ebrahimi &amp; Golestani 2021).</p>
+<p>In <em>Acropora hyacinthus</em>, TNF receptor-associated factor 2 is downregulated in response to bleaching (Barshis et al., 2013).</p>
+</section>
+<section id="fun_042982" class="level2">
+<h2 class="anchored" data-anchor-id="fun_042982">FUN_042982</h2>
+
+
+</section>
+
+ ]]></description>
+  <category>E5-coral</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_05_13_timeseries_multiomic_ML_lit_review.html</guid>
+  <pubDate>Tue, 13 May 2025 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning – Part 4</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -41896,140 +42028,6 @@ font-style: italic;">## `geom_smooth()` using formula = 'y ~ x'</span></span></c
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_02_07_deepdive_methyl_machinery.html</guid>
   <pubDate>Fri, 07 Feb 2025 08:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Deep-dive Expression Project Planning</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_01_30_project_planning.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Now that we’ve completed a lot of the foundational work for the E5 deep-dive expression project (e.g.&nbsp;sRNA &amp; lncRNA ID, RNA and sRNA expression summaries, preliminary target prediction and coexpression work, etc.), I want to clarify our focus for project completion.</p>
-<p><a href="https://github.com/urol-e5/deep-dive-expression">deep-dive-expression repo</a><br>
-<a href="https://docs.google.com/document/d/1vlWJiuaxKuh6q6XOBVBrGsZkmf6R_JpJMO6wDIGzdx0/edit?tab=t.0#heading=h.gxujq2yyuafv">manuscript</a><br>
-<a href="https://docs.google.com/document/d/1Fdd6xC9tJmAf9Iydcf3er-YwabKmwK3jGVw4ppfxfhM/edit?tab=t.0#heading=h.5xpib71go7rb">project meeting notes</a><br>
-<a href="https://docs.google.com/document/d/14WayiHQLe3_5_aS_d4dEZj5mt1DuHvV21JpR4a96uhg/edit?tab=t.0">hypotheses brainstorming document</a></p>
-<section id="hypotheses" class="level3">
-<h3 class="anchored" data-anchor-id="hypotheses"><strong>Hypotheses:</strong></h3>
-<section id="gene-expression-and-srna" class="level4">
-<h4 class="anchored" data-anchor-id="gene-expression-and-srna"><strong>Gene expression and sRNA</strong></h4>
-<ul>
-<li><p>sRNA that bind to genes and are inversely correlated with expression - regulate those genes</p></li>
-<li><p>There will be a suite of genes that a sRNA regulates that have similar function</p></li>
-<li><p>Some lncRNAs that act as sponges (bind) sRNA will impact gene expression sRNA regulate</p></li>
-<li><p>A subset of lncRNAs will regulate mRNA as evident by correlation</p></li>
-<li><p>some lncRNAs may act as miRNA precursors – expect they will contain the full pre-miRNA</p></li>
-<li><p>Lack of DNA methylation in a given will result in increased alternative isoforms</p></li>
-</ul>
-</section>
-<section id="gene-expression-and-dna-methylation" class="level4">
-<h4 class="anchored" data-anchor-id="gene-expression-and-dna-methylation"><strong>Gene expression and DNA methylation</strong></h4>
-<ul>
-<li><p>Housekeeping genes: positive relationship between expression and GBM</p></li>
-<li><p>plastic/environmentally responsive genes: negative relationship between expression and GBM</p></li>
-</ul>
-</section>
-<section id="srna-and-dna-methylation" class="level4">
-<h4 class="anchored" data-anchor-id="srna-and-dna-methylation"><strong>sRNA and DNA methylation</strong></h4>
-<ul>
-<li><p>miRNAs modulate DNA methylation by binding to the mRNA encoding methylation machinery (e.g., DNMTs)</p>
-<ul>
-<li>For miRNA that target methylation machinery, expect negative relationship miRNA expression and global methylation</li>
-</ul></li>
-<li><p>siRNA modulate DNA methylation through RNA-directed DNA methylation by binding to genomic region and recruiting protein machinery to direct methylation</p>
-<ul>
-<li>Expect positive relationship between siRNA binding in a genomic region and methylation of that region</li>
-</ul></li>
-<li><p>siRNAs could also play a role in guiding DNA methylation to silence transposable elements</p>
-<ul>
-<li>Expect siRNA binding to TEs</li>
-</ul></li>
-</ul>
-</section>
-<section id="gene-expression-and-histones" class="level4">
-<h4 class="anchored" data-anchor-id="gene-expression-and-histones"><strong>Gene expression and histones</strong></h4>
-</section>
-</section>
-<section id="data" class="level3">
-<h3 class="anchored" data-anchor-id="data"><strong>Data:</strong></h3>
-<p><u>RNA sequencing</u></p>
-<ul>
-<li><p>gene expression</p></li>
-<li><p>lncRNA ID &amp; expression</p></li>
-</ul>
-<p><u>sRNA sequencing</u></p>
-<ul>
-<li><p>miRNA ID &amp; expression</p></li>
-<li><p>siRNA ID &amp; expression</p></li>
-<li><p>piRNA ID &amp; expression (if desired)</p></li>
-</ul>
-<p><u>WGBS (in progress)</u></p>
-<ul>
-<li>DNA methylation mapping</li>
-</ul>
-<p>Some H4 data</p>
-</section>
-<section id="completed-work" class="level3">
-<h3 class="anchored" data-anchor-id="completed-work"><strong>Completed work:</strong></h3>
-<p>The below summary is for A.pulchra only.</p>
-<p>All data processing for RNAseq and sRNAseq (including filtering, trimming, lncRNA ID, sRNA ID, summarizing to count matrices, and functional annotation) has been completed.</p>
-<p><strong>genes-ncRNA:</strong></p>
-<p>Two methods of miRNA-mRNA target prediction (miRanda and RNAhybrid) have been performed, and the miRanda results have been used in combination with Pearson’s Correlation to generate coexpression/interaction network. This interaction network has also been functionally annotated.</p>
-<p><strong>genes-WGBS:</strong></p>
-<p>none</p>
-<p><strong>ncRNA-WGBS:</strong></p>
-<p>I’ve looked for miRNA binding to genes that encode DNA methylation machinery (none found).</p>
-<p><strong>other:</strong></p>
-<p>Zoe has also run Orthofinder to facilitate cross-species comparisons</p>
-</section>
-<section id="goalsto-do-general" class="level3">
-<h3 class="anchored" data-anchor-id="goalsto-do-general"><strong>Goals/To-Do (general):</strong></h3>
-<p><em>Ensure I’m using the SMART framework (SMART: Specific, Measurable, Attainable, Relevant, and Time-bound)</em></p>
-<p>Some goals are formulated to directly address one of the hypotheses listed above, and (for now) should be performed on A.pulchra data only.</p>
-<ol type="1">
-<li><p><em>“sRNA that bind to genes and are inversely correlated with expression - regulate those genes”</em><br>
-Use gene-miRNA interaction network to create some basic figures summarizing nature and extent of interactions (e.g.&nbsp;how many genes with how many miRNAs, how many genes does a single RNA usually interact with and vice versa, how many positive vs.&nbsp;negative relationships are there)</p></li>
-<li><p><em>“There will be a suite of genes that a sRNA regulates that have similar function”</em><br>
-Use functional annotation of the gene-miRNA interaction network to identify putative function of each miRNA based on function of associated genes.</p></li>
-<li><p>For predicted miRNA targets, compare functional composition of targets to functional composition of full reference.<br>
-(Basically, I want to see whether miRNAs preferentially regulate any functional classes).</p></li>
-<li><p>Formally name each miRNA, matching the names assigned during deep-dive when possible.</p></li>
-<li><p>If an miRNA is formally described (e.g.&nbsp;mir-100), compare/contrast its described function with the putative function determined during (2)</p></li>
-<li><p><em>“Some lncRNAs that act as sponges (bind) sRNA will impact gene expression sRNA regulate”<br>
-</em>Use miRanda to predict miRNA-lncRNA binding and evaluate correlated expression of putative binding pairs to generate miRNA-lncRNA interaction network.</p></li>
-<li><p><em>“A subset of lncRNAs will regulate mRNA as evident by correlation”</em><br>
-Evaluate correlated expression of lncRNA and mRNA.</p></li>
-<li><p><em>“some lncRNAs may act as miRNA precursors – expect they will contain the full pre-miRNA”</em><br>
-Use BLAST to search for lncRNAs that fully contain pre-miRNA sequences.</p></li>
-<li><p>Using simulated WGBS data, prep pipeline to summarize methylation (whole genome methylation levels, GBM/distribution across genome features, etc.)</p></li>
-<li><p><em>“Housekeeping genes: positive relationship between expression and GBM”</em> and <em>“plastic/environmentally responsive genes: negative relationship between expression and GBM”</em><br>
-Using simulated WGBS data, prep pipeline to delimit genes by function (housekeeping vs.&nbsp;responsive) evaluate relationship of both classes with gene body methylation.</p></li>
-<li><p><em>“siRNA modulate DNA methylation through RNA-directed DNA methylation by binding to genomic region and recruiting protein machinery to direct methylation”</em><br>
-Use miRanda/RNAhybrid to predict siRNA binding to the genome. Using simulated WGBS data, prep pipeline to test whether siRNA binding is significantly associated with methylation</p></li>
-<li><p>siRNAs could also play a role in guiding DNA methylation to silence transposable elements</p>
-<p>Use miRanda/RNAhybrid to predict siRNA binding to TEs. Evaluate correlated expression of siRNAs and TEs (expecting a negative relationship).</p></li>
-</ol>
-<p>Multiomics?</p>
-<p>At some point we’ll need to a) replicate these analyses on Peve and Ptuh, and b) run some cross species comparisons</p>
-</section>
-<section id="goalsplan-for-friday-131-meeting" class="level3">
-<h3 class="anchored" data-anchor-id="goalsplan-for-friday-131-meeting"><strong>Goals/Plan for Friday (1/31) meeting:</strong></h3>
-<ul>
-<li><p>Clarify involvement/role of E5 molecular group members – ensure everyone who is/would like to be involved in deep-dive expression manuscript has something to be working on. Assign out goals/tasks if people</p></li>
-<li><p>Define the overarching lens/focus of the manuscript</p></li>
-<li><p>Once tasks are assigned to individuals and a rough timeline is selected, add tasks as Github issues</p></li>
-<li><p>Add current progress to manuscript?</p></li>
-</ul>
-
-
-</section>
-
- ]]></description>
-  <category>E5-coral</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_01_30_project_planning.html</guid>
-  <pubDate>Thu, 30 Jan 2025 08:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

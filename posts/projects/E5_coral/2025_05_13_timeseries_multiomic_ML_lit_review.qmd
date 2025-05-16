@@ -1,0 +1,104 @@
+---
+title: "Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning -- Lit Review"
+author: "Kathleen Durkin"
+date: "2025-05-13"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: FALSE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Now that I have a set of consistently well-predicted genes related to energetic state (see relevant posts [here](./2025_05_08_timeseries_multiomic_ML_3.qmd) and [here](./2025_05_12_timeseries_multiomic_ML_4.qmd)), I want to identify genes/predictive networks that may be of particular interest.
+
+To facilitate that I'll do a literature search for each of the protein products of my gene set.
+
+Grab the 28 consistently well-predicted energetic state genes and their annotations:
+```{r}
+library(dplyr)
+library(tidyr)
+
+highperf_FA <- read.csv("https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/D-Apul/output/22.3-Apul-multiomic-machine-learning-byTP/energetic_state_highperf_FA.csv") %>% select(-X)
+
+print(highperf_FA %>% select(gene, Protein.names))
+```
+
+## FUN_002433 -- Methylglutaconyl-CoA hydratase, mitochondrial (3-MG-CoA hydratase)
+
+In humans, 3-MG-CoA hydratase controls a step of breaking down the amino acid leucine. 
+
+Its disregulation has been previously associated with a lncRNA (https://www.genecards.org/cgi-bin/carddisp.pl?gene=LINC00484)
+
+## FUN_004083 -- Dipeptidyl peptidase 2 (DPP II)
+
+In *Aptasia*, Dipeptidyl peptidase 2 proteins are less abundant in anemones colonized by symbionts (Sproles et al. 2019)
+
+Various ncRNAs have been implicated in the regulation of dipeptidyl peptidase genes (though not DPP2 specifically)
+
+## FUN_001160 -- 
+
+## FUN_001326 -- 
+
+## FUN_001396
+
+
+## FUN_007022 -- Cryptochrome-1
+
+In vertebrates and insects, cryptochromes are involved in regulation fo the circadian rhythm. 
+
+In corals, cryptochromes are likely involved in photoreception. For example, in *Acropora millepora*, cryptochromes have been reported to be preferentially expressed in light, including some types showing differential expression based on lunar cycle, suggesting a potential role in behavior synchronization, such as mass spawning (Levy et al. 2007). 
+
+In plants, cryptochrome expression is linked to expression of miRNA and lncRNA. For example, in the algae *Saccharina japonica*, expression of a type of cryptochrome is regulated by an miRNA and several lncRNA (Yang et al. 2020) (the implicated miRNA does not match Cluster_17173)
+
+## FUN_008296 
+
+## FUN_008934 -- Exostosin-1 (Multiple exostoses protein 1 homolog)
+
+
+
+## FUN_011908 & FUN_041721
+
+## FUN_012474 & FUN_034872 -- Lipase ZK262.3
+
+A lipase identified in *C elegans*, which putatively enables hydrolase activity as part of lipid catabolic and metabolic processes.
+
+## FUN_015434 
+
+## FUN_023367 
+
+## FUN_023596 
+
+## FUN_025232 & FUN_039293
+
+## FUN_027948 
+
+## FUN_028200 -- 26S proteasome regulatory subunit 6B
+
+26S proteasome regulatory subunit 6B is part of the multiprotein 26S proteasome complex, which removes misfolded or damaged proteins.
+
+In Aptasia-associated symbionts, 26S proteasome regulatory subunit 6B is upregulated in response to both heat and salinity stress (and their interaction), as are many other types of proteasome subunits (Giovagnoli 2023)
+
+## FUN_032220 
+
+## FUN_035467 & FUN_035468 
+
+## FUN_037573 
+
+## FUN_040784 
+
+## FUN_041710 -- Propionyl-CoA carboxylase alpha chain
+
+In the teleost fish *Paralichthys olivaceus*, Propionyl-CoA carboxylase alpha chain gene expression is putatively regulated via a network of miRNA and lncRNA that is differentially expressed based on fertility status (Mang et al. 2021)
+
+## FUN_042949 & FUN_042950 -- TNF receptor-associated factor 2 (TRAF2)
+
+In general, tumor necrosis factors (TNFs) play a role in apoptosis, and are associated with immune response. TRAF2, specifically, suppresses apoptosis and necroptosis (Petersen et al. 2015) In humans, dysregulation of TNFs and TRAFs is implicated in several cancer types. TRAF2 has also been implicated as part of an immune regulation network that is modulated by both miRNA and lncRNA (Ebrahimi & Golestani 2021).
+
+In *Acropora hyacinthus*, TNF receptor-associated factor 2 is downregulated in response to bleaching (Barshis et al., 2013).
+
+
+
+## FUN_042982
