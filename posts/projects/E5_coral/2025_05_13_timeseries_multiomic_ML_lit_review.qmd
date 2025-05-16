@@ -7,7 +7,7 @@ format:
   html:
     toc: true
 execute: 
-  eval: FALSE
+  eval: TRUE
 engine: knitr
 bibliography: ../../../references.bib
 ---
@@ -17,13 +17,15 @@ Now that I have a set of consistently well-predicted genes related to energetic 
 To facilitate that I'll do a literature search for each of the protein products of my gene set.
 
 Grab the 28 consistently well-predicted energetic state genes and their annotations:
-```{r}
+```{r, warning=FALSE}
 library(dplyr)
 library(tidyr)
+library(DT)
 
 highperf_FA <- read.csv("https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/D-Apul/output/22.3-Apul-multiomic-machine-learning-byTP/energetic_state_highperf_FA.csv") %>% select(-X)
 
-print(highperf_FA %>% select(gene, Protein.names))
+# print(highperf_FA %>% select(gene, Protein.names))
+datatable(highperf_FA %>% select(gene, Protein.names), options = list(scrollX = TRUE))
 ```
 
 ## FUN_002433 -- Methylglutaconyl-CoA hydratase, mitochondrial (3-MG-CoA hydratase)
