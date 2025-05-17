@@ -24,30 +24,64 @@ library(DT)
 
 highperf_FA <- read.csv("https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/D-Apul/output/22.3-Apul-multiomic-machine-learning-byTP/energetic_state_highperf_FA.csv") %>% select(-X)
 
-# print(highperf_FA %>% select(gene, Protein.names))
 datatable(highperf_FA %>% select(gene, Protein.names), options = list(scrollX = TRUE))
 ```
 
-## FUN_002433 -- Methylglutaconyl-CoA hydratase, mitochondrial (3-MG-CoA hydratase)
+Here’s a concise summary of the functions of the listed genes, focusing on their roles in energy production, utilization, and storage (AI-assisted):
 
-In humans, 3-MG-CoA hydratase controls a step of breaking down the amino acid leucine. 
+---
+
+### 1. **FUN_002433 – Methylglutaconyl-CoA Hydratase (AUH)**
+
+* **Function:** Catalyzes a step in leucine degradation, converting 3-methylglutaconyl-CoA to 3-hydroxy-3-methylglutaryl-CoA.
+* **Energy Role:** Essential for mitochondrial energy metabolism; deficiencies can lead to accumulation of metabolic intermediates and impaired mitochondrial function. ([Wikipedia][1])
 
 Its disregulation has been previously associated with a lncRNA (https://www.genecards.org/cgi-bin/carddisp.pl?gene=LINC00484)
+---
 
-## FUN_004083 -- Dipeptidyl peptidase 2 (DPP II)
+### 2. **FUN_004083 – Dipeptidyl Peptidase II (DPP II)**
+
+* **Function:** Removes N-terminal dipeptides from polypeptides.
+* **Energy Role:** Involved in protein turnover, indirectly influencing energy homeostasis. ([ScienceDirect][2])
 
 In *Aptasia*, Dipeptidyl peptidase 2 proteins are less abundant in anemones colonized by symbionts (Sproles et al. 2019)
 
 Various ncRNAs have been implicated in the regulation of dipeptidyl peptidase genes (though not DPP2 specifically)
 
-## FUN_001160 -- 
+---
 
-## FUN_001326 -- 
+### 3. **FUN_001160 – Carnitine O-palmitoyltransferase 1A (CPT1A)**
 
-## FUN_001396
+* **Function:** Facilitates the transport of long-chain fatty acids into mitochondria for β-oxidation.
+* **Energy Role:** Crucial for fatty acid metabolism and energy production, especially during fasting. ([UniProt][3])
 
+In aposymbiotic morphotypes of the coral *Fimbriaphyllia paradivisa*, CPT1A was rhythmically transcribed over 12-hour day/night cycles, suggesting its expression is influenced by symbiont interactions and daily light cycles (Aslett 2024) (https://reefranch.co.uk/wp-content/uploads/2024/11/Coral-Rhythms-Part-II.pdf)
 
-## FUN_007022 -- Cryptochrome-1
+---
+
+### 4. **FUN_001326 – Lysosomal Acid Lipase (LAL)**
+
+* **Function:** Hydrolyzes cholesteryl esters and triglycerides in lysosomes.
+* **Energy Role:** Releases free cholesterol and fatty acids for cellular energy use and storage. ([PMC][4])
+
+LALs have also been identified as in the tentacle transcriptomes of several hydrozoan and scyphozoan jellyfish, as well as in the venom glands of snakes, though their function in venom toxicity remains unclear (Doonan et al. 2019, Ponce et al. 2016)
+
+---
+
+### 5. **FUN_001396 – Uncoupling Protein 2 (UCP2)**
+
+* **Function:** Mediates proton leak across the mitochondrial inner membrane, reducing membrane potential.
+* **Energy Role:** Regulates energy efficiency and thermogenesis, impacting glucose metabolism. ([NCBI][5])
+
+A mitochondrial uncoupling protein that functions in decreasing mitochondrial membrane potential and ROS production. Participates in the Krebs cycle.
+
+Upregulated in *Montastraea cavernosa* in the healthy tissues of colonies afflicted by stony coral tissue loss disease (SCTLD) (Beavers et al. 2024)
+---
+
+### 6. **FUN_007022 – Cryptochrome-1 (CRY1)**
+
+* **Function:** Core component of the circadian clock.
+* **Energy Role:** Modulates metabolic pathways in a time-dependent manner, influencing energy metabolism. ([PMC][6])
 
 In vertebrates and insects, cryptochromes are involved in regulation fo the circadian rhythm. 
 
@@ -55,52 +89,183 @@ In corals, cryptochromes are likely involved in photoreception. For example, in 
 
 In plants, cryptochrome expression is linked to expression of miRNA and lncRNA. For example, in the algae *Saccharina japonica*, expression of a type of cryptochrome is regulated by an miRNA and several lncRNA (Yang et al. 2020) (the implicated miRNA does not match Cluster_17173)
 
-## FUN_008296 
+---
 
-## FUN_008934 -- Exostosin-1 (Multiple exostoses protein 1 homolog)
+### 7. **FUN_008296 – E3 Ubiquitin-Protein Ligase Synoviolin (SYVN1)**
 
+* **Function:** Tags proteins for degradation via the ubiquitin-proteasome system.
+* **Energy Role:** Regulates mitochondrial biogenesis and energy metabolism through modulation of PGC-1β. ([PMC][7])
 
+---
 
-## FUN_011908 & FUN_041721
+### 8. **FUN_008934 – Exostosin-1 (EXT1)**
 
-## FUN_012474 & FUN_034872 -- Lipase ZK262.3
+* **Function:** Involved in heparan sulfate biosynthesis.
+* **Energy Role:** Influences glycosylation processes that can affect energy metabolism. ([PMC][8], [BioRxiv][9])
 
-A lipase identified in *C elegans*, which putatively enables hydrolase activity as part of lipid catabolic and metabolic processes.
+---
 
-## FUN_015434 
+### 9. **FUN_011908 – Platelet-Activating Factor Acetylhydrolase IB Subunit Alpha2 (PAFAH1B2)**
 
-## FUN_023367 
+* **Function:** Hydrolyzes platelet-activating factor, modulating inflammatory responses.
+* **Energy Role:** May influence lipid signaling pathways related to energy metabolism.&#x20;
 
-## FUN_023596 
+---
 
-## FUN_025232 & FUN_039293
+### 10. **FUN_012474 – Lipase ZK262.3**
 
-## FUN_027948 
+* **Function:** Presumed to hydrolyze triglycerides into free fatty acids and glycerol.
+* **Energy Role:** Facilitates mobilization of stored fats for energy production. ([NCBI][10])
 
-## FUN_028200 -- 26S proteasome regulatory subunit 6B
+---
+
+### 11. **FUN_015434 – Fructose-Bisphosphate Aldolase C (ALDOC)**
+
+* **Function:** Catalyzes a key step in glycolysis, splitting fructose 1,6-bisphosphate into two three-carbon sugars.
+* **Energy Role:** Essential for glucose metabolism and energy production in the brain. ([Wikipedia][11], [Wikipedia][12])
+
+---
+
+### 12. **FUN_023367 – Hexokinase-4 (Glucokinase)**
+
+* **Function:** Phosphorylates glucose to glucose-6-phosphate, the first step in glycolysis.
+* **Energy Role:** Acts as a glucose sensor in the liver and pancreas, regulating glucose utilization and storage.&#x20;
+
+---
+
+### 13. **FUN_023596 – Suppressor of Tumorigenicity 14 Protein (Matriptase)**
+
+* **Function:** Serine protease involved in epithelial cell regulation.
+* **Energy Role:** May influence energy metabolism through its role in cell proliferation and differentiation. ([PMC][13])
+
+---
+
+### 14. **FUN_025232 – Glyceraldehyde-3-Phosphate Dehydrogenase (GAPDH)**
+
+* **Function:** Catalyzes a step in glycolysis, converting glyceraldehyde-3-phosphate to 1,3-bisphosphoglycerate.
+* **Energy Role:** Central to glycolytic energy production; also involved in other cellular processes. ([Wikipedia][11])
+
+---
+
+### 15. **FUN_027948 – PI-PLC X Domain-Containing Protein 3 (PLCXD3)**
+
+* **Function:** Predicted to have phospholipase activity, involved in lipid signaling.
+* **Energy Role:** May participate in lipid metabolism and signal transduction pathways affecting energy homeostasis. ([NCBI][14])
+
+---
+
+### 16. **FUN_028200 – 26S Proteasome Regulatory Subunit 6B (RPT3)**
+
+* **Function:** Part of the 26S proteasome complex, involved in protein degradation.
+* **Energy Role:** Regulates protein turnover, influencing energy metabolism and cellular homeostasis.
 
 26S proteasome regulatory subunit 6B is part of the multiprotein 26S proteasome complex, which removes misfolded or damaged proteins.
 
 In Aptasia-associated symbionts, 26S proteasome regulatory subunit 6B is upregulated in response to both heat and salinity stress (and their interaction), as are many other types of proteasome subunits (Giovagnoli 2023)
 
-## FUN_032220 
+---
 
-## FUN_035467 & FUN_035468 
+### 17. **FUN_032220 – Dihydrolipoyllysine-Residue Acetyltransferase (PDCE2)**
 
-## FUN_037573 
+* **Function:** Core component of the pyruvate dehydrogenase complex, converting pyruvate to acetyl-CoA.
+* **Energy Role:** Links glycolysis to the citric acid cycle, central to aerobic energy production.
 
-## FUN_040784 
+Differentially expressed in corals under heat stress (e.g., Zhang et al. 2024, Sun et al. 2025)
 
-## FUN_041710 -- Propionyl-CoA carboxylase alpha chain
+Putatively targeted by miRNA in plants (http://isyslab.info/OPP-ncRBASE/search/mirna/31056)
+
+---
+
+### 18. **FUN_034872 – Lipase ZK262.3**
+
+* **Function:** Similar to FUN_012474; presumed to hydrolyze triglycerides.
+* **Energy Role:** Involved in lipid mobilization for energy production.&#x20;
+
+---
+
+### 19 & 20. **FUN_035467 & FUN_035468 – Phosphoenolpyruvate Carboxykinase \[GTP], Mitochondrial (PEPCK-M)**
+
+* **Function:** A rate-limiting enzyme that catalyzes the conversion of oxaloacetate to phosphoenolpyruvate in gluconeogenesis.
+* **Energy Role:** Key enzyme in glucose production from non-carbohydrate sources, maintaining blood glucose levels during fasting.
+
+In corals, the PEPCK pathway has been identified as a potential carbon fixation pathway within coral hosts to supplement other CO2 concentrating mechanisms, used to accumulate dissolved organic carbon in service of their symbionts. (Zhang et al., 2024)
+
+PEPCK is also differentially expressed under heat stress and bleaching (e.g., Kenkel et al. 2013, Lee et al. 2018, Kenkel et al. 2014), which suggests its involvement in compensating for loss of symbiont-derived nutrients.
+
+Multiple classes of ncRNA have recently been identified as putative regulators of glucose metabolism, in which phosphoenolpyruvate carboxykinase plays a key role (e.g., Lai et al., 2020)
+
+---
+
+### 21. **FUN_037573 – 26S Proteasome Regulatory Subunit 6A-B (RPT5-B)**
+
+* **Function:** Component of the 26S proteasome, involved in ATP-dependent protein degradation.
+* **Energy Role:** Maintains protein quality control, indirectly affecting energy metabolism.
+
+---
+
+### 22. **FUN_039293 – Glyceraldehyde-3-Phosphate Dehydrogenase (GAPDH)**
+
+* **Function:** Same as FUN_025232; involved in glycolysis.
+* **Energy Role:** Central to energy production through glycolysis.&#x20;
+
+Differentially expressed in a jellyfish under short term temperature exposure (Gamero-Mora et al. 2024)
+
+---
+
+### 23. **FUN_040784 – Acyl-Coenzyme A Oxidase 2, Peroxisomal (AOX2)**
+
+* **Function:** Catalyzes the first step in the peroxisomal β-oxidation of long-chain fatty acids.
+* **Energy Role:** Contributes to lipid metabolism and energy production.
+
+---
+
+### 24. **FUN_041710 – Propionyl-CoA Carboxylase Alpha Chain**
+
+* **Function:** Converts propionyl-CoA to methylmalonyl-CoA, a step in the metabolism of certain amino acids and fatty acids.
+* **Energy Role:** Facilitates the entry of odd-chain fatty acids into the citric acid cycle for energy production.
 
 In the teleost fish *Paralichthys olivaceus*, Propionyl-CoA carboxylase alpha chain gene expression is putatively regulated via a network of miRNA and lncRNA that is differentially expressed based on fertility status (Mang et al. 2021)
 
-## FUN_042949 & FUN_042950 -- TNF receptor-associated factor 2 (TRAF2)
+---
+
+### 25. **FUN_041721 – Platelet-Activating Factor Acetylhydrolase IB Subunit Alpha2**
+
+* **Function:** Same as FUN_011908; hydrolyzes platelet-activating factor.
+* **Energy Role:** Involved in lipid signaling pathways related
+
+---
+
+### 26 & 27. **FUN_042950 – TNF Receptor-Associated Factor 2 (TRAF2)**
+* **Function**: E3 ubiquitin ligase and adaptor protein involved in TNF receptor signaling, activating NF-κB and MAPK pathways, crucial for inflammation, cell survival, and apoptosis.
+* **Energy Role**: Regulates cellular stress responses, which can influence mitochondrial function, cell metabolism, and energy balance, especially under inflammatory or oxidative stress.
+([NCBI Gene: TRAF2][15])
 
 In general, tumor necrosis factors (TNFs) play a role in apoptosis, and are associated with immune response. TRAF2, specifically, suppresses apoptosis and necroptosis (Petersen et al. 2015) In humans, dysregulation of TNFs and TRAFs is implicated in several cancer types. TRAF2 has also been implicated as part of an immune regulation network that is modulated by both miRNA and lncRNA (Ebrahimi & Golestani 2021).
 
 In *Acropora hyacinthus*, TNF receptor-associated factor 2 is downregulated in response to bleaching (Barshis et al., 2013).
 
+---
+
+### 28. **FUN_042982 – Alkylglycerol Monooxygenase (AGMO)**
+* **Function**: Catalyzes the cleavage of ether lipids such as alkylglycerols, using tetrahydrobiopterin as a cofactor. Plays a role in lipid remodeling and degradation.
+* **Energy Role**: Participates in lipid catabolism, indirectly affecting energy storage, membrane composition, and lipid-based signaling involved in metabolic regulation.
+([UniProt: AGMO][16])
 
 
-## FUN_042982
+[1]: https://en.wikipedia.org/wiki/Methylglutaconyl-CoA_hydratase?utm_source=chatgpt.com "Methylglutaconyl-CoA hydratase"
+[2]: https://www.sciencedirect.com/topics/biochemistry-genetics-and-molecular-biology/dipeptidyl-peptidase-ii?utm_source=chatgpt.com "Dipeptidyl-Peptidase II - an overview | ScienceDirect Topics"
+[3]: https://www.uniprot.org/uniprotkb/P50416/entry?utm_source=chatgpt.com "CPT1A - Carnitine O-palmitoyltransferase 1, liver isoform - UniProt"
+[4]: https://pmc.ncbi.nlm.nih.gov/articles/PMC6215475/?utm_source=chatgpt.com "Lysosomal acid lipase and lipid metabolism: new mechanisms, new ..."
+[5]: https://www.ncbi.nlm.nih.gov/gene/7351?utm_source=chatgpt.com "7351 - Gene ResultUCP2 uncoupling protein 2 [ (human)] - NCBI"
+[6]: https://pmc.ncbi.nlm.nih.gov/articles/PMC7648728/?utm_source=chatgpt.com "CRY1-CBS binding regulates circadian clock function and metabolism"
+[7]: https://pmc.ncbi.nlm.nih.gov/articles/PMC4406651/?utm_source=chatgpt.com "The E3 ligase synoviolin controls body weight and mitochondrial ..."
+[8]: https://pmc.ncbi.nlm.nih.gov/articles/PMC10801894/?utm_source=chatgpt.com "The exostosin glycosyltransferase 1/STAT3 axis is a driver of breast ..."
+[9]: https://www.biorxiv.org/content/10.1101/2020.09.02.275925.full?utm_source=chatgpt.com "Exostosin-1 Glycosyltransferase Regulates Endoplasmic Reticulum ..."
+[10]: https://www.ncbi.nlm.nih.gov/books/NBK537346/?utm_source=chatgpt.com "Biochemistry, Lipase - StatPearls - NCBI Bookshelf"
+[11]: https://en.wikipedia.org/wiki/Glyceraldehyde_3-phosphate_dehydrogenase?utm_source=chatgpt.com "Glyceraldehyde 3-phosphate dehydrogenase"
+[12]: https://en.wikipedia.org/wiki/Fructose-bisphosphate_aldolase?utm_source=chatgpt.com "Fructose-bisphosphate aldolase - Wikipedia"
+[13]: https://pmc.ncbi.nlm.nih.gov/articles/PMC5085182/?utm_source=chatgpt.com "Impact of suppression of tumorigenicity 14 (ST14)/serine protease ..."
+[14]: https://www.ncbi.nlm.nih.gov/gene/12894?utm_source=chatgpt.com "Cpt1a carnitine palmitoyltransferase 1a, liver [ (house mouse)] - NCBI"
+[15]: https://www.ncbi.nlm.nih.gov/gene/7186
+[16]: https://www.uniprot.org/uniprotkb/Q6IA69/entry
+
