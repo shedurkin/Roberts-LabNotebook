@@ -1,0 +1,9 @@
+ptg000009l	ShortStack	MIRNA_hairpin	616285	616377	11352	-	.	ID=Cluster_5516;DicerCall=22;MIRNA=Y
+ptg000009l	ShortStack	mature_miRNA	616336	616357	9642	-	.	ID=Cluster_5516.mature;Parent=Cluster_5516
+ptg000009l	ShortStack	miRNA-star	616305	616326	158	-	.	ID=Cluster_5516.star;Parent=Cluster_5516
+ptg000035l	ShortStack	MIRNA_hairpin	4339548	4339641	139354	-	.	ID=Cluster_17173;DicerCall=N;MIRNA=Y
+ptg000035l	ShortStack	mature_miRNA	4339570	4339591	12995	-	.	ID=Cluster_17173.mature;Parent=Cluster_17173
+ptg000035l	ShortStack	miRNA-star	4339599	4339621	2842	-	.	ID=Cluster_17173.star;Parent=Cluster_17173
+ptg000035l	ShortStack	MIRNA_hairpin	4808338	4808432	6928	+	.	ID=Cluster_17186;DicerCall=N;MIRNA=Y
+ptg000035l	ShortStack	mature_miRNA	4808391	4808412	1610	+	.	ID=Cluster_17186.mature;Parent=Cluster_17186
+ptg000035l	ShortStack	miRNA-star	4808358	4808380	172	+	.	ID=Cluster_17186.star;Parent=Cluster_17186

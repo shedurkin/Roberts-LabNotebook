@@ -10,7 +10,2215 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Tue, 13 May 2025 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 25 May 2025 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning – Feature Proximity WGBS UPDATE</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_05_25_timeseries_ML_feature_proximity_2.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Steven realized that one of the A.pulchra samples had very poor WGBS data, which was limiting the number of CpG sites retained for analysis. I removed that sample from consideration and reran the model. This code builds BED files for the top features associated with each gene, for IGV visualization.</p>
+<p>Load libraries</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(dplyr)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span></code></pre></div>
+</div>
+<section id="load" class="level1">
+<h1>Load</h1>
+<p>Load feature gtfs</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># A.pulchra genome gtf</span></span>
+<span id="cb2-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">curl</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-L</span> https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/Apulchra-genome.stringtie.gtf <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-o</span> ./output/2025_05_25_timeseries_ML_feature_proximity_2/Apulchra-genome.stringtie.gtf</span>
+<span id="cb2-3"></span>
+<span id="cb2-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># A.pulchra lncRNA gtf</span></span>
+<span id="cb2-5"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">curl</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-L</span> https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/D-Apul/output/08-Apul-lncRNA/lncRNAs.gtf <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-o</span> ./output/2025_05_25_timeseries_ML_feature_proximity_2/lncRNA.gtf</span>
+<span id="cb2-6"></span>
+<span id="cb2-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># A.pulchra sRNA gff3 (contains all sRNA with notations -- will need to filter to retain only valid miRNA)</span></span>
+<span id="cb2-8"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">curl</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-L</span> https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/D-Apul/output/04-Apul-sRNA-discovery-ShortStack/ShortStack_out/Results.gff3 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-o</span> ./output/2025_05_25_timeseries_ML_feature_proximity_2/sRNA.gff3</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># A.pulchra CpG gtf (DNA methylation)</span></span>
+<span id="cb3-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Prohibitively large number of total CpGs, so will only load CpGs we retained for ML model</span></span>
+<span id="cb3-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Note that this is a counts table, but CpG coordinates are stored in their names</span></span>
+<span id="cb3-4"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">curl</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-L</span> https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/D-Apul/output/22.6-Apul-multiomic-machine-learning-updatedWGBS/filtered-WGBS-CpG-counts.csv <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-o</span> ./output/2025_05_25_timeseries_ML_feature_proximity_2/filtered-WGBS-CpG-counts.csv</span></code></pre></div>
+</div>
+<p>Load df of well-predicted energetic state genes and their respective top predictors</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">curl</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-L</span> https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/D-Apul/output/22.6-Apul-multiomic-machine-learning-updatedWGBS/top_predictors.csv <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-o</span> ./output/2025_05_25_timeseries_ML_feature_proximity_2/top_predictors.csv</span></code></pre></div>
+</div>
+<p>Convert the predictor csv to a tab-delimited file (easier to use with the gtf/gffs in bash)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> ./output/2025_05_25_timeseries_ML_feature_proximity_2</span>
+<span id="cb5-2"></span>
+<span id="cb5-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">awk</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-F</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">','</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'{</span></span>
+<span id="cb5-4"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    for (i = 1; i &lt;= NF; i++) {</span></span>
+<span id="cb5-5"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        gsub(/^"|"$/, "", $i)  # remove surrounding double quotes</span></span>
+<span id="cb5-6"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        gsub(/""/, "\"", $i)   # handle escaped quotes if needed</span></span>
+<span id="cb5-7"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    }</span></span>
+<span id="cb5-8"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    OFS = "\t"</span></span>
+<span id="cb5-9"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    print $0</span></span>
+<span id="cb5-10"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}'</span> top_predictors.csv <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> top_predictors.tab</span></code></pre></div>
+</div>
+</section>
+<section id="isolate" class="level1">
+<h1>Isolate</h1>
+<p>Filter genome gtf to obtain gtf of well-predicted genes</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> ./output/2025_05_25_timeseries_ML_feature_proximity_2</span>
+<span id="cb6-2"></span>
+<span id="cb6-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Will only keep genome gtf entries that contain one of the genes listed in top_predictors.tab</span></span>
+<span id="cb6-4"></span>
+<span id="cb6-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extract column 3 values (well-predicted genes) from the reference file, skipping the header</span></span>
+<span id="cb6-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tail</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-n</span> +2 top_predictors.tab <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cut</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-f3</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sort</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-u</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> well_predicted.txt</span>
+<span id="cb6-7"></span>
+<span id="cb6-8"></span>
+<span id="cb6-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Filter the GTF file using grep</span></span>
+<span id="cb6-10"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grep</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-Ff</span> well_predicted.txt Apulchra-genome.stringtie.gtf <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> well-predicted-genes.gtf</span>
+<span id="cb6-11"></span>
+<span id="cb6-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Remove intermediate file</span></span>
+<span id="cb6-13"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rm</span> well_predicted.txt</span></code></pre></div>
+</div>
+<p>Filter lncRNA gtf to isolate those that are top predictors of our genes of interest</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> ./output/2025_05_25_timeseries_ML_feature_proximity_2</span>
+<span id="cb7-2"></span>
+<span id="cb7-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Will only keep genome gtf entries that contain one of the lncRNA listed in top_predictors.tab</span></span>
+<span id="cb7-4"></span>
+<span id="cb7-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extract column 1 (predictors), skip the header, and filter for entries containing 'lncRNA'</span></span>
+<span id="cb7-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tail</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-n</span> +2 top_predictors.tab <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cut</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-f1</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grep</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'lncRNA'</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sort</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-u</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> predictive_lncRNA.txt</span>
+<span id="cb7-7"></span>
+<span id="cb7-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Use grep to filter the GTF file based on these patterns</span></span>
+<span id="cb7-9"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grep</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-Fwf</span> predictive_lncRNA.txt lncRNA.gtf <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> predictive_lncRNA.gtf</span>
+<span id="cb7-10"></span>
+<span id="cb7-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Remove intermediate file</span></span>
+<span id="cb7-12"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rm</span> predictive_lncRNA.txt</span></code></pre></div>
+</div>
+<p>Filter miRNA gff3 to obtain a gff of all miRNA and a gff of our predicitve miRNA</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> ./output/2025_05_25_timeseries_ML_feature_proximity_2</span>
+<span id="cb8-2"></span>
+<span id="cb8-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Only keep sRNA entries that are valid miRNA (MIRNA=Y)</span></span>
+<span id="cb8-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grep</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'MIRNA=Y'</span> sRNA.gff3 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> mirna.gff3</span>
+<span id="cb8-5"></span>
+<span id="cb8-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extract miRNA that are top predictors</span></span>
+<span id="cb8-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extract column 1 (predictors), skip the header, and filter for entries containing 'Cluster'</span></span>
+<span id="cb8-8"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tail</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-n</span> +2 top_predictors.tab <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cut</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-f1</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grep</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Cluster'</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sort</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-u</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> predictive_miRNA.txt</span>
+<span id="cb8-9"></span>
+<span id="cb8-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Use grep to filter the GTF file based on these patterns</span></span>
+<span id="cb8-11"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grep</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-Fwf</span> predictive_miRNA.txt sRNA.gff3 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> predictive_miRNA.gff3</span>
+<span id="cb8-12"></span>
+<span id="cb8-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Remove intermediate file</span></span>
+<span id="cb8-14"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rm</span> predictive_miRNA.txt</span></code></pre></div>
+</div>
+<p>From the CpG counts matrix, obtain a bed file of all considered CpGs and a bed file of predictive CpGs.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Read in csv and isolate the CpG names</span></span>
+<span id="cb9-2">CpG_counts <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/2025_05_25_timeseries_ML_feature_proximity_2/filtered-WGBS-CpG-counts.csv"</span>)</span>
+<span id="cb9-3"></span>
+<span id="cb9-4">all_CpGs <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> CpG_counts<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>X</span>
+<span id="cb9-5"></span>
+<span id="cb9-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extract chromosome and position using regex</span></span>
+<span id="cb9-7">chrom <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sub</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"^CpG_(.+)_</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">d+$"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">1"</span>, all_CpGs)</span>
+<span id="cb9-8">pos   <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.numeric</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sub</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">".*_(</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">d+)$"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">1"</span>, all_CpGs))</span>
+<span id="cb9-9"></span>
+<span id="cb9-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Construct BED-format data frame</span></span>
+<span id="cb9-11">bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(</span>
+<span id="cb9-12">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">chrom =</span> chrom,</span>
+<span id="cb9-13">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">start =</span> pos <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># BED is 0-based</span></span>
+<span id="cb9-14">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">end   =</span> pos,</span>
+<span id="cb9-15">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">name  =</span> all_CpGs         <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># name column</span></span>
+<span id="cb9-16">)</span>
+<span id="cb9-17"></span>
+<span id="cb9-18"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Write to BED file</span></span>
+<span id="cb9-19"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write.table</span>(bed, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">file =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/2025_05_25_timeseries_ML_feature_proximity_2/CpGs.bed"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sep =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\t</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quote =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">row.names =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col.names =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> ./output/2025_05_25_timeseries_ML_feature_proximity_2</span>
+<span id="cb10-2"></span>
+<span id="cb10-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Will only keep CpG bed entries that contain one of the CpGs listed in top_predictors.tab</span></span>
+<span id="cb10-4"></span>
+<span id="cb10-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extract column 1 (predictors), skip the header, and filter for entries containing 'lncRNA'</span></span>
+<span id="cb10-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tail</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-n</span> +2 top_predictors.tab <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cut</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-f1</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grep</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'CpG'</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sort</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-u</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> predictive_CpGs.txt</span>
+<span id="cb10-7"></span>
+<span id="cb10-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Use grep to filter the GTF file based on these patterns</span></span>
+<span id="cb10-9"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grep</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-Fwf</span> predictive_CpGs.txt CpGs.bed <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> predictive_CpGs.bed</span>
+<span id="cb10-10"></span>
+<span id="cb10-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Remove intermediate file</span></span>
+<span id="cb10-12"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rm</span> predictive_CpGs.txt</span></code></pre></div>
+</div>
+</section>
+<section id="gene-feature-files" class="level1">
+<h1>Gene feature files</h1>
+<p>I also want a feature file for each gene, that contains coordinate information for that gene and its top predictors.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#Load predictor table</span></span>
+<span id="cb11-2">preds <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.table</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/2025_05_25_timeseries_ML_feature_proximity_2/top_predictors.tab"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">header=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#Load annotations</span></span>
+<span id="cb12-2">all_genes_gtf <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.table</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/2025_05_25_timeseries_ML_feature_proximity_2/Apulchra-genome.stringtie.gtf"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sep=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\t</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col.names=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"scaffold"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V2"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V3"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"start"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"end"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V6"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V7"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V8"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"info"</span>))</span>
+<span id="cb12-3">all_lncrna_gtf <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.table</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/2025_05_25_timeseries_ML_feature_proximity_2/lncrna.gtf"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sep=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\t</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col.names=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"scaffold"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V2"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V3"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"start"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"end"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V6"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V7"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V8"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"info"</span>))</span>
+<span id="cb12-4">all_mirna_gff3 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.table</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/2025_05_25_timeseries_ML_feature_proximity_2/miRNA.gff3"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sep=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\t</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col.names=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"scaffold"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V2"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V3"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"start"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"end"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V6"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V7"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V8"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"info"</span>))</span>
+<span id="cb12-5">all_cpg_bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.table</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/2025_05_25_timeseries_ML_feature_proximity_2/CpGs.bed"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col.names=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"scaffold"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"start"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"end"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"info"</span>))</span>
+<span id="cb12-6"></span>
+<span id="cb12-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#For non-bed files, need to convert 1-start positions to 0-start positions</span></span>
+<span id="cb12-8">all_genes_gtf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>start_bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_genes_gtf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>start <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb12-9">all_lncrna_gtf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>start_bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_lncrna_gtf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>start <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb12-10">all_mirna_gff3<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>start_bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_mirna_gff3<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>start <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb12-11">all_cpg_bed<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>start_bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_cpg_bed<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>start</span>
+<span id="cb12-12"></span>
+<span id="cb12-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Column with just the feature ID</span></span>
+<span id="cb12-14">all_genes_gtf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ID <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_extract</span>(all_genes_gtf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>info, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"(?&lt;=ref_gene_id )[^;]+"</span>)</span>
+<span id="cb12-15">all_lncrna_gtf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ID <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_extract</span>(all_lncrna_gtf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>info, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"(?&lt;=gene_id )[^;]+"</span>)</span>
+<span id="cb12-16">all_mirna_gff3<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ID <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_extract</span>(all_mirna_gff3<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>info, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"(?&lt;=ID=)[^;]+"</span>)</span>
+<span id="cb12-17">all_cpg_bed<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ID <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_cpg_bed<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>info</span>
+<span id="cb12-18"></span>
+<span id="cb12-19"></span>
+<span id="cb12-20"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Remove superfluous features (e.g. gene exon notes, miRNA star and precursor) and save bed style columns</span></span>
+<span id="cb12-21">all_genes_bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_genes_gtf[all_genes_gtf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>V3 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"transcript"</span>,] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(scaffold, start_bed, end, ID)</span>
+<span id="cb12-22">all_lncrna_bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_lncrna_gtf <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(scaffold, start_bed, end, ID)</span>
+<span id="cb12-23">all_mirna_bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_mirna_gff3<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(scaffold, start_bed, end, ID)</span>
+<span id="cb12-24">all_cpg_bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_cpg_bed <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(scaffold, start_bed, end, ID)</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># For each unique feature</span></span>
+<span id="cb13-2"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> (feat <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unique</span>(preds<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Feature)) {</span>
+<span id="cb13-3"></span>
+<span id="cb13-4">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Get predictors for this feature</span></span>
+<span id="cb13-5">  pred_ids <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> preds <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb13-6">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(Feature <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> feat) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb13-7">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">rank =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">row_number</span>(),</span>
+<span id="cb13-8">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">new_ID =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste0</span>(Predictor, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"-"</span>, rank, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"-"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(MeanImportance, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>)))</span>
+<span id="cb13-9"></span>
+<span id="cb13-10">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extract IDs grouped by type</span></span>
+<span id="cb13-11">  lnc_ids <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> pred_ids <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"^lncRNA_"</span>, Predictor))</span>
+<span id="cb13-12">  mir_ids <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> pred_ids <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"^Cluster_"</span>, Predictor))</span>
+<span id="cb13-13">  cpg_ids <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> pred_ids <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"^CpG_"</span>, Predictor))</span>
+<span id="cb13-14"></span>
+<span id="cb13-15">  feat_range <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_genes_bed <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(ID <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> feat)</span>
+<span id="cb13-16">  </span>
+<span id="cb13-17">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Match and update lncRNA predictors</span></span>
+<span id="cb13-18">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(lnc_ids) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) {</span>
+<span id="cb13-19">    lnc_ranges <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_lncrna_bed <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb13-20">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">inner_join</span>(lnc_ids, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ID"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Predictor"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb13-21">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ID =</span> new_ID) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb13-22">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(scaffold, start_bed, end, ID)</span>
+<span id="cb13-23">  } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> {</span>
+<span id="cb13-24">    lnc_ranges <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span></span>
+<span id="cb13-25">  }</span>
+<span id="cb13-26"></span>
+<span id="cb13-27">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Match and update miRNA predictors</span></span>
+<span id="cb13-28">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(mir_ids) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) {</span>
+<span id="cb13-29">    mirna_ranges <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_mirna_bed <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb13-30">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">inner_join</span>(mir_ids, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ID"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Predictor"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb13-31">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ID =</span> new_ID) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb13-32">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(scaffold, start_bed, end, ID)</span>
+<span id="cb13-33">  } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> {</span>
+<span id="cb13-34">    mirna_ranges <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span></span>
+<span id="cb13-35">  }</span>
+<span id="cb13-36">  </span>
+<span id="cb13-37">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Match and update CpG predictors</span></span>
+<span id="cb13-38">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(cpg_ids) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) {</span>
+<span id="cb13-39">    cpg_ranges <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_cpg_bed <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb13-40">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">inner_join</span>(cpg_ids, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ID"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Predictor"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb13-41">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ID =</span> new_ID) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb13-42">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(scaffold, start_bed, end, ID)</span>
+<span id="cb13-43">  } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> {</span>
+<span id="cb13-44">    cpg_ranges <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span></span>
+<span id="cb13-45">  }</span>
+<span id="cb13-46"></span>
+<span id="cb13-47">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Combine all into one BED-like table</span></span>
+<span id="cb13-48">  bed_df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">bind_rows</span>(</span>
+<span id="cb13-49">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.data.frame</span>(feat_range) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(scaffold, start_bed, end, ID),</span>
+<span id="cb13-50">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.data.frame</span>(lnc_ranges),</span>
+<span id="cb13-51">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.data.frame</span>(mirna_ranges),</span>
+<span id="cb13-52">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.data.frame</span>(cpg_ranges)</span>
+<span id="cb13-53">  )</span>
+<span id="cb13-54"></span>
+<span id="cb13-55">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Write to BED</span></span>
+<span id="cb13-56">  out_file <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste0</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/2025_05_25_timeseries_ML_feature_proximity_2/"</span>, feat, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"_with_predictors.bed"</span>)</span>
+<span id="cb13-57">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write.table</span>(bed_df, out_file, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">row.names =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col.names =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quote =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)</span>
+<span id="cb13-58">}</span></code></pre></div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>E5-coral</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_05_25_timeseries_ML_feature_proximity_2.html</guid>
+  <pubDate>Sun, 25 May 2025 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning – Feature Proximity</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_05_16_timeseries_ML_feature_proximity.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Load libraries</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(dplyr)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span></code></pre></div>
+</div>
+<section id="load" class="level1">
+<h1>Load</h1>
+<p>Load feature gtfs</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># A.pulchra genome gtf</span></span>
+<span id="cb2-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">curl</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-L</span> https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/D-Apul/output/02.20-D-Apul-RNAseq-alignment-HiSat2/Apulchra-genome.stringtie.gtf <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-o</span> ./output/2025_05_16_timeseries_ML_feature_proximity/Apulchra-genome.stringtie.gtf</span>
+<span id="cb2-3"></span>
+<span id="cb2-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># A.pulchra lncRNA gtf</span></span>
+<span id="cb2-5"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">curl</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-L</span> https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/D-Apul/output/08-Apul-lncRNA/lncRNAs.gtf <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-o</span> ./output/2025_05_16_timeseries_ML_feature_proximity/lncRNA.gtf</span>
+<span id="cb2-6"></span>
+<span id="cb2-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># A.pulchra sRNA gff3 (contains all sRNA with notations -- will need to filter to retain only valid miRNA)</span></span>
+<span id="cb2-8"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">curl</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-L</span> https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/D-Apul/output/04-Apul-sRNA-discovery-ShortStack/ShortStack_out/Results.gff3 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-o</span> ./output/2025_05_16_timeseries_ML_feature_proximity/sRNA.gff3</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># A.pulchra CpG gtf (DNA methylation)</span></span>
+<span id="cb3-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Prohibitively large number of total CpGs, so will only load CpGs we retained for ML model</span></span>
+<span id="cb3-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Note that this is a counts table, but CpG coordinates are stored in their names</span></span>
+<span id="cb3-4"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">curl</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-L</span> https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/D-Apul/output/22.2-Apul-multiomic-machine-learning/filtered-WGBS-CpG-counts.csv <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-o</span> ./output/2025_05_16_timeseries_ML_feature_proximity/filtered-WGBS-CpG-counts.csv</span></code></pre></div>
+</div>
+<p>Load df of well-predicted energetic state genes and their respective top predictors</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">curl</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-L</span> https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/D-Apul/output/22.3-Apul-multiomic-machine-learning-byTP/top_predictors.csv <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-o</span> ./output/2025_05_16_timeseries_ML_feature_proximity/top_predictors.csv</span></code></pre></div>
+</div>
+<p>Convert the predictor csv to a tab-delimited file (easier to use with the gtf/gffs in bash)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> ./output/2025_05_16_timeseries_ML_feature_proximity</span>
+<span id="cb5-2"></span>
+<span id="cb5-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">awk</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-F</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">','</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'{</span></span>
+<span id="cb5-4"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    for (i = 1; i &lt;= NF; i++) {</span></span>
+<span id="cb5-5"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        gsub(/^"|"$/, "", $i)  # remove surrounding double quotes</span></span>
+<span id="cb5-6"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        gsub(/""/, "\"", $i)   # handle escaped quotes if needed</span></span>
+<span id="cb5-7"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    }</span></span>
+<span id="cb5-8"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    OFS = "\t"</span></span>
+<span id="cb5-9"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    print $0</span></span>
+<span id="cb5-10"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">}'</span> top_predictors.csv <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> top_predictors.tab</span></code></pre></div>
+</div>
+</section>
+<section id="isolate" class="level1">
+<h1>Isolate</h1>
+<p>Filter genome gtf to obtain gtf of well-predicted genes</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> ./output/2025_05_16_timeseries_ML_feature_proximity</span>
+<span id="cb6-2"></span>
+<span id="cb6-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Will only keep genome gtf entries that contain one of the genes listed in top_predictors.tab</span></span>
+<span id="cb6-4"></span>
+<span id="cb6-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extract column 3 values (well-predicted genes) from the reference file, skipping the header</span></span>
+<span id="cb6-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tail</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-n</span> +2 top_predictors.tab <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cut</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-f3</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sort</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-u</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> well_predicted.txt</span>
+<span id="cb6-7"></span>
+<span id="cb6-8"></span>
+<span id="cb6-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Filter the GTF file using grep</span></span>
+<span id="cb6-10"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grep</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-Ff</span> well_predicted.txt Apulchra-genome.stringtie.gtf <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> well-predicted-genes.gtf</span>
+<span id="cb6-11"></span>
+<span id="cb6-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Remove intermediate file</span></span>
+<span id="cb6-13"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rm</span> well_predicted.txt</span></code></pre></div>
+</div>
+<p>Filter lncRNA gtf to isolate those that are top predictors of our genes of interest</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> ./output/2025_05_16_timeseries_ML_feature_proximity</span>
+<span id="cb7-2"></span>
+<span id="cb7-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Will only keep genome gtf entries that contain one of the lncRNA listed in top_predictors.tab</span></span>
+<span id="cb7-4"></span>
+<span id="cb7-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extract column 1 (predictors), skip the header, and filter for entries containing 'lncRNA'</span></span>
+<span id="cb7-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tail</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-n</span> +2 top_predictors.tab <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cut</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-f1</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grep</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'lncRNA'</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sort</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-u</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> predictive_lncRNA.txt</span>
+<span id="cb7-7"></span>
+<span id="cb7-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Use grep to filter the GTF file based on these patterns</span></span>
+<span id="cb7-9"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grep</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-Fwf</span> predictive_lncRNA.txt lncRNA.gtf <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> predictive_lncRNA.gtf</span>
+<span id="cb7-10"></span>
+<span id="cb7-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Remove intermediate file</span></span>
+<span id="cb7-12"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rm</span> predictive_lncRNA.txt</span></code></pre></div>
+</div>
+<p>Filter miRNA gff3 to obtain a gff of all miRNA and a gff of our predicitve miRNA</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> ./output/2025_05_16_timeseries_ML_feature_proximity</span>
+<span id="cb8-2"></span>
+<span id="cb8-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Only keep sRNA entries that are valid miRNA (MIRNA=Y)</span></span>
+<span id="cb8-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grep</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'MIRNA=Y'</span> sRNA.gff3 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> mirna.gff3</span>
+<span id="cb8-5"></span>
+<span id="cb8-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extract miRNA that are top predictors</span></span>
+<span id="cb8-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extract column 1 (predictors), skip the header, and filter for entries containing 'Cluster'</span></span>
+<span id="cb8-8"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tail</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-n</span> +2 top_predictors.tab <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cut</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-f1</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grep</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Cluster'</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sort</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-u</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> predictive_miRNA.txt</span>
+<span id="cb8-9"></span>
+<span id="cb8-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Use grep to filter the GTF file based on these patterns</span></span>
+<span id="cb8-11"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grep</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-Fwf</span> predictive_miRNA.txt sRNA.gff3 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> predictive_miRNA.gff3</span>
+<span id="cb8-12"></span>
+<span id="cb8-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Remove intermediate file</span></span>
+<span id="cb8-14"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rm</span> predictive_miRNA.txt</span></code></pre></div>
+</div>
+<p>From the CpG counts matrix, obtain a bed file of all considered CpGs and a bed file of predictive CpGs.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Read in csv and isolate the CpG names</span></span>
+<span id="cb9-2">CpG_counts <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/2025_05_16_timeseries_ML_feature_proximity/filtered-WGBS-CpG-counts.csv"</span>)</span>
+<span id="cb9-3"></span>
+<span id="cb9-4">all_CpGs <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> CpG_counts<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>X</span>
+<span id="cb9-5"></span>
+<span id="cb9-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extract chromosome and position using regex</span></span>
+<span id="cb9-7">chrom <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sub</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"^CpG_(.+)_</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">d+$"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">1"</span>, all_CpGs)</span>
+<span id="cb9-8">pos   <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.numeric</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sub</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">".*_(</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">d+)$"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">1"</span>, all_CpGs))</span>
+<span id="cb9-9"></span>
+<span id="cb9-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Construct BED-format data frame</span></span>
+<span id="cb9-11">bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(</span>
+<span id="cb9-12">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">chrom =</span> chrom,</span>
+<span id="cb9-13">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">start =</span> pos <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># BED is 0-based</span></span>
+<span id="cb9-14">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">end   =</span> pos,</span>
+<span id="cb9-15">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">name  =</span> all_CpGs         <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># name column</span></span>
+<span id="cb9-16">)</span>
+<span id="cb9-17"></span>
+<span id="cb9-18"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Write to BED file</span></span>
+<span id="cb9-19"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write.table</span>(bed, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">file =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/2025_05_16_timeseries_ML_feature_proximity/CpGs.bed"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sep =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\t</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quote =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">row.names =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col.names =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> ./output/2025_05_16_timeseries_ML_feature_proximity</span>
+<span id="cb10-2"></span>
+<span id="cb10-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Will only keep CpG bed entries that contain one of the CpGs listed in top_predictors.tab</span></span>
+<span id="cb10-4"></span>
+<span id="cb10-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extract column 1 (predictors), skip the header, and filter for entries containing 'lncRNA'</span></span>
+<span id="cb10-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tail</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-n</span> +2 top_predictors.tab <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cut</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-f1</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grep</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'CpG'</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sort</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-u</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> predictive_CpGs.txt</span>
+<span id="cb10-7"></span>
+<span id="cb10-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Use grep to filter the GTF file based on these patterns</span></span>
+<span id="cb10-9"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grep</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-Fwf</span> predictive_CpGs.txt CpGs.bed <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> predictive_CpGs.bed</span>
+<span id="cb10-10"></span>
+<span id="cb10-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Remove intermediate file</span></span>
+<span id="cb10-12"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rm</span> predictive_CpGs.txt</span></code></pre></div>
+</div>
+</section>
+<section id="gene-feature-files" class="level1">
+<h1>Gene feature files</h1>
+<p>I also want a feature file for each gene, that contains coordinate information for that gene and its top predictors.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#Load predictor table</span></span>
+<span id="cb11-2">preds <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.table</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/2025_05_16_timeseries_ML_feature_proximity/top_predictors.tab"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">header=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#Load annotations</span></span>
+<span id="cb12-2">all_genes_gtf <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.table</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/2025_05_16_timeseries_ML_feature_proximity/Apulchra-genome.stringtie.gtf"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sep=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\t</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col.names=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"scaffold"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V2"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V3"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"start"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"end"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V6"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V7"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V8"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"info"</span>))</span>
+<span id="cb12-3">all_lncrna_gtf <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.table</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/2025_05_16_timeseries_ML_feature_proximity/lncrna.gtf"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sep=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\t</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col.names=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"scaffold"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V2"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V3"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"start"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"end"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V6"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V7"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V8"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"info"</span>))</span>
+<span id="cb12-4">all_mirna_gff3 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.table</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/2025_05_16_timeseries_ML_feature_proximity/miRNA.gff3"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sep=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\t</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col.names=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"scaffold"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V2"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V3"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"start"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"end"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V6"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V7"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"V8"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"info"</span>))</span>
+<span id="cb12-5">all_cpg_bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.table</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/2025_05_16_timeseries_ML_feature_proximity/CpGs.bed"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col.names=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"scaffold"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"start"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"end"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"info"</span>))</span>
+<span id="cb12-6"></span>
+<span id="cb12-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#For non-bed files, need to convert 1-start positions to 0-start positions</span></span>
+<span id="cb12-8">all_genes_gtf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>start_bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_genes_gtf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>start <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb12-9">all_lncrna_gtf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>start_bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_lncrna_gtf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>start <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb12-10">all_mirna_gff3<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>start_bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_mirna_gff3<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>start <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb12-11">all_cpg_bed<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>start_bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_cpg_bed<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>start</span>
+<span id="cb12-12"></span>
+<span id="cb12-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Column with just the feature ID</span></span>
+<span id="cb12-14">all_genes_gtf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ID <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_extract</span>(all_genes_gtf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>info, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"(?&lt;=ref_gene_id )[^;]+"</span>)</span>
+<span id="cb12-15">all_lncrna_gtf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ID <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_extract</span>(all_lncrna_gtf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>info, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"(?&lt;=gene_id )[^;]+"</span>)</span>
+<span id="cb12-16">all_mirna_gff3<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ID <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_extract</span>(all_mirna_gff3<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>info, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"(?&lt;=ID=)[^;]+"</span>)</span>
+<span id="cb12-17">all_cpg_bed<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ID <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_cpg_bed<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>info</span>
+<span id="cb12-18"></span>
+<span id="cb12-19"></span>
+<span id="cb12-20"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Remove superfluous features (e.g. gene exon notes, miRNA star and precursor) and save bed style columns</span></span>
+<span id="cb12-21">all_genes_bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_genes_gtf[all_genes_gtf<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>V3 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"transcript"</span>,] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(scaffold, start_bed, end, ID)</span>
+<span id="cb12-22">all_lncrna_bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_lncrna_gtf <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(scaffold, start_bed, end, ID)</span>
+<span id="cb12-23">all_mirna_bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_mirna_gff3<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(scaffold, start_bed, end, ID)</span>
+<span id="cb12-24">all_cpg_bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_cpg_bed <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(scaffold, start_bed, end, ID)</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># For each unique feature</span></span>
+<span id="cb13-2"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> (feat <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unique</span>(preds<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Feature)) {</span>
+<span id="cb13-3"></span>
+<span id="cb13-4">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Get predictors for this feature</span></span>
+<span id="cb13-5">  pred_ids <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> preds <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(Feature <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> feat) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pull</span>(Predictor)</span>
+<span id="cb13-6"></span>
+<span id="cb13-7">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Group predictors by type using pattern matching (still grepl for this part)</span></span>
+<span id="cb13-8">  lnc_ids <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> pred_ids[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"^lncRNA_"</span>, pred_ids)]</span>
+<span id="cb13-9">  mir_ids <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> pred_ids[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"^Cluster_"</span>, pred_ids)]</span>
+<span id="cb13-10">  cpg_ids <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> pred_ids[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"^CpG_"</span>, pred_ids)]</span>
+<span id="cb13-11"></span>
+<span id="cb13-12">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Get ranges for feature and its predictors using exact ID matching</span></span>
+<span id="cb13-13">  feat_range <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_genes_bed <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(ID <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> feat)</span>
+<span id="cb13-14">  lnc_ranges <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">length</span>(lnc_ids) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) all_lncrna_bed <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(ID <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> lnc_ids) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span></span>
+<span id="cb13-15">  mirna_ranges <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">length</span>(mir_ids) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) all_mirna_bed <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(ID <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> mir_ids) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span></span>
+<span id="cb13-16">  cpg_ranges <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">length</span>(cpg_ids) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) all_cpg_bed <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(ID <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> cpg_ids) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span></span>
+<span id="cb13-17"></span>
+<span id="cb13-18">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Combine all into one BED-like table</span></span>
+<span id="cb13-19">  bed_df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">bind_rows</span>(</span>
+<span id="cb13-20">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.data.frame</span>(feat_range) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(scaffold, start_bed, end, ID),</span>
+<span id="cb13-21">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.data.frame</span>(lnc_ranges),</span>
+<span id="cb13-22">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.data.frame</span>(mirna_ranges),</span>
+<span id="cb13-23">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.data.frame</span>(cpg_ranges)</span>
+<span id="cb13-24">  )</span>
+<span id="cb13-25"></span>
+<span id="cb13-26">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Write to BED</span></span>
+<span id="cb13-27">  out_file <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste0</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/2025_05_16_timeseries_ML_feature_proximity/"</span>, feat, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"_with_predictors.bed"</span>)</span>
+<span id="cb13-28">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write.table</span>(bed_df, out_file, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">row.names =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col.names =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quote =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)</span>
+<span id="cb13-29">}</span></code></pre></div>
+</div>
+</section>
+<section id="feature-files-for-binding-based-interactions" class="level1">
+<h1>Feature files for binding-based interactions</h1>
+<p>Read in cytoscape edges file, which shows all miRNA interactions with binding and PCC information</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">interactions <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/2025_04_28_timeseries_cytoscape_files/edges_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(source, target, PCC.cor) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">distinct</span>()</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> (mirna <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unique</span>(interactions<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>source)) {</span>
+<span id="cb15-2">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Get interactions for this feature</span></span>
+<span id="cb15-3">  inter_ids <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> interactions <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(source <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> mirna) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pull</span>(target)</span>
+<span id="cb15-4"></span>
+<span id="cb15-5">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Group interactions by type</span></span>
+<span id="cb15-6">  lnc_ids <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> inter_ids[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"^lncRNA_"</span>, inter_ids)]</span>
+<span id="cb15-7">  gene_ids <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> inter_ids[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"^FUN_"</span>, inter_ids)]</span>
+<span id="cb15-8"></span>
+<span id="cb15-9">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Get ranges for feature and its predictors using exact matches</span></span>
+<span id="cb15-10">  mirna_range <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> all_mirna_bed <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(ID <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> mirna)</span>
+<span id="cb15-11">  </span>
+<span id="cb15-12">  lnc_ranges <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">length</span>(lnc_ids) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) lncrna_bed <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(ID <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> lnc_ids) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span></span>
+<span id="cb15-13">  gene_ranges <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">length</span>(gene_ids) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) all_genes_bed <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(ID <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> gene_ids) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span></span>
+<span id="cb15-14"></span>
+<span id="cb15-15">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Combine all into one BED-like table</span></span>
+<span id="cb15-16">  bed_df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">bind_rows</span>(</span>
+<span id="cb15-17">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.data.frame</span>(mirna_range),</span>
+<span id="cb15-18">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.data.frame</span>(lnc_ranges),</span>
+<span id="cb15-19">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.data.frame</span>(gene_ranges)</span>
+<span id="cb15-20">  )</span>
+<span id="cb15-21"></span>
+<span id="cb15-22">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Write to BED</span></span>
+<span id="cb15-23">  out_file <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste0</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./output/2025_05_16_timeseries_ML_feature_proximity/"</span>, mirna, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"_with_interactions.bed"</span>)</span>
+<span id="cb15-24">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write.table</span>(bed_df, out_file, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">row.names =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col.names =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quote =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)</span>
+<span id="cb15-25">}</span></code></pre></div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>E5-coral</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_05_16_timeseries_ML_feature_proximity.html</guid>
+  <pubDate>Fri, 16 May 2025 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning – Lit Review</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -42018,194 +44226,6 @@ font-style: italic;">## `geom_smooth()` using formula = 'y ~ x'</span></span></c
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_02_13_deepdive_miRanda_comparisons.html</guid>
   <pubDate>Thu, 13 Feb 2025 08:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Deep-dive expression: Gene expression summary (for Hisat gene counts)</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_02_07_deepdive_Apul_Hisat_RNAsummary.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Generating update summary of Apul gene expression using counts generated through Hisat with the <em>A.pulchra</em> genome. (Existing summary used counts summarized using kallisto and the <em>A.millipora</em> transcriptome)</p>
-<p>Code recorded below in case github links change.</p>
-<p><strong>Total gene counts (normalized):</strong></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/https:/github.com/urol-e5/deep-dive-expression/raw/main/D-Apul/code/03.01-Apul-RNA-summary-Hisat_files/figure-gfm/norm-transcript-counts-plot-1.png" class="img-fluid"></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/https:/github.com/urol-e5/deep-dive-expression/raw/main/D-Apul/code/03.01-Apul-RNA-summary-Hisat_files/figure-gfm/norm-expression-level-histograms-1.png" class="img-fluid"></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/https:/github.com/urol-e5/deep-dive-expression/raw/main/D-Apul/code/03.01-Apul-RNA-summary-Hisat_files/figure-gfm/PCA-1.png" class="img-fluid"></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/https:/github.com/urol-e5/deep-dive-expression/raw/main/D-Apul/code/03.01-Apul-RNA-summary-Hisat_files/figure-gfm/sample-clustering-1.png" class="img-fluid"></p>
-<section id="apul-rna-summary-hisat" class="level1">
-<h1><a href="https://github.com/urol-e5/deep-dive-expression/blob/main/D-Apul/code/03.01-Apul-RNA-summary-Hisat.md#15-most-common-biological-processes">03.01-Apul-RNA-summary-Hisat</a></h1>
-<p>Gene expression summary for <em>Acropora pulchra</em> RNA-seq data.</p>
-<ul>
-<li><p>trimmed reads generated in <code>deep-dive</code> project, trimming and QC details in <code>01-Apul-RNA-trimming-FastQC</code></p></li>
-<li><p>Reads aligned to <em>Acropora pulchra</em> genome (unpub)</p></li>
-<li><p>Count matrix generated in <code>07-Apul-Hisat</code></p></li>
-</ul>
-<section id="install-and-load-packages" class="level3">
-<h3 class="anchored" data-anchor-id="install-and-load-packages">0.0.1 Install and load packages</h3>
-<pre><code>library(tidyverse) library(ggplot2) library(reshape2) library(magrittr) library(DESeq2) library(RColorBrewer) library(pheatmap)</code></pre>
-</section>
-</section>
-<section id="unnormalized-data" class="level1">
-<h1>1 Unnormalized data</h1>
-<section id="load-count-data" class="level2">
-<h2 class="anchored" data-anchor-id="load-count-data">1.1 Load count data</h2>
-<p>Load in and format the count matrix.</p>
-<pre><code># Read in counts data. This is a gene-level counts matrix generated from kallisto transcript abundances using Trinity Apul_counts_RNA_OG &lt;- read_delim("../output/07-Apul-Hisat/Apul-gene_count_matrix.csv")  head(Apul_counts_RNA_OG)</code></pre>
-<pre><code># A tibble: 6 × 6   gene_id  `RNA-ACR-140` `RNA-ACR-145` `RNA-ACR-150` `RNA-ACR-173` `RNA-ACR-178`   &lt;chr&gt;            &lt;dbl&gt;         &lt;dbl&gt;         &lt;dbl&gt;         &lt;dbl&gt;         &lt;dbl&gt; 1 FUN_035…           553           340           256           485           510 2 FUN_035…          2486           775           743          1250          1092 3 FUN_035…            46             6            25            41            29 4 FUN_035…           183           252            48            78            73 5 FUN_035…          1519           311           555           990           370 6 FUN_035…          1764          1297          1035          1763          1360 </code></pre>
-<pre><code># Read in ID mapping of A.pulchra mRNA and associated functional annotations Apul_IDmapping &lt;- read_delim("../output/02-Apul-reference-annotation/Apulcra-genome-mRNA-IDmapping-2024_12_12.tab") %&gt;%   select(-...1) head(Apul_IDmapping)</code></pre>
-<pre><code># A tibble: 6 × 7   V1                V3         V13 Protein.names Organism Gene.Ontology..biolo…¹   &lt;chr&gt;             &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt;                  1 ntLink_4:1155-15… P350… 4.96e-86 Histone H2A   Acropor… &lt;NA&gt;                   2 ntLink_4:2660-34… P842… 5.03e-93 Histone H3    Urechis… &lt;NA&gt;                   3 ntLink_4:4515-68… P350… 6.65e-78 Histone H2A   Acropor… &lt;NA&gt;                   4 ntLink_4:7096-78… P842… 4.03e-93 Histone H3    Urechis… &lt;NA&gt;                   5 ntLink_4:8474-96… P350… 7.49e-82 Histone H2A   Acropor… &lt;NA&gt;                   6 ntLink_4:11162-1… P842… 4.03e-93 Histone H3    Urechis… &lt;NA&gt;                   # ℹ abbreviated name: ¹​Gene.Ontology..biological.process. # ℹ 1 more variable: Gene.Ontology.IDs &lt;chr&gt; </code></pre>
-<pre><code># Read in table that associates each mRNA genomic location with it's gene ID Apul_geneIDs &lt;- read_delim("../output/15-Apul-annotate-UTRs/Apul-mRNA-FUNids.txt", col_names = FALSE) %&gt;%   select(X1,X4) Apul_geneIDs$X4 &lt;- gsub("Parent=","",Apul_geneIDs$X4) head(Apul_geneIDs)</code></pre>
-<pre><code># A tibble: 6 × 2   X1                   X4           &lt;chr&gt;                &lt;chr&gt;      1 ntLink_0:1104-7056   FUN_000001 2 ntLink_0:10214-15286 FUN_000002 3 ntLink_0:32056-33275 FUN_000003 4 ntLink_0:34823-42794 FUN_000004 5 ntLink_0:45952-51024 FUN_000005 6 ntLink_0:61628-78213 FUN_000006 </code></pre>
-</section>
-<section id="count-data-munging" class="level2">
-<h2 class="anchored" data-anchor-id="count-data-munging">1.2 Count data munging</h2>
-<pre><code># We need to modify this data frame so that the row names are actually row names, instead of comprising the first column Apul_counts_RNA &lt;- Apul_counts_RNA_OG %&gt;%   column_to_rownames(var = "gene_id")  # Additional formatting # Round all estimated counts to integers Apul_counts_RNA &lt;- round(Apul_counts_RNA, digits = 0)  # Remove all transcripts with 5 or fewer counts in all samples Apul_counts_RNA &lt;- Apul_counts_RNA[!apply(Apul_counts_RNA, 1, function(row) all(row &lt; 6)), ]  # Remove the "RNA-" portion of the column names, to leave just the sample names colnames(Apul_counts_RNA) &lt;- sub("RNA-", "", colnames(Apul_counts_RNA))  # Reorder the columns into alphabetical order (to make it easier to create an associated metadata spreadsheet) Apul_counts_RNA &lt;- Apul_counts_RNA[, order(colnames(Apul_counts_RNA))]  write.table(Apul_counts_RNA, file = "../output/03.01-Apul-RNA-summary-Hisat/Apul_RNA_Hisat_counts_formatted.txt", row.names = TRUE, col.names = TRUE)  Apul_sample_names &lt;- names(Apul_counts_RNA)  head(Apul_counts_RNA)</code></pre>
-<pre><code>           ACR-140 ACR-145 ACR-150 ACR-173 ACR-178 FUN_035039     553     340     256     485     510 FUN_035038    2486     775     743    1250    1092 FUN_035031      46       6      25      41      29 FUN_035030     183     252      48      78      73 FUN_035033    1519     311     555     990     370 FUN_035032    1764    1297    1035    1763    1360 </code></pre>
-<pre><code>Apul_sample_names</code></pre>
-<pre><code>[1] "ACR-140" "ACR-145" "ACR-150" "ACR-173" "ACR-178" </code></pre>
-<pre><code># Add gene IDs to the IDmapping Apul_IDmapping &lt;- left_join(Apul_IDmapping, Apul_geneIDs, by = c("V1" = "X1"))  Apul_counts_GO &lt;- Apul_counts_RNA %&gt;%   rownames_to_column(var = "geneID") %&gt;%   left_join(Apul_IDmapping, by = c("geneID" = "X4"))  write.table(Apul_counts_GO, "../output/03.01-Apul-RNA-summary-Hisat/Apul_RNA_Hisat_counts_formatted.txt", sep = '\t', row.names = TRUE, col.names = TRUE, quote = FALSE)  head(Apul_counts_GO)</code></pre>
-<pre><code>      geneID ACR-140 ACR-145 ACR-150 ACR-173 ACR-178                         V1 1 FUN_035039     553     340     256     485     510                       &lt;NA&gt; 2 FUN_035038    2486     775     743    1250    1092                       &lt;NA&gt; 3 FUN_035031      46       6      25      41      29                       &lt;NA&gt; 4 FUN_035030     183     252      48      78      73 ptg000025l:3084856-3086902 5 FUN_035033    1519     311     555     990     370                       &lt;NA&gt; 6 FUN_035032    1764    1297    1035    1763    1360                       &lt;NA&gt;           V3      V13 Protein.names Organism Gene.Ontology..biological.process. 1       &lt;NA&gt;       NA          &lt;NA&gt;     &lt;NA&gt;                               &lt;NA&gt; 2       &lt;NA&gt;       NA          &lt;NA&gt;     &lt;NA&gt;                               &lt;NA&gt; 3       &lt;NA&gt;       NA          &lt;NA&gt;     &lt;NA&gt;                               &lt;NA&gt; 4 A0A2B4RNI3 2.04e-25          &lt;NA&gt;     &lt;NA&gt;                               &lt;NA&gt; 5       &lt;NA&gt;       NA          &lt;NA&gt;     &lt;NA&gt;                               &lt;NA&gt; 6       &lt;NA&gt;       NA          &lt;NA&gt;     &lt;NA&gt;                               &lt;NA&gt;   Gene.Ontology.IDs 1              &lt;NA&gt; 2              &lt;NA&gt; 3              &lt;NA&gt; 4              &lt;NA&gt; 5              &lt;NA&gt; 6              &lt;NA&gt; </code></pre>
-</section>
-<section id="expression-levels" class="level2">
-<h2 class="anchored" data-anchor-id="expression-levels">1.3 Expression levels</h2>
-<p>Plot histograms of the expression levels in each sample</p>
-<pre><code># Melt the count matrix into long format Apul_counts_melted &lt;- melt(Apul_counts_RNA, variable.name = "sample", value.name = "counts")  # Plot the expression level histograms for each sample ggplot(Apul_counts_melted, aes(x = counts)) +   geom_histogram(binwidth = 1, fill = "#408EC6", color = "black") +   scale_x_log10() +  # Optional: Log-transform the x-axis for better visualization   facet_wrap(~sample, scales = "free_y") +   labs(title = "Gene Expression Level Histogram for Each Sample",        x = "Expression Level (Counts)",        y = "Frequency") +   theme_minimal()</code></pre>
-</section>
-<section id="transcript-counts" class="level2">
-<h2 class="anchored" data-anchor-id="transcript-counts">1.4 Transcript counts</h2>
-<p>First let’s check the total number of transcripts in each sample – keep in mind this expression data has <em>not</em> been normalized yet, so there may be different totals for each sample</p>
-<pre><code># Calculate the total number of transcripts for each sample total_transcripts &lt;- colSums(Apul_counts_RNA)  # Create a data frame for plotting total_transcripts_df &lt;- data.frame(sample = names(total_transcripts),                                    totals = total_transcripts)  # Plot the total number of transcripts for each sample ggplot(total_transcripts_df, aes(x = sample, y = totals)) +   geom_bar(stat = "identity", fill = "#408EC6", color = "black") +   labs(title = "Total Number of Transcripts per Sample",        x = "Sample",        y = "Total Transcripts") +   theme_minimal() +   theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate x-axis labels for readability</code></pre>
-<p>Now let’s check the number of unique transcripts in each sample – that is, how many genes are expressed in each sample? This should be pretty much the same across samples, even without normalization.</p>
-<pre><code># Calculate the number of unique transcripts (non-zero counts) for each sample unique_transcripts &lt;- colSums(Apul_counts_RNA &gt; 0)  # Create a data frame for plotting unique_transcripts_df &lt;- data.frame(sample = names(unique_transcripts),                                     uniques = unique_transcripts)  # Plot the total number of unique transcripts for each sample ggplot(unique_transcripts_df, aes(x = sample, y = uniques)) +   geom_bar(stat = "identity", fill = "#408EC6", color = "black") +   labs(title = "Total Number of Unique Expressed Transcripts per Sample",        x = "Sample",        y = "Unique Transcripts") +   theme_minimal() +   theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate x-axis labels for readability</code></pre>
-</section>
-<section id="most-common-biological-processes" class="level2">
-<h2 class="anchored" data-anchor-id="most-common-biological-processes">1.5 Most common biological processes</h2>
-<p>Similar to the plot generated in <code>02-Apul-reference-annotation</code>, let’s plot the biological processes most represented in these samples’ expression</p>
-<pre><code># Rename the `Gene.Ontology..biological.process.` column to `Biological_Process` colnames(Apul_counts_GO)[colnames(Apul_counts_GO) == "Gene.Ontology..biological.process."] &lt;- "Biological_Process"  # Separate the `Biological_Process` column into individual biological processes data_separated &lt;- unlist(strsplit(Apul_counts_GO$Biological_Process, split = ";"))  # Trim whitespace from the biological processes data_separated &lt;- gsub("^\\s+|\\s+$", "", data_separated)  # Count the occurrences of each biological process process_counts &lt;- table(data_separated) process_counts &lt;- data.frame(Biological_Process = names(process_counts), Count = as.integer(process_counts)) process_counts &lt;- process_counts[order(-process_counts$Count), ]  # Select the 20 most predominant biological processes top_20_processes &lt;- process_counts[1:20, ]  # Create a color palette for the bars bar_colors &lt;- rainbow(nrow(top_20_processes))  # Create a staggered vertical bar plot with different colors for each bar barplot(top_20_processes$Count, names.arg = rep("", nrow(top_20_processes)), col = bar_colors,         ylim = c(0, max(top_20_processes$Count) * 1.25),         main = "Occurrences of the 20 Most Predominant Biological Processes", xlab = "Biological Process", ylab = "Count")</code></pre>
-<pre><code># Create a separate plot for the legend png("../output/03.01-Apul-RNA-summary-Hisat/GOlegend.png", width = 800, height = 600) par(mar = c(0, 0, 0, 0)) plot.new() legend("center", legend = top_20_processes$Biological_Process, fill = bar_colors, cex = 1, title = "Biological Processes") dev.off()</code></pre>
-<pre><code>png    2  </code></pre>
-<pre><code>knitr::include_graphics("../output/03.01-Apul-RNA-summary-Hisat/GOlegend.png")</code></pre>
-<pre><code>rm ../output/03.01-Apul-RNA-summary-Hisat/GOlegend.png</code></pre>
-</section>
-</section>
-<section id="normalized-counts" class="level1">
-<h1>2 Normalized counts</h1>
-<section id="normalize-counts-with-deseq2" class="level2">
-<h2 class="anchored" data-anchor-id="normalize-counts-with-deseq2">2.1 Normalize counts with DESeq2</h2>
-<section id="plot-unnormalized-data" class="level3">
-<h3 class="anchored" data-anchor-id="plot-unnormalized-data">2.1.1 Plot unnormalized data</h3>
-<pre><code>Apul_counts_RNA %&gt;%   pivot_longer( cols = everything(), names_to = "sample", values_to = "count") %&gt;%   ggplot(., aes(x = sample, y = count)) +   geom_violin() +    geom_point(alpha = 0.2) +   theme_minimal() +   labs(title = "Unnormalized transcript counts",        x = "Sample",        y = "count")</code></pre>
-<p>We definitely need to normalize this data!</p>
-</section>
-<section id="metadata" class="level3">
-<h3 class="anchored" data-anchor-id="metadata">2.1.2 Metadata</h3>
-<p>DESeq2 requires a metadata data frame as input. I don’t have sample metadata though so, since we’re just doing DESeq2 for normalization purposes (not analysis purposes), I’m just going to create a dummy sheet</p>
-<pre><code>Apul_sample_names &lt;- colnames(Apul_counts_RNA)  Apul_metadata_RNA &lt;- data.frame(Sample = Apul_sample_names,                             Species = rep("A.pulchra", 5)) rownames(Apul_metadata_RNA) &lt;- Apul_sample_names  head(Apul_metadata_RNA)</code></pre>
-<pre><code>         Sample   Species ACR-140 ACR-140 A.pulchra ACR-145 ACR-145 A.pulchra ACR-150 ACR-150 A.pulchra ACR-173 ACR-173 A.pulchra ACR-178 ACR-178 A.pulchra </code></pre>
-</section>
-<section id="deseq-object" class="level3">
-<h3 class="anchored" data-anchor-id="deseq-object">2.1.3 DESeq object</h3>
-<pre><code># Calculate DESeq object dds_Apul_RNA &lt;- DESeqDataSetFromMatrix(countData = Apul_counts_RNA,                               colData = Apul_metadata_RNA,                               design = ~ 1)   # Run differential expression analysis  # (Note that this DESeq() function runs all necessary steps, including data normalization,  # estimating size factors, estimating dispersions, gene-wise dispersion estimates, mean-dispersion  # relationship, final dispersion estimates, fitting model, and testing) # Using design = ~1 because we don't have treatment groups  dds_Apul_RNA &lt;- DESeq(dds_Apul_RNA)</code></pre>
-<p>It’s worth noting here that I’m actually going to be doing two different types of transformation on the counts data, which serve different purposes.</p>
-<ul>
-<li><p>First is <strong>normalizing</strong> the transcript counts, which adjusts for differences in library size or sequencing depth, but retains count-like properties. Normalized counts are most useful for things like visualizing expression levels and differential expression analysis.</p></li>
-<li><p>Second is <strong>variance stabilizing</strong> the counts data, which aims to make the variance of the transformed data approximately independent of the mean, reducing heteroscedasticity (the relationship between variance and mean) and “smoothing” out the variance at low counts. Notably, the transformed data is <em>no longer on the original count scale</em>. The transformation makes the variance roughly constant across the range of counts, which makes it easier to interpret patterns in the data visually. Variance stabilized data is most useful for exploratory data analysis, like PCA, clustering, and heatmaps, and is also the transformation we’ll want to use before WGCNA.</p></li>
-</ul>
-<pre><code># extract normalized counts # (normalization is automatically performed by deseq2) Apul_counts_RNA_norm &lt;- counts(dds_Apul_RNA, normalized=TRUE) %&gt;% data.frame()  write.table(Apul_counts_RNA_norm, file = "../output/03.01-Apul-RNA-summary-Hisat/Apul_counts_RNA_normalized.txt", sep = "\t", row.names = TRUE, col.names = TRUE, quote = FALSE)   # variance stabilized data vsd_Apul_RNA &lt;- varianceStabilizingTransformation(dds_Apul_RNA, blind=TRUE) wpn_vsd_Apul_RNA &lt;- getVarianceStabilizedData(dds_Apul_RNA) rv_wpn_Apul_RNA &lt;- rowVars(wpn_vsd_Apul_RNA, useNames=TRUE)  Apul_counts_RNA_vsd &lt;- data.frame(wpn_vsd_Apul_RNA) write.table(Apul_counts_RNA_vsd, file = "../output/03.01-Apul-RNA-summary-Hisat/Apul_counts_RNA_variancestabilized.txt", sep = "\t", row.names = TRUE, col.names = TRUE,quote = FALSE)  q75_wpn_Apul_RNA &lt;- quantile(rowVars(wpn_vsd_Apul_RNA, useNames=TRUE), .75)  # 75th quantile variability Apul_counts_RNA_vsd_q75 &lt;- wpn_vsd_Apul_RNA[ rv_wpn_Apul_RNA &gt; q75_wpn_Apul_RNA, ] %&gt;% data.frame # filter to retain only the most variable genes write.table(Apul_counts_RNA_vsd_q75, file = "../output/03.01-Apul-RNA-summary-Hisat/Apul_counts_RNA_variancestabilized_q75.txt", sep = "\t", row.names = TRUE, col.names = TRUE,quote = FALSE)  q95_wpn_Apul_RNA &lt;- quantile(rowVars(wpn_vsd_Apul_RNA, useNames=TRUE), .95)  # 95th quantile variability Apul_counts_RNA_vsd_q95 &lt;- wpn_vsd_Apul_RNA[ rv_wpn_Apul_RNA &gt; q95_wpn_Apul_RNA, ] %&gt;% data.frame # filter to retain only the most variable genes write.table(Apul_counts_RNA_vsd_q95, file = "../output/03.01-Apul-RNA-summary-Hisat/Apul_counts_RNA_variancestabilized_q95.txt", sep = "\t", row.names = TRUE, col.names = TRUE,quote = FALSE)</code></pre>
-</section>
-</section>
-<section id="plot-normalized-data" class="level2">
-<h2 class="anchored" data-anchor-id="plot-normalized-data">2.2 Plot normalized data</h2>
-<pre><code>Apul_counts_RNA_norm_long &lt;- Apul_counts_RNA_norm %&gt;%   mutate(     Gene_id = row.names(Apul_counts_RNA_norm)   ) %&gt;%   pivot_longer(-Gene_id)  Apul_counts_RNA_norm_long %&gt;%   ggplot(., aes(x = name, y = value)) +   geom_violin() +   geom_point() +   theme_bw() +   theme(     axis.text.x = element_text( angle = 90)   ) +   ylim(0, NA) +   labs(     title = "Normalized Expression",     x = "Sample",     y = "Normalized counts"   )</code></pre>
-</section>
-<section id="plot-variance-stabilized-data" class="level2">
-<h2 class="anchored" data-anchor-id="plot-variance-stabilized-data">2.3 Plot variance stabilized data</h2>
-<pre><code>Apul_counts_RNA_vsd_long &lt;- Apul_counts_RNA_vsd %&gt;%   mutate(     Gene_id = row.names(Apul_counts_RNA_vsd)   ) %&gt;%   pivot_longer(-Gene_id)  Apul_counts_RNA_vsd_long %&gt;%   ggplot(., aes(x = name, y = value)) +   geom_violin() +   geom_point() +   theme_bw() +   theme(     axis.text.x = element_text( angle = 90)   ) +   ylim(0, NA) +   labs(     title = "Variance Stabilized Expression",     x = "Sample",     y = "Variance stabilized data"   )</code></pre>
-</section>
-<section id="normalized-expression-levels" class="level2">
-<h2 class="anchored" data-anchor-id="normalized-expression-levels">2.4 Normalized expression levels</h2>
-<p>Plot histograms of the normalized expression levels in each sample</p>
-<pre><code># Melt the count matrix into long format Apul_counts_norm_melted &lt;- melt(Apul_counts_RNA_norm, variable.name = "sample", value.name = "counts")  # Plot the expression level histograms for each sample ggplot(Apul_counts_norm_melted, aes(x = counts)) +   geom_histogram(binwidth = 1, fill = "#408EC6", color = "black") +   scale_x_log10() +  # Optional: Log-transform the x-axis for better visualization   facet_wrap(~sample, scales = "free_y") +   labs(title = "Gene Expression Level Histogram for Each Sample",        x = "Expression Level (Counts)",        y = "Frequency") +   theme_minimal()</code></pre>
-</section>
-<section id="normalized-transcript-counts" class="level2">
-<h2 class="anchored" data-anchor-id="normalized-transcript-counts">2.5 Normalized transcript counts</h2>
-<p>Check the total number of transcripts in each sample – now that we’ve normalized the data these totals should be similar</p>
-<pre><code># Calculate the total number of transcripts for each sample total_transcripts_norm &lt;- colSums(Apul_counts_RNA_norm)  # Create a data frame for plotting total_transcripts_norm_df &lt;- data.frame(sample = names(total_transcripts_norm),                                    totals = total_transcripts_norm)  # Plot the total number of transcripts for each sample ggplot(total_transcripts_norm_df, aes(x = sample, y = totals)) +   geom_bar(stat = "identity", fill = "#408EC6", color = "black") +   labs(title = "Total Number of Transcripts per Sample",        x = "Sample",        y = "Total Transcripts") +   theme_minimal() +   theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate x-axis labels for readability</code></pre>
-</section>
-<section id="pca-of-variance-stabilized-data" class="level2">
-<h2 class="anchored" data-anchor-id="pca-of-variance-stabilized-data">2.6 PCA of variance stabilized data</h2>
-<pre><code>plotPCA(vsd_Apul_RNA, intgroup="Sample")</code></pre>
-</section>
-<section id="sample-clustering" class="level2">
-<h2 class="anchored" data-anchor-id="sample-clustering">2.7 Sample clustering</h2>
-<pre><code>sample_dists &lt;- dist(t(assay(vsd_Apul_RNA))) pheatmap(as.matrix(sample_dists), clustering_distance_rows = "euclidean",           clustering_distance_cols = "euclidean", main="Sample Clustering")</code></pre>
-</section>
-<section id="heatmaps" class="level2">
-<h2 class="anchored" data-anchor-id="heatmaps">2.8 Heatmaps</h2>
-<p>Of most variable variance stabilized genes</p>
-<pre><code># 75th quantile heat_colors &lt;- rev(brewer.pal(12, "RdYlBu")) pheatmap(Apul_counts_RNA_vsd_q75,           cluster_rows = TRUE,          cluster_cols = TRUE,          show_rownames = TRUE,          show_colnames = TRUE,          color = heat_colors,          scale="row")</code></pre>
-<pre><code># 95th quantile pheatmap(Apul_counts_RNA_vsd_q95,           cluster_rows = TRUE,          cluster_cols = TRUE,          show_rownames = TRUE,          show_colnames = TRUE,          color = heat_colors,          scale="row")</code></pre>
-
-
-</section>
-</section>
-
- ]]></description>
-  <category>E5-coral</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_02_07_deepdive_Apul_Hisat_RNAsummary.html</guid>
-  <pubDate>Fri, 07 Feb 2025 08:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Deep-dive expression: A.pul miRNA methylation machinery</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_02_07_deepdive_methyl_machinery.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="apul-mirna-methylation-machinery" class="level1">
-<h1><a href="https://github.com/urol-e5/deep-dive-expression/blob/main/D-Apul/code/23-Apul-miRNA-methylation-machinery.md"><strong>23-Apul-miRNA-methylation-machinery</strong></a></h1>
-<p>One way miRNAs and DNA methylation can interact to influence expression is through miRNAs influencing the transcription/translation of protein machinery involved in DNA methylation. In humans, this has been identified as a potential mechanism of carcinogenisis! (Reviewed in Karimzadeh et al.&nbsp;(2021))</p>
-<section id="which-genes-are-involved-in-dna-methylation" class="level2">
-<h2 class="anchored" data-anchor-id="which-genes-are-involved-in-dna-methylation"><strong>Which genes are involved in DNA methylation?</strong></h2>
-<p>“DNA methylation machinery is composed of several enzymes to accurately regulate the gene expression together. The main enzyme-encoding genes comprise a small family of DNA cytosine-5 methyltransferase, which are involved in established (DNA methyltransferase 3 alpha (DNMT3A) and DNA methyltransferase 3 beta (DNMT3B)) and maintenance (DNMT1) of methylation patterns. The other genes are methyl-CpG-binding proteins (MBPs; methyl-CpG-binding domain (MBD)1–4, methyl-CpG-binding protein 2 (MECP2), UHRF1/2, ZBTB33, ZBTB4, and ZBTB38) that assist in expression repression and 10–11 translocation (TET) enzymes (TET1, TET2, and TET3); seemingly, are implicated in DNA demethylation10,11. Some experiments demonstrated that, based on the importance of oncogenes and/or tumor suppressor genes alterations in the development of each type of cancer, DNA methylation regulator genes may enhance or suppress cancer development in each specific type of cancer12,13,14,15,16.” Karimzadeh et al.&nbsp;(2021)</p>
-<p>So we’re looking for miRNAs that target genes encoding: - DNA methyltransferases (DNMTs) - methyl-CpG-binding proteins - 10–11 translocation (TET) enzymes</p>
-<p>First let’s see what a quick search of our annotated A.pulchra genome turns up. I want to find any annotations related to DNA methyltransferase</p>
-<pre><code> awk -F'\t' '$5 ~ /methyltransferase/ {print $2, $5}' OFS='\t' \ ../output/02-Apul-reference-annotation/Apulcra-genome-mRNA-IDmapping-2024_12_12.tab \ | grep "DNA"</code></pre>
-<pre><code>## "ntLink_8:23126215-23133100" "DNA methyltransferase 1-associated protein 1 (DNMAP1) (DNMT1-associated protein 1)" ## "ptg000001l:8684194-8690468" "Alkylated DNA repair protein alkB homolog 8 (Probable alpha-ketoglutarate-dependent dioxygenase ABH8) (S-adenosyl-L-methionine-dependent tRNA methyltransferase ABH8) (tRNA (carboxymethyluridine(34)-5-O)-methyltransferase ABH8) (EC 2.1.1.-, EC 2.1.1.229)" ## "ptg000001l:8684194-8690468" "Alkylated DNA repair protein alkB homolog 8 (Probable alpha-ketoglutarate-dependent dioxygenase ABH8) (S-adenosyl-L-methionine-dependent tRNA methyltransferase ABH8) (tRNA (carboxymethyluridine(34)-5-O)-methyltransferase ABH8) (EC 2.1.1.-, EC 2.1.1.229)" ## "ptg000023l:4341384-4351489" "N(6)-adenine-specific methyltransferase METTL4 (Methyltransferase-like protein 4) (N(6)-adenine-specific DNA methyltransferase METTL4) (EC 2.1.1.72) (snRNA (2'-O-methyladenosine-N(6)-)-methyltransferase METTL4) (EC 2.1.1.-)" ## "ptg000023l:30502755-30503307"   "Methylated-DNA--protein-cysteine methyltransferase (EC 2.1.1.63) (6-O-methylguanine-DNA methyltransferase) (MGMT) (O-6-methylguanine-DNA-alkyltransferase)" ## "ptg000047l:7043865-7069644" "DNA (cytosine-5)-methyltransferase 1 (Dnmt1) (EC 2.1.1.37) (DNA methyltransferase GgaI) (DNA MTase GgaI) (M.GgaI) (MCMT)" ## "ptg000047l:7043865-7069644" "DNA (cytosine-5)-methyltransferase 1 (Dnmt1) (EC 2.1.1.37) (DNA methyltransferase GgaI) (DNA MTase GgaI) (M.GgaI) (MCMT)" ## "ptg000047l:7043865-7069644" "DNA (cytosine-5)-methyltransferase 1 (Dnmt1) (EC 2.1.1.37) (DNA methyltransferase GgaI) (DNA MTase GgaI) (M.GgaI) (MCMT)"</code></pre>
-<p>There’s definitely DNMT machinery genes anontated in our A.pulchra genome (as expected)! Now let’s create a data frame that associated each annotated mRNA with it’s gene ID (i.e.&nbsp;FUN######) and do a more broad search for different machinery involved in methylation</p>
-<pre><code># Read in data mRNA_annot &lt;- read.table("../output/02-Apul-reference-annotation/Apulcra-genome-mRNA-IDmapping-2024_12_12.tab", header=TRUE, sep='\t') %&gt;% select(-X) mRNA_geneIDs &lt;- read.table("../output/15-Apul-annotate-UTRs/Apul-mRNA-FUNids.txt", header=FALSE, sep='\t')  # Join mRNA_annot_geneID &lt;- left_join(mRNA_annot, mRNA_geneIDs, by="V1") mRNA_annot_geneID$V4 &lt;- gsub("Parent=", "", mRNA_annot_geneID$V4)  # To double-check that this worked correctly, check for NAs in the column containing gene IDs # Every mRNA has a gene ID, so this should return FALSE any(is.na(mRNA_annot_geneID$V3.y))</code></pre>
-<pre><code>## [1] FALSE</code></pre>
-<p>Now let’s select genes that encode different protein machinery relevant to DNA methylation</p>
-<pre><code>methyl_machinery &lt;- subset(mRNA_annot_geneID,                             (grepl("methyltransferase", mRNA_annot_geneID$Protein.names)                              &amp; grepl("DNA", mRNA_annot_geneID$Protein.names))                            | grepl("DNMT", mRNA_annot_geneID$Protein.names)                            | grepl("Dnmt", mRNA_annot_geneID$Protein.names)                            | grepl("MBP", mRNA_annot_geneID$Protein.names)                            | grepl("MBD", mRNA_annot_geneID$Protein.names)                            | grepl("MECP", mRNA_annot_geneID$Protein.names)                            | grepl("UHRF", mRNA_annot_geneID$Protein.names)                            | grepl("ZBTB", mRNA_annot_geneID$Protein.names)                            | grepl("TET", mRNA_annot_geneID$Protein.names)                            )  nrow(methyl_machinery)</code></pre>
-<pre><code>## [1] 23</code></pre>
-<p>We find 23 mRNAs in our A.pulchra genome that encode known DNA methylation machinery!</p>
-<p>Note that I stipulated the term “methyltransferase” must be accompanied by “DNA” also present in the Protein.names column. I imposed this restriction because, when I searched for “methyltransferase” alone, methyltransferases related to histone modification and modification with nucleotides other than cytosine came up.</p>
-<p>Now let’s see whether any of these methylation machinery genes are putative miRNA targets, using the output from our target-prediction software, miRanda.</p>
-<pre><code>miranda_apul &lt;- read.table("../output/18-Apul-interactions-functional-annotation/miRanda_miRNA_mRNA.txt", header=TRUE, sep='\t')  miranda_methyl_machinery &lt;- left_join(methyl_machinery, miranda_apul, by=c("V4" = "mRNA_FUNid"))  length(na.omit(miranda_apul$miRNA_cluster))</code></pre>
-<pre><code>## [1] 6109</code></pre>
-<pre><code>length(unique(na.omit(miranda_apul$miRNA_cluster)))</code></pre>
-<pre><code>## [1] 39</code></pre>
-<pre><code>length(na.omit(miranda_methyl_machinery$miRNA_cluster))</code></pre>
-<pre><code>## [1] 0</code></pre>
-<pre><code>length(unique(na.omit(miranda_methyl_machinery$miRNA_cluster)))</code></pre>
-<pre><code>## [1] 0</code></pre>
-<p>Miranda originally identified 6109 putative targets of 39 of our miRNAs, but none of these targets are included in our list of DNA methylation machinery mRNA. :(</p>
-<p>So this means that our <strong>A.pulchra miRNAs do not putatively bind to any methylation machinery mRNA</strong> and/or I’m missing some genes in my search.</p>
-<p>Karimzadeh, Mohammad Reza, Peyman Pourdavoud, Naeim Ehtesham, Mohaddese Qadbeigi, Masood Movahedi Asl, Behrang Alani, Meysam Mosallaei, and Bahram Pakzad. 2021. “Regulation of DNA Methylation Machinery by Epi-miRNAs in Human Cancer: Emerging New Targets in Cancer Therapy.” <em>Cancer Gene Therapy</em> 28 (3): 157–74. <a href="https://doi.org/10.1038/s41417-020-00210-7" class="uri">https://doi.org/10.1038/s41417-020-00210-7</a>.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <category>E5-coral</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_02_07_deepdive_methyl_machinery.html</guid>
-  <pubDate>Fri, 07 Feb 2025 08:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
