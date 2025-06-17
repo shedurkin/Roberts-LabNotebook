@@ -10,7 +10,124 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Mon, 12 May 2025 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 16 Jun 2025 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>SIFP purchasing list, notes</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_06_16_purchasing.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Compiled below is a breakdown of what ONT consumables need to be purchased for library prep and sequencing, including number and estimated cost. I’ve also included a list of required 3rd party reagents. Any that are not available at LAB will also need to be purchased.</p>
+<p>Since we’ve decided to use the MinION platform available at the Smithsonian, instead of finding a PromethION to use externally, I need to determine how many flow cells we’ll need to sequence N=15 samples (3 time points at n=5).</p>
+<p>Coral genome: 500 Mb<br>
+10X read depth: 5,000 Mb = 5 Gb<br>
+MinION output* : 30 Gb<br>
+<strong>Multiplexing max = 6 samples/flow cell</strong></p>
+<p>To err on the conservative side, let’s say 4 samples per flow cell. Then we’d <strong>need 4 flow cells to multiplex all samples</strong>. It would also be prudent to have an extra flow cell in case of issues (e.g.&nbsp;improper loading). We should also get some flongles<sup>+</sup> (basically cheap, low-output flow cells) for trial runs (e.g.&nbsp;to check successful library prep, to check endogenous DNA levels as a QC).</p>
+<p>*The theoretical maximum output of a MinION flow cell is 48Gb, but this seems unlikely given the reported experiences of colleagues. Will instead use the more conservative estimate of 30Gb.<br>
+<sup>+</sup>Note that an adapter is required to use Flongle Flow Cells. If the Smithsonian doesn’t already have one it would need to be purchased. The same link included below also provides the option to purchase an adapter and 12 flongle flow cells for ~$1600.</p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td>Item</td>
+<td># rxns/unit</td>
+<td>Price ($/unit)</td>
+<td># units</td>
+<td>Total cost</td>
+</tr>
+<tr class="even">
+<td><a href="https://store.nanoporetech.com/us/native-barcoding-kit-96-v14.html">Native Barcoding Kit 96 V14</a><br>
+(protocol <a href="https://community.nanoporetech.com/docs/prepare/library_prep_protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-96">here</a>)</td>
+<td>96 barcodes<br>
+12 rxns</td>
+<td>900</td>
+<td>1</td>
+<td>900</td>
+</tr>
+<tr class="odd">
+<td><a href="https://store.nanoporetech.com/us/flow-cell-r10-4-1-2025.html">MinION Flow Cells (R10.4.1)</a></td>
+<td>1 cell</td>
+<td>800</td>
+<td>5</td>
+<td>4000</td>
+</tr>
+<tr class="even">
+<td><a href="https://store.nanoporetech.com/us/productDetail/?id=flow-cell-wash">Flow Cell Wash Kit</a></td>
+<td>6</td>
+<td>115</td>
+<td>1</td>
+<td>115</td>
+</tr>
+<tr class="odd">
+<td><a href="https://www.avantorsciences.com/us/en/product/39662889/flongle-adapter-and-flow-cells-for-miniontm-and-minion-mk1c-oxford-nanopore-technologies">Flongle Flow Cells (R10.4.1)</a>*</td>
+<td>6</td>
+<td>450</td>
+<td>1</td>
+<td>450</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>5,465</strong></td>
+</tr>
+</tbody>
+</table>
+<section id="required-third-party-consumables-and-equipment" class="level2">
+<h2 class="anchored" data-anchor-id="required-third-party-consumables-and-equipment">Required third-party consumables and equipment</h2>
+<section id="native-barcoding-kit-96-v14" class="level3">
+<h3 class="anchored" data-anchor-id="native-barcoding-kit-96-v14">Native barcoding Kit 96 V14</h3>
+<section id="consumables" class="level4">
+<h4 class="anchored" data-anchor-id="consumables">Consumables</h4>
+<ul>
+<li><p>NEB Blunt/TA Ligase Master Mix (M0367)</p></li>
+<li><p>NEBNext FFPE Repair Mix (M6630)</p></li>
+<li><p>NEBNext Ultra II End repair/dA-tailing Module (E7546)</p></li>
+<li><p>NEBNext Quick Ligation Module (E6056)</p></li>
+<li><p>2 ml Eppendorf DNA LoBind tubes</p></li>
+<li><p>1.5 ml Eppendorf DNA LoBind tubes</p></li>
+<li><p>0.2 ml thin-walled PCR tubes or PCR plate</p></li>
+<li><p>Nuclease-free water (e.g.&nbsp;ThermoFisher, cat # AM9937)</p></li>
+<li><p>Freshly prepared 80% ethanol in nuclease-free water</p></li>
+<li><p>Qubit™ Assay Tubes (ThermoFisher Q32856)</p></li>
+<li><p>Qubit dsDNA HS Assay Kit (ThermoFisher Q32851)</p></li>
+<li><p>(Optional) Bovine Serum Albumin (BSA) (50 mg/ml) (e.g Invitrogen™ UltraPure™ BSA 50 mg/ml, cat# AM2616)</p></li>
+</ul>
+</section>
+<section id="equipment" class="level4">
+<h4 class="anchored" data-anchor-id="equipment">Equipment</h4>
+<ul>
+<li><p>Hula mixer (gentle rotator mixer)</p></li>
+<li><p>Microfuge</p></li>
+<li><p>Magnetic rack</p></li>
+<li><p>Vortex mixer</p></li>
+<li><p>Thermal cycler</p></li>
+<li><p>Multichannel pipette</p></li>
+<li><p>P1000 pipette and tips</p></li>
+<li><p>P200 pipette and tips</p></li>
+<li><p>P100 pipette and tips</p></li>
+<li><p>P20 pipette and tips</p></li>
+<li><p>P10 pipette and tips</p></li>
+<li><p>P2 pipette and tips</p></li>
+<li><p>Ice bucket with ice</p></li>
+<li><p>Timer</p></li>
+<li><p>Qubit fluorometer (or equivalent for QC check)</p></li>
+</ul>
+
+
+</section>
+</section>
+</section>
+
+ ]]></description>
+  <category>SIFP_2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_06_16_purchasing.html</guid>
+  <pubDate>Mon, 16 Jun 2025 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>5/12 Meeting with OU Lab</title>
   <dc:creator>Kathleen Durkin</dc:creator>

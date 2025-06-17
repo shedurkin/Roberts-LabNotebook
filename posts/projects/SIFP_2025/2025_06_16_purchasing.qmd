@@ -1,0 +1,104 @@
+---
+title: "SIFP purchasing list, notes"
+author: "Kathleen Durkin"
+date: "2025-06-16"
+categories: ["SIFP_2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Compiled below is a breakdown of what ONT consumables need to be purchased for library prep and sequencing, including number and estimated cost. I've also included a list of required 3rd party reagents. Any that are not available at LAB will also need to be purchased.
+
+Since we've decided to use the MinION platform available at the Smithsonian, instead of finding a PromethION to use externally, I need to determine how many flow cells we'll need to sequence N=15 samples (3 time points at n=5).
+
+Coral genome: 500 Mb\
+10X read depth: 5,000 Mb = 5 Gb \
+MinION output\* : 30 Gb\
+**Multiplexing max = 6 samples/flow cell**
+
+To err on the conservative side, let's say 4 samples per flow cell. Then we'd **need 4 flow cells to multiplex all samples**. It would also be prudent to have an extra flow cell in case of issues (e.g. improper loading). We should also get some flongles^+^ (basically cheap, low-output flow cells) for trial runs (e.g. to check successful library prep, to check endogenous DNA levels as a QC).
+
+\*The theoretical maximum output of a MinION flow cell is 48Gb, but this seems unlikely given the reported experiences of colleagues. Will instead use the more conservative estimate of 30Gb. \
+^+^Note that an adapter is required to use Flongle Flow Cells. If the Smithsonian doesn't already have one it would need to be purchased. The same link included below also provides the option to purchase an adapter and 12 flongle flow cells for \~\$1600.
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+-----------+------------+
+| Item                                                                                                                                                                              | \# rxns/unit | Price (\$/unit) | \# units  | Total cost |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+-----------+------------+
+| [Native Barcoding Kit 96 V14](https://store.nanoporetech.com/us/native-barcoding-kit-96-v14.html)\                                                                                | 96 barcodes\ | 900             | 1         | 900        |
+| (protocol [here](https://community.nanoporetech.com/docs/prepare/library_prep_protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-96))                             | 12 rxns      |                 |           |            |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+-----------+------------+
+| [MinION Flow Cells (R10.4.1)](https://store.nanoporetech.com/us/flow-cell-r10-4-1-2025.html)                                                                                      | 1 cell       | 800             | 5         | 4000       |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+-----------+------------+
+| [Flow Cell Wash Kit](https://store.nanoporetech.com/us/productDetail/?id=flow-cell-wash)                                                                                          | 6            | 115             | 1         | 115        |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+-----------+------------+
+| [Flongle Flow Cells (R10.4.1)](https://www.avantorsciences.com/us/en/product/39662889/flongle-adapter-and-flow-cells-for-miniontm-and-minion-mk1c-oxford-nanopore-technologies)\* | 6            | 450             | 1         | 450        |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+-----------+------------+
+|                                                                                                                                                                                   |              |                 |           | **5,465**  |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+-----------+------------+
+
+## Required third-party consumables and equipment
+
+### Native barcoding Kit 96 V14
+
+#### Consumables
+
+-   NEB Blunt/TA Ligase Master Mix (M0367)
+
+-   NEBNext FFPE Repair Mix (M6630)
+
+-   NEBNext Ultra II End repair/dA-tailing Module (E7546)
+
+-   NEBNext Quick Ligation Module (E6056)
+
+-   2 ml Eppendorf DNA LoBind tubes
+
+-   1.5 ml Eppendorf DNA LoBind tubes
+
+-   0.2 ml thin-walled PCR tubes or PCR plate
+
+-   Nuclease-free water (e.g. ThermoFisher, cat \# AM9937)
+
+-   Freshly prepared 80% ethanol in nuclease-free water
+
+-   Qubit™ Assay Tubes (ThermoFisher Q32856)
+
+-   Qubit dsDNA HS Assay Kit (ThermoFisher Q32851)
+
+-   (Optional) Bovine Serum Albumin (BSA) (50 mg/ml) (e.g Invitrogen™ UltraPure™ BSA 50 mg/ml, cat# AM2616)
+
+#### Equipment
+
+-   Hula mixer (gentle rotator mixer)
+
+-   Microfuge
+
+-   Magnetic rack
+
+-   Vortex mixer
+
+-   Thermal cycler
+
+-   Multichannel pipette
+
+-   P1000 pipette and tips
+
+-   P200 pipette and tips
+
+-   P100 pipette and tips
+
+-   P20 pipette and tips
+
+-   P10 pipette and tips
+
+-   P2 pipette and tips
+
+-   Ice bucket with ice
+
+-   Timer
+
+-   Qubit fluorometer (or equivalent for QC check)
