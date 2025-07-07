@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/projects.html</loc>
-    <lastmod>2025-06-17T04:02:29.586Z</lastmod>
+    <lastmod>2025-06-17T04:13:54.040Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_06_16_purchasing.html</loc>
-    <lastmod>2025-06-17T04:02:22.671Z</lastmod>
+    <lastmod>2025-07-07T16:35:57.777Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_05_02_Andrea_Dan_meeting.html</loc>
@@ -106,7 +106,7 @@
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</loc>
-    <lastmod>2025-06-17T04:00:31.800Z</lastmod>
+    <lastmod>2025-07-07T16:28:59.562Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_05_16_timeseries_ML_feature_proximity.html</loc>
@@ -254,7 +254,7 @@
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/daily_log.html</loc>
-    <lastmod>2025-06-17T03:56:52.263Z</lastmod>
+    <lastmod>2025-07-07T16:28:55.817Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/about.html</loc>
@@ -510,6 +510,14 @@
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025.html</loc>
-    <lastmod>2025-06-17T04:02:25.352Z</lastmod>
+    <lastmod>2025-07-07T16:35:39.332Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_06_17_dde_results_wrapup.html</loc>
+    <lastmod>2025-07-07T16:28:49.803Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/2025_06_24_steven_meeting.html</loc>
+    <lastmod>2025-07-07T16:28:43.588Z</lastmod>
   </url>
 </urlset>

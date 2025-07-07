@@ -232,7 +232,7 @@
  ]]></description>
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/2025_04_14_steven meeting.html</guid>
-  <pubDate>Mon, 14 Apr 2025 07:00:00 GMT</pubDate>
+  <pubDate>Mon, 14 Apr 2025 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>April 2025, Monthly Goals</title>
@@ -270,7 +270,7 @@
  ]]></description>
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/April_2025_goals.html</guid>
-  <pubDate>Wed, 02 Apr 2025 07:00:00 GMT</pubDate>
+  <pubDate>Wed, 02 Apr 2025 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>March 2025, Daily Log</title>
@@ -1531,70 +1531,6 @@ font-style: inherit;">1</span>))</span></code></pre></div>
   <pubDate>Tue, 11 Mar 2025 18:22:45 GMT</pubDate>
 </item>
 <item>
-  <title>February 2025, Monthly Goals</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/February_2025_goals.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="february-goals" class="level2">
-<h2 class="anchored" data-anchor-id="february-goals"><strong>February goals</strong></h2>
-<ul>
-<li><p><strong>Complete E5 tasks set at <a href="https://docs.google.com/document/d/1Fdd6xC9tJmAf9Iydcf3er-YwabKmwK3jGVw4ppfxfhM/edit?tab=t.0#heading=h.ypc3i81lq7yf">Jan.&nbsp;31 2025 E5 Molecular meeting</a><br>
-Mine include:</strong></p>
-<ul>
-<li><p>“There will be a suite of genes that a sRNA regulates that have similar function”<br>
-Use functional annotation of the gene-miRNA interaction network to identify putative function of each miRNA based on function of associated genes. Kathleen Durkin</p></li>
-<li><p>For predicted miRNA targets, compare functional composition of targets to functional composition of full reference.<br>
-(Basically, I want to see whether miRNAs preferentially regulate any functional classes).</p></li>
-<li><p>If an miRNA is formally described (e.g.&nbsp;mir-100), compare/contrast its described function with the putative function determined during (2)</p></li>
-<li><p>“Some lncRNAs that act as sponges (bind) sRNA will impact gene expression sRNA regulate”<br>
-Use miRanda to predict miRNA-lncRNA binding and evaluate correlated expression of putative binding pairs to generate miRNA-lncRNA interaction network.</p></li>
-<li><p>“siRNA modulate DNA methylation through RNA-directed DNA methylation by binding to genomic region and recruiting protein machinery to direct methylation”<br>
-Use miRanda/RNAhybrid to predict siRNA binding to the genome. Using simulated WGBS data, prep pipeline to test whether siRNA binding is significantly associated with methylation</p></li>
-<li><p>siRNAs could also play a role in guiding DNA methylation to silence transposable elements<br>
-Use miRanda/RNAhybrid to predict siRNA binding to TEs. Evaluate correlated expression of siRNAs and TEs (expecting a negative relationship).</p></li>
-</ul></li>
-<li><p><strong>Complete the following tasks for A.pulchra time series data (in preparation for EPIMAR talk in May):</strong></p>
-<ul>
-<li><p>evaluate patterns of binding and coexpression among miRNA, lncRNA, and genes</p></li>
-<li><p>explore additional putative interactions (e.g.&nbsp;3+)</p></li>
-<li><p>annotate function through interacting genes</p></li>
-<li><p>infer additional functional information through relationships with host and/or symbiont physiology data (e.g.&nbsp;WGCNA, edgeR)</p></li>
-<li><p>start incorporating WGCNA data</p></li>
-</ul></li>
-<li><p><strong>Continue all January goals to maintain time management and logging habits:</strong></p>
-<ul>
-<li><p>Log activities daily in Lab Notebook</p></li>
-<li><p>Log all data analysis work (e.g.&nbsp;running a WGCNA) in dedicated post in appropriate project page.</p></li>
-<li><p>Spend maximum 50 hours/week working. Log daily hours in Lab Notebook.</p></li>
-<li></li>
-</ul></li>
-</ul>
-</section>
-<section id="review-january-goals" class="level2">
-<h2 class="anchored" data-anchor-id="review-january-goals">Review January goals</h2>
-<ul>
-<li><p><strong>Log activities daily in Lab Notebook.</strong><br>
-Last quarter I got overwhelmed with work and stopped posting my daily activities in my lab notebook. I want to reinstate that habit!</p></li>
-<li><p><strong>Log all data analysis work (e.g.&nbsp;running a WGCNA) in dedicated post in appropriate project page.</strong><br>
-Similar to the first goal, I’ve been relying on Github to log all the analysis work I’ve been doing. That work should also be detailed in my lab notebook.</p></li>
-<li><p><strong>Spend maximum 50 hours/week working. Log daily hours in Lab Notebook.</strong><br>
-Last quarter, with the intensive TA position, grant applications, committee prep, and transitioning to E5 expression work/leadership, I worked a <em>lot</em>, and I was really burned out by the end of the quarter. I want to hold myself accountable to a more manageable work schedule this quarter. This time logging will begin my first week back from SICB (Monday, Jan 13). I expect my time breakdown to be roughly:<br>
-<strong>20hr/wk</strong> classes (SWED 101, FISH 513); <strong>15hr/wk</strong> TAing (QSCI 381); <strong>15hr/wk</strong> thesis work.</p></li>
-</ul>
-
-
-</section>
-
- ]]></description>
-  <category>monthly goals</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/February_2025_goals.html</guid>
-  <pubDate>Wed, 05 Feb 2025 08:00:00 GMT</pubDate>
-</item>
-<item>
   <title>January 2025, Daily Log</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/January_2025_posts.html</link>
@@ -2045,6 +1981,70 @@ So far I’m happy with my progress! I worked a logged-total of <strong>45.5 hrs
   <pubDate>Wed, 05 Feb 2025 07:34:15 GMT</pubDate>
 </item>
 <item>
+  <title>February 2025, Monthly Goals</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/February_2025_goals.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="february-goals" class="level2">
+<h2 class="anchored" data-anchor-id="february-goals"><strong>February goals</strong></h2>
+<ul>
+<li><p><strong>Complete E5 tasks set at <a href="https://docs.google.com/document/d/1Fdd6xC9tJmAf9Iydcf3er-YwabKmwK3jGVw4ppfxfhM/edit?tab=t.0#heading=h.ypc3i81lq7yf">Jan.&nbsp;31 2025 E5 Molecular meeting</a><br>
+Mine include:</strong></p>
+<ul>
+<li><p>“There will be a suite of genes that a sRNA regulates that have similar function”<br>
+Use functional annotation of the gene-miRNA interaction network to identify putative function of each miRNA based on function of associated genes. Kathleen Durkin</p></li>
+<li><p>For predicted miRNA targets, compare functional composition of targets to functional composition of full reference.<br>
+(Basically, I want to see whether miRNAs preferentially regulate any functional classes).</p></li>
+<li><p>If an miRNA is formally described (e.g.&nbsp;mir-100), compare/contrast its described function with the putative function determined during (2)</p></li>
+<li><p>“Some lncRNAs that act as sponges (bind) sRNA will impact gene expression sRNA regulate”<br>
+Use miRanda to predict miRNA-lncRNA binding and evaluate correlated expression of putative binding pairs to generate miRNA-lncRNA interaction network.</p></li>
+<li><p>“siRNA modulate DNA methylation through RNA-directed DNA methylation by binding to genomic region and recruiting protein machinery to direct methylation”<br>
+Use miRanda/RNAhybrid to predict siRNA binding to the genome. Using simulated WGBS data, prep pipeline to test whether siRNA binding is significantly associated with methylation</p></li>
+<li><p>siRNAs could also play a role in guiding DNA methylation to silence transposable elements<br>
+Use miRanda/RNAhybrid to predict siRNA binding to TEs. Evaluate correlated expression of siRNAs and TEs (expecting a negative relationship).</p></li>
+</ul></li>
+<li><p><strong>Complete the following tasks for A.pulchra time series data (in preparation for EPIMAR talk in May):</strong></p>
+<ul>
+<li><p>evaluate patterns of binding and coexpression among miRNA, lncRNA, and genes</p></li>
+<li><p>explore additional putative interactions (e.g.&nbsp;3+)</p></li>
+<li><p>annotate function through interacting genes</p></li>
+<li><p>infer additional functional information through relationships with host and/or symbiont physiology data (e.g.&nbsp;WGCNA, edgeR)</p></li>
+<li><p>start incorporating WGCNA data</p></li>
+</ul></li>
+<li><p><strong>Continue all January goals to maintain time management and logging habits:</strong></p>
+<ul>
+<li><p>Log activities daily in Lab Notebook</p></li>
+<li><p>Log all data analysis work (e.g.&nbsp;running a WGCNA) in dedicated post in appropriate project page.</p></li>
+<li><p>Spend maximum 50 hours/week working. Log daily hours in Lab Notebook.</p></li>
+<li></li>
+</ul></li>
+</ul>
+</section>
+<section id="review-january-goals" class="level2">
+<h2 class="anchored" data-anchor-id="review-january-goals">Review January goals</h2>
+<ul>
+<li><p><strong>Log activities daily in Lab Notebook.</strong><br>
+Last quarter I got overwhelmed with work and stopped posting my daily activities in my lab notebook. I want to reinstate that habit!</p></li>
+<li><p><strong>Log all data analysis work (e.g.&nbsp;running a WGCNA) in dedicated post in appropriate project page.</strong><br>
+Similar to the first goal, I’ve been relying on Github to log all the analysis work I’ve been doing. That work should also be detailed in my lab notebook.</p></li>
+<li><p><strong>Spend maximum 50 hours/week working. Log daily hours in Lab Notebook.</strong><br>
+Last quarter, with the intensive TA position, grant applications, committee prep, and transitioning to E5 expression work/leadership, I worked a <em>lot</em>, and I was really burned out by the end of the quarter. I want to hold myself accountable to a more manageable work schedule this quarter. This time logging will begin my first week back from SICB (Monday, Jan 13). I expect my time breakdown to be roughly:<br>
+<strong>20hr/wk</strong> classes (SWED 101, FISH 513); <strong>15hr/wk</strong> TAing (QSCI 381); <strong>15hr/wk</strong> thesis work.</p></li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>monthly goals</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/February_2025_goals.html</guid>
+  <pubDate>Wed, 05 Feb 2025 05:00:00 GMT</pubDate>
+</item>
+<item>
   <title>January 2025, Monthly Goals</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/January_2025_goals.html</link>
@@ -2085,7 +2085,7 @@ Last quarter, with the intensive TA position, grant applications, committee prep
  ]]></description>
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/January_2025_goals.html</guid>
-  <pubDate>Thu, 09 Jan 2025 08:00:00 GMT</pubDate>
+  <pubDate>Thu, 09 Jan 2025 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>November 2024, Daily Log</title>
@@ -2583,7 +2583,7 @@ Last quarter, with the intensive TA position, grant applications, committee prep
  ]]></description>
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/2024_10_31_weekly_steven_meeting.html</guid>
-  <pubDate>Thu, 31 Oct 2024 07:00:00 GMT</pubDate>
+  <pubDate>Thu, 31 Oct 2024 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Masters/Bypass planning</title>
@@ -2968,7 +2968,7 @@ I’ve also started looking at gene expression and coexpression, details on that
  ]]></description>
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/September_2024_goals.html</guid>
-  <pubDate>Tue, 03 Sep 2024 07:00:00 GMT</pubDate>
+  <pubDate>Tue, 03 Sep 2024 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>July 2024, Daily Log</title>
@@ -3195,7 +3195,7 @@ Notes <a href="https://docs.google.com/document/d/1IgbZgJOcZYKogHhHB1Apst1ihhXzm
  ]]></description>
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/July_2024_goals.html</guid>
-  <pubDate>Tue, 09 Jul 2024 07:00:00 GMT</pubDate>
+  <pubDate>Tue, 09 Jul 2024 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>June 2024, Daily Log</title>
@@ -3450,7 +3450,7 @@ Notes <a href="https://docs.google.com/document/d/1IgbZgJOcZYKogHhHB1Apst1ihhXzm
  ]]></description>
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/June_2024_goals.html</guid>
-  <pubDate>Tue, 04 Jun 2024 07:00:00 GMT</pubDate>
+  <pubDate>Tue, 04 Jun 2024 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>May 2024, Daily Log</title>
@@ -3686,7 +3686,7 @@ I also did a fair bit of work for the E5 project in April that I wasn’t planni
  ]]></description>
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/May_2024_goals.html</guid>
-  <pubDate>Mon, 13 May 2024 07:00:00 GMT</pubDate>
+  <pubDate>Mon, 13 May 2024 04:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

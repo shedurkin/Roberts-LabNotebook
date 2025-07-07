@@ -17,29 +17,54 @@ Compiled below is a breakdown of what ONT consumables need to be purchased for l
 Since we've decided to use the MinION platform available at the Smithsonian, instead of finding a PromethION to use externally, I need to determine how many flow cells we'll need to sequence N=15 samples (3 time points at n=5).
 
 Coral genome: 500 Mb\
-10X read depth: 5,000 Mb = 5 Gb \
+10X read depth: 5,000 Mb = 5 Gb\
 MinION output\* : 30 Gb\
 **Multiplexing max = 6 samples/flow cell**
 
 To err on the conservative side, let's say 4 samples per flow cell. Then we'd **need 4 flow cells to multiplex all samples**. It would also be prudent to have an extra flow cell in case of issues (e.g. improper loading). We should also get some flongles^+^ (basically cheap, low-output flow cells) for trial runs (e.g. to check successful library prep, to check endogenous DNA levels as a QC).
 
-\*The theoretical maximum output of a MinION flow cell is 48Gb, but this seems unlikely given the reported experiences of colleagues. Will instead use the more conservative estimate of 30Gb. \
+\*The theoretical maximum output of a MinION flow cell is 48Gb, but this seems unlikely given the reported experiences of colleagues. Will instead use the more conservative estimate of 30Gb.\
 ^+^Note that an adapter is required to use Flongle Flow Cells. If the Smithsonian doesn't already have one it would need to be purchased. The same link included below also provides the option to purchase an adapter and 12 flongle flow cells for \~\$1600.
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+-----------+------------+
-| Item                                                                                                                                                                              | \# rxns/unit | Price (\$/unit) | \# units  | Total cost |
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+-----------+------------+
-| [Native Barcoding Kit 96 V14](https://store.nanoporetech.com/us/native-barcoding-kit-96-v14.html)\                                                                                | 96 barcodes\ | 900             | 1         | 900        |
-| (protocol [here](https://community.nanoporetech.com/docs/prepare/library_prep_protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-96))                             | 12 rxns      |                 |           |            |
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+-----------+------------+
-| [MinION Flow Cells (R10.4.1)](https://store.nanoporetech.com/us/flow-cell-r10-4-1-2025.html)                                                                                      | 1 cell       | 800             | 5         | 4000       |
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+-----------+------------+
-| [Flow Cell Wash Kit](https://store.nanoporetech.com/us/productDetail/?id=flow-cell-wash)                                                                                          | 6            | 115             | 1         | 115        |
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+-----------+------------+
-| [Flongle Flow Cells (R10.4.1)](https://www.avantorsciences.com/us/en/product/39662889/flongle-adapter-and-flow-cells-for-miniontm-and-minion-mk1c-oxford-nanopore-technologies)\* | 6            | 450             | 1         | 450        |
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+-----------+------------+
-|                                                                                                                                                                                   |              |                 |           | **5,465**  |
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+-----------+------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+----------+------------+
+| Item                                                                                                                                                                              | \# rxns/unit | Price (\$/unit) | \# units | Total cost |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+----------+------------+
+| [Native Barcoding Kit 96 V14](https://store.nanoporetech.com/us/native-barcoding-kit-96-v14.html)\                                                                                | 96 barcodes\ | 900             | 1        | 900        |
+| (protocol [here](https://community.nanoporetech.com/docs/prepare/library_prep_protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-96))                             | 12 rxns      |                 |          |            |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+----------+------------+
+| [MinION Flow Cells (R10.4.1)](https://store.nanoporetech.com/us/flow-cell-r10-4-1-2025.html)                                                                                      | 1 cell       | 800             | 5        | 4000       |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+----------+------------+
+| [Flow Cell Wash Kit](https://store.nanoporetech.com/us/productDetail/?id=flow-cell-wash)                                                                                          | 6            | 115             | 1        | 115        |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+----------+------------+
+| [Flongle Flow Cells (R10.4.1)](https://www.avantorsciences.com/us/en/product/39662889/flongle-adapter-and-flow-cells-for-miniontm-and-minion-mk1c-oxford-nanopore-technologies)\* | 6            | 450             | 1        | 450        |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+----------+------------+
+|                                                                                                                                                                                   |              |                 |          | **5,465**  |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+----------+------------+
+
+::: callout-note
+## 6/23/25 Update
+
+Dan recommends purchasing additional Flow Cell Wash Kits, since you may use multiple reactions in a single sequencing run (i.e. you may want to wash the flow cell several times within a run).
+
+Additionally, the LAB doesn't currently have a Flongle Adapter, so we'll need to purchase one. We can purchase a bundle that includes the Adapter, reagents, and 12 Flongle Flow Cells for a reduced price.
+
+Updated breakdown:
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+----------+-----------:+
+| Item                                                                                                                                                                                                                           | \# rxns/unit | Price (\$/unit) | \# units | Total cost |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+----------+------------+
+| [Native Barcoding Kit 96 V14](https://store.nanoporetech.com/us/native-barcoding-kit-96-v14.html)\                                                                                                                             | 96 barcodes\ | 900             | 1        | 900        |
+| (protocol [here](https://community.nanoporetech.com/docs/prepare/library_prep_protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-96))                                                                          | 12 rxns      |                 |          |            |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+----------+------------+
+| [MinION Flow Cells (R10.4.1)](https://store.nanoporetech.com/us/flow-cell-r10-4-1-2025.html)                                                                                                                                   | 1 cell       | 800             | 5        | 4000       |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+----------+------------+
+| [Flow Cell Wash Kit](https://store.nanoporetech.com/us/productDetail/?id=flow-cell-wash)                                                                                                                                       | 6            | 115             | **3**    | **345**    |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+----------+------------+
+| [**Flongle Starter Pack**](https://www.avantorsciences.com/us/en/product/39662889/flongle-adapter-and-flow-cells-for-miniontm-and-minion-mk1c-oxford-nanopore-technologies) **(12 Flow Cells, Adapter, Sequencing Expansion)** | **12 cells** | **1664**        | **1**    | **1664**   |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+----------+------------+
+|                                                                                                                                                                                                                                |              |                 |          | **6,909**  |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------+----------+------------+
+:::
 
 ## Required third-party consumables and equipment
 

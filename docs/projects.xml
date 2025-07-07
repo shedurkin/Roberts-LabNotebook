@@ -10,7 +10,7 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/projects.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Tue, 17 Jun 2025 04:02:29 GMT</lastBuildDate>
+<lastBuildDate>Tue, 17 Jun 2025 04:13:53 GMT</lastBuildDate>
 <item>
   <title>E5 Coral</title>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</link>
@@ -63,7 +63,7 @@ Reading Time
 <tbody class="list">
 <tr data-index="0" data-categories="E5-coral" data-listing-date-sort="1748156400000" data-listing-file-modified-sort="1750124777795" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-title-sort="Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning -- Feature Proximity WGBS UPDATE" data-listing-filename-sort="2025_05_25_timeseries_ML_feature_proximity_2.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_05_25_timeseries_ML_feature_proximity_2.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">May 25, 2025</span>
@@ -80,7 +80,7 @@ Reading Time
 </tr>
 <tr data-index="1" data-categories="E5-coral" data-listing-date-sort="1747378800000" data-listing-file-modified-sort="1748222409606" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-title-sort="Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning -- Feature Proximity" data-listing-filename-sort="2025_05_16_timeseries_ML_feature_proximity.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_05_16_timeseries_ML_feature_proximity.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">May 16, 2025</span>
@@ -97,7 +97,7 @@ Reading Time
 </tr>
 <tr data-index="2" data-categories="E5-coral" data-listing-date-sort="1747119600000" data-listing-file-modified-sort="1747436525875" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-title-sort="Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning -- Lit Review" data-listing-filename-sort="2025_05_13_timeseries_multiomic_ML_lit_review.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_05_13_timeseries_multiomic_ML_lit_review.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">May 13, 2025</span>
@@ -114,7 +114,7 @@ Reading Time
 </tr>
 <tr data-index="3" data-categories="E5-coral" data-listing-date-sort="1747033200000" data-listing-file-modified-sort="1747107847748" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning -- Part 4" data-listing-filename-sort="2025_05_12_timeseries_multiomic_ML_4.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_05_12_timeseries_multiomic_ML_4.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-1.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">May 12, 2025</span>
@@ -131,7 +131,7 @@ Reading Time
 </tr>
 <tr data-index="4" data-categories="E5-coral" data-listing-date-sort="1746687600000" data-listing-file-modified-sort="1747093832964" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="749" data-listing-title-sort="Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning -- Part 3" data-listing-filename-sort="2025_05_08_timeseries_multiomic_ML_3.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_05_08_timeseries_multiomic_ML_3.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files/figure-gfm/unnamed-chunk-27-1.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">May 8, 2025</span>
@@ -148,7 +148,7 @@ Reading Time
 </tr>
 <tr data-index="5" data-categories="E5-coral" data-listing-date-sort="1746601200000" data-listing-file-modified-sort="1747090458772" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Timeseries molecular: Format input files for Cytoscape -- pt.2" data-listing-filename-sort="2025_05_07_timeseries_cytoscape_files_2.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_05_07_timeseries_cytoscape_files_2.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">May 7, 2025</span>
@@ -165,7 +165,7 @@ Reading Time
 </tr>
 <tr data-index="6" data-categories="E5-coral" data-listing-date-sort="1745823600000" data-listing-file-modified-sort="1746647254340" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-title-sort="Timeseries molecular: Format input files for Cytoscape" data-listing-filename-sort="2025_04_28_timeseries_cytoscape_files.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_04_28_timeseries_cytoscape_files.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/output/edges_PCC_0.5_timeseries_miRNA_lncRNA_genes.csv.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Apr 28, 2025</span>
@@ -182,7 +182,7 @@ Reading Time
 </tr>
 <tr data-index="7" data-categories="E5-coral" data-listing-date-sort="1745391600000" data-listing-file-modified-sort="1747093859188" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="38" data-listing-title-sort="Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning -- Part 2" data-listing-filename-sort="2025_04_23_timeseries_multiomic_ML_2.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_04_23_timeseries_multiomic_ML_2.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.2-Apul-multiomic-machine-learning_files/figure-gfm/unnamed-chunk-90-1.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Apr 23, 2025</span>
@@ -199,7 +199,7 @@ Reading Time
 </tr>
 <tr data-index="8" data-categories="E5-coral" data-listing-date-sort="1744959600000" data-listing-file-modified-sort="1745448829516" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="74" data-listing-title-sort="Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning -- Part 1" data-listing-filename-sort="2025_04_18_timeseries_multiomic_ML_1.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_04_18_timeseries_multiomic_ML_1.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.2-Apul-multiomic-machine-learning_files/figure-gfm/unnamed-chunk-35-1.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Apr 18, 2025</span>
@@ -216,7 +216,7 @@ Reading Time
 </tr>
 <tr data-index="9" data-categories="E5-coral" data-listing-date-sort="1744354800000" data-listing-file-modified-sort="1744408241121" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-title-sort="Timeseries molecular: A.pul phenotype and gene/miRNA machine learning -- Part 4" data-listing-filename-sort="2025_04_11_timeseries_ML_4.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_04_11_timeseries_ML_4.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.1-Apul-miRNA-mRNA-machine-learning-gene_sets_files_2/figure-gfm/unnamed-chunk-53-1.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Apr 11, 2025</span>
@@ -233,7 +233,7 @@ Reading Time
 </tr>
 <tr data-index="10" data-categories="E5-coral" data-listing-date-sort="1744268400000" data-listing-file-modified-sort="1744402623166" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-title-sort="Deep-Dive Expression: Functional comparisons for known miRNA" data-listing-filename-sort="2025_04_10_dde_named_miRNA_functions.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_04_10_dde_named_miRNA_functions.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Apr 10, 2025</span>
@@ -250,7 +250,7 @@ Reading Time
 </tr>
 <tr data-index="11" data-categories="E5-coral" data-listing-date-sort="1744268400000" data-listing-file-modified-sort="1744927082889" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="37" data-listing-title-sort="Timeseries: miRNA-lncRNA Coexpression" data-listing-filename-sort="2025_04_16_timeseries_lncRNA_PCC.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_04_16_timeseries_lncRNA_PCC.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/14.2-Apul-miRNA-lncRNA-coexpression_files/figure-gfm/unnamed-chunk-5-1.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Apr 10, 2025</span>
@@ -267,7 +267,7 @@ Reading Time
 </tr>
 <tr data-index="12" data-categories="E5-coral" data-listing-date-sort="1744182000000" data-listing-file-modified-sort="1744400282531" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-title-sort="Deep-Dive Expression: Functional annotation/enrichment of each miRNA's targets" data-listing-filename-sort="2025_04_09_dde_miranda_miRNA_FE.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_04_09_dde_miranda_miRNA_FE.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Apr 9, 2025</span>
@@ -284,7 +284,7 @@ Reading Time
 </tr>
 <tr data-index="13" data-categories="E5-coral" data-listing-date-sort="1744095600000" data-listing-file-modified-sort="1744161469354" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="40" data-listing-title-sort="Deep-Dive Expression: Functional enrichment of miRNA-mRNA interactions" data-listing-filename-sort="2025_04_08_dde_miranda_FE.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_04_08_dde_miranda_FE.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/09.1-Apul-mRNA-miRNA-interactions-functional-enrichment_files/figure-gfm/unnamed-chunk-23-1.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Apr 8, 2025</span>
@@ -301,7 +301,7 @@ Reading Time
 </tr>
 <tr data-index="14" data-categories="E5-coral" data-listing-date-sort="1744009200000" data-listing-file-modified-sort="1744075209423" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="67" data-listing-title-sort="Timeseries molecular: A.pul phenotype and gene/miRNA machine learning -- Part 3" data-listing-filename-sort="2025_04_04_timeseries_ML_3.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_04_04_timeseries_ML_3.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/https:/github.com/urol-e5/timeseries_molecular/blob/b88b583d1dd33f9843d4edf18f169e4f83e93ef8/D-Apul/code/22.1-Apul-miRNA-mRNA-machine-learning-gene_sets_files/figure-gfm/unnamed-chunk-23-1.png?raw=true" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Apr 7, 2025</span>
@@ -318,7 +318,7 @@ Reading Time
 </tr>
 <tr data-index="15" data-categories="E5-coral" data-listing-date-sort="1743490800000" data-listing-file-modified-sort="1743552805130" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19" data-listing-title-sort="Timeseries molecular: A.pul, Functional Annotation and Enrichment Analyses" data-listing-filename-sort="2025_04_01_timeseries_FA_FE.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_04_01_timeseries_FA_FE.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/https:/github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/code/21-Apul-annotate-miRNA-mRNA-WGCNA_files/figure-gfm/unnamed-chunk-28-1.png?raw=true" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Apr 1, 2025</span>
@@ -335,7 +335,7 @@ Reading Time
 </tr>
 <tr data-index="16" data-categories="E5-coral" data-listing-date-sort="1743490800000" data-listing-file-modified-sort="1743805068242" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-title-sort="Timeseries molecular: A.pul phenotype and gene/miRNA machine learning -- Part 2" data-listing-filename-sort="2025_04_01_timeseries_ML_2.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_04_01_timeseries_ML_2.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/top-20-predictive-mirna-features.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Apr 1, 2025</span>
@@ -352,7 +352,7 @@ Reading Time
 </tr>
 <tr data-index="17" data-categories="E5-coral" data-listing-date-sort="1743404400000" data-listing-file-modified-sort="1743804818744" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-title-sort="Timeseries molecular: A.pul phenotype and gene/miRNA machine learning -- Part 1" data-listing-filename-sort="2025_03_31_timeseries_ML.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_03_31_timeseries_ML.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/Top-20-Predictive-Phys-Features.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Mar 31, 2025</span>
@@ -369,7 +369,7 @@ Reading Time
 </tr>
 <tr data-index="18" data-categories="E5-coral" data-listing-date-sort="1741676400000" data-listing-file-modified-sort="1742348662445" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="118" data-listing-title-sort="Timeseries molecular: A.pul WGCNA, mRNA and miRNA" data-listing-filename-sort="2025_03_11_timeseries_WGCNA.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_03_11_timeseries_WGCNA.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/https:/github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/code/12-Apul-miRNA-mRNA-WGCNA_files/figure-gfm/unnamed-chunk-31-1.png?raw=true" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Mar 11, 2025</span>
@@ -386,7 +386,7 @@ Reading Time
 </tr>
 <tr data-index="19" data-categories="E5-coral" data-listing-date-sort="1739433600000" data-listing-file-modified-sort="1739561373179" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-title-sort="Deep-dive expression: A.pul miRanda comparisons" data-listing-filename-sort="2025_02_13_deepdive_miRanda_comparisons.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_02_13_deepdive_miRanda_comparisons.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Feb 13, 2025</span>
@@ -403,7 +403,7 @@ Reading Time
 </tr>
 <tr data-index="20" data-categories="E5-coral" data-listing-date-sort="1738915200000" data-listing-file-modified-sort="1739297392197" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-title-sort="Deep-dive expression: Gene expression summary (for Hisat gene counts)" data-listing-filename-sort="2025_02_07_deepdive_Apul_Hisat_RNAsummary.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_02_07_deepdive_Apul_Hisat_RNAsummary.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/https:/github.com/urol-e5/deep-dive-expression/raw/main/D-Apul/code/03.01-Apul-RNA-summary-Hisat_files/figure-gfm/norm-transcript-counts-plot-1.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Feb 7, 2025</span>
@@ -420,7 +420,7 @@ Reading Time
 </tr>
 <tr data-index="21" data-categories="E5-coral" data-listing-date-sort="1738915200000" data-listing-file-modified-sort="1738947602509" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-title-sort="Deep-dive expression: A.pul miRNA methylation machinery" data-listing-filename-sort="2025_02_07_deepdive_methyl_machinery.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_02_07_deepdive_methyl_machinery.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Feb 7, 2025</span>
@@ -437,7 +437,7 @@ Reading Time
 </tr>
 <tr data-index="22" data-categories="E5-coral" data-listing-date-sort="1738224000000" data-listing-file-modified-sort="1738740855245" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-title-sort="Deep-dive Expression Project Planning" data-listing-filename-sort="2025_01_30_project_planning.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2025_01_30_project_planning.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Jan 30, 2025</span>
@@ -454,7 +454,7 @@ Reading Time
 </tr>
 <tr data-index="23" data-categories="E5-coral" data-listing-date-sort="1731975655000" data-listing-file-modified-sort="1731975655784" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-title-sort="Rerunning ShortStack for deep-dive-expression" data-listing-filename-sort="2024_10_22_shortstack_4.1.0_reruns.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2024_10_22_shortstack_4.1.0_reruns.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2024_10_22_shortstack_4.1.0_reruns_files/figure-html/unnamed-chunk-1-1.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Nov 18, 2024</span>
@@ -471,7 +471,7 @@ Reading Time
 </tr>
 <tr data-index="24" data-categories="E5-coral" data-listing-date-sort="1731312000000" data-listing-file-modified-sort="1731976330589" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="sRNA expression summaries" data-listing-filename-sort="2024_11_11_updated_sRNA_summaries.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2024_11_11_updated_sRNA_summaries.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/https:/github.com/urol-e5/deep-dive-expression/raw/main/D-Apul/code/03.1-Apul-sRNA-summary_files/figure-gfm/transcript-counts-plot-1.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Nov 11, 2024</span>
@@ -488,7 +488,7 @@ Reading Time
 </tr>
 <tr data-index="25" data-categories="E5-coral" data-listing-date-sort="1730153983000" data-listing-file-modified-sort="1730153983213" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Lit Review: Understanding interactions of sRNA and DNA methylation" data-listing-filename-sort="2024_10_01_sRNA_DNA_methylation_interactions.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2024_10_01_sRNA_DNA_methylation_interactions.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Oct 28, 2024</span>
@@ -505,7 +505,7 @@ Reading Time
 </tr>
 <tr data-index="26" data-categories="E5-coral" data-listing-date-sort="1721372400000" data-listing-file-modified-sort="1722013864840" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Programs for identifying miRNA targets" data-listing-filename-sort="2024_07_19_mRNA_targetID_programs.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2024_07_19_mRNA_targetID_programs.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/Screenshot 2024-07-19 165134.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Jul 19, 2024</span>
@@ -522,7 +522,7 @@ Reading Time
 </tr>
 <tr data-index="27" data-categories="E5-coral" data-listing-date-sort="1717398000000" data-listing-file-modified-sort="1718760353410" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="ShortStack: mature vs. star sequences incorrect?" data-listing-filename-sort="2024_06_04_ShortStack_mature_v_star.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2024_06_04_ShortStack_mature_v_star.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/Screenshot (248).png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Jun 3, 2024</span>
@@ -539,7 +539,7 @@ Reading Time
 </tr>
 <tr data-index="28" data-categories="E5-coral" data-listing-date-sort="1715929200000" data-listing-file-modified-sort="1717523821272" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-title-sort="Comparing ShortStack outputs to miRdeep2" data-listing-filename-sort="2024_05_17_shortstack_mirdeep2_comparisons.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2024_05_17_shortstack_mirdeep2_comparisons.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">May 17, 2024</span>
@@ -556,7 +556,7 @@ Reading Time
 </tr>
 <tr data-index="29" data-categories="E5-coral" data-listing-date-sort="1715842800000" data-listing-file-modified-sort="1715992876606" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Summarizing and visualizing ShortStack outputs" data-listing-filename-sort="2024_05_16_shortstack_visualizations.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/E5_coral/2024_05_16_shortstack_visualizations.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/https:/github.com/urol-e5/deep-dive/blob/main/D-Apul/output/13.2.1-Apul-sRNAseq-ShortStack-31bp-fastp-merged-cnidarian_miRBase/figures/Apul_ShortStack_miRNA_histogram.png?raw=true" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">May 16, 2024</span>
@@ -573,7 +573,7 @@ Reading Time
 </tr>
 <tr data-index="30" data-categories="E5-coral" data-listing-date-sort="1707292800000" data-listing-file-modified-sort="1718837976592" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-title-sort="Generating a genes fasta for P. evermanni" data-listing-filename-sort="2024_02_07_Peve_transcriptome.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=true, height=40px]:posts/projects/E5_coral/2024_02_07_Peve_transcriptome.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Feb 7, 2024</span>
@@ -590,7 +590,7 @@ Reading Time
 </tr>
 <tr data-index="31" data-categories="E5-coral" data-listing-date-sort="1707206400000" data-listing-file-modified-sort="1707421872450" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="RNAseq abundance quantification (A.Pulchra, P.evermanni, P.meandrina)" data-listing-filename-sort="2024_02_06_RNAseq_kallisto.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=true, height=40px]:posts/projects/E5_coral/2024_02_06_RNAseq_kallisto.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Feb 6, 2024</span>
@@ -607,7 +607,7 @@ Reading Time
 </tr>
 <tr data-index="32" data-categories="E5-coral" data-listing-date-sort="1706688000000" data-listing-file-modified-sort="1706825073165" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="P.evermanni RNAseq kallisto debugging" data-listing-filename-sort="2024_01_31_Peve_kallisto.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=true, height=40px]:posts/projects/E5_coral/2024_01_31_Peve_kallisto.html --></span>
+<span class="listing-image"><p class="card-img-top"><img data-src="E5_coral\images\Screenshot (228).png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Jan 31, 2024</span>
@@ -624,7 +624,7 @@ Reading Time
 </tr>
 <tr data-index="33" data-categories="E5-coral" data-listing-date-sort="1701763200000" data-listing-file-modified-sort="1702493743748" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-title-sort="P.meandrina sRNA: miRdeep2 and 3 species sRNA comparison" data-listing-filename-sort="2023_12_05_E5_coral.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=true, height=40px]:posts/projects/E5_coral/2023_12_05_E5_coral.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Dec 5, 2023</span>
@@ -641,7 +641,7 @@ Reading Time
 </tr>
 <tr data-index="34" data-categories="E5-coral" data-listing-date-sort="1701331200000" data-listing-file-modified-sort="1702493147072" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="P.meandrina sRNA: MirMachine, ShortStack" data-listing-filename-sort="2023_11_30_E5_coral.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=true, height=40px]:posts/projects/E5_coral/2023_11_30_E5_coral.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Nov 30, 2023</span>
@@ -658,7 +658,7 @@ Reading Time
 </tr>
 <tr data-index="35" data-categories="E5-coral" data-listing-date-sort="1699948800000" data-listing-file-modified-sort="1702493095500" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="P.meandrina sRNA: trimming, miRTrace, BLASTn" data-listing-filename-sort="2023_11_14_E5_coral.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=true, height=40px]:posts/projects/E5_coral/2023_11_14_E5_coral.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Nov 14, 2023</span>
@@ -682,7 +682,7 @@ No matching items
 
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</guid>
-  <pubDate>Tue, 17 Jun 2025 04:02:29 GMT</pubDate>
+  <pubDate>Tue, 17 Jun 2025 04:13:53 GMT</pubDate>
 </item>
 <item>
   <title>SIFP 2025</title>
@@ -730,7 +730,7 @@ Reading Time
 <tbody class="list">
 <tr data-index="0" data-categories="SIFP_2025" data-listing-date-sort="1750057200000" data-listing-file-modified-sort="1750124215820" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-title-sort="SIFP purchasing list, notes" data-listing-filename-sort="2025_06_16_purchasing.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/SIFP_2025/2025_06_16_purchasing.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Jun 16, 2025</span>
@@ -747,7 +747,7 @@ Reading Time
 </tr>
 <tr data-index="1" data-categories="SIFP_2025" data-listing-date-sort="1747033200000" data-listing-file-modified-sort="1747160431262" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="5/12 Meeting with OU Lab" data-listing-filename-sort="2025_05_12_meeting.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/SIFP_2025/2025_05_12_meeting.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">May 12, 2025</span>
@@ -764,7 +764,7 @@ Reading Time
 </tr>
 <tr data-index="2" data-categories="SIFP_2025" data-listing-date-sort="1746169200000" data-listing-file-modified-sort="1746234270984" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="5/2 Meeting with Andrea and Dan" data-listing-filename-sort="2025_05_02_Andrea_Dan_meeting.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/SIFP_2025/2025_05_02_Andrea_Dan_meeting.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">May 2, 2025</span>
@@ -781,7 +781,7 @@ Reading Time
 </tr>
 <tr data-index="3" data-categories="SIFP_2025" data-listing-date-sort="1744268400000" data-listing-file-modified-sort="1744318986845" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="4/10 Meeting with Andrea" data-listing-filename-sort="2025_04_10_Andrea_meeting.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/SIFP_2025/2025_04_10_Andrea_meeting.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Apr 10, 2025</span>
@@ -798,7 +798,7 @@ Reading Time
 </tr>
 <tr data-index="4" data-categories="SIFP_2025" data-listing-date-sort="1744182000000" data-listing-file-modified-sort="1744240618273" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-title-sort="SIFP Project Planning" data-listing-filename-sort="2025_04_09_SIFP_planning.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/SIFP_2025/2025_04_09_SIFP_planning.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/nanopore_library_prep.PNG" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Apr 9, 2025</span>
@@ -821,7 +821,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025.html</guid>
-  <pubDate>Tue, 17 Jun 2025 04:02:29 GMT</pubDate>
+  <pubDate>Tue, 17 Jun 2025 04:13:53 GMT</pubDate>
 </item>
 <item>
   <title>Pacific Cod</title>
@@ -878,7 +878,7 @@ Reading Time
 <tbody class="list">
 <tr data-index="0" data-categories="pacifc-cod" data-listing-date-sort="1714374000000" data-listing-file-modified-sort="1715372877164" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Tissue subsampling for WGBS (cont.)" data-listing-filename-sort="2024_04_29_methylation_subsampling.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_cod/2024_04_29_methylation_subsampling.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/images/IMG_8692.jpg" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Apr 29, 2024</span>
@@ -895,7 +895,7 @@ Reading Time
 </tr>
 <tr data-index="1" data-categories="pacifc-cod" data-listing-date-sort="1714028400000" data-listing-file-modified-sort="1714090613769" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="Tissue subsampling for WGBS (methylation work)" data-listing-filename-sort="2024_04_25_methylation_subsampling.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_cod/2024_04_25_methylation_subsampling.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/images/IMG_8631.jpg" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Apr 25, 2024</span>
@@ -912,7 +912,7 @@ Reading Time
 </tr>
 <tr data-index="2" data-categories="pacifc-cod" data-listing-date-sort="1710831600000" data-listing-file-modified-sort="1711561510639" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="RNAseq data preliminary kallisto and DESeq2" data-listing-filename-sort="2024_03_19_RNAseq_prelim_kallistoDESeq2.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_cod/2024_03_19_RNAseq_prelim_kallistoDESeq2.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Mar 19, 2024</span>
@@ -929,7 +929,7 @@ Reading Time
 </tr>
 <tr data-index="3" data-categories="pacifc-cod" data-listing-date-sort="1709539200000" data-listing-file-modified-sort="1709668973142" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="RNAseq data FastQC and trimming" data-listing-filename-sort="2024_03_04_RNAseq_QC_trimming.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_cod/2024_03_04_RNAseq_QC_trimming.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/images/fastqc-status-check-heatmap.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Mar 4, 2024</span>
@@ -946,7 +946,7 @@ Reading Time
 </tr>
 <tr data-index="4" data-categories="pacifc-cod" data-listing-date-sort="1702454400000" data-listing-file-modified-sort="1703115702289" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-title-sort="Samples lists for cod RNAseq and methylation" data-listing-filename-sort="2023_12_13_pacific_cod.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_cod/2023_12_13_pacific_cod.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Dec 13, 2023</span>
@@ -963,7 +963,7 @@ Reading Time
 </tr>
 <tr data-index="5" data-categories="pacifc-cod" data-listing-date-sort="1702454400000" data-listing-file-modified-sort="1702584572969" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Finish pulling/subsampling for cod RNAseq" data-listing-filename-sort="2023_12_14_pacific_cod.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_cod/2023_12_14_pacific_cod.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/images/cod_RNAseq_samples_sheet_partial.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Dec 13, 2023</span>
@@ -980,7 +980,7 @@ Reading Time
 </tr>
 <tr data-index="6" data-categories="pacifc-cod" data-listing-date-sort="1701936000000" data-listing-file-modified-sort="1702501610346" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Sampling liver samples for RNAseq" data-listing-filename-sort="2023_12_07_pacific_cod.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_cod/2023_12_07_pacific_cod.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Dec 7, 2023</span>
@@ -997,7 +997,7 @@ Reading Time
 </tr>
 <tr data-index="7" data-categories="pacifc-cod" data-listing-date-sort="1698908400000" data-listing-file-modified-sort="1702492720784" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Cod Sample Size" data-listing-filename-sort="2023_11_02_pacific_cod.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_cod/2023_11_02_pacific_cod.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Nov 2, 2023</span>
@@ -1014,7 +1014,7 @@ Reading Time
 </tr>
 <tr data-index="8" data-categories="pacifc-cod" data-listing-date-sort="1697180400000" data-listing-file-modified-sort="1702492024996" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Cod Temp/Growth Analysis" data-listing-filename-sort="2023_10_13_pacific_cod.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_cod/2023_10_13_pacific_cod.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/https:/raw.githubusercontent.com/RobertsLab/project-cod-temperature/main/output/01_temp-size-analysis/01_sizeVtreatment-all-dates.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Oct 13, 2023</span>
@@ -1037,7 +1037,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod.html</guid>
-  <pubDate>Tue, 17 Jun 2025 04:02:29 GMT</pubDate>
+  <pubDate>Tue, 17 Jun 2025 04:13:53 GMT</pubDate>
 </item>
 <item>
   <title>Pacific Oyster</title>
@@ -1098,7 +1098,7 @@ Reading Time
 <tbody class="list">
 <tr data-index="0" data-categories="pacific_oyster" data-listing-date-sort="1731052800000" data-listing-file-modified-sort="1731535942926" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-title-sort="Dip/Trip Hardening, Experimental Summary" data-listing-filename-sort="2024_11_08_diptrip_updates_summary.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_11_08_diptrip_updates_summary.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_11_08_diptrip_updates_summary_files/figure-html/unnamed-chunk-1-1.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Nov 8, 2024</span>
@@ -1115,7 +1115,7 @@ Reading Time
 </tr>
 <tr data-index="1" data-categories="pacific_oyster" data-listing-date-sort="1723186800000" data-listing-file-modified-sort="1724357143187" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-title-sort="Dip/Trip Hardening, Survivorship Round 2" data-listing-filename-sort="2024_08_09_diptrip_survivorship_round2.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_08_09_diptrip_survivorship_round2.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_08_09_diptrip_survivorship_round2_files/figure-html/unnamed-chunk-1-1.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Aug 9, 2024</span>
@@ -1132,7 +1132,7 @@ Reading Time
 </tr>
 <tr data-index="2" data-categories="pacific_oyster" data-listing-date-sort="1722582000000" data-listing-file-modified-sort="1729720931483" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-title-sort="Dip/Trip Hardening, Survivorship Round 1" data-listing-filename-sort="2024_08_02_diptrip_survivorship_round1.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_08_02_diptrip_survivorship_round1.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_08_02_diptrip_survivorship_round1_files/figure-html/unnamed-chunk-1-1.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Aug 2, 2024</span>
@@ -1149,7 +1149,7 @@ Reading Time
 </tr>
 <tr data-index="3" data-categories="pacific_oyster" data-listing-date-sort="1722236400000" data-listing-file-modified-sort="1724278285692" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-title-sort="Sampling hardened diploid and triploid oysters" data-listing-filename-sort="2024_07_29_diptrip_sampling.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_07_29_diptrip_sampling.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Jul 29, 2024</span>
@@ -1166,7 +1166,7 @@ Reading Time
 </tr>
 <tr data-index="4" data-categories="pacific_oyster" data-listing-date-sort="1722150000000" data-listing-file-modified-sort="1724277259290" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Mortality check of hardened diploid and triploid oysters" data-listing-filename-sort="2024_07_28_diptrip_mortalities.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_07_28_diptrip_mortalities.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/Bag045.jpg" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Jul 28, 2024</span>
@@ -1183,7 +1183,7 @@ Reading Time
 </tr>
 <tr data-index="5" data-categories="pacific_oyster" data-listing-date-sort="1721804400000" data-listing-file-modified-sort="1721943094742" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Some oyster exams and disections" data-listing-filename-sort="2024_07_24_oyster_examinations.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_07_24_oyster_examinations.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9398.jpg" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Jul 24, 2024</span>
@@ -1200,7 +1200,7 @@ Reading Time
 </tr>
 <tr data-index="6" data-categories="pacific_oyster" data-listing-date-sort="1721718000000" data-listing-file-modified-sort="1724277259193" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Point Whitney: Transporting KD oysters" data-listing-filename-sort="2024_07_23_Point_Whitney.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_07_23_Point_Whitney.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9391.jpg" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Jul 23, 2024</span>
@@ -1217,7 +1217,7 @@ Reading Time
 </tr>
 <tr data-index="7" data-categories="pacific_oyster" data-listing-date-sort="1721026800000" data-listing-file-modified-sort="1722286902738" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-title-sort="Extreme stress test trial #2" data-listing-filename-sort="2024_07_15_stress_test_trial2.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_07_15_stress_test_trial2.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9303.jpg" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Jul 15, 2024</span>
@@ -1234,7 +1234,7 @@ Reading Time
 </tr>
 <tr data-index="8" data-categories="pacific_oyster" data-listing-date-sort="1720681200000" data-listing-file-modified-sort="1722021582892" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-title-sort="Extreme stress test trial #1" data-listing-filename-sort="2024_07_11_stress_test_trial.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_07_11_stress_test_trial.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9275.jpg" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Jul 11, 2024</span>
@@ -1251,7 +1251,7 @@ Reading Time
 </tr>
 <tr data-index="9" data-categories="pacific_oyster" data-listing-date-sort="1720422000000" data-listing-file-modified-sort="1720557229013" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Point Whitney: Stress treatments" data-listing-filename-sort="2024_07_08_Point_Whitney.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_07_08_Point_Whitney.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9205.JPG" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Jul 8, 2024</span>
@@ -1268,7 +1268,7 @@ Reading Time
 </tr>
 <tr data-index="10" data-categories="pacific_oyster" data-listing-date-sort="1720162800000" data-listing-file-modified-sort="1720557228979" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Point Whitney: Stress treatments" data-listing-filename-sort="2024_07_05_Point_Whitney.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_07_05_Point_Whitney.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9183.jpg" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Jul 5, 2024</span>
@@ -1285,7 +1285,7 @@ Reading Time
 </tr>
 <tr data-index="11" data-categories="pacific_oyster" data-listing-date-sort="1719990000000" data-listing-file-modified-sort="1720554724249" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="Point Whitney: Stress treatments, clearance rate trials" data-listing-filename-sort="2024_07_03_Point_Whitney.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_07_03_Point_Whitney.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/Trial 3.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Jul 3, 2024</span>
@@ -1302,7 +1302,7 @@ Reading Time
 </tr>
 <tr data-index="12" data-categories="pacific_oyster" data-listing-date-sort="1719817200000" data-listing-file-modified-sort="1724346517900" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="Point Whitney: Stress treatments, clearance rate trials" data-listing-filename-sort="2024_07_01_Point_Whitney.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_07_01_Point_Whitney.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9129.jpg" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Jul 1, 2024</span>
@@ -1319,7 +1319,7 @@ Reading Time
 </tr>
 <tr data-index="13" data-categories="pacific_oyster" data-listing-date-sort="1719558000000" data-listing-file-modified-sort="1719954215219" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-title-sort="Point Whitney: Hardening Treatments" data-listing-filename-sort="2024_06_28_Point_Whitney.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_06_28_Point_Whitney.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9109.jpg" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Jun 28, 2024</span>
@@ -1336,7 +1336,7 @@ Reading Time
 </tr>
 <tr data-index="14" data-categories="pacific_oyster" data-listing-date-sort="1719471600000" data-listing-file-modified-sort="1720548984704" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Resazurin assay notes/questions" data-listing-filename-sort="2024_06_25_Resazurin.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_06_25_Resazurin.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Jun 27, 2024</span>
@@ -1353,7 +1353,7 @@ Reading Time
 </tr>
 <tr data-index="15" data-categories="pacific_oyster" data-listing-date-sort="1719298800000" data-listing-file-modified-sort="1720219445220" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-title-sort="Point Whitney: Experimental Setup" data-listing-filename-sort="2024_06_25_Point_Whitney.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_06_25_Point_Whitney.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/datasheet1_2024_06_25.JPG" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Jun 25, 2024</span>
@@ -1370,7 +1370,7 @@ Reading Time
 </tr>
 <tr data-index="16" data-categories="pacific_oyster" data-listing-date-sort="1718866800000" data-listing-file-modified-sort="1718982850055" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Lit Review: Energetics" data-listing-filename-sort="2024_06_20_Energetics.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_06_20_Energetics.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/https:/ars.els-cdn.com/content/image/1-s2.0-S0141113612000712-gr1.jpg" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Jun 20, 2024</span>
@@ -1387,7 +1387,7 @@ Reading Time
 </tr>
 <tr data-index="17" data-categories="pacific_oyster" data-listing-date-sort="1718866800000" data-listing-file-modified-sort="1721938281399" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-title-sort="Lit Review: Experimental design questions" data-listing-filename-sort="2024_06_20_experimental_design_questions.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_06_20_experimental_design_questions.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/https:/ars.els-cdn.com/content/image/1-s2.0-S0044848601008985-gr4.jpg" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Jun 20, 2024</span>
@@ -1404,7 +1404,7 @@ Reading Time
 </tr>
 <tr data-index="18" data-categories="pacific_oyster" data-listing-date-sort="1718780400000" data-listing-file-modified-sort="1719265662584" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Preliminary Project Outline" data-listing-filename-sort="2024_06_19_Project_Outline.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/pacific_oyster/2024_06_19_Project_Outline.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Jun 19, 2024</span>
@@ -1427,7 +1427,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster.html</guid>
-  <pubDate>Tue, 17 Jun 2025 04:02:29 GMT</pubDate>
+  <pubDate>Tue, 17 Jun 2025 04:13:53 GMT</pubDate>
 </item>
 <item>
   <title>Miscellaneous</title>
@@ -1474,7 +1474,7 @@ Reading Time
 <tbody class="list">
 <tr data-index="0" data-categories="misc" data-listing-date-sort="1739952000000" data-listing-file-modified-sort="1740095545589" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Opening an RStudio instance in Klone" data-listing-filename-sort="2025_02_19_klone_rstudio.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2025_02_19_klone_rstudio.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Feb 19, 2025</span>
@@ -1491,7 +1491,7 @@ Reading Time
 </tr>
 <tr data-index="1" data-categories="misc" data-listing-date-sort="1738137600000" data-listing-file-modified-sort="1738199343621" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="EPIMAR 2025 Budgeting" data-listing-filename-sort="2025_01_29_EPIMAR_budgeting.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2025_01_29_EPIMAR_budgeting.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Jan 29, 2025</span>
@@ -1508,7 +1508,7 @@ Reading Time
 </tr>
 <tr data-index="2" data-categories="misc" data-listing-date-sort="1731093363000" data-listing-file-modified-sort="1731093363993" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-title-sort="Lit Review: DNA methylation mapping with hDNA" data-listing-filename-sort="2024_09_16_hDNA_methylation.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2024_09_16_hDNA_methylation.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/Screenshot 2024-09-16 174607.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Nov 8, 2024</span>
@@ -1525,7 +1525,7 @@ Reading Time
 </tr>
 <tr data-index="3" data-categories="misc" data-listing-date-sort="1731052800000" data-listing-file-modified-sort="1731975147749" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Outlining Plans for First Committee Meeting" data-listing-filename-sort="2024_11_08_first_committee_meeting.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2024_11_08_first_committee_meeting.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Nov 8, 2024</span>
@@ -1542,7 +1542,7 @@ Reading Time
 </tr>
 <tr data-index="4" data-categories="misc" data-listing-date-sort="1718694000000" data-listing-file-modified-sort="1718759927121" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="NSF GRFP, the aquaculture question" data-listing-filename-sort="2024_06_18_NSF_GRFP_info.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2024_06_18_NSF_GRFP_info.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Jun 18, 2024</span>
@@ -1559,7 +1559,7 @@ Reading Time
 </tr>
 <tr data-index="5" data-categories="miscellaneous" data-listing-date-sort="1717530392000" data-listing-file-modified-sort="1717530392192" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-title-sort="Testing out some cool Quarto features" data-listing-filename-sort="2024_02_22_quarto_features.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2024_02_22_quarto_features.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/https:/www.fisheries.noaa.gov/s3/styles/full_width/s3/2021-11/Acropora_cervicornis_staghorn_coral.jpg?itok=8sYkq8lb" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Jun 4, 2024</span>
@@ -1576,7 +1576,7 @@ Reading Time
 </tr>
 <tr data-index="6" data-categories="misc" data-listing-date-sort="1711522800000" data-listing-file-modified-sort="1711583462027" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Learning awk for GNM569" data-listing-filename-sort="2024_03_27_GNM569awk.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2024_03_27_GNM569awk.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Mar 27, 2024</span>
@@ -1593,7 +1593,7 @@ Reading Time
 </tr>
 <tr data-index="7" data-categories="miscellaneous" data-listing-date-sort="1709107200000" data-listing-file-modified-sort="1709238649052" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="34" data-listing-title-sort="Oyster Sampling @ Point Whitney -- Lifestage Carryover Project" data-listing-filename-sort="2024_02_28_oyster_sampling.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2024_02_28_oyster_sampling.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/IMG_8128.jpg" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Feb 28, 2024</span>
@@ -1610,7 +1610,7 @@ Reading Time
 </tr>
 <tr data-index="8" data-categories="miscellaneous" data-listing-date-sort="1709063287000" data-listing-file-modified-sort="1709063287699" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="Ideas/Questions Log" data-listing-filename-sort="2024_01_30_Ideas.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2024_01_30_Ideas.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Feb 27, 2024</span>
@@ -1627,7 +1627,7 @@ Reading Time
 </tr>
 <tr data-index="9" data-categories="miscellaneous" data-listing-date-sort="1708982385000" data-listing-file-modified-sort="1708982385069" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Materials for oyster sampling 2/28/24" data-listing-filename-sort="2024_02_26_oyster_sampling_materials.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2024_02_26_oyster_sampling_materials.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Feb 26, 2024</span>
@@ -1644,7 +1644,7 @@ Reading Time
 </tr>
 <tr data-index="10" data-categories="miscellaneous" data-listing-date-sort="1708645219000" data-listing-file-modified-sort="1708645219232" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Google sheets template for organizing allllllll the papers" data-listing-filename-sort="2024_02_22_paper_organization.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2024_02_22_paper_organization.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/Screenshot (230).png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Feb 22, 2024</span>
@@ -1661,7 +1661,7 @@ Reading Time
 </tr>
 <tr data-index="11" data-categories="misc" data-listing-date-sort="1707379200000" data-listing-file-modified-sort="1707414788953" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Testing bedtools: gff vs bed input file" data-listing-filename-sort="2024_02_08_bedtools_gffvbed.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2024_02_08_bedtools_gffvbed.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Feb 8, 2024</span>
@@ -1678,7 +1678,7 @@ Reading Time
 </tr>
 <tr data-index="12" data-categories="miscellaneous" data-listing-date-sort="1704355200000" data-listing-file-modified-sort="1704909516475" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-title-sort="SICB 2024" data-listing-filename-sort="2024_01_02_SICB.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2024_01_02_SICB.html --></span>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
 </td>
 <td>
 <span class="listing-date">Jan 4, 2024</span>
@@ -1695,7 +1695,7 @@ Reading Time
 </tr>
 <tr data-index="13" data-categories="miscellaneous" data-listing-date-sort="1704182400000" data-listing-file-modified-sort="1705449923688" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-title-sort="Reviewing Text-To-Speech Tools" data-listing-filename-sort="2024_01_02_TTS.qmd">
 <td>
-<span class="listing-image"><!-- img(9CEB782EFEE6)[progressive=false, height=40px]:posts/projects/misc/2024_01_02_TTS.html --></span>
+<span class="listing-image"><p class="card-img-top"><img src="https://shedurkin.github.io/Roberts-LabNotebook/images/Audemic.png" style="height: 40px;" class="thumbnail-image card-img"></p></span>
 </td>
 <td>
 <span class="listing-date">Jan 2, 2024</span>
@@ -1718,7 +1718,7 @@ No matching items
 </div>
 </div> ]]></description>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.html</guid>
-  <pubDate>Tue, 17 Jun 2025 04:02:29 GMT</pubDate>
+  <pubDate>Tue, 17 Jun 2025 04:13:53 GMT</pubDate>
 </item>
 </channel>
 </rss>
