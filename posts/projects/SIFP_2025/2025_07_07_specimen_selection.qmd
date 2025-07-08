@@ -1,0 +1,171 @@
+---
+title: "Inventory search for suitable species"
+author: "Kathleen Durkin"
+date: "2025-07-07"
+categories: ["SIFP_2025"]
+format:
+  html
+bibliography: ../../../references.bib
+---
+
+I need to finalize species selection. The criteria are:
+
+-   Octocoral species, since these have generally extracted better for Andrea than old stony corals
+
+```{=html}
+<!-- -->
+```
+-   Specimens available for a range of collection dates spanning \~100 years, including a modern collection (within the last \~20 years)
+
+-   A well-annotated genome is available for the species (or a very close relative)
+
+With these criteria in mind, Andrea suggested a few octocoral species that have high-quality genome annotations:
+
+-   *Eunicea knighti*: <https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_965233905.1/>
+
+-   *Leptogorgia sarmentosa*: <https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_964658295.1/>
+
+-   *Gorgonia ventalina*: <https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_964194065.1/>
+
+### Inventory search
+
+For *Eunicea* and *Leptogorgia*, the museum doesn't have significant collection of the species with annotated genomes. However, they may have more abundant material from a close relative. To check this, I searched the collections inventory for the two genera, including a filter for only collections that were preserved and stored "Dry", and downloaded the results as CSVs. I also did the same for *G. ventalina* to get a sense of how many specimens we have of this species across a range of collection dates.
+
+```{r}
+# Load
+library(dplyr)
+library(ggplot2)
+G_ventalina <- read.csv("./data/G_ventalina_nmnhsearch-20250707155748.csv")
+Eunicea <- read.csv("./data/Eunicea_nmnhsearch-20250707190456.csv")
+Leptogorgia <- read.csv("./data/Leptogorgia_nmnhsearch-20250707205311.csv")
+
+# format data
+
+# Extract year from the inconsistently formatted "Date.Collected" column
+# This command should just extract the first 4-digit number in each entry
+G_ventalina$Year.Collected <- as.numeric(sub(".*(\\d{4}).*", "\\1", G_ventalina$Date.Collected))
+Eunicea$Year.Collected <- as.numeric(sub(".*(\\d{4}).*", "\\1", Eunicea$Date.Collected))
+Leptogorgia$Year.Collected <- as.numeric(sub(".*(\\d{4}).*", "\\1", Leptogorgia$Date.Collected))
+
+# Reduce scientifc names to just species names
+cleaned_Eunicea <- gsub("\\s*\\([^\\)]+\\)", "", Eunicea$Scientific.Name)
+Eunicea$Species.Clean <- sub("^((\\S+)\\s+(\\S+)).*$", "\\1", cleaned_Eunicea)
+
+cleaned_Leptogorgia <- gsub("\\s*\\([^\\)]+\\)", "", Leptogorgia$Scientific.Name)
+Leptogorgia$Species.Clean <- sub("^((\\S+)\\s+(\\S+)).*$", "\\1", cleaned_Leptogorgia)
+
+
+# Check one of the year columns
+head(G_ventalina %>% select(Date.Collected, Year.Collected))
+```
+
+```{r}
+ggplot(Eunicea, aes(x = Year.Collected)) +
+  geom_histogram(binwidth = 10, boundary = 1850, fill = "steelblue", color = "black") +
+  xlab("Year Collected") +
+  ylab("Number of Entries") +
+  theme_minimal() +
+  facet_wrap(~Species.Clean)
+
+ggplot(Leptogorgia, aes(x = Year.Collected)) +
+  geom_histogram(binwidth = 10, boundary = 1850, fill = "purple4", color = "black") +
+  xlab("Year Collected") +
+  ylab("Number of Entries") +
+  theme_minimal() +
+  facet_wrap(~Species.Clean)
+```
+
+Looks like the three species in the *Eunicea* and *Leptogorgia* genera with decent number of specimens are:
+
+-   *E. flexuosa*
+
+-   *E. tourneforti*
+
+-   *L. alba*
+
+```{r}
+ggplot(Eunicea[Eunicea$Species.Clean %in% c("Eunicea flexuosa","Eunicea tourneforti"),], aes(x = Year.Collected)) +
+  geom_histogram(binwidth = 10, boundary = 1850, fill = "steelblue", color = "black") +
+  xlab("Year Collected") +
+  ylab("Number of Entries") +
+  theme_minimal() +
+  facet_wrap(~Species.Clean)
+
+ggplot(Leptogorgia[Leptogorgia$Species.Clean == "Leptogorgia alba",], aes(x = Year.Collected)) +
+  geom_histogram(binwidth = 10, boundary = 1850, fill = "purple4", color = "black") +
+  xlab("Year Collected") +
+  ylab("Number of Entries") +
+  theme_minimal()
+```
+
+Both of the *Eunicea* species have multiple specimens from the turn of the century (\~1900) and from modern collections, so I'll take a look at the corals themselves to try to get a sense of material quantity/quality. For the potentially promising *Leptogorgia* (*L. alba*), there's only one specimen from before 1900, and none within the last 25 years, so we wouldn't be able to cover multiple timepoints. **I'm going to exclude *Leptogorgia spp*. from consideration.**
+
+Also check availability of *G. ventalina.*
+
+```{r}
+ggplot(G_ventalina, aes(x = Year.Collected)) +
+  geom_histogram(binwidth = 10, boundary = 1880, fill = "steelblue", color = "black") +
+  xlab("Year Collected") +
+  ylab("Number of Entries") +
+  scale_x_continuous(breaks = seq(1860, 2020, by = 20)) +
+  scale_y_continuous(breaks = seq(0, 20, by = 2)) +
+  theme_minimal()
+```
+
+### Observations from collections search:
+
+**E. flexuosa**
+
+-   All dried specimens have retained natural color (rust-brown), confirming they were not bleached in the preservation process -- this is ideal for us!
+
+```{=html}
+<!-- -->
+```
+-   Abundant material from late-1800s (\~1885-1900) collections. 15-20 individuals, most specimens are quite large, \~1ft in diameter.
+
+-   Quite a bit of material from mid-1900s (1945-1959), with \~15 large individuals
+
+-   A *ton* of material from collections between 1960 and 1972, \~30 large specimens, some very large. This might be an ideal "middle" timepoint.
+
+-   The only "modern" collections I see are 6 specimens collected in in the last 25 years (2000, 2002, 2004, and 2019), and they're all very small, just a couple inches in length and not fully branching. I'd have to be very careful and judicious when subsampling these.
+
+**E. tourneforti**
+
+::: callout-note
+In the museum database, there are two different attributions used for *E. tourneforti*:
+
+-   Eunicea tourneforti atra Verrill, 1901
+
+```{=html}
+<!-- -->
+```
+-   Eunicea tourneforti tourneforti Milne Edwards & Haime, 1857
+
+Is there a difference? Has the species been revised?
+:::
+
+-   *E. tourneforti* may be a better Eunicea species to work with because it is more closely related to the species for which we have a high-quality genome, *E. knighti* (@d17030173)
+
+    ![Eunicea phylogeny (maximum likelihood, based on reduced representation sequencing) (Sarmiento et al. 2025)](images/Eunicea_tree.png)
+
+-   The branches of *E. tournefortini* are much thicker than those of *E. flexuosa*, which may prove beneficial for successfully extracting DNA
+
+-   Several specimens (5-10) from the turn of the century, all of a good size (6-12 inches in length, branching)
+
+-   \~30 specimens from 1960s and 1970s, all with plenty of material (\~1ft in length, branching). As with *E. flexuosa*, this seems like an ideal "mid-age" timepoint.
+
+-   6 from early 2000s collections (2002, 2009). All are quite small, just a few inches in length and not very branched. Two, however, are quite thick, so contain more material.
+
+-   Another 6 from 2019 collection (thanks Prof McFadden!). As in others, these specimens are short (\~3 inches) and unbranched, but much thicker than the *E. flexuosa* counterparts. One is actually a bit larger too, \~6 inches long and forked.
+
+**G. ventalina**
+
+-   Little material from turn-of the century. I saw 2 specimens from before 1900, and both were very small, maybe 2 inches in diameter -- I would be really worried about destructively sampling these, expecially because the lacy growth form of *G. ventalina* means there's less tissue by surface area, so I may need to take more. There were 3 specimens from early 1900s, and these were larger (6-12 inches in diameter). One, however, was almost white -- a contrast to the dark purple color of the other specimens -- which suggested to me it may have either been treated (i.e. bleached) or more degraded.
+
+-   As in the other species, plenty of specimens (30-40) and material (\~1ft in diameter) from the 1960s and 70s.
+
+-   Very little modern material, I only saw 2-3 small specimens from the early 2000s.
+
+### Conclusions
+
+We don't have a sufficient range of collection dates of any *Leptogorgia* species, and both the very old and very recent specimens of *G. ventalina* are potentially too small for subsampling. This leaves one of the *Eunicea* species, using the *E. knighti* genome as reference. Both *E. flexuosa* and *E. tourneforti* have sufficient material from an appropriate range of collection dates. However, *E. tourneforti* is more closely related to our reference *E. knighti*; has more specimens and material available for the critical modern reference; and is thicker, potentially providing more tissue for extraction. Because of these considerations, **I think *E. tourneforti* is the best choice!**
