@@ -31,7 +31,7 @@ With these criteria in mind, Andrea suggested a few octocoral species that have 
 
 For *Eunicea* and *Leptogorgia*, the museum doesn't have significant collection of the species with annotated genomes. However, they may have more abundant material from a close relative. To check this, I searched the [collections inventory](https://collections.nmnh.si.edu/search/iz/) for the two genera, including a filter for only collections that were preserved and stored "Dry", and downloaded the results as CSVs. I also did the same for *G. ventalina* to get a sense of how many specimens we have of this species across a range of collection dates.
 
-```{r, include=FALSE}
+```{r, warning=FALSE}
 # Load
 library(dplyr)
 library(ggplot2)
@@ -59,7 +59,7 @@ Leptogorgia$Species.Clean <- sub("^((\\S+)\\s+(\\S+)).*$", "\\1", cleaned_Leptog
 #head(G_ventalina %>% select(Date.Collected, Year.Collected))
 ```
 
-```{r, include=FALSE}
+```{r, warning=FALSE}
 ggplot(Eunicea, aes(x = Year.Collected)) +
   geom_histogram(binwidth = 10, boundary = 1850, fill = "steelblue", color = "black") +
   xlab("Year Collected") +
@@ -83,7 +83,7 @@ Looks like the three species in the *Eunicea* and *Leptogorgia* genera with dece
 
 -   *L. alba*
 
-```{r, include=FALSE}
+```{r, warning=FALSE}
 ggplot(Eunicea[Eunicea$Species.Clean %in% c("Eunicea flexuosa","Eunicea tourneforti"),], aes(x = Year.Collected)) +
   geom_histogram(binwidth = 10, boundary = 1850, fill = "steelblue", color = "black") +
   xlab("Year Collected") +
@@ -102,7 +102,7 @@ Both of the *Eunicea* species have multiple specimens from the turn of the centu
 
 Also check availability of *G. ventalina.*
 
-```{r, include=FALSE}
+```{r, warning=FALSE}
 ggplot(G_ventalina, aes(x = Year.Collected)) +
   geom_histogram(binwidth = 10, boundary = 1880, fill = "steelblue", color = "black") +
   xlab("Year Collected") +
