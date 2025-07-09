@@ -1,0 +1,158 @@
+---
+title: "Checking E. tourneforti geographical distribution; Subsampling"
+author: "Kathleen Durkin"
+date: "2025-07-08"
+categories: ["SIFP_2025"]
+format:
+  html
+bibliography: ../../../references.bib
+---
+
+### E. tourneforti geographic distribution
+
+I want to get a sense of where the E.tourneforti specimens were collected, since we ideally want to be sequencing specimens from roughly the same location.
+
+```{r, warning=FALSE}
+# Load
+library(dplyr)
+library(ggplot2)
+library(tidygeocoder)
+library(maps)
+library(leaflet)
+library(RColorBrewer)
+
+Eunicea <- read.csv("./data/Eunicea_nmnhsearch-20250707190456.csv")
+
+# format data
+# Extract year from the inconsistently formatted "Date.Collected" column
+# This command should just extract the first 4-digit number in each entry
+Eunicea$Year.Collected <- as.numeric(sub(".*(\\d{4}).*", "\\1", Eunicea$Date.Collected))
+
+# Reduce scientifc names to just species names
+cleaned_Eunicea <- gsub("\\s*\\([^\\)]+\\)", "", Eunicea$Scientific.Name)
+Eunicea$Species.Clean <- sub("^((\\S+)\\s+(\\S+)).*$", "\\1", cleaned_Eunicea)
+
+# Grab just E. tourneforti
+E_tourneforti <- Eunicea[Eunicea$Species.Clean == "Eunicea tourneforti",]
+
+# Make a location variable which includes both country and state
+# If country was not listed, use the "Precise Locality" (E.g., Navassa Island, NW Point)
+E_tourneforti$Location <- ifelse(
+  E_tourneforti$Country != "",
+  paste0(E_tourneforti$Country, ", ", E_tourneforti$Province.State ),
+  paste0(E_tourneforti$Precise.Locality)
+)
+
+```
+
+Plot geographic distribution of collections
+
+```{r}
+# From collection locations (e.g., "Bermuda"), get coordinates
+E_tourneforti_coords <- E_tourneforti %>%
+  geocode(Location, method = "osm", lat = Location.Lat, long = Location.Lon)
+
+# Need to manually set the coordinates for Navassa Island
+E_tourneforti_coords$Location.Lat[grepl("Navassa Island", E_tourneforti_coords$Location)] <- 18.410281
+E_tourneforti_coords$Location.Lon[grepl("Navassa Island", E_tourneforti_coords$Location)] <- -75.011887
+
+# Bin years by decade, for ease of mapping
+E_tourneforti_coords$Decade.Collected <- floor(E_tourneforti_coords$Year.Collected / 10) * 10
+
+# Group collections by location and decade
+Et_summary <- E_tourneforti_coords %>%
+  group_by(Decade.Collected, Location, Location.Lat, Location.Lon) %>%
+  summarise(n = n(), .groups = "drop")
+
+
+```
+
+Ggplot map
+
+```{r}
+
+world_map <- map_data("world")
+
+ggplot() +
+  geom_polygon(data = world_map,
+               aes(x = long, y = lat, group = group),
+               fill = "gray95", color = "gray80") +
+  geom_point(data = Et_summary,
+             aes(x = Location.Lon, y = Location.Lat,
+                 size = n,
+                 color = as.factor(Decade.Collected)),
+             alpha = .9) +
+  # geom_text(data = Et_summary,
+  #           aes(x = Location.Lon, y = Location.Lat, label = Location),
+  #           vjust = -2, size = 2) +
+  scale_size_continuous(name = "Sample count") +
+  scale_color_viridis_d(name = "Decade Collected") +
+  coord_fixed(xlim = c(-90, -58), ylim = c(4, 30), ratio = 1.3) +
+  theme_minimal() +
+  labs(title = "Sample Collection Locations by Decade")
+
+
+
+
+```
+
+Also wanted to try out `leaflet`, which supports interactive maps
+
+```{r}
+# Create a color palette for discrete years
+year_levels <- sort(unique(Et_summary$Decade.Collected))
+#pal <- colorFactor(rainbow(length(year_levels)), domain = year_levels)
+#pal <- colorNumeric(palette = "YlGnBl", domain = year_levels)
+pal <- colorFactor(
+  #palette = c("steelblue3", "limegreen" , "gold"),
+  palette = c("purple3", "red2", "gold"),
+  domain = year_levels,
+  levels = year_levels
+)
+
+# Build the leaflet map
+leaflet(data = Et_summary) %>%
+  addTiles() %>%
+  setView(lng = -75, lat = 20, zoom = 5) %>%  # Center on Caribbean
+  addCircleMarkers(
+    lng = ~Location.Lon,
+    lat = ~Location.Lat,
+    radius = ~sqrt(n) * 3,
+    color = ~pal(Decade.Collected),
+    stroke = FALSE,
+    fillOpacity = 0.8,
+    label = ~paste0(Location, "<br>Year: ", Decade.Collected, "<br>n = ", n),
+    popup = ~paste0("<b>Location:</b> ", Location,
+                    "<br><b>Year:</b> ", Decade.Collected,
+                    "<br><b>Samples:</b> ", n)
+  ) %>%
+  addLegend("bottomright",
+            pal = pal,
+            values = ~Decade.Collected,
+            title = "Decade Collected",
+            opacity = 1)
+
+```
+
+All specimens were collected in the Caribbean. Both the oldest and most recent collections appear to have been performed around the Florida keys and Bahamas, so I'd like to prioritize subsampling mid-age (1960s-1970s) specimens that were also collected from that area.
+
+### First subsampling:
+
+Cleaned benchtop and gloves with bleach. Cleaned tools with bleach wipe, then DI wipe, then 95% EtoH wipe between each sample. To subsample, cut a \~2mm thick round from one stalk of the specimen. I Since these three specimens were quite thick, this yielded a fair amount of tissue. May need to cut longer sections for thin specimens (including, most likely, the modern ones).
+
+Chose 3 large specimens from the 1960s as the first, since this decade has abundant and large collected specimens (just in case I took too much material while I'm still refamiliarizing myself).
+
+**Catalog numbers:**
+
+USNM 51732\
+USNM 51728\
+USNM 51730
+
+```{r}
+subsampled <- c("USNM 51732", "USNM 51728", "USNM 51730")
+E_tourneforti %>%
+  filter(Catalog.Number %in% subsampled) %>%
+  select(Catalog.Number, Species.Clean, Location, Year.Collected) %>%
+  print()
+
+```
