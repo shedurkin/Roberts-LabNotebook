@@ -1,0 +1,153 @@
+---
+title: "Subsampling and Digestions"
+author: "Kathleen Durkin"
+date: "2025-07-09"
+categories: ["SIFP_2025"]
+format:
+  html
+bibliography: ../../../references.bib
+---
+
+Save annotated copy of E. tourneforti sample sheet to load to Google sheets. This is where I will keep track of what samples I am using, and their progress (subsampled, extracted, etc.)
+
+```{r}
+# Load
+library(dplyr)
+Eunicea <- read.csv("./data/Eunicea_nmnhsearch-20250707190456.csv")
+
+# format data
+# Extract year from the inconsistently formatted "Date.Collected" column
+# This command should just extract the first 4-digit number in each entry
+Eunicea$Year.Collected <- as.numeric(sub(".*(\\d{4}).*", "\\1", Eunicea$Date.Collected))
+
+# Reduce scientifc names to just species names
+cleaned_Eunicea <- gsub("\\s*\\([^\\)]+\\)", "", Eunicea$Scientific.Name)
+Eunicea$Species.Clean <- sub("^((\\S+)\\s+(\\S+)).*$", "\\1", cleaned_Eunicea)
+
+# Grab just E. tourneforti
+E_tourneforti <- Eunicea[Eunicea$Species.Clean == "Eunicea tourneforti",]
+
+write.csv(E_tourneforti, "./output/2025_07_09_subsampling_extractions/E_tourneforti_specimens.csv")
+
+```
+
+Sheet uploaded to a Google Sheets document [here](https://docs.google.com/spreadsheets/d/1zDMy7AOCM8Ug85q4vr9CoMDxfF-zDJk1DnaxakSt1Hg/edit?usp=sharing).
+
+### **Specimens:**
+
+Chose the "time points" of specimen collection dates based on availability and collection location. Since both old (\>100 yo) and modern (\<25 yo) specimens are limited, will be sampling all of those available (\~10 specimens each). There is a high number of specimens collected in the 1960s and 1970s (50-60 yo), and these specimens are quite large, providing abundant material, so this will be my "midpoint". Since both the oldest and most recent collections were mostly performed in the Florida/Bahamas region of the Caribbean (see [last post](./2025_07_08_specimen_selection2.qmd) for geographic distribution details), I will also endeavor to select 1960s-1970s specimens collected from the same region.
+
+Selected \~10 specimens from each rough time period of collection
+
+[**1880s-1910s:**]{.underline}**\
+**USNM 50368\
+USNM 1207569\
+**USNM 14366\
+USNM 14366**\
+USNM 14399\
+USNM 19054\
+USNM 42137\
+USNM 52026\
+USNM 1180630\
+USNM 50603\
+USNM 52295
+
+::: callout-warning
+There are two collections with the same catalog number, USNM 14366, and this duplication exists in the inventory database as well...
+
+After pulling the specimens, there's only one bag labelled USNM 14366.
+:::
+
+[**1960s - 1970s:**]{.underline}**\
+**USNM 51727\
+USNM 51729\
+USNM 51857\
+USNM 51858\
+USNM 51859\
+USNM 51860\
+USNM 51861\
+USNM 51892\
+
+[**2000s - 2010s:**]{.underline}**\
+**USNM 100609\
+USNM 100610\
+USNM 1007393\
+USNM 1018355\
+USNM 1606824\
+USNM 1606826\
+USNM 1740336\
+USNM 1740363\
+USNM 1740390\
+USNM 1740407
+
+### Subsampling
+
+Subsampled using protocol described in [July 8, 2025 post](./2025_07_08_specimen_selection2.qmd).
+
+Notes:
+
+-   Couldn't find two of the old specimens (noted below). Emailed Andrea their catalog numbers.
+
+-   Found 2 *E. tayrona* specimens that were misplaced in the *E. tourneforti* drawers while pulling specimens. I replaced them in the *E. tayrona* drawer. USNM 101774 was found in R19, C334, D11, and USNM 1018426 in R19, C334, D05. both were moved to *E. tayrona* drawer, R19, C334, D05.
+
+-   USNM 14366 has two entries in the inventory database, but only one bag of specimens in the collection
+
+-   USNM 14366 and USNM 14399 both have multiple individuals in the single specimen bag. In neither case were individuals separately labelled, so I just subsampled one of those at the top of the bag.
+
+### Extractions
+
+Began digestions. Digestions unfortunately split over two days because I couldn't access LAB after I finished the last of the subsampling.
+
+Extractions performed with Qiagen DNEasy Kit. Protocol slightly modified for use with archival dried coral specimens.
+
+[**Digestion Protocol:**]{.underline}
+
+1.  Begin with small, cut/crushed quantity of dried tissue in a 1.5mL snap-cap tube.
+
+2.  Add 180uL Buffer ATL and **40uL proteinase K\*.** Mix by vortexing and incubate at for **\~48hr\*** on a heated shaker, set to 56C and 80 RPM.
+
+    **\* indicates modification to standard protocol**
+
+First round of digestions began incubating 7/9/2025 at 5:00pm:
+
+-   USNM 14366, USNM 14366, USNM 14399, USNM 19054, USNM 42137, USNM 52026, USNM 1180630, USNM 52295, USNM 51728, USNM 51730, USNM 51732, USNM 51892, USNM 100609, USNM 100610, USNM 1007393, USNM 1018355, USNM 1606824, USNM 1606826, USNM 1740336, USNM 1740363, USNM 1740390, USNM 1740407
+
+Second round of digestions began incubating 7/10/2025 at 10:30am:
+
+-   USNM 50603, USNM 50638, USNM 51727, USNM 51729, USNM 51857, USNM 51858, USNM 51859, USNM 51860, USNM 51861
+
+|                      |                    |                    |                    |                                 |                   |
+|------------|------------|------------|------------|------------|------------|
+| **Country**          | **Province.State** | **Year.Collected** | **Catalog.Number** | **Date.Subsampled**             | **Date.Digested** |
+| Netherlands Antilles |                    | 1880               | USNM 50368         | July 9, 2025                    | July 10, 1015     |
+| Bahamas              |                    | 1886               | USNM 1207569       | \* could not find in collection |                   |
+| Bahamas              |                    | 1886               | USNM 14366         | July 9, 2025                    | July 9, 2025      |
+| Bahamas              |                    | 1886               | USNM 14366         | July 9, 2025                    | July 9, 2025      |
+| Bahamas              |                    | 1886               | USNM 14399         | July 9, 2025                    | July 9, 2025      |
+| Belize               |                    | 1898               | USNM 19054         | July 9, 2025                    | July 9, 2025      |
+| Puerto Rico          |                    | 1898               | USNM 42137         | July 9, 2025                    | July 9, 2025      |
+| Belize               |                    | 1898               | USNM 52026         | \* could not find in collection |                   |
+| Bahamas              |                    | 1912               | USNM 1180630       | July 9, 2025                    | July 9, 2025      |
+| United States        | Florida            | 1912               | USNM 50603         | July 9, 2025                    | July 10, 1015     |
+| Bahamas              |                    | 1912               | USNM 52295         | July 9, 2025                    | July 9, 2025      |
+| United States        | Florida            | 1960               | USNM 51727         | July 9, 2025                    | July 10, 1015     |
+| United States        | Florida            | 1960               | USNM 51728         | July 8, 2025                    | July 9, 2025      |
+| United States        | Florida            | 1960               | USNM 51729         | July 9, 2025                    | July 10, 1015     |
+| Bermuda              |                    | 1960               | USNM 51730         | July 8, 2025                    | July 9, 2025      |
+| Bermuda              |                    | 1960               | USNM 51732         | July 8, 2025                    | July 9, 2025      |
+| United States        | Florida            | 1960               | USNM 51857         | July 9, 2025                    | July 10, 1015     |
+| United States        | Florida            | 1960               | USNM 51858         | July 9, 2025                    | July 10, 1015     |
+| United States        | Florida            | 1960               | USNM 51859         | July 9, 2025                    | July 10, 1015     |
+| United States        | Florida            | 1960               | USNM 51860         | July 9, 2025                    | July 10, 1015     |
+| United States        | Florida            | 1960               | USNM 51861         | July 9, 2025                    | July 10, 1015     |
+| United States        | Florida            | 1960               | USNM 51892         | July 9, 2025                    | July 9, 2025      |
+|                      |                    | 2000               | USNM 100609        | July 9, 2025                    | July 9, 2025      |
+|                      |                    | 2000               | USNM 100610        | July 9, 2025                    | July 9, 2025      |
+| Bahamas              |                    | 2000               | USNM 1007393       | July 9, 2025                    | July 9, 2025      |
+| Trinidad and Tobago  |                    | 2002               | USNM 1018355       | July 9, 2025                    | July 9, 2025      |
+| United States        | Florida            | 2019               | USNM 1606824       | July 9, 2025                    | July 9, 2025      |
+| United States        | Florida            | 2019               | USNM 1606826       | July 9, 2025                    | July 9, 2025      |
+| United States        | Florida            | 2019               | USNM 1740336       | July 9, 2025                    | July 9, 2025      |
+| United States        | Florida            | 2019               | USNM 1740363       | July 9, 2025                    | July 9, 2025      |
+| United States        | Florida            | 2019               | USNM 1740390       | July 9, 2025                    | July 9, 2025      |
+| United States        | Florida            | 2019               | USNM 1740407       | July 9, 2025                    | July 9, 2025      |
