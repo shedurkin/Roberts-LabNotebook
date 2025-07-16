@@ -1,0 +1,74 @@
+---
+title: "Qubit DNA Quantification"
+author: "Kathleen Durkin"
+date: "2025-07-14"
+categories: ["SIFP_2025"]
+format:
+  html
+bibliography: ../../../references.bib
+---
+
+Used Qubit flourometer to quantify DNA concentration of extracted E. tourneforti samples.
+
+### LAB 1X dsDNA Qubit Protocol
+
+![](images/LAB_Qubit_Protocol_1.png)
+
+![](images/LAB_Qubit_Protocol_2.png)
+
+![](images/LAB_Qubit_Protocol_3.png)
+
+Note: Used 2uL of sample DNA for each Qubit rxn
+
+### Results
+
+Had to assign new labels to the samples for Qubiting, since the USNM Catalog numbers are too large to fit on the Qubit tube lids
+
+[**Standards (first run):\
+**]{.underline}Standard #1: 37.57\
+Standard #2: 14064.10
+
+[**Standards (second run, with dilutions):**]{.underline}\
+Standard #1: 36.17 \
+Standard #2: 14557.00
+
+|                    |                    |                 |                        |
+|--------------------|--------------------|----------------:|------------------------|
+| **Year.Collected** | **Catalog.Number** | **Qubit.label** | **Concentration.ngul** |
+| 1886               | USNM 14366         |             A01 | \* 0.173               |
+| 1886               | USNM 14399         |             A02 | 33.9                   |
+| 1898               | USNM 19054         |             A03 | \* 6.03                |
+| 1898               | USNM 42137         |             A04 | 15                     |
+| 1960               | USNM 51730         |             A05 | 20.9                   |
+| 1960               | USNM 51732         |         **A06** | **89.4**               |
+| 1960               | USNM 51728         |             A07 | 35.2                   |
+| 1960               | USNM 51892         |         **A08** | **86.3**               |
+| 1912               | USNM 52295         |             A09 | \* 7.08                |
+| 2000               | USNM 100609        |         **A10** | **161**                |
+| 2000               | USNM 100610        |         **A11** | **84.7**               |
+| 2000               | USNM 1007393       |         **A12** | **116**                |
+| 2002               | USNM 1018355       |             A13 | 44.3                   |
+| 1912               | USNM 1180630       |             A14 | \* 1.41                |
+| 2019               | USNM 1606824       |         **A15** | **167**                |
+| 2019               | USNM 1606826       |         **A16** | **189**                |
+| 2019               | USNM 1740336       |         **A17** | **163**                |
+| 2019               | USNM 1740363       |         **A18** | **152**                |
+| 2019               | USNM 1740390       |         **A19** | **126**                |
+| 2019               | USNM 1740407       |         **A20** | **133**                |
+| 1880               | USNM 50368         |             B01 | 26.5                   |
+| 1912               | USNM 50603         |             B02 | \* 2.28                |
+| 1960               | USNM 51727         |             B03 | 27                     |
+| 1960               | USNM 51729         |             B04 | 48.9                   |
+| 1960               | USNM 51857         |             B05 | 43.7                   |
+| 1960               | USNM 51858         |             B06 | 28.5                   |
+| 1960               | USNM 51859         |             B07 | 43.9                   |
+| 1960               | USNM 51860         |             B08 | 56                     |
+| 1960               | USNM 51861         |             B09 | 52                     |
+
+::: callout-note
+Bolded values indicated the sample was originally too high concentration to be accurately quantified by the Qubit assay. For these samples I made a 10X dilution (1uL DNA sample, 9uL Zymo DNA Elution Buffer), then re-Qubited the dilutions. Values shown above are the calculated "true" concentrations (10X dilution concentration, multiplied by 10).
+:::
+
+Generally, almost all extractions have a good amount of DNA! The recommended minimum quantity of DNA for Nanopore Native Library Prep is 400ng. Since I'll have \~40uL DNA left for each sample after eluting in 50uL and using a small portion for QC steps, I'm **aiming for a minimum DNA concentration of 10 ng/uL**.
+
+Only 5 samples failed to meet this threshold (starred above). All 5 are from my set of old specimens (\>100 yo). I only have 8 total specimens from this collection period, and I want an n=5 for sequencing. **I'll need to do additional extractions for the 5 specimens with low concentrations (USNM 14366, USNM, 19054, USNM 52295, USNM 1180630, USNM 50603).** I may also want to do an additional extraction for USNM 42137 (15.0 ng/uL), since its not much higher than my desired minimum concentration.

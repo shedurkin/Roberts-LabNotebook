@@ -10,7 +10,350 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Wed, 09 Jul 2025 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 15 Jul 2025 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>Re-extraction of low-quantity samples</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_15_rextraction.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Several of the older samples had low DNA concentrations (&lt;10ng/uL) (see <a href="../../../posts/projects/SIFP_2025/2025_07_14_qubit.html">quantification notes</a> for details). To obtain enough DNA for library prep (&gt;= 400ng), I need to extract more DNA from these specimens.</p>
+<p>To do this, I’ll do several extractions for each of the specimens, then pool each specimen’s extractions before Zymo Cleanup to concentrate the multiple extractions into one higher-concentration elution.</p>
+<section id="subsampling" class="level3">
+<h3 class="anchored" data-anchor-id="subsampling">Subsampling</h3>
+<p><strong>USNM 14366<br>
+USNM 19054<br>
+USNM 52295<br>
+USNM 1180630<br>
+USNM 50603</strong></p>
+<p>For each of the above specimens, subsampled 4 times as described in the subsampling protocol provided in my <a href="./2025_07_09_subsampling_extractions.qmd">July 9 post</a>. Each set of subsamples was labelled with the catalog number and then A, B, C, or D.</p>
+<p>During subsamplling I was able to see where on the specimen I had previously sampled tissue. I subsampled this time from the same stalk/finger, to preserve the undamaged portions of the specimens.</p>
+</section>
+<section id="tissue-digestion" class="level3">
+<h3 class="anchored" data-anchor-id="tissue-digestion">Tissue digestion</h3>
+<p>Digested the above specimens (20 total) as detailed in the Digestion Protocol in my <a href="./2025_07_09_subsampling_extractions.qmd">July 9 post</a>.</p>
+<p>Digestions began incubating at 3:00pm, 07/15/25.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>SIFP_2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_15_rextraction.html</guid>
+  <pubDate>Tue, 15 Jul 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Qubit DNA Quantification</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_14_qubit.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Used Qubit flourometer to quantify DNA concentration of extracted E. tourneforti samples.</p>
+<section id="lab-1x-dsdna-qubit-protocol" class="level3">
+<h3 class="anchored" data-anchor-id="lab-1x-dsdna-qubit-protocol">LAB 1X dsDNA Qubit Protocol</h3>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/LAB_Qubit_Protocol_1.png" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/LAB_Qubit_Protocol_2.png" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/LAB_Qubit_Protocol_3.png" class="img-fluid"></p>
+<p>Note: Used 2uL of sample DNA for each Qubit rxn</p>
+</section>
+<section id="results" class="level3">
+<h3 class="anchored" data-anchor-id="results">Results</h3>
+<p>Had to assign new labels to the samples for Qubiting, since the USNM Catalog numbers are too large to fit on the Qubit tube lids</p>
+<p><u><strong>Standards (first run):<br>
+</strong></u>Standard #1: 37.57<br>
+Standard #2: 14064.10</p>
+<p><u><strong>Standards (second run, with dilutions):</strong></u><br>
+Standard #1: 36.17<br>
+Standard #2: 14557.00</p>
+<table class="table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 20%">
+<col style="width: 29%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Year.Collected</strong></td>
+<td><strong>Catalog.Number</strong></td>
+<td style="text-align: right;"><strong>Qubit.label</strong></td>
+<td><strong>Concentration.ngul</strong></td>
+</tr>
+<tr class="even">
+<td>1886</td>
+<td>USNM 14366</td>
+<td style="text-align: right;">A01</td>
+<td>* 0.173</td>
+</tr>
+<tr class="odd">
+<td>1886</td>
+<td>USNM 14399</td>
+<td style="text-align: right;">A02</td>
+<td>33.9</td>
+</tr>
+<tr class="even">
+<td>1898</td>
+<td>USNM 19054</td>
+<td style="text-align: right;">A03</td>
+<td>* 6.03</td>
+</tr>
+<tr class="odd">
+<td>1898</td>
+<td>USNM 42137</td>
+<td style="text-align: right;">A04</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td>1960</td>
+<td>USNM 51730</td>
+<td style="text-align: right;">A05</td>
+<td>20.9</td>
+</tr>
+<tr class="odd">
+<td>1960</td>
+<td>USNM 51732</td>
+<td style="text-align: right;"><strong>A06</strong></td>
+<td><strong>89.4</strong></td>
+</tr>
+<tr class="even">
+<td>1960</td>
+<td>USNM 51728</td>
+<td style="text-align: right;">A07</td>
+<td>35.2</td>
+</tr>
+<tr class="odd">
+<td>1960</td>
+<td>USNM 51892</td>
+<td style="text-align: right;"><strong>A08</strong></td>
+<td><strong>86.3</strong></td>
+</tr>
+<tr class="even">
+<td>1912</td>
+<td>USNM 52295</td>
+<td style="text-align: right;">A09</td>
+<td>* 7.08</td>
+</tr>
+<tr class="odd">
+<td>2000</td>
+<td>USNM 100609</td>
+<td style="text-align: right;"><strong>A10</strong></td>
+<td><strong>161</strong></td>
+</tr>
+<tr class="even">
+<td>2000</td>
+<td>USNM 100610</td>
+<td style="text-align: right;"><strong>A11</strong></td>
+<td><strong>84.7</strong></td>
+</tr>
+<tr class="odd">
+<td>2000</td>
+<td>USNM 1007393</td>
+<td style="text-align: right;"><strong>A12</strong></td>
+<td><strong>116</strong></td>
+</tr>
+<tr class="even">
+<td>2002</td>
+<td>USNM 1018355</td>
+<td style="text-align: right;">A13</td>
+<td>44.3</td>
+</tr>
+<tr class="odd">
+<td>1912</td>
+<td>USNM 1180630</td>
+<td style="text-align: right;">A14</td>
+<td>* 1.41</td>
+</tr>
+<tr class="even">
+<td>2019</td>
+<td>USNM 1606824</td>
+<td style="text-align: right;"><strong>A15</strong></td>
+<td><strong>167</strong></td>
+</tr>
+<tr class="odd">
+<td>2019</td>
+<td>USNM 1606826</td>
+<td style="text-align: right;"><strong>A16</strong></td>
+<td><strong>189</strong></td>
+</tr>
+<tr class="even">
+<td>2019</td>
+<td>USNM 1740336</td>
+<td style="text-align: right;"><strong>A17</strong></td>
+<td><strong>163</strong></td>
+</tr>
+<tr class="odd">
+<td>2019</td>
+<td>USNM 1740363</td>
+<td style="text-align: right;"><strong>A18</strong></td>
+<td><strong>152</strong></td>
+</tr>
+<tr class="even">
+<td>2019</td>
+<td>USNM 1740390</td>
+<td style="text-align: right;"><strong>A19</strong></td>
+<td><strong>126</strong></td>
+</tr>
+<tr class="odd">
+<td>2019</td>
+<td>USNM 1740407</td>
+<td style="text-align: right;"><strong>A20</strong></td>
+<td><strong>133</strong></td>
+</tr>
+<tr class="even">
+<td>1880</td>
+<td>USNM 50368</td>
+<td style="text-align: right;">B01</td>
+<td>26.5</td>
+</tr>
+<tr class="odd">
+<td>1912</td>
+<td>USNM 50603</td>
+<td style="text-align: right;">B02</td>
+<td>* 2.28</td>
+</tr>
+<tr class="even">
+<td>1960</td>
+<td>USNM 51727</td>
+<td style="text-align: right;">B03</td>
+<td>27</td>
+</tr>
+<tr class="odd">
+<td>1960</td>
+<td>USNM 51729</td>
+<td style="text-align: right;">B04</td>
+<td>48.9</td>
+</tr>
+<tr class="even">
+<td>1960</td>
+<td>USNM 51857</td>
+<td style="text-align: right;">B05</td>
+<td>43.7</td>
+</tr>
+<tr class="odd">
+<td>1960</td>
+<td>USNM 51858</td>
+<td style="text-align: right;">B06</td>
+<td>28.5</td>
+</tr>
+<tr class="even">
+<td>1960</td>
+<td>USNM 51859</td>
+<td style="text-align: right;">B07</td>
+<td>43.9</td>
+</tr>
+<tr class="odd">
+<td>1960</td>
+<td>USNM 51860</td>
+<td style="text-align: right;">B08</td>
+<td>56</td>
+</tr>
+<tr class="even">
+<td>1960</td>
+<td>USNM 51861</td>
+<td style="text-align: right;">B09</td>
+<td>52</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Bolded values indicated the sample was originally too high concentration to be accurately quantified by the Qubit assay. For these samples I made a 10X dilution (1uL DNA sample, 9uL Zymo DNA Elution Buffer), then re-Qubited the dilutions. Values shown above are the calculated “true” concentrations (10X dilution concentration, multiplied by 10).</p>
+</div>
+</div>
+<p>Generally, almost all extractions have a good amount of DNA! The recommended minimum quantity of DNA for Nanopore Native Library Prep is 400ng. Since I’ll have ~40uL DNA left for each sample after eluting in 50uL and using a small portion for QC steps, I’m <strong>aiming for a minimum DNA concentration of 10 ng/uL</strong>.</p>
+<p>Only 5 samples failed to meet this threshold (starred above). All 5 are from my set of old specimens (&gt;100 yo). I only have 8 total specimens from this collection period, and I want an n=5 for sequencing. <strong>I’ll need to do additional extractions for the 5 specimens with low concentrations (USNM 14366, USNM, 19054, USNM 52295, USNM 1180630, USNM 50603).</strong> I may also want to do an additional extraction for USNM 42137 (15.0 ng/uL), since its not much higher than my desired minimum concentration.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>SIFP_2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_14_qubit.html</guid>
+  <pubDate>Mon, 14 Jul 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Zymo cleanup and concentration</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_12_zymo_cleanup.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="zymo-genomic-dna-clean-concentrator---10-protocol" class="level3">
+<h3 class="anchored" data-anchor-id="zymo-genomic-dna-clean-concentrator---10-protocol">Zymo Genomic DNA Clean &amp; Concentrator - 10 Protocol</h3>
+<ol type="1">
+<li><p>Add <strong>5 volumes of ChIP DNA Binding Buffer</strong> to each volume of DNA sample. Mix thoroughly and spin down.</p>
+<p>e.g., to 100uL of sample DNA, add 500uL ChIP DNA Binding Buffer</p></li>
+<li><p>Transfer mixture to a Zymo Spin Column (IC-XC) in a collection tube.</p></li>
+<li><p>Centrifuge 30s at 12,000 RPM. Discard flow through.</p></li>
+<li><p>Add <strong>200uL DNA Wash Buffer</strong> to the column. Centrifuge 1 min at 12,000 RPM. Discard flow through.</p></li>
+<li><p>Repeat Step 4.</p></li>
+<li><p>Add <strong>&gt;= 10 uL DNA Elution Buffer</strong> (or nuclease-free water) directly to the column matrix and incubate at room temp for 1 minute. Transfer column to a labelled 1.5mL tube and centrifuge for &gt;=30 sec to elute DNA.</p>
+<p>To improve yield, one can heat DNA Elution Buffer to 60C before use.</p></li>
+</ol>
+<p>Notes:</p>
+<ul>
+<li><p>Aliquoted DNA Elution Buffer to 2mL tube and heated to 60C before use.</p></li>
+<li><p>Eluted each sample in 50uL of buffer.</p></li>
+</ul>
+<p>Performed Zymo Cleanup on both Round 1 and Round 2 extractions at 1:00pm, July 12, 2025. Stored cleaned DNA in fridge for the weekend.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>SIFP_2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_12_zymo_cleanup.html</guid>
+  <pubDate>Sat, 12 Jul 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Finishing extractions</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_11_extractions.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Completed <em>E. tourneforti</em> extractions</p>
+<section id="qiagen-dneasy-extraction-protocol-after-digestion" class="level3">
+<h3 class="anchored" data-anchor-id="qiagen-dneasy-extraction-protocol-after-digestion">Qiagen DNEasy Extraction Protocol (after digestion)</h3>
+<ol start="2" type="1">
+<li>Add <strong>200uL Buffer AL</strong>. Mix thoroughly by vortexing, and spin down the sides.</li>
+<li>Add <strong>200ul 95% ethanol</strong>. Mix thoroughly by vortexing, and spin down the sides.</li>
+<li>Pipet mixture onto a labelled DNEasy Mini Spin Column placed in a 2mL collection tube. Centrifuge @ &gt;= 8,000 RPM for 1 min. Discard the flow through and collection tube.</li>
+<li>Place column in a new 2mL collection tube. Add <strong>500uL Buffer AW1</strong>. Centrifuge at &gt;= 8,000 RPM for 1 min. Discard the flow through and collection tube.</li>
+<li>Place column in a new 2mL collection tube. Add <strong>500uL Buffer AW2</strong>. Centrifuge at 14,000 RPM for 3 min. Discard the flow through and collection tube.</li>
+<li>Transfer the spin column to a new, labelled 1.5mL or 2mL tube.</li>
+<li>Elute the DNA by adding <strong>50uL Buffer AE</strong> to the center of the spin column membrane. Incubate at room temperature for 1 min. Centrifuge 1 min. at &gt;= 8,000 RPM.</li>
+<li>Repeat step 8, for a <u>final elution volume of 100uL</u>.</li>
+</ol>
+<p>Completed Round 1 extractions at 3:00pm, July 11, 2025. Stored in fridge.</p>
+<p>Completed Round 2 extractions at 10:00am, July 12, 2025. Stored in fridge.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>SIFP_2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_11_extractions.html</guid>
+  <pubDate>Fri, 11 Jul 2025 04:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Subsampling and Digestions</title>
   <dc:creator>Kathleen Durkin</dc:creator>

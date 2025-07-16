@@ -1,0 +1,310 @@
+---
+title: "Deep Dive Expression: Results Wrap-up"
+author: "Kathleen Durkin"
+date: "2025-06-17"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Trying to wrap up the results section for this manuscript!
+
+```{r}
+library(dplyr)
+```
+
+To-Do List:
+
+-   Confirm mRNA results #s
+
+-   mRNA GO slim top 20 in each species --- think I assigned this to Sam
+
+-   lncRNA results #s -- should go to Zach
+
+-   miRNA results -- fill in counts
+
+-   lncRNA-mRNA interactions. Need to do lncRNA-mRNA PCC on all three species, or see whether Zach has done it
+
+## miRNA-mRNA interactions.
+
+For all three species, summarize binding and PCC
+
+```{r}
+Apul_PCC_miRNA_mRNA <- read.csv("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/D-Apul/output/09-Apul-mRNA-miRNA-interactions/Apul-PCC_miRNA_mRNA.csv")
+print("# Apul miRNA-mRNA PCC values signficant at p<0.05:")
+Apul_PCC_miRNA_mRNA %>% filter(p_value < 0.05) %>% unique() %>% nrow()
+
+cat("\n")
+
+miranda_strict_all_1kb_parsed_apul_updated <- read.table("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/D-Apul/output/09-Apul-mRNA-miRNA-interactions/miranda_strict_all_1kb_parsed_apul_updated.txt")
+print("# Apul miRNA-3UTR miRanda interactions:")
+nrow(miranda_strict_all_1kb_parsed_apul_updated)
+print("Average miRanda total bp shared:")
+mean(miranda_strict_all_1kb_parsed_apul_updated$V9)
+print("SD of miRanda total bp shared")
+sd(miranda_strict_all_1kb_parsed_apul_updated$V9)
+
+cat("\n")
+
+Apul_miRanda_5UTR_1kb_strict_parsed <- read.table("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/D-Apul/output/09.01-Apul-mRNA-miRNA-interactions-CDS_5UTR/Apul-miRanda-5UTR_1kb-strict-parsed.txt")
+print("# Apul miRNA-5UTR miRanda interactions:")
+nrow(Apul_miRanda_5UTR_1kb_strict_parsed)
+print("Average miRanda total bp shared:")
+mean(Apul_miRanda_5UTR_1kb_strict_parsed$V9)
+print("SD of miRanda total bp shared")
+sd(Apul_miRanda_5UTR_1kb_strict_parsed$V9)
+
+cat("\n")
+
+Apul_miRanda_mRNA_full_strict_parsed <- read.table("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/D-Apul/output/09.01-Apul-mRNA-miRNA-interactions-CDS_5UTR/Apul-miRanda-mRNA_full-strict-parsed.txt")
+print("# Apul miRNA-CDS miRanda interactions:")
+nrow(Apul_miRanda_mRNA_full_strict_parsed)
+print("Average miRanda total bp shared:")
+mean(Apul_miRanda_mRNA_full_strict_parsed$V9)
+print("SD of miRanda total bp shared")
+sd(Apul_miRanda_mRNA_full_strict_parsed$V9)
+
+cat("\n")
+
+Apul_miranda_PCC_miRNA_3UTR <- read.csv("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/D-Apul/output/09-Apul-mRNA-miRNA-interactions/miranda_PCC_miRNA_mRNA.csv")
+Apul_miranda_PCC_miRNA_5UTR <- read.csv("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/D-Apul/output/09.01-Apul-mRNA-miRNA-interactions-CDS_5UTR/miRanda_PCC_miRNA_5UTR.csv")
+Apul_miranda_PCC_miRNA_CDS <- read.csv("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/D-Apul/output/09.01-Apul-mRNA-miRNA-interactions-CDS_5UTR/miRanda_PCC_miRNA_CDS.csv")
+
+print("# Apul miRNA-3UTR miRanda interactions WITH significant PCC (pval < 0.05)")
+Apul_miranda_PCC_miRNA_3UTR %>% filter(p_value < 0.05) %>% unique() %>% nrow()
+print("# Apul miRNA-5UTR miRanda interactions WITH significant PCC (pval < 0.05)")
+Apul_miranda_PCC_miRNA_5UTR %>% filter(p_value < 0.05) %>% unique() %>% nrow()
+print("# Apul miRNA-CDS miRanda interactions WITH significant PCC (pval < 0.05)")
+Apul_miranda_PCC_miRNA_CDS %>% filter(p_value < 0.05) %>% unique() %>% nrow()
+
+```
+
+```{r}
+
+Peve_PCC_miRNA_mRNA <- read.csv("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/E-Peve/output/10-Peve-mRNA-miRNA-interactions/Peve-PCC_miRNA_mRNA.csv")
+print("# Peve miRNA-mRNA PCC values signficant at p<0.05:")
+Peve_PCC_miRNA_mRNA %>% filter(p_value < 0.05) %>% unique() %>% nrow()
+
+cat("\n")
+
+miranda_strict_all_1kb_parsed_Peve_updated <- read.table("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/E-Peve/output/10-Peve-mRNA-miRNA-interactions/miranda_strict_all_1kb_parsed_peve_updated.txt")
+print("# Peve miRNA-3UTR miRanda interactions:")
+nrow(miranda_strict_all_1kb_parsed_Peve_updated)
+print("Average miRanda total bp shared:")
+mean(miranda_strict_all_1kb_parsed_Peve_updated$V9)
+print("SD of miRanda total bp shared")
+sd(miranda_strict_all_1kb_parsed_Peve_updated$V9)
+
+cat("\n")
+
+Peve_miRanda_5UTR_1kb_strict_parsed <- read.table("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/E-Peve/output/10.01-Peve-mRNA-miRNA-interactions-CDS_5UTR/Peve-miRanda-5UTR_1kb-strict-parsed.txt")
+print("# Peve miRNA-5UTR miRanda interactions:")
+nrow(Peve_miRanda_5UTR_1kb_strict_parsed)
+print("Average miRanda total bp shared:")
+mean(Peve_miRanda_5UTR_1kb_strict_parsed$V9)
+print("SD of miRanda total bp shared")
+sd(Peve_miRanda_5UTR_1kb_strict_parsed$V9)
+
+cat("\n")
+
+Peve_miRanda_mRNA_full_strict_parsed <- read.table("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/E-Peve/output/10.01-Peve-mRNA-miRNA-interactions-CDS_5UTR/Peve-miRanda-mRNA_full-strict-parsed.txt")
+print("# Peve miRNA-CDS miRanda interactions:")
+nrow(Peve_miRanda_mRNA_full_strict_parsed)
+print("Average miRanda total bp shared:")
+mean(Peve_miRanda_mRNA_full_strict_parsed$V9)
+print("SD of miRanda total bp shared")
+sd(Peve_miRanda_mRNA_full_strict_parsed$V9)
+
+cat("\n")
+
+Peve_miranda_PCC_miRNA_3UTR <- read.csv("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/E-Peve/output/10-Peve-mRNA-miRNA-interactions/Peve-miranda_PCC_miRNA_mRNA.csv")
+Peve_miranda_PCC_miRNA_5UTR <- read.csv("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/E-Peve/output/10.01-Peve-mRNA-miRNA-interactions-CDS_5UTR/miRanda_PCC_miRNA_5UTR.csv")
+Peve_miranda_PCC_miRNA_CDS <- read.csv("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/E-Peve/output/10.01-Peve-mRNA-miRNA-interactions-CDS_5UTR/miRanda_PCC_miRNA_CDS.csv")
+
+print("# Peve miRNA-3UTR miRanda interactions WITH significant PCC (pval < 0.05)")
+Peve_miranda_PCC_miRNA_3UTR %>% filter(p_value < 0.05) %>% unique() %>% nrow()
+print("# Peve miRNA-5UTR miRanda interactions WITH significant PCC (pval < 0.05)")
+Peve_miranda_PCC_miRNA_5UTR %>% filter(p_value < 0.05) %>% unique() %>% nrow()
+print("# Peve miRNA-CDS miRanda interactions WITH significant PCC (pval < 0.05)")
+Peve_miranda_PCC_miRNA_CDS %>% filter(p_value < 0.05) %>% unique() %>% nrow()
+
+```
+
+```{r}
+Ptuh_PCC_miRNA_mRNA <- read.csv("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/F-Ptuh/output/11-Ptuh-mRNA-miRNA-interactions/three_prime_interaction/Ptuh-PCC_miRNA_mRNA.csv")
+print("# Ptuh miRNA-mRNA PCC values signficant at p<0.05:")
+Ptuh_PCC_miRNA_mRNA %>% filter(p_value < 0.05) %>% unique() %>% nrow()
+
+cat("\n")
+
+miranda_strict_all_1kb_parsed_Ptuh_updated <- read.table("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/F-Ptuh/output/11-Ptuh-mRNA-miRNA-interactions/three_prime_interaction/miranda_strict_all_1kb_parsed_ptuh_updated.txt")
+print("# Ptuh miRNA-3UTR miRanda interactions:")
+nrow(miranda_strict_all_1kb_parsed_Ptuh_updated)
+print("Average miRanda total bp shared:")
+mean(miranda_strict_all_1kb_parsed_Ptuh_updated$V9)
+print("SD of miRanda total bp shared")
+sd(miranda_strict_all_1kb_parsed_Ptuh_updated$V9)
+
+cat("\n")
+
+Ptuh_miRanda_5UTR_1kb_strict_parsed <- read.table("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/F-Ptuh/output/11.01-Ptuh-mRNA-miRNA-interactions-CDS_5UTR/Ptuh-miRanda-5UTR_1kb-strict-parsed.txt")
+print("# Ptuh miRNA-5UTR miRanda interactions:")
+nrow(Ptuh_miRanda_5UTR_1kb_strict_parsed)
+print("Average miRanda total bp shared:")
+mean(Ptuh_miRanda_5UTR_1kb_strict_parsed$V9)
+print("SD of miRanda total bp shared")
+sd(Ptuh_miRanda_5UTR_1kb_strict_parsed$V9)
+
+cat("\n")
+
+Ptuh_miRanda_mRNA_full_strict_parsed <- read.table("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/F-Ptuh/output/11.01-Ptuh-mRNA-miRNA-interactions-CDS_5UTR/Ptuh-miRanda-mRNA_full-strict-parsed.txt")
+print("# Ptuh miRNA-CDS miRanda interactions:")
+nrow(Ptuh_miRanda_mRNA_full_strict_parsed)
+print("Average miRanda total bp shared:")
+mean(Ptuh_miRanda_mRNA_full_strict_parsed$V9)
+print("SD of miRanda total bp shared")
+sd(Ptuh_miRanda_mRNA_full_strict_parsed$V9)
+
+cat("\n")
+
+Ptuh_miranda_PCC_miRNA_3UTR <- read.csv("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/F-Ptuh/output/11-Ptuh-mRNA-miRNA-interactions/three_prime_interaction/Ptuh-miranda_PCC_miRNA_mRNA.csv")
+Ptuh_miranda_PCC_miRNA_5UTR <- read.csv("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/F-Ptuh/output/11.01-Ptuh-mRNA-miRNA-interactions-CDS_5UTR/miRanda_PCC_miRNA_5UTR.csv")
+Ptuh_miranda_PCC_miRNA_CDS <- read.csv("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/F-Ptuh/output/11.01-Ptuh-mRNA-miRNA-interactions-CDS_5UTR/miRanda_PCC_miRNA_CDS.csv")
+
+print("# Ptuh miRNA-3UTR miRanda interactions WITH significant PCC (pval < 0.05)")
+Ptuh_miranda_PCC_miRNA_3UTR %>% filter(p_value < 0.05) %>% unique() %>% nrow()
+print("# Ptuh miRNA-5UTR miRanda interactions WITH significant PCC (pval < 0.05)")
+Ptuh_miranda_PCC_miRNA_5UTR %>% filter(p_value < 0.05) %>% unique() %>% nrow()
+print("# Ptuh miRNA-CDS miRanda interactions WITH significant PCC (pval < 0.05)")
+Ptuh_miranda_PCC_miRNA_CDS %>% filter(p_value < 0.05) %>% unique() %>% nrow()
+
+```
+
+::: callout-warning
+## Warning
+
+Need to check with Jill how the above miRanda results were generated. Points of concern are
+
+1.  Were inputs 3UTR sites only, or all three 3UTR, 5UTR, and CDS regions?
+
+2.  What were the significance parameters? Was there a cutoff for minimum total bp shared?
+:::
+
+\^Looks like Jill only used the miRanda settings -e -20 and -strict, while I used -e -20, -sc 100, and -strict. The -sc is a score cutoff. It may not have affected results, since a brief check suggested the energy cutoff (-e -20) was more stringent and implicitly restricted results to scores above 100. However, I should add a manual filter when using Jill's miRanda outputs (miRNA-3UTR) to be safe.
+
+We also have **topGO enrichment of significant miRNA-mRNA interactions** if we want to use them
+
+## miRNA-lncRNA interactions.
+
+For all three species, summarize binding and PCC. overlap among species
+
+```{r}
+Apul_PCC_miRNA_lncRNA <- read.csv("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/D-Apul/output/28-Apul-miRNA-lncRNA-interactions/Apul-PCC_miRNA_lncRNA.csv")
+print("# Apul miRNA-lncRNA PCC values signficant at p<0.05:")
+Apul_PCC_miRNA_lncRNA %>% filter(p_value < 0.05) %>% unique() %>% nrow()
+
+cat("\n")
+
+Apul_miRanda_lncRNA_strict_parsed <- read.table("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/D-Apul/output/17-Apul-miRNA-lncRNA-BLASTs-RNAhybrid/Apul-miRanda-lncRNA-strict-parsed.txt")
+print("# Apul miRNA-lncRNA miRanda interactions:")
+nrow(Apul_miRanda_lncRNA_strict_parsed)
+print("Average miRanda total bp shared:")
+mean(Apul_miRanda_lncRNA_strict_parsed$V9)
+print("SD of miRanda total bp shared")
+sd(Apul_miRanda_lncRNA_strict_parsed$V9)
+
+cat("\n")
+
+Apul_lncRNA_to_precursor_blastn <- read.table("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/D-Apul/output/17-Apul-miRNA-lncRNA-BLASTs-RNAhybrid/blasts/lncRNA_to_precursor_blastn.tab")
+colnames(Apul_lncRNA_to_precursor_blastn) <- c("qseqid", "sseqid", "pident", "length", "mismatch", "gapopen", "qstart", "qend", "sstart", "send", "evalue", "bitscore")
+print("# Apul lncRNA that contain full pre-miRNA")
+Apul_lncRNA_to_precursor_blastn %>% filter(length >= 90) %>% filter(mismatch == 0) %>% nrow()
+print("Note: the above value includes lncRNA that have highly overlapping genomic coordinates, suggesting instances of isoforms of the same lncRNA")
+
+cat("\n")
+
+Apul_miranda_PCC_miRNA_lncRNA <- read.csv("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/D-Apul/output/28-Apul-miRNA-lncRNA-interactions/miranda_PCC_miRNA_lncRNA.csv")
+print("# Apul miRNA-lncRNA miRanda interactions WITH significant PCC (pval < 0.05)")
+Apul_miranda_PCC_miRNA_lncRNA %>% filter(p_value < 0.05) %>% unique() %>% nrow()
+
+
+```
+
+```{r}
+Peve_PCC_miRNA_lncRNA <- read.csv("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/E-Peve/output/15-Peve-miRNA-lncRNA-PCC/PCC_miRNA_lncRNA.csv")
+print("# Peve miRNA-lncRNA PCC values signficant at p<0.05:")
+Peve_PCC_miRNA_lncRNA %>% filter(p_value < 0.05) %>% unique() %>% nrow()
+
+cat("\n")
+
+Peve_miRanda_lncRNA_strict_parsed <- read.table("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/E-Peve/output/14-Peve-miRNA-lncRNA-BLASTs-miRanda/Peve-miRanda-lncRNA-strict-parsed.txt")
+print("# Peve miRNA-lncRNA miRanda interactions:")
+nrow(Peve_miRanda_lncRNA_strict_parsed)
+print("Average miRanda total bp shared:")
+mean(Peve_miRanda_lncRNA_strict_parsed$V9)
+print("SD of miRanda total bp shared")
+sd(Peve_miRanda_lncRNA_strict_parsed$V9)
+
+cat("\n")
+
+Peve_lncRNA_to_precursor_blastn <- read.table("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/E-Peve/output/14-Peve-miRNA-lncRNA-BLASTs-miRanda/blasts/lncRNA_to_precursor_blastn.tab")
+colnames(Peve_lncRNA_to_precursor_blastn) <- c("qseqid", "sseqid", "pident", "length", "mismatch", "gapopen", "qstart", "qend", "sstart", "send", "evalue", "bitscore")
+print("# Peve lncRNA that contain full pre-miRNA")
+Peve_lncRNA_to_precursor_blastn %>% filter(length >= 90) %>% filter(mismatch == 0) %>% nrow()
+print("Note: the above value includes lncRNA that have highly overlapping genomic coordinates, suggesting instances of isoforms of the same lncRNA")
+
+cat("\n")
+
+Peve_miranda_PCC_miRNA_lncRNA <- read.csv("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/E-Peve/output/15-Peve-miRNA-lncRNA-PCC/miranda_PCC_miRNA_lncRNA.csv")
+print("# Peve miRNA-lncRNA miRanda interactions WITH significant PCC (pval < 0.05)")
+Peve_miranda_PCC_miRNA_lncRNA %>% filter(p_value < 0.05) %>% unique() %>% nrow()
+```
+
+```{r}
+Ptuh_PCC_miRNA_lncRNA <- read.csv("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/F-Ptuh/output/15-Ptuh-miRNA-lncRNA-PCC/PCC_miRNA_lncRNA.csv")
+print("# Ptuh miRNA-lncRNA PCC values signficant at p<0.05:")
+Ptuh_PCC_miRNA_lncRNA %>% filter(p_value < 0.05) %>% unique() %>% nrow()
+
+cat("\n")
+
+Ptuh_miRanda_lncRNA_strict_parsed <- read.table("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/F-Ptuh/output/14-Ptuh-miRNA-lncRNA-BLASTs-miRanda/Ptuh-miRanda-lncRNA-strict-parsed.txt")
+print("# Ptuh miRNA-lncRNA miRanda interactions:")
+nrow(Ptuh_miRanda_lncRNA_strict_parsed)
+print("Average miRanda total bp shared:")
+mean(Ptuh_miRanda_lncRNA_strict_parsed$V9)
+print("SD of miRanda total bp shared")
+sd(Ptuh_miRanda_lncRNA_strict_parsed$V9)
+
+cat("\n")
+
+Ptuh_lncRNA_to_precursor_blastn <- read.table("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/F-Ptuh/output/14-Ptuh-miRNA-lncRNA-BLASTs-miRanda/blasts/lncRNA_to_precursor_blastn.tab")
+colnames(Ptuh_lncRNA_to_precursor_blastn) <- c("qseqid", "sseqid", "pident", "length", "mismatch", "gapopen", "qstart", "qend", "sstart", "send", "evalue", "bitscore")
+print("# Ptuh lncRNA that contain full pre-miRNA")
+Ptuh_lncRNA_to_precursor_blastn %>% filter(length >= 90) %>% filter(mismatch == 0) %>% nrow()
+print("Note: the above value includes lncRNA that have highly overlapping genomic coordinates, suggesting instances of isoforms of the same lncRNA")
+
+cat("\n")
+
+Ptuh_miranda_PCC_miRNA_lncRNA <- read.csv("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/F-Ptuh/output/15-Ptuh-miRNA-lncRNA-PCC/miranda_PCC_miRNA_lncRNA.csv")
+print("# Ptuh miRNA-lncRNA miRanda interactions WITH significant PCC (pval < 0.05)")
+Ptuh_miranda_PCC_miRNA_lncRNA %>% filter(p_value < 0.05) %>% unique() %>% nrow()
+```
+
+::: callout-note
+## precursors - PCC
+
+Should validate lncRNA acting as miRNA precursors by checking for coexpression
+:::
+
+## mRNA-lncRNA PCC
+
+```{r}
+Apul_mRNA_lncRNA_PCC <- read.csv("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/F-Ptuh/output/10.1-Ptuh-mRNA-lncRNA-correlation-PCC/Ptuh-PCC_mRNA_lncRNA.csv")
+```
+
+## lncRNA-mRNA-miRNA

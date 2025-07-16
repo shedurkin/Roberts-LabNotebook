@@ -1,0 +1,11 @@
+-   remember: don't spend too long on the proposals, it's essentially just listing out the methods I've already done.
+
+-   keep thinking about ways to improve QSCI 381 (and similar courses)
+
+-   note for dde: post as issue, lncRNA count matrices has things with all-zero counts across all species, which means it's not based solely on expression data. at the very least it means that we're reporting all possible lncRNA, but only reporting miRNA that are expressed in one of the samples. could this explain.
+
+-   look at Sam;s github issue about the klone apptainers
+
+-   ask sam to add miRanda to Klone
+
+-   

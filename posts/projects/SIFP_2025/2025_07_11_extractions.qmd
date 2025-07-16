@@ -1,0 +1,26 @@
+---
+title: "Finishing extractions"
+author: "Kathleen Durkin"
+date: "2025-07-11"
+categories: ["SIFP_2025"]
+format:
+  html
+bibliography: ../../../references.bib
+---
+
+Completed *E. tourneforti* extractions
+
+### Qiagen DNEasy Extraction Protocol (after digestion)
+
+2.  Add **200uL Buffer AL**. Mix thoroughly by vortexing, and spin down the sides.
+3.  Add **200ul 95% ethanol**. Mix thoroughly by vortexing, and spin down the sides.
+4.  Pipet mixture onto a labelled DNEasy Mini Spin Column placed in a 2mL collection tube. Centrifuge \@ \>= 8,000 RPM for 1 min. Discard the flow through and collection tube.
+5.  Place column in a new 2mL collection tube. Add **500uL Buffer AW1**. Centrifuge at \>= 8,000 RPM for 1 min. Discard the flow through and collection tube.
+6.  Place column in a new 2mL collection tube. Add **500uL Buffer AW2**. Centrifuge at 14,000 RPM for 3 min. Discard the flow through and collection tube.
+7.  Transfer the spin column to a new, labelled 1.5mL or 2mL tube.
+8.  Elute the DNA by adding **50uL Buffer AE** to the center of the spin column membrane. Incubate at room temperature for 1 min. Centrifuge 1 min. at \>= 8,000 RPM.
+9.  Repeat step 8, for a [final elution volume of 100uL]{.underline}.
+
+Completed Round 1 extractions at 3:00pm, July 11, 2025. Stored in fridge.
+
+Completed Round 2 extractions at 10:00am, July 12, 2025. Stored in fridge.

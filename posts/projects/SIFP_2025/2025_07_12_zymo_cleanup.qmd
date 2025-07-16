@@ -1,0 +1,35 @@
+---
+title: "Zymo cleanup and concentration"
+author: "Kathleen Durkin"
+date: "2025-07-12"
+categories: ["SIFP_2025"]
+format:
+  html
+bibliography: ../../../references.bib
+---
+
+### Zymo Genomic DNA Clean & Concentrator - 10 Protocol
+
+1.  Add **5 volumes of ChIP DNA Binding Buffer** to each volume of DNA sample. Mix thoroughly and spin down.
+
+    e.g., to 100uL of sample DNA, add 500uL ChIP DNA Binding Buffer
+
+2.  Transfer mixture to a Zymo Spin Column (IC-XC) in a collection tube.
+
+3.  Centrifuge 30s at 12,000 RPM. Discard flow through.
+
+4.  Add **200uL DNA Wash Buffer** to the column. Centrifuge 1 min at 12,000 RPM. Discard flow through.
+
+5.  Repeat Step 4.
+
+6.  Add **\>= 10 uL DNA Elution Buffer** (or nuclease-free water) directly to the column matrix and incubate at room temp for 1 minute. Transfer column to a labelled 1.5mL tube and centrifuge for \>=30 sec to elute DNA.
+
+    To improve yield, one can heat DNA Elution Buffer to 60C before use.
+
+Notes:
+
+-   Aliquoted DNA Elution Buffer to 2mL tube and heated to 60C before use.
+
+-   Eluted each sample in 50uL of buffer.
+
+Performed Zymo Cleanup on both Round 1 and Round 2 extractions at 1:00pm, July 12, 2025. Stored cleaned DNA in fridge for the weekend.

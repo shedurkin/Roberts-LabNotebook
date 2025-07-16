@@ -1,0 +1,31 @@
+---
+title: "Re-extraction of low-quantity samples"
+author: "Kathleen Durkin"
+date: "2025-07-15"
+categories: ["SIFP_2025"]
+format:
+  html
+bibliography: ../../../references.bib
+---
+
+Several of the older samples had low DNA concentrations (\<10ng/uL) (see [quantification notes](./2025_07_14_qubit.qmd) for details). To obtain enough DNA for library prep (\>= 400ng), I need to extract more DNA from these specimens.
+
+To do this, I'll do several extractions for each of the specimens, then pool each specimen's extractions before Zymo Cleanup to concentrate the multiple extractions into one higher-concentration elution.
+
+### Subsampling
+
+**USNM 14366\
+USNM 19054\
+USNM 52295\
+USNM 1180630\
+USNM 50603**
+
+For each of the above specimens, subsampled 4 times as described in the subsampling protocol provided in my [July 9 post](./2025_07_09_subsampling_extractions.qmd). Each set of subsamples was labelled with the catalog number and then A, B, C, or D.
+
+During subsamplling I was able to see where on the specimen I had previously sampled tissue. I subsampled this time from the same stalk/finger, to preserve the undamaged portions of the specimens.
+
+### Tissue digestion
+
+Digested the above specimens (20 total) as detailed in the Digestion Protocol in my [July 9 post](./2025_07_09_subsampling_extractions.qmd).
+
+Digestions began incubating at 3:00pm, 07/15/25.
