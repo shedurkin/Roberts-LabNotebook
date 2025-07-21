@@ -52,3 +52,37 @@ Notes:
 -   Modern stuff also looks ok, especially the 1740### samples, which I believe correspond to the 2019 collections. These have lots of HMW DNA!
 
 -   Surprisingly, the 60s stuff seems most degraded (51857 - 51861, 51727). I may want to consider pulling different collections for this time range.
+
+### Plot
+
+```{r}
+library(googlesheets4)
+library(tidyr)
+library(ggplot2)
+conc <- read_sheet("https://docs.google.com/spreadsheets/d/1zDMy7AOCM8Ug85q4vr9CoMDxfF-zDJk1DnaxakSt1Hg/edit?usp=sharing")
+
+# Pivot the concentration and gel size columns to long format
+conc_long <- conc %>%
+  pivot_longer(
+    cols = c(Concentration1.ngul, Concentration2.ngul, Gel1.Size.kb, Gel2.Size.kb),
+    names_to = c(".value", "Extraction.Number"),
+    names_pattern = "(Concentration|Gel)\\s?(\\d)"
+  )
+
+conc_long$Gel <- factor(conc_long$Gel,
+                            levels = c("none", "smear, 0.05", "short smear, 0.15", "smear, 0.15", "smear, 0.3", "smear, 0.5", "HMW, smear"),
+                            ordered = TRUE)
+conc_long$Collection.Age <- ifelse(conc_long$Year.Collected < 1920, "pre-1920",
+                              ifelse(conc_long$Year.Collected > 2000, "Modern", "1960s-70s"))
+conc_long$Collection.Age <- factor(conc_long$Collection.Age,
+                              levels = c("pre-1920", "1960s-70s", "Modern"),
+                              ordered = TRUE)
+
+ggplot(conc_long, aes(x=Gel, y=Concentration, color=Collection.Age, shape=Extraction.Number)) +
+  geom_jitter(size = 2, width = 0.25, height = 0) +
+  geom_hline(yintercept = 10, color = 'black') +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  xlab("Gel size range (kb)") +
+  ylab("Concentration (ng/uL)")
+```
