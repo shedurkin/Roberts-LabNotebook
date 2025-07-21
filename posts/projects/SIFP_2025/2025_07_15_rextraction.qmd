@@ -26,6 +26,10 @@ During subsamplling I was able to see where on the specimen I had previously sam
 
 ### Tissue digestion
 
-Digested the above specimens (20 total) as detailed in the Digestion Protocol in my [July 9 post](./2025_07_09_subsampling_extractions.qmd).
+Digested the above specimens (20 total) as detailed in the **Digestion Protocol** in my [July 9 post](./2025_07_09_subsampling_extractions.qmd).
 
 Digestions began incubating at 3:00pm, 07/15/25.
+
+### Extraction
+
+Pulled digesting tissue from shaking incubators at 1:00pm, 07/17/2025, and finished extraction as detailed in the **Qiagen Extraction Protocol** included in my [July 11 post](./2025_07_11_extractions.qmd).

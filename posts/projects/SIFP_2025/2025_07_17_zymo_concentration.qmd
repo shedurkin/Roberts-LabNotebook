@@ -1,0 +1,23 @@
+---
+title: "Zymo Cleanup/Concentration of re-extractions"
+author: "Kathleen Durkin"
+date: "2025-07-17"
+categories: ["SIFP_2025"]
+format:
+  html
+bibliography: ../../../references.bib
+---
+
+Completed re-extraction of the following samples in multiples of 4:
+
+USNM 14366\
+USNM 19054\
+USNM 52295\
+USNM 1180630\
+USNM 50603
+
+See full details in [July 17 post](./2025_07_17_rextraction.qmd).
+
+Then used Zymo Cleanup Kit to clean and concentrate extractions, following the Zymo Cleanup Protocol found in my [July 12 post](./2025_07_12_zymo_cleanup.qmd), with the following modifications:
+
+For each specimen, to concentrate 4 100uL extractions into a single cleaned extraction, during steps 2 & 3 of the protocol (adding sample to spin column and centrifuging), performed several iterations for each specimen. The spin column is to small to hold the full volume of 4 100uL DNA samples and the corresponding 2000uL of ChIP Binding Buffer. Instead, added 5 volumes of ChIP Binding Buffer to each extraction individually. Then added 1000uL of sample DNA + ChIP Buffer to spin column at a time, then centrifuged, discarded flow through, and repeated until all extracted DNA of a given specimen had been bound to the spin column. I then proceeded as normal, eluting in a final volume of 50uL of heated Elution Buffer.

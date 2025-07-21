@@ -1,0 +1,54 @@
+---
+title: "Gel Electrophoresis"
+author: "Kathleen Durkin"
+date: "2025-07-18"
+categories: ["SIFP_2025"]
+format:
+  html
+bibliography: ../../../references.bib
+---
+
+To check DNA integrity, ran gel electrophoresis.
+
+### Gel-making protocol
+
+1.  Tape sides of gel mold and insert comb(s). For the integrity check of genomic DNA, used 12-well combs that had an additional well for ladder (1 comb per mold)
+
+2.  Melt one 50mL falcon tube of **1.5% SB agarose gel** in beaker by microwaving in \~15s intervals, swirling intermittently to mix. Once fully melted, allow to cool until the beaker is comfortable to handle.
+
+3.  Add **2uL 10,000X gel red** to melted agarose, swirling to mix, then pour agarose into gel mold.
+
+4.  Allow to cool until fully set and slightly opaque (\~30 min).
+
+    If using immediately , remove comb(s) and begin use (see next protocol). If storing, leave combs in and refrigerate in a sealed container.
+
+### Electrophoresis
+
+1.  If necessary, make aliquot of "dosed" loading dye, by mixing **1000uL 2X Loading Dye** with **1uL 10,000X gel red**.
+2.  Place gel, with comb and tape barriers removed, in electrophoresis chamber. Ensure it is fully covered by buffer, and wells are placed by the negative (black) node.
+3.  For each sample, mix **2uL "dosed" 2X Loading Dye** to **2uL DNA**.
+4.  Load into wells, taking care not to puncture gel or eject sample from well.
+5.  Load equal volume of **Fast DNA Ladder** in ladder well.
+6.  Run gel at **100-120 volts** for **60min**.
+
+### Gels
+
+![Gel 1](images/2025_07_18_gels/2025_07_18_labelled_gels/Slide1.PNG)
+
+![Gel 2](images/2025_07_18_gels/2025_07_18_labelled_gels/Slide2.PNG)
+
+![Gel 3](images/2025_07_18_gels/2025_07_18_labelled_gels/Slide3.PNG)
+
+Notes:
+
+-   10X = used 10X dilution of DNA to avoid high-concentration DNA "clogging." Same dilutions as used for Qubit.
+
+-   2nd = 2nd extraction of this specimen
+
+-   A few lanes were too faint to really see (1007393 10X, 1606824 10X, 51727, 51861), likely due to low DNA concentration. Can rerun 1007393 and 1606824 undiluted.
+
+-   Most of the old tuff (14366, 19054, 52295, 1180630, 50603, 14399, 42137, and 50368) seems ok. A few have HMW DNA, but most range from 1kb - 0.15kb. 42137 is the only one with many short fragments.
+
+-   Modern stuff also looks ok, especially the 1740### samples, which I believe correspond to the 2019 collections. These have lots of HMW DNA!
+
+-   Surprisingly, the 60s stuff seems most degraded (51857 - 51861, 51727). I may want to consider pulling different collections for this time range.

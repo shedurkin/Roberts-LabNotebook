@@ -10,7 +10,162 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Tue, 15 Jul 2025 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 18 Jul 2025 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>Gel Electrophoresis</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_18_gel_electrophoresis.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>To check DNA integrity, ran gel electrophoresis.</p>
+<section id="gel-making-protocol" class="level3">
+<h3 class="anchored" data-anchor-id="gel-making-protocol">Gel-making protocol</h3>
+<ol type="1">
+<li><p>Tape sides of gel mold and insert comb(s). For the integrity check of genomic DNA, used 12-well combs that had an additional well for ladder (1 comb per mold)</p></li>
+<li><p>Melt one 50mL falcon tube of <strong>1.5% SB agarose gel</strong> in beaker by microwaving in ~15s intervals, swirling intermittently to mix. Once fully melted, allow to cool until the beaker is comfortable to handle.</p></li>
+<li><p>Add <strong>2uL 10,000X gel red</strong> to melted agarose, swirling to mix, then pour agarose into gel mold.</p></li>
+<li><p>Allow to cool until fully set and slightly opaque (~30 min).</p>
+<p>If using immediately , remove comb(s) and begin use (see next protocol). If storing, leave combs in and refrigerate in a sealed container.</p></li>
+</ol>
+</section>
+<section id="electrophoresis" class="level3">
+<h3 class="anchored" data-anchor-id="electrophoresis">Electrophoresis</h3>
+<ol type="1">
+<li>If necessary, make aliquot of “dosed” loading dye, by mixing <strong>1000uL 2X Loading Dye</strong> with <strong>1uL 10,000X gel red</strong>.</li>
+<li>Place gel, with comb and tape barriers removed, in electrophoresis chamber. Ensure it is fully covered by buffer, and wells are placed by the negative (black) node.</li>
+<li>For each sample, mix <strong>2uL “dosed” 2X Loading Dye</strong> to <strong>2uL DNA</strong>.</li>
+<li>Load into wells, taking care not to puncture gel or eject sample from well.</li>
+<li>Load equal volume of <strong>Fast DNA Ladder</strong> in ladder well.</li>
+<li>Run gel at <strong>100-120 volts</strong> for <strong>60min</strong>.</li>
+</ol>
+</section>
+<section id="gels" class="level3">
+<h3 class="anchored" data-anchor-id="gels">Gels</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/2025_07_18_gels/2025_07_18_labelled_gels/Slide1.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Gel 1</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/2025_07_18_gels/2025_07_18_labelled_gels/Slide2.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Gel 2</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/2025_07_18_gels/2025_07_18_labelled_gels/Slide3.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Gel 3</figcaption>
+</figure>
+</div>
+<p>Notes:</p>
+<ul>
+<li><p>10X = used 10X dilution of DNA to avoid high-concentration DNA “clogging.” Same dilutions as used for Qubit.</p></li>
+<li><p>2nd = 2nd extraction of this specimen</p></li>
+<li><p>A few lanes were too faint to really see (1007393 10X, 1606824 10X, 51727, 51861), likely due to low DNA concentration. Can rerun 1007393 and 1606824 undiluted.</p></li>
+<li><p>Most of the old tuff (14366, 19054, 52295, 1180630, 50603, 14399, 42137, and 50368) seems ok. A few have HMW DNA, but most range from 1kb - 0.15kb. 42137 is the only one with many short fragments.</p></li>
+<li><p>Modern stuff also looks ok, especially the 1740### samples, which I believe correspond to the 2019 collections. These have lots of HMW DNA!</p></li>
+<li><p>Surprisingly, the 60s stuff seems most degraded (51857 - 51861, 51727). I may want to consider pulling different collections for this time range.</p></li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>SIFP_2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_18_gel_electrophoresis.html</guid>
+  <pubDate>Fri, 18 Jul 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Qubit of re-extractions</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_17_qubit_reextractions.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Quantified DNA concentration of my 5 re-extractions using Qubit flourometer. Followed Qubit Protocol found in my <a href="../../../posts/projects/SIFP_2025/2025_07_14_qubit.html">July 14 post</a>.</p>
+<p>Standard #1: 37.13<br>
+Standard #2: 14435.49</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Catalog Number</th>
+<th>Qubit Label</th>
+<th>Concentration (ng/uL)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>USNM 14366</td>
+<td>C01</td>
+<td>0.372</td>
+</tr>
+<tr class="even">
+<td>USNM 19054</td>
+<td>C02</td>
+<td>3.57</td>
+</tr>
+<tr class="odd">
+<td>USNM 52295</td>
+<td>C03</td>
+<td>9.02</td>
+</tr>
+<tr class="even">
+<td>USNM 1180630</td>
+<td>C04</td>
+<td>1.78</td>
+</tr>
+<tr class="odd">
+<td>USNM 50603</td>
+<td>C05</td>
+<td>14.9</td>
+</tr>
+</tbody>
+</table>
+<p>Notes:</p>
+<p>Ok this isn’t terrible! The 50603 concentrated re-extraction has &gt;10ng/uL, which is enough to meet the recommended 400ng minimum for MinION. USNM52295 is almost at this threshold, and if I can combine it with my first extraction of this specimen ([ ] = 7.08ng/uL), e.g.&nbsp;during bead cleanup, we’ll have enough of that one too!</p>
+<p>That would bring me to my desired minimum number of samples (n=5) for the &gt;100yo specimens!</p>
+<p>Now I need to run gels on everything to check fragment size. I should also do a Nanodrop at some point before library prep to check for contaminants.</p>
+
+
+
+ ]]></description>
+  <category>SIFP_2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_17_qubit_reextractions.html</guid>
+  <pubDate>Thu, 17 Jul 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Zymo Cleanup/Concentration of re-extractions</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_17_zymo_concentration.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Completed re-extraction of the following samples in multiples of 4:</p>
+<p>USNM 14366<br>
+USNM 19054<br>
+USNM 52295<br>
+USNM 1180630<br>
+USNM 50603</p>
+<p>See full details in <a href="./2025_07_17_rextraction.qmd">July 17 post</a>.</p>
+<p>Then used Zymo Cleanup Kit to clean and concentrate extractions, following the Zymo Cleanup Protocol found in my <a href="../../../posts/projects/SIFP_2025/2025_07_12_zymo_cleanup.html">July 12 post</a>, with the following modifications:</p>
+<p>For each specimen, to concentrate 4 100uL extractions into a single cleaned extraction, during steps 2 &amp; 3 of the protocol (adding sample to spin column and centrifuging), performed several iterations for each specimen. The spin column is to small to hold the full volume of 4 100uL DNA samples and the corresponding 2000uL of ChIP Binding Buffer. Instead, added 5 volumes of ChIP Binding Buffer to each extraction individually. Then added 1000uL of sample DNA + ChIP Buffer to spin column at a time, then centrifuged, discarded flow through, and repeated until all extracted DNA of a given specimen had been bound to the spin column. I then proceeded as normal, eluting in a final volume of 50uL of heated Elution Buffer.</p>
+
+
+
+ ]]></description>
+  <category>SIFP_2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_17_zymo_concentration.html</guid>
+  <pubDate>Thu, 17 Jul 2025 04:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Re-extraction of low-quantity samples</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -34,8 +189,12 @@ USNM 50603</strong></p>
 </section>
 <section id="tissue-digestion" class="level3">
 <h3 class="anchored" data-anchor-id="tissue-digestion">Tissue digestion</h3>
-<p>Digested the above specimens (20 total) as detailed in the Digestion Protocol in my <a href="./2025_07_09_subsampling_extractions.qmd">July 9 post</a>.</p>
+<p>Digested the above specimens (20 total) as detailed in the <strong>Digestion Protocol</strong> in my <a href="./2025_07_09_subsampling_extractions.qmd">July 9 post</a>.</p>
 <p>Digestions began incubating at 3:00pm, 07/15/25.</p>
+</section>
+<section id="extraction" class="level3">
+<h3 class="anchored" data-anchor-id="extraction">Extraction</h3>
+<p>Pulled digesting tissue from shaking incubators at 1:00pm, 07/17/2025, and finished extraction as detailed in the <strong>Qiagen Extraction Protocol</strong> included in my <a href="../../../posts/projects/SIFP_2025/2025_07_11_extractions.html">July 11 post</a>.</p>
 
 
 </section>

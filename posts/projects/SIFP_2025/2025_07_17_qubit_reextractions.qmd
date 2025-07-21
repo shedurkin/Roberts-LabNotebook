@@ -1,0 +1,30 @@
+---
+title: "Qubit of re-extractions"
+author: "Kathleen Durkin"
+date: "2025-07-17"
+categories: ["SIFP_2025"]
+format:
+  html
+bibliography: ../../../references.bib
+---
+
+Quantified DNA concentration of my 5 re-extractions using Qubit flourometer. Followed Qubit Protocol found in my [July 14 post](./2025_07_14_qubit.qmd).
+
+Standard #1: 37.13\
+Standard #2: 14435.49
+
+| Catalog Number | Qubit Label | Concentration (ng/uL) |
+|----------------|-------------|-----------------------|
+| USNM 14366     | C01         | 0.372                 |
+| USNM 19054     | C02         | 3.57                  |
+| USNM 52295     | C03         | 9.02                  |
+| USNM 1180630   | C04         | 1.78                  |
+| USNM 50603     | C05         | 14.9                  |
+
+Notes:
+
+Ok this isn't terrible! The 50603 concentrated re-extraction has \>10ng/uL, which is enough to meet the recommended 400ng minimum for MinION. USNM52295 is almost at this threshold, and if I can combine it with my first extraction of this specimen (\[ \] = 7.08ng/uL), e.g. during bead cleanup, we'll have enough of that one too!
+
+That would bring me to my desired minimum number of samples (n=5) for the \>100yo specimens!
+
+Now I need to run gels on everything to check fragment size. I should also do a Nanodrop at some point before library prep to check for contaminants.
