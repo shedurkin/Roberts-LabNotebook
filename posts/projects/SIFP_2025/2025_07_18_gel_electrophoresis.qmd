@@ -73,7 +73,7 @@ conc_long$Gel <- factor(conc_long$Gel,
                             levels = c("none", "smear, 0.05", "short smear, 0.15", "smear, 0.15", "smear, 0.3", "smear, 0.5", "HMW, smear"),
                             ordered = TRUE)
 conc_long$Collection.Age <- ifelse(conc_long$Year.Collected < 1920, "pre-1920",
-                              ifelse(conc_long$Year.Collected > 2000, "Modern", "1960s-70s"))
+                              ifelse(conc_long$Year.Collected > 1999, "Modern", "1960s-70s"))
 conc_long$Collection.Age <- factor(conc_long$Collection.Age,
                               levels = c("pre-1920", "1960s-70s", "Modern"),
                               ordered = TRUE)
