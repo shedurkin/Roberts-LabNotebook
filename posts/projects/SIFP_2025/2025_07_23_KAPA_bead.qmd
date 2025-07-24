@@ -1,0 +1,51 @@
+---
+title: "KAPA Bead Cleanup -- Titration Trial"
+author: "Kathleen Durkin"
+date: "2025-07-24"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+I'll be using KAPA Pure beads to size-select, clean, and (potentially) concentrate my DNA extractions before library prep. Since I'm not exactly sure what bead ratio will work best to remove \<300bp fragments from my samples, I'll be trying a "titration" trial of several ratios.
+
+For this trial I'll be using two mid-age samples with high DNA concentrations but a "smeary", wide range of fragment sizes:
+
+| Catalog Number | Concentration (ng/uL) | Gel size distribution |
+|----------------|-----------------------|-----------------------|
+| USNM 51732     | 89.4                  | smeared, 0.3kb        |
+| USNM 51892     | 86.3                  | smeared, 0.15kb       |
+
+The KAPA Pure Beads protocol recommends a bead-to-sample ratio of 0.9X - 0.7X to retain fragments \>250bp - \> 350bp. I'll test three ratios across this range.
+
+Will be doing cleanup in 0.2mL strip tubes, so will need to assign short labels:
+
+|                | 0.7X | 0.8X | 0.9X |
+|----------------|------|------|------|
+| **USNM 51732** | A.7  | A.8  | A.9  |
+| **USNM 51892** | B.7  | B.8  | B.9  |
+
+Followed the [KAPA Pure Beads protocol](./protocols/KAPA-Pure-Beads-Technical-Data-Sheet.pdf) (#2, Cleanup of Fragmented DNA in NGS Workflow), with the following notes/modifications:
+
+-   Mixed **fresh aliquot of 80% EtOH** using nuclease-free water. It is important to mix a fresh aliquot each time, since EtOH can absorb atmospheric water, slightly changing the concentration over time.
+
+-   For each rxn, used 5uL NA and diluted to 20uL using Zymo Elution Buffer (**5uL DNA** + **15uL Zymo Elution Buffer**)
+
+-   With 20uL DNA, the bead volumes for each bead-to-sample ratio are as follows:
+
+    **0.7X:** 20uL DNA + **14uL KAPA Pure Beads\
+    0.8X:** 20uL DNA + **16uL KAPA Pure Beads\
+    0.9X** 20uL DNA + **18uL KAPA Pure Beads**
+
+-   First incubation (step 2.4) for 10 minutes
+
+-   Dried beads (step 2.13) for 4 minutes
+
+-   Re-eluted DNA (step 2.15) in **20uL Zymo Elution Buffer**. Note that this means the **DNA is now diluted by a factor of 4.** So my samples, which had concentrations of \~90ng/uL, will now have bead-cleaned concentrations of \~22ng/uL (not accounting for DNA loss during the cleanup process)
+
+-   Incubated eluting DNA (step 2.16) for 8 minutes

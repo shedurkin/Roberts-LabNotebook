@@ -10,7 +10,86 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Fri, 18 Jul 2025 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 24 Jul 2025 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>KAPA Bead Cleanup – Titration Trial</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_23_KAPA_bead.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I’ll be using KAPA Pure beads to size-select, clean, and (potentially) concentrate my DNA extractions before library prep. Since I’m not exactly sure what bead ratio will work best to remove &lt;300bp fragments from my samples, I’ll be trying a “titration” trial of several ratios.</p>
+<p>For this trial I’ll be using two mid-age samples with high DNA concentrations but a “smeary”, wide range of fragment sizes:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Catalog Number</th>
+<th>Concentration (ng/uL)</th>
+<th>Gel size distribution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>USNM 51732</td>
+<td>89.4</td>
+<td>smeared, 0.3kb</td>
+</tr>
+<tr class="even">
+<td>USNM 51892</td>
+<td>86.3</td>
+<td>smeared, 0.15kb</td>
+</tr>
+</tbody>
+</table>
+<p>The KAPA Pure Beads protocol recommends a bead-to-sample ratio of 0.9X - 0.7X to retain fragments &gt;250bp - &gt; 350bp. I’ll test three ratios across this range.</p>
+<p>Will be doing cleanup in 0.2mL strip tubes, so will need to assign short labels:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>0.7X</th>
+<th>0.8X</th>
+<th>0.9X</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>USNM 51732</strong></td>
+<td>A.7</td>
+<td>A.8</td>
+<td>A.9</td>
+</tr>
+<tr class="even">
+<td><strong>USNM 51892</strong></td>
+<td>B.7</td>
+<td>B.8</td>
+<td>B.9</td>
+</tr>
+</tbody>
+</table>
+<p>Followed the <a href="./protocols/KAPA-Pure-Beads-Technical-Data-Sheet.pdf">KAPA Pure Beads protocol</a> (#2, Cleanup of Fragmented DNA in NGS Workflow), with the following notes/modifications:</p>
+<ul>
+<li><p>Mixed <strong>fresh aliquot of 80% EtOH</strong> using nuclease-free water. It is important to mix a fresh aliquot each time, since EtOH can absorb atmospheric water, slightly changing the concentration over time.</p></li>
+<li><p>For each rxn, used 5uL NA and diluted to 20uL using Zymo Elution Buffer (<strong>5uL DNA</strong> + <strong>15uL Zymo Elution Buffer</strong>)</p></li>
+<li><p>With 20uL DNA, the bead volumes for each bead-to-sample ratio are as follows:</p>
+<p><strong>0.7X:</strong> 20uL DNA + <strong>14uL KAPA Pure Beads<br>
+0.8X:</strong> 20uL DNA + <strong>16uL KAPA Pure Beads<br>
+0.9X</strong> 20uL DNA + <strong>18uL KAPA Pure Beads</strong></p></li>
+<li><p>First incubation (step 2.4) for 10 minutes</p></li>
+<li><p>Dried beads (step 2.13) for 4 minutes</p></li>
+<li><p>Re-eluted DNA (step 2.15) in <strong>20uL Zymo Elution Buffer</strong>. Note that this means the <strong>DNA is now diluted by a factor of 4.</strong> So my samples, which had concentrations of ~90ng/uL, will now have bead-cleaned concentrations of ~22ng/uL (not accounting for DNA loss during the cleanup process)</p></li>
+<li><p>Incubated eluting DNA (step 2.16) for 8 minutes</p></li>
+</ul>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_23_KAPA_bead.html</guid>
+  <pubDate>Thu, 24 Jul 2025 04:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Gel Electrophoresis</title>
   <dc:creator>Kathleen Durkin</dc:creator>
