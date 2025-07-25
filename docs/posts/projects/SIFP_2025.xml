@@ -91,6 +91,308 @@
   <pubDate>Thu, 24 Jul 2025 04:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>TapeStation check of bead titrations</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_24_titration_tapestation.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Yesterday I trialed several ratios of KAPA Pure Beads to determine which works best for size-selecting my samples (see post <a href="../../../posts/projects/SIFP_2025/2025_07_23_KAPA_bead.html">here</a>). Now I’ll run TapeStation on these titrated bead cleanups to see what range of fragment sizes was retained through cleanup for each ratio.</p>
+<p>Used Genomic Tape and followed <a href="./protocols/Agilent_4200_gDNA_QuickGuide.pdf">Genomic Tape protocol</a>. Machine is an Agilent 4200, serial # DEDAA03520.</p>
+<p>Note: The tape I’m using expired April 2023, but should still be usable.</p>
+<table class="table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Catalog number</th>
+<th>Bead Ratio</th>
+<th>Theoretical fragments retained</th>
+<th>Conc (ng/uL)</th>
+<th>% reads 300 - 60000bp</th>
+<th>Conc. of reads 300 - 60,000 (ng/uL)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>51732</td>
+<td>0.7X</td>
+<td>≥350 bp</td>
+<td>24.5</td>
+<td>91.88</td>
+<td>22.51</td>
+</tr>
+<tr class="even">
+<td>51732</td>
+<td>0.8X</td>
+<td>≥300 bp</td>
+<td>23.3</td>
+<td>90.21</td>
+<td>21.02</td>
+</tr>
+<tr class="odd">
+<td>51732</td>
+<td>0.9X</td>
+<td>≥250 bp</td>
+<td>15.8</td>
+<td>87.65</td>
+<td>13.85</td>
+</tr>
+<tr class="even">
+<td>51892</td>
+<td>0.7X</td>
+<td>≥350 bp</td>
+<td>25.7</td>
+<td>90.52</td>
+<td>23.26</td>
+</tr>
+<tr class="odd">
+<td>51892</td>
+<td>0.8X</td>
+<td>≥300 bp</td>
+<td>23.1</td>
+<td>89.59</td>
+<td>20.70</td>
+</tr>
+<tr class="even">
+<td>51892</td>
+<td>0.9X</td>
+<td>≥ 250 bp</td>
+<td>20.6</td>
+<td>87.97</td>
+<td>18.12</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(dplyr)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'dplyr' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.2.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(</span>
+<span id="cb8-2">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Catalog.num =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"51732"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"51732"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"51732"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"51892"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"51892"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"51892"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"51732"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"51732"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"51732"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"51892"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"51892"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"51892"</span>),</span>
+<span id="cb8-3">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Bead.ratio =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.7</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.8</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.9</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.7</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.8</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.9</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.7</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.8</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.9</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.7</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.8</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.9</span>),</span>
+<span id="cb8-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Conc.ngul =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">24.5</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">23.3</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15.8</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">25.7</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">23.1</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20.6</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">22.51</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">21.02</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">13.85</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">23.26</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20.70</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">18.12</span>), </span>
+<span id="cb8-5">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Conc.type =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"all"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"all"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"all"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"all"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"all"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"all"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"300-60000bp"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"300-60000bp"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"300-60000bp"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"300-60000bp"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"300-60000bp"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"300-60000bp"</span>),</span>
+<span id="cb8-6">                        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"all"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"300-60000bp"</span>), </span>
+<span id="cb8-7">                        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ordered =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span>
+<span id="cb8-8">)</span>
+<span id="cb8-9"></span>
+<span id="cb8-10"></span>
+<span id="cb8-11"></span>
+<span id="cb8-12"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(df, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> Bead.ratio, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> Conc.ngul, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> Catalog.num)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>Conc.type) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-16">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_24_titration_tapestation_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/data/2025_07_24_TapeStation/2025_07_24_comparison_51732_snpsht.png" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/data/2025_07_24_TapeStation/2025_07_24_comparison_51892_snpsht.png" class="img-fluid"></p>
+<p>See <a href="./data/2025_07_24_TapeStation/2025_07_24_summary.pdf">full TapeStation summary</a> for more details!</p>
+<section id="conclusions" class="level3">
+<h3 class="anchored" data-anchor-id="conclusions">Conclusions:</h3>
+<p>The proportion of short reads removed during cleaning doesn’t seem to differ much among the three ratio options (all ratios yield ~90% reads between 30 and 60,000bp). However, the total quantity of DNA retained through cleanup dropped noticeably as the ratio increased. Ultimately my first priority is DNa quantity, since short reads can still be read by the Nanopore pores, so I think my best option is to <strong>use a 0.7X bead-to-sample ratio</strong> for all samples during KAPA Pure Bead cleanup.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_24_titration_tapestation.html</guid>
+  <pubDate>Thu, 24 Jul 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
   <title>Gel Electrophoresis</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_18_gel_electrophoresis.html</link>

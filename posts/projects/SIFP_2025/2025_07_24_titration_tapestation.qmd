@@ -1,0 +1,60 @@
+---
+title: "TapeStation check of bead titrations"
+author: "Kathleen Durkin"
+date: "2025-07-24"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Yesterday I trialed several ratios of KAPA Pure Beads to determine which works best for size-selecting my samples (see post [here](./2025_07_23_KAPA_bead.qmd)). Now I'll run TapeStation on these titrated bead cleanups to see what range of fragment sizes was retained through cleanup for each ratio.
+
+Used Genomic Tape and followed [Genomic Tape protocol](./protocols/Agilent_4200_gDNA_QuickGuide.pdf). Machine is an Agilent 4200, serial \# DEDAA03520.
+
+Note: The tape I'm using expired April 2023, but should still be usable.
+
+| Catalog number | Bead Ratio | Theoretical fragments retained | Conc (ng/uL) | \% reads 300 - 60000bp | Conc. of reads 300 - 60,000 (ng/uL) |
+|------------|------------|------------|------------|------------|------------|
+| 51732          | 0.7X       | ≥350 bp                        | 24.5         | 91.88                  | 22.51                               |
+| 51732          | 0.8X       | ≥300 bp                        | 23.3         | 90.21                  | 21.02                               |
+| 51732          | 0.9X       | ≥250 bp                        | 15.8         | 87.65                  | 13.85                               |
+| 51892          | 0.7X       | ≥350 bp                        | 25.7         | 90.52                  | 23.26                               |
+| 51892          | 0.8X       | ≥300 bp                        | 23.1         | 89.59                  | 20.70                               |
+| 51892          | 0.9X       | ≥ 250 bp                       | 20.6         | 87.97                  | 18.12                               |
+
+```{r}
+library(dplyr)
+library(ggplot2)
+
+df <- data.frame(
+  Catalog.num = c("51732", "51732", "51732", "51892", "51892", "51892", "51732", "51732", "51732", "51892", "51892", "51892"),
+  Bead.ratio = c(0.7, 0.8, 0.9, 0.7, 0.8, 0.9, 0.7, 0.8, 0.9, 0.7, 0.8, 0.9),
+  Conc.ngul = c(24.5, 23.3, 15.8, 25.7, 23.1, 20.6, 22.51, 21.02, 13.85, 23.26, 20.70, 18.12), 
+  Conc.type = factor(c("all", "all", "all", "all", "all", "all", "300-60000bp", "300-60000bp", "300-60000bp", "300-60000bp", "300-60000bp", "300-60000bp"),
+                        levels = c("all", "300-60000bp"), 
+                        ordered = TRUE)
+)
+
+
+
+ggplot(df, aes(x = Bead.ratio, y = Conc.ngul, color = Catalog.num)) + 
+  geom_point() + 
+  geom_line() + 
+  facet_wrap(~Conc.type) + 
+  theme_minimal()
+```
+
+![](data/2025_07_24_TapeStation/2025_07_24_comparison_51732_snpsht.png)
+
+![](data/2025_07_24_TapeStation/2025_07_24_comparison_51892_snpsht.png)
+
+See [full TapeStation summary](./data/2025_07_24_TapeStation/2025_07_24_summary.pdf) for more details!
+
+### Conclusions:
+
+The proportion of short reads removed during cleaning doesn't seem to differ much among the three ratio options (all ratios yield \~90% reads between 30 and 60,000bp). However, the total quantity of DNA retained through cleanup dropped noticeably as the ratio increased. Ultimately my first priority is DNa quantity, since short reads can still be read by the Nanopore pores, so I think my best option is to **use a 0.7X bead-to-sample ratio** for all samples during KAPA Pure Bead cleanup.
