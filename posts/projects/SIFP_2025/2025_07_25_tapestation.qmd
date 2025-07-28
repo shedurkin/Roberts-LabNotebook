@@ -1,0 +1,185 @@
+---
+title: "TapeStation QC of Bead-Cleaned Samples"
+author: "Kathleen Durkin"
+date: "2025-07-25"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+After cleaning and concentrating all extractions using KAPA Pure Beads, used the TapeStation with a Genomic Tape to check DNA concetration, quality, and size distribution. Followed [protocol for Agilent 4200 gDNA](./protocols/Agilent_4200_gDNA_QuickGuide.pdf).
+
+See full TapeStation summaries here: [Tape 1 summary](./data/2025_07_25_TapeStation/2025_07_25_summary_tape1.pdf), [Tape 2 summary](./data/2025_07_25_TapeStation/2025_07_25_summary_tape2.pdf)
+
+![Oldest age group](./data/2025_07_25_TapeStation/2025_07_25_comparison_oldGroup.png)
+
+![Mid-age group](./data/2025_07_25_TapeStation/2025_07_25_comparison_midGroup.png)
+
+![Modern age group](./data/2025_07_25_TapeStation/2025_07_25_comparison_modernGroup.png)
+
+(Note the above plots have different y-axis scales)
+
+| Tape \# | Catalog \# | Year Collected | DIN | Conc. (ng/uL) | \% reads \>300bp long |
+|------------|------------|-------------|------------|------------|------------|
+| 1       | 14366      | 1886           | \-  | 1.57          | 63.15                 |
+| 1       | 19054      | 1898           | 1.2 | 21.6          | 82.13                 |
+| 1       | 52295      | 1912           | 1.0 | 19.9          | 61.63                 |
+| 1       | 1180630    | 1912           | 1.0 | 4.33          | 62.25                 |
+| 1       | 50603      | 1912           | 1.0 | 42.4          | 73.82                 |
+| 1       | 51732      | 1960           | 2.1 | 157           | 93.80                 |
+| 1       | 51892      | 1960           | 1.9 | 137           | 94.20                 |
+| 1       | 14399      | 1886           | 1.2 | 100           | 86.10                 |
+| 1       | 42137      | 1898           | 1.1 | 46.3          | 86.49                 |
+| 1       | 51730      | 1960           | 1.1 | 59.6          | 71.13                 |
+| 1       | 51728      | 1960           | 1.4 | 23.7          | 89.90                 |
+| 1       | 100609     | 2000           | 2.9 | 261           | 96.34                 |
+| 1       | 100610     | 2000           | 1.9 | 164           | 93.57                 |
+| 1       | 1007393    | 2000           | 2.8 | 218           | 93.49                 |
+| 1       | 1018355    | 2002           | 1.8 | 115           | 89.98                 |
+| 2       | 1606824    | 2019           | 1.7 | 353           | 90.80                 |
+| 2       | 1606826    | 2019           | 3.4 | 408           | 97.21                 |
+| 2       | 1740336    | 2019           | 3.1 | 368           | 96.99                 |
+| 2       | 1740363    | 2019           | 3.3 | 343           | 97.40                 |
+| 2       | 1740390    | 2019           | 2.4 | 291           | 96.83                 |
+| 2       | 1740407    | 2019           | 3.1 | 260           | 96.89                 |
+| 2       | 50368      | 1880           | 1.7 | 68.3          | 91.68                 |
+| 2       | 51727      | 1960           | 1.3 | 15.3          | 87.12                 |
+| 2       | 51729      | 1960           | 1.5 | 18.7          | 89.23                 |
+| 2       | 51857      | 1960           | 1.4 | 109           | 93.00                 |
+| 2       | 51858      | 1960           | 1.3 | 24.2          | 88.78                 |
+| 2       | 51859      | 1960           | 1.5 | 117           | 92.46                 |
+| 2       | 51860      | 1960           | 1.4 | 15.6          | 86.46                 |
+| 2       | 51861      | 1960           | 1.7 | 94.1          | 94.72                 |
+
+```{r}
+library(googlesheets4)
+library(tidyr)
+library(ggplot2)
+library(plotly)
+
+conc <- read_sheet("https://docs.google.com/spreadsheets/d/1zDMy7AOCM8Ug85q4vr9CoMDxfF-zDJk1DnaxakSt1Hg/edit?usp=sharing")
+
+
+conc$Collection.Age <- ifelse(conc$Year.Collected < 1920, "pre-1920",
+                              ifelse(conc$Year.Collected > 1999, "Modern", "1960s-70s"))
+conc$Collection.Age <- factor(conc$Collection.Age,
+                              levels = c("pre-1920", "1960s-70s", "Modern"),
+                              ordered = TRUE)
+
+p1 <- ggplot(conc, aes(x=Tapestation.Perc.300up, 
+                       y=Tapestation.Conc.ngul, 
+                       color = Collection.Age,
+                       text = paste("Catalog #:", Catalog.Number,
+                                    "<br>Year:", Year.Collected,
+                                    "<br>% >300kb:", Tapestation.Perc.300up,
+                                    "<br>Conc:", Tapestation.Conc.ngul))) +
+  geom_jitter(size = 2, width = 0.25, height = 0) +
+  geom_hline(yintercept = 13.33, color = 'black') +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  xlab("Percent of reads >300kb") +
+  ylab("Concentration (ng/uL)")
+
+p2 <- ggplot(conc, aes(x=Tapestation.DIN, 
+                       y=Tapestation.Conc.ngul, 
+                       color=Collection.Age,
+                       text = paste("Catalog #:", Catalog.Number,
+                                    "<br>Year:", Year.Collected,
+                                    "<br>DIN:", Tapestation.DIN,
+                                    "<br>Conc:", Tapestation.Conc.ngul))) +
+  geom_jitter(size = 2, width = 0.25, height = 0) +
+  geom_hline(yintercept = 13.33, color = 'black') +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  xlab("DNA Integrity Number (DIN)") +
+  ylab("Concentration (ng/uL)")
+
+p3 <- ggplot(conc, aes(x=Tapestation.DIN, 
+                       y=Tapestation.Perc.300up, 
+                       color=Collection.Age,
+                       text = paste("Catalog #:", Catalog.Number,
+                                    "<br>Year:", Year.Collected,
+                                    "<br>DIN:", Tapestation.DIN,
+                                    "<br>% >300kb:", Tapestation.Perc.300up))) +
+  geom_jitter(size = 2, width = 0.25, height = 0) +
+  geom_hline(yintercept = 13.33, color = 'black') +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  xlab("DNA Integrity Number (DIN)") +
+  ylab("Percent of reads >300kb")
+
+ggplotly(p1, tooltip = "text")
+ggplotly(p2, tooltip = "text")
+ggplotly(p3, tooltip = "text")
+
+```
+
+## Sample selection
+
+Based on the above results, I can pick which samples are most suited for sequencing, considering DNA concentration (as a proxy for total DNA available) and DNA integrity. I'm not sure whether % \>300bp reads or DIN is the most appropriate measure of DNA integrity here, but they're highly correlated. I want n=5 for each of my three collection periods.
+
+[**Modern (\<25 yo)**]{.underline}\
+USNM 1606826\
+USNM 1740336\
+USNM 1740363\
+USNM 100609\
+USNM 1740407
+
+[**Mid-age (1960s-1970s):**]{.underline}\
+USNM 51732\
+USNM 51892\
+USNM 51861\
+USNM 51857\
+USNM 51859
+
+[**Historic (\>100 yo):**]{.underline}\
+USNM 50368\
+USNM 14399\
+USNM 42137\
+USNM 19054\
+USNM 50603
+
+```{r}
+selected <- c("USNM 1606826", "USNM 1740336", "USNM 1740363", "USNM 100609", "USNM 1740407", "USNM 51732", "USNM 51892", "USNM 51861", "USNM 51857", "USNM 51859", "USNM 50368", "USNM 14399", "USNM 42137", "USNM 19054", "USNM 50603")
+
+conc$Selection <- ifelse(conc$Catalog.Number %in% selected, "yes", "no")
+
+p21 <- ggplot(conc, aes(x=Tapestation.Perc.300up, 
+                       y=Tapestation.Conc.ngul, 
+                       color = Collection.Age,
+                       shape=Selection,
+                       text = paste("Catalog #:", Catalog.Number,
+                                    "<br>Year:", Year.Collected,
+                                    "<br>% >300kb:", Tapestation.Perc.300up,
+                                    "<br>Conc:", Tapestation.Conc.ngul))) +
+  geom_jitter(size = 2, width = 0.25, height = 0) +
+  geom_hline(yintercept = 13.33, color = 'black') +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  xlab("Percent of reads >300kb") +
+  ylab("Concentration (ng/uL)")
+
+p22 <- ggplot(conc, aes(x=Tapestation.DIN, 
+                       y=Tapestation.Conc.ngul, 
+                       color=Collection.Age,
+                       shape=Selection,
+                       text = paste("Catalog #:", Catalog.Number,
+                                    "<br>Year:", Year.Collected,
+                                    "<br>DIN:", Tapestation.DIN,
+                                    "<br>Conc:", Tapestation.Conc.ngul))) +
+  geom_jitter(size = 2, width = 0.25, height = 0) +
+  geom_hline(yintercept = 13.33, color = 'black') +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  xlab("DNA Integrity Number (DIN)") +
+  ylab("Concentration (ng/uL)")
+
+ggplotly(p21, tooltip = "text")
+ggplotly(p22, tooltip = "text")
+
+```

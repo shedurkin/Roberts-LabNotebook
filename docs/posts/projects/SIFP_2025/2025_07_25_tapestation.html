@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Kathleen Durkin">
+<meta name="dcterms.date" content="2025-07-25">
+
+<title>Kathleen’s Lab Notebook - TapeStation QC of Bead-Cleaned Samples</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="../../../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="../../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="../../../site_libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="../../../site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="../../../site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="../../../site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="../../../site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="../../../site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="../../../site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Kathleen’s Lab Notebook</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../daily_log.html" rel="" target="">
+ <span class="menu-text">Daily Notebook Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../projects.html" rel="" target="">
+ <span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/shedurkin" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:kdurkin1@uw.edu" rel="" target=""><i class="bi bi-envelope" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">TapeStation QC of Bead-Cleaned Samples</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">SIFP-2025</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Kathleen Durkin </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 25, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#sample-selection" id="toc-sample-selection" class="nav-link active" data-scroll-target="#sample-selection">Sample selection</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+<p>After cleaning and concentrating all extractions using KAPA Pure Beads, used the TapeStation with a Genomic Tape to check DNA concetration, quality, and size distribution. Followed <a href="./protocols/Agilent_4200_gDNA_QuickGuide.pdf">protocol for Agilent 4200 gDNA</a>.</p>
+<p>See full TapeStation summaries here: <a href="./data/2025_07_25_TapeStation/2025_07_25_summary_tape1.pdf">Tape 1 summary</a>, <a href="./data/2025_07_25_TapeStation/2025_07_25_summary_tape2.pdf">Tape 2 summary</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./data/2025_07_25_TapeStation/2025_07_25_comparison_oldGroup.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Oldest age group</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./data/2025_07_25_TapeStation/2025_07_25_comparison_midGroup.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Mid-age group</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./data/2025_07_25_TapeStation/2025_07_25_comparison_modernGroup.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Modern age group</figcaption>
+</figure>
+</div>
+<p>(Note the above plots have different y-axis scales)</p>
+<table class="table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 17%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tape #</th>
+<th>Catalog #</th>
+<th>Year Collected</th>
+<th>DIN</th>
+<th>Conc. (ng/uL)</th>
+<th>% reads &gt;300bp long</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>14366</td>
+<td>1886</td>
+<td>-</td>
+<td>1.57</td>
+<td>63.15</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>19054</td>
+<td>1898</td>
+<td>1.2</td>
+<td>21.6</td>
+<td>82.13</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>52295</td>
+<td>1912</td>
+<td>1.0</td>
+<td>19.9</td>
+<td>61.63</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1180630</td>
+<td>1912</td>
+<td>1.0</td>
+<td>4.33</td>
+<td>62.25</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>50603</td>
+<td>1912</td>
+<td>1.0</td>
+<td>42.4</td>
+<td>73.82</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>51732</td>
+<td>1960</td>
+<td>2.1</td>
+<td>157</td>
+<td>93.80</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>51892</td>
+<td>1960</td>
+<td>1.9</td>
+<td>137</td>
+<td>94.20</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>14399</td>
+<td>1886</td>
+<td>1.2</td>
+<td>100</td>
+<td>86.10</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>42137</td>
+<td>1898</td>
+<td>1.1</td>
+<td>46.3</td>
+<td>86.49</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>51730</td>
+<td>1960</td>
+<td>1.1</td>
+<td>59.6</td>
+<td>71.13</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>51728</td>
+<td>1960</td>
+<td>1.4</td>
+<td>23.7</td>
+<td>89.90</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>100609</td>
+<td>2000</td>
+<td>2.9</td>
+<td>261</td>
+<td>96.34</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>100610</td>
+<td>2000</td>
+<td>1.9</td>
+<td>164</td>
+<td>93.57</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1007393</td>
+<td>2000</td>
+<td>2.8</td>
+<td>218</td>
+<td>93.49</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>1018355</td>
+<td>2002</td>
+<td>1.8</td>
+<td>115</td>
+<td>89.98</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1606824</td>
+<td>2019</td>
+<td>1.7</td>
+<td>353</td>
+<td>90.80</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>1606826</td>
+<td>2019</td>
+<td>3.4</td>
+<td>408</td>
+<td>97.21</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1740336</td>
+<td>2019</td>
+<td>3.1</td>
+<td>368</td>
+<td>96.99</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>1740363</td>
+<td>2019</td>
+<td>3.3</td>
+<td>343</td>
+<td>97.40</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1740390</td>
+<td>2019</td>
+<td>2.4</td>
+<td>291</td>
+<td>96.83</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>1740407</td>
+<td>2019</td>
+<td>3.1</td>
+<td>260</td>
+<td>96.89</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>50368</td>
+<td>1880</td>
+<td>1.7</td>
+<td>68.3</td>
+<td>91.68</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>51727</td>
+<td>1960</td>
+<td>1.3</td>
+<td>15.3</td>
+<td>87.12</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>51729</td>
+<td>1960</td>
+<td>1.5</td>
+<td>18.7</td>
+<td>89.23</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>51857</td>
+<td>1960</td>
+<td>1.4</td>
+<td>109</td>
+<td>93.00</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>51858</td>
+<td>1960</td>
+<td>1.3</td>
+<td>24.2</td>
+<td>88.78</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>51859</td>
+<td>1960</td>
+<td>1.5</td>
+<td>117</td>
+<td>92.46</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>51860</td>
+<td>1960</td>
+<td>1.4</td>
+<td>15.6</td>
+<td>86.46</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>51861</td>
+<td>1960</td>
+<td>1.7</td>
+<td>94.1</td>
+<td>94.72</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(googlesheets4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'googlesheets4' was built under R version 4.2.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyr' was built under R version 4.2.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.2.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'plotly' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'plotly'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:ggplot2':
+
+    last_plot</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:stats':
+
+    filter</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:graphics':
+
+    layout</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>conc <span class="ot">&lt;-</span> <span class="fu">read_sheet</span>(<span class="st">"https://docs.google.com/spreadsheets/d/1zDMy7AOCM8Ug85q4vr9CoMDxfF-zDJk1DnaxakSt1Hg/edit?usp=sharing"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>! Using an auto-discovered, cached token.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>  To suppress this message, modify your code or options to clearly consent to
+  the use of a cached token.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>  See gargle's "Non-interactive auth" vignette for more details:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>  &lt;https://gargle.r-lib.org/articles/non-interactive-auth.html&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ The googlesheets4 package is using a cached token for 'kdurkin1@uw.edu'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ Reading from "E_tourneforti".</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ Range 'E_tourneforti_samples'.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>conc<span class="sc">$</span>Collection.Age <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(conc<span class="sc">$</span>Year.Collected <span class="sc">&lt;</span> <span class="dv">1920</span>, <span class="st">"pre-1920"</span>,</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">ifelse</span>(conc<span class="sc">$</span>Year.Collected <span class="sc">&gt;</span> <span class="dv">1999</span>, <span class="st">"Modern"</span>, <span class="st">"1960s-70s"</span>))</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>conc<span class="sc">$</span>Collection.Age <span class="ot">&lt;-</span> <span class="fu">factor</span>(conc<span class="sc">$</span>Collection.Age,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"pre-1920"</span>, <span class="st">"1960s-70s"</span>, <span class="st">"Modern"</span>),</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(conc, <span class="fu">aes</span>(<span class="at">x=</span>Tapestation.Perc<span class="fl">.300</span>up, </span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">y=</span>Tapestation.Conc.ngul, </span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>                       <span class="at">color =</span> Collection.Age,</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>                       <span class="at">text =</span> <span class="fu">paste</span>(<span class="st">"Catalog #:"</span>, Catalog.Number,</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"&lt;br&gt;Year:"</span>, Year.Collected,</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"&lt;br&gt;% &gt;300kb:"</span>, Tapestation.Perc<span class="fl">.300</span>up,</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"&lt;br&gt;Conc:"</span>, Tapestation.Conc.ngul))) <span class="sc">+</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">width =</span> <span class="fl">0.25</span>, <span class="at">height =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">13.33</span>, <span class="at">color =</span> <span class="st">'black'</span>) <span class="sc">+</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Percent of reads &gt;300kb"</span>) <span class="sc">+</span></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Concentration (ng/uL)"</span>)</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(conc, <span class="fu">aes</span>(<span class="at">x=</span>Tapestation.DIN, </span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>                       <span class="at">y=</span>Tapestation.Conc.ngul, </span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>                       <span class="at">color=</span>Collection.Age,</span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>                       <span class="at">text =</span> <span class="fu">paste</span>(<span class="st">"Catalog #:"</span>, Catalog.Number,</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"&lt;br&gt;Year:"</span>, Year.Collected,</span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"&lt;br&gt;DIN:"</span>, Tapestation.DIN,</span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"&lt;br&gt;Conc:"</span>, Tapestation.Conc.ngul))) <span class="sc">+</span></span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">width =</span> <span class="fl">0.25</span>, <span class="at">height =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">13.33</span>, <span class="at">color =</span> <span class="st">'black'</span>) <span class="sc">+</span></span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"DNA Integrity Number (DIN)"</span>) <span class="sc">+</span></span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Concentration (ng/uL)"</span>)</span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(conc, <span class="fu">aes</span>(<span class="at">x=</span>Tapestation.DIN, </span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a>                       <span class="at">y=</span>Tapestation.Perc<span class="fl">.300</span>up, </span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>                       <span class="at">color=</span>Collection.Age,</span>
+<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>                       <span class="at">text =</span> <span class="fu">paste</span>(<span class="st">"Catalog #:"</span>, Catalog.Number,</span>
+<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"&lt;br&gt;Year:"</span>, Year.Collected,</span>
+<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"&lt;br&gt;DIN:"</span>, Tapestation.DIN,</span>
+<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"&lt;br&gt;% &gt;300kb:"</span>, Tapestation.Perc<span class="fl">.300</span>up))) <span class="sc">+</span></span>
+<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">width =</span> <span class="fl">0.25</span>, <span class="at">height =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">13.33</span>, <span class="at">color =</span> <span class="st">'black'</span>) <span class="sc">+</span></span>
+<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"DNA Integrity Number (DIN)"</span>) <span class="sc">+</span></span>
+<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Percent of reads &gt;300kb"</span>)</span>
+<span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-49"><a href="#cb21-49" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(p1, <span class="at">tooltip =</span> <span class="st">"text"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-0bdd30f573963436e59f" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-0bdd30f573963436e59f">{"x":{"data":[{"x":[91.646830986784778,86.249723140639247,82.337249978091563,86.458011719291093,73.733925137603649,63.232898317719808,61.852998153185474,62.274585326435044,null,null,null],"y":[68.299999999999997,100,21.600000000000001,46.299999999999997,42.399999999999999,1.5700000000000001,19.899999999999999,4.3300000000000001,null,null,null],"text":["Catalog #: USNM 50368 <br>Year: 1880 <br>% >300kb: 91.68 <br>Conc: 68.3","Catalog #: USNM 14399 <br>Year: 1886 <br>% >300kb: 86.1 <br>Conc: 100","Catalog #: USNM 19054 <br>Year: 1898 <br>% >300kb: 82.13 <br>Conc: 21.6","Catalog #: USNM 42137 <br>Year: 1898 <br>% >300kb: 86.49 <br>Conc: 46.3","Catalog #: USNM 50603 <br>Year: 1912 <br>% >300kb: 73.82 <br>Conc: 42.4","Catalog #: USNM 14366 <br>Year: 1886 <br>% >300kb: 63.15 <br>Conc: 1.57","Catalog #: USNM 52295 <br>Year: 1912 <br>% >300kb: 61.63 <br>Conc: 19.9","Catalog #: USNM 1180630 <br>Year: 1912 <br>% >300kb: 62.25 <br>Conc: 4.33","Catalog #: USNM 1207569 <br>Year: 1886 <br>% >300kb: NA <br>Conc: NA","Catalog #: USNM 14366 <br>Year: 1886 <br>% >300kb: NA <br>Conc: NA","Catalog #: USNM 52026 <br>Year: 1898 <br>% >300kb: NA <br>Conc: NA"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(68,1,84,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(68,1,84,1)"}},"hoveron":"points","name":"pre-1920","legendgroup":"pre-1920","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[93.818461818108332,93.961629175394776,92.893917194916867,92.424216271066101,94.591491967700421,70.888563439128916,89.771483828639617,87.045841080024843,89.466179671832364,88.693627891452053,86.671404951172875],"y":[157,137,109,117,94.099999999999994,59.600000000000001,23.699999999999999,15.300000000000001,18.699999999999999,24.199999999999999,15.6],"text":["Catalog #: USNM 51732 <br>Year: 1960 <br>% >300kb: 93.8 <br>Conc: 157","Catalog #: USNM 51892 <br>Year: 1960 <br>% >300kb: 94.2 <br>Conc: 137","Catalog #: USNM 51857 <br>Year: 1960 <br>% >300kb: 93 <br>Conc: 109","Catalog #: USNM 51859 <br>Year: 1960 <br>% >300kb: 92.46 <br>Conc: 117","Catalog #: USNM 51861 <br>Year: 1960 <br>% >300kb: 94.72 <br>Conc: 94.1","Catalog #: USNM 51730 <br>Year: 1960 <br>% >300kb: 71.13 <br>Conc: 59.6","Catalog #: USNM 51728 <br>Year: 1960 <br>% >300kb: 89.9 <br>Conc: 23.7","Catalog #: USNM 51727 <br>Year: 1960 <br>% >300kb: 87.12 <br>Conc: 15.3","Catalog #: USNM 51729 <br>Year: 1960 <br>% >300kb: 89.23 <br>Conc: 18.7","Catalog #: USNM 51858 <br>Year: 1960 <br>% >300kb: 88.78 <br>Conc: 24.2","Catalog #: USNM 51860 <br>Year: 1960 <br>% >300kb: 86.46 <br>Conc: 15.6"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(33,144,140,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(33,144,140,1)"}},"hoveron":"points","name":"1960s-70s","legendgroup":"1960s-70s","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[96.160701599237512,97.268314396766939,96.76058852068148,97.281579725188209,97.094136115266011,93.685340964868658,93.555175210940646,89.991416073190052,90.846908816555512,96.596498808865434],"y":[261,408,368,343,260,164,218,115,353,291],"text":["Catalog #: USNM 100609 <br>Year: 2000 <br>% >300kb: 96.34 <br>Conc: 261","Catalog #: USNM 1606826 <br>Year: 2019 <br>% >300kb: 97.21 <br>Conc: 408","Catalog #: USNM 1740336 <br>Year: 2019 <br>% >300kb: 96.99 <br>Conc: 368","Catalog #: USNM 1740363 <br>Year: 2019 <br>% >300kb: 97.4 <br>Conc: 343","Catalog #: USNM 1740407 <br>Year: 2019 <br>% >300kb: 96.89 <br>Conc: 260","Catalog #: USNM 100610 <br>Year: 2000 <br>% >300kb: 93.57 <br>Conc: 164","Catalog #: USNM 1007393 <br>Year: 2000 <br>% >300kb: 93.49 <br>Conc: 218","Catalog #: USNM 1018355 <br>Year: 2002 <br>% >300kb: 89.98 <br>Conc: 115","Catalog #: USNM 1606824 <br>Year: 2019 <br>% >300kb: 90.8 <br>Conc: 353","Catalog #: USNM 1740390 <br>Year: 2019 <br>% >300kb: 96.83 <br>Conc: 291"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(253,231,37,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(253,231,37,1)"}},"hoveron":"points","name":"Modern","legendgroup":"Modern","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[60.081569074585339,99.053008803788344],"y":[13.33,13.33],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.228310502283104,"r":7.3059360730593621,"b":40.182648401826491,"l":43.105022831050235},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[60.081569074585339,99.053008803788344],"tickmode":"array","ticktext":["70","80","90"],"tickvals":[70,80,90],"categoryorder":"array","categoryarray":["70","80","90"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-45,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Percent of reads >300kb","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-18.7515,428.32150000000001],"tickmode":"array","ticktext":["0","100","200","300","400"],"tickvals":[0,100,200,300,400],"categoryorder":"array","categoryarray":["0","100","200","300","400"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Concentration (ng/uL)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"Collection.Age","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"64a4e59644c":{"x":{},"y":{},"colour":{},"text":{},"type":"scatter"},"64a459ea2255":{"yintercept":{}}},"cur_data":"64a4e59644c","visdat":{"64a4e59644c":["function (y) ","x"],"64a459ea2255":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(p2, <span class="at">tooltip =</span> <span class="st">"text"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-eac8fc4695918d5aadca" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-eac8fc4695918d5aadca">{"x":{"data":[{"x":[1.8411087720189243,1.1532538979547098,1.1179536714218556,1.1934995191637428,0.77998124621808529,null,0.85758368298411369,0.97208955674432218,null,null,null],"y":[68.299999999999997,100,21.600000000000001,46.299999999999997,42.399999999999999,1.5700000000000001,19.899999999999999,4.3300000000000001,null,null,null],"text":["Catalog #: USNM 50368 <br>Year: 1880 <br>DIN: 1.7 <br>Conc: 68.3","Catalog #: USNM 14399 <br>Year: 1886 <br>DIN: 1.2 <br>Conc: 100","Catalog #: USNM 19054 <br>Year: 1898 <br>DIN: 1.2 <br>Conc: 21.6","Catalog #: USNM 42137 <br>Year: 1898 <br>DIN: 1.1 <br>Conc: 46.3","Catalog #: USNM 50603 <br>Year: 1912 <br>DIN: 1 <br>Conc: 42.4","Catalog #: USNM 14366 <br>Year: 1886 <br>DIN: NA <br>Conc: 1.57","Catalog #: USNM 52295 <br>Year: 1912 <br>DIN: 1 <br>Conc: 19.9","Catalog #: USNM 1180630 <br>Year: 1912 <br>DIN: 1 <br>Conc: 4.33","Catalog #: USNM 1207569 <br>Year: 1886 <br>DIN: NA <br>Conc: NA","Catalog #: USNM 14366 <br>Year: 1886 <br>DIN: NA <br>Conc: NA","Catalog #: USNM 52026 <br>Year: 1898 <br>DIN: NA <br>Conc: NA"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(68,1,84,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(68,1,84,1)"}},"hoveron":"points","name":"pre-1920","legendgroup":"pre-1920","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1.9578229929553346,2.0444705923786386,1.2542638424551114,1.5982820771168917,1.5743588363286107,1.0387094270205126,1.2404049780219792,1.4656148409238086,1.4788168554659933,1.1245680995751173,1.3730401401175185],"y":[157,137,109,117,94.099999999999994,59.600000000000001,23.699999999999999,15.300000000000001,18.699999999999999,24.199999999999999,15.6],"text":["Catalog #: USNM 51732 <br>Year: 1960 <br>DIN: 2.1 <br>Conc: 157","Catalog #: USNM 51892 <br>Year: 1960 <br>DIN: 1.9 <br>Conc: 137","Catalog #: USNM 51857 <br>Year: 1960 <br>DIN: 1.4 <br>Conc: 109","Catalog #: USNM 51859 <br>Year: 1960 <br>DIN: 1.5 <br>Conc: 117","Catalog #: USNM 51861 <br>Year: 1960 <br>DIN: 1.7 <br>Conc: 94.1","Catalog #: USNM 51730 <br>Year: 1960 <br>DIN: 1.1 <br>Conc: 59.6","Catalog #: USNM 51728 <br>Year: 1960 <br>DIN: 1.4 <br>Conc: 23.7","Catalog #: USNM 51727 <br>Year: 1960 <br>DIN: 1.3 <br>Conc: 15.3","Catalog #: USNM 51729 <br>Year: 1960 <br>DIN: 1.5 <br>Conc: 18.7","Catalog #: USNM 51858 <br>Year: 1960 <br>DIN: 1.3 <br>Conc: 24.2","Catalog #: USNM 51860 <br>Year: 1960 <br>DIN: 1.4 <br>Conc: 15.6"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(33,144,140,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(33,144,140,1)"}},"hoveron":"points","name":"1960s-70s","legendgroup":"1960s-70s","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.8463422757107764,3.6486419519409536,2.9181516688782723,3.1074593839701263,3.1305350102717058,1.6704412619350477,2.7995989324524997,1.9941324612125755,1.7767872646683827,2.4491252029314636],"y":[261,408,368,343,260,164,218,115,353,291],"text":["Catalog #: USNM 100609 <br>Year: 2000 <br>DIN: 2.9 <br>Conc: 261","Catalog #: USNM 1606826 <br>Year: 2019 <br>DIN: 3.4 <br>Conc: 408","Catalog #: USNM 1740336 <br>Year: 2019 <br>DIN: 3.1 <br>Conc: 368","Catalog #: USNM 1740363 <br>Year: 2019 <br>DIN: 3.3 <br>Conc: 343","Catalog #: USNM 1740407 <br>Year: 2019 <br>DIN: 3.1 <br>Conc: 260","Catalog #: USNM 100610 <br>Year: 2000 <br>DIN: 1.9 <br>Conc: 164","Catalog #: USNM 1007393 <br>Year: 2000 <br>DIN: 2.8 <br>Conc: 218","Catalog #: USNM 1018355 <br>Year: 2002 <br>DIN: 1.8 <br>Conc: 115","Catalog #: USNM 1606824 <br>Year: 2019 <br>DIN: 1.7 <br>Conc: 353","Catalog #: USNM 1740390 <br>Year: 2019 <br>DIN: 2.4 <br>Conc: 291"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(253,231,37,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(253,231,37,1)"}},"hoveron":"points","name":"Modern","legendgroup":"Modern","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[0.6365482109319418,3.7920749872270969],"y":[13.33,13.33],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.228310502283104,"r":7.3059360730593621,"b":40.182648401826491,"l":43.105022831050235},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.6365482109319418,3.7920749872270969],"tickmode":"array","ticktext":["1","2","3"],"tickvals":[1,2,3],"categoryorder":"array","categoryarray":["1","2","3"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-45,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"DNA Integrity Number (DIN)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-18.7515,428.32150000000001],"tickmode":"array","ticktext":["0","100","200","300","400"],"tickvals":[0,100,200,300,400],"categoryorder":"array","categoryarray":["0","100","200","300","400"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Concentration (ng/uL)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"Collection.Age","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"64a47afa12bb":{"x":{},"y":{},"colour":{},"text":{},"type":"scatter"},"64a46ea46b49":{"yintercept":{}}},"cur_data":"64a47afa12bb","visdat":{"64a47afa12bb":["function (y) ","x"],"64a46ea46b49":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(p3, <span class="at">tooltip =</span> <span class="st">"text"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-b104021a20bcf26a613f" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-b104021a20bcf26a613f">{"x":{"data":[{"x":[1.9054666432086378,1.4023073378950357,1.23916328959167,1.0182003092719243,1.1297838250175118,null,1.0522387573728338,1.0430203450378031,null,null,null],"y":[91.680000000000007,86.099999999999994,82.129999999999995,86.489999999999995,73.819999999999993,63.149999999999999,61.630000000000003,62.25,null,null,null],"text":["Catalog #: USNM 50368 <br>Year: 1880 <br>DIN: 1.7 <br>% >300kb: 91.68","Catalog #: USNM 14399 <br>Year: 1886 <br>DIN: 1.2 <br>% >300kb: 86.1","Catalog #: USNM 19054 <br>Year: 1898 <br>DIN: 1.2 <br>% >300kb: 82.13","Catalog #: USNM 42137 <br>Year: 1898 <br>DIN: 1.1 <br>% >300kb: 86.49","Catalog #: USNM 50603 <br>Year: 1912 <br>DIN: 1 <br>% >300kb: 73.82","Catalog #: USNM 14366 <br>Year: 1886 <br>DIN: NA <br>% >300kb: 63.15","Catalog #: USNM 52295 <br>Year: 1912 <br>DIN: 1 <br>% >300kb: 61.63","Catalog #: USNM 1180630 <br>Year: 1912 <br>DIN: 1 <br>% >300kb: 62.25","Catalog #: USNM 1207569 <br>Year: 1886 <br>DIN: NA <br>% >300kb: NA","Catalog #: USNM 14366 <br>Year: 1886 <br>DIN: NA <br>% >300kb: NA","Catalog #: USNM 52026 <br>Year: 1898 <br>DIN: NA <br>% >300kb: NA"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(68,1,84,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(68,1,84,1)"}},"hoveron":"points","name":"pre-1920","legendgroup":"pre-1920","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1.9256498813861982,1.6643108101328834,1.3494998750742524,1.666167238727212,1.5363491775235161,0.871430628723465,1.367039234470576,1.082624869956635,1.2987522553885356,1.0924599564867095,1.5108630589442327],"y":[93.799999999999997,94.200000000000003,93,92.459999999999994,94.719999999999999,71.129999999999995,89.900000000000006,87.120000000000005,89.230000000000004,88.780000000000001,86.459999999999994],"text":["Catalog #: USNM 51732 <br>Year: 1960 <br>DIN: 2.1 <br>% >300kb: 93.8","Catalog #: USNM 51892 <br>Year: 1960 <br>DIN: 1.9 <br>% >300kb: 94.2","Catalog #: USNM 51857 <br>Year: 1960 <br>DIN: 1.4 <br>% >300kb: 93","Catalog #: USNM 51859 <br>Year: 1960 <br>DIN: 1.5 <br>% >300kb: 92.46","Catalog #: USNM 51861 <br>Year: 1960 <br>DIN: 1.7 <br>% >300kb: 94.72","Catalog #: USNM 51730 <br>Year: 1960 <br>DIN: 1.1 <br>% >300kb: 71.13","Catalog #: USNM 51728 <br>Year: 1960 <br>DIN: 1.4 <br>% >300kb: 89.9","Catalog #: USNM 51727 <br>Year: 1960 <br>DIN: 1.3 <br>% >300kb: 87.12","Catalog #: USNM 51729 <br>Year: 1960 <br>DIN: 1.5 <br>% >300kb: 89.23","Catalog #: USNM 51858 <br>Year: 1960 <br>DIN: 1.3 <br>% >300kb: 88.78","Catalog #: USNM 51860 <br>Year: 1960 <br>DIN: 1.4 <br>% >300kb: 86.46"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(33,144,140,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(33,144,140,1)"}},"hoveron":"points","name":"1960s-70s","legendgroup":"1960s-70s","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.941096772882156,3.1923337150132283,3.1801598776597531,3.4821982834953813,3.1642267260700465,2.0229932049755006,2.5606079361867158,1.809691009647213,1.9471698706503957,2.5202751445816829],"y":[96.340000000000003,97.209999999999994,96.989999999999995,97.400000000000006,96.890000000000001,93.569999999999993,93.489999999999995,89.980000000000004,90.799999999999997,96.829999999999998],"text":["Catalog #: USNM 100609 <br>Year: 2000 <br>DIN: 2.9 <br>% >300kb: 96.34","Catalog #: USNM 1606826 <br>Year: 2019 <br>DIN: 3.4 <br>% >300kb: 97.21","Catalog #: USNM 1740336 <br>Year: 2019 <br>DIN: 3.1 <br>% >300kb: 96.99","Catalog #: USNM 1740363 <br>Year: 2019 <br>DIN: 3.3 <br>% >300kb: 97.4","Catalog #: USNM 1740407 <br>Year: 2019 <br>DIN: 3.1 <br>% >300kb: 96.89","Catalog #: USNM 100610 <br>Year: 2000 <br>DIN: 1.9 <br>% >300kb: 93.57","Catalog #: USNM 1007393 <br>Year: 2000 <br>DIN: 2.8 <br>% >300kb: 93.49","Catalog #: USNM 1018355 <br>Year: 2002 <br>DIN: 1.8 <br>% >300kb: 89.98","Catalog #: USNM 1606824 <br>Year: 2019 <br>DIN: 1.7 <br>% >300kb: 90.8","Catalog #: USNM 1740390 <br>Year: 2019 <br>DIN: 2.4 <br>% >300kb: 96.83"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(253,231,37,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(253,231,37,1)"}},"hoveron":"points","name":"Modern","legendgroup":"Modern","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[0.74089224598486914,3.6127366662339773],"y":[13.33,13.33],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.228310502283104,"r":7.3059360730593621,"b":40.182648401826491,"l":43.105022831050235},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.74089224598486914,3.6127366662339773],"tickmode":"array","ticktext":["1.0","1.5","2.0","2.5","3.0","3.5"],"tickvals":[1,1.5,2,2.5,3,3.5],"categoryorder":"array","categoryarray":["1.0","1.5","2.0","2.5","3.0","3.5"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-45,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"DNA Integrity Number (DIN)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[9.1265000000000001,101.60350000000001],"tickmode":"array","ticktext":["25","50","75","100"],"tickvals":[25,50,75,100],"categoryorder":"array","categoryarray":["25","50","75","100"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Percent of reads >300kb","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"Collection.Age","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"64a473b75f66":{"x":{},"y":{},"colour":{},"text":{},"type":"scatter"},"64a44a1b7475":{"yintercept":{}}},"cur_data":"64a473b75f66","visdat":{"64a473b75f66":["function (y) ","x"],"64a44a1b7475":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<section id="sample-selection" class="level2">
+<h2 class="anchored" data-anchor-id="sample-selection">Sample selection</h2>
+<p>Based on the above results, I can pick which samples are most suited for sequencing, considering DNA concentration (as a proxy for total DNA available) and DNA integrity. I’m not sure whether % &gt;300bp reads or DIN is the most appropriate measure of DNA integrity here, but they’re highly correlated. I want n=5 for each of my three collection periods.</p>
+<p><u><strong>Modern (&lt;25 yo)</strong></u><br>
+USNM 1606826<br>
+USNM 1740336<br>
+USNM 1740363<br>
+USNM 100609<br>
+USNM 1740407</p>
+<p><u><strong>Mid-age (1960s-1970s):</strong></u><br>
+USNM 51732<br>
+USNM 51892<br>
+USNM 51861<br>
+USNM 51857<br>
+USNM 51859</p>
+<p><u><strong>Historic (&gt;100 yo):</strong></u><br>
+USNM 50368<br>
+USNM 14399<br>
+USNM 42137<br>
+USNM 19054<br>
+USNM 50603</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>selected <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"USNM 1606826"</span>, <span class="st">"USNM 1740336"</span>, <span class="st">"USNM 1740363"</span>, <span class="st">"USNM 100609"</span>, <span class="st">"USNM 1740407"</span>, <span class="st">"USNM 51732"</span>, <span class="st">"USNM 51892"</span>, <span class="st">"USNM 51861"</span>, <span class="st">"USNM 51857"</span>, <span class="st">"USNM 51859"</span>, <span class="st">"USNM 50368"</span>, <span class="st">"USNM 14399"</span>, <span class="st">"USNM 42137"</span>, <span class="st">"USNM 19054"</span>, <span class="st">"USNM 50603"</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>conc<span class="sc">$</span>Selection <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(conc<span class="sc">$</span>Catalog.Number <span class="sc">%in%</span> selected, <span class="st">"yes"</span>, <span class="st">"no"</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>p21 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(conc, <span class="fu">aes</span>(<span class="at">x=</span>Tapestation.Perc<span class="fl">.300</span>up, </span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">y=</span>Tapestation.Conc.ngul, </span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">color =</span> Collection.Age,</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">shape=</span>Selection,</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>                       <span class="at">text =</span> <span class="fu">paste</span>(<span class="st">"Catalog #:"</span>, Catalog.Number,</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"&lt;br&gt;Year:"</span>, Year.Collected,</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"&lt;br&gt;% &gt;300kb:"</span>, Tapestation.Perc<span class="fl">.300</span>up,</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"&lt;br&gt;Conc:"</span>, Tapestation.Conc.ngul))) <span class="sc">+</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">width =</span> <span class="fl">0.25</span>, <span class="at">height =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">13.33</span>, <span class="at">color =</span> <span class="st">'black'</span>) <span class="sc">+</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Percent of reads &gt;300kb"</span>) <span class="sc">+</span></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Concentration (ng/uL)"</span>)</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>p22 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(conc, <span class="fu">aes</span>(<span class="at">x=</span>Tapestation.DIN, </span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>                       <span class="at">y=</span>Tapestation.Conc.ngul, </span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>                       <span class="at">color=</span>Collection.Age,</span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>                       <span class="at">shape=</span>Selection,</span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>                       <span class="at">text =</span> <span class="fu">paste</span>(<span class="st">"Catalog #:"</span>, Catalog.Number,</span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"&lt;br&gt;Year:"</span>, Year.Collected,</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"&lt;br&gt;DIN:"</span>, Tapestation.DIN,</span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"&lt;br&gt;Conc:"</span>, Tapestation.Conc.ngul))) <span class="sc">+</span></span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">width =</span> <span class="fl">0.25</span>, <span class="at">height =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">13.33</span>, <span class="at">color =</span> <span class="st">'black'</span>) <span class="sc">+</span></span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"DNA Integrity Number (DIN)"</span>) <span class="sc">+</span></span>
+<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Concentration (ng/uL)"</span>)</span>
+<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(p21, <span class="at">tooltip =</span> <span class="st">"text"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-74f4e70790257512bd72" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-74f4e70790257512bd72">{"x":{"data":[{"x":[63.126532308268359,61.442162947142499,62.04886900272686,null,null,null],"y":[1.5700000000000001,19.899999999999999,4.3300000000000001,null,null,null],"text":["Catalog #: USNM 14366 <br>Year: 1886 <br>% >300kb: 63.15 <br>Conc: 1.57","Catalog #: USNM 52295 <br>Year: 1912 <br>% >300kb: 61.63 <br>Conc: 19.9","Catalog #: USNM 1180630 <br>Year: 1912 <br>% >300kb: 62.25 <br>Conc: 4.33","Catalog #: USNM 1207569 <br>Year: 1886 <br>% >300kb: NA <br>Conc: NA","Catalog #: USNM 14366 <br>Year: 1886 <br>% >300kb: NA <br>Conc: NA","Catalog #: USNM 52026 <br>Year: 1898 <br>% >300kb: NA <br>Conc: NA"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(68,1,84,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(68,1,84,1)"}},"hoveron":"points","name":"(pre-1920,no)","legendgroup":"(pre-1920,no)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[91.814316686191603,86.337257655826392,81.93980873049702,86.381268551582465,73.663464118312106],"y":[68.299999999999997,100,21.600000000000001,46.299999999999997,42.399999999999999],"text":["Catalog #: USNM 50368 <br>Year: 1880 <br>% >300kb: 91.68 <br>Conc: 68.3","Catalog #: USNM 14399 <br>Year: 1886 <br>% >300kb: 86.1 <br>Conc: 100","Catalog #: USNM 19054 <br>Year: 1898 <br>% >300kb: 82.13 <br>Conc: 21.6","Catalog #: USNM 42137 <br>Year: 1898 <br>% >300kb: 86.49 <br>Conc: 46.3","Catalog #: USNM 50603 <br>Year: 1912 <br>% >300kb: 73.82 <br>Conc: 42.4"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(68,1,84,1)","opacity":1,"size":7.559055118110237,"symbol":"triangle-up","line":{"width":1.8897637795275593,"color":"rgba(68,1,84,1)"}},"hoveron":"points","name":"(pre-1920,yes)","legendgroup":"(pre-1920,yes)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[70.925134113752279,89.755571339372551,86.882995986035098,88.994976608799774,88.637453811680899,86.595036507970647],"y":[59.600000000000001,23.699999999999999,15.300000000000001,18.699999999999999,24.199999999999999,15.6],"text":["Catalog #: USNM 51730 <br>Year: 1960 <br>% >300kb: 71.13 <br>Conc: 59.6","Catalog #: USNM 51728 <br>Year: 1960 <br>% >300kb: 89.9 <br>Conc: 23.7","Catalog #: USNM 51727 <br>Year: 1960 <br>% >300kb: 87.12 <br>Conc: 15.3","Catalog #: USNM 51729 <br>Year: 1960 <br>% >300kb: 89.23 <br>Conc: 18.7","Catalog #: USNM 51858 <br>Year: 1960 <br>% >300kb: 88.78 <br>Conc: 24.2","Catalog #: USNM 51860 <br>Year: 1960 <br>% >300kb: 86.46 <br>Conc: 15.6"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(33,144,140,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(33,144,140,1)"}},"hoveron":"points","name":"(1960s-70s,no)","legendgroup":"(1960s-70s,no)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[93.988206127495502,94.340458793961446,93.107410341501236,92.591316980929108,94.680972803062758],"y":[157,137,109,117,94.099999999999994],"text":["Catalog #: USNM 51732 <br>Year: 1960 <br>% >300kb: 93.8 <br>Conc: 157","Catalog #: USNM 51892 <br>Year: 1960 <br>% >300kb: 94.2 <br>Conc: 137","Catalog #: USNM 51857 <br>Year: 1960 <br>% >300kb: 93 <br>Conc: 109","Catalog #: USNM 51859 <br>Year: 1960 <br>% >300kb: 92.46 <br>Conc: 117","Catalog #: USNM 51861 <br>Year: 1960 <br>% >300kb: 94.72 <br>Conc: 94.1"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(33,144,140,1)","opacity":1,"size":7.559055118110237,"symbol":"triangle-up","line":{"width":1.8897637795275593,"color":"rgba(33,144,140,1)"}},"hoveron":"points","name":"(1960s-70s,yes)","legendgroup":"(1960s-70s,yes)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[93.765335942087688,93.437048770147371,90.165784477042038,91.002146241790612,96.674334322260691],"y":[164,218,115,353,291],"text":["Catalog #: USNM 100610 <br>Year: 2000 <br>% >300kb: 93.57 <br>Conc: 164","Catalog #: USNM 1007393 <br>Year: 2000 <br>% >300kb: 93.49 <br>Conc: 218","Catalog #: USNM 1018355 <br>Year: 2002 <br>% >300kb: 89.98 <br>Conc: 115","Catalog #: USNM 1606824 <br>Year: 2019 <br>% >300kb: 90.8 <br>Conc: 353","Catalog #: USNM 1740390 <br>Year: 2019 <br>% >300kb: 96.83 <br>Conc: 291"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(253,231,37,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(253,231,37,1)"}},"hoveron":"points","name":"(Modern,no)","legendgroup":"(Modern,no)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[96.240311570498164,97.380754301361733,96.899085900173517,97.495723509788519,96.696897587375716],"y":[261,408,368,343,260],"text":["Catalog #: USNM 100609 <br>Year: 2000 <br>% >300kb: 96.34 <br>Conc: 261","Catalog #: USNM 1606826 <br>Year: 2019 <br>% >300kb: 97.21 <br>Conc: 408","Catalog #: USNM 1740336 <br>Year: 2019 <br>% >300kb: 96.99 <br>Conc: 368","Catalog #: USNM 1740363 <br>Year: 2019 <br>% >300kb: 97.4 <br>Conc: 343","Catalog #: USNM 1740407 <br>Year: 2019 <br>% >300kb: 96.89 <br>Conc: 260"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(253,231,37,1)","opacity":1,"size":7.559055118110237,"symbol":"triangle-up","line":{"width":1.8897637795275593,"color":"rgba(253,231,37,1)"}},"hoveron":"points","name":"(Modern,yes)","legendgroup":"(Modern,yes)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[59.639484919010201,99.298401537920824],"y":[13.33,13.33],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.228310502283104,"r":7.3059360730593621,"b":40.182648401826491,"l":43.105022831050235},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[59.639484919010201,99.298401537920824],"tickmode":"array","ticktext":["60","70","80","90"],"tickvals":[60,70,80,90],"categoryorder":"array","categoryarray":["60","70","80","90"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-45,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Percent of reads >300kb","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-18.7515,428.32150000000001],"tickmode":"array","ticktext":["0","100","200","300","400"],"tickvals":[0,100,200,300,400],"categoryorder":"array","categoryarray":["0","100","200","300","400"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Concentration (ng/uL)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"Collection.Age<br />Selection","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"64a45feb5408":{"x":{},"y":{},"colour":{},"shape":{},"text":{},"type":"scatter"},"64a45eee4169":{"yintercept":{}}},"cur_data":"64a45feb5408","visdat":{"64a45feb5408":["function (y) ","x"],"64a45eee4169":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(p22, <span class="at">tooltip =</span> <span class="st">"text"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-06cbc65e6b4b70d88d8d" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-06cbc65e6b4b70d88d8d">{"x":{"data":[{"x":[null,0.82684988551773131,1.0603361005196348,null,null,null],"y":[1.5700000000000001,19.899999999999999,4.3300000000000001,null,null,null],"text":["Catalog #: USNM 14366 <br>Year: 1886 <br>DIN: NA <br>Conc: 1.57","Catalog #: USNM 52295 <br>Year: 1912 <br>DIN: 1 <br>Conc: 19.9","Catalog #: USNM 1180630 <br>Year: 1912 <br>DIN: 1 <br>Conc: 4.33","Catalog #: USNM 1207569 <br>Year: 1886 <br>DIN: NA <br>Conc: NA","Catalog #: USNM 14366 <br>Year: 1886 <br>DIN: NA <br>Conc: NA","Catalog #: USNM 52026 <br>Year: 1898 <br>DIN: NA <br>Conc: NA"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(68,1,84,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(68,1,84,1)"}},"hoveron":"points","name":"(pre-1920,no)","legendgroup":"(pre-1920,no)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1.7298406064976006,1.329145111888647,0.96379908144008364,1.0780665567377583,0.89952571142930537],"y":[68.299999999999997,100,21.600000000000001,46.299999999999997,42.399999999999999],"text":["Catalog #: USNM 50368 <br>Year: 1880 <br>DIN: 1.7 <br>Conc: 68.3","Catalog #: USNM 14399 <br>Year: 1886 <br>DIN: 1.2 <br>Conc: 100","Catalog #: USNM 19054 <br>Year: 1898 <br>DIN: 1.2 <br>Conc: 21.6","Catalog #: USNM 42137 <br>Year: 1898 <br>DIN: 1.1 <br>Conc: 46.3","Catalog #: USNM 50603 <br>Year: 1912 <br>DIN: 1 <br>Conc: 42.4"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(68,1,84,1)","opacity":1,"size":7.559055118110237,"symbol":"triangle-up","line":{"width":1.8897637795275593,"color":"rgba(68,1,84,1)"}},"hoveron":"points","name":"(pre-1920,yes)","legendgroup":"(pre-1920,yes)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1.2092860023491085,1.5369883295847102,1.1249952020123601,1.6678093821974471,1.4124368010787294,1.455115409544669],"y":[59.600000000000001,23.699999999999999,15.300000000000001,18.699999999999999,24.199999999999999,15.6],"text":["Catalog #: USNM 51730 <br>Year: 1960 <br>DIN: 1.1 <br>Conc: 59.6","Catalog #: USNM 51728 <br>Year: 1960 <br>DIN: 1.4 <br>Conc: 23.7","Catalog #: USNM 51727 <br>Year: 1960 <br>DIN: 1.3 <br>Conc: 15.3","Catalog #: USNM 51729 <br>Year: 1960 <br>DIN: 1.5 <br>Conc: 18.7","Catalog #: USNM 51858 <br>Year: 1960 <br>DIN: 1.3 <br>Conc: 24.2","Catalog #: USNM 51860 <br>Year: 1960 <br>DIN: 1.4 <br>Conc: 15.6"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(33,144,140,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(33,144,140,1)"}},"hoveron":"points","name":"(1960s-70s,no)","legendgroup":"(1960s-70s,no)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.3177597391419114,1.8946785125648602,1.3581509319832548,1.7017754350090399,1.7790474193636328],"y":[157,137,109,117,94.099999999999994],"text":["Catalog #: USNM 51732 <br>Year: 1960 <br>DIN: 2.1 <br>Conc: 157","Catalog #: USNM 51892 <br>Year: 1960 <br>DIN: 1.9 <br>Conc: 137","Catalog #: USNM 51857 <br>Year: 1960 <br>DIN: 1.4 <br>Conc: 109","Catalog #: USNM 51859 <br>Year: 1960 <br>DIN: 1.5 <br>Conc: 117","Catalog #: USNM 51861 <br>Year: 1960 <br>DIN: 1.7 <br>Conc: 94.1"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(33,144,140,1)","opacity":1,"size":7.559055118110237,"symbol":"triangle-up","line":{"width":1.8897637795275593,"color":"rgba(33,144,140,1)"}},"hoveron":"points","name":"(1960s-70s,yes)","legendgroup":"(1960s-70s,yes)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.1005886959377675,2.5694728786591439,1.8583456784952432,1.8954910776112228,2.3303364952793344],"y":[164,218,115,353,291],"text":["Catalog #: USNM 100610 <br>Year: 2000 <br>DIN: 1.9 <br>Conc: 164","Catalog #: USNM 1007393 <br>Year: 2000 <br>DIN: 2.8 <br>Conc: 218","Catalog #: USNM 1018355 <br>Year: 2002 <br>DIN: 1.8 <br>Conc: 115","Catalog #: USNM 1606824 <br>Year: 2019 <br>DIN: 1.7 <br>Conc: 353","Catalog #: USNM 1740390 <br>Year: 2019 <br>DIN: 2.4 <br>Conc: 291"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(253,231,37,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(253,231,37,1)"}},"hoveron":"points","name":"(Modern,no)","legendgroup":"(Modern,no)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[3.1116654942510649,3.1972482003970071,3.2714159357361496,3.098295487416908,3.2869817714905367],"y":[261,408,368,343,260],"text":["Catalog #: USNM 100609 <br>Year: 2000 <br>DIN: 2.9 <br>Conc: 261","Catalog #: USNM 1606826 <br>Year: 2019 <br>DIN: 3.4 <br>Conc: 408","Catalog #: USNM 1740336 <br>Year: 2019 <br>DIN: 3.1 <br>Conc: 368","Catalog #: USNM 1740363 <br>Year: 2019 <br>DIN: 3.3 <br>Conc: 343","Catalog #: USNM 1740407 <br>Year: 2019 <br>DIN: 3.1 <br>Conc: 260"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(253,231,37,1)","opacity":1,"size":7.559055118110237,"symbol":"triangle-up","line":{"width":1.8897637795275593,"color":"rgba(253,231,37,1)"}},"hoveron":"points","name":"(Modern,yes)","legendgroup":"(Modern,yes)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[0.70384329121909106,3.409988365789177],"y":[13.33,13.33],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.228310502283104,"r":7.3059360730593621,"b":40.182648401826491,"l":43.105022831050235},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.70384329121909106,3.409988365789177],"tickmode":"array","ticktext":["1.0","1.5","2.0","2.5","3.0"],"tickvals":[1,1.5,2,2.5,3],"categoryorder":"array","categoryarray":["1.0","1.5","2.0","2.5","3.0"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-45,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"DNA Integrity Number (DIN)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-18.7515,428.32150000000001],"tickmode":"array","ticktext":["0","100","200","300","400"],"tickvals":[0,100,200,300,400],"categoryorder":"array","categoryarray":["0","100","200","300","400"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Concentration (ng/uL)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"Collection.Age<br />Selection","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"64a431211a4":{"x":{},"y":{},"colour":{},"shape":{},"text":{},"type":"scatter"},"64a47a4c7fa4":{"yintercept":{}}},"cur_data":"64a431211a4","visdat":{"64a431211a4":["function (y) ","x"],"64a47a4c7fa4":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">This notebook is built using <a href="https://quarto.org/">Quarto</a></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
