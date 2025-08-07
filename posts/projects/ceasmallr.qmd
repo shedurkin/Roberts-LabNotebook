@@ -27,5 +27,5 @@ format:
 ::: {#description}
 [Venkataraman et al. 2024](10.1093/eep/dvae018) exposed Eastern oysters (*Crassostrea virginica*) to ocean acidification treatments and examined the interplay between resultant differential methylation and differential gene expression.
 
-In `ceasmallr`, we build on this work by evaluating the heritability of this environmentally-induced differential methylation in *C. virginica*. See project details and current status at the project Github, linked above!
+In `ceasmallr`, we build on this work by evaluating the heritability of this environmentally-induced differential methylation in *C. virginica*. See project details and current status at the project Github, linked below!
 :::
