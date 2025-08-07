@@ -4,6 +4,7 @@ listing:
   contents: 
     - posts/projects/E5_coral.qmd
     - posts/projects/SIFP_2025.qmd
+    - posts/projects/ceasmallr.qmd
     - posts/projects/pacific_cod.qmd
     - posts/projects/pacific_oyster.qmd
     - posts/projects/misc.qmd

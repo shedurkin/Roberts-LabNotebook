@@ -1,0 +1,69 @@
+---
+title: "Summary of completed ceasmallr work"
+author: "Kathleen Durkin"
+date: "2025-08-07"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+## Project Background
+
+Adult *C. virginica* oysters were exposed to elevated pCO2 treatment for 30 days. Following this, gonads were sampled for gametes (sperm or eggs). Fertilization crosses were performed within treatments, resulting in ControlxControl and ExposedxExposed offspring. Offspring were reared in control conditions. 9 hours post-fertilization, zygotes were sampled, and 3 days post-fertilization, larvae were sampled.
+
+#### **Reference data (from prior work)**
+
+-   WGBS for parent gametes (sperm and eggs)
+
+-   RNA-seq for parent gametes (sperm and eggs)
+
+-   Larval physiology (shell growth, shell morphology, survival)
+
+#### **Preliminary results (from prior work)**
+
+From partner studies, elevated pCO2 resulted in:
+
+-   **no DEGs in parent gametes** (did affect gene activity features like transcript expression per gene)
+
+-   **differential methylation** (parental sperm and eggs)
+
+-   parental exposure i**mproved shell growth rate** in larvae (improvements enhanced when offspring also reared in elevated pCO2)
+
+## **Current status**
+
+### QC and Preprocessing
+
+**Trimming**. Raw WGBS FastQs were concatenated, trimmed using `fastp`, repaired if necessary using `BBtools`, and the quality-checked using `FastQC` and `MultiQC`.
+
+**Alignment**. Trimmed WGBS FastQs were aligned to the *C. virginica* genome using `Bismark` and `Bowtie`, then summarized using `MultiQC`.
+
+**Deduplication**. After reads were aligned to the *C. virginica* genome, they were deduplicated using `Bismark` to remove read duplication caused by PCR amplification during WGBS.
+
+**Methylation extraction**. `Bismark` was used to call the methylation state of all sequenced cytosine positions.
+
+### Analysis
+
+Used `methylKit` to perform differential methylation analysis. All analysis steps were performed on three data subsets: all offspring lifestages in combination; only the zygote samples; and only the larvae samples. This is a preliminary way to account for the possible effects of lifestage on methylation.
+
+Several samples were excluded from differential methylation analysis due to poor data quantity/quality.
+
+Thus far, analysis has only considered differential methylation of CpG sites, which I refer to here as differentially methylated loci (DMLs). Additional work should also consider differentially methylated regions
+
+### Results
+
+**In all offspring subsets (combined, zygote only, and larvae only), I identified many DMLs associated with parental treatment** (81 in combined analysis, 545 in zygote-only, 1061 in larvae-only).
+
+Most DMLs occurred in the gene body, with occurrence roughly equally split between intronic and exonic regions.
+
+![](https://github.com/course-fish546-2025/kathleen-coral/raw/main/project/code/07.2-DML-adult-comparison-low-cov_files/figure-gfm/unnamed-chunk-13-1.png){width="431"}
+
+For all groups considered (combined, zygote-only, and larvae-only), **a small subset of offspring DMLs were also differentially methylated in the parent gonads based on OA exposure**. Shared DMLs were almost exclusively found in the male parents. Of the 81 DMLs identified in the combined offspring analysis, 7 sites (8.64%) were also differentially methylated in the male parents (0 in the female parents). Of the 545 DMLs identified in analysis of zygotes alone, 15 (2.75%) were differentially methylated in male parents (0 in female). Finally, in the larvae-only analysis, 31 of the1061 larval DMLs (2.92%) were also differentially methylated in male parents (2 in female parents).
+
+Plotting the methylation profiles of both parents and offspring, we see a offspring profiles are clearly more similar to male parents, and that both are divergent from female parents. There is not, however, clear grouping by exposure (or parental exposure) to OA treatment.
+
+![](https://github.com/course-fish546-2025/kathleen-coral/raw/main/project/code/09-multifactor-diff-methyl_files/figure-gfm/unnamed-chunk-16-1.png){width="451"}

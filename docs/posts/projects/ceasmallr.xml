@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Kathleen&#39;s Lab Notebook</title>
+<link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr.html</link>
+<atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.3.433</generator>
+<lastBuildDate>Thu, 07 Aug 2025 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>Summary of completed ceasmallr work</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2025_08_07_current_summary.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="project-background" class="level2">
+<h2 class="anchored" data-anchor-id="project-background">Project Background</h2>
+<p>Adult <em>C. virginica</em> oysters were exposed to elevated pCO2 treatment for 30 days. Following this, gonads were sampled for gametes (sperm or eggs). Fertilization crosses were performed within treatments, resulting in ControlxControl and ExposedxExposed offspring. Offspring were reared in control conditions. 9 hours post-fertilization, zygotes were sampled, and 3 days post-fertilization, larvae were sampled.</p>
+<section id="reference-data-from-prior-work" class="level4">
+<h4 class="anchored" data-anchor-id="reference-data-from-prior-work"><strong>Reference data (from prior work)</strong></h4>
+<ul>
+<li><p>WGBS for parent gametes (sperm and eggs)</p></li>
+<li><p>RNA-seq for parent gametes (sperm and eggs)</p></li>
+<li><p>Larval physiology (shell growth, shell morphology, survival)</p></li>
+</ul>
+</section>
+<section id="preliminary-results-from-prior-work" class="level4">
+<h4 class="anchored" data-anchor-id="preliminary-results-from-prior-work"><strong>Preliminary results (from prior work)</strong></h4>
+<p>From partner studies, elevated pCO2 resulted in:</p>
+<ul>
+<li><p><strong>no DEGs in parent gametes</strong> (did affect gene activity features like transcript expression per gene)</p></li>
+<li><p><strong>differential methylation</strong> (parental sperm and eggs)</p></li>
+<li><p>parental exposure i<strong>mproved shell growth rate</strong> in larvae (improvements enhanced when offspring also reared in elevated pCO2)</p></li>
+</ul>
+</section>
+</section>
+<section id="current-status" class="level2">
+<h2 class="anchored" data-anchor-id="current-status"><strong>Current status</strong></h2>
+<section id="qc-and-preprocessing" class="level3">
+<h3 class="anchored" data-anchor-id="qc-and-preprocessing">QC and Preprocessing</h3>
+<p><strong>Trimming</strong>. Raw WGBS FastQs were concatenated, trimmed using&nbsp;<code>fastp</code>, repaired if necessary using&nbsp;<code>BBtools</code>, and the quality-checked using&nbsp;<code>FastQC</code>&nbsp;and&nbsp;<code>MultiQC</code>.</p>
+<p><strong>Alignment</strong>. Trimmed WGBS FastQs were aligned to the <em>C. virginica</em> genome using <code>Bismark</code> and <code>Bowtie</code>, then summarized using <code>MultiQC</code>.</p>
+<p><strong>Deduplication</strong>. After reads were aligned to the <em>C. virginica</em> genome, they were deduplicated using <code>Bismark</code> to remove read duplication caused by PCR amplification during WGBS.</p>
+<p><strong>Methylation extraction</strong>. <code>Bismark</code> was used to call the methylation state of all sequenced cytosine positions.</p>
+</section>
+<section id="analysis" class="level3">
+<h3 class="anchored" data-anchor-id="analysis">Analysis</h3>
+<p>Used <code>methylKit</code> to perform differential methylation analysis. All analysis steps were performed on three data subsets: all offspring lifestages in combination; only the zygote samples; and only the larvae samples. This is a preliminary way to account for the possible effects of lifestage on methylation.</p>
+<p>Several samples were excluded from differential methylation analysis due to poor data quantity/quality.</p>
+<p>Thus far, analysis has only considered differential methylation of CpG sites, which I refer to here as differentially methylated loci (DMLs). Additional work should also consider differentially methylated regions</p>
+</section>
+<section id="results" class="level3">
+<h3 class="anchored" data-anchor-id="results">Results</h3>
+<p><strong>In all offspring subsets (combined, zygote only, and larvae only), I identified many DMLs associated with parental treatment</strong> (81 in combined analysis, 545 in zygote-only, 1061 in larvae-only).</p>
+<p>Most DMLs occurred in the gene body, with occurrence roughly equally split between intronic and exonic regions.</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/https:/github.com/course-fish546-2025/kathleen-coral/raw/main/project/code/07.2-DML-adult-comparison-low-cov_files/figure-gfm/unnamed-chunk-13-1.png" class="img-fluid" width="431"></p>
+<p>For all groups considered (combined, zygote-only, and larvae-only), <strong>a small subset of offspring DMLs were also differentially methylated in the parent gonads based on OA exposure</strong>. Shared DMLs were almost exclusively found in the male parents. Of the 81 DMLs identified in the combined offspring analysis, 7 sites (8.64%) were also differentially methylated in the male parents (0 in the female parents). Of the 545 DMLs identified in analysis of zygotes alone, 15 (2.75%) were differentially methylated in male parents (0 in female). Finally, in the larvae-only analysis, 31 of the1061 larval DMLs (2.92%) were also differentially methylated in male parents (2 in female parents).</p>
+<p>Plotting the methylation profiles of both parents and offspring, we see a offspring profiles are clearly more similar to male parents, and that both are divergent from female parents. There is not, however, clear grouping by exposure (or parental exposure) to OA treatment.</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/https:/github.com/course-fish546-2025/kathleen-coral/raw/main/project/code/09-multifactor-diff-methyl_files/figure-gfm/unnamed-chunk-16-1.png" class="img-fluid" width="451"></p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2025_08_07_current_summary.html</guid>
+  <pubDate>Thu, 07 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>
