@@ -10,7 +10,1323 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Fri, 25 Jul 2025 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 15 Aug 2025 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>Flongle Run, Group 1 Library 3</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_15_flongle_G1L3.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Running Group 1 Library 3 on a Flongle flow cell to confirm successful library prep (this library prep incorporated some modifications to the standard protocol)</p>
+<p>As a reminder, Library 3 ended up at 26.2 ng/uL</p>
+<p>Assume length of 1000bp on average, since Flongles have showed shorter DNA fragment lengths than TapeStation (possible shearing during library prep?). Flongle requires 5-10fmol, which is 3 - 6.2ng DNA for 1000bp length.</p>
+<p>Will max out DNA, so need 6.2ng DNA in 5uL EB. Concentration is too low to accurately pipette this little DNA from my library. Instead, made 5X, so 31ng DNA in 25uL EB. 31ng of 26.2ng/uL DNA is (31/26.2) = 1.2uL DNA.</p>
+<p>So mixed <strong>1.2uL Library 3</strong> in (25-1.2)= <strong>23.8uL EB</strong>. Then used 5uL of diluted Library 3 to load Flongle.</p>
+<p><u>Flongle flow cell:</u><br>
+SN: B028104068<br>
+LOT: 33001524<br>
+ID: <strong>AYK267<br>
+59 pores</strong> on flow cell check</p>
+<p>Ran for full 24 hours</p>
+<p><u>Notes after run completed:</u></p>
+<p>Excluding FFPE during end-repair resulted in significantly lower yield (~70Mb, compared to 120Mb from the first two Flongle runs), likely because unrepaired “nicked” DNA clogged the pores quickly. This is supported by low pore occupancy throughout run and faster pore degradation.</p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_15_flongle_G1L3.html</guid>
+  <pubDate>Fri, 15 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Native Barcoding Library Prep, Group 1 Library 3</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_15_library_prep_G1L3.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>After my preliminary Flongle runs (Group 1 Library 1 and Group 1 Library 2), I’m a little worried about how much MinION output I’ll get, so I’m going to switch to 3 samples per flow cell.</p>
+<p>I’ve also looked at some options for library prep adjustments:</p>
+<ul>
+<li><p>Exclude FFPE Repair. FFPE repair, in part, repairs cytosine deamination C-&gt;U damage. Since I;m interested in potentially examingin patterns of age-related deamination, I’d like to exclude this step if possible. It may cause problems, though, since the un-repaired DNA damgae (e.g.&nbsp;nicks) may affect sequencing, by e.g.&nbsp;clogging the pores more quickly.</p></li>
+<li><p>Begin with 1000ng gDNA dor each sample, instead of 400ng, when multiplexing &lt;= 4 samples.</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Catalog #</th>
+<th>Conc. (ng/uL)</th>
+<th>uL for 1000ng</th>
+<th>Label/Barcode</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1606826</td>
+<td>408</td>
+<td>2.5</td>
+<td>09</td>
+</tr>
+<tr class="even">
+<td>1740336</td>
+<td>368</td>
+<td>2.7</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>1740363</td>
+<td>343</td>
+<td>2.9</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<p><strong>End-Prep Master Mix (no FFPE):</strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>1X</strong></th>
+<th><strong>4X</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ultra II Buffer</td>
+<td>1.75uL</td>
+<td><strong>7uL</strong></td>
+</tr>
+<tr class="even">
+<td>Ultra II Mix</td>
+<td>0.75uL</td>
+<td><strong>3uL</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Made 4X and added 2.5uL of Master Mix to each tube</p>
+<p><u>Qubit 1 (barcodes ligated, in 35uL)</u><br>
+Standard 1: 37.40<br>
+Standard 2: 9926.48<br>
+Library 3: 22.8 ng/uL</p>
+<p><u>Qubit 2 (adapters ligated, in 15uL)</u><br>
+Standard 1: 31.61<br>
+Standard 2: 11333.17<br>
+Library 3: <strong>26.2 ng/uL</strong></p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_15_library_prep_G1L3.html</guid>
+  <pubDate>Fri, 15 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Estimate Flow Cell OUtputs</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_14_Flongle_stats.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Using the outputs from my Flongle run of Group1, Library 1, I want to use the rate of pore decay and cumulative sequencing output to extrapolate how much output to expect from other flow cells.</p>
+<section id="pore-activity" class="level2">
+<h2 class="anchored" data-anchor-id="pore-activity">Pore activity</h2>
+<p>Look at the output csv of pore activity stats:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(dplyr)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'dplyr' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
+<span id="cb6-2">pore_activity <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./data/2025_08_12_Flongle_Group1_Library1/pore_activity_AYW935_f9a34344_e98d3daf.csv"</span>)</span>
+<span id="cb6-3">pore_activity<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Percent <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> pore_activity<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>State.Time..samples.<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">378000</span></span>
+<span id="cb6-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># unique(pore_activity$Channel.State)</span></span>
+<span id="cb6-5">pore_activity<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Channel.State <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(pore_activity<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Channel.State,</span>
+<span id="cb6-6">                                         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"unclassified"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"unclassified_following_reset"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"unknown_negative"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"unknown_positive"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"disabled"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"saturated"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"multiple"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"zero"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"no_pore"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"unblocking"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"unavailable"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"pore"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"adapter"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"strand"</span>),</span>
+<span id="cb6-7">                                      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ordered =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span>
+<span id="cb6-8"></span>
+<span id="cb6-9"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(pore_activity, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> Experiment.Time..minutes., <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> Percent, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> Channel.State)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_col</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_14_Flongle_stats_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Compare to Summary Plot:</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/data/2025_08_12_Flongle_Group1_Library1/PoreActivity.png" class="img-fluid"></p>
+<p>After comparing the pore_activity.csv labels to those included in the pore activity summary plots, I’m pretty sure that the following labels are equivalent (pore_activity.csv label = plot label)</p>
+<p>adapter = adapter<br>
+disabled = channel disabled<br>
+locked = ?<br>
+multiple = multiple<br>
+no_pore = no pore<br>
+pending_manual_reset = ?<br>
+pending_mux_change = ?<br>
+<strong>pore = pore available</strong><br>
+saturated = saturated<br>
+<strong>strand = sequencing</strong><br>
+unavailable = unavailable<br>
+unblocking = active feedback<br>
+unclassified = unclassified<br>
+unclassified_following_reset = ?<br>
+unknown_negative = out of range - low<br>
+unknown_positive = out of range - high<br>
+zero = zero</p>
+</section>
+<section id="fit-pore-decay-and-output-functions" class="level2">
+<h2 class="anchored" data-anchor-id="fit-pore-decay-and-output-functions">Fit pore decay and output functions</h2>
+<p>I want to extract a function for the percent of pores that are sequencing over time. I expect a roughly exponential drop of pore activity over time</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">pore_sequencing <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> pore_activity <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb7-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(Channel.State <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"strand"</span>)</span>
+<span id="cb7-3"></span>
+<span id="cb7-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Fit exponential decay</span></span>
+<span id="cb7-5">start_vals <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">a =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(pore_sequencing<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Percent), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">b =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.01</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">c =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(pore_sequencing<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Percent))</span>
+<span id="cb7-6">model <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nls</span>(Percent <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> a <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">exp</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>b <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> Experiment.Time..minutes.) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> c,</span>
+<span id="cb7-7">             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> pore_sequencing, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">start =</span> start_vals)</span>
+<span id="cb7-8"></span>
+<span id="cb7-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#summary(model)</span></span>
+<span id="cb7-10"></span>
+<span id="cb7-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Predict and plot</span></span>
+<span id="cb7-12">pore_sequencing<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>fit <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">predict</span>(model)</span>
+<span id="cb7-13"></span>
+<span id="cb7-14"></span>
+<span id="cb7-15">pore_sequencing <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb7-16">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(., <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> Experiment.Time..minutes., <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> Percent)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb7-17">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-18">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> fit), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"red"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_14_Flongle_stats_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Best fit line for percent of pores that are actively sequencing as a function of time:"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Best fit line for percent of pores that are actively sequencing as a function of time: </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Percent = "</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coef</span>(model)[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"a"</span>], <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"* exp(-"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coef</span>(model)[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"b"</span>], <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"* [minutes]) +"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coef</span>(model)[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"c"</span>], <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Percent =  15.377 * exp(- 0.004 * [minutes]) + 1.503</code></pre>
+</div>
+</div>
+<p>The dramatic, periodic drops in sequencing represents the pore scans, which were set to occur every 1.5hr.</p>
+<p>Now I want to find the sequencing output (in b or Mb) as a function of time</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">throughput <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./data/2025_08_12_Flongle_Group1_Library1/throughput_AYW935_f9a34344_e98d3daf(in).csv"</span>)</span>
+<span id="cb15-2"></span>
+<span id="cb15-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Fit exponential decay</span></span>
+<span id="cb15-4">start_vals <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">a =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(throughput<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Basecalled.Bases), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">b =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.01</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">c =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(throughput<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Basecalled.Bases))</span>
+<span id="cb15-5">model2 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nls</span>(Basecalled.Bases <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> a <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">exp</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>b <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> Experiment.Time..minutes.) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> c,</span>
+<span id="cb15-6">             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> throughput, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">start =</span> start_vals)</span>
+<span id="cb15-7"></span>
+<span id="cb15-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#summary(model2)</span></span>
+<span id="cb15-9"></span>
+<span id="cb15-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Predict and plot</span></span>
+<span id="cb15-11">throughput<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>fit <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">predict</span>(model2)</span>
+<span id="cb15-12"></span>
+<span id="cb15-13">throughput <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb15-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(., <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> Experiment.Time..minutes., <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> Basecalled.Bases)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb15-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb15-16">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> fit), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"red"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_14_Flongle_stats_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Best fit line for percent of pores that are actively sequencing as a function of time:"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Best fit line for percent of pores that are actively sequencing as a function of time: </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Bases = "</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coef</span>(model2)[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"a"</span>], <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"* exp(-"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coef</span>(model2)[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"b"</span>], <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"* [minutes]) +"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coef</span>(model2)[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"c"</span>], <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Bases =  -120848296 * exp(- 0.002 * [minutes]) + 127537896</code></pre>
+</div>
+</div>
+</section>
+<section id="estimate-output-of-flow-cell" class="level2">
+<h2 class="anchored" data-anchor-id="estimate-output-of-flow-cell">Estimate output of flow cell</h2>
+<p>Now I want to use these to estimate MinION output based on a different starting number of pores.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that these estimates will be based on the assumption that MinION pores degrade at the same rate as these Flongle pores which, based on rather negative experiences posted to the Nanopor community, may not be the case. People have reported that their v10 Flongles degrade much more quickly than both older Flongle chemistry and Minion flow cells.</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Given</span></span>
+<span id="cb22-2"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## Starting number of pores</span></span>
+<span id="cb22-3">Pref <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">44</span></span>
+<span id="cb22-4"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## Cumulative output function</span></span>
+<span id="cb22-5">Cref <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(t) { <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">120848296</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">exp</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.002</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> t) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">127537896</span> }  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># bases</span></span>
+<span id="cb22-6"></span>
+<span id="cb22-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Prediction for a new run</span></span>
+<span id="cb22-8">predict_yield <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(P0, T_minutes) {</span>
+<span id="cb22-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Cref</span>(T_minutes) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> (P0 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> Pref)               <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># bases</span></span>
+<span id="cb22-10">}</span>
+<span id="cb22-11"></span>
+<span id="cb22-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Convenience: return Gb</span></span>
+<span id="cb22-13">predict_yield_Gb <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(P0, T_minutes) {</span>
+<span id="cb22-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">predict_yield</span>(P0, T_minutes) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1e9</span></span>
+<span id="cb22-15">}</span>
+<span id="cb22-16"></span>
+<span id="cb22-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Run a MinION flow cell with 1200 pores for 3 days (no washes)</span></span>
+<span id="cb22-18"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">predict_yield_Gb</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1200</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4320</span>)  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Gb</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.477723</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Run a MinION flow cell with 1200 pores for 3 days, with wash/reloads that recover/maintain half of pores each time</span></span>
+<span id="cb24-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">predict_yield_Gb</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1200</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1440</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">predict_yield_Gb</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">600</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1440</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">predict_yield_Gb</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">300</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1440</span>)   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Gb</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.763264</code></pre>
+</div>
+</div>
+<p>In the future, if I find that MinION pores decay at a different rate, I can use the below code to incorporate a different decay function :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Reference pore-decay (percent). Normalize inside the integral.</span></span>
+<span id="cb26-2">p_ref <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(t) { <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15.377</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">exp</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.004</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> t) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.503</span> }</span>
+<span id="cb26-3"></span>
+<span id="cb26-4">effective_pore_time <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(pfun, T_minutes) {</span>
+<span id="cb26-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">integrate</span>(<span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(s) <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pfun</span>(s) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pfun</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">lower =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">upper =</span> T_minutes)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>value</span>
+<span id="cb26-6">}</span>
+<span id="cb26-7"></span>
+<span id="cb26-8">predict_yield_with_decay <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(P0, T_minutes, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">p_new =</span> p_ref) {</span>
+<span id="cb26-9">  scale_base <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Cref</span>(T_minutes) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> (P0 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> Pref)</span>
+<span id="cb26-10">  ratio <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">effective_pore_time</span>(p_new, T_minutes) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">effective_pore_time</span>(p_ref, T_minutes)</span>
+<span id="cb26-11">  scale_base <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> ratio</span>
+<span id="cb26-12">}</span>
+<span id="cb26-13"></span>
+<span id="cb26-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Convenience: return Gb</span></span>
+<span id="cb26-15">predict_yield_with_decay_Gb <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(P0, T_minutes) {</span>
+<span id="cb26-16">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">predict_yield_with_decay</span>(P0, T_minutes) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1e9</span></span>
+<span id="cb26-17">}</span>
+<span id="cb26-18"></span>
+<span id="cb26-19"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">predict_yield_with_decay_Gb</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1200</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4320</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.477723</code></pre>
+</div>
+</div>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>While I doubt the MinION fow cells will degrade as quickly as the Flongles, the predicted output for a MinION flow cell (~3.5Gb) is far below what I had been previously estimating (30Gb). As such, <strong>I’m going to drop from multiplexing 4 samples per flow cell to 3 samples per flow cell</strong>, to try to get more coverage for each.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_14_Flongle_stats.html</guid>
+  <pubDate>Thu, 14 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Pore Check for all MinION Flow Cells</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_14_pore_check_minions.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Ran pore check on all MinION flow cells.</p>
+<p>As a reminder, MinION flow cells have a maximum of 2048 pores, and warranty guarantees 800 pores.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>SN</th>
+<th>Flow cell ID</th>
+<th>Num. pores</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>B024226778</td>
+<td>FBD08455</td>
+<td>1652</td>
+</tr>
+<tr class="even">
+<td>B024226909</td>
+<td>FBD36396</td>
+<td>1528</td>
+</tr>
+<tr class="odd">
+<td>B024226802</td>
+<td>FBD09922</td>
+<td>1428</td>
+</tr>
+<tr class="even">
+<td>B024226790</td>
+<td>FBD39370</td>
+<td>1482</td>
+</tr>
+<tr class="odd">
+<td>B024226535</td>
+<td>FBD42232</td>
+<td>1519</td>
+</tr>
+</tbody>
+</table>
+<p>Nice! All 5 MinION flow cells are well above warranty.</p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_14_pore_check_minions.html</guid>
+  <pubDate>Thu, 14 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Pore Check for all Flongle Flow Cells</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_13_flongle_G1L2.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>To compare the Library 1 and Library 2 prep protocols, and the modified protocol doesn’t affect sequencing success, running Group 1 Library 2 on a Flongle flow cell.</p>
+<p>Library 2 has an avg fragment length of 1700bp and a concentration of 16.5ng/uL.</p>
+<p>Flongle requires 5-10 fmol DNA in 5uL EB. For my fragment size, this corresponds to 10.5ng DNA for 10fmol. Will max out DNA. Library concentration is too high to accurately pipette the equivalent of 10ng. Instead, will make final library of 20fmol (21ng) of DNA in 10uL EB, and only use 5uL for Flongle loading.</p>
+<p>21ng of DNA from 16.5ng/uL -&gt; 21/16.5 -&gt; <strong>1.27uL Library 2</strong>. Add to (10uL - 1.27uL) = <strong>8.73uL EB</strong></p>
+<p>Followed <a href="./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-96-document-checklist-Flongle-en-NBE_9171_v114_revS_02Jul2025-29.pdf">Flongle flow cell loading protocol</a>.</p>
+<p><u>Flongle flow cell specs:</u><br>
+LOT: 33001524<br>
+SN: B028104122<br>
+ID: <strong>AYW685</strong><br>
+# pores on check: <strong>59 pores</strong><br>
+# pores after loading: <strong>43 pores</strong><br>
+</p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_13_flongle_G1L2.html</guid>
+  <pubDate>Wed, 13 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Pore Check for all Flongle Flow Cells</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_13_pore_check_flongles.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>After pulling the completed Flongle run of Group 1, Library 1, performed pore check on all remaining Flongle flow cells.</p>
+<p>As a reminder, pore check of the flow cell used for Group 1 Library 1 showed:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>SN</th>
+<th>Flow Cell ID</th>
+<th>Num. pores</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>B028104085</td>
+<td>AYW935</td>
+<td>59</td>
+</tr>
+</tbody>
+</table>
+<p>Checked all 11 remaining Flongle flow cells. As a reminder, &lt;50 pores would fall below warranty, and the maximum is 126pores.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>SN</th>
+<th>Flow Cell ID</th>
+<th>Num. pores</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>B028104112</td>
+<td>AXS867</td>
+<td><strong>37</strong></td>
+</tr>
+<tr class="even">
+<td>B028103996</td>
+<td>AXS408</td>
+<td><strong>40</strong></td>
+</tr>
+<tr class="odd">
+<td>B028103978</td>
+<td>AYL256</td>
+<td><strong>35</strong></td>
+</tr>
+<tr class="even">
+<td>B028103949</td>
+<td>AYL126</td>
+<td>80</td>
+</tr>
+<tr class="odd">
+<td>B028104129</td>
+<td>AYW871</td>
+<td>61</td>
+</tr>
+<tr class="even">
+<td>B028104068</td>
+<td>AYK267</td>
+<td>59</td>
+</tr>
+<tr class="odd">
+<td>B028103992</td>
+<td>AYK963</td>
+<td>89</td>
+</tr>
+<tr class="even">
+<td>B028104122</td>
+<td>AYW685</td>
+<td>59</td>
+</tr>
+<tr class="odd">
+<td>B028104029</td>
+<td>AYX067</td>
+<td>79</td>
+</tr>
+<tr class="even">
+<td>B028104142</td>
+<td>AYL029</td>
+<td><strong>44</strong></td>
+</tr>
+<tr class="odd">
+<td>B028104167</td>
+<td>AYL248</td>
+<td>60</td>
+</tr>
+</tbody>
+</table>
+<p>Wow, so 4/12 (or 1/3) of the Flongle flow cells we received are below warranty. Another 5, including the cell used for Group 1 Library 1, have pore counts <em>just</em> above the minimum.</p>
+<p>I contacted Nanopore Support to request replacements for the out-of-warranty cells on 08/13/2025, case number 01333308. <strong>Reorder number is RD060692.</strong></p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_13_pore_check_flongles.html</guid>
+  <pubDate>Wed, 13 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Flongle Run, Group 1 Library 1</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_12_flongle_G1L1.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I want to confirm successful library prep and compare the two “versions” of library prep for my Group 1 samples. To do this, I’ll first run a small portion of each library on Flongle flow cells.</p>
+<p>Flongles run for ~24 hrs, so doing just Library 1 today.</p>
+<p>Library 1 has a concentratio of 2.56 ng/uL, and an average fragment size of 1700bp (based on TapeStation). For Flongle, final library should be 5-10 fmol of DNA in 5uL EB. 5-10fmol is equivalent to 5.2ng-10.5ng of 1700bp DNA.</p>
+<p>For Library 1, prepped Flngle final library as follows:</p>
+<ul>
+<li><p>3uL Library 1</p></li>
+<li><p>2uL EB</p></li>
+</ul>
+<p>Final DNA quantity of 3uL*2.56ng/uL = 7.68ng DNA, or 7.33fmol.</p>
+<p><strong>Materials:</strong></p>
+<p><u>Flongle Sequencing Expansion:</u><br>
+REF: EXP-FSE002<br>
+LOT: FSE002.30.0005</p>
+<p><u>Flongle Adapter:</u><br>
+SN: A100007434</p>
+<p><u>Flongle Flow Cell:</u><br>
+LOT: 33001524<br>
+SN: B028104085<br>
+ID: AYW935</p>
+<p>Launched MinKnow software, inserted Flongle Adapter, and ran hardware check. Then inserted Flongle Flow Cell and ran pore check: <strong>59 pores</strong> (just above the warranty limit of 50 pores)</p>
+<p>Followed Oxford Nanopore Technologies Native Barcoding 96 Kit <a href="./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-96-document-checklist-Flongle-en-NBE_9171_v114_revS_02Jul2025-29.pdf">protocol for Flongle flow cell loading</a>.</p>
+<p>After loading library, flow cell only registered 44 pores :(</p>
+<p>Ran Flongle for 24 hrs.</p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_12_flongle_G1L1.html</guid>
+  <pubDate>Tue, 12 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Native Barcoding Library Prep - Group 1, Library 1 &amp; 2</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_11_library_prep_G1L1.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Performing library prep on extracted, cleaned, and QC’d DNA for Nanopore sequencing.</p>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<p>As a reminder, we’ll be multiplexing 4 samples per MinION flow cell (E. tourneforti genome is 600Mb, so 10X is 6Gb; anticipate 30Gb MinION output; so 5 samples max)</p>
+<p>I also want to group samples for multiplexing by DNA integrity and quantity, since the protocol includes sleecting a pooled library quantity based on average fragment lengths.</p>
+<p>Using the TapeStation peak fragment size as a proxy for average size (reasonable, due to normal distributions of fragment lengths), I selected 4 samples with ihghest fragment size for Group 1:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Catalog #</th>
+<th>peak bp</th>
+<th>tube label</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1606826</td>
+<td>1906</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>1740336</td>
+<td>1698</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>1740363</td>
+<td>1696</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>1740407</td>
+<td>1798</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>Following the Oxoford Nanopore Tecnologies Ligation Sequencing gDNA - Native Barcoding 96 V14 (SQK-NBD114.96) protocol (document version <a href="./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-24-document-checklist-MinION-en-NBE_9169_v114_revV_02Jul2025-39.pdf">NBE_9171_v114_revS_02Jul2025</a>).</p>
+<p>Using Short Fragment Buffer (SFB), not LFB. I don’t have any LoBind PCR tubes, so will be using 0.2mL 8X strip tubes for steps before barcodes are pooled.</p>
+</section>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<p><u><strong>Native Barcoding 96 Kit</strong></u><br>
+<strong>REF:</strong> SQK-NBD114.96<br>
+<strong>LOT:</strong> NBD1496.40.0007</p>
+<p><u><strong>Flongle Expansion Kit</strong></u><br>
+<strong>REF:</strong> EXP-FSE002<br>
+<strong>LOT:</strong> FSE002.30.0005</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Catalog #</th>
+<th>Extraction (ng/uL)</th>
+<th>uL for 400ng</th>
+<th>Barcode #</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1606826</td>
+<td>408</td>
+<td>1 uL</td>
+<td>01</td>
+</tr>
+<tr class="even">
+<td>1740336</td>
+<td>368</td>
+<td>1.1 uL</td>
+<td>02</td>
+</tr>
+<tr class="odd">
+<td>1740363</td>
+<td>343</td>
+<td>1.2 uL</td>
+<td>03</td>
+</tr>
+<tr class="even">
+<td>1740407</td>
+<td>260</td>
+<td>1.5 uL</td>
+<td>04</td>
+</tr>
+</tbody>
+</table>
+<p>Before beginning library prep:</p>
+<ul>
+<li><p>ensure there is an available thermal cycler with the following program: 20C for 5min, 65C for 5min</p></li>
+<li><p>Pre-heat an incubator plate to 37C</p></li>
+</ul>
+<p><u>Qubit 1 (Barcodes ligated, in 35uL)</u><br>
+Standard 1: 39.06<br>
+Standard 2: 16073.91<br>
+Library 1: <strong>1.62 ng/uL</strong></p>
+<p><u>Qubit 2 (Adapters ligated, in 15uL)</u><br>
+Standard 1: 30.11<br>
+Standard 2: 14133.11<br>
+Library 1: <strong>2.56 ng/uL</strong></p>
+<p>Library has very low concentration. This is likely because, while I started with 400ng input DNA from each sample, only a fraction of this is carried through from end-prep to barcode ligation. At Step 7 of Barcode Ligation, for each sample, 0.75uL of end-prepped DNA is used, added to 3uL of nuclease-free H2O. The protocol is likely optimized for multiplexing a large number of samples at once, but I’m just using 4.</p>
+<p>I think I should be able to, instead, carry-over a full 3.75uL of end-prepped DNA at this step, and exclude additional nuclease-free water. I’m going to try another round of library prep using the same samples, making this change to retain more DNA.</p>
+<p>I’ll call the first round of these samples “Library 1”, and the second round with more DNA carried over “Library 2.”</p>
+</section>
+<section id="library-2" class="level2">
+<h2 class="anchored" data-anchor-id="library-2">Library 2</h2>
+<p>Same samples (“Group 1”), but need to assign new unique barcodes.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Catalog #</th>
+<th>Extraction (ng/uL)</th>
+<th>uL for 400ng</th>
+<th>Barcode #</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1606826</td>
+<td>408</td>
+<td>1 uL</td>
+<td>05</td>
+</tr>
+<tr class="even">
+<td>1740336</td>
+<td>368</td>
+<td>1.1 uL</td>
+<td>06</td>
+</tr>
+<tr class="odd">
+<td>1740363</td>
+<td>343</td>
+<td>1.2 uL</td>
+<td>07</td>
+</tr>
+<tr class="even">
+<td>1740407</td>
+<td>260</td>
+<td>1.5 uL</td>
+<td>08</td>
+</tr>
+</tbody>
+</table>
+<p>During Step 7 of Barcode Ligation, excluded nuclease-free H2o and used 3.75uL end-prepped DNA (instead of the recommended 0.75uL).</p>
+<p><u>Qubit 1 (Barcodes ligated, in 35uL)</u><br>
+Standard 1: 33.38<br>
+Standard 2: 13411.37<br>
+Library 2: <strong>13.7 ng/uL</strong></p>
+<p><u>Qubit 2 (Adapters ligated, in 15uL)</u><br>
+Standard 1: 30.11<br>
+Standard 2: 14133.11<br>
+Library 2: <strong>16.5 ng/uL</strong></p>
+<p>Yay! Library 2 has much more DNA in the final library. I’ll need to run both Library 1 and Library 2 on Flongles to ensure the higher DNA retention doesn’t also carry over inhibiting reagents from end-prep that might affect sequencing.</p>
+<p>Took both Library 1 and Library 2 thorugh Step 18 of Adapter Ligation &amp; Clean Up. Did not dilute to Final Library, since I’ll need different concentrations for Flongle and MinION flow cells.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_11_library_prep_G1L1.html</guid>
+  <pubDate>Mon, 11 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Transfer DNA Extractions for Storage</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_11_transfer_DNA.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Transferred all bead-cleaned DNA extractions from their 0.2mL 8X strip tubes to individual 0.2mL tubes.</p>
+<p>As I begin library prep, I’ll need to pull and thaw small sets of specific samples. To avoid constant freeze/thaw of all samples, I need them in individual, separate tubes, not the strip tubes they’re currently in.</p>
+<p>Pulled all DNA extractions from the freezer, thawed in fridge for ~20min, then spun down and placed on ice. Labelled new tubes on cap and sides and arranged in rack in same positions/orientation as current sample layout. Didn’t change the “location” of any samples. Transferred full volume of each sample from old strip tube spot to new labelled tube.</p>
+<p>Placed all samples back in the -20C freezer once finished.</p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_11_transfer_DNA.html</guid>
+  <pubDate>Mon, 11 Aug 2025 04:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Bead Cleanup of all Samples</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -2549,2340 +3865,6 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
   <category>SIFP_2025</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_11_extractions.html</guid>
   <pubDate>Fri, 11 Jul 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Subsampling and Digestions</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_09_subampling_extractions.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Save annotated copy of E. tourneforti sample sheet to load to Google sheets. This is where I will keep track of what samples I am using, and their progress (subsampled, extracted, etc.)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Load</span></span>
-<span id="cb1-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(dplyr)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'dplyr' was built under R version 4.2.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">Eunicea <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"./data/Eunicea_nmnhsearch-20250707190456.csv"</span>)</span>
-<span id="cb6-2"></span>
-<span id="cb6-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># format data</span></span>
-<span id="cb6-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Extract year from the inconsistently formatted "Date.Collected" column</span></span>
-<span id="cb6-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># This command should just extract the first 4-digit number in each entry</span></span>
-<span id="cb6-6">Eunicea<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Year.Collected <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">as.numeric</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sub</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">".*(</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">d{4}).*"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">1"</span>, Eunicea<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Date.Collected))</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: NAs introduced by coercion</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Reduce scientifc names to just species names</span></span>
-<span id="cb8-2">cleaned_Eunicea <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">gsub</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">s*</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">([^</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">)]+</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">)"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">""</span>, Eunicea<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Scientific.Name)</span>
-<span id="cb8-3">Eunicea<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Species.Clean <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sub</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"^((</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">S+)</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">s+(</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">S+)).*$"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">1"</span>, cleaned_Eunicea)</span>
-<span id="cb8-4"></span>
-<span id="cb8-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Grab just E. tourneforti</span></span>
-<span id="cb8-6">E_tourneforti <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> Eunicea[Eunicea<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Species.Clean <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Eunicea tourneforti"</span>,]</span>
-<span id="cb8-7"></span>
-<span id="cb8-8"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">write.csv</span>(E_tourneforti, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"./output/2025_07_09_subsampling_extractions/E_tourneforti_specimens.csv"</span>)</span></code></pre></div>
-</div>
-<p>Sheet uploaded to a Google Sheets document <a href="https://docs.google.com/spreadsheets/d/1zDMy7AOCM8Ug85q4vr9CoMDxfF-zDJk1DnaxakSt1Hg/edit?usp=sharing">here</a>.</p>
-<section id="specimens" class="level3">
-<h3 class="anchored" data-anchor-id="specimens"><strong>Specimens:</strong></h3>
-<p>Chose the “time points” of specimen collection dates based on availability and collection location. Since both old (&gt;100 yo) and modern (&lt;25 yo) specimens are limited, will be sampling all of those available (~10 specimens each). There is a high number of specimens collected in the 1960s and 1970s (50-60 yo), and these specimens are quite large, providing abundant material, so this will be my “midpoint”. Since both the oldest and most recent collections were mostly performed in the Florida/Bahamas region of the Caribbean (see <a href="../../../posts/projects/SIFP_2025/2025_07_08_specimen_selection2.html">last post</a> for geographic distribution details), I will also endeavor to select 1960s-1970s specimens collected from the same region.</p>
-<p>Selected ~10 specimens from each rough time period of collection</p>
-<p><u><strong>1880s-1910s:</strong></u><strong><br>
-</strong>USNM 50368<br>
-USNM 1207569<br>
-<strong>USNM 14366<br>
-USNM 14366</strong><br>
-USNM 14399<br>
-USNM 19054<br>
-USNM 42137<br>
-USNM 52026<br>
-USNM 1180630<br>
-USNM 50603<br>
-USNM 52295</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>There are two collections with the same catalog number, USNM 14366, and this duplication exists in the inventory database as well…</p>
-<p>After pulling the specimens, there’s only one bag labelled USNM 14366.</p>
-</div>
-</div>
-<p><u><strong>1960s - 1970s:</strong></u><strong><br>
-</strong>USNM 51727<br>
-USNM 51729<br>
-USNM 51857<br>
-USNM 51858<br>
-USNM 51859<br>
-USNM 51860<br>
-USNM 51861<br>
-USNM 51892<br>
-</p>
-<p><u><strong>2000s - 2010s:</strong></u><strong><br>
-</strong>USNM 100609<br>
-USNM 100610<br>
-USNM 1007393<br>
-USNM 1018355<br>
-USNM 1606824<br>
-USNM 1606826<br>
-USNM 1740336<br>
-USNM 1740363<br>
-USNM 1740390<br>
-USNM 1740407</p>
-</section>
-<section id="subsampling" class="level3">
-<h3 class="anchored" data-anchor-id="subsampling">Subsampling</h3>
-<p>Subsampled using protocol described in <a href="../../../posts/projects/SIFP_2025/2025_07_08_specimen_selection2.html">July 8, 2025 post</a>.</p>
-<p>Notes:</p>
-<ul>
-<li><p>Couldn’t find two of the old specimens (noted below). Emailed Andrea their catalog numbers.</p></li>
-<li><p>Found 2 <em>E. tayrona</em> specimens that were misplaced in the <em>E. tourneforti</em> drawers while pulling specimens. I replaced them in the <em>E. tayrona</em> drawer. USNM 101774 was found in R19, C334, D11, and USNM 1018426 in R19, C334, D05. both were moved to <em>E. tayrona</em> drawer, R19, C334, D05.</p></li>
-<li><p>USNM 14366 has two entries in the inventory database, but only one bag of specimens in the collection</p></li>
-<li><p>USNM 14366 and USNM 14399 both have multiple individuals in the single specimen bag. In neither case were individuals separately labelled, so I just subsampled one of those at the top of the bag.</p></li>
-</ul>
-</section>
-<section id="extractions" class="level3">
-<h3 class="anchored" data-anchor-id="extractions">Extractions</h3>
-<p>Began digestions. Digestions unfortunately split over two days because I couldn’t access LAB after I finished the last of the subsampling.</p>
-<p>Extractions performed with Qiagen DNEasy Kit. Protocol slightly modified for use with archival dried coral specimens.</p>
-<p><u><strong>Digestion Protocol:</strong></u></p>
-<ol type="1">
-<li><p>Begin with small, cut/crushed quantity of dried tissue in a 1.5mL snap-cap tube.</p></li>
-<li><p>Add 180uL Buffer ATL and <strong>40uL proteinase K*.</strong> Mix by vortexing and incubate at for <strong>~48hr*</strong> on a heated shaker, set to 56C and 80 RPM.</p>
-<p><strong>* indicates modification to standard protocol</strong></p></li>
-</ol>
-<p>First round of digestions began incubating 7/9/2025 at 5:00pm:</p>
-<ul>
-<li>USNM 14366, USNM 14366, USNM 14399, USNM 19054, USNM 42137, USNM 52026, USNM 1180630, USNM 52295, USNM 51728, USNM 51730, USNM 51732, USNM 51892, USNM 100609, USNM 100610, USNM 1007393, USNM 1018355, USNM 1606824, USNM 1606826, USNM 1740336, USNM 1740363, USNM 1740390, USNM 1740407</li>
-</ul>
-<p>Second round of digestions began incubating 7/10/2025 at 10:30am:</p>
-<ul>
-<li>USNM 50603, USNM 50638, USNM 51727, USNM 51729, USNM 51857, USNM 51858, USNM 51859, USNM 51860, USNM 51861</li>
-</ul>
-<table class="table">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><strong>Country</strong></td>
-<td><strong>Province.State</strong></td>
-<td><strong>Year.Collected</strong></td>
-<td><strong>Catalog.Number</strong></td>
-<td><strong>Date.Subsampled</strong></td>
-<td><strong>Date.Digested</strong></td>
-</tr>
-<tr class="even">
-<td>Netherlands Antilles</td>
-<td></td>
-<td>1880</td>
-<td>USNM 50368</td>
-<td>July 9, 2025</td>
-<td>July 10, 1015</td>
-</tr>
-<tr class="odd">
-<td>Bahamas</td>
-<td></td>
-<td>1886</td>
-<td>USNM 1207569</td>
-<td>* could not find in collection</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Bahamas</td>
-<td></td>
-<td>1886</td>
-<td>USNM 14366</td>
-<td>July 9, 2025</td>
-<td>July 9, 2025</td>
-</tr>
-<tr class="odd">
-<td>Bahamas</td>
-<td></td>
-<td>1886</td>
-<td>USNM 14366</td>
-<td>July 9, 2025</td>
-<td>July 9, 2025</td>
-</tr>
-<tr class="even">
-<td>Bahamas</td>
-<td></td>
-<td>1886</td>
-<td>USNM 14399</td>
-<td>July 9, 2025</td>
-<td>July 9, 2025</td>
-</tr>
-<tr class="odd">
-<td>Belize</td>
-<td></td>
-<td>1898</td>
-<td>USNM 19054</td>
-<td>July 9, 2025</td>
-<td>July 9, 2025</td>
-</tr>
-<tr class="even">
-<td>Puerto Rico</td>
-<td></td>
-<td>1898</td>
-<td>USNM 42137</td>
-<td>July 9, 2025</td>
-<td>July 9, 2025</td>
-</tr>
-<tr class="odd">
-<td>Belize</td>
-<td></td>
-<td>1898</td>
-<td>USNM 52026</td>
-<td>* could not find in collection</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Bahamas</td>
-<td></td>
-<td>1912</td>
-<td>USNM 1180630</td>
-<td>July 9, 2025</td>
-<td>July 9, 2025</td>
-</tr>
-<tr class="odd">
-<td>United States</td>
-<td>Florida</td>
-<td>1912</td>
-<td>USNM 50603</td>
-<td>July 9, 2025</td>
-<td>July 10, 1015</td>
-</tr>
-<tr class="even">
-<td>Bahamas</td>
-<td></td>
-<td>1912</td>
-<td>USNM 52295</td>
-<td>July 9, 2025</td>
-<td>July 9, 2025</td>
-</tr>
-<tr class="odd">
-<td>United States</td>
-<td>Florida</td>
-<td>1960</td>
-<td>USNM 51727</td>
-<td>July 9, 2025</td>
-<td>July 10, 1015</td>
-</tr>
-<tr class="even">
-<td>United States</td>
-<td>Florida</td>
-<td>1960</td>
-<td>USNM 51728</td>
-<td>July 8, 2025</td>
-<td>July 9, 2025</td>
-</tr>
-<tr class="odd">
-<td>United States</td>
-<td>Florida</td>
-<td>1960</td>
-<td>USNM 51729</td>
-<td>July 9, 2025</td>
-<td>July 10, 1015</td>
-</tr>
-<tr class="even">
-<td>Bermuda</td>
-<td></td>
-<td>1960</td>
-<td>USNM 51730</td>
-<td>July 8, 2025</td>
-<td>July 9, 2025</td>
-</tr>
-<tr class="odd">
-<td>Bermuda</td>
-<td></td>
-<td>1960</td>
-<td>USNM 51732</td>
-<td>July 8, 2025</td>
-<td>July 9, 2025</td>
-</tr>
-<tr class="even">
-<td>United States</td>
-<td>Florida</td>
-<td>1960</td>
-<td>USNM 51857</td>
-<td>July 9, 2025</td>
-<td>July 10, 1015</td>
-</tr>
-<tr class="odd">
-<td>United States</td>
-<td>Florida</td>
-<td>1960</td>
-<td>USNM 51858</td>
-<td>July 9, 2025</td>
-<td>July 10, 1015</td>
-</tr>
-<tr class="even">
-<td>United States</td>
-<td>Florida</td>
-<td>1960</td>
-<td>USNM 51859</td>
-<td>July 9, 2025</td>
-<td>July 10, 1015</td>
-</tr>
-<tr class="odd">
-<td>United States</td>
-<td>Florida</td>
-<td>1960</td>
-<td>USNM 51860</td>
-<td>July 9, 2025</td>
-<td>July 10, 1015</td>
-</tr>
-<tr class="even">
-<td>United States</td>
-<td>Florida</td>
-<td>1960</td>
-<td>USNM 51861</td>
-<td>July 9, 2025</td>
-<td>July 10, 1015</td>
-</tr>
-<tr class="odd">
-<td>United States</td>
-<td>Florida</td>
-<td>1960</td>
-<td>USNM 51892</td>
-<td>July 9, 2025</td>
-<td>July 9, 2025</td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td>2000</td>
-<td>USNM 100609</td>
-<td>July 9, 2025</td>
-<td>July 9, 2025</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td>2000</td>
-<td>USNM 100610</td>
-<td>July 9, 2025</td>
-<td>July 9, 2025</td>
-</tr>
-<tr class="even">
-<td>Bahamas</td>
-<td></td>
-<td>2000</td>
-<td>USNM 1007393</td>
-<td>July 9, 2025</td>
-<td>July 9, 2025</td>
-</tr>
-<tr class="odd">
-<td>Trinidad and Tobago</td>
-<td></td>
-<td>2002</td>
-<td>USNM 1018355</td>
-<td>July 9, 2025</td>
-<td>July 9, 2025</td>
-</tr>
-<tr class="even">
-<td>United States</td>
-<td>Florida</td>
-<td>2019</td>
-<td>USNM 1606824</td>
-<td>July 9, 2025</td>
-<td>July 9, 2025</td>
-</tr>
-<tr class="odd">
-<td>United States</td>
-<td>Florida</td>
-<td>2019</td>
-<td>USNM 1606826</td>
-<td>July 9, 2025</td>
-<td>July 9, 2025</td>
-</tr>
-<tr class="even">
-<td>United States</td>
-<td>Florida</td>
-<td>2019</td>
-<td>USNM 1740336</td>
-<td>July 9, 2025</td>
-<td>July 9, 2025</td>
-</tr>
-<tr class="odd">
-<td>United States</td>
-<td>Florida</td>
-<td>2019</td>
-<td>USNM 1740363</td>
-<td>July 9, 2025</td>
-<td>July 9, 2025</td>
-</tr>
-<tr class="even">
-<td>United States</td>
-<td>Florida</td>
-<td>2019</td>
-<td>USNM 1740390</td>
-<td>July 9, 2025</td>
-<td>July 9, 2025</td>
-</tr>
-<tr class="odd">
-<td>United States</td>
-<td>Florida</td>
-<td>2019</td>
-<td>USNM 1740407</td>
-<td>July 9, 2025</td>
-<td>July 9, 2025</td>
-</tr>
-</tbody>
-</table>
-
-
-</section>
-
- ]]></description>
-  <category>SIFP_2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_09_subampling_extractions.html</guid>
-  <pubDate>Wed, 09 Jul 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Checking E. tourneforti geographical distribution; Subsampling</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_08_specimen_selection2.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="e.-tourneforti-geographic-distribution" class="level3">
-<h3 class="anchored" data-anchor-id="e.-tourneforti-geographic-distribution">E. tourneforti geographic distribution</h3>
-<p>I want to get a sense of where the E.tourneforti specimens were collected, since we ideally want to be sequencing specimens from roughly the same location.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Load</span></span>
-<span id="cb1-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(dplyr)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(ggplot2)</span>
-<span id="cb5-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(tidygeocoder)</span>
-<span id="cb5-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(maps)</span>
-<span id="cb5-4"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(leaflet)</span>
-<span id="cb5-5"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(RColorBrewer)</span>
-<span id="cb5-6"></span>
-<span id="cb5-7">Eunicea <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"./data/Eunicea_nmnhsearch-20250707190456.csv"</span>)</span>
-<span id="cb5-8"></span>
-<span id="cb5-9"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># format data</span></span>
-<span id="cb5-10"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Extract year from the inconsistently formatted "Date.Collected" column</span></span>
-<span id="cb5-11"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># This command should just extract the first 4-digit number in each entry</span></span>
-<span id="cb5-12">Eunicea<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Year.Collected <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">as.numeric</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sub</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">".*(</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">d{4}).*"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">1"</span>, Eunicea<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Date.Collected))</span>
-<span id="cb5-13"></span>
-<span id="cb5-14"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Reduce scientifc names to just species names</span></span>
-<span id="cb5-15">cleaned_Eunicea <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">gsub</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">s*</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">([^</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">)]+</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">)"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">""</span>, Eunicea<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Scientific.Name)</span>
-<span id="cb5-16">Eunicea<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Species.Clean <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sub</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"^((</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">S+)</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">s+(</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">S+)).*$"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">1"</span>, cleaned_Eunicea)</span>
-<span id="cb5-17"></span>
-<span id="cb5-18"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Grab just E. tourneforti</span></span>
-<span id="cb5-19">E_tourneforti <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> Eunicea[Eunicea<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Species.Clean <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Eunicea tourneforti"</span>,]</span>
-<span id="cb5-20"></span>
-<span id="cb5-21"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Make a location variable which includes both country and state</span></span>
-<span id="cb5-22"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># If country was not listed, use the "Precise Locality" (E.g., Navassa Island, NW Point)</span></span>
-<span id="cb5-23">E_tourneforti<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Location <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ifelse</span>(</span>
-<span id="cb5-24">  E_tourneforti<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Country <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">!=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">""</span>,</span>
-<span id="cb5-25">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">paste0</span>(E_tourneforti<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Country, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">", "</span>, E_tourneforti<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Province.State ),</span>
-<span id="cb5-26">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">paste0</span>(E_tourneforti<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Precise.Locality)</span>
-<span id="cb5-27">)</span></code></pre></div>
-</div>
-<p>Plot geographic distribution of collections</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># From collection locations (e.g., "Bermuda"), get coordinates</span></span>
-<span id="cb6-2">E_tourneforti_coords <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> E_tourneforti <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb6-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geocode</span>(Location, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"osm"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">lat =</span> Location.Lat, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">long =</span> Location.Lon)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Passing 23 addresses to the Nominatim single address geocoder</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Query completed in: 24 seconds</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Need to manually set the coordinates for Navassa Island</span></span>
-<span id="cb9-2">E_tourneforti_coords<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Location.Lat[<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Navassa Island"</span>, E_tourneforti_coords<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Location)] <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">18.410281</span></span>
-<span id="cb9-3">E_tourneforti_coords<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Location.Lon[<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Navassa Island"</span>, E_tourneforti_coords<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Location)] <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">75.011887</span></span>
-<span id="cb9-4"></span>
-<span id="cb9-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Bin years by decade, for ease of mapping</span></span>
-<span id="cb9-6">E_tourneforti_coords<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Decade.Collected <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">floor</span>(E_tourneforti_coords<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Year.Collected <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span></span>
-<span id="cb9-7"></span>
-<span id="cb9-8"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Group collections by location and decade</span></span>
-<span id="cb9-9">Et_summary <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> E_tourneforti_coords <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb9-10">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">group_by</span>(Decade.Collected, Location, Location.Lat, Location.Lon) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb9-11">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">summarise</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">n =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">n</span>(), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">.groups =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"drop"</span>)</span></code></pre></div>
-</div>
-<p>Ggplot map</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">world_map <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">map_data</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"world"</span>)</span>
-<span id="cb10-2"></span>
-<span id="cb10-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb10-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_polygon</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">data =</span> world_map,</span>
-<span id="cb10-5">               <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> long, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> lat, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">group =</span> group),</span>
-<span id="cb10-6">               <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"gray95"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"gray80"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb10-7">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">data =</span> Et_summary,</span>
-<span id="cb10-8">             <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> Location.Lon, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> Location.Lat,</span>
-<span id="cb10-9">                 <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">size =</span> n,</span>
-<span id="cb10-10">                 <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">as.factor</span>(Decade.Collected)),</span>
-<span id="cb10-11">             <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">alpha =</span> .<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">9</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb10-12">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># geom_text(data = Et_summary,</span></span>
-<span id="cb10-13">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#           aes(x = Location.Lon, y = Location.Lat, label = Location),</span></span>
-<span id="cb10-14">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#           vjust = -2, size = 2) +</span></span>
-<span id="cb10-15">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">scale_size_continuous</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Sample count"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb10-16">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">scale_color_viridis_d</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Decade Collected"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb10-17">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">coord_fixed</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">xlim =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">90</span>, <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">58</span>), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">ylim =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">4</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">30</span>), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">ratio =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1.3</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb10-18">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb10-19">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Sample Collection Locations by Decade"</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 5 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_08_specimen_selection2_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>Also wanted to try out <code>leaflet</code>, which supports interactive maps</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Create a color palette for discrete years</span></span>
-<span id="cb12-2">year_levels <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sort</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">unique</span>(Et_summary<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Decade.Collected))</span>
-<span id="cb12-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#pal &lt;- colorFactor(rainbow(length(year_levels)), domain = year_levels)</span></span>
-<span id="cb12-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#pal &lt;- colorNumeric(palette = "YlGnBl", domain = year_levels)</span></span>
-<span id="cb12-5">pal <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">colorFactor</span>(</span>
-<span id="cb12-6">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#palette = c("steelblue3", "limegreen" , "gold"),</span></span>
-<span id="cb12-7">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">palette =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"purple3"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"red2"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"gold"</span>),</span>
-<span id="cb12-8">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">domain =</span> year_levels,</span>
-<span id="cb12-9">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">levels =</span> year_levels</span>
-<span id="cb12-10">)</span>
-<span id="cb12-11"></span>
-<span id="cb12-12"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Build the leaflet map</span></span>
-<span id="cb12-13"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">leaflet</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">data =</span> Et_summary) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb12-14">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">addTiles</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb12-15">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">setView</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">lng =</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">75</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">lat =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">20</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">zoom =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span>  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Center on Caribbean</span></span>
-<span id="cb12-16">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">addCircleMarkers</span>(</span>
-<span id="cb12-17">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">lng =</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span>Location.Lon,</span>
-<span id="cb12-18">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">lat =</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span>Location.Lat,</span>
-<span id="cb12-19">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">radius =</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sqrt</span>(n) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>,</span>
-<span id="cb12-20">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pal</span>(Decade.Collected),</span>
-<span id="cb12-21">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">stroke =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">FALSE</span>,</span>
-<span id="cb12-22">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">fillOpacity =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.8</span>,</span>
-<span id="cb12-23">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">label =</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">paste0</span>(Location, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&lt;br&gt;Year: "</span>, Decade.Collected, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&lt;br&gt;n = "</span>, n),</span>
-<span id="cb12-24">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">popup =</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">paste0</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&lt;b&gt;Location:&lt;/b&gt; "</span>, Location,</span>
-<span id="cb12-25">                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&lt;br&gt;&lt;b&gt;Year:&lt;/b&gt; "</span>, Decade.Collected,</span>
-<span id="cb12-26">                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&lt;br&gt;&lt;b&gt;Samples:&lt;/b&gt; "</span>, n)</span>
-<span id="cb12-27">  ) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb12-28">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">addLegend</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"bottomright"</span>,</span>
-<span id="cb12-29">            <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">pal =</span> pal,</span>
-<span id="cb12-30">            <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">values =</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span>Decade.Collected,</span>
-<span id="cb12-31">            <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Decade Collected"</span>,</span>
-<span id="cb12-32">            <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">opacity =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-dbb0efc68ac8318155b0" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-dbb0efc68ac8318155b0">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircleMarkers","args":[[24.7736546,12.1845,17.1204943,18.2247706,24.7736546,27.7567667,27.7567667,16.2528827,12.1845,27.7567667,24.7736546,32.3040273,18.1850507,20.6845957,17.250512,18.0814066,17.2234721,32.3040273,15.2572432,18.1850507,19.333333,12.1845,18.2247706,13.8250489,27.7567667,8.0018709,17.789187,17.1204943,19.0974031,18.1850507,17.1204943,32.3040273,4.099917,12.90447,27.7567667,4.099917,24.7736546,18.410281,18.410281,10.7466905,27.7567667,18.1850507,18.2247706,12.90447,27.7567667,8.0018709],[-78.00005470000001,-68.6607923,-88.68590279999999,-66.48582949999999,-78.00005470000001,-81.4639835,-81.4639835,-61.5686855,-68.6607923,-81.4639835,-78.00005470000001,-64.7563086,-77.39476929999999,-88.8755669,-62.6725973,-63.0467131,-61.9554608,-64.7563086,-86.0755145,-77.39476929999999,-96.666667,-68.6607923,-66.48582949999999,-60.975036,-81.4639835,-66.1109318,-64.7080574,-88.68590279999999,-70.30280260000001,-77.39476929999999,-88.68590279999999,-64.7563086,-72.90881330000001,-61.2765569,-81.4639835,-72.90881330000001,-78.00005470000001,-75.011887,-75.011887,-61.0840075,-81.4639835,-77.39476929999999,-66.48582949999999,-61.2765569,-81.4639835,-66.1109318],[6,3,4.242640687119286,3,4.242640687119286,3,3,3,3,5.196152422706632,3,4.242640687119286,5.196152422706632,3,3,3,3,10.39230484541326,3,5.196152422706632,3,3,4.242640687119286,3,10.81665382639197,3,4.242640687119286,4.242640687119286,4.242640687119286,4.242640687119286,3,4.242640687119286,3,3,5.196152422706632,4.242640687119286,3,3,3,3,7.348469228349534,7.937253933193772,6,3,4.242640687119286,3],null,null,{"interactive":true,"className":"","stroke":false,"color":["#7D26CD","#7D26CD","#A21CAA","#A21CAA","#BA1388","#BA1388","#CD0967","#DC0245","#DC0245","#DC0245","#E80020","#E80020","#E80020","#E80020","#E80020","#E80020","#F13400","#F13400","#F13400","#F13400","#F13400","#F13400","#F13400","#F13400","#F13400","#F13400","#F13400","#F76000","#F76000","#F76000","#FB8100","#FB8100","#FB8100","#FB8100","#FB8100","#FE9F00","#FFBB00","#FFBB00","#FFBB00","#FFBB00","#FFD700","#808080","#808080","#808080","#808080","#808080"],"weight":5,"opacity":0.5,"fill":true,"fillColor":["#7D26CD","#7D26CD","#A21CAA","#A21CAA","#BA1388","#BA1388","#CD0967","#DC0245","#DC0245","#DC0245","#E80020","#E80020","#E80020","#E80020","#E80020","#E80020","#F13400","#F13400","#F13400","#F13400","#F13400","#F13400","#F13400","#F13400","#F13400","#F13400","#F13400","#F76000","#F76000","#F76000","#FB8100","#FB8100","#FB8100","#FB8100","#FB8100","#FE9F00","#FFBB00","#FFBB00","#FFBB00","#FFBB00","#FFD700","#808080","#808080","#808080","#808080","#808080"],"fillOpacity":0.8},null,null,["<b>Location:<\/b> Bahamas, <br><b>Year:<\/b> 1880<br><b>Samples:<\/b> 4","<b>Location:<\/b> Netherlands Antilles, <br><b>Year:<\/b> 1880<br><b>Samples:<\/b> 1","<b>Location:<\/b> Belize, <br><b>Year:<\/b> 1890<br><b>Samples:<\/b> 2","<b>Location:<\/b> Puerto Rico, <br><b>Year:<\/b> 1890<br><b>Samples:<\/b> 1","<b>Location:<\/b> Bahamas, <br><b>Year:<\/b> 1910<br><b>Samples:<\/b> 2","<b>Location:<\/b> United States, Florida<br><b>Year:<\/b> 1910<br><b>Samples:<\/b> 1","<b>Location:<\/b> United States, Florida<br><b>Year:<\/b> 1920<br><b>Samples:<\/b> 1","<b>Location:<\/b> Guadeloupe, <br><b>Year:<\/b> 1940<br><b>Samples:<\/b> 1","<b>Location:<\/b> Netherlands Antilles, <br><b>Year:<\/b> 1940<br><b>Samples:<\/b> 1","<b>Location:<\/b> United States, Florida<br><b>Year:<\/b> 1940<br><b>Samples:<\/b> 3","<b>Location:<\/b> Bahamas, <br><b>Year:<\/b> 1950<br><b>Samples:<\/b> 1","<b>Location:<\/b> Bermuda, <br><b>Year:<\/b> 1950<br><b>Samples:<\/b> 2","<b>Location:<\/b> Jamaica, <br><b>Year:<\/b> 1950<br><b>Samples:<\/b> 3","<b>Location:<\/b> Mexico, Yucatan<br><b>Year:<\/b> 1950<br><b>Samples:<\/b> 1","<b>Location:<\/b> St. Kitts and Nevis, <br><b>Year:<\/b> 1950<br><b>Samples:<\/b> 1","<b>Location:<\/b> St. Martin, <br><b>Year:<\/b> 1950<br><b>Samples:<\/b> 1","<b>Location:<\/b> Antigua and Barbuda, <br><b>Year:<\/b> 1960<br><b>Samples:<\/b> 1","<b>Location:<\/b> Bermuda, <br><b>Year:<\/b> 1960<br><b>Samples:<\/b> 12","<b>Location:<\/b> Honduras, <br><b>Year:<\/b> 1960<br><b>Samples:<\/b> 1","<b>Location:<\/b> Jamaica, <br><b>Year:<\/b> 1960<br><b>Samples:<\/b> 3","<b>Location:<\/b> Mexico, Veracruz<br><b>Year:<\/b> 1960<br><b>Samples:<\/b> 1","<b>Location:<\/b> Netherlands Antilles, <br><b>Year:<\/b> 1960<br><b>Samples:<\/b> 1","<b>Location:<\/b> Puerto Rico, <br><b>Year:<\/b> 1960<br><b>Samples:<\/b> 2","<b>Location:<\/b> St. Lucia, <br><b>Year:<\/b> 1960<br><b>Samples:<\/b> 1","<b>Location:<\/b> United States, Florida<br><b>Year:<\/b> 1960<br><b>Samples:<\/b> 13","<b>Location:<\/b> Venezuela, <br><b>Year:<\/b> 1960<br><b>Samples:<\/b> 1","<b>Location:<\/b> Virgin Islands of the United States, <br><b>Year:<\/b> 1960<br><b>Samples:<\/b> 2","<b>Location:<\/b> Belize, <br><b>Year:<\/b> 1970<br><b>Samples:<\/b> 2","<b>Location:<\/b> Dominican Republic, <br><b>Year:<\/b> 1970<br><b>Samples:<\/b> 2","<b>Location:<\/b> Jamaica, <br><b>Year:<\/b> 1970<br><b>Samples:<\/b> 2","<b>Location:<\/b> Belize, <br><b>Year:<\/b> 1980<br><b>Samples:<\/b> 1","<b>Location:<\/b> Bermuda, <br><b>Year:<\/b> 1980<br><b>Samples:<\/b> 2","<b>Location:<\/b> Colombia, <br><b>Year:<\/b> 1980<br><b>Samples:<\/b> 1","<b>Location:<\/b> St. Vincent and the Grenadines, <br><b>Year:<\/b> 1980<br><b>Samples:<\/b> 1","<b>Location:<\/b> United States, Florida<br><b>Year:<\/b> 1980<br><b>Samples:<\/b> 3","<b>Location:<\/b> Colombia, <br><b>Year:<\/b> 1990<br><b>Samples:<\/b> 2","<b>Location:<\/b> Bahamas, <br><b>Year:<\/b> 2000<br><b>Samples:<\/b> 1","<b>Location:<\/b> Navassa Island, NW Point<br><b>Year:<\/b> 2000<br><b>Samples:<\/b> 1","<b>Location:<\/b> Navassa Island, North Shore<br><b>Year:<\/b> 2000<br><b>Samples:<\/b> 1","<b>Location:<\/b> Trinidad and Tobago, <br><b>Year:<\/b> 2000<br><b>Samples:<\/b> 1","<b>Location:<\/b> United States, Florida<br><b>Year:<\/b> 2010<br><b>Samples:<\/b> 6","<b>Location:<\/b> Jamaica, <br><b>Year:<\/b> NA<br><b>Samples:<\/b> 7","<b>Location:<\/b> Puerto Rico, <br><b>Year:<\/b> NA<br><b>Samples:<\/b> 4","<b>Location:<\/b> St. Vincent and the Grenadines, <br><b>Year:<\/b> NA<br><b>Samples:<\/b> 1","<b>Location:<\/b> United States, Florida<br><b>Year:<\/b> NA<br><b>Samples:<\/b> 2","<b>Location:<\/b> Venezuela, <br><b>Year:<\/b> NA<br><b>Samples:<\/b> 1"],null,["Bahamas, &lt;br&gt;Year: 1880&lt;br&gt;n = 4","Netherlands Antilles, &lt;br&gt;Year: 1880&lt;br&gt;n = 1","Belize, &lt;br&gt;Year: 1890&lt;br&gt;n = 2","Puerto Rico, &lt;br&gt;Year: 1890&lt;br&gt;n = 1","Bahamas, &lt;br&gt;Year: 1910&lt;br&gt;n = 2","United States, Florida&lt;br&gt;Year: 1910&lt;br&gt;n = 1","United States, Florida&lt;br&gt;Year: 1920&lt;br&gt;n = 1","Guadeloupe, &lt;br&gt;Year: 1940&lt;br&gt;n = 1","Netherlands Antilles, &lt;br&gt;Year: 1940&lt;br&gt;n = 1","United States, Florida&lt;br&gt;Year: 1940&lt;br&gt;n = 3","Bahamas, &lt;br&gt;Year: 1950&lt;br&gt;n = 1","Bermuda, &lt;br&gt;Year: 1950&lt;br&gt;n = 2","Jamaica, &lt;br&gt;Year: 1950&lt;br&gt;n = 3","Mexico, Yucatan&lt;br&gt;Year: 1950&lt;br&gt;n = 1","St. Kitts and Nevis, &lt;br&gt;Year: 1950&lt;br&gt;n = 1","St. Martin, &lt;br&gt;Year: 1950&lt;br&gt;n = 1","Antigua and Barbuda, &lt;br&gt;Year: 1960&lt;br&gt;n = 1","Bermuda, &lt;br&gt;Year: 1960&lt;br&gt;n = 12","Honduras, &lt;br&gt;Year: 1960&lt;br&gt;n = 1","Jamaica, &lt;br&gt;Year: 1960&lt;br&gt;n = 3","Mexico, Veracruz&lt;br&gt;Year: 1960&lt;br&gt;n = 1","Netherlands Antilles, &lt;br&gt;Year: 1960&lt;br&gt;n = 1","Puerto Rico, &lt;br&gt;Year: 1960&lt;br&gt;n = 2","St. Lucia, &lt;br&gt;Year: 1960&lt;br&gt;n = 1","United States, Florida&lt;br&gt;Year: 1960&lt;br&gt;n = 13","Venezuela, &lt;br&gt;Year: 1960&lt;br&gt;n = 1","Virgin Islands of the United States, &lt;br&gt;Year: 1960&lt;br&gt;n = 2","Belize, &lt;br&gt;Year: 1970&lt;br&gt;n = 2","Dominican Republic, &lt;br&gt;Year: 1970&lt;br&gt;n = 2","Jamaica, &lt;br&gt;Year: 1970&lt;br&gt;n = 2","Belize, &lt;br&gt;Year: 1980&lt;br&gt;n = 1","Bermuda, &lt;br&gt;Year: 1980&lt;br&gt;n = 2","Colombia, &lt;br&gt;Year: 1980&lt;br&gt;n = 1","St. Vincent and the Grenadines, &lt;br&gt;Year: 1980&lt;br&gt;n = 1","United States, Florida&lt;br&gt;Year: 1980&lt;br&gt;n = 3","Colombia, &lt;br&gt;Year: 1990&lt;br&gt;n = 2","Bahamas, &lt;br&gt;Year: 2000&lt;br&gt;n = 1","Navassa Island, NW Point&lt;br&gt;Year: 2000&lt;br&gt;n = 1","Navassa Island, North Shore&lt;br&gt;Year: 2000&lt;br&gt;n = 1","Trinidad and Tobago, &lt;br&gt;Year: 2000&lt;br&gt;n = 1","United States, Florida&lt;br&gt;Year: 2010&lt;br&gt;n = 6","Jamaica, &lt;br&gt;Year: NA&lt;br&gt;n = 7","Puerto Rico, &lt;br&gt;Year: NA&lt;br&gt;n = 4","St. Vincent and the Grenadines, &lt;br&gt;Year: NA&lt;br&gt;n = 1","United States, Florida&lt;br&gt;Year: NA&lt;br&gt;n = 2","Venezuela, &lt;br&gt;Year: NA&lt;br&gt;n = 1"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addLegend","args":[{"colors":["#7D26CD","#A21CAA","#BA1388","#CD0967","#DC0245","#E80020","#F13400","#F76000","#FB8100","#FE9F00","#FFBB00","#FFD700"],"labels":["1880","1890","1910","1920","1940","1950","1960","1970","1980","1990","2000","2010"],"na_color":"#808080","na_label":"NA","opacity":1,"position":"bottomright","type":"factor","title":"Decade Collected","extra":null,"layerId":null,"className":"info legend","group":null}]}],"setView":[[20,-75],5,[]],"limits":{"lat":[4.099917,32.3040273],"lng":[-96.666667,-60.975036]}},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-<p>All specimens were collected in the Caribbean. Both the oldest and most recent collections appear to have been performed around the Florida keys and Bahamas, so I’d like to prioritize subsampling mid-age (1960s-1970s) specimens that were also collected from that area.</p>
-</section>
-<section id="first-subsampling" class="level3">
-<h3 class="anchored" data-anchor-id="first-subsampling">First subsampling:</h3>
-<p>Cleaned benchtop and gloves with bleach. Cleaned tools with bleach wipe, then DI wipe, then 95% EtoH wipe between each sample. To subsample, cut a ~2mm thick round from one stalk of the specimen. I Since these three specimens were quite thick, this yielded a fair amount of tissue. May need to cut longer sections for thin specimens (including, most likely, the modern ones).</p>
-<p>Chose 3 large specimens from the 1960s as the first, since this decade has abundant and large collected specimens (just in case I took too much material while I’m still refamiliarizing myself).</p>
-<p><strong>Catalog numbers:</strong></p>
-<p>USNM 51732<br>
-USNM 51728<br>
-USNM 51730</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">subsampled <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"USNM 51732"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"USNM 51728"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"USNM 51730"</span>)</span>
-<span id="cb13-2">E_tourneforti <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb13-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">filter</span>(Catalog.Number <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%in%</span> subsampled) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb13-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(Catalog.Number, Species.Clean, Location, Year.Collected) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb13-5">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">print</span>()</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Catalog.Number       Species.Clean               Location Year.Collected
-1     USNM 51728 Eunicea tourneforti United States, Florida           1960
-2     USNM 51730 Eunicea tourneforti              Bermuda,            1960
-3     USNM 51732 Eunicea tourneforti              Bermuda,            1960</code></pre>
-</div>
-</div>
-
-
-</section>
-
- ]]></description>
-  <category>SIFP_2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_08_specimen_selection2.html</guid>
-  <pubDate>Tue, 08 Jul 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Inventory search for suitable species</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_07_specimen_selection.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>I need to finalize species selection. The criteria are:</p>
-<ul>
-<li>Octocoral species, since these have generally extracted better for Andrea than old stony corals</li>
-</ul>
-<!-- -->
-<ul>
-<li><p>Specimens available for a range of collection dates spanning ~100 years, including a modern collection (within the last ~20 years)</p></li>
-<li><p>A well-annotated genome is available for the species (or a very close relative)</p></li>
-</ul>
-<p>With these criteria in mind, Andrea suggested a few octocoral species that have high-quality genome annotations:</p>
-<ul>
-<li><p><em>Eunicea knighti</em>: <a href="https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_965233905.1/" class="uri">https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_965233905.1/</a></p></li>
-<li><p><em>Leptogorgia sarmentosa</em>: <a href="https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_964658295.1/" class="uri">https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_964658295.1/</a></p></li>
-<li><p><em>Gorgonia ventalina</em>: <a href="https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_964194065.1/" class="uri">https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_964194065.1/</a></p></li>
-</ul>
-<section id="inventory-search" class="level3">
-<h3 class="anchored" data-anchor-id="inventory-search">Inventory search</h3>
-<p>For <em>Eunicea</em> and <em>Leptogorgia</em>, the museum doesn’t have significant collection of the species with annotated genomes. However, they may have more abundant material from a close relative. To check this, I searched the <a href="https://collections.nmnh.si.edu/search/iz/">collections inventory</a> for the two genera, including a filter for only collections that were preserved and stored “Dry”, and downloaded the results as CSVs. I also did the same for <em>G. ventalina</em> to get a sense of how many specimens we have of this species across a range of collection dates.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Load</span></span>
-<span id="cb1-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(dplyr)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(ggplot2)</span>
-<span id="cb5-2">G_ventalina <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"./data/G_ventalina_nmnhsearch-20250707155748.csv"</span>)</span>
-<span id="cb5-3">Eunicea <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"./data/Eunicea_nmnhsearch-20250707190456.csv"</span>)</span>
-<span id="cb5-4">Leptogorgia <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"./data/Leptogorgia_nmnhsearch-20250707205311.csv"</span>)</span>
-<span id="cb5-5"></span>
-<span id="cb5-6"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># format data</span></span>
-<span id="cb5-7"></span>
-<span id="cb5-8"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Extract year from the inconsistently formatted "Date.Collected" column</span></span>
-<span id="cb5-9"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># This command should just extract the first 4-digit number in each entry</span></span>
-<span id="cb5-10">G_ventalina<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Year.Collected <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">as.numeric</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sub</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">".*(</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">d{4}).*"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">1"</span>, G_ventalina<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Date.Collected))</span>
-<span id="cb5-11">Eunicea<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Year.Collected <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">as.numeric</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sub</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">".*(</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">d{4}).*"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">1"</span>, Eunicea<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Date.Collected))</span>
-<span id="cb5-12">Leptogorgia<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Year.Collected <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">as.numeric</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sub</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">".*(</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">d{4}).*"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">1"</span>, Leptogorgia<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Date.Collected))</span>
-<span id="cb5-13"></span>
-<span id="cb5-14"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Reduce scientifc names to just species names</span></span>
-<span id="cb5-15">cleaned_Eunicea <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">gsub</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">s*</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">([^</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">)]+</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">)"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">""</span>, Eunicea<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Scientific.Name)</span>
-<span id="cb5-16">Eunicea<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Species.Clean <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sub</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"^((</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">S+)</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">s+(</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">S+)).*$"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">1"</span>, cleaned_Eunicea)</span>
-<span id="cb5-17"></span>
-<span id="cb5-18">cleaned_Leptogorgia <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">gsub</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">s*</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">([^</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">)]+</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">)"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">""</span>, Leptogorgia<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Scientific.Name)</span>
-<span id="cb5-19">Leptogorgia<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Species.Clean <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sub</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"^((</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">S+)</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">s+(</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">S+)).*$"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">1"</span>, cleaned_Leptogorgia)</span>
-<span id="cb5-20"></span>
-<span id="cb5-21"></span>
-<span id="cb5-22"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Check one of the year columns</span></span>
-<span id="cb5-23"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#head(G_ventalina %&gt;% select(Date.Collected, Year.Collected))</span></span></code></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(Eunicea, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> Year.Collected)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb6-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">binwidth =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">boundary =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1850</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"steelblue"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"black"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb6-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">xlab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Year Collected"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb6-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ylab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Number of Entries"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb6-5">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb6-6">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span>Species.Clean)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_07_specimen_selection_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(Leptogorgia, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> Year.Collected)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb7-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">binwidth =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">boundary =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1850</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"purple4"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"black"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb7-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">xlab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Year Collected"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb7-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ylab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Number of Entries"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb7-5">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb7-6">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span>Species.Clean)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_07_specimen_selection_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>Looks like the three species in the <em>Eunicea</em> and <em>Leptogorgia</em> genera with decent number of specimens are:</p>
-<ul>
-<li><p><em>E. flexuosa</em></p></li>
-<li><p><em>E. tourneforti</em></p></li>
-<li><p><em>L. alba</em></p></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(Eunicea[Eunicea<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Species.Clean <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Eunicea flexuosa"</span>,<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Eunicea tourneforti"</span>),], <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> Year.Collected)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb8-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">binwidth =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">boundary =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1850</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"steelblue"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"black"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb8-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">xlab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Year Collected"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb8-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ylab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Number of Entries"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb8-5">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb8-6">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span>Species.Clean)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_07_specimen_selection_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(Leptogorgia[Leptogorgia<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Species.Clean <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Leptogorgia alba"</span>,], <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> Year.Collected)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb9-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">binwidth =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">boundary =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1850</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"purple4"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"black"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb9-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">xlab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Year Collected"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb9-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ylab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Number of Entries"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb9-5">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_07_specimen_selection_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>Both of the <em>Eunicea</em> species have multiple specimens from the turn of the century (~1900) and from modern collections, so I’ll take a look at the corals themselves to try to get a sense of material quantity/quality. For the potentially promising <em>Leptogorgia</em> (<em>L. alba</em>), there’s only one specimen from before 1900, and none within the last 25 years, so we wouldn’t be able to cover multiple timepoints. <strong>I’m going to exclude <em>Leptogorgia spp</em>. from consideration.</strong></p>
-<p>Also check availability of <em>G. ventalina.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(G_ventalina, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> Year.Collected)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb10-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">binwidth =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">boundary =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1880</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"steelblue"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"black"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb10-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">xlab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Year Collected"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb10-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ylab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Number of Entries"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb10-5">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">scale_x_continuous</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">breaks =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1860</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2020</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">by =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">20</span>)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb10-6">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">scale_y_continuous</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">breaks =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">20</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">by =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb10-7">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_07_specimen_selection_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</section>
-<section id="observations-from-collections-search" class="level3">
-<h3 class="anchored" data-anchor-id="observations-from-collections-search">Observations from collections search:</h3>
-<p><strong>E. flexuosa</strong></p>
-<ul>
-<li>All dried specimens have retained natural color (rust-brown), confirming they were not bleached in the preservation process – this is ideal for us!</li>
-</ul>
-<!-- -->
-<ul>
-<li><p>Abundant material from late-1800s (~1885-1900) collections. 15-20 individuals, most specimens are quite large, ~1ft in diameter.</p></li>
-<li><p>Quite a bit of material from mid-1900s (1945-1959), with ~15 large individuals</p></li>
-<li><p>A <em>ton</em> of material from collections between 1960 and 1972, ~30 large specimens, some very large. This might be an ideal “middle” timepoint.</p></li>
-<li><p>The only “modern” collections I see are 6 specimens collected in in the last 25 years (2000, 2002, 2004, and 2019), and they’re all very small, just a couple inches in length and not fully branching. I’d have to be very careful and judicious when subsampling these.</p></li>
-</ul>
-<p><strong>E. tourneforti</strong></p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In the museum database, there are two different attributions used for <em>E. tourneforti</em>:</p>
-<ul>
-<li>Eunicea tourneforti atra Verrill, 1901</li>
-</ul>
-<!-- -->
-<ul>
-<li>Eunicea tourneforti tourneforti Milne Edwards &amp; Haime, 1857</li>
-</ul>
-<p>Is there a difference? Has the species been revised?</p>
-</div>
-</div>
-<ul>
-<li><p><em>E. tourneforti</em> may be a better Eunicea species to work with because it is more closely related to the species for which we have a high-quality genome, <em>E. knighti</em> (<span class="citation" data-cites="d17030173">Sarmiento et al. (2025)</span>)</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/Eunicea_tree.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Eunicea phylogeny (maximum likelihood, based on reduced representation sequencing) (Sarmiento et al.&nbsp;2025)</figcaption>
-</figure>
-</div></li>
-<li><p>The branches of <em>E. tournefortini</em> are much thicker than those of <em>E. flexuosa</em>, which may prove beneficial for successfully extracting DNA</p></li>
-<li><p>Several specimens (5-10) from the turn of the century, all of a good size (6-12 inches in length, branching)</p></li>
-<li><p>~30 specimens from 1960s and 1970s, all with plenty of material (~1ft in length, branching). As with <em>E. flexuosa</em>, this seems like an ideal “mid-age” timepoint.</p></li>
-<li><p>6 from early 2000s collections (2002, 2009). All are quite small, just a few inches in length and not very branched. Two, however, are quite thick, so contain more material.</p></li>
-<li><p>Another 6 from 2019 collection (thanks Prof McFadden!). As in others, these specimens are short (~3 inches) and unbranched, but much thicker than the <em>E. flexuosa</em> counterparts. One is actually a bit larger too, ~6 inches long and forked.</p></li>
-</ul>
-<p><strong>G. ventalina</strong></p>
-<ul>
-<li><p>Little material from turn-of the century. I saw 2 specimens from before 1900, and both were very small, maybe 2 inches in diameter – I would be really worried about destructively sampling these, expecially because the lacy growth form of <em>G. ventalina</em> means there’s less tissue by surface area, so I may need to take more. There were 3 specimens from early 1900s, and these were larger (6-12 inches in diameter). One, however, was almost white – a contrast to the dark purple color of the other specimens – which suggested to me it may have either been treated (i.e.&nbsp;bleached) or more degraded.</p></li>
-<li><p>As in the other species, plenty of specimens (30-40) and material (~1ft in diameter) from the 1960s and 70s.</p></li>
-<li><p>Very little modern material, I only saw 2-3 small specimens from the early 2000s.</p></li>
-</ul>
-</section>
-<section id="conclusions" class="level3">
-<h3 class="anchored" data-anchor-id="conclusions">Conclusions</h3>
-<p>We don’t have a sufficient range of collection dates of any <em>Leptogorgia</em> species, and both the very old and very recent specimens of <em>G. ventalina</em> are potentially too small for subsampling. This leaves one of the <em>Eunicea</em> species, using the <em>E. knighti</em> genome as reference. Both <em>E. flexuosa</em> and <em>E. tourneforti</em> have sufficient material from an appropriate range of collection dates. However, <em>E. tourneforti</em> is more closely related to our reference <em>E. knighti</em>; has more specimens and material available for the critical modern reference; and is thicker, potentially providing more tissue for extraction. Because of these considerations, <strong>I think <em>E. tourneforti</em> is the best choice!</strong></p>
-
-
-
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-d17030173" class="csl-entry">
-Sarmiento, Adriana, Iván Calixto-Botía, Tatiana Julio-Rodríguez, Andrea M. Quattrini, and Juan A. Sánchez. 2025. <span>“Uncovering the Evolutionary History in Lineage of Caribbean Octocorals: Phylogenomics Reveals Unrecognized Diversity in Eunicea.”</span> <em>Diversity</em> 17 (3). <a href="https://doi.org/10.3390/d17030173">https://doi.org/10.3390/d17030173</a>.
-</div>
-</div></section></div> ]]></description>
-  <category>SIFP_2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_07_specimen_selection.html</guid>
-  <pubDate>Mon, 07 Jul 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>SIFP purchasing list, notes</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_06_16_purchasing.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Compiled below is a breakdown of what ONT consumables need to be purchased for library prep and sequencing, including number and estimated cost. I’ve also included a list of required 3rd party reagents. Any that are not available at LAB will also need to be purchased.</p>
-<p>Since we’ve decided to use the MinION platform available at the Smithsonian, instead of finding a PromethION to use externally, I need to determine how many flow cells we’ll need to sequence N=15 samples (3 time points at n=5).</p>
-<p>Coral genome: 500 Mb<br>
-10X read depth: 5,000 Mb = 5 Gb<br>
-MinION output* : 30 Gb<br>
-<strong>Multiplexing max = 6 samples/flow cell</strong></p>
-<p>To err on the conservative side, let’s say 4 samples per flow cell. Then we’d <strong>need 4 flow cells to multiplex all samples</strong>. It would also be prudent to have an extra flow cell in case of issues (e.g.&nbsp;improper loading). We should also get some flongles<sup>+</sup> (basically cheap, low-output flow cells) for trial runs (e.g.&nbsp;to check successful library prep, to check endogenous DNA levels as a QC).</p>
-<p>*The theoretical maximum output of a MinION flow cell is 48Gb, but this seems unlikely given the reported experiences of colleagues. Will instead use the more conservative estimate of 30Gb.<br>
-<sup>+</sup>Note that an adapter is required to use Flongle Flow Cells. If the Smithsonian doesn’t already have one it would need to be purchased. The same link included below also provides the option to purchase an adapter and 12 flongle flow cells for ~$1600.</p>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td>Item</td>
-<td># rxns/unit</td>
-<td>Price ($/unit)</td>
-<td># units</td>
-<td>Total cost</td>
-</tr>
-<tr class="even">
-<td><a href="https://store.nanoporetech.com/us/native-barcoding-kit-96-v14.html">Native Barcoding Kit 96 V14</a><br>
-(protocol <a href="https://community.nanoporetech.com/docs/prepare/library_prep_protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-96">here</a>)</td>
-<td>96 barcodes<br>
-12 rxns</td>
-<td>900</td>
-<td>1</td>
-<td>900</td>
-</tr>
-<tr class="odd">
-<td><a href="https://store.nanoporetech.com/us/flow-cell-r10-4-1-2025.html">MinION Flow Cells (R10.4.1)</a></td>
-<td>1 cell</td>
-<td>800</td>
-<td>5</td>
-<td>4000</td>
-</tr>
-<tr class="even">
-<td><a href="https://store.nanoporetech.com/us/productDetail/?id=flow-cell-wash">Flow Cell Wash Kit</a></td>
-<td>6</td>
-<td>115</td>
-<td>1</td>
-<td>115</td>
-</tr>
-<tr class="odd">
-<td><a href="https://www.avantorsciences.com/us/en/product/39662889/flongle-adapter-and-flow-cells-for-miniontm-and-minion-mk1c-oxford-nanopore-technologies">Flongle Flow Cells (R10.4.1)</a>*</td>
-<td>6</td>
-<td>450</td>
-<td>1</td>
-<td>450</td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><strong>5,465</strong></td>
-</tr>
-</tbody>
-</table>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-6/23/25 Update
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Dan recommends purchasing additional Flow Cell Wash Kits, since you may use multiple reactions in a single sequencing run (i.e.&nbsp;you may want to wash the flow cell several times within a run).</p>
-<p>Additionally, the LAB doesn’t currently have a Flongle Adapter, so we’ll need to purchase one. We can purchase a bundle that includes the Adapter, reagents, and 12 Flongle Flow Cells for a reduced price.</p>
-<p>Updated breakdown:</p>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td>Item</td>
-<td># rxns/unit</td>
-<td>Price ($/unit)</td>
-<td># units</td>
-<td style="text-align: right;">Total cost</td>
-</tr>
-<tr class="even">
-<td><a href="https://store.nanoporetech.com/us/native-barcoding-kit-96-v14.html">Native Barcoding Kit 96 V14</a><br>
-(protocol <a href="https://community.nanoporetech.com/docs/prepare/library_prep_protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-96">here</a>)</td>
-<td>96 barcodes<br>
-12 rxns</td>
-<td>900</td>
-<td>1</td>
-<td style="text-align: right;">900</td>
-</tr>
-<tr class="odd">
-<td><a href="https://store.nanoporetech.com/us/flow-cell-r10-4-1-2025.html">MinION Flow Cells (R10.4.1)</a></td>
-<td>1 cell</td>
-<td>800</td>
-<td>5</td>
-<td style="text-align: right;">4000</td>
-</tr>
-<tr class="even">
-<td><a href="https://store.nanoporetech.com/us/productDetail/?id=flow-cell-wash">Flow Cell Wash Kit</a></td>
-<td>6</td>
-<td>115</td>
-<td><strong>3</strong></td>
-<td style="text-align: right;"><strong>345</strong></td>
-</tr>
-<tr class="odd">
-<td><a href="https://www.avantorsciences.com/us/en/product/39662889/flongle-adapter-and-flow-cells-for-miniontm-and-minion-mk1c-oxford-nanopore-technologies"><strong>Flongle Starter Pack</strong></a> <strong>(12 Flow Cells, Adapter, Sequencing Expansion)</strong></td>
-<td><strong>12 cells</strong></td>
-<td><strong>1664</strong></td>
-<td><strong>1</strong></td>
-<td style="text-align: right;"><strong>1664</strong></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td style="text-align: right;"><strong>6,909</strong></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<section id="required-third-party-consumables-and-equipment" class="level2">
-<h2 class="anchored" data-anchor-id="required-third-party-consumables-and-equipment">Required third-party consumables and equipment</h2>
-<section id="native-barcoding-kit-96-v14" class="level3">
-<h3 class="anchored" data-anchor-id="native-barcoding-kit-96-v14">Native barcoding Kit 96 V14</h3>
-<section id="consumables" class="level4">
-<h4 class="anchored" data-anchor-id="consumables">Consumables</h4>
-<ul>
-<li><p>NEB Blunt/TA Ligase Master Mix (M0367)</p></li>
-<li><p>NEBNext FFPE Repair Mix (M6630)</p></li>
-<li><p>NEBNext Ultra II End repair/dA-tailing Module (E7546)</p></li>
-<li><p>NEBNext Quick Ligation Module (E6056)</p></li>
-<li><p>2 ml Eppendorf DNA LoBind tubes</p></li>
-<li><p>1.5 ml Eppendorf DNA LoBind tubes</p></li>
-<li><p>0.2 ml thin-walled PCR tubes or PCR plate</p></li>
-<li><p>Nuclease-free water (e.g.&nbsp;ThermoFisher, cat # AM9937)</p></li>
-<li><p>Freshly prepared 80% ethanol in nuclease-free water</p></li>
-<li><p>Qubit™ Assay Tubes (ThermoFisher Q32856)</p></li>
-<li><p>Qubit dsDNA HS Assay Kit (ThermoFisher Q32851)</p></li>
-<li><p>(Optional) Bovine Serum Albumin (BSA) (50 mg/ml) (e.g Invitrogen™ UltraPure™ BSA 50 mg/ml, cat# AM2616)</p></li>
-</ul>
-</section>
-<section id="equipment" class="level4">
-<h4 class="anchored" data-anchor-id="equipment">Equipment</h4>
-<ul>
-<li><p>Hula mixer (gentle rotator mixer)</p></li>
-<li><p>Microfuge</p></li>
-<li><p>Magnetic rack</p></li>
-<li><p>Vortex mixer</p></li>
-<li><p>Thermal cycler</p></li>
-<li><p>Multichannel pipette</p></li>
-<li><p>P1000 pipette and tips</p></li>
-<li><p>P200 pipette and tips</p></li>
-<li><p>P100 pipette and tips</p></li>
-<li><p>P20 pipette and tips</p></li>
-<li><p>P10 pipette and tips</p></li>
-<li><p>P2 pipette and tips</p></li>
-<li><p>Ice bucket with ice</p></li>
-<li><p>Timer</p></li>
-<li><p>Qubit fluorometer (or equivalent for QC check)</p></li>
-</ul>
-
-
-</section>
-</section>
-</section>
-
- ]]></description>
-  <category>SIFP_2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_06_16_purchasing.html</guid>
-  <pubDate>Mon, 16 Jun 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>5/12 Meeting with OU Lab</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_05_12_meeting.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Attendees: “Bingham, Brittany L.” <a href="mailto:brittany.bingham@ou.edu" class="email">brittany.bingham@ou.edu</a>, “Hofman, Courtney A.” <a href="mailto:courtney.hofman@ou.edu" class="email">courtney.hofman@ou.edu</a>, Lilly Parker <a href="mailto:lilly.parker@gmail.com" class="email">lilly.parker@gmail.com</a>, “Helyar, Sara M.” <a href="mailto:sara.schaal@ou.edu" class="email">sara.schaal@ou.edu</a></p>
-<section id="background" class="level4">
-<h4 class="anchored" data-anchor-id="background"><strong>Background:</strong></h4>
-<p>Trying Nanopore sequencing for methylation mapping of ancient bear samples (5500 and 2500 years old, from Alaska, bone and teeth). Using a PromethION.</p>
-</section>
-<section id="notes" class="level4">
-<h4 class="anchored" data-anchor-id="notes">Notes:</h4>
-<ul>
-<li><p>Used <strong>Ligation kit</strong> instead of Rapid, because Rapid is optimized for longer reads, have not tried Rapid. Note that they did <em>not</em> multiplex, so they were using the Ligation kit <em>without</em> barcoding. They also had way less DNA than recommended for the kit (&lt;100ng compared to the recommended 1000ng).</p></li>
-<li><p>For them, adaptive sequencing was not helpful in identifying the short reads. However, they haven’t tried using it as an depletion step to exclude known contaminant sequences. Not entirely sure how software would respond to the short reads – would it try to reject them?</p></li>
-<li><p>Suggest standard <strong>genomic sequencing as a QC step</strong> to identify which samples have the most endogenous content. Could this be done in-house at the Smithsonian?</p></li>
-<li><p>In contrast to Dan’s experience (presumably with amplified DNA), they’ve noted their <strong>unamplified libraries are <em>not</em> stable.</strong> With the ligation kit, they’ve (anecdotally) had ~1hr to get a prepped library to sequencing. They would <strong>strongly recommend we stick with the available MinION</strong>, instead of looking for an outside PromethION, because of the risks of library degradation.</p></li>
-<li><p>They’ve noted that the <strong>flow cells can be finniky</strong> – differences in number of functioning pores, pores degrade quickly, etc. Wash step helps output but still issues.</p></li>
-<li><p>Been observing 5-8X coverage to call methlation with some confidence. They’ve also been working with modern comparisons, and the biggest difference in ancient vs modern samples for methylation calling was coverage. <strong>Haven’t noted any major differences introduced by fragmented input</strong>.</p></li>
-<li><p>Biggest issue is that their coverage is spotty – they get no data for some regions and lots of data for others – and that their genome isn’t fully annotated, so they have little context for some of their coverage.</p></li>
-<li><p>Size select: They haven’t been implementing for nanopore, but have for normal Illumina. Using Pippin, better with short reads than bead. Does Rapid Kit already incorporate a size selection?</p></li>
-<li><p>Sawyer 2024 compared EMseq and WGBS for ancient samples, and concluded that WGBS is better for ancient.</p></li>
-<li><p>Overall, <strong>the Nanopore sequencing works – they got data – but it just hasn’t been cost effective for them</strong>. They’re going to be trying WGBS soon. Noted that they also don’t know much about other attempts to use Nanopore for aDNA/hDNA methylation mapping, or about how it compares to WGBS/EMSeq. They’ve heard anecdotally about other labs considering, but there are just no published results (or negative results).</p></li>
-<li><p>Note: they were working with very little DNA (maybe 100ng), highly fragmented, and for a species with a large genome (~3Gb, close to a human).</p></li>
-<li><p>We may have more success/it may be more cost effective since we have newer/potentially better-preserved specimens, and the genomes are so much shorter. While they were unable to incorporate multiplexing, we likely can with success. Suggested <strong>running a single sample on its own flow cell</strong> first to get a sense of how much output/coverage we’ll get. Flongle for this?</p></li>
-</ul>
-</section>
-<section id="takeaways" class="level4">
-<h4 class="anchored" data-anchor-id="takeaways">Takeaways:</h4>
-<ul>
-<li><p>Should use Ligation Kit instead of Rapid. Rapid is optimized for longer reads. It also includes “transposase chemistry” which seems to perform some type of DNA shearing, which we don’t want with our fragmented reads.</p>
-<ul>
-<li><p>Native Barcoding Kit 24 is same price as Rapid Barcoding Kit 24</p></li>
-<li><p><a href="https://nanoporetech.com/support/library-prep/rapid-kits/can-i-use-small-dna-fragments-with-the-rapid-kits?filter=fragmented">ONT reccommends</a> Rapid Kit not be used with fragments &lt;500nt</p></li>
-</ul></li>
-<li><p>Stick with the MinION</p></li>
-<li><p>Having a well-annotated genome is important, so keep that in mind when selecting samples.</p></li>
-<li><p>Prioritize the QC steps to select samples with as much long-read, endogenous DNA as possible</p></li>
-</ul>
-<p>Paper on optemizing short-read sequencing using a MinION and Rapid Barcoding Kit: <a href="https://academic.oup.com/g3journal/article/8/5/1649/6028073" class="uri">https://academic.oup.com/g3journal/article/8/5/1649/6028073</a></p>
-<p>ONT Document on recommendations for sample quantity/quality: <a href="https://nanoporetech.com/document/input-dna-rna-qc" class="uri">https://nanoporetech.com/document/input-dna-rna-qc</a></p>
-
-
-</section>
-
- ]]></description>
-  <category>SIFP_2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_05_12_meeting.html</guid>
-  <pubDate>Mon, 12 May 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>5/2 Meeting with Andrea and Dan</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_05_02_Andrea_Dan_meeting.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Meeting with Andrea Quattrini, advisor for SIFP, and Dan MacGuigan, collaborator who has worked a lot with Nanopore sequencing (MinION and PromethION)</p>
-<section id="major-questions" class="level3">
-<h3 class="anchored" data-anchor-id="major-questions">Major Questions:</h3>
-<p><strong>Dealing w fungal contamination?</strong></p>
-<p><strong>Adaptive sampling?</strong></p>
-<p><strong>How many samples can we multiplex?</strong></p>
-<p><strong>Ligation vs rapid sequencing?</strong></p>
-</section>
-<section id="notes" class="level3">
-<h3 class="anchored" data-anchor-id="notes">Notes:</h3>
-<ul>
-<li><p>Smithsonian has a MinION!</p></li>
-<li><p>flow cells have pretty short shelf life, so even if other Smithsonian folks have leftover reagents, will likely need to order new</p></li>
-<li><p>will need a reference genome, both for downstream analyses and for adaptive sampling</p>
-<ul>
-<li><p>could also use a de novo genome from sequencing the recent samples</p></li>
-<li><p>with very fresh tissue, since the genome is p small, could get close to chromosome level genome assembly with nanopore. Andrea notes though that they’ve had a lot of trouble with assembling coral genomes, possibly due to weird genome architecture.</p></li>
-<li><p>So maybe genome assembly could be a bonus if the species we use ends up being straightforward to assemble, but for now we should try to find samples that at least fall in same genus as a published genome. Will be trickier if we’re using octocorals (for the better sequencing)</p></li>
-<li><p>Andrea will look at the collections and available octocoral genomes to see if there’s a good candidate.</p></li>
-</ul></li>
-<li><p>adaptive sampling could help reduce sequencing of contaminants, but might be less useful with degraded dna (short reads can end up being fully sequenced before pores have a chance to kick them out)</p></li>
-<li><p>Will ideally want 20x - 30x coverage for methylation calls. Can probably look into what coverage v depth we want for methylation calling</p></li>
-<li><p>MinION flowcell specs: <a href="https://store.nanoporetech.com/us/flow-cell-r10-4-1-2025.html" class="uri">https://store.nanoporetech.com/us/flow-cell-r10-4-1-2025.html</a></p></li>
-<li><p>could try a test run with minion flongle: <a href="https://nanoporetech.com/products/sequence/flongle" class="uri">https://nanoporetech.com/products/sequence/flongle</a></p></li>
-<li><p>look/ask around about accessing a promethion.</p></li>
-<li><p>With the wash kits you don’t actually run the while library each time, you split it up. SO using wash doesn’t require more library.</p></li>
-<li><p>Will need to check seq length/molarity (Smithsonian has the tools for this)</p></li>
-<li><p>Expect fragmentation to be an issue. In Andrea’s experience, coral hDNA fragments are max ~1000bp. Should look into how fragmentation could/will affect methylation calling. Could think about a size selection? Should ask folks in meeting next week about their experience</p></li>
-<li><p>make a list of things Andrea needs to buy.</p></li>
-</ul>
-</section>
-<section id="my-to-dos" class="level3">
-<h3 class="anchored" data-anchor-id="my-to-dos">My to-dos:</h3>
-<ol type="1">
-<li><p>Look more into what coverage v depth we want for methylation calling</p></li>
-<li><p>Look into how use of fragmented DNA can affect methylation calling, including any differences between MinION and PromethION</p></li>
-<li><p>Looks into accessing a PromethION sequencer at a nearby facility</p>
-<ul>
-<li><p>Johns Hopkins (Baltimore, MD) has a PromethION, but I can’t find additional details for requesting use right now, because the webpage for their <a href="http://grcf.med.jhu.edu/">Genetic Resources Core Facility</a> is down</p></li>
-<li><p>NIH Center for Cancer Research (Bethesda, MD) is close , but it looks like they only allow NIH employees/affiliates to use their <a href="https://ostr.ccr.cancer.gov/resources/provider_details/nih-intramural-sequencing-center-nisc">sequencing facilities</a>. I’d also guess they’re in a lot of tummult right now</p></li>
-<li><p>UW has a Nanopore Sequencing Core which uses a PromethION. Note sure if I can request a quote from them without sample details (e.g.&nbsp;extraction method, dna concentration), but they have a table of cost estimates <a href="https://millerlaboratory.com/uw-nsc.html">here</a>.<br>
-If I’m understanding the “services” correctly, it looks like it’s $1,210/flow cell and ~$40/sample for Barcoding with Rapid Prep libraries. I may also be cheaper if we want to multiplex 4 or more samples on a single flow cell.</p>
-<p>So say we wanted to do 12 samples, multiplex w 4 samples per flow cell: 1210*(3 flow cells) + 40*(12 samples) = $4,110</p>
-<p>Optimistically I think we could do it on just two PromethION flow cells: 1210*2+40*12 = $2,900</p></li>
-</ul></li>
-</ol>
-
-
-</section>
-
- ]]></description>
-  <category>SIFP_2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_05_02_Andrea_Dan_meeting.html</guid>
-  <pubDate>Fri, 02 May 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>4/10 Meeting with Andrea</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_04_10_Andrea_meeting.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Notes from 4/10 meeting with Andrea to discuss SIFP fellowship this summer</p>
-<p>Action Items:</p>
-<p><strong>Tenure dates.</strong> Proposal stated 07/01/2025 - 09/12/2025.</p>
-<ul>
-<li>This works for Andrea!</li>
-</ul>
-<p><strong>Budgeting and sourcing research funds.</strong> What is estimated cost of project (see <a href="../../../posts/projects/SIFP_2025/2025_04_09_SIFP_planning.html">here</a> for breakdown of sequencing costs) and how will Andrea and/or Steven be supporting with funding?</p>
-<ul>
-<li><p>Materials and reagents for extraction and QC are largely/fully available through the LAB communal resources, so library prep and sequencing are the only costs.</p></li>
-<li><p>200ng (minimum for Nanopore Rapid Barcoding Kit) is a totally feasible DNA quantity. Need to consider though that the DNA will be “dirty,” containing mold, symbiont, etc. Need to consider how to clean up and how much total DNA we need to get 200ng of <em>coral</em> DNA.</p></li>
-<li><p>LAB doesn’t seem to have a nanopore sequencing platform, so we may need to send samples out for sequencing. Need to look into how cost will change. Can still be kept low with multiplexing though.</p></li>
-<li><p>MinION vs.&nbsp;PromethION?</p></li>
-<li><p>Andrea is working with a NOAA scientist, Dan, who is experienced with nanopore sequencing and interested in using it more. Andrea will set up a meeting w him to discuss sequencing options.</p></li>
-<li><p>Andrea can fully support with research funding, and will thus be senior author on resultant papers (notify Steven)</p></li>
-</ul>
-<p><strong>How/when to begin sourcing specimens?</strong> Does Andrea have an inventory database of some kind so I can begin looking for suitable species and collections dates?</p>
-<ul>
-<li><p>Focus on dried specimens, since they yield better DNA quality/quantity than wet-stored. Andrea’s been seeing higher DNA yield from octocorals than stony, but octocorals potentially less interesting for enviornmental resilience questions.</p></li>
-<li><p>Since multiplexing will likely keep sequencing costs lows, maybe we could do 15 stony and 15 octo?</p></li>
-<li><p>GBR and maybe Carribean for sourcing old specimens. Maybe we can just use the same specimens as in <span class="citation" data-cites="connelly_unlocking_2024">Connelly, Catapang, and Quattrini (2024)</span> , since we know many yielded sufficient DNA for sequencing. None are type specimens, so additional sampling would likely be fine.</p></li>
-<li><p>museum inventory: <a href="https://collections.nmnh.si.edu/search/iz/">https://collections.nmnh.si.edu/search/iz/https://collections.nmnh.si.edu/search/iz/</a></p></li>
-</ul>
-<p><strong>Project timeline.</strong></p>
-<ul>
-<li><p>likely need 1 week for setup, maybe 2 weeks for first round of extractions/QC. Unsure what the sequencing timeline will be if we have to send it out, but the a PromethION sequencing run takes ~3 days.</p></li>
-<li><p>Ideally I’d get a full round of samples sequenced in first 5 weeks, then be able to do a second round (e.g.&nbsp;work out the kinks with the higher-yield octocoral samples, then try for stony samples)</p></li>
-</ul>
-<p><strong>Extra from 4/10 Lab Meeting, talking w Shelly:</strong></p>
-<ul>
-<li><p>Contact ONT! They may be able to provide guidance on workflow modifications for using low quantity/quality DNA</p></li>
-<li><p><a href="https://bcmb.bs.jhmi.edu/people/winston-timp/">Winston Timp</a>, works in developing sequencing tech and has done lots with Nanopore tech. Can try looking through his related publications or contacting (can use Shelly as contact)</p></li>
-<li><p><a href="https://nanoporetech.com/document/adaptive-sampling">Adaptive sampling</a></p></li>
-</ul>
-
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-connelly_unlocking_2024" class="csl-entry">
-Connelly, Michael T., Mary Grace Catapang, and Andrea M. Quattrini. 2024. <span>“Unlocking the Treasure Trove: Leveraging Dry Coral Specimens for Museum Genomics.”</span> <em>Coral Reefs</em> 43 (4): 1153–59. <a href="https://doi.org/10.1007/s00338-024-02525-5">https://doi.org/10.1007/s00338-024-02525-5</a>.
-</div>
-</div></section></div> ]]></description>
-  <category>SIFP_2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_04_10_Andrea_meeting.html</guid>
-  <pubDate>Thu, 10 Apr 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>SIFP Project Planning</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_04_09_SIFP_planning.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>I’m meeting with Andrea tomorrow to discuss the SIFP project, so I spent some time researching the Nanopore direct sequencing workflow and associated costs.</p>
-<section id="multiplexing" class="level1">
-<h1><strong>Multiplexing:</strong></h1>
-<p>PromethION and MionION platforms support multiplexing, where DNA is tagged with sample-specific barcodes during library prep, allowing multiple samples to be run simultaneously on a single flow cell. Since flow cells are the most expensive component of nanopore sequencing by far, multiplexing could dramatically reduce the sequencing cost per sample.</p>
-<p>According to <span class="citation" data-cites="rubi_museum_2020">Rubi, Knowles, and Dantzer (2020)</span>, while recommended minimum read depth for methylation analysis is 10X, their hDNA samples showed little difference in # of CpG positions for a minimum read depth of 5X and 10X. So our goal should be a minimum of 10X depth, but lower could be acceptable?</p>
-<p><span class="citation" data-cites="deng_p646_2024">Deng et al. (2024)</span> used a PromethION for WGS of the human genome and multiplexed 3 samples per cell, incorporating a cell wash to improve performance, and generated 154 Gb of output with a final mean read depth of 12X. This tracks with ONT’s specifications of 100-200 Gb output gDNA reads from a PromethION flow cell. NOTE though that the human genome is *much* larger than a coral genome.&nbsp;</p>
-<p>If we assume an output of 150 Gb (150,000 Mb), how many samples could be multiplexed while maintaining minimum read depth?<br>
-</p>
-<p>Human genome: 3,000 Mb<br>
-10X read depth: 30,000 Mb<br>
-Sequencing output: 150,000 Mb<br>
-Multiplexing max = 5 samples/flow cell</p>
-<p>Coral genome: 500 Mb<br>
-10X read depth: 5,000 Mb<br>
-Sequencing output: 150,000 Mb<br>
-<strong>Multiplexing max = 30 samples/flow cell</strong><br>
-</p>
-<p>Say we want 3 time points (e.g., 100yo, 50yo, &lt;20yo). Probably need a minimum of n=5 for each, so minimum of N=15.</p>
-<p>I think we’d easily be able to run all 15 samples on a single flow cell! Since flow cells are only sold in packs of 4, we’ll also end up with extra to do more sequencing if desired/possible.&nbsp;</p>
-</section>
-<section id="choosing-library-prep" class="level1">
-<h1><strong>Choosing library prep</strong></h1>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/nanopore_library_prep.PNG" class="img-fluid"></p>
-<p>Rapid (ligation-free) library prep kit seems best. Of the methylation-friendly options, it requires the least input DNA (still kind of high though? 100ng?). It also has barcode options to support multiplexing!</p>
-</section>
-<section id="cost-estimate" class="level1">
-<h1><strong>Cost estimate:</strong></h1>
-<p>Assuming minimum N=15 on a PromethION, incorporating multiplexing to reduce cost/sample.</p>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td>Item</td>
-<td># rxns/unit</td>
-<td>Price ($/unit)</td>
-<td># units</td>
-<td>Total cost</td>
-</tr>
-<tr class="even">
-<td><a href="https://store.nanoporetech.com/us/rapid-barcoding-sequencing-kit-96-v14.html">Rapid Barcoding Kit 96 V14</a></td>
-<td>96</td>
-<td>1100</td>
-<td>1</td>
-<td>1100</td>
-</tr>
-<tr class="odd">
-<td><a href="https://store.nanoporetech.com/us/promethion-flow-cell-packs-r10-4-1-m-version-2025.html">PromethION Flow Cell Packs (R10.4.1)</a></td>
-<td>1 pack: 4 cells</td>
-<td>3980</td>
-<td>1</td>
-<td>3980</td>
-</tr>
-<tr class="even">
-<td><a href="https://store.nanoporetech.com/us/productDetail/?id=flow-cell-wash">Flow Cell Wash Kit</a></td>
-<td>6</td>
-<td>115</td>
-<td>1</td>
-<td>115</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><strong>5,195</strong></td>
-</tr>
-</tbody>
-</table>
-<p>So estimated cost of library prep and sequencing for N=15 samples on a PromethION sequencing platform is <strong>$5,195</strong>. Note that this could be reduced by a few hundred dollars by buying a 24-reaction library prep kit, but it’s dramatically more cost effective to buy the 96-reaction kit. That also gives us plenty of wiggle room for unsuccessful library prep or sequencing.</p>
-<p>Note that this doesn’t take DNA extraction and QC into account. I’ll need to talk to Andrea about this portion since the LAB has some community-available resources and the number of samples I’ll extract/QC will be strongly influenced by extraction success.</p>
-
-
-
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-deng_p646_2024" class="csl-entry">
-Deng, Wayne Xianding, Monika Sun, Pauline Ng, Premal Shah, Kate Im, and Akash Kumar. 2024. <span>“P646: <span>Development</span> of an Affordable Rapid Human Genome Sequencing Assay Using Long Read <span>PromethiON</span> 2.”</span> <em>Genetics in Medicine Open</em> 2: 101552. <a href="https://doi.org/10.1016/j.gimo.2024.101552">https://doi.org/10.1016/j.gimo.2024.101552</a>.
-</div>
-<div id="ref-rubi_museum_2020" class="csl-entry">
-Rubi, Tricia L., L. Lacey Knowles, and Ben Dantzer. 2020. <span>“Museum Epigenomics: <span>Characterizing</span> Cytosine Methylation in Historic Museum Specimens.”</span> <em>Molecular Ecology Resources</em> 20 (5): 1161–70. <a href="https://doi.org/10.1111/1755-0998.13115">https://doi.org/10.1111/1755-0998.13115</a>.
-</div>
-</div></section></div> ]]></description>
-  <category>SIFP_2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_04_09_SIFP_planning.html</guid>
-  <pubDate>Wed, 09 Apr 2025 04:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

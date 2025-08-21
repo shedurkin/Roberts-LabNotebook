@@ -1,0 +1,21 @@
+---
+title: "Transfer DNA Extractions for Storage"
+author: "Kathleen Durkin"
+date: "2025-08-11"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Transferred all bead-cleaned DNA extractions from their 0.2mL 8X strip tubes to individual 0.2mL tubes.
+
+As I begin library prep, I'll need to pull and thaw small sets of specific samples. To avoid constant freeze/thaw of all samples, I need them in individual, separate tubes, not the strip tubes they're currently in.
+
+Pulled all DNA extractions from the freezer, thawed in fridge for \~20min, then spun down and placed on ice. Labelled new tubes on cap and sides and arranged in rack in same positions/orientation as current sample layout. Didn't change the "location" of any samples. Transferred full volume of each sample from old strip tube spot to new labelled tube.
+
+Placed all samples back in the -20C freezer once finished.

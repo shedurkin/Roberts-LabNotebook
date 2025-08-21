@@ -1,0 +1,14 @@
+{
+  "hash": "cd9975000b1456332bd704156c42a77a",
+  "result": {
+    "markdown": "---\ntitle: \"Native Barcoding Library Prep, Group 1 Library 3\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-08-15\"\ncategories: [\"SIFP-2025\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: TRUE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nAfter my preliminary Flongle runs (Group 1 Library 1 and Group 1 Library 2), I'm a little worried about how much MinION output I'll get, so I'm going to switch to 3 samples per flow cell.\n\nI've also looked at some options for library prep adjustments:\n\n-   Exclude FFPE Repair. FFPE repair, in part, repairs cytosine deamination C-\\>U damage. Since I;m interested in potentially examingin patterns of age-related deamination, I'd like to exclude this step if possible. It may cause problems, though, since the un-repaired DNA damgae (e.g. nicks) may affect sequencing, by e.g. clogging the pores more quickly.\n\n-   Begin with 1000ng gDNA dor each sample, instead of 400ng, when multiplexing \\<= 4 samples.\n\n| Catalog \\# | Conc. (ng/uL) | uL for 1000ng | Label/Barcode |\n|------------|---------------|---------------|---------------|\n| 1606826    | 408           | 2.5           | 09            |\n| 1740336    | 368           | 2.7           | 10            |\n| 1740363    | 343           | 2.9           | 11            |\n\n**End-Prep Master Mix (no FFPE):**\n\n|                 | **1X** | **4X**  |\n|-----------------|--------|---------|\n| Ultra II Buffer | 1.75uL | **7uL** |\n| Ultra II Mix    | 0.75uL | **3uL** |\n\nMade 4X and added 2.5uL of Master Mix to each tube\n\n[Qubit 1 (barcodes ligated, in 35uL)]{.underline}\\\nStandard 1: 37.40\\\nStandard 2: 9926.48\\\nLibrary 3: 22.8 ng/uL\n\n[Qubit 2 (adapters ligated, in 15uL)]{.underline}\\\nStandard 1: 31.61\\\nStandard 2: 11333.17\\\nLibrary 3: **26.2 ng/uL**\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,35 @@
+---
+title: "Flongle Run, Group 1 Library 3"
+author: "Kathleen Durkin"
+date: "2025-08-15"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Running Group 1 Library 3 on a Flongle flow cell to confirm successful library prep (this library prep incorporated some modifications to the standard protocol)
+
+As a reminder, Library 3 ended up at 26.2 ng/uL
+
+Assume length of 1000bp on average, since Flongles have showed shorter DNA fragment lengths than TapeStation (possible shearing during library prep?). Flongle requires 5-10fmol, which is 3 - 6.2ng DNA for 1000bp length.
+
+Will max out DNA, so need 6.2ng DNA in 5uL EB. Concentration is too low to accurately pipette this little DNA from my library. Instead, made 5X, so 31ng DNA in 25uL EB. 31ng of 26.2ng/uL DNA is (31/26.2) = 1.2uL DNA.
+
+So mixed **1.2uL Library 3** in (25-1.2)= **23.8uL EB**. Then used 5uL of diluted Library 3 to load Flongle.
+
+[Flongle flow cell:]{.underline} \
+SN: B028104068\
+LOT: 33001524\
+ID: **AYK267\
+59 pores** on flow cell check
+
+Ran for full 24 hours
+
+[Notes after run completed:]{.underline}
+
+Excluding FFPE during end-repair resulted in significantly lower yield (\~70Mb, compared to 120Mb from the first two Flongle runs), likely because unrepaired "nicked" DNA clogged the pores quickly. This is supported by low pore occupancy throughout run and faster pore degradation.

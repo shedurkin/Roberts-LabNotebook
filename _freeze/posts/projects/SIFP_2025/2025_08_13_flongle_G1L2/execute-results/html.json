@@ -1,0 +1,16 @@
+{
+  "hash": "4e99fcf6c8419d9a7bc4fde7ab58ded2",
+  "result": {
+    "markdown": "---\ntitle: \"Pore Check for all Flongle Flow Cells\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-08-13\"\ncategories: [\"SIFP-2025\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: TRUE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nTo compare the Library 1 and Library 2 prep protocols, and the modified protocol doesn't affect sequencing success, running Group 1 Library 2 on a Flongle flow cell.\n\nLibrary 2 has an avg fragment length of 1700bp and a concentration of 16.5ng/uL.\n\nFlongle requires 5-10 fmol DNA in 5uL EB. For my fragment size, this corresponds to 10.5ng DNA for 10fmol. Will max out DNA. Library concentration is too high to accurately pipette the equivalent of 10ng. Instead, will make final library of 20fmol (21ng) of DNA in 10uL EB, and only use 5uL for Flongle loading.\n\n21ng of DNA from 16.5ng/uL -\\> 21/16.5 -\\> **1.27uL Library 2**. Add to (10uL - 1.27uL) = **8.73uL EB**\n\nFollowed [Flongle flow cell loading protocol](./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-96-document-checklist-Flongle-en-NBE_9171_v114_revS_02Jul2025-29.pdf).\n\n[Flongle flow cell specs:]{.underline}\\\nLOT: 33001524\\\nSN: B028104122\\\nID: **AYW685**\\\n\\# pores on check: **59 pores**\\\n\\# pores after loading: **43 pores**\\\n",
+    "supporting": [
+      "2025_08_13_flongle_G1L2_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

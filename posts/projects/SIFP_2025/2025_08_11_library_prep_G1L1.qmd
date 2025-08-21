@@ -1,0 +1,100 @@
+---
+title: "Native Barcoding Library Prep - Group 1, Library 1 & 2"
+author: "Kathleen Durkin"
+date: "2025-08-11"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Performing library prep on extracted, cleaned, and QC'd DNA for Nanopore sequencing.
+
+## Setup
+
+As a reminder, we'll be multiplexing 4 samples per MinION flow cell (E. tourneforti genome is 600Mb, so 10X is 6Gb; anticipate 30Gb MinION output; so 5 samples max)
+
+I also want to group samples for multiplexing by DNA integrity and quantity, since the protocol includes sleecting a pooled library quantity based on average fragment lengths.
+
+Using the TapeStation peak fragment size as a proxy for average size (reasonable, due to normal distributions of fragment lengths), I selected 4 samples with ihghest fragment size for Group 1:
+
+| Catalog \# | peak bp | tube label |
+|------------|---------|------------|
+| 1606826    | 1906    | 1          |
+| 1740336    | 1698    | 2          |
+| 1740363    | 1696    | 3          |
+| 1740407    | 1798    | 4          |
+
+Following the Oxoford Nanopore Tecnologies Ligation Sequencing gDNA - Native Barcoding 96 V14 (SQK-NBD114.96) protocol (document version [NBE_9171_v114_revS_02Jul2025](./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-24-document-checklist-MinION-en-NBE_9169_v114_revV_02Jul2025-39.pdf)).
+
+Using Short Fragment Buffer (SFB), not LFB. I don't have any LoBind PCR tubes, so will be using 0.2mL 8X strip tubes for steps before barcodes are pooled.
+
+## Notes
+
+[**Native Barcoding 96 Kit**]{.underline}\
+**REF:** SQK-NBD114.96\
+**LOT:** NBD1496.40.0007
+
+[**Flongle Expansion Kit**]{.underline}\
+**REF:** EXP-FSE002\
+**LOT:** FSE002.30.0005
+
+| Catalog \# | Extraction (ng/uL) | uL for 400ng | Barcode \# |
+|------------|--------------------|--------------|------------|
+| 1606826    | 408                | 1 uL         | 01         |
+| 1740336    | 368                | 1.1 uL       | 02         |
+| 1740363    | 343                | 1.2 uL       | 03         |
+| 1740407    | 260                | 1.5 uL       | 04         |
+
+Before beginning library prep:
+
+-   ensure there is an available thermal cycler with the following program: 20C for 5min, 65C for 5min
+
+-   Pre-heat an incubator plate to 37C
+
+[Qubit 1 (Barcodes ligated, in 35uL)]{.underline}\
+Standard 1: 39.06\
+Standard 2: 16073.91\
+Library 1: **1.62 ng/uL**
+
+[Qubit 2 (Adapters ligated, in 15uL)]{.underline}\
+Standard 1: 30.11\
+Standard 2: 14133.11\
+Library 1: **2.56 ng/uL**
+
+Library has very low concentration. This is likely because, while I started with 400ng input DNA from each sample, only a fraction of this is carried through from end-prep to barcode ligation. At Step 7 of Barcode Ligation, for each sample, 0.75uL of end-prepped DNA is used, added to 3uL of nuclease-free H2O. The protocol is likely optimized for multiplexing a large number of samples at once, but I'm just using 4.
+
+I think I should be able to, instead, carry-over a full 3.75uL of end-prepped DNA at this step, and exclude additional nuclease-free water. I'm going to try another round of library prep using the same samples, making this change to retain more DNA.
+
+I'll call the first round of these samples "Library 1", and the second round with more DNA carried over "Library 2."
+
+## Library 2
+
+Same samples ("Group 1"), but need to assign new unique barcodes.
+
+| Catalog \# | Extraction (ng/uL) | uL for 400ng | Barcode \# |
+|------------|--------------------|--------------|------------|
+| 1606826    | 408                | 1 uL         | 05         |
+| 1740336    | 368                | 1.1 uL       | 06         |
+| 1740363    | 343                | 1.2 uL       | 07         |
+| 1740407    | 260                | 1.5 uL       | 08         |
+
+During Step 7 of Barcode Ligation, excluded nuclease-free H2o and used 3.75uL end-prepped DNA (instead of the recommended 0.75uL).
+
+[Qubit 1 (Barcodes ligated, in 35uL)]{.underline}\
+Standard 1: 33.38\
+Standard 2: 13411.37\
+Library 2: **13.7 ng/uL**
+
+[Qubit 2 (Adapters ligated, in 15uL)]{.underline}\
+Standard 1: 30.11\
+Standard 2: 14133.11\
+Library 2: **16.5 ng/uL**
+
+Yay! Library 2 has much more DNA in the final library. I'll need to run both Library 1 and Library 2 on Flongles to ensure the higher DNA retention doesn't also carry over inhibiting reagents from end-prep that might affect sequencing.
+
+Took both Library 1 and Library 2 thorugh Step 18 of Adapter Ligation & Clean Up. Did not dilute to Final Library, since I'll need different concentrations for Flongle and MinION flow cells.

@@ -1,0 +1,27 @@
+---
+title: "Pore Check for all MinION Flow Cells"
+author: "Kathleen Durkin"
+date: "2025-08-14"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Ran pore check on all MinION flow cells.
+
+As a reminder, MinION flow cells have a maximum of 2048 pores, and warranty guarantees 800 pores.
+
+| SN         | Flow cell ID | Num. pores |
+|------------|--------------|------------|
+| B024226778 | FBD08455     | 1652       |
+| B024226909 | FBD36396     | 1528       |
+| B024226802 | FBD09922     | 1428       |
+| B024226790 | FBD39370     | 1482       |
+| B024226535 | FBD42232     | 1519       |
+
+Nice! All 5 MinION flow cells are well above warranty.

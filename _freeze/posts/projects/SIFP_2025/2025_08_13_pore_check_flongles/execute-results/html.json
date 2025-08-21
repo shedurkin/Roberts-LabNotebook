@@ -1,0 +1,14 @@
+{
+  "hash": "15a1e15a20c0c19be137c757d48007ad",
+  "result": {
+    "markdown": "---\ntitle: \"Pore Check for all Flongle Flow Cells\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-08-13\"\ncategories: [\"SIFP-2025\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: TRUE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nAfter pulling the completed Flongle run of Group 1, Library 1, performed pore check on all remaining Flongle flow cells.\n\nAs a reminder, pore check of the flow cell used for Group 1 Library 1 showed:\n\n| SN         | Flow Cell ID | Num. pores |\n|------------|--------------|------------|\n| B028104085 | AYW935       | 59         |\n\nChecked all 11 remaining Flongle flow cells. As a reminder, \\<50 pores would fall below warranty, and the maximum is 126pores.\n\n| SN         | Flow Cell ID | Num. pores |\n|------------|--------------|------------|\n| B028104112 | AXS867       | **37**     |\n| B028103996 | AXS408       | **40**     |\n| B028103978 | AYL256       | **35**     |\n| B028103949 | AYL126       | 80         |\n| B028104129 | AYW871       | 61         |\n| B028104068 | AYK267       | 59         |\n| B028103992 | AYK963       | 89         |\n| B028104122 | AYW685       | 59         |\n| B028104029 | AYX067       | 79         |\n| B028104142 | AYL029       | **44**     |\n| B028104167 | AYL248       | 60         |\n\nWow, so 4/12 (or 1/3) of the Flongle flow cells we received are below warranty. Another 5, including the cell used for Group 1 Library 1, have pore counts *just* above the minimum.\n\nI contacted Nanopore Support to request replacements for the out-of-warranty cells on 08/13/2025, case number 01333308. **Reorder number is RD060692.**\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

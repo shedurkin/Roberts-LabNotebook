@@ -1,0 +1,14 @@
+{
+  "hash": "76f3f920c81f4d12a75832b45f2f4e13",
+  "result": {
+    "markdown": "---\ntitle: \"Pore Check for all MinION Flow Cells\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-08-14\"\ncategories: [\"SIFP-2025\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: TRUE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nRan pore check on all MinION flow cells.\n\nAs a reminder, MinION flow cells have a maximum of 2048 pores, and warranty guarantees 800 pores.\n\n| SN         | Flow cell ID | Num. pores |\n|------------|--------------|------------|\n| B024226778 | FBD08455     | 1652       |\n| B024226909 | FBD36396     | 1528       |\n| B024226802 | FBD09922     | 1428       |\n| B024226790 | FBD39370     | 1482       |\n| B024226535 | FBD42232     | 1519       |\n\nNice! All 5 MinION flow cells are well above warranty.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

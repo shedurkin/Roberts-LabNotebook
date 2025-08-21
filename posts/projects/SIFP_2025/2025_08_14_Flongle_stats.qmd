@@ -1,0 +1,178 @@
+---
+title: "Estimate Flow Cell Outputs"
+author: "Kathleen Durkin"
+date: "2025-08-14"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Using the outputs from my Flongle run of Group1, Library 1, I want to use the rate of pore decay and cumulative sequencing output to extrapolate how much output to expect from other flow cells.
+
+## Pore activity
+
+Look at the output csv of pore activity stats:
+
+```{r}
+library(dplyr)
+library(ggplot2)
+pore_activity <- read.csv("./data/2025_08_12_Flongle_Group1_Library1/pore_activity_AYW935_f9a34344_e98d3daf.csv")
+pore_activity$Percent <- pore_activity$State.Time..samples./378000
+# unique(pore_activity$Channel.State)
+pore_activity$Channel.State <- factor(pore_activity$Channel.State,
+                                         levels = c("unclassified", "unclassified_following_reset", "unknown_negative", "unknown_positive", "disabled", "saturated", "multiple", "zero", "no_pore", "unblocking", "unavailable", "pore", "adapter", "strand"),
+                                      ordered = TRUE)
+
+ggplot(pore_activity, aes(x = Experiment.Time..minutes., y = Percent, color = Channel.State)) +
+  geom_col()
+
+```
+
+Compare to Summary Plot:
+
+![](data/2025_08_12_Flongle_Group1_Library1/PoreActivity.png)
+
+After comparing the pore_activity.csv labels to those included in the pore activity summary plots, I'm pretty sure that the following labels are equivalent (pore_activity.csv label = plot label)
+
+adapter = adapter\
+disabled = channel disabled\
+locked = ?\
+multiple = multiple\
+no_pore = no pore\
+pending_manual_reset = ?\
+pending_mux_change = ?\
+**pore = pore available**\
+saturated = saturated\
+**strand = sequencing**\
+unavailable = unavailable\
+unblocking = active feedback\
+unclassified = unclassified\
+unclassified_following_reset = ?\
+unknown_negative = out of range - low\
+unknown_positive = out of range - high\
+zero = zero
+
+## Fit pore decay and output functions
+
+I want to extract a function for the percent of pores that are sequencing over time. I expect a roughly exponential drop of pore activity over time
+
+```{r}
+pore_sequencing <- pore_activity %>% 
+  filter(Channel.State == "strand")
+
+# Fit exponential decay
+start_vals <- list(a = max(pore_sequencing$Percent), b = 0.01, c = min(pore_sequencing$Percent))
+model <- nls(Percent ~ a * exp(-b * Experiment.Time..minutes.) + c,
+             data = pore_sequencing, start = start_vals)
+
+#summary(model)
+
+# Predict and plot
+pore_sequencing$fit <- predict(model)
+
+
+pore_sequencing %>%
+  ggplot(., aes(x = Experiment.Time..minutes., y = Percent)) + 
+  geom_point() +
+  geom_line(aes(y = fit), color = "red", size = 1)
+
+cat("\n")
+cat("\n")
+cat("Best fit line for percent of pores that are actively sequencing as a function of time:", "\n")
+cat("Percent = ", round(coef(model)["a"], 3), "* exp(-", round(coef(model)["b"], 3), "* [minutes]) +", round(coef(model)["c"], 3))
+
+```
+
+The dramatic, periodic drops in sequencing represents the pore scans, which were set to occur every 1.5hr.
+
+Now I want to find the sequencing output (in b or Mb) as a function of time
+
+```{r}
+throughput <- read.csv("./data/2025_08_12_Flongle_Group1_Library1/throughput_AYW935_f9a34344_e98d3daf(in).csv")
+
+# Fit exponential decay
+start_vals <- list(a = max(throughput$Basecalled.Bases), b = 0.01, c = min(throughput$Basecalled.Bases))
+model2 <- nls(Basecalled.Bases ~ a * exp(-b * Experiment.Time..minutes.) + c,
+             data = throughput, start = start_vals)
+
+#summary(model2)
+
+# Predict and plot
+throughput$fit <- predict(model2)
+
+throughput %>%
+  ggplot(., aes(x = Experiment.Time..minutes., y = Basecalled.Bases)) + 
+  geom_point() +
+  geom_line(aes(y = fit), color = "red", size = 1)
+
+cat("\n")
+cat("\n")
+cat("Best fit line for percent of pores that are actively sequencing as a function of time:", "\n")
+cat("Bases = ", round(coef(model2)["a"], 3), "* exp(-", round(coef(model2)["b"], 3), "* [minutes]) +", round(coef(model2)["c"], 3))
+```
+
+## Estimate output of flow cell
+
+Now I want to use these to estimate MinION output based on a different starting number of pores.
+
+::: callout-note
+Note that these estimates will be based on the assumption that MinION pores degrade at the same rate as these Flongle pores which, based on rather negative experiences posted to the Nanopor community, may not be the case. People have reported that their v10 Flongles degrade much more quickly than both older Flongle chemistry and Minion flow cells.
+:::
+
+```{r}
+# Given
+## Starting number of pores
+Pref <- 44
+## Cumulative output function
+Cref <- function(t) { -120848296 * exp(-0.002 * t) + 127537896 }  # bases
+
+# Prediction for a new run
+predict_yield <- function(P0, T_minutes) {
+  Cref(T_minutes) * (P0 / Pref)               # bases
+}
+
+# Convenience: return Gb
+predict_yield_Gb <- function(P0, T_minutes) {
+  predict_yield(P0, T_minutes) / 1e9
+}
+
+# Run a MinION flow cell with 1200 pores for 3 days (no washes)
+predict_yield_Gb(1200, 4320)  # Gb
+
+# Run a MinION flow cell with 1200 pores for 3 days, with wash/reloads that recover/maintain half of pores each time
+predict_yield_Gb(1200, 1440) + predict_yield_Gb(600, 1440) + predict_yield_Gb(300, 1440)   # Gb
+
+```
+
+In the future, if I find that MinION pores decay at a different rate, I can use the below code to incorporate a different decay function :
+
+```{r}
+# Reference pore-decay (percent). Normalize inside the integral.
+p_ref <- function(t) { 15.377 * exp(-0.004 * t) + 1.503 }
+
+effective_pore_time <- function(pfun, T_minutes) {
+  integrate(function(s) pfun(s) / pfun(0), lower = 0, upper = T_minutes)$value
+}
+
+predict_yield_with_decay <- function(P0, T_minutes, p_new = p_ref) {
+  scale_base <- Cref(T_minutes) * (P0 / Pref)
+  ratio <- effective_pore_time(p_new, T_minutes) / effective_pore_time(p_ref, T_minutes)
+  scale_base * ratio
+}
+
+# Convenience: return Gb
+predict_yield_with_decay_Gb <- function(P0, T_minutes) {
+  predict_yield_with_decay(P0, T_minutes) / 1e9
+}
+
+predict_yield_with_decay_Gb(1200, 4320)
+```
+
+## Summary
+
+While I doubt the MinION fow cells will degrade as quickly as the Flongles, the predicted output for a MinION flow cell (\~3.5Gb) is far below what I had been previously estimating (30Gb). As such, **I'm going to drop from multiplexing 4 samples per flow cell to 3 samples per flow cell**, to try to get more coverage for each.

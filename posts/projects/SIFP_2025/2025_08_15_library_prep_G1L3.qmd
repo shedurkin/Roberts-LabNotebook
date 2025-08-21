@@ -1,0 +1,46 @@
+---
+title: "Native Barcoding Library Prep, Group 1 Library 3"
+author: "Kathleen Durkin"
+date: "2025-08-15"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+After my preliminary Flongle runs (Group 1 Library 1 and Group 1 Library 2), I'm a little worried about how much MinION output I'll get, so I'm going to switch to 3 samples per flow cell.
+
+I've also looked at some options for library prep adjustments:
+
+-   Exclude FFPE Repair. FFPE repair, in part, repairs cytosine deamination C-\>U damage. Since I;m interested in potentially examingin patterns of age-related deamination, I'd like to exclude this step if possible. It may cause problems, though, since the un-repaired DNA damgae (e.g. nicks) may affect sequencing, by e.g. clogging the pores more quickly.
+
+-   Begin with 1000ng gDNA dor each sample, instead of 400ng, when multiplexing \<= 4 samples.
+
+| Catalog \# | Conc. (ng/uL) | uL for 1000ng | Label/Barcode |
+|------------|---------------|---------------|---------------|
+| 1606826    | 408           | 2.5           | 09            |
+| 1740336    | 368           | 2.7           | 10            |
+| 1740363    | 343           | 2.9           | 11            |
+
+**End-Prep Master Mix (no FFPE):**
+
+|                 | **1X** | **4X**  |
+|-----------------|--------|---------|
+| Ultra II Buffer | 1.75uL | **7uL** |
+| Ultra II Mix    | 0.75uL | **3uL** |
+
+Made 4X and added 2.5uL of Master Mix to each tube
+
+[Qubit 1 (barcodes ligated, in 35uL)]{.underline}\
+Standard 1: 37.40\
+Standard 2: 9926.48\
+Library 3: 22.8 ng/uL
+
+[Qubit 2 (adapters ligated, in 15uL)]{.underline}\
+Standard 1: 31.61\
+Standard 2: 11333.17\
+Library 3: **26.2 ng/uL**

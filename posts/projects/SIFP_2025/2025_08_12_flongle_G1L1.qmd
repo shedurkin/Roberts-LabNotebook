@@ -1,0 +1,49 @@
+---
+title: "Flongle Run, Group 1 Library 1"
+author: "Kathleen Durkin"
+date: "2025-08-12"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+I want to confirm successful library prep and compare the two "versions" of library prep for my Group 1 samples. To do this, I'll first run a small portion of each library on Flongle flow cells.
+
+Flongles run for \~24 hrs, so doing just Library 1 today.
+
+Library 1 has a concentratio of 2.56 ng/uL, and an average fragment size of 1700bp (based on TapeStation). For Flongle, final library should be 5-10 fmol of DNA in 5uL EB. 5-10fmol is equivalent to 5.2ng-10.5ng of 1700bp DNA.
+
+For Library 1, prepped Flngle final library as follows:
+
+-   3uL Library 1
+
+-   2uL EB
+
+Final DNA quantity of 3uL\*2.56ng/uL = 7.68ng DNA, or 7.33fmol.
+
+**Materials:**
+
+[Flongle Sequencing Expansion:]{.underline}\
+REF: EXP-FSE002\
+LOT: FSE002.30.0005
+
+[Flongle Adapter:]{.underline}\
+SN: A100007434
+
+[Flongle Flow Cell:]{.underline}\
+LOT: 33001524\
+SN: B028104085\
+ID: AYW935
+
+Launched MinKnow software, inserted Flongle Adapter, and ran hardware check. Then inserted Flongle Flow Cell and ran pore check: **59 pores** (just above the warranty limit of 50 pores)
+
+Followed Oxford Nanopore Technologies Native Barcoding 96 Kit [protocol for Flongle flow cell loading](./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-96-document-checklist-Flongle-en-NBE_9171_v114_revS_02Jul2025-29.pdf).
+
+After loading library, flow cell only registered 44 pores :(
+
+Ran Flongle for 24 hrs.
