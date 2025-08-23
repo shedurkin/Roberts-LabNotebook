@@ -22,7 +22,7 @@ Will max out DNA, so need 6.2ng DNA in 5uL EB. Concentration is too low to accur
 
 So mixed **1.2uL Library 3** in (25-1.2)= **23.8uL EB**. Then used 5uL of diluted Library 3 to load Flongle.
 
-[Flongle flow cell:]{.underline} \
+[Flongle flow cell:]{.underline}\
 SN: B028104068\
 LOT: 33001524\
 ID: **AYK267\

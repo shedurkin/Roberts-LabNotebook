@@ -1,0 +1,60 @@
+---
+title: "MinION run, Group 1 Library 4"
+author: "Kathleen Durkin"
+date: "2025-08-19"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Ok, today's the day! I have a library I'm happy with that also has a lot of DNA, for multiple cycles of wash/reload. Will be runnign Group 1 Library 4 on a MinION flow cell.
+
+Following MinION loading protocol found in the [Native Barcoding 96 gDNA protocol](./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-24-document-checklist-MinION-en-NBE_9169_v114_revV_02Jul2025-39.pdf).
+
+[Make a diluted Final Library 4:]{.underline}
+
+Though TapeStation told me these DNA extractions were \~1700bp on average, the Flongle run showed a read distribution centered around \~700bp (shearing during library prep? fragmentation from being stored frozen?). This is the length estimate I'll use for mol -\> mass conversions.
+
+The protocol recommends **100fmol in 12uL EB** for \<1kb DNA. Using NEB calculator, 100fmol of 700bp DNA is **43.1ng DNA**.
+
+Group 1 Library 4 is 36.6ng/uL, so $\frac{43.1ng\ DNA}{36.6\frac{ng}{uL}} = 1.17uL\ G1L4$
+
+Actually, I'll need more diluted Library 4 later for wash/reload, so I'll just mix several loads-worth now.
+
+$\frac{43.1ng}{12uL} = \frac{129.3ng\ DNA}{36uL\ EB}$
+
+$\frac{129.3ng\ DNA}{36.6\frac{ng}{uL}} = 3.5uL\ G1L4$
+
+So combine **3.5uL G1L4** with (36-3.5) = **32.5uL EB.**
+
+Loaded MinION flow cell according to protocol and began 72hr run.
+
+[**MinION flow cell**]{.underline}\
+SN: B024226802\
+LOT: 11004308\
+ID: FBD09922\
+1428 pores on check
+
+### Troubleshooting:
+
+We noticed after the first 10 minutes of the run that the pore occupancy was low (roughly 50% of the available pores were sequencing). Dan suggested this may be due to loading too little DNA, so we decided to try spiking in more library at a higher concentration, without washing the flow cell.
+
+I made a dilution of G1L4 at double the recommended concentration:
+
+Recommended: 100fmol = 43.1ng\
+Doubled: 200fmol = 86.2ng
+
+So I need 86.2ng DNA in 12uL EB.
+
+$\frac{86.2ng\ DNA}{36.6\frac{ng}{uL}} = 2.4uL\ G1L4$
+
+So added **2.4ng G1L4** to (12-2.4) = **9.6uL EB**.
+
+Prepared the second load as instructed in protocol (SB, LIB, and 2X concentration G1L4 dilution). Paused MinION run at 17minutes and added full 75uL of second library to the SpotOn port in dropwise fashion (opened priming port first to create negative pressure). Library was absorbed into cell as desired.
+
+Un-paused run, and it resumed as normal. Pore occupancy steadily increased. by minute 30, \~75% of available pores were sequencing -- the spike of second library was successful!

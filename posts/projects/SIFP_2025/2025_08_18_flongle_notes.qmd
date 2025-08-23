@@ -1,0 +1,31 @@
+---
+title: "Summary of Group 1, Libraries 1-3"
+author: "Kathleen Durkin"
+date: "2025-08-18"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+## Summary from last 3 library preps and tweaks:
+
+-   Beginning with and retaining more DNA through prep doesn't appear to have a negative effect on sequencing (e.g. similar yield from [G1 L1](./2025_08_flongle_G1L1.qmd) and [G1 L2](./2025_08_13_G1L2.qmd)), but it does result in a library with much higher DNA content. This is very important for being able to load the MinION flow cell multiple times (with washes), so for all future library preps I will:
+
+    -   **begin with 1000ng DNA input** from each sample (or as much DNA as I have, if \<1000ng is available)
+
+    -   following end-prep, **retain 3.75uL end-prepped DNA** during Native Barcode Ligation Step 7, instead of the recommended 0.75uL
+
+    -   Note that, to get 1000ng DNa in 12uL input, will need a sample concentration of \>83.3 ng/uL. If input DNA is too dilute, will need to re-concentrate usng Zymo
+
+-   I realized I don't use the DNA Control Sample (DCS), since its purpose is to inform, in the event of a failed sequencing run, whether the cause was failed library prep. I'm running libraries on Flongles to confirm successful library prep (without risking a MinION flow cell), so I don't need the DCS. Instead, this volume can be used for input DNA. For all future library preps I will:
+
+    -   **Exclude the 1uL DCS** from each sample prep during DNA Repair and End-Prep Step 6, Instead, makeup the 1000ng input DNA of each sample in 12uL.
+
+-   Based on the [Flongles' rate of pore degradation and sequencing](./2025_08_14_Flongle_stats.qmd), I think MinION flow cells may yield less output than I originally estimated. As such, **I will only multiplex 3 samples per flow cell.**
+
+-   Excluding FFPE end repair does appear to affect sequencing ([G1 L2](./2025_08_13_flongle_G1L2.qmd) vs [G1 L3](./2025_08_15_flongle_G1L3.qmd)). **This reagent will be included** in all future library preps.

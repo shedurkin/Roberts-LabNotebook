@@ -1,0 +1,14 @@
+{
+  "hash": "52188da01a79722b22845506fde36772",
+  "result": {
+    "markdown": "---\ntitle: \"Flongle run, Group 1 Library 4\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-08-18\"\ncategories: [\"SIFP-2025\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: TRUE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nRunning Group 1, Library 4 on a Flongle to confirm successful library prep.\n\nNeed 10fmol DNA in 5uL EB. Assume 1700bp average length: 10fmol = 10.5ng DNA.\n\nLibrary 4 is 36.6ng/uL, so too concentrated to accurately pipette 10.5ng. Instead, make a 4X mix:\n\n$\\frac{10.5ng\\ DNA}{5uL\\ EB} = \\frac{42ng\\ DNA}{20uL\\ EB}$\n\nTo get volume of G1L4 to add:\n\n$\\frac{42ng\\ DNA}{36.6 ng/uL\\ G1L4} = 1.15uL\\ G1L4$\n\nSo added **1.15 uL G1L4** to (20-1.15uL) = **18.85uL EB**. Then used 5uL of this to make Flongle loading library.\n\n[**Flongle flow cell**]{.underline}\\\nSN: B028104167\\\nLOT: 33001524\\\nID: AYL248\\\n60 pores on check\\\n33 pores after loading\\\n\\\nThis is a pretty significant drop in pores after library loading, even for a Flongle.\n\nRan for 24 hours.\n\nThis Flongle run had very poor results -- low output and quickly degrading pores. After discussion with Dan, though, he thinks this was a problem with the flow cell itself (supported by the dramatic pore loss after loading), not the library. I'll go ahead with the Group 1 Library 4 prep and try it on a MinION.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

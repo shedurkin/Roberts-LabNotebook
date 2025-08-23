@@ -10,7 +10,323 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Fri, 15 Aug 2025 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 21 Aug 2025 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>Wash #3, MinION Group 1 Library 4</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_21_wash3_minion_G1L4.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Not sure I’m going to get much more out of this flow cell, but I want to try one more wash and reload. Paused run at 2 days in. On this last wash/reload, I want to try getting pore occupancy higher, so I’ll try 3X the recommended concentration – 300fmol in 12uL EB. Since the pores are nearly exhausted, it’s lower stakes to try this now, in case overloading burns out the pores. This means I again need to increase the concentration of my MinION dilution of Library 4.</p>
+<p>I want 300fmol = <strong>129.3ng DNA in 12uL EB</strong></p>
+<p>I currently have the following:</p>
+<ul>
+<li><p>undiluted G1L4: 3uL of 36.6ng/uL, so 109ng DNA</p></li>
+<li><p>MinION dilution: 7ul of 7.18ng/uL, so 50.26ng DNA</p></li>
+</ul>
+<p>To get 129.3ng DNA in 12uL EB: <img src="https://latex.codecogs.com/png.latex?(y*36.6%5Cfrac%7Bng%7D%7BuL%7D)%20+%20(7uL*7.18%5Cfrac%7Bng%7D%7BuL%7D)%20=%20129.3ng%20%5C%20%5C%20%5CRightarrow%20%5C%20%5C%20y%20=%202.16uL"></p>
+<p>So I need to combine:</p>
+<p>7uL of MinION dilution = 50.26ng DNA<br>
+2.16uL of G1L4 = 79.05ng DNA<br>
+2.84uL EB</p>
+<p>For a total of 129.31ng DNA in 12uL of EB.</p>
+<p>Combined the above quantities to obtain 300fmol in 12uL EB. then washed and reloaded the flow cell with this, and resumed run.</p>
+<p>Before wash, 420 pores (128 reserved, 292 available), after wash thre were 475 pores (208 reserved, 267 available). So no appreciable difference.</p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_21_wash3_minion_G1L4.html</guid>
+  <pubDate>Thu, 21 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Wash #1, MinION Group 1 Library 4</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_20_wash1_minion_G1L4.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>At 22.5 hrs into the Group1 Library 4 MinION run, there wasnoticable plateau of cumulative output and pore loss (from 1383 active pores, dropped to 474 active pores).</p>
+<p>At 22.5 hrs, paused the run and washed the flow cell using the Flow Cell Wash Kit, according to the ONT <a href="./protocols/flow-cell-wash-kit-exp-wsh004-document-checklist-MinION-en-WFC_9120_v1_revS_25Jul2025-24.pdf">Flow Cell Wash Kit protocol</a>.</p>
+<p>After wash, reloaded the MinION flow cell (FBD09922) with prepared library. I again made the library with 2X the recommended concentration (200fmol DNA instead of 100fmol DNA). After reloading, resumed the run.</p>
+<p>After resuming the run, the flow cell was back to 845 pores, though on pore scan 293 of those were “reserved”, so I’m not sure how many of the recovered pores will actually be sequencing.</p>
+<p>Before wash, pore activity showed:</p>
+<ul>
+<li>15.6% of pores sequencing, 15.7% available<br>
+So 30% of pores still live, and 50% occupancy of available pores</li>
+</ul>
+<p>After wash/reload, pore activity showed:</p>
+<ul>
+<li>30.8% sequencing, 20.2% available<br>
+So 51% of pores stil ive, and ~60% pore occupancy of those available</li>
+</ul>
+<p><u><strong>Notes:</strong></u></p>
+<ul>
+<li><p>Barcodes are unbalanced (#12: 1.3M, #13: 1.5M, #14: 2.5M), so there may have been an issue during barcode ligation. Maybe the barcodes weren’t fully mixed before ligation? Maybe the sample concentrations are inaccurate?</p></li>
+<li><p>1/2 life of pores is ~11hrs. At 0hr, 1383 pores, at 11hr, 704 pores.</p></li>
+</ul>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_20_wash1_minion_G1L4.html</guid>
+  <pubDate>Wed, 20 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Wash #2, MinION Group 1 Library 4</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_20_wash2_minion_G1L4.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>At 1 day, 10hrs into the run (~12hr after wash #1), performed a second wash on the MinION flow cell.</p>
+<p>First, needed to get a library of 200fmol. I previously diluted a portion of G1L4 to 100fmol/12uL, in a total of 36uL. I used 12uL of this for the first load, so I now have 24uL of diluted library. I also still have some undiluted Library 4. I need to add some undiluted Library 4 to my dilution to raise the concentration to 200fmol/12uL (since I observed higher pore occupancy with more input DNA).</p>
+<p><u>Calculate how many uL of undiluted Library 4 to add:</u></p>
+<p>A = concentration of Library 4 = 36.6 ng/uL<br>
+B = concentration of dilution = 100fmol/12uL = 43.1ng/12uL = 3.58 ng/uL<br>
+v = volume of dilution = 24uL<br>
+x = volume of Library 4</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7Btotal%5C%20DNA%7D%7Btotal%5C%20volume%7D%20=%20%5Cfrac%7B(Bv+Ax)%7D%7Bv+x%7D%20=%202B%20%5C%20%5C%20%5C%20%5CRightarrow%20%5C%20%5C%20%5C%20x(A-2B)=Bv%20%5C%20%5C%20%5C%20%5CRightarrow%20%5C%20%5C%20%5C%20x=%5Cfrac%7BBv%7D%7BA-2B%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?x=%5Cfrac%7BBv%7D%7BA-2B%7D%20=%20%5Cfrac%7B3.58%5Cfrac%7Bng%7D%7BuL%7D*24uL%7D%7B36.6%5Cfrac%7Bng%7D%7BuL%7D-2*3.58%5Cfrac%7Bng%7D%7BuL%7D%7D%20=%20%5Cfrac%7B85.92ng%7D%7B29.44%5Cfrac%7Bng%7D%7BuL%7D%7D%20=%202.92uL"></p>
+<p>Added 2.92uL of undiluted G1L4 to the MinION dilution to bring the concentration up to 200fmol/12uL. this is twice the recommended concentration for MinION loading.</p>
+<p>I then used this newdilution to wash and reload the Group 1 Library 4 flow cell.</p>
+<p>541 pores (129 reserved, 412 available) before wash, 693 pores (255 reserved, 438 available)</p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_20_wash2_minion_G1L4.html</guid>
+  <pubDate>Wed, 20 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>MinION run, Group 1 Library 4</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_19_minion_G1L4.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Ok, today’s the day! I have a library I’m happy with that also has a lot of DNA, for multiple cycles of wash/reload. Will be runnign Group 1 Library 4 on a MinION flow cell.</p>
+<p>Following MinION loading protocol found in the <a href="./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-24-document-checklist-MinION-en-NBE_9169_v114_revV_02Jul2025-39.pdf">Native Barcoding 96 gDNA protocol</a>.</p>
+<p><u>Make a diluted Final Library 4:</u></p>
+<p>Though TapeStation told me these DNA extractions were ~1700bp on average, the Flongle run showed a read distribution centered around ~700bp (shearing during library prep? fragmentation from being stored frozen?). This is the length estimate I’ll use for mol -&gt; mass conversions.</p>
+<p>The protocol recommends <strong>100fmol in 12uL EB</strong> for &lt;1kb DNA. Using NEB calculator, 100fmol of 700bp DNA is <strong>43.1ng DNA</strong>.</p>
+<p>Group 1 Library 4 is 36.6ng/uL, so <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B43.1ng%5C%20DNA%7D%7B36.6%5Cfrac%7Bng%7D%7BuL%7D%7D%20=%201.17uL%5C%20G1L4"></p>
+<p>Actually, I’ll need more diluted Library 4 later for wash/reload, so I’ll just mix several loads-worth now.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B43.1ng%7D%7B12uL%7D%20=%20%5Cfrac%7B129.3ng%5C%20DNA%7D%7B36uL%5C%20EB%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B129.3ng%5C%20DNA%7D%7B36.6%5Cfrac%7Bng%7D%7BuL%7D%7D%20=%203.5uL%5C%20G1L4"></p>
+<p>So combine <strong>3.5uL G1L4</strong> with (36-3.5) = <strong>32.5uL EB.</strong></p>
+<p>Loaded MinION flow cell according to protocol and began 72hr run.</p>
+<p><u><strong>MinION flow cell</strong></u><br>
+SN: B024226802<br>
+LOT: 11004308<br>
+ID: FBD09922<br>
+1428 pores on check</p>
+<section id="troubleshooting" class="level3">
+<h3 class="anchored" data-anchor-id="troubleshooting">Troubleshooting:</h3>
+<p>We noticed after the first 10 minutes of the run that the pore occupancy was low (roughly 50% of the available pores were sequencing). Dan suggested this may be due to loading too little DNA, so we decided to try spiking in more library at a higher concentration, without washing the flow cell.</p>
+<p>I made a dilution of G1L4 at double the recommended concentration:</p>
+<p>Recommended: 100fmol = 43.1ng<br>
+Doubled: 200fmol = 86.2ng</p>
+<p>So I need 86.2ng DNA in 12uL EB.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B86.2ng%5C%20DNA%7D%7B36.6%5Cfrac%7Bng%7D%7BuL%7D%7D%20=%202.4uL%5C%20G1L4"></p>
+<p>So added <strong>2.4ng G1L4</strong> to (12-2.4) = <strong>9.6uL EB</strong>.</p>
+<p>Prepared the second load as instructed in protocol (SB, LIB, and 2X concentration G1L4 dilution). Paused MinION run at 17minutes and added full 75uL of second library to the SpotOn port in dropwise fashion (opened priming port first to create negative pressure). Library was absorbed into cell as desired.</p>
+<p>Un-paused run, and it resumed as normal. Pore occupancy steadily increased. by minute 30, ~75% of available pores were sequencing – the spike of second library was successful!</p>
+
+
+</section>
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_19_minion_G1L4.html</guid>
+  <pubDate>Tue, 19 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Flongle run, Group 1 Library 4</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_18_flongle_G1L4.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Running Group 1, Library 4 on a Flongle to confirm successful library prep.</p>
+<p>Need 10fmol DNA in 5uL EB. Assume 1700bp average length: 10fmol = 10.5ng DNA.</p>
+<p>Library 4 is 36.6ng/uL, so too concentrated to accurately pipette 10.5ng. Instead, make a 4X mix:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B10.5ng%5C%20DNA%7D%7B5uL%5C%20EB%7D%20=%20%5Cfrac%7B42ng%5C%20DNA%7D%7B20uL%5C%20EB%7D"></p>
+<p>To get volume of G1L4 to add:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B42ng%5C%20DNA%7D%7B36.6%20ng/uL%5C%20G1L4%7D%20=%201.15uL%5C%20G1L4"></p>
+<p>So added <strong>1.15 uL G1L4</strong> to (20-1.15uL) = <strong>18.85uL EB</strong>. Then used 5uL of this to make Flongle loading library.</p>
+<p><u><strong>Flongle flow cell</strong></u><br>
+SN: B028104167<br>
+LOT: 33001524<br>
+ID: AYL248<br>
+60 pores on check<br>
+33 pores after loading<br>
+<br>
+This is a pretty significant drop in pores after library loading, even for a Flongle.</p>
+<p>Ran for 24 hours.</p>
+<p>This Flongle run had very poor results – low output and quickly degrading pores. After discussion with Dan, though, he thinks this was a problem with the flow cell itself (supported by the dramatic pore loss after loading), not the library. I’ll go ahead with the Group 1 Library 4 prep and try it on a MinION.</p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_18_flongle_G1L4.html</guid>
+  <pubDate>Mon, 18 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Summary of Group 1, Libraries 1-3</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_18_flongle_notes.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="summary-from-last-3-library-preps-and-tweaks" class="level2">
+<h2 class="anchored" data-anchor-id="summary-from-last-3-library-preps-and-tweaks">Summary from last 3 library preps and tweaks:</h2>
+<ul>
+<li><p>Beginning with and retaining more DNA through prep doesn’t appear to have a negative effect on sequencing (e.g.&nbsp;similar yield from <a href="./2025_08_flongle_G1L1.qmd">G1 L1</a> and <a href="./2025_08_13_G1L2.qmd">G1 L2</a>), but it does result in a library with much higher DNA content. This is very important for being able to load the MinION flow cell multiple times (with washes), so for all future library preps I will:</p>
+<ul>
+<li><p><strong>begin with 1000ng DNA input</strong> from each sample (or as much DNA as I have, if &lt;1000ng is available)</p></li>
+<li><p>following end-prep, <strong>retain 3.75uL end-prepped DNA</strong> during Native Barcode Ligation Step 7, instead of the recommended 0.75uL</p></li>
+<li><p>Note that, to get 1000ng DNa in 12uL input, will need a sample concentration of &gt;83.3 ng/uL. If input DNA is too dilute, will need to re-concentrate usng Zymo</p></li>
+</ul></li>
+<li><p>I realized I don’t use the DNA Control Sample (DCS), since its purpose is to inform, in the event of a failed sequencing run, whether the cause was failed library prep. I’m running libraries on Flongles to confirm successful library prep (without risking a MinION flow cell), so I don’t need the DCS. Instead, this volume can be used for input DNA. For all future library preps I will:</p>
+<ul>
+<li><strong>Exclude the 1uL DCS</strong> from each sample prep during DNA Repair and End-Prep Step 6, Instead, makeup the 1000ng input DNA of each sample in 12uL.</li>
+</ul></li>
+<li><p>Based on the <a href="../../../posts/projects/SIFP_2025/2025_08_14_Flongle_stats.html">Flongles’ rate of pore degradation and sequencing</a>, I think MinION flow cells may yield less output than I originally estimated. As such, <strong>I will only multiplex 3 samples per flow cell.</strong></p></li>
+<li><p>Excluding FFPE end repair does appear to affect sequencing (<a href="../../../posts/projects/SIFP_2025/2025_08_13_flongle_G1L2.html">G1 L2</a> vs <a href="../../../posts/projects/SIFP_2025/2025_08_15_flongle_G1L3.html">G1 L3</a>). <strong>This reagent will be included</strong> in all future library preps.</p></li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_18_flongle_notes.html</guid>
+  <pubDate>Mon, 18 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Native Barcoding Library Prep, Group 1 Library 4</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_18_library_prep_G1L4.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Now that I’m satisfied with the tweaks to the Native Barcoding gDNA protocol I’ve made, I will incorporate them all for a library prep of Group 1 (Library 4) that will hopefully be good enough to sequence on MinION.</p>
+<p>As a reminder, I’m using <a href="./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-24-document-checklist-MinION-en-NBE_9169_v114_revV_02Jul2025-39.pdf">Native Barcoding 96 V14, gDNA protocol</a>, with the following modifications:</p>
+<p><u><strong>DNA Repair &amp; End-Prep</strong></u><br>
+Step 4: aliquot 1000ng DNA per sample (not 400ng)<br>
+Step 6: exclude DCS, making up remaining 1uL with sample DNA or nuclease-free water</p>
+<p><u><strong>Native Barcode Ligation</strong></u><br>
+Step 7: use 3.75uL end-prepped DNA for each sample, and exclude the nuclease-free water</p>
+<table class="table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 18%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Catalog #</th>
+<th>Conc. (ng/uL)</th>
+<th>uL for 1000ng</th>
+<th>uL for 12uL</th>
+<th>Label/Barcode</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1606826</td>
+<td>408</td>
+<td>2.5</td>
+<td>9.5</td>
+<td>12</td>
+</tr>
+<tr class="even">
+<td>1740336</td>
+<td>368</td>
+<td>2.7</td>
+<td>9.3</td>
+<td>13</td>
+</tr>
+<tr class="odd">
+<td>1740363</td>
+<td>343</td>
+<td>2.9</td>
+<td>9.1</td>
+<td>14</td>
+</tr>
+</tbody>
+</table>
+<p><strong>End-Prep Master Mix:</strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>1X</th>
+<th>4X</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NEBNext FFPE DNA Repair Buffer</td>
+<td>0.875 uL</td>
+<td><strong>3.5 uL</strong></td>
+</tr>
+<tr class="even">
+<td>Ultra II End-Prep Reaction Buffer</td>
+<td>0.875 uL</td>
+<td><strong>3.5 uL</strong></td>
+</tr>
+<tr class="odd">
+<td>Ultra II End-Prep Enzyme Mix</td>
+<td>0.75 uL</td>
+<td><strong>3 uL</strong></td>
+</tr>
+<tr class="even">
+<td>NEBNext FFPE DNA Repair Mix</td>
+<td>0.5 uL</td>
+<td><strong>2 uL</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Made a 4X Master Mix and added 3uL to each sample</p>
+<p><u>Qubit 1 (Barcodes ligated, in 35uL)</u><br>
+Standard 1: 38.64<br>
+Standard 2: 16901.25<br>
+Library 2: <strong>14.9 ng/uL</strong></p>
+<p><u>Qubit 2 (Adapters ligated, in 15uL)</u><br>
+Standard 1: 39.66<br>
+Standard 2: 10449.45<br>
+Library 2: <strong>36.6 ng/uL</strong></p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_18_library_prep_G1L4.html</guid>
+  <pubDate>Mon, 18 Aug 2025 04:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Flongle Run, Group 1 Library 3</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -2995,876 +3311,6 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
   <category>SIFP-2025</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_24_titration_tapestation.html</guid>
   <pubDate>Thu, 24 Jul 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Gel Electrophoresis</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_18_gel_electrophoresis.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>To check DNA integrity, ran gel electrophoresis.</p>
-<section id="gel-making-protocol" class="level3">
-<h3 class="anchored" data-anchor-id="gel-making-protocol">Gel-making protocol</h3>
-<ol type="1">
-<li><p>Tape sides of gel mold and insert comb(s). For the integrity check of genomic DNA, used 12-well combs that had an additional well for ladder (1 comb per mold)</p></li>
-<li><p>Melt one 50mL falcon tube of <strong>1.5% SB agarose gel</strong> in beaker by microwaving in ~15s intervals, swirling intermittently to mix. Once fully melted, allow to cool until the beaker is comfortable to handle.</p></li>
-<li><p>Add <strong>2uL 10,000X gel red</strong> to melted agarose, swirling to mix, then pour agarose into gel mold.</p></li>
-<li><p>Allow to cool until fully set and slightly opaque (~30 min).</p>
-<p>If using immediately , remove comb(s) and begin use (see next protocol). If storing, leave combs in and refrigerate in a sealed container.</p></li>
-</ol>
-</section>
-<section id="electrophoresis" class="level3">
-<h3 class="anchored" data-anchor-id="electrophoresis">Electrophoresis</h3>
-<ol type="1">
-<li>If necessary, make aliquot of “dosed” loading dye, by mixing <strong>1000uL 2X Loading Dye</strong> with <strong>1uL 10,000X gel red</strong>.</li>
-<li>Place gel, with comb and tape barriers removed, in electrophoresis chamber. Ensure it is fully covered by buffer, and wells are placed by the negative (black) node.</li>
-<li>For each sample, mix <strong>2uL “dosed” 2X Loading Dye</strong> to <strong>2uL DNA</strong>.</li>
-<li>Load into wells, taking care not to puncture gel or eject sample from well.</li>
-<li>Load equal volume of <strong>Fast DNA Ladder</strong> in ladder well.</li>
-<li>Run gel at <strong>100-120 volts</strong> for <strong>60min</strong>.</li>
-</ol>
-</section>
-<section id="gels" class="level3">
-<h3 class="anchored" data-anchor-id="gels">Gels</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/2025_07_18_gels/2025_07_18_labelled_gels/Slide1.PNG" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Gel 1</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/2025_07_18_gels/2025_07_18_labelled_gels/Slide2.PNG" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Gel 2</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/2025_07_18_gels/2025_07_18_labelled_gels/Slide3.PNG" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Gel 3</figcaption>
-</figure>
-</div>
-<p>Notes:</p>
-<ul>
-<li><p>10X = used 10X dilution of DNA to avoid high-concentration DNA “clogging.” Same dilutions as used for Qubit.</p></li>
-<li><p>2nd = 2nd extraction of this specimen</p></li>
-<li><p>A few lanes were too faint to really see (1007393 10X, 1606824 10X, 51727, 51861), likely due to low DNA concentration. Can rerun 1007393 and 1606824 undiluted.</p></li>
-<li><p>Most of the old tuff (14366, 19054, 52295, 1180630, 50603, 14399, 42137, and 50368) seems ok. A few have HMW DNA, but most range from 1kb - 0.15kb. 42137 is the only one with many short fragments.</p></li>
-<li><p>Modern stuff also looks ok, especially the 1740### samples, which I believe correspond to the 2019 collections. These have lots of HMW DNA!</p></li>
-<li><p>Surprisingly, the 60s stuff seems most degraded (51857 - 51861, 51727). I may want to consider pulling different collections for this time range.</p></li>
-</ul>
-</section>
-<section id="reruns-722" class="level3">
-<h3 class="anchored" data-anchor-id="reruns-722">Reruns 7/22</h3>
-<p>Four of the samples had almost no visible DNA on the gel, despite having sufficiently high DNA concentrations (based on Qubit). Two were run as 10X dilutions, so I reran on a new gel using undiluted DNA. The other two may have been non-visible due to user error? e.g.&nbsp;maybe the DNA “floated” out of the well?</p>
-<p><u>Samples to rerun:</u><br>
-USNM 1007393 (rerun undiluted)<br>
-USNM 1606824 (rerun undiluted)<br>
-USNM 51727<br>
-USNM 51861</p>
-<p>Followed the same gel-making and electrophoresis protocols provided above.</p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/2025_07_22_gel/Slide1.PNG" class="img-fluid"></p>
-</section>
-<section id="plot" class="level3">
-<h3 class="anchored" data-anchor-id="plot">Plot</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(googlesheets4)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'googlesheets4' was built under R version 4.2.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(tidyr)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyr' was built under R version 4.2.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(ggplot2)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.2.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">conc <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read_sheet</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://docs.google.com/spreadsheets/d/1zDMy7AOCM8Ug85q4vr9CoMDxfF-zDJk1DnaxakSt1Hg/edit?usp=sharing"</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>! Using an auto-discovered, cached token.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  To suppress this message, modify your code or options to clearly consent to
-  the use of a cached token.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  See gargle's "Non-interactive auth" vignette for more details:</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  &lt;https://gargle.r-lib.org/articles/non-interactive-auth.html&gt;</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>ℹ The googlesheets4 package is using a cached token for 'kdurkin1@uw.edu'.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>✔ Reading from "E_tourneforti".</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>✔ Range 'E_tourneforti_samples'.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Pivot the concentration and gel size columns to long format</span></span>
-<span id="cb15-2">conc_long <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> conc <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb15-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pivot_longer</span>(</span>
-<span id="cb15-4">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">cols =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(Concentration1.ngul, Concentration2.ngul, Gel1.Size.kb, Gel2.Size.kb),</span>
-<span id="cb15-5">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">names_to =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">".value"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Extraction.Number"</span>),</span>
-<span id="cb15-6">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">names_pattern =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"(Concentration|Gel)</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">s?(</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">d)"</span></span>
-<span id="cb15-7">  )</span>
-<span id="cb15-8"></span>
-<span id="cb15-9">conc_long<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gel <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">factor</span>(conc_long<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gel,</span>
-<span id="cb15-10">                            <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"none"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"smear, 0.05"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"short smear, 0.15"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"smear, 0.15"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"smear, 0.3"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"smear, 0.5"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"HMW, smear"</span>),</span>
-<span id="cb15-11">                            <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">ordered =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">TRUE</span>)</span>
-<span id="cb15-12">conc_long<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Collection.Age <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ifelse</span>(conc_long<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Year.Collected <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1920</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"pre-1920"</span>,</span>
-<span id="cb15-13">                              <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ifelse</span>(conc_long<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Year.Collected <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1999</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Modern"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"1960s-70s"</span>))</span>
-<span id="cb15-14">conc_long<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Collection.Age <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">factor</span>(conc_long<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Collection.Age,</span>
-<span id="cb15-15">                              <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"pre-1920"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"1960s-70s"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Modern"</span>),</span>
-<span id="cb15-16">                              <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">ordered =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">TRUE</span>)</span>
-<span id="cb15-17"></span>
-<span id="cb15-18"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(conc_long, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x=</span>Gel, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y=</span>Concentration, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color=</span>Collection.Age, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">shape=</span>Extraction.Number)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb15-19">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_jitter</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.25</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">height =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb15-20">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_hline</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">yintercept =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'black'</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb15-21">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb15-22">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">axis.text.x =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">angle =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">45</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">hjust =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb15-23">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">xlab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Gel size range (kb)"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb15-24">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ylab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Concentration (ng/uL)"</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 30 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_18_gel_electrophoresis_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-
-
-</section>
-
- ]]></description>
-  <category>SIFP_2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_18_gel_electrophoresis.html</guid>
-  <pubDate>Fri, 18 Jul 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Qubit of re-extractions</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_17_qubit_reextractions.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Quantified DNA concentration of my 5 re-extractions using Qubit flourometer. Followed Qubit Protocol found in my <a href="../../../posts/projects/SIFP_2025/2025_07_14_qubit.html">July 14 post</a>.</p>
-<p>Standard #1: 37.13<br>
-Standard #2: 14435.49</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Catalog Number</th>
-<th>Qubit Label</th>
-<th>Concentration (ng/uL)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>USNM 14366</td>
-<td>C01</td>
-<td>0.372</td>
-</tr>
-<tr class="even">
-<td>USNM 19054</td>
-<td>C02</td>
-<td>3.57</td>
-</tr>
-<tr class="odd">
-<td>USNM 52295</td>
-<td>C03</td>
-<td>9.02</td>
-</tr>
-<tr class="even">
-<td>USNM 1180630</td>
-<td>C04</td>
-<td>1.78</td>
-</tr>
-<tr class="odd">
-<td>USNM 50603</td>
-<td>C05</td>
-<td>14.9</td>
-</tr>
-</tbody>
-</table>
-<p>Notes:</p>
-<p>Ok this isn’t terrible! The 50603 concentrated re-extraction has &gt;10ng/uL, which is enough to meet the recommended 400ng minimum for MinION. USNM52295 is almost at this threshold, and if I can combine it with my first extraction of this specimen ([ ] = 7.08ng/uL), e.g.&nbsp;during bead cleanup, we’ll have enough of that one too!</p>
-<p>That would bring me to my desired minimum number of samples (n=5) for the &gt;100yo specimens!</p>
-<p>Now I need to run gels on everything to check fragment size. I should also do a Nanodrop at some point before library prep to check for contaminants.</p>
-
-
-
- ]]></description>
-  <category>SIFP_2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_17_qubit_reextractions.html</guid>
-  <pubDate>Thu, 17 Jul 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Zymo Cleanup/Concentration of re-extractions</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_17_zymo_concentration.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Completed re-extraction of the following samples in multiples of 4:</p>
-<p>USNM 14366<br>
-USNM 19054<br>
-USNM 52295<br>
-USNM 1180630<br>
-USNM 50603</p>
-<p>See full details in <a href="./2025_07_17_rextraction.qmd">July 17 post</a>.</p>
-<p>Then used Zymo Cleanup Kit to clean and concentrate extractions, following the Zymo Cleanup Protocol found in my <a href="../../../posts/projects/SIFP_2025/2025_07_12_zymo_cleanup.html">July 12 post</a>, with the following modifications:</p>
-<p>For each specimen, to concentrate 4 100uL extractions into a single cleaned extraction, during steps 2 &amp; 3 of the protocol (adding sample to spin column and centrifuging), performed several iterations for each specimen. The spin column is to small to hold the full volume of 4 100uL DNA samples and the corresponding 2000uL of ChIP Binding Buffer. Instead, added 5 volumes of ChIP Binding Buffer to each extraction individually. Then added 1000uL of sample DNA + ChIP Buffer to spin column at a time, then centrifuged, discarded flow through, and repeated until all extracted DNA of a given specimen had been bound to the spin column. I then proceeded as normal, eluting in a final volume of 50uL of heated Elution Buffer.</p>
-
-
-
- ]]></description>
-  <category>SIFP_2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_17_zymo_concentration.html</guid>
-  <pubDate>Thu, 17 Jul 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Re-extraction of low-quantity samples</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_15_rextraction.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Several of the older samples had low DNA concentrations (&lt;10ng/uL) (see <a href="../../../posts/projects/SIFP_2025/2025_07_14_qubit.html">quantification notes</a> for details). To obtain enough DNA for library prep (&gt;= 400ng), I need to extract more DNA from these specimens.</p>
-<p>To do this, I’ll do several extractions for each of the specimens, then pool each specimen’s extractions before Zymo Cleanup to concentrate the multiple extractions into one higher-concentration elution.</p>
-<section id="subsampling" class="level3">
-<h3 class="anchored" data-anchor-id="subsampling">Subsampling</h3>
-<p><strong>USNM 14366<br>
-USNM 19054<br>
-USNM 52295<br>
-USNM 1180630<br>
-USNM 50603</strong></p>
-<p>For each of the above specimens, subsampled 4 times as described in the subsampling protocol provided in my <a href="./2025_07_09_subsampling_extractions.qmd">July 9 post</a>. Each set of subsamples was labelled with the catalog number and then A, B, C, or D.</p>
-<p>During subsamplling I was able to see where on the specimen I had previously sampled tissue. I subsampled this time from the same stalk/finger, to preserve the undamaged portions of the specimens.</p>
-</section>
-<section id="tissue-digestion" class="level3">
-<h3 class="anchored" data-anchor-id="tissue-digestion">Tissue digestion</h3>
-<p>Digested the above specimens (20 total) as detailed in the <strong>Digestion Protocol</strong> in my <a href="./2025_07_09_subsampling_extractions.qmd">July 9 post</a>.</p>
-<p>Digestions began incubating at 3:00pm, 07/15/25.</p>
-</section>
-<section id="extraction" class="level3">
-<h3 class="anchored" data-anchor-id="extraction">Extraction</h3>
-<p>Pulled digesting tissue from shaking incubators at 1:00pm, 07/17/2025, and finished extraction as detailed in the <strong>Qiagen Extraction Protocol</strong> included in my <a href="../../../posts/projects/SIFP_2025/2025_07_11_extractions.html">July 11 post</a>.</p>
-
-
-</section>
-
- ]]></description>
-  <category>SIFP_2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_15_rextraction.html</guid>
-  <pubDate>Tue, 15 Jul 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Qubit DNA Quantification</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_14_qubit.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Used Qubit flourometer to quantify DNA concentration of extracted E. tourneforti samples.</p>
-<section id="lab-1x-dsdna-qubit-protocol" class="level3">
-<h3 class="anchored" data-anchor-id="lab-1x-dsdna-qubit-protocol">LAB 1X dsDNA Qubit Protocol</h3>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/LAB_Qubit_Protocol_1.png" class="img-fluid"></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/LAB_Qubit_Protocol_2.png" class="img-fluid"></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/LAB_Qubit_Protocol_3.png" class="img-fluid"></p>
-<p>Note: Used 2uL of sample DNA for each Qubit rxn</p>
-</section>
-<section id="results" class="level3">
-<h3 class="anchored" data-anchor-id="results">Results</h3>
-<p>Had to assign new labels to the samples for Qubiting, since the USNM Catalog numbers are too large to fit on the Qubit tube lids</p>
-<p><u><strong>Standards (first run):<br>
-</strong></u>Standard #1: 37.57<br>
-Standard #2: 14064.10</p>
-<p><u><strong>Standards (second run, with dilutions):</strong></u><br>
-Standard #1: 36.17<br>
-Standard #2: 14557.00</p>
-<table class="table">
-<colgroup>
-<col style="width: 23%">
-<col style="width: 23%">
-<col style="width: 23%">
-<col style="width: 29%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><strong>Year.Collected</strong></td>
-<td><strong>Catalog.Number</strong></td>
-<td style="text-align: right;"><strong>Qubit.label</strong></td>
-<td><strong>Concentration.ngul</strong></td>
-</tr>
-<tr class="even">
-<td>1886</td>
-<td>USNM 14366</td>
-<td style="text-align: right;">A01</td>
-<td>* 0.173</td>
-</tr>
-<tr class="odd">
-<td>1886</td>
-<td>USNM 14399</td>
-<td style="text-align: right;">A02</td>
-<td>33.9</td>
-</tr>
-<tr class="even">
-<td>1898</td>
-<td>USNM 19054</td>
-<td style="text-align: right;">A03</td>
-<td>* 6.03</td>
-</tr>
-<tr class="odd">
-<td>1898</td>
-<td>USNM 42137</td>
-<td style="text-align: right;">A04</td>
-<td>15</td>
-</tr>
-<tr class="even">
-<td>1960</td>
-<td>USNM 51730</td>
-<td style="text-align: right;">A05</td>
-<td>20.9</td>
-</tr>
-<tr class="odd">
-<td>1960</td>
-<td>USNM 51732</td>
-<td style="text-align: right;"><strong>A06</strong></td>
-<td><strong>89.4</strong></td>
-</tr>
-<tr class="even">
-<td>1960</td>
-<td>USNM 51728</td>
-<td style="text-align: right;">A07</td>
-<td>35.2</td>
-</tr>
-<tr class="odd">
-<td>1960</td>
-<td>USNM 51892</td>
-<td style="text-align: right;"><strong>A08</strong></td>
-<td><strong>86.3</strong></td>
-</tr>
-<tr class="even">
-<td>1912</td>
-<td>USNM 52295</td>
-<td style="text-align: right;">A09</td>
-<td>* 7.08</td>
-</tr>
-<tr class="odd">
-<td>2000</td>
-<td>USNM 100609</td>
-<td style="text-align: right;"><strong>A10</strong></td>
-<td><strong>161</strong></td>
-</tr>
-<tr class="even">
-<td>2000</td>
-<td>USNM 100610</td>
-<td style="text-align: right;"><strong>A11</strong></td>
-<td><strong>84.7</strong></td>
-</tr>
-<tr class="odd">
-<td>2000</td>
-<td>USNM 1007393</td>
-<td style="text-align: right;"><strong>A12</strong></td>
-<td><strong>116</strong></td>
-</tr>
-<tr class="even">
-<td>2002</td>
-<td>USNM 1018355</td>
-<td style="text-align: right;">A13</td>
-<td>44.3</td>
-</tr>
-<tr class="odd">
-<td>1912</td>
-<td>USNM 1180630</td>
-<td style="text-align: right;">A14</td>
-<td>* 1.41</td>
-</tr>
-<tr class="even">
-<td>2019</td>
-<td>USNM 1606824</td>
-<td style="text-align: right;"><strong>A15</strong></td>
-<td><strong>167</strong></td>
-</tr>
-<tr class="odd">
-<td>2019</td>
-<td>USNM 1606826</td>
-<td style="text-align: right;"><strong>A16</strong></td>
-<td><strong>189</strong></td>
-</tr>
-<tr class="even">
-<td>2019</td>
-<td>USNM 1740336</td>
-<td style="text-align: right;"><strong>A17</strong></td>
-<td><strong>163</strong></td>
-</tr>
-<tr class="odd">
-<td>2019</td>
-<td>USNM 1740363</td>
-<td style="text-align: right;"><strong>A18</strong></td>
-<td><strong>152</strong></td>
-</tr>
-<tr class="even">
-<td>2019</td>
-<td>USNM 1740390</td>
-<td style="text-align: right;"><strong>A19</strong></td>
-<td><strong>126</strong></td>
-</tr>
-<tr class="odd">
-<td>2019</td>
-<td>USNM 1740407</td>
-<td style="text-align: right;"><strong>A20</strong></td>
-<td><strong>133</strong></td>
-</tr>
-<tr class="even">
-<td>1880</td>
-<td>USNM 50368</td>
-<td style="text-align: right;">B01</td>
-<td>26.5</td>
-</tr>
-<tr class="odd">
-<td>1912</td>
-<td>USNM 50603</td>
-<td style="text-align: right;">B02</td>
-<td>* 2.28</td>
-</tr>
-<tr class="even">
-<td>1960</td>
-<td>USNM 51727</td>
-<td style="text-align: right;">B03</td>
-<td>27</td>
-</tr>
-<tr class="odd">
-<td>1960</td>
-<td>USNM 51729</td>
-<td style="text-align: right;">B04</td>
-<td>48.9</td>
-</tr>
-<tr class="even">
-<td>1960</td>
-<td>USNM 51857</td>
-<td style="text-align: right;">B05</td>
-<td>43.7</td>
-</tr>
-<tr class="odd">
-<td>1960</td>
-<td>USNM 51858</td>
-<td style="text-align: right;">B06</td>
-<td>28.5</td>
-</tr>
-<tr class="even">
-<td>1960</td>
-<td>USNM 51859</td>
-<td style="text-align: right;">B07</td>
-<td>43.9</td>
-</tr>
-<tr class="odd">
-<td>1960</td>
-<td>USNM 51860</td>
-<td style="text-align: right;">B08</td>
-<td>56</td>
-</tr>
-<tr class="even">
-<td>1960</td>
-<td>USNM 51861</td>
-<td style="text-align: right;">B09</td>
-<td>52</td>
-</tr>
-</tbody>
-</table>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Bolded values indicated the sample was originally too high concentration to be accurately quantified by the Qubit assay. For these samples I made a 10X dilution (1uL DNA sample, 9uL Zymo DNA Elution Buffer), then re-Qubited the dilutions. Values shown above are the calculated “true” concentrations (10X dilution concentration, multiplied by 10).</p>
-</div>
-</div>
-<p>Generally, almost all extractions have a good amount of DNA! The recommended minimum quantity of DNA for Nanopore Native Library Prep is 400ng. Since I’ll have ~40uL DNA left for each sample after eluting in 50uL and using a small portion for QC steps, I’m <strong>aiming for a minimum DNA concentration of 10 ng/uL</strong>.</p>
-<p>Only 5 samples failed to meet this threshold (starred above). All 5 are from my set of old specimens (&gt;100 yo). I only have 8 total specimens from this collection period, and I want an n=5 for sequencing. <strong>I’ll need to do additional extractions for the 5 specimens with low concentrations (USNM 14366, USNM, 19054, USNM 52295, USNM 1180630, USNM 50603).</strong> I may also want to do an additional extraction for USNM 42137 (15.0 ng/uL), since its not much higher than my desired minimum concentration.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(googlesheets4)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'googlesheets4' was built under R version 4.2.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(ggplot2)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.2.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">conc <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read_sheet</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://docs.google.com/spreadsheets/d/1zDMy7AOCM8Ug85q4vr9CoMDxfF-zDJk1DnaxakSt1Hg/edit?usp=sharing"</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>! Using an auto-discovered, cached token.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  To suppress this message, modify your code or options to clearly consent to
-  the use of a cached token.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  See gargle's "Non-interactive auth" vignette for more details:</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  &lt;https://gargle.r-lib.org/articles/non-interactive-auth.html&gt;</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>ℹ The googlesheets4 package is using a cached token for 'kdurkin1@uw.edu'.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>✔ Reading from "E_tourneforti".</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>✔ Range 'E_tourneforti_samples'.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(conc, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x=</span>Year.Collected, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y=</span>Concentration.ngul, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color=</span>Country)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb13-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">size=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> </span>
-<span id="cb13-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_line</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'black'</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb13-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 3 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_14_qubit_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>(anything collected in the US was collected off the coast of Florida)</p>
-<p>Horizontal line indicates the 10 ng/uL cutoff, or the minimum concentration that will yield at least the library prep requirement of 400ng DNA from a volume of 40uL.</p>
-
-
-</section>
-
- ]]></description>
-  <category>SIFP_2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_14_qubit.html</guid>
-  <pubDate>Mon, 14 Jul 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Zymo cleanup and concentration</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_12_zymo_cleanup.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="zymo-genomic-dna-clean-concentrator---10-protocol" class="level3">
-<h3 class="anchored" data-anchor-id="zymo-genomic-dna-clean-concentrator---10-protocol">Zymo Genomic DNA Clean &amp; Concentrator - 10 Protocol</h3>
-<ol type="1">
-<li><p>Add <strong>5 volumes of ChIP DNA Binding Buffer</strong> to each volume of DNA sample. Mix thoroughly and spin down.</p>
-<p>e.g., to 100uL of sample DNA, add 500uL ChIP DNA Binding Buffer</p></li>
-<li><p>Transfer mixture to a Zymo Spin Column (IC-XC) in a collection tube.</p></li>
-<li><p>Centrifuge 30s at 12,000 RPM. Discard flow through.</p></li>
-<li><p>Add <strong>200uL DNA Wash Buffer</strong> to the column. Centrifuge 1 min at 12,000 RPM. Discard flow through.</p></li>
-<li><p>Repeat Step 4.</p></li>
-<li><p>Add <strong>&gt;= 10 uL DNA Elution Buffer</strong> (or nuclease-free water) directly to the column matrix and incubate at room temp for 1 minute. Transfer column to a labelled 1.5mL tube and centrifuge for &gt;=30 sec to elute DNA.</p>
-<p>To improve yield, one can heat DNA Elution Buffer to 60C before use.</p></li>
-</ol>
-<p>Notes:</p>
-<ul>
-<li><p>Aliquoted DNA Elution Buffer to 2mL tube and heated to 60C before use.</p></li>
-<li><p>Eluted each sample in 50uL of buffer.</p></li>
-</ul>
-<p>Performed Zymo Cleanup on both Round 1 and Round 2 extractions at 1:00pm, July 12, 2025. Stored cleaned DNA in fridge for the weekend.</p>
-
-
-</section>
-
- ]]></description>
-  <category>SIFP_2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_12_zymo_cleanup.html</guid>
-  <pubDate>Sat, 12 Jul 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Finishing extractions</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_11_extractions.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Completed <em>E. tourneforti</em> extractions</p>
-<section id="qiagen-dneasy-extraction-protocol-after-digestion" class="level3">
-<h3 class="anchored" data-anchor-id="qiagen-dneasy-extraction-protocol-after-digestion">Qiagen DNEasy Extraction Protocol (after digestion)</h3>
-<ol start="2" type="1">
-<li>Add <strong>200uL Buffer AL</strong>. Mix thoroughly by vortexing, and spin down the sides.</li>
-<li>Add <strong>200ul 95% ethanol</strong>. Mix thoroughly by vortexing, and spin down the sides.</li>
-<li>Pipet mixture onto a labelled DNEasy Mini Spin Column placed in a 2mL collection tube. Centrifuge @ &gt;= 8,000 RPM for 1 min. Discard the flow through and collection tube.</li>
-<li>Place column in a new 2mL collection tube. Add <strong>500uL Buffer AW1</strong>. Centrifuge at &gt;= 8,000 RPM for 1 min. Discard the flow through and collection tube.</li>
-<li>Place column in a new 2mL collection tube. Add <strong>500uL Buffer AW2</strong>. Centrifuge at 14,000 RPM for 3 min. Discard the flow through and collection tube.</li>
-<li>Transfer the spin column to a new, labelled 1.5mL or 2mL tube.</li>
-<li>Elute the DNA by adding <strong>50uL Buffer AE</strong> to the center of the spin column membrane. Incubate at room temperature for 1 min. Centrifuge 1 min. at &gt;= 8,000 RPM.</li>
-<li>Repeat step 8, for a <u>final elution volume of 100uL</u>.</li>
-</ol>
-<p>Completed Round 1 extractions at 3:00pm, July 11, 2025. Stored in fridge.</p>
-<p>Completed Round 2 extractions at 10:00am, July 12, 2025. Stored in fridge.</p>
-
-
-</section>
-
- ]]></description>
-  <category>SIFP_2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_11_extractions.html</guid>
-  <pubDate>Fri, 11 Jul 2025 04:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

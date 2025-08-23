@@ -1,0 +1,37 @@
+---
+title: "Wash #3, MinION Group 1 Library 4"
+author: "Kathleen Durkin"
+date: "2025-08-21"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Not sure I'm going to get much more out of this flow cell, but I want to try one more wash and reload. Paused run at 2 days in. On this last wash/reload, I want to try getting pore occupancy higher, so I'll try 3X the recommended concentration -- 300fmol in 12uL EB. Since the pores are nearly exhausted, it's lower stakes to try this now, in case overloading burns out the pores. This means I again need to increase the concentration of my MinION dilution of Library 4.
+
+I want 300fmol = **129.3ng DNA in 12uL EB**
+
+I currently have the following:
+
+-   undiluted G1L4: 3uL of 36.6ng/uL, so 109ng DNA
+
+-   MinION dilution: 7ul of 7.18ng/uL, so 50.26ng DNA
+
+To get 129.3ng DNA in 12uL EB: $(y*36.6\frac{ng}{uL}) + (7uL*7.18\frac{ng}{uL}) = 129.3ng \ \ \Rightarrow \ \ y = 2.16uL$
+
+So I need to combine:
+
+7uL of MinION dilution = 50.26ng DNA\
+2.16uL of G1L4 = 79.05ng DNA\
+2.84uL EB
+
+For a total of 129.31ng DNA in 12uL of EB.
+
+Combined the above quantities to obtain 300fmol in 12uL EB. then washed and reloaded the flow cell with this, and resumed run.
+
+Before wash, 420 pores (128 reserved, 292 available), after wash thre were 475 pores (208 reserved, 267 available). So no appreciable difference.

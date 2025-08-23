@@ -1,0 +1,34 @@
+---
+title: "Wash #2, MinION Group 1 Library 4"
+author: "Kathleen Durkin"
+date: "2025-08-20"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+At 1 day, 10hrs into the run (\~12hr after wash #1), performed a second wash on the MinION flow cell.
+
+First, needed to get a library of 200fmol. I previously diluted a portion of G1L4 to 100fmol/12uL, in a total of 36uL. I used 12uL of this for the first load, so I now have 24uL of diluted library. I also still have some undiluted Library 4. I need to add some undiluted Library 4 to my dilution to raise the concentration to 200fmol/12uL (since I observed higher pore occupancy with more input DNA).
+
+[Calculate how many uL of undiluted Library 4 to add:]{.underline}
+
+A = concentration of Library 4 = 36.6 ng/uL\
+B = concentration of dilution = 100fmol/12uL = 43.1ng/12uL = 3.58 ng/uL\
+v = volume of dilution = 24uL\
+x = volume of Library 4
+
+$\frac{total\ DNA}{total\ volume} = \frac{(Bv+Ax)}{v+x} = 2B \ \ \ \Rightarrow \ \ \ x(A-2B)=Bv \ \ \ \Rightarrow \ \ \ x=\frac{Bv}{A-2B}$
+
+$x=\frac{Bv}{A-2B} = \frac{3.58\frac{ng}{uL}*24uL}{36.6\frac{ng}{uL}-2*3.58\frac{ng}{uL}} = \frac{85.92ng}{29.44\frac{ng}{uL}} = 2.92uL$
+
+Added 2.92uL of undiluted G1L4 to the MinION dilution to bring the concentration up to 200fmol/12uL. this is twice the recommended concentration for MinION loading.
+
+I then used this newdilution to wash and reload the Group 1 Library 4 flow cell.
+
+541 pores (129 reserved, 412 available) before wash, 693 pores (255 reserved, 438 available)

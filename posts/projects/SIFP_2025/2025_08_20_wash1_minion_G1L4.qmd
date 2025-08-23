@@ -1,0 +1,37 @@
+---
+title: "Wash #1, MinION Group 1 Library 4"
+author: "Kathleen Durkin"
+date: "2025-08-20"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+At 22.5 hrs into the Group1 Library 4 MinION run, there wasnoticable plateau of cumulative output and pore loss (from 1383 active pores, dropped to 474 active pores).
+
+At 22.5 hrs, paused the run and washed the flow cell using the Flow Cell Wash Kit, according to the ONT [Flow Cell Wash Kit protocol](./protocols/flow-cell-wash-kit-exp-wsh004-document-checklist-MinION-en-WFC_9120_v1_revS_25Jul2025-24.pdf).
+
+After wash, reloaded the MinION flow cell (FBD09922) with prepared library. I again made the library with 2X the recommended concentration (200fmol DNA instead of 100fmol DNA). After reloading, resumed the run.
+
+After resuming the run, the flow cell was back to 845 pores, though on pore scan 293 of those were "reserved", so I'm not sure how many of the recovered pores will actually be sequencing.
+
+Before wash, pore activity showed:
+
+-   15.6% of pores sequencing, 15.7% available\
+    So 30% of pores still live, and 50% occupancy of available pores
+
+After wash/reload, pore activity showed:
+
+-   30.8% sequencing, 20.2% available\
+    So 51% of pores stil ive, and \~60% pore occupancy of those available
+
+[**Notes:**]{.underline}
+
+-   Barcodes are unbalanced (#12: 1.3M, #13: 1.5M, #14: 2.5M), so there may have been an issue during barcode ligation. Maybe the barcodes weren't fully mixed before ligation? Maybe the sample concentrations are inaccurate?
+
+-   1/2 life of pores is \~11hrs. At 0hr, 1383 pores, at 11hr, 704 pores.
