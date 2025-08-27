@@ -1,7 +1,7 @@
 ---
 title: "MinION G2L2 Flow Cell Issues"
 author: "Kathleen Durkin"
-date: "2025-08-21"
+date: "2025-08-25"
 categories: ["SIFP-2025"]
 format:
   html:
