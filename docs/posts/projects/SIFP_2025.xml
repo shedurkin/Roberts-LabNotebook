@@ -44,6 +44,97 @@
   <pubDate>Thu, 21 Aug 2025 04:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>MinION G2L2 Flow Cell Issues</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_25_minion_wildflower.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="g2l2-flow-cell-issues" class="level3">
+<h3 class="anchored" data-anchor-id="g2l2-flow-cell-issues">G2L2 flow cell issues</h3>
+<p>I checked the sequencing run of Group 2 Library 2 (G2L2) on a MinION flow cell (ID# FBD39370) 13 hours in and observed some weird issues:</p>
+<ol type="1">
+<li><p><strong>Low output.</strong> 13 hours in, the G2L2 run had produced <strong>820Mb</strong> of output.<br>
+For comparison, by 13 hours into the Group1 Library 4 (G1L4) MinION run, there was <strong>~3.5Gb</strong> output.<br>
+The G2L2 run actually had a roughly equivalent number of starting pores and a higher proportion of available pores sequencing in the first half hour, so I expected <em>higher</em> output if anything. The low output was surprising.</p></li>
+<li><p><strong>Fast pore loss</strong>. By the 13 hour mark, the G2L2 run had dropped from an initial 1397 pores (1482 prior to loading) to 224 pores – <strong>an</strong> <strong>84% drop</strong> .</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/2025_08_25_minion_wildflower/G2L2_pore_scan.png" class="img-fluid" alt="G2L2 Pore scan"><br>
+</p>
+<p>For comparison, the G1L4 run began with 1383 pores after loading and 668 pores at the 12.5hr pore scan (<strong>a 52% drop</strong>). Neither run had been washed at this point.</p>
+<img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/2025_08_25_minion_wildflower/G1L4_pore_scan.png" class="img-fluid" alt="G1L4 Pore Scan"></li>
+<li><p><strong>Accumulation/reclamation patterns of pores in the “Channel Disabled” state.</strong> Looking at the Pore Activity chart, with the “Show more” option, I saw that, in the G2L2 run, there was a gradual accumulation of pores in the “Channel Disabled” category until a pore scan, at which time most “Channel Disabled” pores would be returned to a variety of states, mostly to “No Pore”. This accumulation of “Channel Disabled” pores would then begin again until the next pore scan, etc. The percentage of pores in this catgory would generally increase from ~2% to 25%-30% between pore scans, before “resetting”.</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/2025_08_25_minion_wildflower/G2L2_pore_activity.png" class="img-fluid"></p>
+<p>Looking back at the G1L4 run, this pattern is also present, but it’s not as dramatic. The percentage of pores in the “Channel Disabled” category never rose above ~14%. in the first 13hrs.</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/2025_08_25_minion_wildflower/G1L4_pore_activity.png" class="img-fluid"></p>
+<p>I also noticed that the percentage of pores in the “Active Feedback” category was notably higher in this G2L2 run than in the G1L4 run.</p></li>
+</ol>
+<p>The “Channel Disabled” category is not well defined in the MinKnow interface, it’s just labelled as “Channel is disabled and awaiting another pore scan”. There’s no information on what might be causing an accumulation of disabled pores. Google wasn’t very helpful either in trying to find more detailed documentation on what accumulation of pores in the “channel disabled” category might represent. Upon searching “nanopore ‘channel disabled’,” the top results were <a href="https://nanoporetech.com/document/q-system-minknow">ONT documentation on the MinKnow software</a> with the same short description of the category – “channel is disabled and awaiting another pore scan”.</p>
+</section>
+<section id="wildflower-flow-cells" class="level3">
+<h3 class="anchored" data-anchor-id="wildflower-flow-cells">Wildflower flow cells</h3>
+<p>However, Google did turn up one other promising search result: David Eccles’ GrinGene Bioinformatics site, with his <a href="https://gringer.gitlab.io/presentation-notes/2018/10/25/nanopore-notes/">comprehensive, multi-year compilation of experiences/insights into Nanopore sequencing</a>! There is a <em>ton</em> of material here that looks really useful, but the section that caught the attention of my Google search is as follows (emphasis added):</p>
+<blockquote class="blockquote">
+<p><strong>2023-Mar-09</strong></p>
+<p><strong>Wildflower flow cell patterns</strong></p>
+<p>As I’ve reported briefly in the past, we’ve been seeing a lot of R9.4.1 flow cells with what I like to call a “wildflower” pattern, because the detailed channel plot looks a bit like a field of wildflowers, with a large mix of different types of channel classification and no obvious pattern.</p>
+<p>What happens with these flow cells is that <strong>they tend to crash quickly</strong>. We see steep decreases in sequencing capacity, in this most recent case <strong>losing about 50% of sequencing capacity overnight, despite having a well-loaded flow cell</strong> (this was with a rapid adapter cDNA kit; it’s quite rare for us to see loading over about 75%). I’ve noticed that <strong>this sharp decrease is commonly linked to the “active feedback” and “channel disabled” pore states.</strong></p>
+<p>This looks quite different from the more homogeneous channel state that we expect to see on flow cells (here shown is a reasonably good channel state image; I think this was prior to loading anything on the flow cell, which is why the total read count is so low).</p>
+<p>Unfortunately, the wildflower pattern isn’t recognised as bad in the initial flow cell QC check (the QC message for the first flow cell was “Flow Cell FAT13376 has 1059 pores available for sequencing”), and it’s only once we start sequencing that we notice this bad patterning.</p>
+<p>I haven’t yet worked out why this is happening, but it’s not to do with sample prep. In the past, we have seen the same effect from flow cells when there’s nothing loaded on them, and also prior to loading any priming mix (i.e.&nbsp;when doing a 5 minute sequencing run before doing any priming). This does mean that we can do an additional channel state QC prior to priming to identify these cells... but we need to remember to do that.</p>
+<p>It also doesn’t seem to be related to storage time (we’ve had this happen on flow cells that were checked the day after they arrived) or shipping conditions (about a year ago we had two flow cells that had a long stopover in Australia, one of which exhibited this problem, one which didn’t).</p>
+<p>It has been challenging discussing this issue over email with ONT in the past, because every support email seems to end up with a different person. They aren’t generally aware of this problem, so almost always fall back on it being a sample loading issue (which is certainly not the case in situations where we haven’t done priming or loading). This means it can be a challenge getting replacements for these flow cells: they’re showing fine on the initial count-based QC, so don’t count as poor quality as part of the standard “fewer questions asked” warranty replacement.</p>
+<p>This does seem to be more of an issue currently with R9.4.1 flow cells, but I thought I’d do a more full writeup just in case it ends up as an issue with R10.4.1 flow cells later on.</p>
+</blockquote>
+<p>Wowza! David’s description of what he terms “wildflower” flow cells sounds really similar to this low-quality run, including inital high pore counts, fast pore loss despite properly loading the flow cell, and weird signatures of “channel disabled” and “active feedback” pore states. When I checked the Channel States panel for my G2L2 run, I observed the “wildflower” pattern David described.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/2025_08_25_minion_wildflower/G2L2_channel_states.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">G2L2 Channel States panel</figcaption>
+</figure>
+</div>
+<p>I also noted that David’s description of “losing about 50% of sequencing capacity overnight, despite having a well-loaded flow cell” would also be similar to the G1L4 MinION run, which lost &gt;50% of active pores in the first 12 hours. The G1L4 flow cell also exhibited a pattern of “channel disabled” pore accumulation and reclamation, though it was less pronounced than in the G2L2 run. I can’t view the progression of the Channel States panel after-the-fact, so I can’t look for the “wildflower” pattern in the G1L4 flow cell, but it seems possible this run was also compromised.</p>
+<p>Later entries to the site indicate that David observed the same issues with R10 flow cells after their release. I also then looked through the Nanopore Community forum and found <a href="https://community.nanoporetech.com/posts/wildflower-flow">a long thread</a>, also initiated by David Eccles, on the issue of “wildflower” flow cells. Viewing the thread requires having a Nanopore account, so <a href="./images/2025_08_25_minion_wildflower/CommunityForum.pdf">here’s a pdf copy</a> (though the images saved a little wonky). It seems many people observe that MinION and PromethION flow cells run on any sequencing platform (MinION, GridION, or PromethION) occasionally exhibit the same sequencing patterns described above and die quickly with little output.</p>
+<section id="additional-nanopore-community-forum-threads-with-examples-of-wildflower-cells" class="level4">
+<h4 class="anchored" data-anchor-id="additional-nanopore-community-forum-threads-with-examples-of-wildflower-cells">Additional Nanopore community forum threads with examples of wildflower cells:</h4>
+<p><a href="https://community.nanoporetech.com/posts/flow-cell-health-worsening" class="uri">https://community.nanoporetech.com/posts/flow-cell-health-worsening</a></p>
+<p><a href="https://community.nanoporetech.com/posts/underloaded-flow-cell-ho" class="uri">https://community.nanoporetech.com/posts/underloaded-flow-cell-ho</a></p>
+<p><a href="https://community.nanoporetech.com/posts/large-proportion-of-the-po" class="uri">https://community.nanoporetech.com/posts/large-proportion-of-the-po</a></p>
+</section>
+<section id="examples-of-wildflower-flow-cells" class="level4">
+<h4 class="anchored" data-anchor-id="examples-of-wildflower-flow-cells">Examples of wildflower flow cells</h4>
+<p>Example images pulled from David Eccles’ Nanopore Community thread on the issue</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/2025_08_25_minion_wildflower/Eccles_wildflower_channels.png" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/2025_08_25_minion_wildflower/Eccles_wildflower_bars.png" class="img-fluid"></p>
+<p>Another example, first of the channel states before priming or loading any sample, and then after:</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/2025_08_25_minion_wildflower/Eccles_wildflower_channels_2_preload.png" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/2025_08_25_minion_wildflower/Eccles_wildflower_channels_2_postload.png" class="img-fluid"></p>
+<p>Example of a “good” flow cell’s Channel States:</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/images/2025_08_25_minion_wildflower/Eccles_good_channels.jpg" class="img-fluid"></p>
+<p>The community consensus, after observations of “wildflower” cells with a variety of ages, storage conditions, library kits, data types, and loading states, is that the cells themselves are dysfunctional, and the pattern is not the result of user error. Unfortunately, since the issue is usually only caught after a sequencing run has been initiated, ONT is apparently very reluctant to acknowledge that it’s a flow cell issue. Consequently, it’s apparently been difficult to obtain troubleshooting support or replacement flow cells.</p>
+</section>
+</section>
+<section id="next-steps" class="level3">
+<h3 class="anchored" data-anchor-id="next-steps">Next steps</h3>
+<p>One of the comments in the above Nanopore community thread indicated instances of receiving several “wildflower” flow cells from the same LOT of MinION flow cells:</p>
+<blockquote class="blockquote">
+<p>We expected that this issue would have been fixed with the R10.4.1. However, we have come across several flow cells still displaying this pattern. Fortunately, for the time being, it seems to be confined to a specific LOT that we had.</p>
+<p>Albert Carcereny, 2 years ago</p>
+</blockquote>
+<p>Unfortunately, that means <strong>it’s quite possible I’ll have more defunct cells</strong>, since all five of the MinION flow cells I received came from the same LOT (11004308).</p>
+<p>From now on, I will add an additional flow cell QC step before priming and loading the flow cells. After inserting the flow cell, I will <strong>start the sequencing run <em>without priming (adding FCF+FCT) or loading (adding SB+DNA+LIB)</em></strong>, and <strong>let it run for ~5min</strong>. This will perform an initial pore scan and show me the pores’ status, without introducing the possibility of user error. If I observe the “wildflower” pattern in the Channel States panel during this QC, I’ll have much stronger evidence that the flow cell itself is defective, and may be able to get a replacement from ONT – in that case I’ll need to take a screenshot of the Channel States panel for supporting evidence. <strong>After this QC step, I can pause the run, prime and load the flow cell as normal, and resume the run to begin sequencing my library</strong>. Even if the flow cell is a “wildflower” cell, I can get some usable data off of it, and ONT doesn’t require you to return defective flow cells to receive a replacement.</p>
+<p>I’ve also reached out to Nanopore Customer Support to try to get a replacement MinION flow cell, which is unlikely but worth a try. Customer support Case Number: 01338416</p>
+
+
+</section>
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_25_minion_wildflower.html</guid>
+  <pubDate>Thu, 21 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
   <title>Wash #1, MinION Group 1 Library 4</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_20_wash1_minion_G1L4.html</link>
@@ -3008,308 +3099,6 @@ font-style: inherit;">"text"</span>)</span></code></pre></div>
  ]]></description>
   <category>SIFP-2025</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_23_KAPA_bead.html</guid>
-  <pubDate>Thu, 24 Jul 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>TapeStation check of bead titrations</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_24_titration_tapestation.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Yesterday I trialed several ratios of KAPA Pure Beads to determine which works best for size-selecting my samples (see post <a href="../../../posts/projects/SIFP_2025/2025_07_23_KAPA_bead.html">here</a>). Now I’ll run TapeStation on these titrated bead cleanups to see what range of fragment sizes was retained through cleanup for each ratio.</p>
-<p>Used Genomic Tape and followed <a href="./protocols/Agilent_4200_gDNA_QuickGuide.pdf">Genomic Tape protocol</a>. Machine is an Agilent 4200, serial # DEDAA03520.</p>
-<p>Note: The tape I’m using expired April 2023, but should still be usable.</p>
-<table class="table">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Catalog number</th>
-<th>Bead Ratio</th>
-<th>Theoretical fragments retained</th>
-<th>Conc (ng/uL)</th>
-<th>% reads 300 - 60000bp</th>
-<th>Conc. of reads 300 - 60,000 (ng/uL)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>51732</td>
-<td>0.7X</td>
-<td>≥350 bp</td>
-<td>24.5</td>
-<td>91.88</td>
-<td>22.51</td>
-</tr>
-<tr class="even">
-<td>51732</td>
-<td>0.8X</td>
-<td>≥300 bp</td>
-<td>23.3</td>
-<td>90.21</td>
-<td>21.02</td>
-</tr>
-<tr class="odd">
-<td>51732</td>
-<td>0.9X</td>
-<td>≥250 bp</td>
-<td>15.8</td>
-<td>87.65</td>
-<td>13.85</td>
-</tr>
-<tr class="even">
-<td>51892</td>
-<td>0.7X</td>
-<td>≥350 bp</td>
-<td>25.7</td>
-<td>90.52</td>
-<td>23.26</td>
-</tr>
-<tr class="odd">
-<td>51892</td>
-<td>0.8X</td>
-<td>≥300 bp</td>
-<td>23.1</td>
-<td>89.59</td>
-<td>20.70</td>
-</tr>
-<tr class="even">
-<td>51892</td>
-<td>0.9X</td>
-<td>≥ 250 bp</td>
-<td>20.6</td>
-<td>87.97</td>
-<td>18.12</td>
-</tr>
-</tbody>
-</table>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(dplyr)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'dplyr' was built under R version 4.2.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(ggplot2)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.2.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">df <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">data.frame</span>(</span>
-<span id="cb8-2">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">Catalog.num =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"51732"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"51732"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"51732"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"51892"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"51892"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"51892"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"51732"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"51732"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"51732"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"51892"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"51892"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"51892"</span>),</span>
-<span id="cb8-3">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">Bead.ratio =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.7</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.8</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.9</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.7</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.8</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.9</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.7</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.8</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.9</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.7</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.8</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.9</span>),</span>
-<span id="cb8-4">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">Conc.ngul =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">24.5</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">23.3</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">15.8</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">25.7</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">23.1</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">20.6</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">22.51</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">21.02</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">13.85</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">23.26</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">20.70</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">18.12</span>), </span>
-<span id="cb8-5">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">Conc.type =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">factor</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"all"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"all"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"all"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"all"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"all"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"all"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"300-60000bp"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"300-60000bp"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"300-60000bp"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"300-60000bp"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"300-60000bp"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"300-60000bp"</span>),</span>
-<span id="cb8-6">                        <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"all"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"300-60000bp"</span>), </span>
-<span id="cb8-7">                        <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">ordered =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">TRUE</span>)</span>
-<span id="cb8-8">)</span>
-<span id="cb8-9"></span>
-<span id="cb8-10"></span>
-<span id="cb8-11"></span>
-<span id="cb8-12"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(df, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> Bead.ratio, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> Conc.ngul, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> Catalog.num)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> </span>
-<span id="cb8-13">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> </span>
-<span id="cb8-14">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_line</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> </span>
-<span id="cb8-15">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span>Conc.type) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> </span>
-<span id="cb8-16">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_24_titration_tapestation_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/data/2025_07_24_TapeStation/2025_07_24_comparison_51732_snpsht.png" class="img-fluid"></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/data/2025_07_24_TapeStation/2025_07_24_comparison_51892_snpsht.png" class="img-fluid"></p>
-<p>See <a href="./data/2025_07_24_TapeStation/2025_07_24_summary.pdf">full TapeStation summary</a> for more details!</p>
-<section id="conclusions" class="level3">
-<h3 class="anchored" data-anchor-id="conclusions">Conclusions:</h3>
-<p>The proportion of short reads removed during cleaning doesn’t seem to differ much among the three ratio options (all ratios yield ~90% reads between 30 and 60,000bp). However, the total quantity of DNA retained through cleanup dropped noticeably as the ratio increased. Ultimately my first priority is DNa quantity, since short reads can still be read by the Nanopore pores, so I think my best option is to <strong>use a 0.7X bead-to-sample ratio</strong> for all samples during KAPA Pure Bead cleanup.</p>
-
-
-</section>
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_24_titration_tapestation.html</guid>
   <pubDate>Thu, 24 Jul 2025 04:00:00 GMT</pubDate>
 </item>
 </channel>

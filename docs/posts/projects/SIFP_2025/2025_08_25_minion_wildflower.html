@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Kathleen Durkin">
+<meta name="dcterms.date" content="2025-08-21">
+
+<title>Kathleen’s Lab Notebook - MinION G2L2 Flow Cell Issues</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Kathleen’s Lab Notebook</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../daily_log.html" rel="" target="">
+ <span class="menu-text">Daily Notebook Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../projects.html" rel="" target="">
+ <span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/shedurkin" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:kdurkin1@uw.edu" rel="" target=""><i class="bi bi-envelope" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">MinION G2L2 Flow Cell Issues</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">SIFP-2025</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Kathleen Durkin </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 21, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#g2l2-flow-cell-issues" id="toc-g2l2-flow-cell-issues" class="nav-link active" data-scroll-target="#g2l2-flow-cell-issues">G2L2 flow cell issues</a></li>
+  <li><a href="#wildflower-flow-cells" id="toc-wildflower-flow-cells" class="nav-link" data-scroll-target="#wildflower-flow-cells">Wildflower flow cells</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next steps</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+<section id="g2l2-flow-cell-issues" class="level3">
+<h3 class="anchored" data-anchor-id="g2l2-flow-cell-issues">G2L2 flow cell issues</h3>
+<p>I checked the sequencing run of Group 2 Library 2 (G2L2) on a MinION flow cell (ID# FBD39370) 13 hours in and observed some weird issues:</p>
+<ol type="1">
+<li><p><strong>Low output.</strong> 13 hours in, the G2L2 run had produced <strong>820Mb</strong> of output.<br>
+For comparison, by 13 hours into the Group1 Library 4 (G1L4) MinION run, there was <strong>~3.5Gb</strong> output.<br>
+The G2L2 run actually had a roughly equivalent number of starting pores and a higher proportion of available pores sequencing in the first half hour, so I expected <em>higher</em> output if anything. The low output was surprising.</p></li>
+<li><p><strong>Fast pore loss</strong>. By the 13 hour mark, the G2L2 run had dropped from an initial 1397 pores (1482 prior to loading) to 224 pores – <strong>an</strong> <strong>84% drop</strong> .</p>
+<p><img src="images/2025_08_25_minion_wildflower/G2L2_pore_scan.png" class="img-fluid" alt="G2L2 Pore scan"><br>
+</p>
+<p>For comparison, the G1L4 run began with 1383 pores after loading and 668 pores at the 12.5hr pore scan (<strong>a 52% drop</strong>). Neither run had been washed at this point.</p>
+<img src="images/2025_08_25_minion_wildflower/G1L4_pore_scan.png" class="img-fluid" alt="G1L4 Pore Scan"></li>
+<li><p><strong>Accumulation/reclamation patterns of pores in the “Channel Disabled” state.</strong> Looking at the Pore Activity chart, with the “Show more” option, I saw that, in the G2L2 run, there was a gradual accumulation of pores in the “Channel Disabled” category until a pore scan, at which time most “Channel Disabled” pores would be returned to a variety of states, mostly to “No Pore”. This accumulation of “Channel Disabled” pores would then begin again until the next pore scan, etc. The percentage of pores in this catgory would generally increase from ~2% to 25%-30% between pore scans, before “resetting”.</p>
+<p><img src="images/2025_08_25_minion_wildflower/G2L2_pore_activity.png" class="img-fluid"></p>
+<p>Looking back at the G1L4 run, this pattern is also present, but it’s not as dramatic. The percentage of pores in the “Channel Disabled” category never rose above ~14%. in the first 13hrs.</p>
+<p><img src="images/2025_08_25_minion_wildflower/G1L4_pore_activity.png" class="img-fluid"></p>
+<p>I also noticed that the percentage of pores in the “Active Feedback” category was notably higher in this G2L2 run than in the G1L4 run.</p></li>
+</ol>
+<p>The “Channel Disabled” category is not well defined in the MinKnow interface, it’s just labelled as “Channel is disabled and awaiting another pore scan”. There’s no information on what might be causing an accumulation of disabled pores. Google wasn’t very helpful either in trying to find more detailed documentation on what accumulation of pores in the “channel disabled” category might represent. Upon searching “nanopore ‘channel disabled’,” the top results were <a href="https://nanoporetech.com/document/q-system-minknow">ONT documentation on the MinKnow software</a> with the same short description of the category – “channel is disabled and awaiting another pore scan”.</p>
+</section>
+<section id="wildflower-flow-cells" class="level3">
+<h3 class="anchored" data-anchor-id="wildflower-flow-cells">Wildflower flow cells</h3>
+<p>However, Google did turn up one other promising search result: David Eccles’ GrinGene Bioinformatics site, with his <a href="https://gringer.gitlab.io/presentation-notes/2018/10/25/nanopore-notes/">comprehensive, multi-year compilation of experiences/insights into Nanopore sequencing</a>! There is a <em>ton</em> of material here that looks really useful, but the section that caught the attention of my Google search is as follows (emphasis added):</p>
+<blockquote class="blockquote">
+<p><strong>2023-Mar-09</strong></p>
+<p><strong>Wildflower flow cell patterns</strong></p>
+<p>As I’ve reported briefly in the past, we’ve been seeing a lot of R9.4.1 flow cells with what I like to call a “wildflower” pattern, because the detailed channel plot looks a bit like a field of wildflowers, with a large mix of different types of channel classification and no obvious pattern.</p>
+<p>What happens with these flow cells is that <strong>they tend to crash quickly</strong>. We see steep decreases in sequencing capacity, in this most recent case <strong>losing about 50% of sequencing capacity overnight, despite having a well-loaded flow cell</strong> (this was with a rapid adapter cDNA kit; it’s quite rare for us to see loading over about 75%). I’ve noticed that <strong>this sharp decrease is commonly linked to the “active feedback” and “channel disabled” pore states.</strong></p>
+<p>This looks quite different from the more homogeneous channel state that we expect to see on flow cells (here shown is a reasonably good channel state image; I think this was prior to loading anything on the flow cell, which is why the total read count is so low).</p>
+<p>Unfortunately, the wildflower pattern isn’t recognised as bad in the initial flow cell QC check (the QC message for the first flow cell was “Flow Cell FAT13376 has 1059 pores available for sequencing”), and it’s only once we start sequencing that we notice this bad patterning.</p>
+<p>I haven’t yet worked out why this is happening, but it’s not to do with sample prep. In the past, we have seen the same effect from flow cells when there’s nothing loaded on them, and also prior to loading any priming mix (i.e.&nbsp;when doing a 5 minute sequencing run before doing any priming). This does mean that we can do an additional channel state QC prior to priming to identify these cells... but we need to remember to do that.</p>
+<p>It also doesn’t seem to be related to storage time (we’ve had this happen on flow cells that were checked the day after they arrived) or shipping conditions (about a year ago we had two flow cells that had a long stopover in Australia, one of which exhibited this problem, one which didn’t).</p>
+<p>It has been challenging discussing this issue over email with ONT in the past, because every support email seems to end up with a different person. They aren’t generally aware of this problem, so almost always fall back on it being a sample loading issue (which is certainly not the case in situations where we haven’t done priming or loading). This means it can be a challenge getting replacements for these flow cells: they’re showing fine on the initial count-based QC, so don’t count as poor quality as part of the standard “fewer questions asked” warranty replacement.</p>
+<p>This does seem to be more of an issue currently with R9.4.1 flow cells, but I thought I’d do a more full writeup just in case it ends up as an issue with R10.4.1 flow cells later on.</p>
+</blockquote>
+<p>Wowza! David’s description of what he terms “wildflower” flow cells sounds really similar to this low-quality run, including inital high pore counts, fast pore loss despite properly loading the flow cell, and weird signatures of “channel disabled” and “active feedback” pore states. When I checked the Channel States panel for my G2L2 run, I observed the “wildflower” pattern David described.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/2025_08_25_minion_wildflower/G2L2_channel_states.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">G2L2 Channel States panel</figcaption>
+</figure>
+</div>
+<p>I also noted that David’s description of “losing about 50% of sequencing capacity overnight, despite having a well-loaded flow cell” would also be similar to the G1L4 MinION run, which lost &gt;50% of active pores in the first 12 hours. The G1L4 flow cell also exhibited a pattern of “channel disabled” pore accumulation and reclamation, though it was less pronounced than in the G2L2 run. I can’t view the progression of the Channel States panel after-the-fact, so I can’t look for the “wildflower” pattern in the G1L4 flow cell, but it seems possible this run was also compromised.</p>
+<p>Later entries to the site indicate that David observed the same issues with R10 flow cells after their release. I also then looked through the Nanopore Community forum and found <a href="https://community.nanoporetech.com/posts/wildflower-flow">a long thread</a>, also initiated by David Eccles, on the issue of “wildflower” flow cells. Viewing the thread requires having a Nanopore account, so <a href="./images/2025_08_25_minion_wildflower/CommunityForum.pdf">here’s a pdf copy</a> (though the images saved a little wonky). It seems many people observe that MinION and PromethION flow cells run on any sequencing platform (MinION, GridION, or PromethION) occasionally exhibit the same sequencing patterns described above and die quickly with little output.</p>
+<section id="additional-nanopore-community-forum-threads-with-examples-of-wildflower-cells" class="level4">
+<h4 class="anchored" data-anchor-id="additional-nanopore-community-forum-threads-with-examples-of-wildflower-cells">Additional Nanopore community forum threads with examples of wildflower cells:</h4>
+<p><a href="https://community.nanoporetech.com/posts/flow-cell-health-worsening" class="uri">https://community.nanoporetech.com/posts/flow-cell-health-worsening</a></p>
+<p><a href="https://community.nanoporetech.com/posts/underloaded-flow-cell-ho" class="uri">https://community.nanoporetech.com/posts/underloaded-flow-cell-ho</a></p>
+<p><a href="https://community.nanoporetech.com/posts/large-proportion-of-the-po" class="uri">https://community.nanoporetech.com/posts/large-proportion-of-the-po</a></p>
+</section>
+<section id="examples-of-wildflower-flow-cells" class="level4">
+<h4 class="anchored" data-anchor-id="examples-of-wildflower-flow-cells">Examples of wildflower flow cells</h4>
+<p>Example images pulled from David Eccles’ Nanopore Community thread on the issue</p>
+<p><img src="images/2025_08_25_minion_wildflower/Eccles_wildflower_channels.png" class="img-fluid"></p>
+<p><img src="images/2025_08_25_minion_wildflower/Eccles_wildflower_bars.png" class="img-fluid"></p>
+<p>Another example, first of the channel states before priming or loading any sample, and then after:</p>
+<p><img src="images/2025_08_25_minion_wildflower/Eccles_wildflower_channels_2_preload.png" class="img-fluid"></p>
+<p><img src="images/2025_08_25_minion_wildflower/Eccles_wildflower_channels_2_postload.png" class="img-fluid"></p>
+<p>Example of a “good” flow cell’s Channel States:</p>
+<p><img src="images/2025_08_25_minion_wildflower/Eccles_good_channels.jpg" class="img-fluid"></p>
+<p>The community consensus, after observations of “wildflower” cells with a variety of ages, storage conditions, library kits, data types, and loading states, is that the cells themselves are dysfunctional, and the pattern is not the result of user error. Unfortunately, since the issue is usually only caught after a sequencing run has been initiated, ONT is apparently very reluctant to acknowledge that it’s a flow cell issue. Consequently, it’s apparently been difficult to obtain troubleshooting support or replacement flow cells.</p>
+</section>
+</section>
+<section id="next-steps" class="level3">
+<h3 class="anchored" data-anchor-id="next-steps">Next steps</h3>
+<p>One of the comments in the above Nanopore community thread indicated instances of receiving several “wildflower” flow cells from the same LOT of MinION flow cells:</p>
+<blockquote class="blockquote">
+<p>We expected that this issue would have been fixed with the R10.4.1. However, we have come across several flow cells still displaying this pattern. Fortunately, for the time being, it seems to be confined to a specific LOT that we had.</p>
+<p>Albert Carcereny, 2 years ago</p>
+</blockquote>
+<p>Unfortunately, that means <strong>it’s quite possible I’ll have more defunct cells</strong>, since all five of the MinION flow cells I received came from the same LOT (11004308).</p>
+<p>From now on, I will add an additional flow cell QC step before priming and loading the flow cells. After inserting the flow cell, I will <strong>start the sequencing run <em>without priming (adding FCF+FCT) or loading (adding SB+DNA+LIB)</em></strong>, and <strong>let it run for ~5min</strong>. This will perform an initial pore scan and show me the pores’ status, without introducing the possibility of user error. If I observe the “wildflower” pattern in the Channel States panel during this QC, I’ll have much stronger evidence that the flow cell itself is defective, and may be able to get a replacement from ONT – in that case I’ll need to take a screenshot of the Channel States panel for supporting evidence. <strong>After this QC step, I can pause the run, prime and load the flow cell as normal, and resume the run to begin sequencing my library</strong>. Even if the flow cell is a “wildflower” cell, I can get some usable data off of it, and ONT doesn’t require you to return defective flow cells to receive a replacement.</p>
+<p>I’ve also reached out to Nanopore Customer Support to try to get a replacement MinION flow cell, which is unlikely but worth a try. Customer support Case Number: 01338416</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">This notebook is built using <a href="https://quarto.org/">Quarto</a></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
