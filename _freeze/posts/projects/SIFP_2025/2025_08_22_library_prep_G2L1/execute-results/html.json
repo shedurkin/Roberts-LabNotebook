@@ -1,0 +1,14 @@
+{
+  "hash": "396beaa54d8e97a6ec93c7175fa8c11a",
+  "result": {
+    "markdown": "---\ntitle: \"Native Barcoding, Group 2 Library 1\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-08-22\"\ncategories: [\"SIFP-2025\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: FALSE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nLibrary prep for Group 2 using Native Barcoding 96 V14 Kit. This is the first attempt at library prep for this set of individuals (Library 1).\n\nAgain, I will be including 3 specimens in a single sequencing round. This will be 3 individuals from the \"mid-age\" specimens.\n\n| Catalog \\# | Year collected | Conc. (ng/uL) | uL for 1000ng | Barcode |\n|------------|----------------|---------------|---------------|---------|\n| 51861      | 1960           | 94.1          | 10.63         | 15      |\n| 51892      | 1960           | 137           | 7.3           | 16      |\n| 51732      | 1960           | 157           | 6.37          | 17      |\n\nPerformed prep as outlined in [ONT Native Barcoding 96 V14 protocol for gDNA](./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-24-document-checklist-MinION-en-NBE_9169_v114_revV_02Jul2025-39.pdf), with the following modifications:\n\n-   Excluded DCS\n\n-   Began with 1000ng input DNA from each sample\n\n-   Retained 3.75uL end-prepped DNA through to barcode ligation for each sample\n\n[Qubit 1 (barcodes ligated)]{.underline}\\\nStandard 1: 37.15\\\nStandard 2: 16818.29\\\nG2L1: 14.1 ng/uL\n\n[Qubit 2 (adapters ligated)]{.underline}\\\nStandard 1: 39.17\\\nStandard 2: 17680.37\\\nG2L1: 20.0 ng/uL\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

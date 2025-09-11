@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kathleen Durkin">
-<meta name="dcterms.date" content="2025-08-25">
+<meta name="dcterms.date" content="2025-08-22">
 
-<title>Kathleen’s Lab Notebook - MinION G2L2 Wildflower Flow Cell</title>
+<title>Kathleen’s Lab Notebook - Native Barcoding, Group 2 Library 1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -114,8 +114,8 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">MinION G2L2 Wildflower Flow Cell</h1>
+    <div class="quarto-title column-page">
+      <h1 class="title">Native Barcoding, Group 2 Library 1</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">SIFP-2025</div>
               </div>
@@ -135,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">August 25, 2025</p>
+        <p class="date">August 22, 2025</p>
       </div>
     </div>
     
@@ -146,99 +146,74 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#g2l2-flow-cell-issues" id="toc-g2l2-flow-cell-issues" class="nav-link active" data-scroll-target="#g2l2-flow-cell-issues">G2L2 flow cell issues</a></li>
-  <li><a href="#wildflower-flow-cells" id="toc-wildflower-flow-cells" class="nav-link" data-scroll-target="#wildflower-flow-cells">Wildflower flow cells</a></li>
-  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next steps</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
 
 
 
 
-<section id="g2l2-flow-cell-issues" class="level3">
-<h3 class="anchored" data-anchor-id="g2l2-flow-cell-issues">G2L2 flow cell issues</h3>
-<p>I checked the sequencing run of Group 2 Library 2 (G2L2) on a MinION flow cell (ID# FBD39370) 13 hours in and observed some weird issues:</p>
-<ol type="1">
-<li><p><strong>Low output.</strong> 13 hours in, the G2L2 run had produced <strong>820Mb</strong> of output.<br>
-For comparison, by 13 hours into the Group1 Library 4 (G1L4) MinION run, there was <strong>~3.5Gb</strong> output.<br>
-The G2L2 run actually had a roughly equivalent number of starting pores and a higher proportion of available pores sequencing in the first half hour, so I expected <em>higher</em> output if anything. The low output was surprising.</p></li>
-<li><p><strong>Fast pore loss</strong>. By the 13 hour mark, the G2L2 run had dropped from an initial 1397 pores (1482 prior to loading) to 224 pores – <strong>an</strong> <strong>84% drop</strong> .</p>
-<p><img src="images/2025_08_25_minion_wildflower/G2L2_pore_scan.png" class="img-fluid" alt="G2L2 Pore scan"><br>
-</p>
-<p>For comparison, the G1L4 run began with 1383 pores after loading and 668 pores at the 12.5hr pore scan (<strong>a 52% drop</strong>). Neither run had been washed at this point.</p>
-<img src="images/2025_08_25_minion_wildflower/G1L4_pore_scan.png" class="img-fluid" alt="G1L4 Pore Scan"></li>
-<li><p><strong>Accumulation/reclamation patterns of pores in the “Channel Disabled” state.</strong> Looking at the Pore Activity chart, with the “Show more” option, I saw that, in the G2L2 run, there was a gradual accumulation of pores in the “Channel Disabled” category until a pore scan, at which time most “Channel Disabled” pores would be returned to a variety of states, mostly to “No Pore”. This accumulation of “Channel Disabled” pores would then begin again until the next pore scan, etc. The percentage of pores in this catgory would generally increase from ~2% to 25%-30% between pore scans, before “resetting”.</p>
-<p><img src="images/2025_08_25_minion_wildflower/G2L2_pore_activity.png" class="img-fluid"></p>
-<p>Looking back at the G1L4 run, this pattern is also present, but it’s not as dramatic. The percentage of pores in the “Channel Disabled” category never rose above ~14%. in the first 13hrs.</p>
-<p><img src="images/2025_08_25_minion_wildflower/G1L4_pore_activity.png" class="img-fluid"></p>
-<p>I also noticed that the percentage of pores in the “Active Feedback” category was notably higher in this G2L2 run than in the G1L4 run.</p></li>
-</ol>
-<p>The “Channel Disabled” category is not well defined in the MinKnow interface, it’s just labelled as “Channel is disabled and awaiting another pore scan”. There’s no information on what might be causing an accumulation of disabled pores. Google wasn’t very helpful either in trying to find more detailed documentation on what accumulation of pores in the “channel disabled” category might represent. Upon searching “nanopore ‘channel disabled’,” the top results were <a href="https://nanoporetech.com/document/q-system-minknow">ONT documentation on the MinKnow software</a> with the same short description of the category – “channel is disabled and awaiting another pore scan”.</p>
-</section>
-<section id="wildflower-flow-cells" class="level3">
-<h3 class="anchored" data-anchor-id="wildflower-flow-cells">Wildflower flow cells</h3>
-<p>However, Google did turn up one other promising search result: David Eccles’ GrinGene Bioinformatics site, with his <a href="https://gringer.gitlab.io/presentation-notes/2018/10/25/nanopore-notes/">comprehensive, multi-year compilation of experiences/insights into Nanopore sequencing</a>! There is a <em>ton</em> of material here that looks really useful, but the section that caught the attention of my Google search is as follows (emphasis added):</p>
-<blockquote class="blockquote">
-<p><strong>2023-Mar-09</strong></p>
-<p><strong>Wildflower flow cell patterns</strong></p>
-<p>As I’ve reported briefly in the past, we’ve been seeing a lot of R9.4.1 flow cells with what I like to call a “wildflower” pattern, because the detailed channel plot looks a bit like a field of wildflowers, with a large mix of different types of channel classification and no obvious pattern.</p>
-<p>What happens with these flow cells is that <strong>they tend to crash quickly</strong>. We see steep decreases in sequencing capacity, in this most recent case <strong>losing about 50% of sequencing capacity overnight, despite having a well-loaded flow cell</strong> (this was with a rapid adapter cDNA kit; it’s quite rare for us to see loading over about 75%). I’ve noticed that <strong>this sharp decrease is commonly linked to the “active feedback” and “channel disabled” pore states.</strong></p>
-<p>This looks quite different from the more homogeneous channel state that we expect to see on flow cells (here shown is a reasonably good channel state image; I think this was prior to loading anything on the flow cell, which is why the total read count is so low).</p>
-<p>Unfortunately, the wildflower pattern isn’t recognised as bad in the initial flow cell QC check (the QC message for the first flow cell was “Flow Cell FAT13376 has 1059 pores available for sequencing”), and it’s only once we start sequencing that we notice this bad patterning.</p>
-<p>I haven’t yet worked out why this is happening, but it’s not to do with sample prep. In the past, we have seen the same effect from flow cells when there’s nothing loaded on them, and also prior to loading any priming mix (i.e.&nbsp;when doing a 5 minute sequencing run before doing any priming). This does mean that we can do an additional channel state QC prior to priming to identify these cells... but we need to remember to do that.</p>
-<p>It also doesn’t seem to be related to storage time (we’ve had this happen on flow cells that were checked the day after they arrived) or shipping conditions (about a year ago we had two flow cells that had a long stopover in Australia, one of which exhibited this problem, one which didn’t).</p>
-<p>It has been challenging discussing this issue over email with ONT in the past, because every support email seems to end up with a different person. They aren’t generally aware of this problem, so almost always fall back on it being a sample loading issue (which is certainly not the case in situations where we haven’t done priming or loading). This means it can be a challenge getting replacements for these flow cells: they’re showing fine on the initial count-based QC, so don’t count as poor quality as part of the standard “fewer questions asked” warranty replacement.</p>
-<p>This does seem to be more of an issue currently with R9.4.1 flow cells, but I thought I’d do a more full writeup just in case it ends up as an issue with R10.4.1 flow cells later on.</p>
-</blockquote>
-<p>Wowza! David’s description of what he terms “wildflower” flow cells sounds really similar to this low-quality run, including inital high pore counts, fast pore loss despite properly loading the flow cell, and weird signatures of “channel disabled” and “active feedback” pore states. When I checked the Channel States panel for my G2L2 run, I observed the “wildflower” pattern David described.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/2025_08_25_minion_wildflower/G2L2_channel_states.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">G2L2 Channel States panel</figcaption>
-</figure>
-</div>
-<p>I also noted that David’s description of “losing about 50% of sequencing capacity overnight, despite having a well-loaded flow cell” would also be similar to the G1L4 MinION run, which lost &gt;50% of active pores in the first 12 hours. The G1L4 flow cell also exhibited a pattern of “channel disabled” pore accumulation and reclamation, though it was less pronounced than in the G2L2 run. I can’t view the progression of the Channel States panel after-the-fact, so I can’t look for the “wildflower” pattern in the G1L4 flow cell, but it seems possible this run was also compromised.</p>
-<p>Later entries to the site indicate that David observed the same issues with R10 flow cells after their release. I also then looked through the Nanopore Community forum and found <a href="https://community.nanoporetech.com/posts/wildflower-flow">a long thread</a>, also initiated by David Eccles, on the issue of “wildflower” flow cells. Viewing the thread requires having a Nanopore account, so <a href="./images/2025_08_25_minion_wildflower/CommunityForum.pdf">here’s a pdf copy</a> (though the images saved a little wonky). It seems many people observe that MinION and PromethION flow cells run on any sequencing platform (MinION, GridION, or PromethION) occasionally exhibit the same sequencing patterns described above and die quickly with little output.</p>
-<section id="additional-nanopore-community-forum-threads-with-examples-of-wildflower-cells" class="level4">
-<h4 class="anchored" data-anchor-id="additional-nanopore-community-forum-threads-with-examples-of-wildflower-cells">Additional Nanopore community forum threads with examples of wildflower cells:</h4>
-<p><a href="https://community.nanoporetech.com/posts/flow-cell-health-worsening" class="uri">https://community.nanoporetech.com/posts/flow-cell-health-worsening</a></p>
-<p><a href="https://community.nanoporetech.com/posts/underloaded-flow-cell-ho" class="uri">https://community.nanoporetech.com/posts/underloaded-flow-cell-ho</a></p>
-<p><a href="https://community.nanoporetech.com/posts/large-proportion-of-the-po" class="uri">https://community.nanoporetech.com/posts/large-proportion-of-the-po</a></p>
-</section>
-<section id="examples-of-wildflower-flow-cells" class="level4">
-<h4 class="anchored" data-anchor-id="examples-of-wildflower-flow-cells">Examples of wildflower flow cells</h4>
-<p>Example images pulled from David Eccles’ Nanopore Community thread on the issue</p>
-<p><img src="images/2025_08_25_minion_wildflower/Eccles_wildflower_channels.png" class="img-fluid"></p>
-<p><img src="images/2025_08_25_minion_wildflower/Eccles_wildflower_bars.png" class="img-fluid"></p>
-<p>Another example, first of the channel states before priming or loading any sample, and then after:</p>
-<p><img src="images/2025_08_25_minion_wildflower/Eccles_wildflower_channels_2_preload.png" class="img-fluid"></p>
-<p><img src="images/2025_08_25_minion_wildflower/Eccles_wildflower_channels_2_postload.png" class="img-fluid"></p>
-<p>Example of a “good” flow cell’s Channel States:</p>
-<p><img src="images/2025_08_25_minion_wildflower/Eccles_good_channels.jpg" class="img-fluid"></p>
-<p>The community consensus, after observations of “wildflower” cells with a variety of ages, storage conditions, library kits, data types, and loading states, is that the cells themselves are dysfunctional, and the pattern is not the result of user error. Unfortunately, since the issue is usually only caught after a sequencing run has been initiated, ONT is apparently very reluctant to acknowledge that it’s a flow cell issue. Consequently, it’s apparently been difficult to obtain troubleshooting support or replacement flow cells.</p>
-</section>
-</section>
-<section id="next-steps" class="level3">
-<h3 class="anchored" data-anchor-id="next-steps">Next steps</h3>
-<p>One of the comments in the above Nanopore community thread indicated instances of receiving several “wildflower” flow cells from the same LOT of MinION flow cells:</p>
-<blockquote class="blockquote">
-<p>We expected that this issue would have been fixed with the R10.4.1. However, we have come across several flow cells still displaying this pattern. Fortunately, for the time being, it seems to be confined to a specific LOT that we had.</p>
-<p>Albert Carcereny, 2 years ago</p>
-</blockquote>
-<p>Unfortunately, that means <strong>it’s quite possible I’ll have more defunct cells</strong>, since all five of the MinION flow cells I received came from the same LOT (11004308).</p>
-<p>From now on, I will add an additional flow cell QC step before priming and loading the flow cells. After inserting the flow cell, I will <strong>start the sequencing run <em>without priming (adding FCF+FCT) or loading (adding SB+DNA+LIB)</em></strong>, and <strong>let it run for ~5min</strong>. This will perform an initial pore scan and show me the pores’ status, without introducing the possibility of user error. If I observe the “wildflower” pattern in the Channel States panel during this QC, I’ll have much stronger evidence that the flow cell itself is defective, and may be able to get a replacement from ONT – in that case I’ll need to take a screenshot of the Channel States panel for supporting evidence. <strong>After this QC step, I can pause the run, prime and load the flow cell as normal, and resume the run to begin sequencing my library</strong>. Even if the flow cell is a “wildflower” cell, I can get some usable data off of it, and ONT doesn’t require you to return defective flow cells to receive a replacement.</p>
-<p>I’ve also reached out to Nanopore Customer Support to try to get a replacement MinION flow cell, which is unlikely but worth a try. Customer support Case Number: 01338416</p>
+<p>Library prep for Group 2 using Native Barcoding 96 V14 Kit. This is the first attempt at library prep for this set of individuals (Library 1).</p>
+<p>Again, I will be including 3 specimens in a single sequencing round. This will be 3 individuals from the “mid-age” specimens.</p>
+<table class="table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 23%">
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Catalog #</th>
+<th>Year collected</th>
+<th>Conc. (ng/uL)</th>
+<th>uL for 1000ng</th>
+<th>Barcode</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>51861</td>
+<td>1960</td>
+<td>94.1</td>
+<td>10.63</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td>51892</td>
+<td>1960</td>
+<td>137</td>
+<td>7.3</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td>51732</td>
+<td>1960</td>
+<td>157</td>
+<td>6.37</td>
+<td>17</td>
+</tr>
+</tbody>
+</table>
+<p>Performed prep as outlined in <a href="./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-24-document-checklist-MinION-en-NBE_9169_v114_revV_02Jul2025-39.pdf">ONT Native Barcoding 96 V14 protocol for gDNA</a>, with the following modifications:</p>
+<ul>
+<li><p>Excluded DCS</p></li>
+<li><p>Began with 1000ng input DNA from each sample</p></li>
+<li><p>Retained 3.75uL end-prepped DNA through to barcode ligation for each sample</p></li>
+</ul>
+<p><u>Qubit 1 (barcodes ligated)</u><br>
+Standard 1: 37.15<br>
+Standard 2: 16818.29<br>
+G2L1: 14.1 ng/uL</p>
+<p><u>Qubit 2 (adapters ligated)</u><br>
+Standard 1: 39.17<br>
+Standard 2: 17680.37<br>
+G2L1: 20.0 ng/uL</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

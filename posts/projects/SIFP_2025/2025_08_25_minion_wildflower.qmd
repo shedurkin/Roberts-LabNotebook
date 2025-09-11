@@ -1,5 +1,5 @@
 ---
-title: "MinION G2L2 Flow Cell Issues"
+title: "MinION G2L2 Wildflower Flow Cell"
 author: "Kathleen Durkin"
 date: "2025-08-25"
 categories: ["SIFP-2025"]
@@ -16,8 +16,8 @@ bibliography: ../../../references.bib
 
 I checked the sequencing run of Group 2 Library 2 (G2L2) on a MinION flow cell (ID# FBD39370) 13 hours in and observed some weird issues:
 
-1.  **Low output.** 13 hours in, the G2L2 run had produced **820Mb** of output. \
-    For comparison, by 13 hours into the Group1 Library 4 (G1L4) MinION run, there was **\~3.5Gb** output. \
+1.  **Low output.** 13 hours in, the G2L2 run had produced **820Mb** of output.\
+    For comparison, by 13 hours into the Group1 Library 4 (G1L4) MinION run, there was **\~3.5Gb** output.\
     The G2L2 run actually had a roughly equivalent number of starting pores and a higher proportion of available pores sequencing in the first half hour, so I expected *higher* output if anything. The low output was surprising.
 
 2.  **Fast pore loss**. By the 13 hour mark, the G2L2 run had dropped from an initial 1397 pores (1482 prior to loading) to 224 pores -- **an** **84% drop** .

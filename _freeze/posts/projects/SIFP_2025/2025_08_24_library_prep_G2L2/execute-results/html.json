@@ -1,0 +1,14 @@
+{
+  "hash": "ad9e40b8cf120cb217cd1fd1a8d1f33f",
+  "result": {
+    "markdown": "---\ntitle: \"Native Barcoding, Group2 Library 2\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-08-24\"\ncategories: [\"SIFP-2025\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: FALSE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nduring Group 1 Library 4 MinION run I had some issues with low pore occupancy. I was originally concerned that, by increasing the quantity of DNA retained through end-prep, I'd \"overloaded\" the adapter ligation step, resulting in a high proportion of un-adapted DNA. I thought this unadapted DNA might then be lowering the effective library concentration, resulting in low occupancy.\n\nHowever, after some discussion in a Nanopore community forum thread with David Eccles, I don't think adapters are the issue. Instead, David suggested the problem may lay with the short reads \"leaving the pores hanging,\" and taking too long for a given pore to \"find\" a new read to sequence. His recommendation was to spike in some longer control DNA. My timeline is too short to order any additional lambda phage DNA, but I can use the DNA Control Sample (DCS) provided in the Native Barcoding Kit (\\~3.6kb).\n\nWith this re-introduction of DCS to the library prep protocol, I need to re-do the Group 2 library.\n\n| Catalog \\# | Conc. (ng/uL) | uL for 1000ng | uL for 11uL | Barcode |\n|------------|---------------|---------------|-------------|---------|\n| 51861      | 94.1          | 10.63         | 0.37        | 18      |\n| 51892      | 137           | 7.3           | 3.7         | 19      |\n| 51732      | 157           | 6.37          | 4.63        | 20      |\n\nFollowed [Native Barcoding 96 V14 gDNA protocol](./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-24-document-checklist-MinION-en-NBE_9169_v114_revV_02Jul2025-39.pdf), using DCS, with the following modifications:\n\n-   1000ng input DNA from each sample\n\n-   retain 3.75uL DNA through end-prep\n\n[**Qubit 1:**]{.underline}**\\\n**Standard 1: 31.32\\\nStandard 2: 11873.41\\\nG2L2: 17.7 ng/uL\n\n[**Qubit 2:**]{.underline}**\\\n**Standard 1: 32.99\\\nStandard 2: 14756.63\\\nG2L2: **24.2 ng/uL**\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

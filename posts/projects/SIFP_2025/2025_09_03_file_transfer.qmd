@@ -1,0 +1,164 @@
+---
+title: "Transferring Nanopore Sequencing Output Files"
+author: "Kathleen Durkin"
+date: "2025-09-03"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: FALSE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Confirm checksums match
+
+```{r, engine='bash', eval=FALSE}
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/CloudSync_deposit$ md5sum Group3_Flongle.zip
+# 8f869a78a3f09695a9e4e6d9043d3c88  Group3_Flongle.zip
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/CloudSync_deposit$ head Group3_Flongle.md5
+
+# Algorithm       Hash                                                                   Path
+# ---------       ----                                                                   ----
+# MD5             8F869A78A3F09695A9E4E6D9043D3C88                                       C:\Users\Public\Documents\LAB...
+
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/CloudSync_deposit$ md5sum pod5_pass-Group1_MinION_Library4.zip
+# c07a321bb2b71e8736c2bdde79d13e38  pod5_pass-Group1_MinION_Library4.zip
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/CloudSync_deposit$ head pod5_pass-Group1_MinION_Library4.md5
+# Algorithm       Hash                                                                   Path
+# ---------       ----                                                                   ----
+# MD5             41D121DB4FBB7A0692A08FF226FEF5C6                                       C:\Users\DurkinK\OneDrive - Smithsonian Institution\Documents\pod5_pass-Group1_MinION_Library4.md5kdurkin
+```
+
+Move out of the CloudSync Deposit folder and unzip
+
+```{r, engine='bash', eval=FALSE}
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/CloudSync_deposit$ 7z x Group3_Flongle.zip
+
+# 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+# p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)
+# 
+# Scanning the drive for archives:
+# 1 file, 419221860 bytes (400 MiB)
+# 
+# Extracting archive: Group3_Flongle.zip
+# --
+# Path = Group3_Flongle.zip
+# Type = zip
+# Physical Size = 419221860
+# 
+# Everything is Ok
+# 
+# Folders: 36
+# Files: 2044
+# Size:       444206345
+# Compressed: 419221860
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/CloudSync_deposit$ mv Group3_Flongle ../
+  
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/CloudSync_deposit$ cp -r pod5_pass-Group1_MinION_Library4.* ../
+  
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/CloudSync_deposit$ cd ../
+  
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ 7z x pod5_pass-Group1_MinION_Library4.zip
+
+# 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+# p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)
+# 
+# Scanning the drive for archives:
+# 1 file, 65239220876 bytes (61 GiB)
+# 
+# Extracting archive: pod5_pass-Group1_MinION_Library4.zip
+# --
+# Path = pod5_pass-Group1_MinION_Library4.zip
+# Type = zip
+# Physical Size = 65239220876
+# 64-bit = +
+# 
+# Everything is Ok
+# 
+# Folders: 40
+# Files: 574
+# Size:       65657488880
+# Compressed: 65239220876
+
+```
+
+Both zip files unzipped successfully!
+
+At this point I removed both the CloudSync-ed files from google Drive, since I only bave 100GB storage there.
+
+Last step is to make checksums for all of the content files in these sequencing folders, so file integrity can be confirmed when downloading for use (e.g. downloading the fastq files to Raven). The bash code used below will iterate through each subfolder and, if the folder contains files, will generate a checksums.md5 containing md5 hashes for all files in that folder.
+
+```{r, engine='bash', eval=FALSE}
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group3_Flongle$ find . -type d -exec sh -c '
+  cd "{}" || exit
+  # Check if there are any regular files in the directory
+  if find . -maxdepth 1 -type f | grep -q .; then
+    md5sum * > checksums.md5
+  fi
+' \;
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/CloudSync_deposit$ cd ../pod5_pass-Group1_MinION_Library4
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/pod5_pass-Group1_MinION_Library4$ find . -type d -exec sh -c '
+  cd "{}" || exit
+  # Check if there are any regular files in the directory
+  if find . -maxdepth 1 -type f | grep -q .; then
+    md5sum * > checksums.md5
+  fi
+' \;
+```
+
+Confirm appropriate permissions are set for file access. I want others to have:
+
+-   **read access** (e.g., 644 -\> -rw-r--r--) to **files**, which will permit people to see and download files, and
+
+-   **read and execute access** (e.g., 755 -\> drwxr-xr-x) to **directories**, which will allow people to see and access the directory's contents.
+
+```{r, engine='bash', eval=FALSE}
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group3_Flongle$ find . -type d -
+exec chmod 755 {} \;
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group3_Flongle$ find . -type f -
+exec chmod 644 {} \;
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group3_Flongle$ ls -l ./Library1
+/20250831_1505_MD-101223_AYL126_bd163631/
+
+# total 22988
+# drwxr-xr-x 6 kdurkin1 users     4096 Aug 31 12:10 bam_fail
+# drwxr-xr-x 6 kdurkin1 users     4096 Aug 31 12:10 bam_pass
+# -rw-r--r-- 1 kdurkin1 users    13699 Sep  1 12:06 barcode_alignment_AYL126_bd163
+# 631_18f41f04.tsv
+# -rw-r--r-- 1 kdurkin1 users      698 Sep  3 08:57 checksums.md5
+# drwxr-xr-x 6 kdurkin1 users     4096 Aug 31 12:10 fastq_fail
+# drwxr-xr-x 6 kdurkin1 users     4096 Aug 31 12:10 fastq_pass
+# -rw-r--r-- 1 kdurkin1 users      826 Sep  1 12:06 final_summary_AYL126_bd163631_
+# 18f41f04.txt
+# drwxr-xr-x 2 kdurkin1 users     4096 Sep  3 08:57 other_reports
+# drwxr-xr-x 7 kdurkin1 users     4096 Aug 31 12:16 pod5_fail
+# drwxr-xr-x 7 kdurkin1 users     4096 Aug 31 12:16 pod5_pass
+# -rw-r--r-- 1 kdurkin1 users   524433 Sep  1 12:06 pore_activity_AYL126_bd163631_
+# 18f41f04.csv
+# -rw-r--r-- 1 kdurkin1 users  1367203 Sep  1 12:07 report_AYL126_20250831_1506_bd
+# 163631.html
+# -rw-r--r-- 1 kdurkin1 users  1154522 Sep  1 12:06 report_AYL126_20250831_1506_bd
+# 163631.json
+# -rw-r--r-- 1 kdurkin1 users   628425 Sep  1 12:07 report_AYL126_20250831_1506_bd
+# 163631.md
+# -rw-r--r-- 1 kdurkin1 users      184 Sep  1 12:07 sample_sheet_AYL126_20250831_1
+# 506_bd163631.csv
+# -rw-r--r-- 1 kdurkin1 users 19689917 Sep  1 12:06 sequencing_summary_AYL126_bd16
+# 3631_18f41f04.txt
+# -rw-r--r-- 1 kdurkin1 users   102487 Sep  1 12:06 throughput_AYL126_bd163631_18f
+# 41f04.csv
+
+```

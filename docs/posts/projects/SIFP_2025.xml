@@ -10,9 +10,1428 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Mon, 25 Aug 2025 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 03 Sep 2025 04:00:00 GMT</lastBuildDate>
 <item>
-  <title>MinION G2L2 Flow Cell Issues</title>
+  <title>Transferring Nanopore Sequencing Output Files</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_03_file_transfer.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Confirm checksums match</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"></span>
+<span id="cb1-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/CloudSync_deposit$</span> md5sum Group3_Flongle.zip</span>
+<span id="cb1-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 8f869a78a3f09695a9e4e6d9043d3c88  Group3_Flongle.zip</span></span>
+<span id="cb1-4"></span>
+<span id="cb1-5"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/CloudSync_deposit$</span> head Group3_Flongle.md5</span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Algorithm       Hash                                                                   Path</span></span>
+<span id="cb1-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ---------       ----                                                                   ----</span></span>
+<span id="cb1-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># MD5             8F869A78A3F09695A9E4E6D9043D3C88                                       C:\Users\Public\Documents\LAB...</span></span>
+<span id="cb1-10"></span>
+<span id="cb1-11"></span>
+<span id="cb1-12"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/CloudSync_deposit$</span> md5sum pod5_pass-Group1_MinION_Library4.zip</span>
+<span id="cb1-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># c07a321bb2b71e8736c2bdde79d13e38  pod5_pass-Group1_MinION_Library4.zip</span></span>
+<span id="cb1-14"></span>
+<span id="cb1-15"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/CloudSync_deposit$</span> head pod5_pass-Group1_MinION_Library4.md5</span>
+<span id="cb1-16"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Algorithm       Hash                                                                   Path</span></span>
+<span id="cb1-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ---------       ----                                                                   ----</span></span>
+<span id="cb1-18"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># MD5             41D121DB4FBB7A0692A08FF226FEF5C6                                       C:\Users\DurkinK\OneDrive - Smithsonian Institution\Documents\pod5_pass-Group1_MinION_Library4.md5kdurkin</span></span></code></pre></div>
+</div>
+<p>Move out of the CloudSync Deposit folder and unzip</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/CloudSync_deposit$</span> 7z x Group3_Flongle.zip</span>
+<span id="cb2-2"></span>
+<span id="cb2-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21</span></span>
+<span id="cb2-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)</span></span>
+<span id="cb2-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb2-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Scanning the drive for archives:</span></span>
+<span id="cb2-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 1 file, 419221860 bytes (400 MiB)</span></span>
+<span id="cb2-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb2-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extracting archive: Group3_Flongle.zip</span></span>
+<span id="cb2-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># --</span></span>
+<span id="cb2-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Path = Group3_Flongle.zip</span></span>
+<span id="cb2-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Type = zip</span></span>
+<span id="cb2-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Physical Size = 419221860</span></span>
+<span id="cb2-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb2-15"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Everything is Ok</span></span>
+<span id="cb2-16"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb2-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Folders: 36</span></span>
+<span id="cb2-18"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Files: 2044</span></span>
+<span id="cb2-19"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Size:       444206345</span></span>
+<span id="cb2-20"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Compressed: 419221860</span></span>
+<span id="cb2-21"></span>
+<span id="cb2-22"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/CloudSync_deposit$</span> mv Group3_Flongle ../</span>
+<span id="cb2-23">  </span>
+<span id="cb2-24"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/CloudSync_deposit$</span> cp <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-r</span> pod5_pass-Group1_MinION_Library4.<span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">*</span> ../</span>
+<span id="cb2-25">  </span>
+<span id="cb2-26"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/CloudSync_deposit$</span> cd ../</span>
+<span id="cb2-27">  </span>
+<span id="cb2-28"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$</span> 7z x pod5_pass-Group1_MinION_Library4.zip</span>
+<span id="cb2-29"></span>
+<span id="cb2-30"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21</span></span>
+<span id="cb2-31"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)</span></span>
+<span id="cb2-32"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb2-33"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Scanning the drive for archives:</span></span>
+<span id="cb2-34"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 1 file, 65239220876 bytes (61 GiB)</span></span>
+<span id="cb2-35"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb2-36"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extracting archive: pod5_pass-Group1_MinION_Library4.zip</span></span>
+<span id="cb2-37"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># --</span></span>
+<span id="cb2-38"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Path = pod5_pass-Group1_MinION_Library4.zip</span></span>
+<span id="cb2-39"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Type = zip</span></span>
+<span id="cb2-40"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Physical Size = 65239220876</span></span>
+<span id="cb2-41"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 64-bit = +</span></span>
+<span id="cb2-42"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb2-43"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Everything is Ok</span></span>
+<span id="cb2-44"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb2-45"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Folders: 40</span></span>
+<span id="cb2-46"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Files: 574</span></span>
+<span id="cb2-47"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Size:       65657488880</span></span>
+<span id="cb2-48"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Compressed: 65239220876</span></span></code></pre></div>
+</div>
+<p>Both zip files unzipped successfully!</p>
+<p>At this point I removed both the CloudSync-ed files from google Drive, since I only bave 100GB storage there.</p>
+<p>Last step is to make checksums for all of the content files in these sequencing folders, so file integrity can be confirmed when downloading for use (e.g.&nbsp;downloading the fastq files to Raven). The bash code used below will iterate through each subfolder and, if the folder contains files, will generate a checksums.md5 containing md5 hashes for all files in that folder.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"></span>
+<span id="cb3-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group3_Flongle$</span> find . <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-type</span> d <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-exec</span> sh <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span></span>
+<span id="cb3-3"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  cd "{}" || exit</span></span>
+<span id="cb3-4"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  # Check if there are any regular files in the directory</span></span>
+<span id="cb3-5"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  if find . -maxdepth 1 -type f | grep -q .; then</span></span>
+<span id="cb3-6"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    md5sum * &gt; checksums.md5</span></span>
+<span id="cb3-7"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  fi</span></span>
+<span id="cb3-8"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\;</span></span>
+<span id="cb3-9"></span>
+<span id="cb3-10"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/CloudSync_deposit$</span> cd ../pod5_pass-Group1_MinION_Library4</span>
+<span id="cb3-11"></span>
+<span id="cb3-12"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/pod5_pass-Group1_MinION_Library4$</span> find . <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-type</span> d <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-exec</span> sh <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span></span>
+<span id="cb3-13"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  cd "{}" || exit</span></span>
+<span id="cb3-14"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  # Check if there are any regular files in the directory</span></span>
+<span id="cb3-15"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  if find . -maxdepth 1 -type f | grep -q .; then</span></span>
+<span id="cb3-16"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    md5sum * &gt; checksums.md5</span></span>
+<span id="cb3-17"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  fi</span></span>
+<span id="cb3-18"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\;</span></span></code></pre></div>
+</div>
+<p>Confirm appropriate permissions are set for file access. I want others to have:</p>
+<ul>
+<li><p><strong>read access</strong> (e.g., 644 -&gt; -rw-r–r–) to <strong>files</strong>, which will permit people to see and download files, and</p></li>
+<li><p><strong>read and execute access</strong> (e.g., 755 -&gt; drwxr-xr-x) to <strong>directories</strong>, which will allow people to see and access the directory’s contents.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"></span>
+<span id="cb4-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group3_Flongle$</span> find . <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-type</span> d <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-</span></span>
+<span id="cb4-3"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">exec</span> chmod 755 {} <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\;</span></span>
+<span id="cb4-4"></span>
+<span id="cb4-5"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group3_Flongle$</span> find . <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-type</span> f <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-</span></span>
+<span id="cb4-6"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">exec</span> chmod 644 {} <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\;</span></span>
+<span id="cb4-7"></span>
+<span id="cb4-8"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group3_Flongle$</span> ls <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-l</span> ./Library1</span>
+<span id="cb4-9"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">/20250831_1505_MD-101223_AYL126_bd163631/</span></span>
+<span id="cb4-10"></span>
+<span id="cb4-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># total 22988</span></span>
+<span id="cb4-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># drwxr-xr-x 6 kdurkin1 users     4096 Aug 31 12:10 bam_fail</span></span>
+<span id="cb4-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># drwxr-xr-x 6 kdurkin1 users     4096 Aug 31 12:10 bam_pass</span></span>
+<span id="cb4-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># -rw-r--r-- 1 kdurkin1 users    13699 Sep  1 12:06 barcode_alignment_AYL126_bd163</span></span>
+<span id="cb4-15"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 631_18f41f04.tsv</span></span>
+<span id="cb4-16"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># -rw-r--r-- 1 kdurkin1 users      698 Sep  3 08:57 checksums.md5</span></span>
+<span id="cb4-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># drwxr-xr-x 6 kdurkin1 users     4096 Aug 31 12:10 fastq_fail</span></span>
+<span id="cb4-18"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># drwxr-xr-x 6 kdurkin1 users     4096 Aug 31 12:10 fastq_pass</span></span>
+<span id="cb4-19"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># -rw-r--r-- 1 kdurkin1 users      826 Sep  1 12:06 final_summary_AYL126_bd163631_</span></span>
+<span id="cb4-20"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 18f41f04.txt</span></span>
+<span id="cb4-21"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># drwxr-xr-x 2 kdurkin1 users     4096 Sep  3 08:57 other_reports</span></span>
+<span id="cb4-22"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># drwxr-xr-x 7 kdurkin1 users     4096 Aug 31 12:16 pod5_fail</span></span>
+<span id="cb4-23"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># drwxr-xr-x 7 kdurkin1 users     4096 Aug 31 12:16 pod5_pass</span></span>
+<span id="cb4-24"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># -rw-r--r-- 1 kdurkin1 users   524433 Sep  1 12:06 pore_activity_AYL126_bd163631_</span></span>
+<span id="cb4-25"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 18f41f04.csv</span></span>
+<span id="cb4-26"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># -rw-r--r-- 1 kdurkin1 users  1367203 Sep  1 12:07 report_AYL126_20250831_1506_bd</span></span>
+<span id="cb4-27"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 163631.html</span></span>
+<span id="cb4-28"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># -rw-r--r-- 1 kdurkin1 users  1154522 Sep  1 12:06 report_AYL126_20250831_1506_bd</span></span>
+<span id="cb4-29"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 163631.json</span></span>
+<span id="cb4-30"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># -rw-r--r-- 1 kdurkin1 users   628425 Sep  1 12:07 report_AYL126_20250831_1506_bd</span></span>
+<span id="cb4-31"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 163631.md</span></span>
+<span id="cb4-32"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># -rw-r--r-- 1 kdurkin1 users      184 Sep  1 12:07 sample_sheet_AYL126_20250831_1</span></span>
+<span id="cb4-33"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 506_bd163631.csv</span></span>
+<span id="cb4-34"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># -rw-r--r-- 1 kdurkin1 users 19689917 Sep  1 12:06 sequencing_summary_AYL126_bd16</span></span>
+<span id="cb4-35"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 3631_18f41f04.txt</span></span>
+<span id="cb4-36"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># -rw-r--r-- 1 kdurkin1 users   102487 Sep  1 12:06 throughput_AYL126_bd163631_18f</span></span>
+<span id="cb4-37"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 41f04.csv</span></span></code></pre></div>
+</div>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_03_file_transfer.html</guid>
+  <pubDate>Wed, 03 Sep 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Transferring Nanopore Sequencing Output Files</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_28_file_transfer.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I’ve been having some difficulty with getting my Nanopore sequencing files (which are both large and numerous) from the sequencing computer onto Gannet, where I can access them for bioinformatic work.</p>
+<p>I originally stored the files in my Smithsonian Institution (SI) OneDrive account, but it turns out getting files off of OneDrive is a seemingly impossible task. I’ve tried the following:</p>
+<ul>
+<li><p>SI OneDrive -&gt; Gannet, via CloudSync. I can’t sync Gannet with the SI OneDrive without admin access, which I won’t get.</p></li>
+<li><p>UW OneDrive -&gt; Gannet, via CloudSync. Same issue as above, unlikely to be granted UW admin access.</p></li>
+<li><p>Rclone. According to Matt Kweskin, there are also SI access issues that SI IT hasn’t resolved.</p></li>
+<li><p>SI OneDrive -&gt; Hydra (SI computing cluster) -&gt; Gannet, via GLOBUS. Issue is I’ll lose access to Hydra once I leave in 2 weeks and I really want to figure out a way that works once I’m gone, in case I need to transfer more files.</p></li>
+<li><p>SI OneDrive -&gt; download locally -&gt; Gannet. The folders kept downloading incompletely (e.g.&nbsp;subfolders/files were getting skipped), and it felt ripe for a failed/incomplete transfer</p></li>
+<li><p>Sequencing computer -&gt; UW Google Drive -&gt; Gannet, via Cloudsync. Problem is that the UW Google Drive maxes out at 100Gb, and some of my sequencing folders will be larger than this.</p></li>
+</ul>
+<p>Finally I found something that seems to work:</p>
+<ul>
+<li><em>Compress</em> the folder on the sequencing computer -&gt; UW Google Drive -&gt; Gannet, via CloudSync -&gt; uncompress on Gannet.</li>
+</ul>
+<p>So, I’ve compressed 3 of the output folders I have on the sequencing computer, generated md5 checksums for the zipped files, and uploaded them to my UW Google Drive. I then used CloudSync to transfer the files (.zip and .md5) to Gannet. I now want to A) check the md5s to confirm successful file transfer, and B) unzip the files, checking for file corruption.</p>
+<p>All of this was done from a terminal ssh’d into Gannet, I’m just copy-pasting code and output here for documentation purposes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$</span> ls</span>
+<span id="cb1-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Group1.md5  Group2_Flongle  Group2_MinION.md5  Group2.zip</span></span>
+<span id="cb1-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Group1.zip  Group2.md5      Group2_MinION.zip</span></span>
+<span id="cb1-4"></span>
+<span id="cb1-5"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$</span> head Group1.md5</span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Algorithm       Hash                                                                   Path</span></span>
+<span id="cb1-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ---------       ----                                                                   ----</span></span>
+<span id="cb1-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># MD5             F7E28FE37E3B910C21641010D7B035D5                                       C:\Users\Public\Documents\LAB...</span></span>
+<span id="cb1-10"></span>
+<span id="cb1-11"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$</span> md5sum Group1.zip</span>
+<span id="cb1-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># f7e28fe37e3b910c21641010d7b035d5  Group1.zip</span></span>
+<span id="cb1-13"></span>
+<span id="cb1-14"></span>
+<span id="cb1-15"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$</span> head Group2.md5</span>
+<span id="cb1-16"></span>
+<span id="cb1-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Algorithm       Hash                                                                   Path</span></span>
+<span id="cb1-18"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ---------       ----                                                                   ----</span></span>
+<span id="cb1-19"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># MD5             9C8DAFB717360464B195FC2A499F7910                                       C:\Users\Public\Documents\LAB...</span></span>
+<span id="cb1-20"></span>
+<span id="cb1-21"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$</span> md5sum Group2.zip</span>
+<span id="cb1-22"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 9c8dafb717360464b195fc2a499f7910  Group2.zip</span></span>
+<span id="cb1-23"></span>
+<span id="cb1-24"></span>
+<span id="cb1-25"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$</span> head Group2_MinION.md5</span>
+<span id="cb1-26"></span>
+<span id="cb1-27"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Algorithm       Hash                                                                   Path</span></span>
+<span id="cb1-28"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ---------       ----                                                                   ----</span></span>
+<span id="cb1-29"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># MD5             FADB27D46B25A6CB5E683813E2D59DC4                                       C:\Users\Public\Documents\LAB...</span></span>
+<span id="cb1-30"></span>
+<span id="cb1-31"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$</span> md5sum Group2_MinION.zip</span>
+<span id="cb1-32"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># fadb27d46b25a6cb5e683813e2d59dc4  Group2_MinION.zip</span></span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Double check Group1 checksums</span></span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">identical</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tolower</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"F7E28FE37E3B910C21641010D7B035D5"</span>), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tolower</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"f7e28fe37e3b910c21641010d7b035d5"</span>))</span>
+<span id="cb2-3"></span>
+<span id="cb2-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Double check Group2 checksums</span></span>
+<span id="cb2-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">identical</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tolower</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"9C8DAFB717360464B195FC2A499F7910"</span>), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tolower</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"9c8dafb717360464b195fc2a499f7910"</span>))</span>
+<span id="cb2-6"></span>
+<span id="cb2-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Double check Group2_MinION checksums</span></span>
+<span id="cb2-8"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">identical</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tolower</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"FADB27D46B25A6CB5E683813E2D59DC4"</span>), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tolower</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"fadb27d46b25a6cb5e683813e2d59dc4"</span>))</span></code></pre></div>
+</div>
+<p>So all 3 files transferred correctly</p>
+<p>Now check for corruption during file compression/decompression</p>
+<p>Gannet doesn’t seem to have the <code>zip</code>/<code>unzip</code> commands, so will have to use <code>7z</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$</span> 7z t Group1.zip</span>
+<span id="cb3-2"></span>
+<span id="cb3-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21</span></span>
+<span id="cb3-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)</span></span>
+<span id="cb3-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb3-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Scanning the drive for archives:</span></span>
+<span id="cb3-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 1 file, 2320416210 bytes (2213 MiB)</span></span>
+<span id="cb3-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb3-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Testing archive: Group1.zip</span></span>
+<span id="cb3-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># --</span></span>
+<span id="cb3-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Path = Group1.zip</span></span>
+<span id="cb3-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Type = zip</span></span>
+<span id="cb3-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Physical Size = 2320416210</span></span>
+<span id="cb3-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb3-15"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Everything is Ok</span></span>
+<span id="cb3-16"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb3-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Folders: 42</span></span>
+<span id="cb3-18"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Files: 2950</span></span>
+<span id="cb3-19"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Size:       2398985870</span></span>
+<span id="cb3-20"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Compressed: 2320416210</span></span>
+<span id="cb3-21"></span>
+<span id="cb3-22"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$</span> 7z t Group2.zip</span>
+<span id="cb3-23"></span>
+<span id="cb3-24"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21</span></span>
+<span id="cb3-25"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)</span></span>
+<span id="cb3-26"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb3-27"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Scanning the drive for archives:</span></span>
+<span id="cb3-28"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 1 file, 795592065 bytes (759 MiB)</span></span>
+<span id="cb3-29"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb3-30"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Testing archive: Group2.zip</span></span>
+<span id="cb3-31"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># --</span></span>
+<span id="cb3-32"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Path = Group2.zip</span></span>
+<span id="cb3-33"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Type = zip</span></span>
+<span id="cb3-34"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Physical Size = 795592065</span></span>
+<span id="cb3-35"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb3-36"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Everything is Ok</span></span>
+<span id="cb3-37"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb3-38"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Folders: 89</span></span>
+<span id="cb3-39"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Files: 2917</span></span>
+<span id="cb3-40"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Size:       836197911</span></span>
+<span id="cb3-41"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Compressed: 795592065</span></span>
+<span id="cb3-42"></span>
+<span id="cb3-43"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$</span> 7z t Group2_MinION.zip</span>
+<span id="cb3-44"></span>
+<span id="cb3-45"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21</span></span>
+<span id="cb3-46"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)</span></span>
+<span id="cb3-47"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb3-48"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Scanning the drive for archives:</span></span>
+<span id="cb3-49"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 1 file, 55773141409 bytes (52 GiB)</span></span>
+<span id="cb3-50"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb3-51"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Testing archive: Group2_MinION.zip</span></span>
+<span id="cb3-52"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># --</span></span>
+<span id="cb3-53"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Path = Group2_MinION.zip</span></span>
+<span id="cb3-54"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Type = zip</span></span>
+<span id="cb3-55"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Physical Size = 55773141409</span></span>
+<span id="cb3-56"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 64-bit = +</span></span>
+<span id="cb3-57"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb3-58"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Everything is Ok</span></span>
+<span id="cb3-59"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb3-60"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Folders: 215</span></span>
+<span id="cb3-61"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Files: 8274</span></span>
+<span id="cb3-62"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Size:       56411908485</span></span>
+<span id="cb3-63"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Compressed:</span> 55773141409</span></code></pre></div>
+</div>
+<p>All 3 zipped files pass checks, so I can decompress them</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$</span> 7z x Group1.zip</span>
+<span id="cb4-2"></span>
+<span id="cb4-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21</span></span>
+<span id="cb4-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)</span></span>
+<span id="cb4-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb4-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Scanning the drive for archives:</span></span>
+<span id="cb4-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 1 file, 2320416210 bytes (2213 MiB)</span></span>
+<span id="cb4-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb4-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extracting archive: Group1.zip</span></span>
+<span id="cb4-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># --</span></span>
+<span id="cb4-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Path = Group1.zip</span></span>
+<span id="cb4-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Type = zip</span></span>
+<span id="cb4-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Physical Size = 2320416210</span></span>
+<span id="cb4-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb4-15"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Everything is Ok</span></span>
+<span id="cb4-16"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb4-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Folders: 42</span></span>
+<span id="cb4-18"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Files: 2950</span></span>
+<span id="cb4-19"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Size:       2398985870</span></span>
+<span id="cb4-20"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Compressed: 2320416210</span></span>
+<span id="cb4-21"></span>
+<span id="cb4-22"></span>
+<span id="cb4-23"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$</span> 7z x Group2.zip</span>
+<span id="cb4-24"></span>
+<span id="cb4-25"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21</span></span>
+<span id="cb4-26"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)</span></span>
+<span id="cb4-27"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb4-28"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Scanning the drive for archives:</span></span>
+<span id="cb4-29"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 1 file, 795592065 bytes (759 MiB)</span></span>
+<span id="cb4-30"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb4-31"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extracting archive: Group2.zip</span></span>
+<span id="cb4-32"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># --</span></span>
+<span id="cb4-33"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Path = Group2.zip</span></span>
+<span id="cb4-34"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Type = zip</span></span>
+<span id="cb4-35"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Physical Size = 795592065</span></span>
+<span id="cb4-36"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb4-37"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Everything is Ok</span></span>
+<span id="cb4-38"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb4-39"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Folders: 89</span></span>
+<span id="cb4-40"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Files: 2917</span></span>
+<span id="cb4-41"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Size:       836197911</span></span>
+<span id="cb4-42"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Compressed: 795592065</span></span>
+<span id="cb4-43"></span>
+<span id="cb4-44"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$</span> 7z x Group2_MinION.zip</span>
+<span id="cb4-45"></span>
+<span id="cb4-46"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21</span></span>
+<span id="cb4-47"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)</span></span>
+<span id="cb4-48"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb4-49"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Scanning the drive for archives:</span></span>
+<span id="cb4-50"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 1 file, 55773141409 bytes (52 GiB)</span></span>
+<span id="cb4-51"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb4-52"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extracting archive: Group2_MinION.zip</span></span>
+<span id="cb4-53"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># --</span></span>
+<span id="cb4-54"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Path = Group2_MinION.zip</span></span>
+<span id="cb4-55"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Type = zip</span></span>
+<span id="cb4-56"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Physical Size = 55773141409</span></span>
+<span id="cb4-57"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 64-bit = +</span></span>
+<span id="cb4-58"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb4-59"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Everything is Ok</span></span>
+<span id="cb4-60"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb4-61"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Folders: 215</span></span>
+<span id="cb4-62"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Files: 8274</span></span>
+<span id="cb4-63"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Size:       56411908485</span></span>
+<span id="cb4-64"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Compressed: 55773141409</span></span></code></pre></div>
+</div>
+<p>There are still no warnings, but I noticed that Group1 is missing sub-folders.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$</span> ls Group1/Group1/</span>
+<span id="cb5-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#Library2</span></span></code></pre></div>
+</div>
+<p>It should contain 4 subfolders, each containing the data from a Flongle run with a different library prep (1-4). However, I only see Library2 there. Since md5s matched and the files unzipped with no issues, there must have been a problem with compressing the file originally.</p>
+<p>Try again.</p>
+<p>On the sequencing computer, ensured the Group1 folder has the expected subfolders, re-compressed, generated new md5sum, uploaded both to Google Drive, and synced with Gannet. New checks:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$</span> head Group1.md5</span>
+<span id="cb6-2"></span>
+<span id="cb6-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Algorithm       Hash                                                                   Path</span></span>
+<span id="cb6-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ---------       ----                                                                   ----</span></span>
+<span id="cb6-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># MD5             82BD3B02FADD408F3469C6E294DDDF4E                                       C:\Users\Public\Documents\LAB...</span></span>
+<span id="cb6-6"></span>
+<span id="cb6-7"></span>
+<span id="cb6-8"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$</span> md5sum Group1.zip</span>
+<span id="cb6-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 82bd3b02fadd408f3469c6e294dddf4e  Group1.zip</span></span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Double check new Group1 checksums</span></span>
+<span id="cb7-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">identical</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tolower</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"82BD3B02FADD408F3469C6E294DDDF4E"</span>), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tolower</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"82bd3b02fadd408f3469c6e294dddf4e"</span>))</span></code></pre></div>
+</div>
+<p>Uncompress and check that the subfolders are there</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"></span>
+<span id="cb8-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$</span> 7z x Group1.zip</span>
+<span id="cb8-3"></span>
+<span id="cb8-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21</span></span>
+<span id="cb8-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)</span></span>
+<span id="cb8-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb8-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Scanning the drive for archives:</span></span>
+<span id="cb8-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 1 file, 6440567574 bytes (6143 MiB)</span></span>
+<span id="cb8-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb8-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Extracting archive: Group1.zip</span></span>
+<span id="cb8-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># --</span></span>
+<span id="cb8-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Path = Group1.zip</span></span>
+<span id="cb8-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Type = zip</span></span>
+<span id="cb8-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Physical Size = 6440567574</span></span>
+<span id="cb8-15"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 64-bit = +</span></span>
+<span id="cb8-16"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb8-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Everything is Ok</span></span>
+<span id="cb8-18"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb8-19"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Folders: 125</span></span>
+<span id="cb8-20"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Files: 10005</span></span>
+<span id="cb8-21"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Size:       6700569546</span></span>
+<span id="cb8-22"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Compressed: 6440567574</span></span>
+<span id="cb8-23"></span>
+<span id="cb8-24"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$</span> ls Group1/Group1/</span>
+<span id="cb8-25"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Library1  Library2  Library3  Library4</span></span></code></pre></div>
+</div>
+<p>Once all 3 files loaded onto gannet and checked, I removed them from Google Drive, since I only have 100GB of storage there.</p>
+<p>Finally, need to generate md5 checksums for all the files in the folders I just synced to Gannet (<code>Group1</code>, <code>Group2</code>, <code>Group2_MinION</code> ) to verify integrity in future file transfers (e.g., Gannet -&gt; Raven). (I didn’t do this on the original sequencing computer because it only had Windows Powershell as a terminal, and I don’t know much powershell syntax)</p>
+<p>The bash code used below will iterate through each subfolder and, if the folder contains files, will generate a checksums.md5 containing md5 hashes for all files in that folder.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"></span>
+<span id="cb9-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group1$</span> find . <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-type</span> d <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-exec</span> sh <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span></span>
+<span id="cb9-3"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  cd "{}" || exit</span></span>
+<span id="cb9-4"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  # Check if there are any regular files in the directory</span></span>
+<span id="cb9-5"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  if find . -maxdepth 1 -type f | grep -q .; then</span></span>
+<span id="cb9-6"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    md5sum * &gt; checksums.md5</span></span>
+<span id="cb9-7"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  fi</span></span>
+<span id="cb9-8"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\;</span></span>
+<span id="cb9-9"></span>
+<span id="cb9-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: bam_fail: Is a directory</span></span>
+<span id="cb9-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: bam_pass: Is a directory</span></span>
+<span id="cb9-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: fastq_fail: Is a directory</span></span>
+<span id="cb9-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: fastq_pass: Is a directory</span></span>
+<span id="cb9-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: other_reports: Is a directory</span></span>
+<span id="cb9-15"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: pod5: Is a directory</span></span>
+<span id="cb9-16"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: bam_fail: Is a directory</span></span>
+<span id="cb9-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: bam_pass: Is a directory</span></span>
+<span id="cb9-18"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: fastq_fail: Is a directory</span></span>
+<span id="cb9-19"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: fastq_pass: Is a directory</span></span>
+<span id="cb9-20"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: other_reports: Is a directory</span></span>
+<span id="cb9-21"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: pod5: Is a directory</span></span>
+<span id="cb9-22"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: bam_fail: Is a directory</span></span>
+<span id="cb9-23"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: bam_pass: Is a directory</span></span>
+<span id="cb9-24"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: fastq_fail: Is a directory</span></span>
+<span id="cb9-25"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: fastq_pass: Is a directory</span></span>
+<span id="cb9-26"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: other_reports: Is a directory</span></span>
+<span id="cb9-27"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: pod5: Is a directory</span></span>
+<span id="cb9-28"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: bam_fail: Is a directory</span></span>
+<span id="cb9-29"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: bam_pass: Is a directory</span></span>
+<span id="cb9-30"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: fastq_fail: Is a directory</span></span>
+<span id="cb9-31"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: fastq_pass: Is a directory</span></span>
+<span id="cb9-32"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: other_reports: Is a directory</span></span>
+<span id="cb9-33"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: pod5: Is a directory</span></span>
+<span id="cb9-34"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: pod5_skip: Is a directory</span></span>
+<span id="cb9-35"></span>
+<span id="cb9-36"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group1$</span> cd ../Group2</span>
+<span id="cb9-37"></span>
+<span id="cb9-38"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group2$</span> find . <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-type</span> d <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-exec</span> sh <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span></span>
+<span id="cb9-39"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  cd "{}" || exit</span></span>
+<span id="cb9-40"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  # Check if there are any regular files in the directory</span></span>
+<span id="cb9-41"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  if find . -maxdepth 1 -type f | grep -q .; then</span></span>
+<span id="cb9-42"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    md5sum * &gt; checksums.md5</span></span>
+<span id="cb9-43"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  fi</span></span>
+<span id="cb9-44"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\;</span></span>
+<span id="cb9-45"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: bam_fail: Is a directory</span></span>
+<span id="cb9-46"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: bam_pass: Is a directory</span></span>
+<span id="cb9-47"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: fastq_fail: Is a directory</span></span>
+<span id="cb9-48"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: fastq_pass: Is a directory</span></span>
+<span id="cb9-49"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: other_reports: Is a directory</span></span>
+<span id="cb9-50"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: pod5_fail: Is a directory</span></span>
+<span id="cb9-51"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: pod5_pass: Is a directory</span></span>
+<span id="cb9-52"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: bam_fail: Is a directory</span></span>
+<span id="cb9-53"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: bam_pass: Is a directory</span></span>
+<span id="cb9-54"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: fastq_fail: Is a directory</span></span>
+<span id="cb9-55"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: fastq_pass: Is a directory</span></span>
+<span id="cb9-56"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: other_reports: Is a directory</span></span>
+<span id="cb9-57"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: pod5_fail: Is a directory</span></span>
+<span id="cb9-58"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: pod5_pass: Is a directory</span></span>
+<span id="cb9-59"></span>
+<span id="cb9-60"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group2$</span> cd ../Group2_MinION</span>
+<span id="cb9-61"></span>
+<span id="cb9-62"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group2_MinION$</span> find . <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-type</span> d <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-exec</span> sh <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span></span>
+<span id="cb9-63"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  cd "{}" || exit</span></span>
+<span id="cb9-64"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  # Check if there are any regular files in the directory</span></span>
+<span id="cb9-65"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  if find . -maxdepth 1 -type f | grep -q .; then</span></span>
+<span id="cb9-66"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">    md5sum * &gt; checksums.md5</span></span>
+<span id="cb9-67"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  fi</span></span>
+<span id="cb9-68"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\;</span></span>
+<span id="cb9-69"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: bam_fail: Is a directory</span></span>
+<span id="cb9-70"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: bam_pass: Is a directory</span></span>
+<span id="cb9-71"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: fastq_fail: Is a directory</span></span>
+<span id="cb9-72"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: fastq_pass: Is a directory</span></span>
+<span id="cb9-73"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: other_reports: Is a directory</span></span>
+<span id="cb9-74"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: pod5_fail: Is a directory</span></span>
+<span id="cb9-75"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: pod5_pass: Is a directory</span></span>
+<span id="cb9-76"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: bam_fail: Is a directory</span></span>
+<span id="cb9-77"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: bam_pass: Is a directory</span></span>
+<span id="cb9-78"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: fastq_fail: Is a directory</span></span>
+<span id="cb9-79"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: fastq_pass: Is a directory</span></span>
+<span id="cb9-80"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: other_reports: Is a directory</span></span>
+<span id="cb9-81"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: pod5_fail: Is a directory</span></span>
+<span id="cb9-82"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># md5sum: pod5_pass: Is a directory</span></span></code></pre></div>
+</div>
+<p>When I tried viewing my SIFP_2025 folder on Gannet from the public-facing web server, I couldn’t see it – instead I got the error message “<em>Forbidden. You don’t have permission to access this resource. Server unable to read htaccess file. Denying acces to be safe</em>”</p>
+<p>This turned out to be a permissions issue, so I updated permissions. I want others to have:</p>
+<ul>
+<li><p><strong>read access</strong> (e.g., 644 -&gt; -rw-r–r–) to <strong>files</strong>, which will permit people to see and download files, and</p></li>
+<li><p><strong>read and execute access</strong> (e.g., 755 -&gt; drwxr-xr-x) to <strong>directories</strong>, which will allow people to see and access the directory’s contents.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"></span>
+<span id="cb10-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># find all subdirectories and set read + execute permissions for others</span></span>
+<span id="cb10-3"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group1$</span> find . <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-type</span> d <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-exec</span> chmod 755 {} <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\;</span></span>
+<span id="cb10-4"></span>
+<span id="cb10-5"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group1$</span> find . <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-type</span> f <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-exec</span> chmod 644 {} <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\;</span></span>
+<span id="cb10-6"></span>
+<span id="cb10-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># check</span></span>
+<span id="cb10-8"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group1$</span> ls <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-ld</span> .</span>
+<span id="cb10-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># drwxr-xr-x 3 kdurkin1 users 4096 Aug 29 08:31 .</span></span>
+<span id="cb10-10"></span>
+<span id="cb10-11"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group1$</span> ls <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-ld</span> ./Group1/Library1/20250812_1139_MD-101223_AYW935_f9a34344/checksums.md5</span>
+<span id="cb10-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># -rw-r--r-- 1 kdurkin1 users 698 Aug 29 08:36 ./Group1/Library1/20250812_1139_MD-101223_AYW935_f9a34344/checksums.md5</span></span>
+<span id="cb10-13"></span>
+<span id="cb10-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Repeat for Group2 and Group2_MinION</span></span>
+<span id="cb10-15"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group1$</span> cd ../Group2</span>
+<span id="cb10-16"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group2$</span> find . <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-type</span> d <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-exec</span> chmod 755 {} <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\;</span></span>
+<span id="cb10-17"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group2$</span> find . <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-type</span> f <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-exec</span> chmod 644 {} <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\;</span></span>
+<span id="cb10-18"></span>
+<span id="cb10-19"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group2$</span> cd ../Group2_MinION</span>
+<span id="cb10-20"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group2_MinION$</span> find . <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-type</span> d <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-exec</span> chmod 755</span>
+<span id="cb10-21"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">{}</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\;</span></span>
+<span id="cb10-22"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group2_MinION$</span> find . <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-type</span> f <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-exec</span> chmod 644</span>
+<span id="cb10-23"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">{}</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\;</span></span>
+<span id="cb10-24"> </span></code></pre></div>
+</div>
+<p>After granting non-owner read and execute permissions, can see files from public-facing server!</p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_28_file_transfer.html</guid>
+  <pubDate>Thu, 28 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>MinION G2L2 Wildflower Flow Cell</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_25_minion_wildflower.html</link>
   <description><![CDATA[ 
@@ -101,6 +1520,173 @@ The G2L2 run actually had a roughly equivalent number of starting pores and a hi
   <category>SIFP-2025</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_25_minion_wildflower.html</guid>
   <pubDate>Mon, 25 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Native Barcoding, Group2 Library 2</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_24_library_prep_G2L2.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>during Group 1 Library 4 MinION run I had some issues with low pore occupancy. I was originally concerned that, by increasing the quantity of DNA retained through end-prep, I’d “overloaded” the adapter ligation step, resulting in a high proportion of un-adapted DNA. I thought this unadapted DNA might then be lowering the effective library concentration, resulting in low occupancy.</p>
+<p>However, after some discussion in a Nanopore community forum thread with David Eccles, I don’t think adapters are the issue. Instead, David suggested the problem may lay with the short reads “leaving the pores hanging,” and taking too long for a given pore to “find” a new read to sequence. His recommendation was to spike in some longer control DNA. My timeline is too short to order any additional lambda phage DNA, but I can use the DNA Control Sample (DCS) provided in the Native Barcoding Kit (~3.6kb).</p>
+<p>With this re-introduction of DCS to the library prep protocol, I need to re-do the Group 2 library.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Catalog #</th>
+<th>Conc. (ng/uL)</th>
+<th>uL for 1000ng</th>
+<th>uL for 11uL</th>
+<th>Barcode</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>51861</td>
+<td>94.1</td>
+<td>10.63</td>
+<td>0.37</td>
+<td>18</td>
+</tr>
+<tr class="even">
+<td>51892</td>
+<td>137</td>
+<td>7.3</td>
+<td>3.7</td>
+<td>19</td>
+</tr>
+<tr class="odd">
+<td>51732</td>
+<td>157</td>
+<td>6.37</td>
+<td>4.63</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<p>Followed <a href="./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-24-document-checklist-MinION-en-NBE_9169_v114_revV_02Jul2025-39.pdf">Native Barcoding 96 V14 gDNA protocol</a>, using DCS, with the following modifications:</p>
+<ul>
+<li><p>1000ng input DNA from each sample</p></li>
+<li><p>retain 3.75uL DNA through end-prep</p></li>
+</ul>
+<p><u><strong>Qubit 1:</strong></u><strong><br>
+</strong>Standard 1: 31.32<br>
+Standard 2: 11873.41<br>
+G2L2: 17.7 ng/uL</p>
+<p><u><strong>Qubit 2:</strong></u><strong><br>
+</strong>Standard 1: 32.99<br>
+Standard 2: 14756.63<br>
+G2L2: <strong>24.2 ng/uL</strong></p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_24_library_prep_G2L2.html</guid>
+  <pubDate>Sun, 24 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Flongle Run, Group 2 Library 1</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_22_flongle_G2L1.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Ran Group 2 Library 1 on a Flongle flow cell to confirm successful library prep.</p>
+<p>Performed hardware check on Flongle adapter. Then inserted flongle flow cell and performed flow cell check.</p>
+<p><u><strong>Flongle flow cell:</strong></u><br>
+ID: AYW871<br>
+61 pores on first pore check<br>
+57 pores on this pore check</p>
+<p>According to TapeStation peaks these samples are ~700bp in avg fragment length. Thus, the recommended Flongle loading amount of 5-10fmol is roughly equivalent to 2.16ng - 4.31ng.</p>
+<p>I loaded the Flongle with 10fmol (4.31ng) of Group 2 Library 1 in 5uL of EB. G2L1 concentration is too high to accurately pipette 4.31ng, so instead mixed:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B4.3ng%5C%20DNA%7D%7B5uL%5C%20EB%7D%20=%20%5Cfrac%7B20ng%5C%20DNA%7D%7B23.3uL%5C%20EB%7D%5C%20%5C%20%5C%20Added%5C%201uL%5C%20G2L1%5C%20to%5C%20(23.3-1)=22.3uL%5C%20EB%0A"></p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_22_flongle_G2L1.html</guid>
+  <pubDate>Fri, 22 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Native Barcoding, Group 2 Library 1</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_22_library_prep_G2L1.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Library prep for Group 2 using Native Barcoding 96 V14 Kit. This is the first attempt at library prep for this set of individuals (Library 1).</p>
+<p>Again, I will be including 3 specimens in a single sequencing round. This will be 3 individuals from the “mid-age” specimens.</p>
+<table class="table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 23%">
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Catalog #</th>
+<th>Year collected</th>
+<th>Conc. (ng/uL)</th>
+<th>uL for 1000ng</th>
+<th>Barcode</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>51861</td>
+<td>1960</td>
+<td>94.1</td>
+<td>10.63</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td>51892</td>
+<td>1960</td>
+<td>137</td>
+<td>7.3</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td>51732</td>
+<td>1960</td>
+<td>157</td>
+<td>6.37</td>
+<td>17</td>
+</tr>
+</tbody>
+</table>
+<p>Performed prep as outlined in <a href="./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-24-document-checklist-MinION-en-NBE_9169_v114_revV_02Jul2025-39.pdf">ONT Native Barcoding 96 V14 protocol for gDNA</a>, with the following modifications:</p>
+<ul>
+<li><p>Excluded DCS</p></li>
+<li><p>Began with 1000ng input DNA from each sample</p></li>
+<li><p>Retained 3.75uL end-prepped DNA through to barcode ligation for each sample</p></li>
+</ul>
+<p><u>Qubit 1 (barcodes ligated)</u><br>
+Standard 1: 37.15<br>
+Standard 2: 16818.29<br>
+G2L1: 14.1 ng/uL</p>
+<p><u>Qubit 2 (adapters ligated)</u><br>
+Standard 1: 39.17<br>
+Standard 2: 17680.37<br>
+G2L1: 20.0 ng/uL</p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_22_library_prep_G2L1.html</guid>
+  <pubDate>Fri, 22 Aug 2025 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Wash #3, MinION Group 1 Library 4</title>
@@ -1543,1563 +3129,6 @@ ID: AYW935</p>
   <category>SIFP-2025</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_12_flongle_G1L1.html</guid>
   <pubDate>Tue, 12 Aug 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Native Barcoding Library Prep - Group 1, Library 1 &amp; 2</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_11_library_prep_G1L1.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Performing library prep on extracted, cleaned, and QC’d DNA for Nanopore sequencing.</p>
-<section id="setup" class="level2">
-<h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<p>As a reminder, we’ll be multiplexing 4 samples per MinION flow cell (E. tourneforti genome is 600Mb, so 10X is 6Gb; anticipate 30Gb MinION output; so 5 samples max)</p>
-<p>I also want to group samples for multiplexing by DNA integrity and quantity, since the protocol includes sleecting a pooled library quantity based on average fragment lengths.</p>
-<p>Using the TapeStation peak fragment size as a proxy for average size (reasonable, due to normal distributions of fragment lengths), I selected 4 samples with ihghest fragment size for Group 1:</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Catalog #</th>
-<th>peak bp</th>
-<th>tube label</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1606826</td>
-<td>1906</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>1740336</td>
-<td>1698</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td>1740363</td>
-<td>1696</td>
-<td>3</td>
-</tr>
-<tr class="even">
-<td>1740407</td>
-<td>1798</td>
-<td>4</td>
-</tr>
-</tbody>
-</table>
-<p>Following the Oxoford Nanopore Tecnologies Ligation Sequencing gDNA - Native Barcoding 96 V14 (SQK-NBD114.96) protocol (document version <a href="./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-24-document-checklist-MinION-en-NBE_9169_v114_revV_02Jul2025-39.pdf">NBE_9171_v114_revS_02Jul2025</a>).</p>
-<p>Using Short Fragment Buffer (SFB), not LFB. I don’t have any LoBind PCR tubes, so will be using 0.2mL 8X strip tubes for steps before barcodes are pooled.</p>
-</section>
-<section id="notes" class="level2">
-<h2 class="anchored" data-anchor-id="notes">Notes</h2>
-<p><u><strong>Native Barcoding 96 Kit</strong></u><br>
-<strong>REF:</strong> SQK-NBD114.96<br>
-<strong>LOT:</strong> NBD1496.40.0007</p>
-<p><u><strong>Flongle Expansion Kit</strong></u><br>
-<strong>REF:</strong> EXP-FSE002<br>
-<strong>LOT:</strong> FSE002.30.0005</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Catalog #</th>
-<th>Extraction (ng/uL)</th>
-<th>uL for 400ng</th>
-<th>Barcode #</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1606826</td>
-<td>408</td>
-<td>1 uL</td>
-<td>01</td>
-</tr>
-<tr class="even">
-<td>1740336</td>
-<td>368</td>
-<td>1.1 uL</td>
-<td>02</td>
-</tr>
-<tr class="odd">
-<td>1740363</td>
-<td>343</td>
-<td>1.2 uL</td>
-<td>03</td>
-</tr>
-<tr class="even">
-<td>1740407</td>
-<td>260</td>
-<td>1.5 uL</td>
-<td>04</td>
-</tr>
-</tbody>
-</table>
-<p>Before beginning library prep:</p>
-<ul>
-<li><p>ensure there is an available thermal cycler with the following program: 20C for 5min, 65C for 5min</p></li>
-<li><p>Pre-heat an incubator plate to 37C</p></li>
-</ul>
-<p><u>Qubit 1 (Barcodes ligated, in 35uL)</u><br>
-Standard 1: 39.06<br>
-Standard 2: 16073.91<br>
-Library 1: <strong>1.62 ng/uL</strong></p>
-<p><u>Qubit 2 (Adapters ligated, in 15uL)</u><br>
-Standard 1: 30.11<br>
-Standard 2: 14133.11<br>
-Library 1: <strong>2.56 ng/uL</strong></p>
-<p>Library has very low concentration. This is likely because, while I started with 400ng input DNA from each sample, only a fraction of this is carried through from end-prep to barcode ligation. At Step 7 of Barcode Ligation, for each sample, 0.75uL of end-prepped DNA is used, added to 3uL of nuclease-free H2O. The protocol is likely optimized for multiplexing a large number of samples at once, but I’m just using 4.</p>
-<p>I think I should be able to, instead, carry-over a full 3.75uL of end-prepped DNA at this step, and exclude additional nuclease-free water. I’m going to try another round of library prep using the same samples, making this change to retain more DNA.</p>
-<p>I’ll call the first round of these samples “Library 1”, and the second round with more DNA carried over “Library 2.”</p>
-</section>
-<section id="library-2" class="level2">
-<h2 class="anchored" data-anchor-id="library-2">Library 2</h2>
-<p>Same samples (“Group 1”), but need to assign new unique barcodes.</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Catalog #</th>
-<th>Extraction (ng/uL)</th>
-<th>uL for 400ng</th>
-<th>Barcode #</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1606826</td>
-<td>408</td>
-<td>1 uL</td>
-<td>05</td>
-</tr>
-<tr class="even">
-<td>1740336</td>
-<td>368</td>
-<td>1.1 uL</td>
-<td>06</td>
-</tr>
-<tr class="odd">
-<td>1740363</td>
-<td>343</td>
-<td>1.2 uL</td>
-<td>07</td>
-</tr>
-<tr class="even">
-<td>1740407</td>
-<td>260</td>
-<td>1.5 uL</td>
-<td>08</td>
-</tr>
-</tbody>
-</table>
-<p>During Step 7 of Barcode Ligation, excluded nuclease-free H2o and used 3.75uL end-prepped DNA (instead of the recommended 0.75uL).</p>
-<p><u>Qubit 1 (Barcodes ligated, in 35uL)</u><br>
-Standard 1: 33.38<br>
-Standard 2: 13411.37<br>
-Library 2: <strong>13.7 ng/uL</strong></p>
-<p><u>Qubit 2 (Adapters ligated, in 15uL)</u><br>
-Standard 1: 30.11<br>
-Standard 2: 14133.11<br>
-Library 2: <strong>16.5 ng/uL</strong></p>
-<p>Yay! Library 2 has much more DNA in the final library. I’ll need to run both Library 1 and Library 2 on Flongles to ensure the higher DNA retention doesn’t also carry over inhibiting reagents from end-prep that might affect sequencing.</p>
-<p>Took both Library 1 and Library 2 thorugh Step 18 of Adapter Ligation &amp; Clean Up. Did not dilute to Final Library, since I’ll need different concentrations for Flongle and MinION flow cells.</p>
-
-
-</section>
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_11_library_prep_G1L1.html</guid>
-  <pubDate>Mon, 11 Aug 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Transfer DNA Extractions for Storage</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_11_transfer_DNA.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Transferred all bead-cleaned DNA extractions from their 0.2mL 8X strip tubes to individual 0.2mL tubes.</p>
-<p>As I begin library prep, I’ll need to pull and thaw small sets of specific samples. To avoid constant freeze/thaw of all samples, I need them in individual, separate tubes, not the strip tubes they’re currently in.</p>
-<p>Pulled all DNA extractions from the freezer, thawed in fridge for ~20min, then spun down and placed on ice. Labelled new tubes on cap and sides and arranged in rack in same positions/orientation as current sample layout. Didn’t change the “location” of any samples. Transferred full volume of each sample from old strip tube spot to new labelled tube.</p>
-<p>Placed all samples back in the -20C freezer once finished.</p>
-
-
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_11_transfer_DNA.html</guid>
-  <pubDate>Mon, 11 Aug 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Bead Cleanup of all Samples</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_25_KAPA_bead_full.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>After confirming which bead-to-sample ratio I want to use (0.7X, see the <a href="../../../posts/projects/SIFP_2025/2025_07_23_KAPA_bead.html">bead titration</a> and <a href="../../../posts/projects/SIFP_2025/2025_07_24_titration_tapestation.html">TapeStation</a> posts for details), I performed bead cleanup and concentration of all samples.</p>
-<p>I used KAPA Pure Beads, and followed the protocol and modifications provided in my <a href="../../../posts/projects/SIFP_2025/2025_07_23_KAPA_bead.html">KAPA bead titration</a> entry.</p>
-<p>This iteration of the KAPA Pure Bead protocol was a little more complicated, though, because many of my DNA extractions have slightly different remaining volumes, due to differences in pipet loss, # of gels run, dilutions performed, # of extractions performed for that specimen, and whether samples were included in the titration bead trial. I’m also combining and concentrating the following:</p>
-<p>*Extractions 1 and 2 for for specimens 14366, 19054, 52295, 1180630, 50603<br>
-+Extraction and titrated bead cleanups for specimens 51732, 51892</p>
-<p>Bead cleanups require maintaining an accurate bead-to-sample ratio. However, I want to use all extracted DNA I have for each specimen, to maximize the amount of DNA available for sequencing. This means I couldn’t just take an equal volume from each sample. Instead, I measured the total extraction volume of each sample as I transferred it to a well in my 0.2mL 8X tube strips. I then calculated, for each sample, what bead volume to use to maintain a bead-to-sample ratio of 0.7X.</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>8X tube strip</th>
-<th>Catalog #</th>
-<th>DNA (uL)</th>
-<th>Beads (uL)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>A</td>
-<td>14366 *</td>
-<td>90</td>
-<td>63</td>
-</tr>
-<tr class="even">
-<td>A</td>
-<td>19054 *</td>
-<td>100</td>
-<td>70</td>
-</tr>
-<tr class="odd">
-<td>A</td>
-<td>52295 *</td>
-<td>100</td>
-<td>70</td>
-</tr>
-<tr class="even">
-<td>A</td>
-<td>1180630 *</td>
-<td>110</td>
-<td>77</td>
-</tr>
-<tr class="odd">
-<td>A</td>
-<td>50603 *</td>
-<td>110</td>
-<td>77</td>
-</tr>
-<tr class="even">
-<td>A</td>
-<td>51732 +</td>
-<td>100</td>
-<td>70</td>
-</tr>
-<tr class="odd">
-<td>A</td>
-<td>51892 +</td>
-<td>90</td>
-<td>63</td>
-</tr>
-<tr class="even">
-<td>A</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><strong>B</strong></td>
-<td><strong>14399</strong></td>
-<td><strong>55</strong></td>
-<td><strong>38.5</strong></td>
-</tr>
-<tr class="even">
-<td><strong>B</strong></td>
-<td><strong>42137</strong></td>
-<td><strong>50</strong></td>
-<td><strong>35</strong></td>
-</tr>
-<tr class="odd">
-<td><strong>B</strong></td>
-<td><strong>51730</strong></td>
-<td><strong>70</strong></td>
-<td><strong>49</strong></td>
-</tr>
-<tr class="even">
-<td><strong>B</strong></td>
-<td><strong>51782</strong></td>
-<td><strong>45</strong></td>
-<td><strong>31.5</strong></td>
-</tr>
-<tr class="odd">
-<td><strong>B</strong></td>
-<td><strong>100609</strong></td>
-<td><strong>45</strong></td>
-<td><strong>31.5</strong></td>
-</tr>
-<tr class="even">
-<td><strong>B</strong></td>
-<td><strong>100610</strong></td>
-<td><strong>45</strong></td>
-<td><strong>31.5</strong></td>
-</tr>
-<tr class="odd">
-<td><strong>B</strong></td>
-<td><strong>1007393</strong></td>
-<td><strong>45</strong></td>
-<td><strong>31.5</strong></td>
-</tr>
-<tr class="even">
-<td><strong>B</strong></td>
-<td><strong>1018355</strong></td>
-<td><strong>55</strong></td>
-<td><strong>38.5</strong></td>
-</tr>
-<tr class="odd">
-<td>C</td>
-<td>1606824</td>
-<td>50</td>
-<td>35</td>
-</tr>
-<tr class="even">
-<td>C</td>
-<td>1606826</td>
-<td>55</td>
-<td>38.5</td>
-</tr>
-<tr class="odd">
-<td>C</td>
-<td>1740336</td>
-<td>55</td>
-<td>38.5</td>
-</tr>
-<tr class="even">
-<td>C</td>
-<td>1740363</td>
-<td>50</td>
-<td>35</td>
-</tr>
-<tr class="odd">
-<td>C</td>
-<td>1740390</td>
-<td>45</td>
-<td>31.5</td>
-</tr>
-<tr class="even">
-<td>C</td>
-<td>1740407</td>
-<td>65</td>
-<td>45.5</td>
-</tr>
-<tr class="odd">
-<td>C</td>
-<td>50368</td>
-<td>50</td>
-<td>35</td>
-</tr>
-<tr class="even">
-<td>C</td>
-<td>51727</td>
-<td>50</td>
-<td>35</td>
-</tr>
-<tr class="odd">
-<td><strong>D</strong></td>
-<td><strong>51729</strong></td>
-<td><strong>45</strong></td>
-<td><strong>31.5</strong></td>
-</tr>
-<tr class="even">
-<td><strong>D</strong></td>
-<td><strong>51857</strong></td>
-<td><strong>45</strong></td>
-<td><strong>31.5</strong></td>
-</tr>
-<tr class="odd">
-<td><strong>D</strong></td>
-<td><strong>51858</strong></td>
-<td><strong>45</strong></td>
-<td><strong>31.5</strong></td>
-</tr>
-<tr class="even">
-<td><strong>D</strong></td>
-<td><strong>51859</strong></td>
-<td><strong>45</strong></td>
-<td><strong>31.5</strong></td>
-</tr>
-<tr class="odd">
-<td><strong>D</strong></td>
-<td><strong>51860</strong></td>
-<td><strong>40</strong></td>
-<td><strong>28</strong></td>
-</tr>
-<tr class="even">
-<td><strong>D</strong></td>
-<td><strong>51861</strong></td>
-<td><strong>30</strong></td>
-<td><strong>21</strong></td>
-</tr>
-<tr class="odd">
-<td><strong>D</strong></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><strong>D</strong></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>After pipetting all samples into 8X tube strips (in the same order as shown in the volume table above), I filled 4 8X tube strips with the corresponding volumes of KAPA Pure Beads (temp-acclimated and vortexed). This allowed me to quickly add the appropriate volume of beads to all samples using a multi-channel pipet.</p>
-<p>Eluted all samples in 30uL of Zymo Elution Buffer.</p>
-
-
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_25_KAPA_bead_full.html</guid>
-  <pubDate>Fri, 25 Jul 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>TapeStation QC of Bead-Cleaned Samples</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_25_tapestation.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>After cleaning and concentrating all extractions using KAPA Pure Beads, used the TapeStation with a Genomic Tape to check DNA concetration, quality, and size distribution. Followed <a href="./protocols/Agilent_4200_gDNA_QuickGuide.pdf">protocol for Agilent 4200 gDNA</a>.</p>
-<p>See full TapeStation summaries here: <a href="./data/2025_07_25_TapeStation/2025_07_25_summary_tape1.pdf">Tape 1 summary</a>, <a href="./data/2025_07_25_TapeStation/2025_07_25_summary_tape2.pdf">Tape 2 summary</a></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/data/2025_07_25_TapeStation/2025_07_25_comparison_oldGroup.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Oldest age group</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/data/2025_07_25_TapeStation/2025_07_25_comparison_midGroup.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Mid-age group</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/data/2025_07_25_TapeStation/2025_07_25_comparison_modernGroup.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Modern age group</figcaption>
-</figure>
-</div>
-<p>(Note the above plots have different y-axis scales)</p>
-<table class="table">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 17%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Tape #</th>
-<th>Catalog #</th>
-<th>Year Collected</th>
-<th>DIN</th>
-<th>Conc. (ng/uL)</th>
-<th>% reads &gt;300bp long</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>14366</td>
-<td>1886</td>
-<td>-</td>
-<td>1.57</td>
-<td>63.15</td>
-</tr>
-<tr class="even">
-<td>1</td>
-<td>19054</td>
-<td>1898</td>
-<td>1.2</td>
-<td>21.6</td>
-<td>82.13</td>
-</tr>
-<tr class="odd">
-<td>1</td>
-<td>52295</td>
-<td>1912</td>
-<td>1.0</td>
-<td>19.9</td>
-<td>61.63</td>
-</tr>
-<tr class="even">
-<td>1</td>
-<td>1180630</td>
-<td>1912</td>
-<td>1.0</td>
-<td>4.33</td>
-<td>62.25</td>
-</tr>
-<tr class="odd">
-<td>1</td>
-<td>50603</td>
-<td>1912</td>
-<td>1.0</td>
-<td>42.4</td>
-<td>73.82</td>
-</tr>
-<tr class="even">
-<td>1</td>
-<td>51732</td>
-<td>1960</td>
-<td>2.1</td>
-<td>157</td>
-<td>93.80</td>
-</tr>
-<tr class="odd">
-<td>1</td>
-<td>51892</td>
-<td>1960</td>
-<td>1.9</td>
-<td>137</td>
-<td>94.20</td>
-</tr>
-<tr class="even">
-<td>1</td>
-<td>14399</td>
-<td>1886</td>
-<td>1.2</td>
-<td>100</td>
-<td>86.10</td>
-</tr>
-<tr class="odd">
-<td>1</td>
-<td>42137</td>
-<td>1898</td>
-<td>1.1</td>
-<td>46.3</td>
-<td>86.49</td>
-</tr>
-<tr class="even">
-<td>1</td>
-<td>51730</td>
-<td>1960</td>
-<td>1.1</td>
-<td>59.6</td>
-<td>71.13</td>
-</tr>
-<tr class="odd">
-<td>1</td>
-<td>51728</td>
-<td>1960</td>
-<td>1.4</td>
-<td>23.7</td>
-<td>89.90</td>
-</tr>
-<tr class="even">
-<td>1</td>
-<td>100609</td>
-<td>2000</td>
-<td>2.9</td>
-<td>261</td>
-<td>96.34</td>
-</tr>
-<tr class="odd">
-<td>1</td>
-<td>100610</td>
-<td>2000</td>
-<td>1.9</td>
-<td>164</td>
-<td>93.57</td>
-</tr>
-<tr class="even">
-<td>1</td>
-<td>1007393</td>
-<td>2000</td>
-<td>2.8</td>
-<td>218</td>
-<td>93.49</td>
-</tr>
-<tr class="odd">
-<td>1</td>
-<td>1018355</td>
-<td>2002</td>
-<td>1.8</td>
-<td>115</td>
-<td>89.98</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>1606824</td>
-<td>2019</td>
-<td>1.7</td>
-<td>353</td>
-<td>90.80</td>
-</tr>
-<tr class="odd">
-<td>2</td>
-<td>1606826</td>
-<td>2019</td>
-<td>3.4</td>
-<td>408</td>
-<td>97.21</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>1740336</td>
-<td>2019</td>
-<td>3.1</td>
-<td>368</td>
-<td>96.99</td>
-</tr>
-<tr class="odd">
-<td>2</td>
-<td>1740363</td>
-<td>2019</td>
-<td>3.3</td>
-<td>343</td>
-<td>97.40</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>1740390</td>
-<td>2019</td>
-<td>2.4</td>
-<td>291</td>
-<td>96.83</td>
-</tr>
-<tr class="odd">
-<td>2</td>
-<td>1740407</td>
-<td>2019</td>
-<td>3.1</td>
-<td>260</td>
-<td>96.89</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>50368</td>
-<td>1880</td>
-<td>1.7</td>
-<td>68.3</td>
-<td>91.68</td>
-</tr>
-<tr class="odd">
-<td>2</td>
-<td>51727</td>
-<td>1960</td>
-<td>1.3</td>
-<td>15.3</td>
-<td>87.12</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>51729</td>
-<td>1960</td>
-<td>1.5</td>
-<td>18.7</td>
-<td>89.23</td>
-</tr>
-<tr class="odd">
-<td>2</td>
-<td>51857</td>
-<td>1960</td>
-<td>1.4</td>
-<td>109</td>
-<td>93.00</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>51858</td>
-<td>1960</td>
-<td>1.3</td>
-<td>24.2</td>
-<td>88.78</td>
-</tr>
-<tr class="odd">
-<td>2</td>
-<td>51859</td>
-<td>1960</td>
-<td>1.5</td>
-<td>117</td>
-<td>92.46</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>51860</td>
-<td>1960</td>
-<td>1.4</td>
-<td>15.6</td>
-<td>86.46</td>
-</tr>
-<tr class="odd">
-<td>2</td>
-<td>51861</td>
-<td>1960</td>
-<td>1.7</td>
-<td>94.1</td>
-<td>94.72</td>
-</tr>
-</tbody>
-</table>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(googlesheets4)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'googlesheets4' was built under R version 4.2.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(tidyr)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyr' was built under R version 4.2.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(ggplot2)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.2.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(plotly)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'plotly' was built under R version 4.2.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'plotly'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:ggplot2':
-
-    last_plot</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:stats':
-
-    filter</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:graphics':
-
-    layout</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">conc <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read_sheet</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://docs.google.com/spreadsheets/d/1zDMy7AOCM8Ug85q4vr9CoMDxfF-zDJk1DnaxakSt1Hg/edit?usp=sharing"</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>! Using an auto-discovered, cached token.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  To suppress this message, modify your code or options to clearly consent to
-  the use of a cached token.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  See gargle's "Non-interactive auth" vignette for more details:</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  &lt;https://gargle.r-lib.org/articles/non-interactive-auth.html&gt;</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>ℹ The googlesheets4 package is using a cached token for 'kdurkin1@uw.edu'.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>✔ Reading from "E_tourneforti".</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>✔ Range 'E_tourneforti_samples'.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">conc<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Collection.Age <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ifelse</span>(conc<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Year.Collected <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1920</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"pre-1920"</span>,</span>
-<span id="cb21-2">                              <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ifelse</span>(conc<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Year.Collected <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1999</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Modern"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"1960s-70s"</span>))</span>
-<span id="cb21-3">conc<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Collection.Age <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">factor</span>(conc<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Collection.Age,</span>
-<span id="cb21-4">                              <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"pre-1920"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"1960s-70s"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Modern"</span>),</span>
-<span id="cb21-5">                              <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">ordered =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">TRUE</span>)</span>
-<span id="cb21-6"></span>
-<span id="cb21-7">p1 <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(conc, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x=</span>Tapestation.Perc<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">.300</span>up, </span>
-<span id="cb21-8">                       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y=</span>Tapestation.Conc.ngul, </span>
-<span id="cb21-9">                       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> Collection.Age,</span>
-<span id="cb21-10">                       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">text =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Catalog #:"</span>, Catalog.Number,</span>
-<span id="cb21-11">                                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&lt;br&gt;Year:"</span>, Year.Collected,</span>
-<span id="cb21-12">                                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&lt;br&gt;% &gt;300kb:"</span>, Tapestation.Perc<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">.300</span>up,</span>
-<span id="cb21-13">                                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&lt;br&gt;Conc:"</span>, Tapestation.Conc.ngul))) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb21-14">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_jitter</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.25</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">height =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb21-15">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_hline</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">yintercept =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">13.33</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'black'</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb21-16">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb21-17">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">axis.text.x =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">angle =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">45</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">hjust =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb21-18">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">xlab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Percent of reads &gt;300kb"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb21-19">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ylab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Concentration (ng/uL)"</span>)</span>
-<span id="cb21-20"></span>
-<span id="cb21-21">p2 <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(conc, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x=</span>Tapestation.DIN, </span>
-<span id="cb21-22">                       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y=</span>Tapestation.Conc.ngul, </span>
-<span id="cb21-23">                       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color=</span>Collection.Age,</span>
-<span id="cb21-24">                       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">text =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Catalog #:"</span>, Catalog.Number,</span>
-<span id="cb21-25">                                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&lt;br&gt;Year:"</span>, Year.Collected,</span>
-<span id="cb21-26">                                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&lt;br&gt;DIN:"</span>, Tapestation.DIN,</span>
-<span id="cb21-27">                                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&lt;br&gt;Conc:"</span>, Tapestation.Conc.ngul))) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb21-28">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_jitter</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.25</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">height =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb21-29">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_hline</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">yintercept =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">13.33</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'black'</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb21-30">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb21-31">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">axis.text.x =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">angle =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">45</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">hjust =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb21-32">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">xlab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"DNA Integrity Number (DIN)"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb21-33">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ylab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Concentration (ng/uL)"</span>)</span>
-<span id="cb21-34"></span>
-<span id="cb21-35">p3 <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(conc, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x=</span>Tapestation.DIN, </span>
-<span id="cb21-36">                       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y=</span>Tapestation.Perc<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">.300</span>up, </span>
-<span id="cb21-37">                       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color=</span>Collection.Age,</span>
-<span id="cb21-38">                       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">text =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Catalog #:"</span>, Catalog.Number,</span>
-<span id="cb21-39">                                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&lt;br&gt;Year:"</span>, Year.Collected,</span>
-<span id="cb21-40">                                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&lt;br&gt;DIN:"</span>, Tapestation.DIN,</span>
-<span id="cb21-41">                                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&lt;br&gt;% &gt;300kb:"</span>, Tapestation.Perc<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">.300</span>up))) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb21-42">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_jitter</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.25</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">height =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb21-43">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_hline</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">yintercept =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">13.33</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'black'</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb21-44">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb21-45">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">axis.text.x =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">angle =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">45</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">hjust =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb21-46">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">xlab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"DNA Integrity Number (DIN)"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb21-47">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ylab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Percent of reads &gt;300kb"</span>)</span>
-<span id="cb21-48"></span>
-<span id="cb21-49"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplotly</span>(p1, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">tooltip =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"text"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-0bdd30f573963436e59f" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-0bdd30f573963436e59f">{"x":{"data":[{"x":[91.646830986784778,86.249723140639247,82.337249978091563,86.458011719291093,73.733925137603649,63.232898317719808,61.852998153185474,62.274585326435044,null,null,null],"y":[68.299999999999997,100,21.600000000000001,46.299999999999997,42.399999999999999,1.5700000000000001,19.899999999999999,4.3300000000000001,null,null,null],"text":["Catalog #: USNM 50368 <br>Year: 1880 <br>% >300kb: 91.68 <br>Conc: 68.3","Catalog #: USNM 14399 <br>Year: 1886 <br>% >300kb: 86.1 <br>Conc: 100","Catalog #: USNM 19054 <br>Year: 1898 <br>% >300kb: 82.13 <br>Conc: 21.6","Catalog #: USNM 42137 <br>Year: 1898 <br>% >300kb: 86.49 <br>Conc: 46.3","Catalog #: USNM 50603 <br>Year: 1912 <br>% >300kb: 73.82 <br>Conc: 42.4","Catalog #: USNM 14366 <br>Year: 1886 <br>% >300kb: 63.15 <br>Conc: 1.57","Catalog #: USNM 52295 <br>Year: 1912 <br>% >300kb: 61.63 <br>Conc: 19.9","Catalog #: USNM 1180630 <br>Year: 1912 <br>% >300kb: 62.25 <br>Conc: 4.33","Catalog #: USNM 1207569 <br>Year: 1886 <br>% >300kb: NA <br>Conc: NA","Catalog #: USNM 14366 <br>Year: 1886 <br>% >300kb: NA <br>Conc: NA","Catalog #: USNM 52026 <br>Year: 1898 <br>% >300kb: NA <br>Conc: NA"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(68,1,84,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(68,1,84,1)"}},"hoveron":"points","name":"pre-1920","legendgroup":"pre-1920","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[93.818461818108332,93.961629175394776,92.893917194916867,92.424216271066101,94.591491967700421,70.888563439128916,89.771483828639617,87.045841080024843,89.466179671832364,88.693627891452053,86.671404951172875],"y":[157,137,109,117,94.099999999999994,59.600000000000001,23.699999999999999,15.300000000000001,18.699999999999999,24.199999999999999,15.6],"text":["Catalog #: USNM 51732 <br>Year: 1960 <br>% >300kb: 93.8 <br>Conc: 157","Catalog #: USNM 51892 <br>Year: 1960 <br>% >300kb: 94.2 <br>Conc: 137","Catalog #: USNM 51857 <br>Year: 1960 <br>% >300kb: 93 <br>Conc: 109","Catalog #: USNM 51859 <br>Year: 1960 <br>% >300kb: 92.46 <br>Conc: 117","Catalog #: USNM 51861 <br>Year: 1960 <br>% >300kb: 94.72 <br>Conc: 94.1","Catalog #: USNM 51730 <br>Year: 1960 <br>% >300kb: 71.13 <br>Conc: 59.6","Catalog #: USNM 51728 <br>Year: 1960 <br>% >300kb: 89.9 <br>Conc: 23.7","Catalog #: USNM 51727 <br>Year: 1960 <br>% >300kb: 87.12 <br>Conc: 15.3","Catalog #: USNM 51729 <br>Year: 1960 <br>% >300kb: 89.23 <br>Conc: 18.7","Catalog #: USNM 51858 <br>Year: 1960 <br>% >300kb: 88.78 <br>Conc: 24.2","Catalog #: USNM 51860 <br>Year: 1960 <br>% >300kb: 86.46 <br>Conc: 15.6"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(33,144,140,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(33,144,140,1)"}},"hoveron":"points","name":"1960s-70s","legendgroup":"1960s-70s","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[96.160701599237512,97.268314396766939,96.76058852068148,97.281579725188209,97.094136115266011,93.685340964868658,93.555175210940646,89.991416073190052,90.846908816555512,96.596498808865434],"y":[261,408,368,343,260,164,218,115,353,291],"text":["Catalog #: USNM 100609 <br>Year: 2000 <br>% >300kb: 96.34 <br>Conc: 261","Catalog #: USNM 1606826 <br>Year: 2019 <br>% >300kb: 97.21 <br>Conc: 408","Catalog #: USNM 1740336 <br>Year: 2019 <br>% >300kb: 96.99 <br>Conc: 368","Catalog #: USNM 1740363 <br>Year: 2019 <br>% >300kb: 97.4 <br>Conc: 343","Catalog #: USNM 1740407 <br>Year: 2019 <br>% >300kb: 96.89 <br>Conc: 260","Catalog #: USNM 100610 <br>Year: 2000 <br>% >300kb: 93.57 <br>Conc: 164","Catalog #: USNM 1007393 <br>Year: 2000 <br>% >300kb: 93.49 <br>Conc: 218","Catalog #: USNM 1018355 <br>Year: 2002 <br>% >300kb: 89.98 <br>Conc: 115","Catalog #: USNM 1606824 <br>Year: 2019 <br>% >300kb: 90.8 <br>Conc: 353","Catalog #: USNM 1740390 <br>Year: 2019 <br>% >300kb: 96.83 <br>Conc: 291"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(253,231,37,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(253,231,37,1)"}},"hoveron":"points","name":"Modern","legendgroup":"Modern","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[60.081569074585339,99.053008803788344],"y":[13.33,13.33],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.228310502283104,"r":7.3059360730593621,"b":40.182648401826491,"l":43.105022831050235},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[60.081569074585339,99.053008803788344],"tickmode":"array","ticktext":["70","80","90"],"tickvals":[70,80,90],"categoryorder":"array","categoryarray":["70","80","90"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-45,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Percent of reads >300kb","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-18.7515,428.32150000000001],"tickmode":"array","ticktext":["0","100","200","300","400"],"tickvals":[0,100,200,300,400],"categoryorder":"array","categoryarray":["0","100","200","300","400"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Concentration (ng/uL)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"Collection.Age","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"64a4e59644c":{"x":{},"y":{},"colour":{},"text":{},"type":"scatter"},"64a459ea2255":{"yintercept":{}}},"cur_data":"64a4e59644c","visdat":{"64a4e59644c":["function (y) ","x"],"64a459ea2255":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-</div>
-<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplotly</span>(p2, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">tooltip =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"text"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-eac8fc4695918d5aadca" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-eac8fc4695918d5aadca">{"x":{"data":[{"x":[1.8411087720189243,1.1532538979547098,1.1179536714218556,1.1934995191637428,0.77998124621808529,null,0.85758368298411369,0.97208955674432218,null,null,null],"y":[68.299999999999997,100,21.600000000000001,46.299999999999997,42.399999999999999,1.5700000000000001,19.899999999999999,4.3300000000000001,null,null,null],"text":["Catalog #: USNM 50368 <br>Year: 1880 <br>DIN: 1.7 <br>Conc: 68.3","Catalog #: USNM 14399 <br>Year: 1886 <br>DIN: 1.2 <br>Conc: 100","Catalog #: USNM 19054 <br>Year: 1898 <br>DIN: 1.2 <br>Conc: 21.6","Catalog #: USNM 42137 <br>Year: 1898 <br>DIN: 1.1 <br>Conc: 46.3","Catalog #: USNM 50603 <br>Year: 1912 <br>DIN: 1 <br>Conc: 42.4","Catalog #: USNM 14366 <br>Year: 1886 <br>DIN: NA <br>Conc: 1.57","Catalog #: USNM 52295 <br>Year: 1912 <br>DIN: 1 <br>Conc: 19.9","Catalog #: USNM 1180630 <br>Year: 1912 <br>DIN: 1 <br>Conc: 4.33","Catalog #: USNM 1207569 <br>Year: 1886 <br>DIN: NA <br>Conc: NA","Catalog #: USNM 14366 <br>Year: 1886 <br>DIN: NA <br>Conc: NA","Catalog #: USNM 52026 <br>Year: 1898 <br>DIN: NA <br>Conc: NA"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(68,1,84,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(68,1,84,1)"}},"hoveron":"points","name":"pre-1920","legendgroup":"pre-1920","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1.9578229929553346,2.0444705923786386,1.2542638424551114,1.5982820771168917,1.5743588363286107,1.0387094270205126,1.2404049780219792,1.4656148409238086,1.4788168554659933,1.1245680995751173,1.3730401401175185],"y":[157,137,109,117,94.099999999999994,59.600000000000001,23.699999999999999,15.300000000000001,18.699999999999999,24.199999999999999,15.6],"text":["Catalog #: USNM 51732 <br>Year: 1960 <br>DIN: 2.1 <br>Conc: 157","Catalog #: USNM 51892 <br>Year: 1960 <br>DIN: 1.9 <br>Conc: 137","Catalog #: USNM 51857 <br>Year: 1960 <br>DIN: 1.4 <br>Conc: 109","Catalog #: USNM 51859 <br>Year: 1960 <br>DIN: 1.5 <br>Conc: 117","Catalog #: USNM 51861 <br>Year: 1960 <br>DIN: 1.7 <br>Conc: 94.1","Catalog #: USNM 51730 <br>Year: 1960 <br>DIN: 1.1 <br>Conc: 59.6","Catalog #: USNM 51728 <br>Year: 1960 <br>DIN: 1.4 <br>Conc: 23.7","Catalog #: USNM 51727 <br>Year: 1960 <br>DIN: 1.3 <br>Conc: 15.3","Catalog #: USNM 51729 <br>Year: 1960 <br>DIN: 1.5 <br>Conc: 18.7","Catalog #: USNM 51858 <br>Year: 1960 <br>DIN: 1.3 <br>Conc: 24.2","Catalog #: USNM 51860 <br>Year: 1960 <br>DIN: 1.4 <br>Conc: 15.6"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(33,144,140,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(33,144,140,1)"}},"hoveron":"points","name":"1960s-70s","legendgroup":"1960s-70s","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.8463422757107764,3.6486419519409536,2.9181516688782723,3.1074593839701263,3.1305350102717058,1.6704412619350477,2.7995989324524997,1.9941324612125755,1.7767872646683827,2.4491252029314636],"y":[261,408,368,343,260,164,218,115,353,291],"text":["Catalog #: USNM 100609 <br>Year: 2000 <br>DIN: 2.9 <br>Conc: 261","Catalog #: USNM 1606826 <br>Year: 2019 <br>DIN: 3.4 <br>Conc: 408","Catalog #: USNM 1740336 <br>Year: 2019 <br>DIN: 3.1 <br>Conc: 368","Catalog #: USNM 1740363 <br>Year: 2019 <br>DIN: 3.3 <br>Conc: 343","Catalog #: USNM 1740407 <br>Year: 2019 <br>DIN: 3.1 <br>Conc: 260","Catalog #: USNM 100610 <br>Year: 2000 <br>DIN: 1.9 <br>Conc: 164","Catalog #: USNM 1007393 <br>Year: 2000 <br>DIN: 2.8 <br>Conc: 218","Catalog #: USNM 1018355 <br>Year: 2002 <br>DIN: 1.8 <br>Conc: 115","Catalog #: USNM 1606824 <br>Year: 2019 <br>DIN: 1.7 <br>Conc: 353","Catalog #: USNM 1740390 <br>Year: 2019 <br>DIN: 2.4 <br>Conc: 291"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(253,231,37,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(253,231,37,1)"}},"hoveron":"points","name":"Modern","legendgroup":"Modern","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[0.6365482109319418,3.7920749872270969],"y":[13.33,13.33],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.228310502283104,"r":7.3059360730593621,"b":40.182648401826491,"l":43.105022831050235},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.6365482109319418,3.7920749872270969],"tickmode":"array","ticktext":["1","2","3"],"tickvals":[1,2,3],"categoryorder":"array","categoryarray":["1","2","3"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-45,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"DNA Integrity Number (DIN)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-18.7515,428.32150000000001],"tickmode":"array","ticktext":["0","100","200","300","400"],"tickvals":[0,100,200,300,400],"categoryorder":"array","categoryarray":["0","100","200","300","400"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Concentration (ng/uL)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"Collection.Age","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"64a47afa12bb":{"x":{},"y":{},"colour":{},"text":{},"type":"scatter"},"64a46ea46b49":{"yintercept":{}}},"cur_data":"64a47afa12bb","visdat":{"64a47afa12bb":["function (y) ","x"],"64a46ea46b49":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-</div>
-<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplotly</span>(p3, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">tooltip =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"text"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-b104021a20bcf26a613f" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-b104021a20bcf26a613f">{"x":{"data":[{"x":[1.9054666432086378,1.4023073378950357,1.23916328959167,1.0182003092719243,1.1297838250175118,null,1.0522387573728338,1.0430203450378031,null,null,null],"y":[91.680000000000007,86.099999999999994,82.129999999999995,86.489999999999995,73.819999999999993,63.149999999999999,61.630000000000003,62.25,null,null,null],"text":["Catalog #: USNM 50368 <br>Year: 1880 <br>DIN: 1.7 <br>% >300kb: 91.68","Catalog #: USNM 14399 <br>Year: 1886 <br>DIN: 1.2 <br>% >300kb: 86.1","Catalog #: USNM 19054 <br>Year: 1898 <br>DIN: 1.2 <br>% >300kb: 82.13","Catalog #: USNM 42137 <br>Year: 1898 <br>DIN: 1.1 <br>% >300kb: 86.49","Catalog #: USNM 50603 <br>Year: 1912 <br>DIN: 1 <br>% >300kb: 73.82","Catalog #: USNM 14366 <br>Year: 1886 <br>DIN: NA <br>% >300kb: 63.15","Catalog #: USNM 52295 <br>Year: 1912 <br>DIN: 1 <br>% >300kb: 61.63","Catalog #: USNM 1180630 <br>Year: 1912 <br>DIN: 1 <br>% >300kb: 62.25","Catalog #: USNM 1207569 <br>Year: 1886 <br>DIN: NA <br>% >300kb: NA","Catalog #: USNM 14366 <br>Year: 1886 <br>DIN: NA <br>% >300kb: NA","Catalog #: USNM 52026 <br>Year: 1898 <br>DIN: NA <br>% >300kb: NA"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(68,1,84,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(68,1,84,1)"}},"hoveron":"points","name":"pre-1920","legendgroup":"pre-1920","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1.9256498813861982,1.6643108101328834,1.3494998750742524,1.666167238727212,1.5363491775235161,0.871430628723465,1.367039234470576,1.082624869956635,1.2987522553885356,1.0924599564867095,1.5108630589442327],"y":[93.799999999999997,94.200000000000003,93,92.459999999999994,94.719999999999999,71.129999999999995,89.900000000000006,87.120000000000005,89.230000000000004,88.780000000000001,86.459999999999994],"text":["Catalog #: USNM 51732 <br>Year: 1960 <br>DIN: 2.1 <br>% >300kb: 93.8","Catalog #: USNM 51892 <br>Year: 1960 <br>DIN: 1.9 <br>% >300kb: 94.2","Catalog #: USNM 51857 <br>Year: 1960 <br>DIN: 1.4 <br>% >300kb: 93","Catalog #: USNM 51859 <br>Year: 1960 <br>DIN: 1.5 <br>% >300kb: 92.46","Catalog #: USNM 51861 <br>Year: 1960 <br>DIN: 1.7 <br>% >300kb: 94.72","Catalog #: USNM 51730 <br>Year: 1960 <br>DIN: 1.1 <br>% >300kb: 71.13","Catalog #: USNM 51728 <br>Year: 1960 <br>DIN: 1.4 <br>% >300kb: 89.9","Catalog #: USNM 51727 <br>Year: 1960 <br>DIN: 1.3 <br>% >300kb: 87.12","Catalog #: USNM 51729 <br>Year: 1960 <br>DIN: 1.5 <br>% >300kb: 89.23","Catalog #: USNM 51858 <br>Year: 1960 <br>DIN: 1.3 <br>% >300kb: 88.78","Catalog #: USNM 51860 <br>Year: 1960 <br>DIN: 1.4 <br>% >300kb: 86.46"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(33,144,140,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(33,144,140,1)"}},"hoveron":"points","name":"1960s-70s","legendgroup":"1960s-70s","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.941096772882156,3.1923337150132283,3.1801598776597531,3.4821982834953813,3.1642267260700465,2.0229932049755006,2.5606079361867158,1.809691009647213,1.9471698706503957,2.5202751445816829],"y":[96.340000000000003,97.209999999999994,96.989999999999995,97.400000000000006,96.890000000000001,93.569999999999993,93.489999999999995,89.980000000000004,90.799999999999997,96.829999999999998],"text":["Catalog #: USNM 100609 <br>Year: 2000 <br>DIN: 2.9 <br>% >300kb: 96.34","Catalog #: USNM 1606826 <br>Year: 2019 <br>DIN: 3.4 <br>% >300kb: 97.21","Catalog #: USNM 1740336 <br>Year: 2019 <br>DIN: 3.1 <br>% >300kb: 96.99","Catalog #: USNM 1740363 <br>Year: 2019 <br>DIN: 3.3 <br>% >300kb: 97.4","Catalog #: USNM 1740407 <br>Year: 2019 <br>DIN: 3.1 <br>% >300kb: 96.89","Catalog #: USNM 100610 <br>Year: 2000 <br>DIN: 1.9 <br>% >300kb: 93.57","Catalog #: USNM 1007393 <br>Year: 2000 <br>DIN: 2.8 <br>% >300kb: 93.49","Catalog #: USNM 1018355 <br>Year: 2002 <br>DIN: 1.8 <br>% >300kb: 89.98","Catalog #: USNM 1606824 <br>Year: 2019 <br>DIN: 1.7 <br>% >300kb: 90.8","Catalog #: USNM 1740390 <br>Year: 2019 <br>DIN: 2.4 <br>% >300kb: 96.83"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(253,231,37,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(253,231,37,1)"}},"hoveron":"points","name":"Modern","legendgroup":"Modern","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[0.74089224598486914,3.6127366662339773],"y":[13.33,13.33],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.228310502283104,"r":7.3059360730593621,"b":40.182648401826491,"l":43.105022831050235},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.74089224598486914,3.6127366662339773],"tickmode":"array","ticktext":["1.0","1.5","2.0","2.5","3.0","3.5"],"tickvals":[1,1.5,2,2.5,3,3.5],"categoryorder":"array","categoryarray":["1.0","1.5","2.0","2.5","3.0","3.5"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-45,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"DNA Integrity Number (DIN)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[9.1265000000000001,101.60350000000001],"tickmode":"array","ticktext":["25","50","75","100"],"tickvals":[25,50,75,100],"categoryorder":"array","categoryarray":["25","50","75","100"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Percent of reads >300kb","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"Collection.Age","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"64a473b75f66":{"x":{},"y":{},"colour":{},"text":{},"type":"scatter"},"64a44a1b7475":{"yintercept":{}}},"cur_data":"64a473b75f66","visdat":{"64a473b75f66":["function (y) ","x"],"64a44a1b7475":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-<section id="sample-selection" class="level2">
-<h2 class="anchored" data-anchor-id="sample-selection">Sample selection</h2>
-<p>Based on the above results, I can pick which samples are most suited for sequencing, considering DNA concentration (as a proxy for total DNA available) and DNA integrity. I’m not sure whether % &gt;300bp reads or DIN is the most appropriate measure of DNA integrity here, but they’re highly correlated. I want n=5 for each of my three collection periods.</p>
-<p><u><strong>Modern (&lt;25 yo)</strong></u><br>
-USNM 1606826<br>
-USNM 1740336<br>
-USNM 1740363<br>
-USNM 100609<br>
-USNM 1740407</p>
-<p><u><strong>Mid-age (1960s-1970s):</strong></u><br>
-USNM 51732<br>
-USNM 51892<br>
-USNM 51861<br>
-USNM 51857<br>
-USNM 51859</p>
-<p><u><strong>Historic (&gt;100 yo):</strong></u><br>
-USNM 50368<br>
-USNM 14399<br>
-USNM 42137<br>
-USNM 19054<br>
-USNM 50603</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1">selected <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"USNM 1606826"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"USNM 1740336"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"USNM 1740363"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"USNM 100609"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"USNM 1740407"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"USNM 51732"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"USNM 51892"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"USNM 51861"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"USNM 51857"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"USNM 51859"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"USNM 50368"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"USNM 14399"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"USNM 42137"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"USNM 19054"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"USNM 50603"</span>)</span>
-<span id="cb24-2"></span>
-<span id="cb24-3">conc<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Selection <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ifelse</span>(conc<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Catalog.Number <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%in%</span> selected, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"yes"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"no"</span>)</span>
-<span id="cb24-4"></span>
-<span id="cb24-5">p21 <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(conc, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x=</span>Tapestation.Perc<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">.300</span>up, </span>
-<span id="cb24-6">                       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y=</span>Tapestation.Conc.ngul, </span>
-<span id="cb24-7">                       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> Collection.Age,</span>
-<span id="cb24-8">                       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">shape=</span>Selection,</span>
-<span id="cb24-9">                       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">text =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Catalog #:"</span>, Catalog.Number,</span>
-<span id="cb24-10">                                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&lt;br&gt;Year:"</span>, Year.Collected,</span>
-<span id="cb24-11">                                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&lt;br&gt;% &gt;300kb:"</span>, Tapestation.Perc<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">.300</span>up,</span>
-<span id="cb24-12">                                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&lt;br&gt;Conc:"</span>, Tapestation.Conc.ngul))) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb24-13">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_jitter</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.25</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">height =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb24-14">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_hline</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">yintercept =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">13.33</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'black'</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb24-15">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb24-16">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">axis.text.x =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">angle =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">45</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">hjust =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb24-17">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">xlab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Percent of reads &gt;300kb"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb24-18">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ylab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Concentration (ng/uL)"</span>)</span>
-<span id="cb24-19"></span>
-<span id="cb24-20">p22 <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(conc, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x=</span>Tapestation.DIN, </span>
-<span id="cb24-21">                       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y=</span>Tapestation.Conc.ngul, </span>
-<span id="cb24-22">                       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color=</span>Collection.Age,</span>
-<span id="cb24-23">                       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">shape=</span>Selection,</span>
-<span id="cb24-24">                       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">text =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Catalog #:"</span>, Catalog.Number,</span>
-<span id="cb24-25">                                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&lt;br&gt;Year:"</span>, Year.Collected,</span>
-<span id="cb24-26">                                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&lt;br&gt;DIN:"</span>, Tapestation.DIN,</span>
-<span id="cb24-27">                                    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&lt;br&gt;Conc:"</span>, Tapestation.Conc.ngul))) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb24-28">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_jitter</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.25</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">height =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb24-29">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_hline</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">yintercept =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">13.33</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'black'</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb24-30">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb24-31">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">axis.text.x =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">angle =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">45</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">hjust =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb24-32">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">xlab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"DNA Integrity Number (DIN)"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb24-33">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ylab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Concentration (ng/uL)"</span>)</span>
-<span id="cb24-34"></span>
-<span id="cb24-35"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplotly</span>(p21, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">tooltip =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"text"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-74f4e70790257512bd72" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-74f4e70790257512bd72">{"x":{"data":[{"x":[63.126532308268359,61.442162947142499,62.04886900272686,null,null,null],"y":[1.5700000000000001,19.899999999999999,4.3300000000000001,null,null,null],"text":["Catalog #: USNM 14366 <br>Year: 1886 <br>% >300kb: 63.15 <br>Conc: 1.57","Catalog #: USNM 52295 <br>Year: 1912 <br>% >300kb: 61.63 <br>Conc: 19.9","Catalog #: USNM 1180630 <br>Year: 1912 <br>% >300kb: 62.25 <br>Conc: 4.33","Catalog #: USNM 1207569 <br>Year: 1886 <br>% >300kb: NA <br>Conc: NA","Catalog #: USNM 14366 <br>Year: 1886 <br>% >300kb: NA <br>Conc: NA","Catalog #: USNM 52026 <br>Year: 1898 <br>% >300kb: NA <br>Conc: NA"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(68,1,84,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(68,1,84,1)"}},"hoveron":"points","name":"(pre-1920,no)","legendgroup":"(pre-1920,no)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[91.814316686191603,86.337257655826392,81.93980873049702,86.381268551582465,73.663464118312106],"y":[68.299999999999997,100,21.600000000000001,46.299999999999997,42.399999999999999],"text":["Catalog #: USNM 50368 <br>Year: 1880 <br>% >300kb: 91.68 <br>Conc: 68.3","Catalog #: USNM 14399 <br>Year: 1886 <br>% >300kb: 86.1 <br>Conc: 100","Catalog #: USNM 19054 <br>Year: 1898 <br>% >300kb: 82.13 <br>Conc: 21.6","Catalog #: USNM 42137 <br>Year: 1898 <br>% >300kb: 86.49 <br>Conc: 46.3","Catalog #: USNM 50603 <br>Year: 1912 <br>% >300kb: 73.82 <br>Conc: 42.4"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(68,1,84,1)","opacity":1,"size":7.559055118110237,"symbol":"triangle-up","line":{"width":1.8897637795275593,"color":"rgba(68,1,84,1)"}},"hoveron":"points","name":"(pre-1920,yes)","legendgroup":"(pre-1920,yes)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[70.925134113752279,89.755571339372551,86.882995986035098,88.994976608799774,88.637453811680899,86.595036507970647],"y":[59.600000000000001,23.699999999999999,15.300000000000001,18.699999999999999,24.199999999999999,15.6],"text":["Catalog #: USNM 51730 <br>Year: 1960 <br>% >300kb: 71.13 <br>Conc: 59.6","Catalog #: USNM 51728 <br>Year: 1960 <br>% >300kb: 89.9 <br>Conc: 23.7","Catalog #: USNM 51727 <br>Year: 1960 <br>% >300kb: 87.12 <br>Conc: 15.3","Catalog #: USNM 51729 <br>Year: 1960 <br>% >300kb: 89.23 <br>Conc: 18.7","Catalog #: USNM 51858 <br>Year: 1960 <br>% >300kb: 88.78 <br>Conc: 24.2","Catalog #: USNM 51860 <br>Year: 1960 <br>% >300kb: 86.46 <br>Conc: 15.6"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(33,144,140,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(33,144,140,1)"}},"hoveron":"points","name":"(1960s-70s,no)","legendgroup":"(1960s-70s,no)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[93.988206127495502,94.340458793961446,93.107410341501236,92.591316980929108,94.680972803062758],"y":[157,137,109,117,94.099999999999994],"text":["Catalog #: USNM 51732 <br>Year: 1960 <br>% >300kb: 93.8 <br>Conc: 157","Catalog #: USNM 51892 <br>Year: 1960 <br>% >300kb: 94.2 <br>Conc: 137","Catalog #: USNM 51857 <br>Year: 1960 <br>% >300kb: 93 <br>Conc: 109","Catalog #: USNM 51859 <br>Year: 1960 <br>% >300kb: 92.46 <br>Conc: 117","Catalog #: USNM 51861 <br>Year: 1960 <br>% >300kb: 94.72 <br>Conc: 94.1"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(33,144,140,1)","opacity":1,"size":7.559055118110237,"symbol":"triangle-up","line":{"width":1.8897637795275593,"color":"rgba(33,144,140,1)"}},"hoveron":"points","name":"(1960s-70s,yes)","legendgroup":"(1960s-70s,yes)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[93.765335942087688,93.437048770147371,90.165784477042038,91.002146241790612,96.674334322260691],"y":[164,218,115,353,291],"text":["Catalog #: USNM 100610 <br>Year: 2000 <br>% >300kb: 93.57 <br>Conc: 164","Catalog #: USNM 1007393 <br>Year: 2000 <br>% >300kb: 93.49 <br>Conc: 218","Catalog #: USNM 1018355 <br>Year: 2002 <br>% >300kb: 89.98 <br>Conc: 115","Catalog #: USNM 1606824 <br>Year: 2019 <br>% >300kb: 90.8 <br>Conc: 353","Catalog #: USNM 1740390 <br>Year: 2019 <br>% >300kb: 96.83 <br>Conc: 291"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(253,231,37,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(253,231,37,1)"}},"hoveron":"points","name":"(Modern,no)","legendgroup":"(Modern,no)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[96.240311570498164,97.380754301361733,96.899085900173517,97.495723509788519,96.696897587375716],"y":[261,408,368,343,260],"text":["Catalog #: USNM 100609 <br>Year: 2000 <br>% >300kb: 96.34 <br>Conc: 261","Catalog #: USNM 1606826 <br>Year: 2019 <br>% >300kb: 97.21 <br>Conc: 408","Catalog #: USNM 1740336 <br>Year: 2019 <br>% >300kb: 96.99 <br>Conc: 368","Catalog #: USNM 1740363 <br>Year: 2019 <br>% >300kb: 97.4 <br>Conc: 343","Catalog #: USNM 1740407 <br>Year: 2019 <br>% >300kb: 96.89 <br>Conc: 260"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(253,231,37,1)","opacity":1,"size":7.559055118110237,"symbol":"triangle-up","line":{"width":1.8897637795275593,"color":"rgba(253,231,37,1)"}},"hoveron":"points","name":"(Modern,yes)","legendgroup":"(Modern,yes)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[59.639484919010201,99.298401537920824],"y":[13.33,13.33],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.228310502283104,"r":7.3059360730593621,"b":40.182648401826491,"l":43.105022831050235},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[59.639484919010201,99.298401537920824],"tickmode":"array","ticktext":["60","70","80","90"],"tickvals":[60,70,80,90],"categoryorder":"array","categoryarray":["60","70","80","90"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-45,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Percent of reads >300kb","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-18.7515,428.32150000000001],"tickmode":"array","ticktext":["0","100","200","300","400"],"tickvals":[0,100,200,300,400],"categoryorder":"array","categoryarray":["0","100","200","300","400"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Concentration (ng/uL)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"Collection.Age<br />Selection","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"64a45feb5408":{"x":{},"y":{},"colour":{},"shape":{},"text":{},"type":"scatter"},"64a45eee4169":{"yintercept":{}}},"cur_data":"64a45feb5408","visdat":{"64a45feb5408":["function (y) ","x"],"64a45eee4169":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-</div>
-<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplotly</span>(p22, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">tooltip =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"text"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-06cbc65e6b4b70d88d8d" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-06cbc65e6b4b70d88d8d">{"x":{"data":[{"x":[null,0.82684988551773131,1.0603361005196348,null,null,null],"y":[1.5700000000000001,19.899999999999999,4.3300000000000001,null,null,null],"text":["Catalog #: USNM 14366 <br>Year: 1886 <br>DIN: NA <br>Conc: 1.57","Catalog #: USNM 52295 <br>Year: 1912 <br>DIN: 1 <br>Conc: 19.9","Catalog #: USNM 1180630 <br>Year: 1912 <br>DIN: 1 <br>Conc: 4.33","Catalog #: USNM 1207569 <br>Year: 1886 <br>DIN: NA <br>Conc: NA","Catalog #: USNM 14366 <br>Year: 1886 <br>DIN: NA <br>Conc: NA","Catalog #: USNM 52026 <br>Year: 1898 <br>DIN: NA <br>Conc: NA"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(68,1,84,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(68,1,84,1)"}},"hoveron":"points","name":"(pre-1920,no)","legendgroup":"(pre-1920,no)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1.7298406064976006,1.329145111888647,0.96379908144008364,1.0780665567377583,0.89952571142930537],"y":[68.299999999999997,100,21.600000000000001,46.299999999999997,42.399999999999999],"text":["Catalog #: USNM 50368 <br>Year: 1880 <br>DIN: 1.7 <br>Conc: 68.3","Catalog #: USNM 14399 <br>Year: 1886 <br>DIN: 1.2 <br>Conc: 100","Catalog #: USNM 19054 <br>Year: 1898 <br>DIN: 1.2 <br>Conc: 21.6","Catalog #: USNM 42137 <br>Year: 1898 <br>DIN: 1.1 <br>Conc: 46.3","Catalog #: USNM 50603 <br>Year: 1912 <br>DIN: 1 <br>Conc: 42.4"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(68,1,84,1)","opacity":1,"size":7.559055118110237,"symbol":"triangle-up","line":{"width":1.8897637795275593,"color":"rgba(68,1,84,1)"}},"hoveron":"points","name":"(pre-1920,yes)","legendgroup":"(pre-1920,yes)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1.2092860023491085,1.5369883295847102,1.1249952020123601,1.6678093821974471,1.4124368010787294,1.455115409544669],"y":[59.600000000000001,23.699999999999999,15.300000000000001,18.699999999999999,24.199999999999999,15.6],"text":["Catalog #: USNM 51730 <br>Year: 1960 <br>DIN: 1.1 <br>Conc: 59.6","Catalog #: USNM 51728 <br>Year: 1960 <br>DIN: 1.4 <br>Conc: 23.7","Catalog #: USNM 51727 <br>Year: 1960 <br>DIN: 1.3 <br>Conc: 15.3","Catalog #: USNM 51729 <br>Year: 1960 <br>DIN: 1.5 <br>Conc: 18.7","Catalog #: USNM 51858 <br>Year: 1960 <br>DIN: 1.3 <br>Conc: 24.2","Catalog #: USNM 51860 <br>Year: 1960 <br>DIN: 1.4 <br>Conc: 15.6"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(33,144,140,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(33,144,140,1)"}},"hoveron":"points","name":"(1960s-70s,no)","legendgroup":"(1960s-70s,no)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.3177597391419114,1.8946785125648602,1.3581509319832548,1.7017754350090399,1.7790474193636328],"y":[157,137,109,117,94.099999999999994],"text":["Catalog #: USNM 51732 <br>Year: 1960 <br>DIN: 2.1 <br>Conc: 157","Catalog #: USNM 51892 <br>Year: 1960 <br>DIN: 1.9 <br>Conc: 137","Catalog #: USNM 51857 <br>Year: 1960 <br>DIN: 1.4 <br>Conc: 109","Catalog #: USNM 51859 <br>Year: 1960 <br>DIN: 1.5 <br>Conc: 117","Catalog #: USNM 51861 <br>Year: 1960 <br>DIN: 1.7 <br>Conc: 94.1"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(33,144,140,1)","opacity":1,"size":7.559055118110237,"symbol":"triangle-up","line":{"width":1.8897637795275593,"color":"rgba(33,144,140,1)"}},"hoveron":"points","name":"(1960s-70s,yes)","legendgroup":"(1960s-70s,yes)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.1005886959377675,2.5694728786591439,1.8583456784952432,1.8954910776112228,2.3303364952793344],"y":[164,218,115,353,291],"text":["Catalog #: USNM 100610 <br>Year: 2000 <br>DIN: 1.9 <br>Conc: 164","Catalog #: USNM 1007393 <br>Year: 2000 <br>DIN: 2.8 <br>Conc: 218","Catalog #: USNM 1018355 <br>Year: 2002 <br>DIN: 1.8 <br>Conc: 115","Catalog #: USNM 1606824 <br>Year: 2019 <br>DIN: 1.7 <br>Conc: 353","Catalog #: USNM 1740390 <br>Year: 2019 <br>DIN: 2.4 <br>Conc: 291"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(253,231,37,1)","opacity":1,"size":7.559055118110237,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(253,231,37,1)"}},"hoveron":"points","name":"(Modern,no)","legendgroup":"(Modern,no)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[3.1116654942510649,3.1972482003970071,3.2714159357361496,3.098295487416908,3.2869817714905367],"y":[261,408,368,343,260],"text":["Catalog #: USNM 100609 <br>Year: 2000 <br>DIN: 2.9 <br>Conc: 261","Catalog #: USNM 1606826 <br>Year: 2019 <br>DIN: 3.4 <br>Conc: 408","Catalog #: USNM 1740336 <br>Year: 2019 <br>DIN: 3.1 <br>Conc: 368","Catalog #: USNM 1740363 <br>Year: 2019 <br>DIN: 3.3 <br>Conc: 343","Catalog #: USNM 1740407 <br>Year: 2019 <br>DIN: 3.1 <br>Conc: 260"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(253,231,37,1)","opacity":1,"size":7.559055118110237,"symbol":"triangle-up","line":{"width":1.8897637795275593,"color":"rgba(253,231,37,1)"}},"hoveron":"points","name":"(Modern,yes)","legendgroup":"(Modern,yes)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[0.70384329121909106,3.409988365789177],"y":[13.33,13.33],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.228310502283104,"r":7.3059360730593621,"b":40.182648401826491,"l":43.105022831050235},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.70384329121909106,3.409988365789177],"tickmode":"array","ticktext":["1.0","1.5","2.0","2.5","3.0"],"tickvals":[1,1.5,2,2.5,3],"categoryorder":"array","categoryarray":["1.0","1.5","2.0","2.5","3.0"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-45,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"DNA Integrity Number (DIN)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-18.7515,428.32150000000001],"tickmode":"array","ticktext":["0","100","200","300","400"],"tickvals":[0,100,200,300,400],"categoryorder":"array","categoryarray":["0","100","200","300","400"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Concentration (ng/uL)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"Collection.Age<br />Selection","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"64a431211a4":{"x":{},"y":{},"colour":{},"shape":{},"text":{},"type":"scatter"},"64a47a4c7fa4":{"yintercept":{}}},"cur_data":"64a431211a4","visdat":{"64a431211a4":["function (y) ","x"],"64a47a4c7fa4":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-
-
-</section>
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_25_tapestation.html</guid>
-  <pubDate>Fri, 25 Jul 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>KAPA Bead Cleanup – Titration Trial</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_23_KAPA_bead.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>I’ll be using KAPA Pure beads to size-select, clean, and (potentially) concentrate my DNA extractions before library prep. Since I’m not exactly sure what bead ratio will work best to remove &lt;300bp fragments from my samples, I’ll be trying a “titration” trial of several ratios.</p>
-<p>For this trial I’ll be using two mid-age samples with high DNA concentrations but a “smeary”, wide range of fragment sizes:</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Catalog Number</th>
-<th>Concentration (ng/uL)</th>
-<th>Gel size distribution</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>USNM 51732</td>
-<td>89.4</td>
-<td>smeared, 0.3kb</td>
-</tr>
-<tr class="even">
-<td>USNM 51892</td>
-<td>86.3</td>
-<td>smeared, 0.15kb</td>
-</tr>
-</tbody>
-</table>
-<p>The KAPA Pure Beads protocol recommends a bead-to-sample ratio of 0.9X - 0.7X to retain fragments &gt;250bp - &gt; 350bp. I’ll test three ratios across this range.</p>
-<p>Will be doing cleanup in 0.2mL strip tubes, so will need to assign short labels:</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th></th>
-<th>0.7X</th>
-<th>0.8X</th>
-<th>0.9X</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>USNM 51732</strong></td>
-<td>A.7</td>
-<td>A.8</td>
-<td>A.9</td>
-</tr>
-<tr class="even">
-<td><strong>USNM 51892</strong></td>
-<td>B.7</td>
-<td>B.8</td>
-<td>B.9</td>
-</tr>
-</tbody>
-</table>
-<p>Followed the <a href="./protocols/KAPA-Pure-Beads-Technical-Data-Sheet.pdf">KAPA Pure Beads protocol</a> (#2, Cleanup of Fragmented DNA in NGS Workflow), with the following notes/modifications:</p>
-<ul>
-<li><p>Mixed <strong>fresh aliquot of 80% EtOH</strong> using nuclease-free water. It is important to mix a fresh aliquot each time, since EtOH can absorb atmospheric water, slightly changing the concentration over time.</p></li>
-<li><p>For each rxn, used 5uL NA and diluted to 20uL using Zymo Elution Buffer (<strong>5uL DNA</strong> + <strong>15uL Zymo Elution Buffer</strong>)</p></li>
-<li><p>With 20uL DNA, the bead volumes for each bead-to-sample ratio are as follows:</p>
-<p><strong>0.7X:</strong> 20uL DNA + <strong>14uL KAPA Pure Beads<br>
-0.8X:</strong> 20uL DNA + <strong>16uL KAPA Pure Beads<br>
-0.9X</strong> 20uL DNA + <strong>18uL KAPA Pure Beads</strong></p></li>
-<li><p>First incubation (step 2.4) for 10 minutes</p></li>
-<li><p>Dried beads (step 2.13) for 4 minutes</p></li>
-<li><p>Re-eluted DNA (step 2.15) in <strong>20uL Zymo Elution Buffer</strong>. Note that this means the <strong>DNA is now diluted by a factor of 4.</strong> So my samples, which had concentrations of ~90ng/uL, will now have bead-cleaned concentrations of ~22ng/uL (not accounting for DNA loss during the cleanup process)</p></li>
-<li><p>Incubated eluting DNA (step 2.16) for 8 minutes</p></li>
-</ul>
-
-
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_07_23_KAPA_bead.html</guid>
-  <pubDate>Thu, 24 Jul 2025 04:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

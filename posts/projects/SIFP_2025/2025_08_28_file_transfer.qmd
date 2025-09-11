@@ -1,0 +1,417 @@
+---
+title: "Transferring Nanopore Sequencing Output Files"
+author: "Kathleen Durkin"
+date: "2025-08-28"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: FALSE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+I've been having some difficulty with getting my Nanopore sequencing files (which are both large and numerous) from the sequencing computer onto Gannet, where I can access them for bioinformatic work.
+
+I originally stored the files in my Smithsonian Institution (SI) OneDrive account, but it turns out getting files off of OneDrive is a seemingly impossible task. I've tried the following:
+
+-   SI OneDrive -\> Gannet, via CloudSync. I can't sync Gannet with the SI OneDrive without admin access, which I won't get.
+
+-   UW OneDrive -\> Gannet, via CloudSync. Same issue as above, unlikely to be granted UW admin access.
+
+-   Rclone. According to Matt Kweskin, there are also SI access issues that SI IT hasn't resolved.
+
+-   SI OneDrive -\> Hydra (SI computing cluster) -\> Gannet, via GLOBUS. Issue is I'll lose access to Hydra once I leave in 2 weeks and I really want to figure out a way that works once I'm gone, in case I need to transfer more files.
+
+-   SI OneDrive -\> download locally -\> Gannet. The folders kept downloading incompletely (e.g. subfolders/files were getting skipped), and it felt ripe for a failed/incomplete transfer
+
+-   Sequencing computer -\> UW Google Drive -\> Gannet, via Cloudsync. Problem is that the UW Google Drive maxes out at 100Gb, and some of my sequencing folders will be larger than this.
+
+Finally I found something that seems to work:
+
+-   *Compress* the folder on the sequencing computer -\> UW Google Drive -\> Gannet, via CloudSync -\> uncompress on Gannet.
+
+So, I've compressed 3 of the output folders I have on the sequencing computer, generated md5 checksums for the zipped files, and uploaded them to my UW Google Drive. I then used CloudSync to transfer the files (.zip and .md5) to Gannet. I now want to A) check the md5s to confirm successful file transfer, and B) unzip the files, checking for file corruption.
+
+All of this was done from a terminal ssh'd into Gannet, I'm just copy-pasting code and output here for documentation purposes.
+
+```{r, engine='bash', eval=FALSE}
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ ls
+# Group1.md5  Group2_Flongle  Group2_MinION.md5  Group2.zip
+# Group1.zip  Group2.md5      Group2_MinION.zip
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ head Group1.md5
+
+# Algorithm       Hash                                                                   Path
+# ---------       ----                                                                   ----
+# MD5             F7E28FE37E3B910C21641010D7B035D5                                       C:\Users\Public\Documents\LAB...
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ md5sum Group1.zip
+# f7e28fe37e3b910c21641010d7b035d5  Group1.zip
+
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ head Group2.md5
+
+# Algorithm       Hash                                                                   Path
+# ---------       ----                                                                   ----
+# MD5             9C8DAFB717360464B195FC2A499F7910                                       C:\Users\Public\Documents\LAB...
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ md5sum Group2.zip
+# 9c8dafb717360464b195fc2a499f7910  Group2.zip
+
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ head Group2_MinION.md5
+
+# Algorithm       Hash                                                                   Path
+# ---------       ----                                                                   ----
+# MD5             FADB27D46B25A6CB5E683813E2D59DC4                                       C:\Users\Public\Documents\LAB...
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ md5sum Group2_MinION.zip
+# fadb27d46b25a6cb5e683813e2d59dc4  Group2_MinION.zip
+```
+
+```{r}
+
+# Double check Group1 checksums
+identical(tolower("F7E28FE37E3B910C21641010D7B035D5"), tolower("f7e28fe37e3b910c21641010d7b035d5"))
+
+# Double check Group2 checksums
+identical(tolower("9C8DAFB717360464B195FC2A499F7910"), tolower("9c8dafb717360464b195fc2a499f7910"))
+
+# Double check Group2_MinION checksums
+identical(tolower("FADB27D46B25A6CB5E683813E2D59DC4"), tolower("fadb27d46b25a6cb5e683813e2d59dc4"))
+```
+
+So all 3 files transferred correctly
+
+Now check for corruption during file compression/decompression
+
+Gannet doesn't seem to have the `zip`/`unzip` commands, so will have to use `7z`
+
+```{r, engine='bash', eval=FALSE}
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ 7z t Group1.zip
+
+# 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+# p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)
+# 
+# Scanning the drive for archives:
+# 1 file, 2320416210 bytes (2213 MiB)
+# 
+# Testing archive: Group1.zip
+# --
+# Path = Group1.zip
+# Type = zip
+# Physical Size = 2320416210
+# 
+# Everything is Ok
+# 
+# Folders: 42
+# Files: 2950
+# Size:       2398985870
+# Compressed: 2320416210
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ 7z t Group2.zip
+
+# 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+# p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)
+# 
+# Scanning the drive for archives:
+# 1 file, 795592065 bytes (759 MiB)
+# 
+# Testing archive: Group2.zip
+# --
+# Path = Group2.zip
+# Type = zip
+# Physical Size = 795592065
+# 
+# Everything is Ok
+# 
+# Folders: 89
+# Files: 2917
+# Size:       836197911
+# Compressed: 795592065
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ 7z t Group2_MinION.zip
+
+# 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+# p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)
+# 
+# Scanning the drive for archives:
+# 1 file, 55773141409 bytes (52 GiB)
+# 
+# Testing archive: Group2_MinION.zip
+# --
+# Path = Group2_MinION.zip
+# Type = zip
+# Physical Size = 55773141409
+# 64-bit = +
+# 
+# Everything is Ok
+# 
+# Folders: 215
+# Files: 8274
+# Size:       56411908485
+Compressed: 55773141409
+```
+
+All 3 zipped files pass checks, so I can decompress them
+
+```{r, engine='bash', eval=FALSE}
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ 7z x Group1.zip
+
+# 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+# p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)
+# 
+# Scanning the drive for archives:
+# 1 file, 2320416210 bytes (2213 MiB)
+# 
+# Extracting archive: Group1.zip
+# --
+# Path = Group1.zip
+# Type = zip
+# Physical Size = 2320416210
+# 
+# Everything is Ok
+# 
+# Folders: 42
+# Files: 2950
+# Size:       2398985870
+# Compressed: 2320416210
+
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ 7z x Group2.zip
+
+# 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+# p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)
+# 
+# Scanning the drive for archives:
+# 1 file, 795592065 bytes (759 MiB)
+# 
+# Extracting archive: Group2.zip
+# --
+# Path = Group2.zip
+# Type = zip
+# Physical Size = 795592065
+# 
+# Everything is Ok
+# 
+# Folders: 89
+# Files: 2917
+# Size:       836197911
+# Compressed: 795592065
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ 7z x Group2_MinION.zip
+
+# 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+# p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)
+# 
+# Scanning the drive for archives:
+# 1 file, 55773141409 bytes (52 GiB)
+# 
+# Extracting archive: Group2_MinION.zip
+# --
+# Path = Group2_MinION.zip
+# Type = zip
+# Physical Size = 55773141409
+# 64-bit = +
+# 
+# Everything is Ok
+# 
+# Folders: 215
+# Files: 8274
+# Size:       56411908485
+# Compressed: 55773141409
+
+```
+
+There are still no warnings, but I noticed that Group1 is missing sub-folders.
+
+```{r, engine='bash', eval=FALSE}
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ ls Group1/Group1/
+#Library2
+```
+
+It should contain 4 subfolders, each containing the data from a Flongle run with a different library prep (1-4). However, I only see Library2 there. Since md5s matched and the files unzipped with no issues, there must have been a problem with compressing the file originally.
+
+Try again.
+
+On the sequencing computer, ensured the Group1 folder has the expected subfolders, re-compressed, generated new md5sum, uploaded both to Google Drive, and synced with Gannet. New checks:
+
+```{r, engine='bash', eval=FALSE}
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ head Group1.md5
+
+# Algorithm       Hash                                                                   Path
+# ---------       ----                                                                   ----
+# MD5             82BD3B02FADD408F3469C6E294DDDF4E                                       C:\Users\Public\Documents\LAB...
+
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ md5sum Group1.zip
+# 82bd3b02fadd408f3469c6e294dddf4e  Group1.zip
+
+```
+
+```{r}
+# Double check new Group1 checksums
+identical(tolower("82BD3B02FADD408F3469C6E294DDDF4E"), tolower("82bd3b02fadd408f3469c6e294dddf4e"))
+```
+
+Uncompress and check that the subfolders are there
+
+```{r, engine='bash', eval=FALSE}
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ 7z x Group1.zip
+
+# 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+# p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)
+# 
+# Scanning the drive for archives:
+# 1 file, 6440567574 bytes (6143 MiB)
+# 
+# Extracting archive: Group1.zip
+# --
+# Path = Group1.zip
+# Type = zip
+# Physical Size = 6440567574
+# 64-bit = +
+# 
+# Everything is Ok
+# 
+# Folders: 125
+# Files: 10005
+# Size:       6700569546
+# Compressed: 6440567574
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ ls Group1/Group1/
+# Library1  Library2  Library3  Library4
+
+```
+
+Once all 3 files loaded onto gannet and checked, I removed them from Google Drive, since I only have 100GB of storage there.
+
+Finally, need to generate md5 checksums for all the files in the folders I just synced to Gannet (`Group1`, `Group2`, `Group2_MinION` ) to verify integrity in future file transfers (e.g., Gannet -\> Raven). (I didn't do this on the original sequencing computer because it only had Windows Powershell as a terminal, and I don't know much powershell syntax)
+
+The bash code used below will iterate through each subfolder and, if the folder contains files, will generate a checksums.md5 containing md5 hashes for all files in that folder.
+
+```{r, engine='bash', eval=FALSE}
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group1$ find . -type d -exec sh -c '
+  cd "{}" || exit
+  # Check if there are any regular files in the directory
+  if find . -maxdepth 1 -type f | grep -q .; then
+    md5sum * > checksums.md5
+  fi
+' \;
+
+# md5sum: bam_fail: Is a directory
+# md5sum: bam_pass: Is a directory
+# md5sum: fastq_fail: Is a directory
+# md5sum: fastq_pass: Is a directory
+# md5sum: other_reports: Is a directory
+# md5sum: pod5: Is a directory
+# md5sum: bam_fail: Is a directory
+# md5sum: bam_pass: Is a directory
+# md5sum: fastq_fail: Is a directory
+# md5sum: fastq_pass: Is a directory
+# md5sum: other_reports: Is a directory
+# md5sum: pod5: Is a directory
+# md5sum: bam_fail: Is a directory
+# md5sum: bam_pass: Is a directory
+# md5sum: fastq_fail: Is a directory
+# md5sum: fastq_pass: Is a directory
+# md5sum: other_reports: Is a directory
+# md5sum: pod5: Is a directory
+# md5sum: bam_fail: Is a directory
+# md5sum: bam_pass: Is a directory
+# md5sum: fastq_fail: Is a directory
+# md5sum: fastq_pass: Is a directory
+# md5sum: other_reports: Is a directory
+# md5sum: pod5: Is a directory
+# md5sum: pod5_skip: Is a directory
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group1$ cd ../Group2
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group2$ find . -type d -exec sh -c '
+  cd "{}" || exit
+  # Check if there are any regular files in the directory
+  if find . -maxdepth 1 -type f | grep -q .; then
+    md5sum * > checksums.md5
+  fi
+' \;
+# md5sum: bam_fail: Is a directory
+# md5sum: bam_pass: Is a directory
+# md5sum: fastq_fail: Is a directory
+# md5sum: fastq_pass: Is a directory
+# md5sum: other_reports: Is a directory
+# md5sum: pod5_fail: Is a directory
+# md5sum: pod5_pass: Is a directory
+# md5sum: bam_fail: Is a directory
+# md5sum: bam_pass: Is a directory
+# md5sum: fastq_fail: Is a directory
+# md5sum: fastq_pass: Is a directory
+# md5sum: other_reports: Is a directory
+# md5sum: pod5_fail: Is a directory
+# md5sum: pod5_pass: Is a directory
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group2$ cd ../Group2_MinION
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group2_MinION$ find . -type d -exec sh -c '
+  cd "{}" || exit
+  # Check if there are any regular files in the directory
+  if find . -maxdepth 1 -type f | grep -q .; then
+    md5sum * > checksums.md5
+  fi
+' \;
+# md5sum: bam_fail: Is a directory
+# md5sum: bam_pass: Is a directory
+# md5sum: fastq_fail: Is a directory
+# md5sum: fastq_pass: Is a directory
+# md5sum: other_reports: Is a directory
+# md5sum: pod5_fail: Is a directory
+# md5sum: pod5_pass: Is a directory
+# md5sum: bam_fail: Is a directory
+# md5sum: bam_pass: Is a directory
+# md5sum: fastq_fail: Is a directory
+# md5sum: fastq_pass: Is a directory
+# md5sum: other_reports: Is a directory
+# md5sum: pod5_fail: Is a directory
+# md5sum: pod5_pass: Is a directory
+
+```
+
+When I tried viewing my SIFP_2025 folder on Gannet from the public-facing web server, I couldn't see it -- instead I got the error message "*Forbidden. You don't have permission to access this resource. Server unable to read htaccess file. Denying acces to be safe*"
+
+This turned out to be a permissions issue, so I updated permissions. I want others to have:
+
+-   **read access** (e.g., 644 -\> -rw-r--r--) to **files**, which will permit people to see and download files, and
+
+-   **read and execute access** (e.g., 755 -\> drwxr-xr-x) to **directories**, which will allow people to see and access the directory's contents.
+
+```{r, engine='bash', eval=FALSE}
+
+# find all subdirectories and set read + execute permissions for others
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group1$ find . -type d -exec chmod 755 {} \;
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group1$ find . -type f -exec chmod 644 {} \;
+
+# check
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group1$ ls -ld .
+# drwxr-xr-x 3 kdurkin1 users 4096 Aug 29 08:31 .
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group1$ ls -ld ./Group1/Library1/20250812_1139_MD-101223_AYW935_f9a34344/checksums.md5
+# -rw-r--r-- 1 kdurkin1 users 698 Aug 29 08:36 ./Group1/Library1/20250812_1139_MD-101223_AYW935_f9a34344/checksums.md5
+
+# Repeat for Group2 and Group2_MinION
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group1$ cd ../Group2
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group2$ find . -type d -exec chmod 755 {} \;
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group2$ find . -type f -exec chmod 644 {} \;
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group2$ cd ../Group2_MinION
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group2_MinION$ find . -type d -exec chmod 755
+{} \;
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group2_MinION$ find . -type f -exec chmod 644
+{} \;
+ 
+```
+
+After granting non-owner read and execute permissions, can see files from public-facing server!

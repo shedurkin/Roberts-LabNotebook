@@ -1,0 +1,14 @@
+{
+  "hash": "b8d1490142a9c6dd7460e6be8dd2c0d8",
+  "result": {
+    "markdown": "---\ntitle: \"Flongle Run, Group 2 Library 1\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-08-22\"\ncategories: [\"SIFP-2025\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: FALSE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nRan Group 2 Library 1 on a Flongle flow cell to confirm successful library prep.\n\nPerformed hardware check on Flongle adapter. Then inserted flongle flow cell and performed flow cell check.\n\n[**Flongle flow cell:**]{.underline}\\\nID: AYW871\\\n61 pores on first pore check\\\n57 pores on this pore check\n\nAccording to TapeStation peaks these samples are \\~700bp in avg fragment length. Thus, the recommended Flongle loading amount of 5-10fmol is roughly equivalent to 2.16ng - 4.31ng.\n\nI loaded the Flongle with 10fmol (4.31ng) of Group 2 Library 1 in 5uL of EB. G2L1 concentration is too high to accurately pipette 4.31ng, so instead mixed:\n\n$$\n\\frac{4.3ng\\ DNA}{5uL\\ EB} = \\frac{20ng\\ DNA}{23.3uL\\ EB}\\ \\ \\ Added\\ 1uL\\ G2L1\\ to\\ (23.3-1)=22.3uL\\ EB\n$$\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

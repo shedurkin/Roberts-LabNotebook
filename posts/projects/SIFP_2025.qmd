@@ -25,7 +25,7 @@ format:
 ---
 
 ::: {#description}
-I'll be completing a project at the National Museum of Natual History as part of the Smithsonian Institution Fellowship Program (SIFP) during Summer 2025, under the advisorship of Dr. Andrea Quattrini!
+Benchmarking Nanopore direct sequencing as a method for mapping hDNA methylation in archival coral specimens.
 
-I'll be benchmarking Nanopore direct sequencing as a method for mapping hDNA methylation in archival coral specimens.
+Work conducted at the Smithsonian National Museum of Natural History, under the advising of Dr. Andrea Quattrini and supported by the Smithsonian Institution Fellowship Program (SIFP).
 :::
