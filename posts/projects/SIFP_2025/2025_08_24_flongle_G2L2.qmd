@@ -1,0 +1,35 @@
+---
+title: "Flongle Run, Group2 Library 2"
+author: "Kathleen Durkin"
+date: "2025-08-24"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: FALSE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Checked Group 2 Library 2 on a Flongle flow cell.
+
+Flow cell:\
+ID: AYX067\
+79 pores on pore check
+
+Based on TapeStation peaks, samples are \~700bp, so 10fmol = 4.31ng.
+
+$$
+\frac{4.31ng\ DNA}{5uL\ EB} = \frac{21.55ng\ DNA}{25uL\ EB}
+$$
+
+Then calculate volume of G2L2 needed
+
+$$
+\frac{21.55ng}{24.2 \frac{ng}{uL}} = 0.89uL\ input
+$$
+
+Can approximate requisite input to 1uL, so mixed 1uL G2L2 with 24uL EB (total 25uL).
+
+Loaded Flongle with 5uL of this.

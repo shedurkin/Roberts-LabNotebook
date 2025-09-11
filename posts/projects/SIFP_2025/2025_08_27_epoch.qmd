@@ -1,0 +1,25 @@
+---
+title: "Epoch QC, Group 2 Samples"
+author: "Kathleen Durkin"
+date: "2025-08-27"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: FALSE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Nanopore requests absorbance profiles from Group 2 extractions (though yes, I should already have performed this QC step)
+
+Using the Epoch spectrophotometer. Loaded 3 blanks of 3uL Zymo Elution Buffer. CV% \<10%, so accepted. Loaded 51861, 51732, and 51892 (for each, 1uL extraction + 2uL Zymo EB).
+
+Full results saved in OneDrive, files titled "epoch_group2\*.xlsx.
+
+| Catalog \# | 260/280 | 260/230 | ng/uL  |
+|------------|---------|---------|--------|
+| 51861      | 1.866   | 2.256   | 38.433 |
+| 51732      | 1.845   | 2.169   | 62.533 |
+| 51892      | 1.808   | 2.013   | 70.33  |

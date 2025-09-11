@@ -1,0 +1,28 @@
+---
+title: "Sequencing Reagents"
+author: "Kathleen Durkin"
+date: "2025-08-25"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: FALSE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+I realized I'm already halfway through the priming/loading reagents included in the Native Barcoding 96 V14 Kit (SB, LIB, FCF, FCT). This is because I'm using multiple rxns of priming and loading reagents for each MinION flow cell run, due to the wash/reloads and Flongle runs.
+
+Nanopore offers "sequencing expansions" with these reagents, so I'll need to purchase one. 12 rxns would allow for additionsl 3 MinION runs, assuing 4 total loads for each cell (initial load, plus 3 wash/reloads).
+
+I'll adjust the total volume of priming mix I make during each loading, since the provided protocol makes and excess. I only need 1000uL for priming a MinION flow cell.
+
+| Priming Mix            | 1X       | 0.85X     |
+|------------------------|----------|-----------|
+| Flow Cell Flush (FCF)  | 1162.5uL | 988.125uL |
+| BSA 20mg/mL            | 12.5uL   | 10.625uL  |
+| Flow Cell Tether (FCT) | 30uL     | 25.5uL    |
+| **Total**              | 1205uL   | 1024.25uL |
+
+Will begin making an 0.85X mix of priming mix every time I load.

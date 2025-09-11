@@ -1,0 +1,14 @@
+{
+  "hash": "39f1d5eeadbe7871fc1262a557dd4aac",
+  "result": {
+    "markdown": "---\ntitle: \"Flongle Run, Group 3 Library 1\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-08-31\"\ncategories: [\"SIFP-2025\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: FALSE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nRan Group 3 Library 1 on a Flongle to check for successful library prep.\n\nTo get 10fmol DNA in 5uL EB:\n\nFor avg. length, 9.74ng/uL = **35.69 fmol/uL**\n\n$$\n\\frac{10fmol}{5uL\\ EB} \\ \\rightarrow \\ \\frac{35.69fmol}{17.85uL\\ EB}\n$$\n\nSo mix **1uL G3L1** with (17.85-1)=**16.85uL EB**. Then use 5uL to load.\n\n[**Flongle flow cell:**]{.underline}\\\nID: AYL126\\\n80 pores on original flow cell check (08/13/25)\\\n74 pores on this flow cell check\\\n45 pores after loading and beginning run\n\nNotes:\n\n-   Looks like the library (or at least the LIB beads) are sort of \"stuck\" on the first half of the pores, closest to the loading port. Not sure whether this has happened in previous Flongle runs though.\n\n-   After 1 hr of running, I notice that the barcodes are very uneven -- very few reads from barcode 22, compared to 21 and 23. Could mean that there was a problem during barcode ligation, or that extraction quantification/length estimate was inaccurate, leading to unequal inputs.\n\n-   Barcode 22 is low enough that I'm not happy running this library on a MinION (would effectively be 2 samples, not 3)\n\nUnfortunately, I'm out of DNA for one of these extractions, so I'll need to re-extract and preprocess.\n\nIn the meantime, since re-extraction/processing will take a few days and I only have 2 weeks left, I'll prep and run another iteration of the low-yield Group 2.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

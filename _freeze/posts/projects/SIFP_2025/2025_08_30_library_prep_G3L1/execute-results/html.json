@@ -1,0 +1,14 @@
+{
+  "hash": "65c7f020d7032721d0450588ca7b91c6",
+  "result": {
+    "markdown": "---\ntitle: \"Native barcoding, Group 3 Library 1\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-08-30\"\ncategories: [\"SIFP-2025\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: FALSE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nFirst whack at library prep for a set of 3 samples from my oldest time point (\"Group 3\"). My attempt to concentrate 2 of these extractions failed pretty spectacularly, but I'll just have to work with what I've got. Selected samples with highest extraction concentrations.\n\nDetermined maximum fmol DNA contained in 11uL for each selected sample to use equimolar input from all during library prep. i hope this will help with the slightly unbalanced levels of sequenced barcodes in past preps.\n\n| Catalog \\# | Tube \\# | \\[dsDNA\\] (ng/uL) | length (bp) | max ng in 11uL | max fmol in 11uL |\n|------------|---------|-------------------|-------------|----------------|------------------|\n| 14399      | B1      | 100               | 444         | 1100           | 4022             |\n| 50368      | C7      | 37                | 529         | 407            | 1249             |\n| 50603      | A5      | 42.4              | 357         | 466.4          | 2121             |\n\nSo 50368 is the limiting extraction (unsurprisingly) to maintaining equimolar inputs. I want to use 1250fmol DNA from each samples for library prep, in 11uL.\n\n| Catalog \\# | Barcode | ng for 1250fmol | uL for 1250 fmol | uL to make 11uL |\n|------------|---------|-----------------|------------------|-----------------|\n| 14399      | 21      | 341.9ng         | 3.5uL            | 7.5uL           |\n| 50368      | 22      | 407.3ng         | 11uL             | 0uL             |\n| 50603      | 23      | 274.9ng         | 6.5uL            | 4.5uL           |\n\nPrepared library according to Native Barcoding 96 V14 gDNA protocol, using the above equimolar inputs for each sample, using DCS and retaining 3.75uL end-prepped DNA through to barcode ligation. I also used a 1X bead-to-sample ratio during both Ampure bead cleans to avoid significant loss of my heavily-fragmented DNA.\n\nI also bead-cleaned the leftover ed-prepped DNA, using 1X Ampure beads and eluting in 5uL nuclease-free H2O, for potential future use. Stored at 4C.\n\n[Qubited both rounds together:]{.underline}\\\nStandard 1: 34.61\\\nStandard 2: 15943.60\\\nG3L1 barcoded: 3.24ng/uL\\\nG3L1: **9.74 ng.uL**\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

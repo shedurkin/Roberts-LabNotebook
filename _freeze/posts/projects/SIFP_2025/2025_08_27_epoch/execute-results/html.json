@@ -1,0 +1,14 @@
+{
+  "hash": "d21dec8135f340a1844b5fbd253b83e5",
+  "result": {
+    "markdown": "---\ntitle: \"Epoch QC, Group 2 Samples\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-08-27\"\ncategories: [\"SIFP-2025\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: FALSE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nNanopore requests absorbance profiles from Group 2 extractions (though yes, I should already have performed this QC step)\n\nUsing the Epoch spectrophotometer. Loaded 3 blanks of 3uL Zymo Elution Buffer. CV% \\<10%, so accepted. Loaded 51861, 51732, and 51892 (for each, 1uL extraction + 2uL Zymo EB).\n\nFull results saved in OneDrive, files titled \"epoch_group2\\*.xlsx.\n\n| Catalog \\# | 260/280 | 260/230 | ng/uL  |\n|------------|---------|---------|--------|\n| 51861      | 1.866   | 2.256   | 38.433 |\n| 51732      | 1.845   | 2.169   | 62.533 |\n| 51892      | 1.808   | 2.013   | 70.33  |\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

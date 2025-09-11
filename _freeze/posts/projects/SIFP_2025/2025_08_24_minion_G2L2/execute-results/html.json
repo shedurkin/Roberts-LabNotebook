@@ -1,0 +1,14 @@
+{
+  "hash": "e3009d8b4686c6ae8e072feb80a8b6cd",
+  "result": {
+    "markdown": "---\ntitle: \"MinION Run, Group2 Library 2\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-08-24\"\ncategories: [\"SIFP-2025\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: FALSE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nRun group 2 Library 2 on a MinION flow cell to sequence.\n\nFollowing MinION loading protocol found in the Native Barcoding 96 V14 gDNA protocol. Loading flow cell with 200fmol DNA, after seeing higher pore occupancy with this amount (in comparison to 100fmol).\n\nNeed 200fmol DNa in 12uL EB. G2L2 is **24.2ng/uL**, so 200fmol of 700bp DNA is **86.24ng**.\n\n$$\n\\frac{86.24ng}{24.2\\frac{ng}{uL}} = 3.56uL G2L2 \\ \\ \\ \\rightarrow \\ \\ \\ use\\ 3.5uL\\ G2L2\n$$\n\nSo mix **3.5uL G2L2** with **8.5uL EB**.\n\n[**Flow cell:**]{.underline}\\\nID: FBD39370\\\n1482 pores on pore check\\\n1400 pores after priming and loading\n\nStarted run at 10:26pm 8/24/25. Based on MinION G1L4, expect half-life of the pores to be \\~12 hrs, so I'll be back in office tomorow morning at around that time. If at 1/2 pore loss by then, will likely wash.\n\nAt 20minutes into the run, looking good! Pore activity bars are all stable, with 49.7% sequencing and 13.4% available (so \\~80% of available pores are sequencing).\n\n[**Washes:**]{.underline}\n\nWash #1 at 13hr into run. Re-loaded with 200fmol G2L2. 224 pores -\\> 867 pores/\n\nWash #2 at 23hr in. Reloaded with 200fmol G2L2. 238 pores -\\> 563 pores\n\nWash #3 at 1 day 12 hr into run. Actally had to fully stop run to allow for a mandatory computer update (took \\~5min), then restarted \"new run\", confirmed flow cell was still sequencing, then paused, washed, reloaded, and let run for remaining 36 hours. 212 pores -\\> 410 pores. Out of G2L2, so could only load \\~100fmol (2uL G2L2 plus 10uL EB).\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

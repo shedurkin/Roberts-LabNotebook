@@ -1,0 +1,43 @@
+---
+title: "Flongle Run, Group 3 Library 1"
+author: "Kathleen Durkin"
+date: "2025-08-31"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: FALSE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Ran Group 3 Library 1 on a Flongle to check for successful library prep.
+
+To get 10fmol DNA in 5uL EB:
+
+For avg. length, 9.74ng/uL = **35.69 fmol/uL**
+
+$$
+\frac{10fmol}{5uL\ EB} \ \rightarrow \ \frac{35.69fmol}{17.85uL\ EB}
+$$
+
+So mix **1uL G3L1** with (17.85-1)=**16.85uL EB**. Then use 5uL to load.
+
+[**Flongle flow cell:**]{.underline}\
+ID: AYL126\
+80 pores on original flow cell check (08/13/25)\
+74 pores on this flow cell check\
+45 pores after loading and beginning run
+
+Notes:
+
+-   Looks like the library (or at least the LIB beads) are sort of "stuck" on the first half of the pores, closest to the loading port. Not sure whether this has happened in previous Flongle runs though.
+
+-   After 1 hr of running, I notice that the barcodes are very uneven -- very few reads from barcode 22, compared to 21 and 23. Could mean that there was a problem during barcode ligation, or that extraction quantification/length estimate was inaccurate, leading to unequal inputs.
+
+-   Barcode 22 is low enough that I'm not happy running this library on a MinION (would effectively be 2 samples, not 3)
+
+Unfortunately, I'm out of DNA for one of these extractions, so I'll need to re-extract and preprocess.
+
+In the meantime, since re-extraction/processing will take a few days and I only have 2 weeks left, I'll prep and run another iteration of the low-yield Group 2.

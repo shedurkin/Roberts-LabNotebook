@@ -1,0 +1,14 @@
+{
+  "hash": "b78288e4cdcceba858fd1f2a52ca41d6",
+  "result": {
+    "markdown": "---\ntitle: \"Pore Check for Replacement Flongle Flow Cells\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-09-01\"\ncategories: [\"SIFP-2025\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: FALSE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nRecieved replacements for the 4 below-warranty Flongle flow cells (see post [here](./2025_08_13_pore_check_flongles.qmd)) sometime last week (08/25/25 - 08/29/25). will run flow cell halth checks on all replacement cells to confirm they're above warranty (\\>50 pores).\n\n| LOT      | SN         | ID     | num. pores |\n|----------|------------|--------|------------|\n| 33001548 | B028107472 | AZG145 | 62         |\n| 33001548 | B028107456 | AXT258 | 61         |\n| 33001548 | B028107437 | AXT655 | 82         |\n| 33001548 | B028107440 | AXT657 | 87         |\n\nAll 4 replacement cells pass pore check!\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

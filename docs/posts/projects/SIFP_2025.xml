@@ -410,6 +410,459 @@ font-style: inherit;"># 41f04.csv</span></span></code></pre></div>
   <pubDate>Wed, 03 Sep 2025 04:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>Native Barcoding, Group 2 Library 3</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_01_library_prep_G2L3.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>My first MinION run of Group 2 (Group 2 Library 3) had low output, so I’m going to do another prep and run of the same samples, to try to get more data.</p>
+<table class="table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 6%">
+<col style="width: 21%">
+<col style="width: 14%">
+<col style="width: 24%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Catalog #</th>
+<th>Tube</th>
+<th>[dsDNA] (ng/uL)</th>
+<th>length (bp)</th>
+<th>vol.&nbsp;remaining (uL)</th>
+<th>fmol remaining</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>51861</td>
+<td>D6</td>
+<td>94.1</td>
+<td>647</td>
+<td>6uL</td>
+<td>1417</td>
+</tr>
+<tr class="even">
+<td>51892</td>
+<td>A7</td>
+<td>137</td>
+<td>711</td>
+<td>9.5uL</td>
+<td>2972</td>
+</tr>
+<tr class="odd">
+<td>51732</td>
+<td>A6</td>
+<td>157</td>
+<td>724</td>
+<td>13uL</td>
+<td>4576</td>
+</tr>
+</tbody>
+</table>
+<p>During the G2L2 run, the barcodes were not equally present. This could be due to slightly different lengths of each extraction, meaning the 1000ng input DNA wouldn’t be completely equimolar. This time will use equimolar input.</p>
+<p>51861 is the limiting extraction, with the lowest remaining fmol of DNA, so we’ll equalize to that. Want 1400fmol DNA from each extraction to use in library prep. Should be in 11uL total volume, made up with nuclease-free water.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Catalog #</th>
+<th>vol.&nbsp;for 1400fmol</th>
+<th>uL for 11uL</th>
+<th>Barcode</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>51861</td>
+<td>6uL</td>
+<td>5uL</td>
+<td>24</td>
+</tr>
+<tr class="even">
+<td>51892</td>
+<td>4.5uL</td>
+<td>6.5uL</td>
+<td>25</td>
+</tr>
+<tr class="odd">
+<td>51732</td>
+<td>4.0uL</td>
+<td>7uL</td>
+<td>26</td>
+</tr>
+</tbody>
+</table>
+<p>Haven’t been seeing the expected DCS peak at 3.6kb, so mixed and used new DCS dilution. Used 1X Ampure bead-to-sample raio in both bead cleans.</p>
+<p><u><strong>Qubits:</strong></u><br>
+S1: 36.01<br>
+S2: 15671.74<br>
+G2L3 barcoded: 7.5ng/uL<br>
+G2L3: <strong>15.3ng/uL</strong></p>
+<p>With 15.3ng/uL in 14uL, and an average length of ~700bp, I have <strong>~500fmol total library</strong>. I can roughly do a 200fmol load + 3 100fmol wash/reloads, or a 200fmol load + 200fmol wash/reload + 100fmol wash/reload.</p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_01_library_prep_G2L3.html</guid>
+  <pubDate>Mon, 01 Sep 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Re-extraction of 1800s Samples</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_01_reextractions.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>After using most of my 1800s DNA in a partially unsuccessful library prep (<a href="../../../posts/projects/SIFP_2025/2025_08_31_flongle_G3L1.html">Group 3 Library 1</a>), I want extra for additional preps. I need to extract more DNa for 5 specimens:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Catalog #</th>
+<th>Collection Year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>50603</td>
+<td>1912</td>
+</tr>
+<tr class="even">
+<td>19054</td>
+<td>1898</td>
+</tr>
+<tr class="odd">
+<td>42137</td>
+<td>1897</td>
+</tr>
+<tr class="even">
+<td>14399</td>
+<td>1886</td>
+</tr>
+<tr class="odd">
+<td>50368</td>
+<td>1880</td>
+</tr>
+</tbody>
+</table>
+<p>Subsampled and began tissue digestion, as detailed <a href="../../../posts/projects/SIFP_2025/2025_07_09_subampling_extractions.html">here</a>.</p>
+<p>Began digestion at 7:00pm, 09/01/2025, will run for ~48hr.</p>
+<p><u><strong>Notes:</strong></u></p>
+<ul>
+<li><p>A power outage interrupted digestion incubation. Incubator stopped at ~9pm 09/02/25, and I restarted it ~7am 09/03/25, so digestions were sitting at room temp for ~10hrs.</p></li>
+<li><p>Spiked in 20uL proteinase K to each tube, will let digestions sit on shaking incubator for another 12-24hr.</p></li>
+</ul>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_01_reextractions.html</guid>
+  <pubDate>Mon, 01 Sep 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Pore Check for Replacement Flongle Flow Cells</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_01_replacement_flongle_check.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Recieved replacements for the 4 below-warranty Flongle flow cells (see post <a href="../../../posts/projects/SIFP_2025/2025_08_13_pore_check_flongles.html">here</a>) sometime last week (08/25/25 - 08/29/25). will run flow cell halth checks on all replacement cells to confirm they’re above warranty (&gt;50 pores).</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>LOT</th>
+<th>SN</th>
+<th>ID</th>
+<th>num. pores</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>33001548</td>
+<td>B028107472</td>
+<td>AZG145</td>
+<td>62</td>
+</tr>
+<tr class="even">
+<td>33001548</td>
+<td>B028107456</td>
+<td>AXT258</td>
+<td>61</td>
+</tr>
+<tr class="odd">
+<td>33001548</td>
+<td>B028107437</td>
+<td>AXT655</td>
+<td>82</td>
+</tr>
+<tr class="even">
+<td>33001548</td>
+<td>B028107440</td>
+<td>AXT657</td>
+<td>87</td>
+</tr>
+</tbody>
+</table>
+<p>All 4 replacement cells pass pore check!</p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_01_replacement_flongle_check.html</guid>
+  <pubDate>Mon, 01 Sep 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Flongle Run, Group 3 Library 1</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_31_flongle_G3L1.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Ran Group 3 Library 1 on a Flongle to check for successful library prep.</p>
+<p>To get 10fmol DNA in 5uL EB:</p>
+<p>For avg. length, 9.74ng/uL = <strong>35.69 fmol/uL</strong></p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B10fmol%7D%7B5uL%5C%20EB%7D%20%5C%20%5Crightarrow%20%5C%20%5Cfrac%7B35.69fmol%7D%7B17.85uL%5C%20EB%7D%0A"></p>
+<p>So mix <strong>1uL G3L1</strong> with (17.85-1)=<strong>16.85uL EB</strong>. Then use 5uL to load.</p>
+<p><u><strong>Flongle flow cell:</strong></u><br>
+ID: AYL126<br>
+80 pores on original flow cell check (08/13/25)<br>
+74 pores on this flow cell check<br>
+45 pores after loading and beginning run</p>
+<p>Notes:</p>
+<ul>
+<li><p>Looks like the library (or at least the LIB beads) are sort of “stuck” on the first half of the pores, closest to the loading port. Not sure whether this has happened in previous Flongle runs though.</p></li>
+<li><p>After 1 hr of running, I notice that the barcodes are very uneven – very few reads from barcode 22, compared to 21 and 23. Could mean that there was a problem during barcode ligation, or that extraction quantification/length estimate was inaccurate, leading to unequal inputs.</p></li>
+<li><p>Barcode 22 is low enough that I’m not happy running this library on a MinION (would effectively be 2 samples, not 3)</p></li>
+</ul>
+<p>Unfortunately, I’m out of DNA for one of these extractions, so I’ll need to re-extract and preprocess.</p>
+<p>In the meantime, since re-extraction/processing will take a few days and I only have 2 weeks left, I’ll prep and run another iteration of the low-yield Group 2.</p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_31_flongle_G3L1.html</guid>
+  <pubDate>Sun, 31 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Native barcoding, Group 3 Library 1</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_30_library_prep_G3L1.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>First whack at library prep for a set of 3 samples from my oldest time point (“Group 3”). My attempt to concentrate 2 of these extractions failed pretty spectacularly, but I’ll just have to work with what I’ve got. Selected samples with highest extraction concentrations.</p>
+<p>Determined maximum fmol DNA contained in 11uL for each selected sample to use equimolar input from all during library prep. i hope this will help with the slightly unbalanced levels of sequenced barcodes in past preps.</p>
+<table class="table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 10%">
+<col style="width: 21%">
+<col style="width: 14%">
+<col style="width: 18%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Catalog #</th>
+<th>Tube #</th>
+<th>[dsDNA] (ng/uL)</th>
+<th>length (bp)</th>
+<th>max ng in 11uL</th>
+<th>max fmol in 11uL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>14399</td>
+<td>B1</td>
+<td>100</td>
+<td>444</td>
+<td>1100</td>
+<td>4022</td>
+</tr>
+<tr class="even">
+<td>50368</td>
+<td>C7</td>
+<td>37</td>
+<td>529</td>
+<td>407</td>
+<td>1249</td>
+</tr>
+<tr class="odd">
+<td>50603</td>
+<td>A5</td>
+<td>42.4</td>
+<td>357</td>
+<td>466.4</td>
+<td>2121</td>
+</tr>
+</tbody>
+</table>
+<p>So 50368 is the limiting extraction (unsurprisingly) to maintaining equimolar inputs. I want to use 1250fmol DNA from each samples for library prep, in 11uL.</p>
+<table class="table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 12%">
+<col style="width: 23%">
+<col style="width: 24%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Catalog #</th>
+<th>Barcode</th>
+<th>ng for 1250fmol</th>
+<th>uL for 1250 fmol</th>
+<th>uL to make 11uL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>14399</td>
+<td>21</td>
+<td>341.9ng</td>
+<td>3.5uL</td>
+<td>7.5uL</td>
+</tr>
+<tr class="even">
+<td>50368</td>
+<td>22</td>
+<td>407.3ng</td>
+<td>11uL</td>
+<td>0uL</td>
+</tr>
+<tr class="odd">
+<td>50603</td>
+<td>23</td>
+<td>274.9ng</td>
+<td>6.5uL</td>
+<td>4.5uL</td>
+</tr>
+</tbody>
+</table>
+<p>Prepared library according to Native Barcoding 96 V14 gDNA protocol, using the above equimolar inputs for each sample, using DCS and retaining 3.75uL end-prepped DNA through to barcode ligation. I also used a 1X bead-to-sample ratio during both Ampure bead cleans to avoid significant loss of my heavily-fragmented DNA.</p>
+<p>I also bead-cleaned the leftover ed-prepped DNA, using 1X Ampure beads and eluting in 5uL nuclease-free H2O, for potential future use. Stored at 4C.</p>
+<p><u>Qubited both rounds together:</u><br>
+Standard 1: 34.61<br>
+Standard 2: 15943.60<br>
+G3L1 barcoded: 3.24ng/uL<br>
+G3L1: <strong>9.74 ng.uL</strong></p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_30_library_prep_G3L1.html</guid>
+  <pubDate>Sat, 30 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Zymo Concentrate 50368, 42137</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_30_zymo_concentrate.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Two of my 1800s extractions that I want to include in Group 3 are below the concentration needed to get 1000ng in 11uL. I’m going to concentrate them to a lower volume/higher concentration, using the Zymo Genomic DNA Clean and Concentrator Kit (full protocol <a href="../../../posts/projects/SIFP_2025/2025_07_12_zymo_cleanup.html">here</a>).</p>
+<table class="table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 6%">
+<col style="width: 17%">
+<col style="width: 12%">
+<col style="width: 26%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Catalog #</th>
+<th>Tube</th>
+<th>Conc. (ng/uL)</th>
+<th>vol.&nbsp;(uL)</th>
+<th>desired conc. (ng/uL)</th>
+<th>desired vol.&nbsp;(uL)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>50368</td>
+<td>C7</td>
+<td>68.3</td>
+<td>25</td>
+<td>91</td>
+<td>18.76, ~19</td>
+</tr>
+<tr class="even">
+<td>42137</td>
+<td>B2</td>
+<td>46.3</td>
+<td>26</td>
+<td>91</td>
+<td>13.23, ~14</td>
+</tr>
+</tbody>
+</table>
+<p>desired concentration = 1000ng/11uL = 91ng/uL<br>
+desired volume = (conc. + vol.)/desired conc.</p>
+<p>Eluted each sample in the desired volume of Zymo EB (heated first to 60C)</p>
+<p>Made a 5X dilution of each (1uL DNA + 4uL Zymo EB), then:</p>
+<ul>
+<li><p>Quantified each with the Qubit (1X dsDNA HS protocol and kit)</p>
+<p>Standard 1: 34.04<br>
+Standard 2: 13568.74<br>
+50368: 7.4ng/uL –x5–&gt; 37ng/uL<br>
+42137: 5.39ng/ul –x5–&gt; 26.95ng/uL</p></li>
+<li><p>QC’d with Epoch spectrophotometer</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>260/280</th>
+<th>260/230</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>50368</td>
+<td>1.917</td>
+<td>2.369</td>
+</tr>
+<tr class="even">
+<td>42137</td>
+<td>1.9</td>
+<td>3.018</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<p>Soooo Zymo did not concentrate my samples. I must have lost too mcuh during the clean. I actually cut concentration by a bit. I’ll just have to work with what I got :(</p>
+<p>I also may need to fully exclude 42137 due to the high 260/230, indicating possible chemical contamination.</p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_30_zymo_concentrate.html</guid>
+  <pubDate>Sat, 30 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
   <title>Transferring Nanopore Sequencing Output Files</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_28_file_transfer.html</link>
@@ -1431,6 +1884,56 @@ font-style: inherit;">\;</span></span>
   <pubDate>Thu, 28 Aug 2025 04:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>Epoch QC, Group 2 Samples</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_27_epoch.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Nanopore requests absorbance profiles from Group 2 extractions (though yes, I should already have performed this QC step)</p>
+<p>Using the Epoch spectrophotometer. Loaded 3 blanks of 3uL Zymo Elution Buffer. CV% &lt;10%, so accepted. Loaded 51861, 51732, and 51892 (for each, 1uL extraction + 2uL Zymo EB).</p>
+<p>Full results saved in OneDrive, files titled “epoch_group2*.xlsx.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Catalog #</th>
+<th>260/280</th>
+<th>260/230</th>
+<th>ng/uL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>51861</td>
+<td>1.866</td>
+<td>2.256</td>
+<td>38.433</td>
+</tr>
+<tr class="even">
+<td>51732</td>
+<td>1.845</td>
+<td>2.169</td>
+<td>62.533</td>
+</tr>
+<tr class="odd">
+<td>51892</td>
+<td>1.808</td>
+<td>2.013</td>
+<td>70.33</td>
+</tr>
+</tbody>
+</table>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_27_epoch.html</guid>
+  <pubDate>Wed, 27 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
   <title>MinION G2L2 Wildflower Flow Cell</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_25_minion_wildflower.html</link>
@@ -1522,6 +2025,85 @@ The G2L2 run actually had a roughly equivalent number of starting pores and a hi
   <pubDate>Mon, 25 Aug 2025 04:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>Sequencing Reagents</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_25_sequencing_reagents.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I realized I’m already halfway through the priming/loading reagents included in the Native Barcoding 96 V14 Kit (SB, LIB, FCF, FCT). This is because I’m using multiple rxns of priming and loading reagents for each MinION flow cell run, due to the wash/reloads and Flongle runs.</p>
+<p>Nanopore offers “sequencing expansions” with these reagents, so I’ll need to purchase one. 12 rxns would allow for additionsl 3 MinION runs, assuing 4 total loads for each cell (initial load, plus 3 wash/reloads).</p>
+<p>I’ll adjust the total volume of priming mix I make during each loading, since the provided protocol makes and excess. I only need 1000uL for priming a MinION flow cell.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Priming Mix</th>
+<th>1X</th>
+<th>0.85X</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Flow Cell Flush (FCF)</td>
+<td>1162.5uL</td>
+<td>988.125uL</td>
+</tr>
+<tr class="even">
+<td>BSA 20mg/mL</td>
+<td>12.5uL</td>
+<td>10.625uL</td>
+</tr>
+<tr class="odd">
+<td>Flow Cell Tether (FCT)</td>
+<td>30uL</td>
+<td>25.5uL</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td>1205uL</td>
+<td>1024.25uL</td>
+</tr>
+</tbody>
+</table>
+<p>Will begin making an 0.85X mix of priming mix every time I load.</p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_25_sequencing_reagents.html</guid>
+  <pubDate>Mon, 25 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Flongle Run, Group2 Library 2</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_24_flongle_G2L2.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Checked Group 2 Library 2 on a Flongle flow cell.</p>
+<p>Flow cell:<br>
+ID: AYX067<br>
+79 pores on pore check</p>
+<p>Based on TapeStation peaks, samples are ~700bp, so 10fmol = 4.31ng.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B4.31ng%5C%20DNA%7D%7B5uL%5C%20EB%7D%20=%20%5Cfrac%7B21.55ng%5C%20DNA%7D%7B25uL%5C%20EB%7D%0A"></p>
+<p>Then calculate volume of G2L2 needed</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B21.55ng%7D%7B24.2%20%5Cfrac%7Bng%7D%7BuL%7D%7D%20=%200.89uL%5C%20input%0A"></p>
+<p>Can approximate requisite input to 1uL, so mixed 1uL G2L2 with 24uL EB (total 25uL).</p>
+<p>Loaded Flongle with 5uL of this.</p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_24_flongle_G2L2.html</guid>
+  <pubDate>Sun, 24 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
   <title>Native Barcoding, Group2 Library 2</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_24_library_prep_G2L2.html</link>
@@ -1586,6 +2168,38 @@ G2L2: <strong>24.2 ng/uL</strong></p>
  ]]></description>
   <category>SIFP-2025</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_24_library_prep_G2L2.html</guid>
+  <pubDate>Sun, 24 Aug 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>MinION Run, Group2 Library 2</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_24_minion_G2L2.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Run group 2 Library 2 on a MinION flow cell to sequence.</p>
+<p>Following MinION loading protocol found in the Native Barcoding 96 V14 gDNA protocol. Loading flow cell with 200fmol DNA, after seeing higher pore occupancy with this amount (in comparison to 100fmol).</p>
+<p>Need 200fmol DNa in 12uL EB. G2L2 is <strong>24.2ng/uL</strong>, so 200fmol of 700bp DNA is <strong>86.24ng</strong>.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B86.24ng%7D%7B24.2%5Cfrac%7Bng%7D%7BuL%7D%7D%20=%203.56uL%20G2L2%20%5C%20%5C%20%5C%20%5Crightarrow%20%5C%20%5C%20%5C%20use%5C%203.5uL%5C%20G2L2%0A"></p>
+<p>So mix <strong>3.5uL G2L2</strong> with <strong>8.5uL EB</strong>.</p>
+<p><u><strong>Flow cell:</strong></u><br>
+ID: FBD39370<br>
+1482 pores on pore check<br>
+1400 pores after priming and loading</p>
+<p>Started run at 10:26pm 8/24/25. Based on MinION G1L4, expect half-life of the pores to be ~12 hrs, so I’ll be back in office tomorow morning at around that time. If at 1/2 pore loss by then, will likely wash.</p>
+<p>At 20minutes into the run, looking good! Pore activity bars are all stable, with 49.7% sequencing and 13.4% available (so ~80% of available pores are sequencing).</p>
+<p><u><strong>Washes:</strong></u></p>
+<p>Wash #1 at 13hr into run. Re-loaded with 200fmol G2L2. 224 pores -&gt; 867 pores/</p>
+<p>Wash #2 at 23hr in. Reloaded with 200fmol G2L2. 238 pores -&gt; 563 pores</p>
+<p>Wash #3 at 1 day 12 hr into run. Actally had to fully stop run to allow for a mandatory computer update (took ~5min), then restarted “new run”, confirmed flow cell was still sequencing, then paused, washed, reloaded, and let run for remaining 36 hours. 212 pores -&gt; 410 pores. Out of G2L2, so could only load ~100fmol (2uL G2L2 plus 10uL EB).</p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_24_minion_G2L2.html</guid>
   <pubDate>Sun, 24 Aug 2025 04:00:00 GMT</pubDate>
 </item>
 <item>
@@ -1829,1306 +2443,6 @@ Doubled: 200fmol = 86.2ng</p>
   <category>SIFP-2025</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_19_minion_G1L4.html</guid>
   <pubDate>Tue, 19 Aug 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Flongle run, Group 1 Library 4</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_18_flongle_G1L4.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Running Group 1, Library 4 on a Flongle to confirm successful library prep.</p>
-<p>Need 10fmol DNA in 5uL EB. Assume 1700bp average length: 10fmol = 10.5ng DNA.</p>
-<p>Library 4 is 36.6ng/uL, so too concentrated to accurately pipette 10.5ng. Instead, make a 4X mix:</p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B10.5ng%5C%20DNA%7D%7B5uL%5C%20EB%7D%20=%20%5Cfrac%7B42ng%5C%20DNA%7D%7B20uL%5C%20EB%7D"></p>
-<p>To get volume of G1L4 to add:</p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B42ng%5C%20DNA%7D%7B36.6%20ng/uL%5C%20G1L4%7D%20=%201.15uL%5C%20G1L4"></p>
-<p>So added <strong>1.15 uL G1L4</strong> to (20-1.15uL) = <strong>18.85uL EB</strong>. Then used 5uL of this to make Flongle loading library.</p>
-<p><u><strong>Flongle flow cell</strong></u><br>
-SN: B028104167<br>
-LOT: 33001524<br>
-ID: AYL248<br>
-60 pores on check<br>
-33 pores after loading<br>
-<br>
-This is a pretty significant drop in pores after library loading, even for a Flongle.</p>
-<p>Ran for 24 hours.</p>
-<p>This Flongle run had very poor results – low output and quickly degrading pores. After discussion with Dan, though, he thinks this was a problem with the flow cell itself (supported by the dramatic pore loss after loading), not the library. I’ll go ahead with the Group 1 Library 4 prep and try it on a MinION.</p>
-
-
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_18_flongle_G1L4.html</guid>
-  <pubDate>Mon, 18 Aug 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Summary of Group 1, Libraries 1-3</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_18_flongle_notes.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="summary-from-last-3-library-preps-and-tweaks" class="level2">
-<h2 class="anchored" data-anchor-id="summary-from-last-3-library-preps-and-tweaks">Summary from last 3 library preps and tweaks:</h2>
-<ul>
-<li><p>Beginning with and retaining more DNA through prep doesn’t appear to have a negative effect on sequencing (e.g.&nbsp;similar yield from <a href="./2025_08_flongle_G1L1.qmd">G1 L1</a> and <a href="./2025_08_13_G1L2.qmd">G1 L2</a>), but it does result in a library with much higher DNA content. This is very important for being able to load the MinION flow cell multiple times (with washes), so for all future library preps I will:</p>
-<ul>
-<li><p><strong>begin with 1000ng DNA input</strong> from each sample (or as much DNA as I have, if &lt;1000ng is available)</p></li>
-<li><p>following end-prep, <strong>retain 3.75uL end-prepped DNA</strong> during Native Barcode Ligation Step 7, instead of the recommended 0.75uL</p></li>
-<li><p>Note that, to get 1000ng DNa in 12uL input, will need a sample concentration of &gt;83.3 ng/uL. If input DNA is too dilute, will need to re-concentrate usng Zymo</p></li>
-</ul></li>
-<li><p>I realized I don’t use the DNA Control Sample (DCS), since its purpose is to inform, in the event of a failed sequencing run, whether the cause was failed library prep. I’m running libraries on Flongles to confirm successful library prep (without risking a MinION flow cell), so I don’t need the DCS. Instead, this volume can be used for input DNA. For all future library preps I will:</p>
-<ul>
-<li><strong>Exclude the 1uL DCS</strong> from each sample prep during DNA Repair and End-Prep Step 6, Instead, makeup the 1000ng input DNA of each sample in 12uL.</li>
-</ul></li>
-<li><p>Based on the <a href="../../../posts/projects/SIFP_2025/2025_08_14_Flongle_stats.html">Flongles’ rate of pore degradation and sequencing</a>, I think MinION flow cells may yield less output than I originally estimated. As such, <strong>I will only multiplex 3 samples per flow cell.</strong></p></li>
-<li><p>Excluding FFPE end repair does appear to affect sequencing (<a href="../../../posts/projects/SIFP_2025/2025_08_13_flongle_G1L2.html">G1 L2</a> vs <a href="../../../posts/projects/SIFP_2025/2025_08_15_flongle_G1L3.html">G1 L3</a>). <strong>This reagent will be included</strong> in all future library preps.</p></li>
-</ul>
-
-
-</section>
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_18_flongle_notes.html</guid>
-  <pubDate>Mon, 18 Aug 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Native Barcoding Library Prep, Group 1 Library 4</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_18_library_prep_G1L4.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Now that I’m satisfied with the tweaks to the Native Barcoding gDNA protocol I’ve made, I will incorporate them all for a library prep of Group 1 (Library 4) that will hopefully be good enough to sequence on MinION.</p>
-<p>As a reminder, I’m using <a href="./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-24-document-checklist-MinION-en-NBE_9169_v114_revV_02Jul2025-39.pdf">Native Barcoding 96 V14, gDNA protocol</a>, with the following modifications:</p>
-<p><u><strong>DNA Repair &amp; End-Prep</strong></u><br>
-Step 4: aliquot 1000ng DNA per sample (not 400ng)<br>
-Step 6: exclude DCS, making up remaining 1uL with sample DNA or nuclease-free water</p>
-<p><u><strong>Native Barcode Ligation</strong></u><br>
-Step 7: use 3.75uL end-prepped DNA for each sample, and exclude the nuclease-free water</p>
-<table class="table">
-<colgroup>
-<col style="width: 17%">
-<col style="width: 21%">
-<col style="width: 21%">
-<col style="width: 18%">
-<col style="width: 21%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Catalog #</th>
-<th>Conc. (ng/uL)</th>
-<th>uL for 1000ng</th>
-<th>uL for 12uL</th>
-<th>Label/Barcode</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1606826</td>
-<td>408</td>
-<td>2.5</td>
-<td>9.5</td>
-<td>12</td>
-</tr>
-<tr class="even">
-<td>1740336</td>
-<td>368</td>
-<td>2.7</td>
-<td>9.3</td>
-<td>13</td>
-</tr>
-<tr class="odd">
-<td>1740363</td>
-<td>343</td>
-<td>2.9</td>
-<td>9.1</td>
-<td>14</td>
-</tr>
-</tbody>
-</table>
-<p><strong>End-Prep Master Mix:</strong></p>
-<table class="table">
-<thead>
-<tr class="header">
-<th></th>
-<th>1X</th>
-<th>4X</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>NEBNext FFPE DNA Repair Buffer</td>
-<td>0.875 uL</td>
-<td><strong>3.5 uL</strong></td>
-</tr>
-<tr class="even">
-<td>Ultra II End-Prep Reaction Buffer</td>
-<td>0.875 uL</td>
-<td><strong>3.5 uL</strong></td>
-</tr>
-<tr class="odd">
-<td>Ultra II End-Prep Enzyme Mix</td>
-<td>0.75 uL</td>
-<td><strong>3 uL</strong></td>
-</tr>
-<tr class="even">
-<td>NEBNext FFPE DNA Repair Mix</td>
-<td>0.5 uL</td>
-<td><strong>2 uL</strong></td>
-</tr>
-</tbody>
-</table>
-<p>Made a 4X Master Mix and added 3uL to each sample</p>
-<p><u>Qubit 1 (Barcodes ligated, in 35uL)</u><br>
-Standard 1: 38.64<br>
-Standard 2: 16901.25<br>
-Library 2: <strong>14.9 ng/uL</strong></p>
-<p><u>Qubit 2 (Adapters ligated, in 15uL)</u><br>
-Standard 1: 39.66<br>
-Standard 2: 10449.45<br>
-Library 2: <strong>36.6 ng/uL</strong></p>
-
-
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_18_library_prep_G1L4.html</guid>
-  <pubDate>Mon, 18 Aug 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Flongle Run, Group 1 Library 3</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_15_flongle_G1L3.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Running Group 1 Library 3 on a Flongle flow cell to confirm successful library prep (this library prep incorporated some modifications to the standard protocol)</p>
-<p>As a reminder, Library 3 ended up at 26.2 ng/uL</p>
-<p>Assume length of 1000bp on average, since Flongles have showed shorter DNA fragment lengths than TapeStation (possible shearing during library prep?). Flongle requires 5-10fmol, which is 3 - 6.2ng DNA for 1000bp length.</p>
-<p>Will max out DNA, so need 6.2ng DNA in 5uL EB. Concentration is too low to accurately pipette this little DNA from my library. Instead, made 5X, so 31ng DNA in 25uL EB. 31ng of 26.2ng/uL DNA is (31/26.2) = 1.2uL DNA.</p>
-<p>So mixed <strong>1.2uL Library 3</strong> in (25-1.2)= <strong>23.8uL EB</strong>. Then used 5uL of diluted Library 3 to load Flongle.</p>
-<p><u>Flongle flow cell:</u><br>
-SN: B028104068<br>
-LOT: 33001524<br>
-ID: <strong>AYK267<br>
-59 pores</strong> on flow cell check</p>
-<p>Ran for full 24 hours</p>
-<p><u>Notes after run completed:</u></p>
-<p>Excluding FFPE during end-repair resulted in significantly lower yield (~70Mb, compared to 120Mb from the first two Flongle runs), likely because unrepaired “nicked” DNA clogged the pores quickly. This is supported by low pore occupancy throughout run and faster pore degradation.</p>
-
-
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_15_flongle_G1L3.html</guid>
-  <pubDate>Fri, 15 Aug 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Native Barcoding Library Prep, Group 1 Library 3</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_15_library_prep_G1L3.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>After my preliminary Flongle runs (Group 1 Library 1 and Group 1 Library 2), I’m a little worried about how much MinION output I’ll get, so I’m going to switch to 3 samples per flow cell.</p>
-<p>I’ve also looked at some options for library prep adjustments:</p>
-<ul>
-<li><p>Exclude FFPE Repair. FFPE repair, in part, repairs cytosine deamination C-&gt;U damage. Since I;m interested in potentially examingin patterns of age-related deamination, I’d like to exclude this step if possible. It may cause problems, though, since the un-repaired DNA damgae (e.g.&nbsp;nicks) may affect sequencing, by e.g.&nbsp;clogging the pores more quickly.</p></li>
-<li><p>Begin with 1000ng gDNA dor each sample, instead of 400ng, when multiplexing &lt;= 4 samples.</p></li>
-</ul>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Catalog #</th>
-<th>Conc. (ng/uL)</th>
-<th>uL for 1000ng</th>
-<th>Label/Barcode</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1606826</td>
-<td>408</td>
-<td>2.5</td>
-<td>09</td>
-</tr>
-<tr class="even">
-<td>1740336</td>
-<td>368</td>
-<td>2.7</td>
-<td>10</td>
-</tr>
-<tr class="odd">
-<td>1740363</td>
-<td>343</td>
-<td>2.9</td>
-<td>11</td>
-</tr>
-</tbody>
-</table>
-<p><strong>End-Prep Master Mix (no FFPE):</strong></p>
-<table class="table">
-<thead>
-<tr class="header">
-<th></th>
-<th><strong>1X</strong></th>
-<th><strong>4X</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Ultra II Buffer</td>
-<td>1.75uL</td>
-<td><strong>7uL</strong></td>
-</tr>
-<tr class="even">
-<td>Ultra II Mix</td>
-<td>0.75uL</td>
-<td><strong>3uL</strong></td>
-</tr>
-</tbody>
-</table>
-<p>Made 4X and added 2.5uL of Master Mix to each tube</p>
-<p><u>Qubit 1 (barcodes ligated, in 35uL)</u><br>
-Standard 1: 37.40<br>
-Standard 2: 9926.48<br>
-Library 3: 22.8 ng/uL</p>
-<p><u>Qubit 2 (adapters ligated, in 15uL)</u><br>
-Standard 1: 31.61<br>
-Standard 2: 11333.17<br>
-Library 3: <strong>26.2 ng/uL</strong></p>
-
-
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_15_library_prep_G1L3.html</guid>
-  <pubDate>Fri, 15 Aug 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Estimate Flow Cell OUtputs</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_14_Flongle_stats.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Using the outputs from my Flongle run of Group1, Library 1, I want to use the rate of pore decay and cumulative sequencing output to extrapolate how much output to expect from other flow cells.</p>
-<section id="pore-activity" class="level2">
-<h2 class="anchored" data-anchor-id="pore-activity">Pore activity</h2>
-<p>Look at the output csv of pore activity stats:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(dplyr)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'dplyr' was built under R version 4.2.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(ggplot2)</span>
-<span id="cb6-2">pore_activity <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"./data/2025_08_12_Flongle_Group1_Library1/pore_activity_AYW935_f9a34344_e98d3daf.csv"</span>)</span>
-<span id="cb6-3">pore_activity<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Percent <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> pore_activity<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>State.Time..samples.<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">378000</span></span>
-<span id="cb6-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># unique(pore_activity$Channel.State)</span></span>
-<span id="cb6-5">pore_activity<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Channel.State <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">factor</span>(pore_activity<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Channel.State,</span>
-<span id="cb6-6">                                         <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"unclassified"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"unclassified_following_reset"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"unknown_negative"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"unknown_positive"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"disabled"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"saturated"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"multiple"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"zero"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"no_pore"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"unblocking"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"unavailable"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"pore"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"adapter"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"strand"</span>),</span>
-<span id="cb6-7">                                      <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">ordered =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">TRUE</span>)</span>
-<span id="cb6-8"></span>
-<span id="cb6-9"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(pore_activity, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> Experiment.Time..minutes., <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> Percent, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> Channel.State)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb6-10">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_col</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_14_Flongle_stats_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>Compare to Summary Plot:</p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/data/2025_08_12_Flongle_Group1_Library1/PoreActivity.png" class="img-fluid"></p>
-<p>After comparing the pore_activity.csv labels to those included in the pore activity summary plots, I’m pretty sure that the following labels are equivalent (pore_activity.csv label = plot label)</p>
-<p>adapter = adapter<br>
-disabled = channel disabled<br>
-locked = ?<br>
-multiple = multiple<br>
-no_pore = no pore<br>
-pending_manual_reset = ?<br>
-pending_mux_change = ?<br>
-<strong>pore = pore available</strong><br>
-saturated = saturated<br>
-<strong>strand = sequencing</strong><br>
-unavailable = unavailable<br>
-unblocking = active feedback<br>
-unclassified = unclassified<br>
-unclassified_following_reset = ?<br>
-unknown_negative = out of range - low<br>
-unknown_positive = out of range - high<br>
-zero = zero</p>
-</section>
-<section id="fit-pore-decay-and-output-functions" class="level2">
-<h2 class="anchored" data-anchor-id="fit-pore-decay-and-output-functions">Fit pore decay and output functions</h2>
-<p>I want to extract a function for the percent of pores that are sequencing over time. I expect a roughly exponential drop of pore activity over time</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">pore_sequencing <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> pore_activity <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span> </span>
-<span id="cb7-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">filter</span>(Channel.State <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"strand"</span>)</span>
-<span id="cb7-3"></span>
-<span id="cb7-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Fit exponential decay</span></span>
-<span id="cb7-5">start_vals <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">list</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">a =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">max</span>(pore_sequencing<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Percent), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">b =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.01</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">c =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">min</span>(pore_sequencing<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Percent))</span>
-<span id="cb7-6">model <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">nls</span>(Percent <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span> a <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">exp</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>b <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> Experiment.Time..minutes.) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> c,</span>
-<span id="cb7-7">             <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">data =</span> pore_sequencing, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">start =</span> start_vals)</span>
-<span id="cb7-8"></span>
-<span id="cb7-9"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#summary(model)</span></span>
-<span id="cb7-10"></span>
-<span id="cb7-11"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Predict and plot</span></span>
-<span id="cb7-12">pore_sequencing<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>fit <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">predict</span>(model)</span>
-<span id="cb7-13"></span>
-<span id="cb7-14"></span>
-<span id="cb7-15">pore_sequencing <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb7-16">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(., <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> Experiment.Time..minutes., <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> Percent)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> </span>
-<span id="cb7-17">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb7-18">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_line</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> fit), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"red"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-ℹ Please use `linewidth` instead.</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_14_Flongle_stats_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\n</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span>)</span></code></pre></div>
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\n</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span>)</span></code></pre></div>
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Best fit line for percent of pores that are actively sequencing as a function of time:"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\n</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Best fit line for percent of pores that are actively sequencing as a function of time: </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Percent = "</span>, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">round</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">coef</span>(model)[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"a"</span>], <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>), <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"* exp(-"</span>, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">round</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">coef</span>(model)[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"b"</span>], <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>), <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"* [minutes]) +"</span>, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">round</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">coef</span>(model)[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"c"</span>], <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>))</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Percent =  15.377 * exp(- 0.004 * [minutes]) + 1.503</code></pre>
-</div>
-</div>
-<p>The dramatic, periodic drops in sequencing represents the pore scans, which were set to occur every 1.5hr.</p>
-<p>Now I want to find the sequencing output (in b or Mb) as a function of time</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">throughput <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"./data/2025_08_12_Flongle_Group1_Library1/throughput_AYW935_f9a34344_e98d3daf(in).csv"</span>)</span>
-<span id="cb15-2"></span>
-<span id="cb15-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Fit exponential decay</span></span>
-<span id="cb15-4">start_vals <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">list</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">a =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">max</span>(throughput<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Basecalled.Bases), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">b =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.01</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">c =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">min</span>(throughput<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Basecalled.Bases))</span>
-<span id="cb15-5">model2 <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">nls</span>(Basecalled.Bases <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span> a <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">exp</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>b <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> Experiment.Time..minutes.) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> c,</span>
-<span id="cb15-6">             <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">data =</span> throughput, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">start =</span> start_vals)</span>
-<span id="cb15-7"></span>
-<span id="cb15-8"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#summary(model2)</span></span>
-<span id="cb15-9"></span>
-<span id="cb15-10"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Predict and plot</span></span>
-<span id="cb15-11">throughput<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>fit <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">predict</span>(model2)</span>
-<span id="cb15-12"></span>
-<span id="cb15-13">throughput <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb15-14">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(., <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> Experiment.Time..minutes., <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> Basecalled.Bases)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> </span>
-<span id="cb15-15">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb15-16">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_line</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> fit), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"red"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_14_Flongle_stats_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\n</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span>)</span></code></pre></div>
-<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\n</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span>)</span></code></pre></div>
-<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Best fit line for percent of pores that are actively sequencing as a function of time:"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\n</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Best fit line for percent of pores that are actively sequencing as a function of time: </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Bases = "</span>, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">round</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">coef</span>(model2)[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"a"</span>], <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>), <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"* exp(-"</span>, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">round</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">coef</span>(model2)[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"b"</span>], <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>), <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"* [minutes]) +"</span>, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">round</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">coef</span>(model2)[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"c"</span>], <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>))</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Bases =  -120848296 * exp(- 0.002 * [minutes]) + 127537896</code></pre>
-</div>
-</div>
-</section>
-<section id="estimate-output-of-flow-cell" class="level2">
-<h2 class="anchored" data-anchor-id="estimate-output-of-flow-cell">Estimate output of flow cell</h2>
-<p>Now I want to use these to estimate MinION output based on a different starting number of pores.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Note that these estimates will be based on the assumption that MinION pores degrade at the same rate as these Flongle pores which, based on rather negative experiences posted to the Nanopor community, may not be the case. People have reported that their v10 Flongles degrade much more quickly than both older Flongle chemistry and Minion flow cells.</p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Given</span></span>
-<span id="cb22-2"><span class="do" style="color: #5E5E5E;
-background-color: null;
-font-style: italic;">## Starting number of pores</span></span>
-<span id="cb22-3">Pref <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">44</span></span>
-<span id="cb22-4"><span class="do" style="color: #5E5E5E;
-background-color: null;
-font-style: italic;">## Cumulative output function</span></span>
-<span id="cb22-5">Cref <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">function</span>(t) { <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">120848296</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">exp</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.002</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> t) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">127537896</span> }  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># bases</span></span>
-<span id="cb22-6"></span>
-<span id="cb22-7"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Prediction for a new run</span></span>
-<span id="cb22-8">predict_yield <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">function</span>(P0, T_minutes) {</span>
-<span id="cb22-9">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">Cref</span>(T_minutes) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> (P0 <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> Pref)               <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># bases</span></span>
-<span id="cb22-10">}</span>
-<span id="cb22-11"></span>
-<span id="cb22-12"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Convenience: return Gb</span></span>
-<span id="cb22-13">predict_yield_Gb <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">function</span>(P0, T_minutes) {</span>
-<span id="cb22-14">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">predict_yield</span>(P0, T_minutes) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1e9</span></span>
-<span id="cb22-15">}</span>
-<span id="cb22-16"></span>
-<span id="cb22-17"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Run a MinION flow cell with 1200 pores for 3 days (no washes)</span></span>
-<span id="cb22-18"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">predict_yield_Gb</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1200</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">4320</span>)  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Gb</span></span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.477723</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Run a MinION flow cell with 1200 pores for 3 days, with wash/reloads that recover/maintain half of pores each time</span></span>
-<span id="cb24-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">predict_yield_Gb</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1200</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1440</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">predict_yield_Gb</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">600</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1440</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">predict_yield_Gb</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">300</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1440</span>)   <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Gb</span></span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 5.763264</code></pre>
-</div>
-</div>
-<p>In the future, if I find that MinION pores decay at a different rate, I can use the below code to incorporate a different decay function :</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Reference pore-decay (percent). Normalize inside the integral.</span></span>
-<span id="cb26-2">p_ref <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">function</span>(t) { <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">15.377</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">exp</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.004</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> t) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1.503</span> }</span>
-<span id="cb26-3"></span>
-<span id="cb26-4">effective_pore_time <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">function</span>(pfun, T_minutes) {</span>
-<span id="cb26-5">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">integrate</span>(<span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">function</span>(s) <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pfun</span>(s) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pfun</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">lower =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">upper =</span> T_minutes)<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>value</span>
-<span id="cb26-6">}</span>
-<span id="cb26-7"></span>
-<span id="cb26-8">predict_yield_with_decay <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">function</span>(P0, T_minutes, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">p_new =</span> p_ref) {</span>
-<span id="cb26-9">  scale_base <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">Cref</span>(T_minutes) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> (P0 <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> Pref)</span>
-<span id="cb26-10">  ratio <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">effective_pore_time</span>(p_new, T_minutes) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">effective_pore_time</span>(p_ref, T_minutes)</span>
-<span id="cb26-11">  scale_base <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> ratio</span>
-<span id="cb26-12">}</span>
-<span id="cb26-13"></span>
-<span id="cb26-14"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Convenience: return Gb</span></span>
-<span id="cb26-15">predict_yield_with_decay_Gb <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">function</span>(P0, T_minutes) {</span>
-<span id="cb26-16">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">predict_yield_with_decay</span>(P0, T_minutes) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1e9</span></span>
-<span id="cb26-17">}</span>
-<span id="cb26-18"></span>
-<span id="cb26-19"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">predict_yield_with_decay_Gb</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1200</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">4320</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.477723</code></pre>
-</div>
-</div>
-</section>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>While I doubt the MinION fow cells will degrade as quickly as the Flongles, the predicted output for a MinION flow cell (~3.5Gb) is far below what I had been previously estimating (30Gb). As such, <strong>I’m going to drop from multiplexing 4 samples per flow cell to 3 samples per flow cell</strong>, to try to get more coverage for each.</p>
-
-
-</section>
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_14_Flongle_stats.html</guid>
-  <pubDate>Thu, 14 Aug 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Pore Check for all MinION Flow Cells</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_14_pore_check_minions.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Ran pore check on all MinION flow cells.</p>
-<p>As a reminder, MinION flow cells have a maximum of 2048 pores, and warranty guarantees 800 pores.</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>SN</th>
-<th>Flow cell ID</th>
-<th>Num. pores</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>B024226778</td>
-<td>FBD08455</td>
-<td>1652</td>
-</tr>
-<tr class="even">
-<td>B024226909</td>
-<td>FBD36396</td>
-<td>1528</td>
-</tr>
-<tr class="odd">
-<td>B024226802</td>
-<td>FBD09922</td>
-<td>1428</td>
-</tr>
-<tr class="even">
-<td>B024226790</td>
-<td>FBD39370</td>
-<td>1482</td>
-</tr>
-<tr class="odd">
-<td>B024226535</td>
-<td>FBD42232</td>
-<td>1519</td>
-</tr>
-</tbody>
-</table>
-<p>Nice! All 5 MinION flow cells are well above warranty.</p>
-
-
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_14_pore_check_minions.html</guid>
-  <pubDate>Thu, 14 Aug 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Pore Check for all Flongle Flow Cells</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_13_flongle_G1L2.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>To compare the Library 1 and Library 2 prep protocols, and the modified protocol doesn’t affect sequencing success, running Group 1 Library 2 on a Flongle flow cell.</p>
-<p>Library 2 has an avg fragment length of 1700bp and a concentration of 16.5ng/uL.</p>
-<p>Flongle requires 5-10 fmol DNA in 5uL EB. For my fragment size, this corresponds to 10.5ng DNA for 10fmol. Will max out DNA. Library concentration is too high to accurately pipette the equivalent of 10ng. Instead, will make final library of 20fmol (21ng) of DNA in 10uL EB, and only use 5uL for Flongle loading.</p>
-<p>21ng of DNA from 16.5ng/uL -&gt; 21/16.5 -&gt; <strong>1.27uL Library 2</strong>. Add to (10uL - 1.27uL) = <strong>8.73uL EB</strong></p>
-<p>Followed <a href="./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-96-document-checklist-Flongle-en-NBE_9171_v114_revS_02Jul2025-29.pdf">Flongle flow cell loading protocol</a>.</p>
-<p><u>Flongle flow cell specs:</u><br>
-LOT: 33001524<br>
-SN: B028104122<br>
-ID: <strong>AYW685</strong><br>
-# pores on check: <strong>59 pores</strong><br>
-# pores after loading: <strong>43 pores</strong><br>
-</p>
-
-
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_13_flongle_G1L2.html</guid>
-  <pubDate>Wed, 13 Aug 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Pore Check for all Flongle Flow Cells</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_13_pore_check_flongles.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>After pulling the completed Flongle run of Group 1, Library 1, performed pore check on all remaining Flongle flow cells.</p>
-<p>As a reminder, pore check of the flow cell used for Group 1 Library 1 showed:</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>SN</th>
-<th>Flow Cell ID</th>
-<th>Num. pores</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>B028104085</td>
-<td>AYW935</td>
-<td>59</td>
-</tr>
-</tbody>
-</table>
-<p>Checked all 11 remaining Flongle flow cells. As a reminder, &lt;50 pores would fall below warranty, and the maximum is 126pores.</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>SN</th>
-<th>Flow Cell ID</th>
-<th>Num. pores</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>B028104112</td>
-<td>AXS867</td>
-<td><strong>37</strong></td>
-</tr>
-<tr class="even">
-<td>B028103996</td>
-<td>AXS408</td>
-<td><strong>40</strong></td>
-</tr>
-<tr class="odd">
-<td>B028103978</td>
-<td>AYL256</td>
-<td><strong>35</strong></td>
-</tr>
-<tr class="even">
-<td>B028103949</td>
-<td>AYL126</td>
-<td>80</td>
-</tr>
-<tr class="odd">
-<td>B028104129</td>
-<td>AYW871</td>
-<td>61</td>
-</tr>
-<tr class="even">
-<td>B028104068</td>
-<td>AYK267</td>
-<td>59</td>
-</tr>
-<tr class="odd">
-<td>B028103992</td>
-<td>AYK963</td>
-<td>89</td>
-</tr>
-<tr class="even">
-<td>B028104122</td>
-<td>AYW685</td>
-<td>59</td>
-</tr>
-<tr class="odd">
-<td>B028104029</td>
-<td>AYX067</td>
-<td>79</td>
-</tr>
-<tr class="even">
-<td>B028104142</td>
-<td>AYL029</td>
-<td><strong>44</strong></td>
-</tr>
-<tr class="odd">
-<td>B028104167</td>
-<td>AYL248</td>
-<td>60</td>
-</tr>
-</tbody>
-</table>
-<p>Wow, so 4/12 (or 1/3) of the Flongle flow cells we received are below warranty. Another 5, including the cell used for Group 1 Library 1, have pore counts <em>just</em> above the minimum.</p>
-<p>I contacted Nanopore Support to request replacements for the out-of-warranty cells on 08/13/2025, case number 01333308. <strong>Reorder number is RD060692.</strong></p>
-
-
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_13_pore_check_flongles.html</guid>
-  <pubDate>Wed, 13 Aug 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Flongle Run, Group 1 Library 1</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_12_flongle_G1L1.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>I want to confirm successful library prep and compare the two “versions” of library prep for my Group 1 samples. To do this, I’ll first run a small portion of each library on Flongle flow cells.</p>
-<p>Flongles run for ~24 hrs, so doing just Library 1 today.</p>
-<p>Library 1 has a concentratio of 2.56 ng/uL, and an average fragment size of 1700bp (based on TapeStation). For Flongle, final library should be 5-10 fmol of DNA in 5uL EB. 5-10fmol is equivalent to 5.2ng-10.5ng of 1700bp DNA.</p>
-<p>For Library 1, prepped Flngle final library as follows:</p>
-<ul>
-<li><p>3uL Library 1</p></li>
-<li><p>2uL EB</p></li>
-</ul>
-<p>Final DNA quantity of 3uL*2.56ng/uL = 7.68ng DNA, or 7.33fmol.</p>
-<p><strong>Materials:</strong></p>
-<p><u>Flongle Sequencing Expansion:</u><br>
-REF: EXP-FSE002<br>
-LOT: FSE002.30.0005</p>
-<p><u>Flongle Adapter:</u><br>
-SN: A100007434</p>
-<p><u>Flongle Flow Cell:</u><br>
-LOT: 33001524<br>
-SN: B028104085<br>
-ID: AYW935</p>
-<p>Launched MinKnow software, inserted Flongle Adapter, and ran hardware check. Then inserted Flongle Flow Cell and ran pore check: <strong>59 pores</strong> (just above the warranty limit of 50 pores)</p>
-<p>Followed Oxford Nanopore Technologies Native Barcoding 96 Kit <a href="./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-96-document-checklist-Flongle-en-NBE_9171_v114_revS_02Jul2025-29.pdf">protocol for Flongle flow cell loading</a>.</p>
-<p>After loading library, flow cell only registered 44 pores :(</p>
-<p>Ran Flongle for 24 hrs.</p>
-
-
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_12_flongle_G1L1.html</guid>
-  <pubDate>Tue, 12 Aug 2025 04:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

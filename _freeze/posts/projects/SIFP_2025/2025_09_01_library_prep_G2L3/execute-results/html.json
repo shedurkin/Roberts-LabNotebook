@@ -1,0 +1,14 @@
+{
+  "hash": "0592b87e345debf00d34e8000c1a8758",
+  "result": {
+    "markdown": "---\ntitle: \"Native Barcoding, Group 2 Library 3\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-09-01\"\ncategories: [\"SIFP-2025\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: FALSE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nMy first MinION run of Group 2 (Group 2 Library 3) had low output, so I'm going to do another prep and run of the same samples, to try to get more data.\n\n| Catalog \\# | Tube | \\[dsDNA\\] (ng/uL) | length (bp) | vol. remaining (uL) | fmol remaining |\n|------------|------|-------------------|-------------|---------------------|----------------|\n| 51861      | D6   | 94.1              | 647         | 6uL                 | 1417           |\n| 51892      | A7   | 137               | 711         | 9.5uL               | 2972           |\n| 51732      | A6   | 157               | 724         | 13uL                | 4576           |\n\nDuring the G2L2 run, the barcodes were not equally present. This could be due to slightly different lengths of each extraction, meaning the 1000ng input DNA wouldn't be completely equimolar. This time will use equimolar input.\n\n51861 is the limiting extraction, with the lowest remaining fmol of DNA, so we'll equalize to that. Want 1400fmol DNA from each extraction to use in library prep. Should be in 11uL total volume, made up with nuclease-free water.\n\n| Catalog \\# | vol. for 1400fmol | uL for 11uL | Barcode |\n|------------|-------------------|-------------|---------|\n| 51861      | 6uL               | 5uL         | 24      |\n| 51892      | 4.5uL             | 6.5uL       | 25      |\n| 51732      | 4.0uL             | 7uL         | 26      |\n\nHaven't been seeing the expected DCS peak at 3.6kb, so mixed and used new DCS dilution. Used 1X Ampure bead-to-sample raio in both bead cleans.\n\n[**Qubits:**]{.underline}\\\nS1: 36.01\\\nS2: 15671.74\\\nG2L3 barcoded: 7.5ng/uL\\\nG2L3: **15.3ng/uL**\n\nWith 15.3ng/uL in 14uL, and an average length of \\~700bp, I have **\\~500fmol total library**. I can roughly do a 200fmol load + 3 100fmol wash/reloads, or a 200fmol load + 200fmol wash/reload + 100fmol wash/reload.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

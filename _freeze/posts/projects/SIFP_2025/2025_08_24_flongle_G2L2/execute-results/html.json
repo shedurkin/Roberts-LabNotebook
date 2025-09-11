@@ -1,0 +1,14 @@
+{
+  "hash": "371f77bad3c6e88c335d0e3ab33cee5b",
+  "result": {
+    "markdown": "---\ntitle: \"Flongle Run, Group2 Library 2\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-08-24\"\ncategories: [\"SIFP-2025\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: FALSE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nChecked Group 2 Library 2 on a Flongle flow cell.\n\nFlow cell:\\\nID: AYX067\\\n79 pores on pore check\n\nBased on TapeStation peaks, samples are \\~700bp, so 10fmol = 4.31ng.\n\n$$\n\\frac{4.31ng\\ DNA}{5uL\\ EB} = \\frac{21.55ng\\ DNA}{25uL\\ EB}\n$$\n\nThen calculate volume of G2L2 needed\n\n$$\n\\frac{21.55ng}{24.2 \\frac{ng}{uL}} = 0.89uL\\ input\n$$\n\nCan approximate requisite input to 1uL, so mixed 1uL G2L2 with 24uL EB (total 25uL).\n\nLoaded Flongle with 5uL of this.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

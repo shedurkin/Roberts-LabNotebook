@@ -1,0 +1,45 @@
+---
+title: "Zymo Concentrate 50368, 42137"
+author: "Kathleen Durkin"
+date: "2025-08-30"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: FALSE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Two of my 1800s extractions that I want to include in Group 3 are below the concentration needed to get 1000ng in 11uL. I'm going to concentrate them to a lower volume/higher concentration, using the Zymo Genomic DNA Clean and Concentrator Kit (full protocol [here](./2025_07_12_zymo_cleanup.qmd)).
+
+| Catalog \# | Tube | Conc. (ng/uL) | vol. (uL) | desired conc. (ng/uL) | desired vol. (uL) |
+|------------|------|---------------|-----------|-----------------------|-------------------|
+| 50368      | C7   | 68.3          | 25        | 91                    | 18.76, \~19       |
+| 42137      | B2   | 46.3          | 26        | 91                    | 13.23, \~14       |
+
+desired concentration = 1000ng/11uL = 91ng/uL\
+desired volume = (conc. + vol.)/desired conc.
+
+Eluted each sample in the desired volume of Zymo EB (heated first to 60C)
+
+Made a 5X dilution of each (1uL DNA + 4uL Zymo EB), then:
+
+-   Quantified each with the Qubit (1X dsDNA HS protocol and kit)
+
+    Standard 1: 34.04\
+    Standard 2: 13568.74\
+    50368: 7.4ng/uL --x5--\> 37ng/uL\
+    42137: 5.39ng/ul --x5--\> 26.95ng/uL
+
+-   QC'd with Epoch spectrophotometer
+
+    |       | 260/280 | 260/230 |
+    |-------|---------|---------|
+    | 50368 | 1.917   | 2.369   |
+    | 42137 | 1.9     | 3.018   |
+
+Soooo Zymo did not concentrate my samples. I must have lost too mcuh during the clean. I actually cut concentration by a bit. I'll just have to work with what I got :(
+
+I also may need to fully exclude 42137 due to the high 260/230, indicating possible chemical contamination.

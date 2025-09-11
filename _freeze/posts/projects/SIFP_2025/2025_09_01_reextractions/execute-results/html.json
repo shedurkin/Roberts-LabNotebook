@@ -1,0 +1,14 @@
+{
+  "hash": "ac72d0fbe3b8f4ab8cffb2ff65382834",
+  "result": {
+    "markdown": "---\ntitle: \"Re-extraction of 1800s Samples\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-09-01\"\ncategories: [\"SIFP-2025\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: FALSE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nAfter using most of my 1800s DNA in a partially unsuccessful library prep ([Group 3 Library 1](./2025_08_31_flongle_G3L1.qmd)), I want extra for additional preps. I need to extract more DNa for 5 specimens:\n\n| Catalog \\# | Collection Year |\n|------------|-----------------|\n| 50603      | 1912            |\n| 19054      | 1898            |\n| 42137      | 1897            |\n| 14399      | 1886            |\n| 50368      | 1880            |\n\nSubsampled and began tissue digestion, as detailed [here](./2025_07_09_subampling_extractions.qmd).\n\nBegan digestion at 7:00pm, 09/01/2025, will run for \\~48hr.\n\n[**Notes:**]{.underline}\n\n-   A power outage interrupted digestion incubation. Incubator stopped at \\~9pm 09/02/25, and I restarted it \\~7am 09/03/25, so digestions were sitting at room temp for \\~10hrs.\n\n-   Spiked in 20uL proteinase K to each tube, will let digestions sit on shaking incubator for another 12-24hr.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
