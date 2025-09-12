@@ -10,7 +10,48 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Wed, 03 Sep 2025 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 04 Sep 2025 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>Qiagen Extraction &amp; Zymo Clean of 1800s Re-extractions</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_04_rextractions_clean.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Finished re-extraction of the 5 1800s specimens using the Qiagen DNEasy Kit. Digestions began 09/01/25 7pm, pulled digestions 09/04/25 ~7am. See digestion details <a href="../../../posts/projects/SIFP_2025/2025_09_01_reextractions.html">here</a>.</p>
+<p>Followed Qiagen DNEasy extraction protocol found <a href="../../../posts/projects/SIFP_2025/2025_07_11_extractions.html">here</a>.</p>
+<p>Samples: 50368, 50603, 19054, 14399, 42137.</p>
+<p><u><strong>Notes:</strong></u></p>
+<ul>
+<li><p>Eluted in 100uL Qiagen AE</p></li>
+<li><p>50368 has lots of big sclerites.</p></li>
+</ul>
+<p>After Qiagen extraction, immediately cleaned extractions using the Zymo Genomic DNA Clean and Concentrate Kit. Followed protocol included <a href="../../../posts/projects/SIFP_2025/2025_07_12_zymo_cleanup.html">here</a>.</p>
+<p>Eluted in 50uL of 60C Zymo EB/</p>
+<p><u><strong>Notes:</strong></u></p>
+<ul>
+<li>42137 had an almost black Qiagen extraction, but almost clear after Zymo!</li>
+</ul>
+<p><u><strong>Qubit of Zymo-cleaned extractions:</strong></u></p>
+<p>Used dsDNA 1X HS kit, followed protocol found <a href="../../../posts/projects/SIFP_2025/2025_07_14_qubit.html">here</a>, using 1uL of sample input.</p>
+<p>Standard 1: 35.68<br>
+Standard 2: 16857.03<br>
+50368: <strong>84.0 ng/uL</strong><br>
+50603: <strong>9.72 ng/uL</strong><br>
+19054: <strong>1.58 ng/uL</strong><br>
+14399: <strong>30.8 ng/uL<br>
+</strong>42137: <strong>54.0 ng/uL</strong></p>
+<p>Next step would normally be a gel, but I’m short on time and want to conserve DNA. Since I already know the KAPA bead-to-sample ratio I want to use, I’ll go straight to bead clean/size selection.</p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_04_rextractions_clean.html</guid>
+  <pubDate>Thu, 04 Sep 2025 04:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Transferring Nanopore Sequencing Output Files</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -408,6 +449,91 @@ font-style: inherit;"># 41f04.csv</span></span></code></pre></div>
   <category>SIFP-2025</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_03_file_transfer.html</guid>
   <pubDate>Wed, 03 Sep 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>MinION Run, Group 2 Library 3</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_02_minion_G2L3.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Ran Group 2 Library 3 n a MinION flow cell. This is the second attempt to sequence these samples on a MinION flow cell.</p>
+<p>Group 2 Library 3 has ~700bp avg length (based on TapeStation), and a dsDNA concentration of 15.3ng/uL = 35.5fmol/uL.</p>
+<p>Want to load 200fmol in 12uL of EB:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B200fmol%7D%7B35.5%5Cfrac%7Bfmol%7D%7BuL%7D%7D%20=%205.6uL%0A"></p>
+<p>I want to conserve library for the additional wash/reloads, so will use 5uL.</p>
+<p>So mixed <strong>5uL G2L3</strong> with <strong>7uL EB</strong>.</p>
+<p>After removing Flongle adapter, ran hardware check before inserting MinION flow cell and running new pore health check.</p>
+<p><strong>Flow cell:</strong><br>
+ID: FBD36396<br>
+1528 pores on 8/14/25 pore check<br>
+1532 pores on today’s pore check</p>
+<p>Will start sequencing run <em>before priming or loading</em>, to check for flow cell issues not captured by the # of pores.</p>
+<p>Ok, lot’s of issues:</p>
+<ul>
+<li><p>1st attempt to run unloaded FBD36396 errored out within 1min (“run error”)</p></li>
+<li><p>2nd attempt also errored out immediately</p></li>
+<li><p>Unplugged MinION, restarted computer, plugged back in, and ran successful hardware check, then tried again to start a sequencing run w unloaded FBD36396. Again errored out immediately.Thought might be a flow cell issue, so got new MinION flow cell, FBD42232.</p></li>
+<li><p>attempted run of unloaded FBD42232, errored out.</p></li>
+<li><p>Thought might be related to trying to run an unloaded flow cell, so primed and loaded FBD42232 as normal. Sequencing run again errored out.</p></li>
+<li><p>Contacted Nanopore tech Support. In the meantime, transferred the loaded FBD42232 cell to the fridge (4C)</p></li>
+<li><p>ONT Support could only reccommend updating the MinKnow Software, but that requires admin access. Matt is out today, so can’t update. On Katie’s suggestion, tried using the older MinION sequencer, Mk1B.</p></li>
+<li><p>Plugged Mk1B in, ran successful hardware check</p></li>
+<li><p>Inserted loaded FBD42232 (was sitting upright in packaging at 4C for 30min - 1hr)</p></li>
+<li><p>Sequencing run didn’t error out! Performed first pore scan and began sequencing as normal</p></li>
+<li><p>Note: did NOT end up using FBD36396, stored it in fridge as normal (was never primed/loaded)</p></li>
+</ul>
+<p><u><strong>Flow cell actually used:</strong></u><br>
+ID: FBD42232<br>
+1519 pores on 8/14/25 pore check<br>
+1372 pores on sequencing start<br>
+<em>Run on Mk1B sequencer</em></p>
+<p><u><strong>Washes:</strong></u></p>
+<ul>
+<li><p>Wash #1. Planned to do this ~7hr into the run, but museum power outage on the night of 09/02/25 prevented that. Instead, washed the next morning, ~16.5hr in. Loaded 4uL G2L3 (roughly 150fmol), went from 246 pores to 754 pores.<br>
+Power outage didn’t seem to impact sequencing run, the sequencer+PC is connected to back-up power.</p></li>
+<li><p>Wash #2. Paused run at 1day 6hr for wash #2. After was, primed and loaded with 4uL G2L3 (~150fmol). After wash and reload, all pores “saturated” and unable to sequence :(. not sure what caused this, since I made no changes to wash protocol. Detailed “channel states” panel showed field of uniform light blue. Pore scan was uniform gray (“saturated”). Tried stopping run, removing cell, reinserting, and starting new run. After removing + reinserting, showed 4 active pores, 84 zero, 1763 saturated, and 190 unavailable.</p>
+<p>Theory: Before wash #2 (but after pausing run), I removed the flow cell to take a picture of the bottom of the flow cell (requested by ONT support). I didn’t think this would have any effect on the cell, since I kept all ports sealed, and the cells are regularly inverted during shipping/handling. However, during sequencing, the heating of the flow cell + electrical current causes small bubbles to form under the pore cover. There don’t normally touch the pores or affect sequencing, but maybe tilting the cell to remove/reinsert it made the bubbles touch the pores, killing them? Not sure if bubble damage would cause a “saturated” signal though…</p></li>
+</ul>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_02_minion_G2L3.html</guid>
+  <pubDate>Tue, 02 Sep 2025 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Flongle Run, Group 2 Library 3</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_01_flongle_G2L3.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Running Group 2 Library 3 on a Flongle to confirm successful library prep.</p>
+<p>Need 10fmol DNA in 5uL EB. Avg. length is ~700bp, and G2L3 library is 15.3ng/uL = 35.48fmol/uL</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B10fmol%7D%7B5uL%5C%20EB%7D%5C%20=%20%5C%20%5Cfrac%7B25.48fmol%7D%7B17.74uL%5C%20EB%7D%0A"></p>
+<p>So mix <strong>1uL G2L3</strong> with (17.74-1) = <strong>16.74uL EB</strong></p>
+<p><u><strong>Flongle flow cell:</strong></u><br>
+ID: AYK963<br>
+89 pores on 8/13/25 check<br>
+86 pores on today’s pore check<br>
+66 pores after loading</p>
+<p>I’ve noticed the Flongle flow cells lose a lot of pores during loading, and community posts suggest this is a) common, and b) related to the ONT loading protocol being too harsh. This time I tried using the community-developed <a href="./protocols/Flow_Cell_Loading_Flongle_2025-Jun-12.pdf">gentle negative pressure loading protocol</a> for Flongles.</p>
+<p>I still lost almost 25% of pores, but that’s better than last time (G3L1 Flongle), when I lost almost 50% of pores. I was also extra careful to seal the cover tape around all ports after loading.</p>
+<p><u><strong>Notes:</strong></u></p>
+<p>Barcode 24 is low, but that sample had a high proportion of reads in the G2L2 MinION run, so maybe this will help offset. Think its ok to run on a MinION.</p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_01_flongle_G2L3.html</guid>
+  <pubDate>Mon, 01 Sep 2025 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Native Barcoding, Group 2 Library 3</title>
@@ -2333,116 +2459,6 @@ G2L1: 20.0 ng/uL</p>
   <category>SIFP-2025</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_21_wash3_minion_G1L4.html</guid>
   <pubDate>Thu, 21 Aug 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Wash #1, MinION Group 1 Library 4</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_20_wash1_minion_G1L4.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>At 22.5 hrs into the Group1 Library 4 MinION run, there wasnoticable plateau of cumulative output and pore loss (from 1383 active pores, dropped to 474 active pores).</p>
-<p>At 22.5 hrs, paused the run and washed the flow cell using the Flow Cell Wash Kit, according to the ONT <a href="./protocols/flow-cell-wash-kit-exp-wsh004-document-checklist-MinION-en-WFC_9120_v1_revS_25Jul2025-24.pdf">Flow Cell Wash Kit protocol</a>.</p>
-<p>After wash, reloaded the MinION flow cell (FBD09922) with prepared library. I again made the library with 2X the recommended concentration (200fmol DNA instead of 100fmol DNA). After reloading, resumed the run.</p>
-<p>After resuming the run, the flow cell was back to 845 pores, though on pore scan 293 of those were “reserved”, so I’m not sure how many of the recovered pores will actually be sequencing.</p>
-<p>Before wash, pore activity showed:</p>
-<ul>
-<li>15.6% of pores sequencing, 15.7% available<br>
-So 30% of pores still live, and 50% occupancy of available pores</li>
-</ul>
-<p>After wash/reload, pore activity showed:</p>
-<ul>
-<li>30.8% sequencing, 20.2% available<br>
-So 51% of pores stil ive, and ~60% pore occupancy of those available</li>
-</ul>
-<p><u><strong>Notes:</strong></u></p>
-<ul>
-<li><p>Barcodes are unbalanced (#12: 1.3M, #13: 1.5M, #14: 2.5M), so there may have been an issue during barcode ligation. Maybe the barcodes weren’t fully mixed before ligation? Maybe the sample concentrations are inaccurate?</p></li>
-<li><p>1/2 life of pores is ~11hrs. At 0hr, 1383 pores, at 11hr, 704 pores.</p></li>
-</ul>
-
-
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_20_wash1_minion_G1L4.html</guid>
-  <pubDate>Wed, 20 Aug 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Wash #2, MinION Group 1 Library 4</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_20_wash2_minion_G1L4.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>At 1 day, 10hrs into the run (~12hr after wash #1), performed a second wash on the MinION flow cell.</p>
-<p>First, needed to get a library of 200fmol. I previously diluted a portion of G1L4 to 100fmol/12uL, in a total of 36uL. I used 12uL of this for the first load, so I now have 24uL of diluted library. I also still have some undiluted Library 4. I need to add some undiluted Library 4 to my dilution to raise the concentration to 200fmol/12uL (since I observed higher pore occupancy with more input DNA).</p>
-<p><u>Calculate how many uL of undiluted Library 4 to add:</u></p>
-<p>A = concentration of Library 4 = 36.6 ng/uL<br>
-B = concentration of dilution = 100fmol/12uL = 43.1ng/12uL = 3.58 ng/uL<br>
-v = volume of dilution = 24uL<br>
-x = volume of Library 4</p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7Btotal%5C%20DNA%7D%7Btotal%5C%20volume%7D%20=%20%5Cfrac%7B(Bv+Ax)%7D%7Bv+x%7D%20=%202B%20%5C%20%5C%20%5C%20%5CRightarrow%20%5C%20%5C%20%5C%20x(A-2B)=Bv%20%5C%20%5C%20%5C%20%5CRightarrow%20%5C%20%5C%20%5C%20x=%5Cfrac%7BBv%7D%7BA-2B%7D"></p>
-<p><img src="https://latex.codecogs.com/png.latex?x=%5Cfrac%7BBv%7D%7BA-2B%7D%20=%20%5Cfrac%7B3.58%5Cfrac%7Bng%7D%7BuL%7D*24uL%7D%7B36.6%5Cfrac%7Bng%7D%7BuL%7D-2*3.58%5Cfrac%7Bng%7D%7BuL%7D%7D%20=%20%5Cfrac%7B85.92ng%7D%7B29.44%5Cfrac%7Bng%7D%7BuL%7D%7D%20=%202.92uL"></p>
-<p>Added 2.92uL of undiluted G1L4 to the MinION dilution to bring the concentration up to 200fmol/12uL. this is twice the recommended concentration for MinION loading.</p>
-<p>I then used this newdilution to wash and reload the Group 1 Library 4 flow cell.</p>
-<p>541 pores (129 reserved, 412 available) before wash, 693 pores (255 reserved, 438 available)</p>
-
-
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_20_wash2_minion_G1L4.html</guid>
-  <pubDate>Wed, 20 Aug 2025 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>MinION run, Group 1 Library 4</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_19_minion_G1L4.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Ok, today’s the day! I have a library I’m happy with that also has a lot of DNA, for multiple cycles of wash/reload. Will be runnign Group 1 Library 4 on a MinION flow cell.</p>
-<p>Following MinION loading protocol found in the <a href="./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-24-document-checklist-MinION-en-NBE_9169_v114_revV_02Jul2025-39.pdf">Native Barcoding 96 gDNA protocol</a>.</p>
-<p><u>Make a diluted Final Library 4:</u></p>
-<p>Though TapeStation told me these DNA extractions were ~1700bp on average, the Flongle run showed a read distribution centered around ~700bp (shearing during library prep? fragmentation from being stored frozen?). This is the length estimate I’ll use for mol -&gt; mass conversions.</p>
-<p>The protocol recommends <strong>100fmol in 12uL EB</strong> for &lt;1kb DNA. Using NEB calculator, 100fmol of 700bp DNA is <strong>43.1ng DNA</strong>.</p>
-<p>Group 1 Library 4 is 36.6ng/uL, so <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B43.1ng%5C%20DNA%7D%7B36.6%5Cfrac%7Bng%7D%7BuL%7D%7D%20=%201.17uL%5C%20G1L4"></p>
-<p>Actually, I’ll need more diluted Library 4 later for wash/reload, so I’ll just mix several loads-worth now.</p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B43.1ng%7D%7B12uL%7D%20=%20%5Cfrac%7B129.3ng%5C%20DNA%7D%7B36uL%5C%20EB%7D"></p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B129.3ng%5C%20DNA%7D%7B36.6%5Cfrac%7Bng%7D%7BuL%7D%7D%20=%203.5uL%5C%20G1L4"></p>
-<p>So combine <strong>3.5uL G1L4</strong> with (36-3.5) = <strong>32.5uL EB.</strong></p>
-<p>Loaded MinION flow cell according to protocol and began 72hr run.</p>
-<p><u><strong>MinION flow cell</strong></u><br>
-SN: B024226802<br>
-LOT: 11004308<br>
-ID: FBD09922<br>
-1428 pores on check</p>
-<section id="troubleshooting" class="level3">
-<h3 class="anchored" data-anchor-id="troubleshooting">Troubleshooting:</h3>
-<p>We noticed after the first 10 minutes of the run that the pore occupancy was low (roughly 50% of the available pores were sequencing). Dan suggested this may be due to loading too little DNA, so we decided to try spiking in more library at a higher concentration, without washing the flow cell.</p>
-<p>I made a dilution of G1L4 at double the recommended concentration:</p>
-<p>Recommended: 100fmol = 43.1ng<br>
-Doubled: 200fmol = 86.2ng</p>
-<p>So I need 86.2ng DNA in 12uL EB.</p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B86.2ng%5C%20DNA%7D%7B36.6%5Cfrac%7Bng%7D%7BuL%7D%7D%20=%202.4uL%5C%20G1L4"></p>
-<p>So added <strong>2.4ng G1L4</strong> to (12-2.4) = <strong>9.6uL EB</strong>.</p>
-<p>Prepared the second load as instructed in protocol (SB, LIB, and 2X concentration G1L4 dilution). Paused MinION run at 17minutes and added full 75uL of second library to the SpotOn port in dropwise fashion (opened priming port first to create negative pressure). Library was absorbed into cell as desired.</p>
-<p>Un-paused run, and it resumed as normal. Pore occupancy steadily increased. by minute 30, ~75% of available pores were sequencing – the spike of second library was successful!</p>
-
-
-</section>
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_08_19_minion_G1L4.html</guid>
-  <pubDate>Tue, 19 Aug 2025 04:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

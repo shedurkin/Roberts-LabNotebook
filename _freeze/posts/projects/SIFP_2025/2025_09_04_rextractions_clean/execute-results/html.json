@@ -1,0 +1,14 @@
+{
+  "hash": "44deceb783b16e6fb1abf3f6712420fb",
+  "result": {
+    "markdown": "---\ntitle: \"Qiagen Extraction & Zymo Clean of 1800s Re-extractions\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-09-04\"\ncategories: [\"SIFP-2025\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: FALSE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nFinished re-extraction of the 5 1800s specimens using the Qiagen DNEasy Kit. Digestions began 09/01/25 7pm, pulled digestions 09/04/25 \\~7am. See digestion details [here](./2025_09_01_reextractions.qmd).\n\nFollowed Qiagen DNEasy extraction protocol found [here](2025_07_11_extractions.qmd).\n\nSamples: 50368, 50603, 19054, 14399, 42137.\n\n[**Notes:**]{.underline}\n\n-   Eluted in 100uL Qiagen AE\n\n-   50368 has lots of big sclerites.\n\nAfter Qiagen extraction, immediately cleaned extractions using the Zymo Genomic DNA Clean and Concentrate Kit. Followed protocol included [here](2025_07_12_zymo_cleanup.qmd).\n\nEluted in 50uL of 60C Zymo EB/\n\n[**Notes:**]{.underline}\n\n-   42137 had an almost black Qiagen extraction, but almost clear after Zymo!\n\n[**Qubit of Zymo-cleaned extractions:**]{.underline}\n\nUsed dsDNA 1X HS kit, followed protocol found [here](./2025_07_14_qubit.qmd), using 1uL of sample input.\n\nStandard 1: 35.68\\\nStandard 2: 16857.03\\\n50368: **84.0 ng/uL**\\\n50603: **9.72 ng/uL**\\\n19054: **1.58 ng/uL**\\\n14399: **30.8 ng/uL\\\n**42137: **54.0 ng/uL**\n\nNext step would normally be a gel, but I'm short on time and want to conserve DNA. Since I already know the KAPA bead-to-sample ratio I want to use, I'll go straight to bead clean/size selection.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

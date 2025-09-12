@@ -1,0 +1,37 @@
+---
+title: "Flongle Run, Group 2 Library 3"
+author: "Kathleen Durkin"
+date: "2025-09-01"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: FALSE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Running Group 2 Library 3 on a Flongle to confirm successful library prep.
+
+Need 10fmol DNA in 5uL EB. Avg. length is \~700bp, and G2L3 library is 15.3ng/uL = 35.48fmol/uL
+
+$$
+\frac{10fmol}{5uL\ EB}\ = \ \frac{25.48fmol}{17.74uL\ EB}
+$$
+
+So mix **1uL G2L3** with (17.74-1) = **16.74uL EB**
+
+[**Flongle flow cell:**]{.underline}\
+ID: AYK963\
+89 pores on 8/13/25 check\
+86 pores on today's pore check\
+66 pores after loading
+
+I've noticed the Flongle flow cells lose a lot of pores during loading, and community posts suggest this is a) common, and b) related to the ONT loading protocol being too harsh. This time I tried using the community-developed [gentle negative pressure loading protocol](./protocols/Flow_Cell_Loading_Flongle_2025-Jun-12.pdf) for Flongles.
+
+I still lost almost 25% of pores, but that's better than last time (G3L1 Flongle), when I lost almost 50% of pores. I was also extra careful to seal the cover tape around all ports after loading.
+
+[**Notes:**]{.underline}
+
+Barcode 24 is low, but that sample had a high proportion of reads in the G2L2 MinION run, so maybe this will help offset. Think its ok to run on a MinION.

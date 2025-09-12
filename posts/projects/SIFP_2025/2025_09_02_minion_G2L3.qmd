@@ -1,0 +1,75 @@
+---
+title: "MinION Run, Group 2 Library 3"
+author: "Kathleen Durkin"
+date: "2025-09-02"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: FALSE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Ran Group 2 Library 3 n a MinION flow cell. This is the second attempt to sequence these samples on a MinION flow cell.
+
+Group 2 Library 3 has \~700bp avg length (based on TapeStation), and a dsDNA concentration of 15.3ng/uL = 35.5fmol/uL.
+
+Want to load 200fmol in 12uL of EB:
+
+$$
+\frac{200fmol}{35.5\frac{fmol}{uL}} = 5.6uL
+$$
+
+I want to conserve library for the additional wash/reloads, so will use 5uL.
+
+So mixed **5uL G2L3** with **7uL EB**.
+
+After removing Flongle adapter, ran hardware check before inserting MinION flow cell and running new pore health check.
+
+**Flow cell:**\
+ID: FBD36396\
+1528 pores on 8/14/25 pore check\
+1532 pores on today's pore check
+
+Will start sequencing run *before priming or loading*, to check for flow cell issues not captured by the \# of pores.
+
+Ok, lot's of issues:
+
+-   1st attempt to run unloaded FBD36396 errored out within 1min ("run error")
+
+-   2nd attempt also errored out immediately
+
+-   Unplugged MinION, restarted computer, plugged back in, and ran successful hardware check, then tried again to start a sequencing run w unloaded FBD36396. Again errored out immediately.Thought might be a flow cell issue, so got new MinION flow cell, FBD42232.
+
+-   attempted run of unloaded FBD42232, errored out.
+
+-   Thought might be related to trying to run an unloaded flow cell, so primed and loaded FBD42232 as normal. Sequencing run again errored out.
+
+-   Contacted Nanopore tech Support. In the meantime, transferred the loaded FBD42232 cell to the fridge (4C)
+
+-   ONT Support could only reccommend updating the MinKnow Software, but that requires admin access. Matt is out today, so can't update. On Katie's suggestion, tried using the older MinION sequencer, Mk1B.
+
+-   Plugged Mk1B in, ran successful hardware check
+
+-   Inserted loaded FBD42232 (was sitting upright in packaging at 4C for 30min - 1hr)
+
+-   Sequencing run didn't error out! Performed first pore scan and began sequencing as normal
+
+-   Note: did NOT end up using FBD36396, stored it in fridge as normal (was never primed/loaded)
+
+[**Flow cell actually used:**]{.underline}\
+ID: FBD42232\
+1519 pores on 8/14/25 pore check\
+1372 pores on sequencing start\
+*Run on Mk1B sequencer*
+
+[**Washes:**]{.underline}
+
+-   Wash #1. Planned to do this \~7hr into the run, but museum power outage on the night of 09/02/25 prevented that. Instead, washed the next morning, \~16.5hr in. Loaded 4uL G2L3 (roughly 150fmol), went from 246 pores to 754 pores.\
+    Power outage didn't seem to impact sequencing run, the sequencer+PC is connected to back-up power.
+
+-   Wash #2. Paused run at 1day 6hr for wash #2. After was, primed and loaded with 4uL G2L3 (\~150fmol). After wash and reload, all pores "saturated" and unable to sequence :(. not sure what caused this, since I made no changes to wash protocol. Detailed "channel states" panel showed field of uniform light blue. Pore scan was uniform gray ("saturated"). Tried stopping run, removing cell, reinserting, and starting new run. After removing + reinserting, showed 4 active pores, 84 zero, 1763 saturated, and 190 unavailable.
+
+    Theory: Before wash #2 (but after pausing run), I removed the flow cell to take a picture of the bottom of the flow cell (requested by ONT support). I didn't think this would have any effect on the cell, since I kept all ports sealed, and the cells are regularly inverted during shipping/handling. However, during sequencing, the heating of the flow cell + electrical current causes small bubbles to form under the pore cover. There don't normally touch the pores or affect sequencing, but maybe tilting the cell to remove/reinsert it made the bubbles touch the pores, killing them? Not sure if bubble damage would cause a "saturated" signal though...
