@@ -1,0 +1,17 @@
+---
+title: "Lab Notebook -- Scanned Physical Version"
+author: "Kathleen Durkin"
+date: "2025-09-12"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: FALSE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Scanned my physical lab notebook and saved to pdf as part of this repo -- view it [here](./images/SIFP_2025_Lab_Notebook_Scanned.pdf).
+
+My lab notebook will need to remain at the Smithsonian NMNH, where I conducted this research. To keep a copy for future reference, I've already been transcribing entries into this digital lab notebook. I also, however, want an exact copy, just in case I've made any transcription errors.
