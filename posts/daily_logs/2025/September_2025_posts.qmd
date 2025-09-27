@@ -22,6 +22,12 @@ execute:
 
 #### Friday
 
+-   finished all SIFP notebook digital transcriptions
+
+-   finished SIFP file transfers, checksum generation, and repo organization
+
+-   linked all SIFP tapestation summaries
+
 ## 25 September 2025
 
 #### Thursday

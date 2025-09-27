@@ -14,16 +14,18 @@ I'm writing this in the last few days of September, as the Fall 2025 quarter is 
 
 ### SIFP
 
--   Finish transcribing all SIFP lab notebook entries into digital lab notebook
+-   [x] Finish transcribing all SIFP lab notebook entries into digital lab notebook
 
--   Finish all SIFP file transfers, including checksum generation once folders are unzipped
+-   [x] Finish all SIFP file transfers, including checksum generation once folders are unzipped
 
--   Add links to sequencing run reports to all sequencing lab notebook entries, once files are fully available on Gannet
+-   [x] Add links to full tapestation summaries once files are available on Gannet
 
--   Compile summary stats on all MinION sequencing runs (# bases, \# reads, avg. coverage, etc.)
+-   [ ] Add links to sequencing run reports to all sequencing lab notebook entries, once files are fully available on Gannet
 
--   Estimate contamination (e.g., fungal) in all MinION sequencing runs, using Kraken
+-   [ ] Compile summary stats on all MinION sequencing runs (# bases, \# reads, avg. coverage, etc.)
+
+-   [ ] Estimate contamination (e.g., fungal) in all MinION sequencing runs, using Kraken
 
 ### DDE
 
--   Figure out DDE figures -- what's the big takeaway(s) of the paper, and how can we best show that in \~3 figures.
+-   [ ] Figure out DDE figures -- what's the big takeaway(s) of the paper, and how can we best show that in \~3 figures.
