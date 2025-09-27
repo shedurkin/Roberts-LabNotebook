@@ -14,7 +14,7 @@ bibliography: ../../../references.bib
 
 After cleaning and concentrating all extractions using KAPA Pure Beads, used the TapeStation with a Genomic Tape to check DNA concetration, quality, and size distribution. Followed [protocol for Agilent 4200 gDNA](./protocols/Agilent_4200_gDNA_QuickGuide.pdf).
 
-See full TapeStation summaries here: [Tape 1 summary](./data/2025_07_25_TapeStation/2025_07_25_summary_tape1.pdf), [Tape 2 summary](./data/2025_07_25_TapeStation/2025_07_25_summary_tape2.pdf)
+See full TapeStation summaries here: [Tape 1 summary](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/TapeStation/2025_07_25_summary_tape1.pdf), [Tape 2 summary](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/TapeStation/2025_07_25_summary_tape2.pdf)
 
 ![Oldest age group](./data/2025_07_25_TapeStation/2025_07_25_comparison_oldGroup.png)
 
@@ -25,7 +25,7 @@ See full TapeStation summaries here: [Tape 1 summary](./data/2025_07_25_TapeStat
 (Note the above plots have different y-axis scales)
 
 | Tape \# | Catalog \# | Year Collected | DIN | Conc. (ng/uL) | \% reads \>300bp long |
-|------------|------------|-------------|------------|------------|------------|
+|------------|------------|------------|------------|------------|------------|
 | 1       | 14366      | 1886           | \-  | 1.57          | 63.15                 |
 | 1       | 19054      | 1898           | 1.2 | 21.6          | 82.13                 |
 | 1       | 52295      | 1912           | 1.0 | 19.9          | 61.63                 |

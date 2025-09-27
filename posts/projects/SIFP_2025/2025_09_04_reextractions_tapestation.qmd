@@ -33,7 +33,7 @@ Followed HS D5000 protocol found [here](./protocols/Agilent_4200_D5000_QuickGuid
 | G   | 1606826     |         |
 | H   | 1740336     |         |
 
-Full tapestation report.
+[Full tapestation report](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/TapeStation/2025_09_04_summary.pdf).
 
 [**Notes:**]{.underline}
 

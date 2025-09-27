@@ -53,7 +53,7 @@ ggplot(df, aes(x = Bead.ratio, y = Conc.ngul, color = Catalog.num)) +
 
 ![](data/2025_07_24_TapeStation/2025_07_24_comparison_51892_snpsht.png)
 
-See [full TapeStation summary](./data/2025_07_24_TapeStation/2025_07_24_summary.pdf) for more details!
+See [full ](./data/2025_07_24_TapeStation/2025_07_24_summary.pdf)[TapeStation](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/TapeStation/2025_07_24_summary.pdff)[summary](./data/2025_07_24_TapeStation/2025_07_24_summary.pdf) for more details!
 
 ### Conclusions:
 
