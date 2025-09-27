@@ -1,0 +1,55 @@
+---
+title: "Native Barcoding Prep, Group 4 Library 1"
+author: "Kathleen Durkin"
+date: "2025-09-04"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Library prep for Group 4, which is a slightly updated selection of 1800s samples.
+
+From Qubit + TapeStation output for 1800s re-extractions, 50368, 42137, 14399 have highest concentrations and decent length distributions.
+
+| Catalog \# | Qubit conc ng/ml | TapeStation avg length | Conc. Fmol/ul |
+|------------|------------------|------------------------|---------------|
+| 50368      | 135.2 ng/ul      | 681 bp                 | 322.3 fmol/ul |
+| 42137      | 54.4 ng/ul       | 555 bp                 | 159.1 fmol/ul |
+| 14399      | 42.8 ng/ul       | 591 bp                 | 117.6 fmol/ul |
+
+14399 has lowest concentration, so its the limiter in taking equimolar Input from each extraction.
+
+11 ul of 14399 = 11uL \* 117.6fmol/ul = 1293.6 fmol \~= **1300 fmol**
+
+So, I want to use 1300 fmol of input from all 3 samples:
+
+-   50368: 1300 fmol / 322.3 fmol/ul = 4.031 = **4 ul**
+
+-   42137: 1300 fmol / 159.1 fmol/ul = 8.171 = **8.2 ul**
+
+So, for library prep:
+
+| Catalog \# | ul for 1300 fmol | rem. volume ul | Barcode |
+|------------|------------------|----------------|---------|
+| 50368      | 4                | 7              | 27      |
+| 42137      | 8.2              | 2.8            | 28      |
+| 14399      | 11               | 0              | 29      |
+
+Followed [ONT Native Barcoding 96 V14 gDNA protocol](./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-24-document-checklist-MinION-en-NBE_9169_v114_revV_02Jul2025-39.pdf), with the following modifications:
+
+-   changed input quantity for each sample (see above)
+
+-   Did 3 full barcode ligation rxns, each with 3.75 ul of end-prepped DNA, then pooled.
+
+-   Low on SFB, so washed beads during barcode clean with fresh 80% ethanol
+
+[**Qubit:**\
+]{.underline}Standard 1: 38.87\
+Standard 2: 16411.03\
+G4L1 barcodes: 34.0 ng/uL\
+G4L1 : **59.2 ng/uL**

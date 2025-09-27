@@ -1,0 +1,68 @@
+---
+title: "Equipment Details"
+author: "Kathleen Durkin"
+date: "2025-09-12"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Details on all equipment used, during this research
+
+[**Tape Station 4200**]{.underline}\
+SN: DEDAA03520
+
+[**Epoch Spectrophotometer**]{.underline}\
+SN: 267892
+
+[**Qubit 4 Flourometer**]{.underline}\
+SN: 2322618105033
+
+[**MinION MK1D Sequencer**]{.underline}\
+REF: MIN-101B\
+SN: D001000743\
+LOT: 60400003
+
+[**MinION MK1B Sequencer**]{.underline}\
+REF: MIN-101B\
+SN: 1002031447
+
+Stored MK1D & Mk1B in boxes w/ their respective test cells. Stored both, plus their labelled cords, in the drawer to the left of the sequencing computer (2nd down).
+
+[**Flongle Adapter Product**]{.underline}\
+Code: ADP-FLG001\
+A100007434
+
+[**Minknow Software**]{.underline}\
+[Updated details (After MinION run G3L2)\
+]{.underline}Minknow installed version 25.05.14
+
+|                 |        |
+|-----------------|--------|
+| **Subpackages** |        |
+| MinKnow Core    | 6.5.14 |
+| Dorado          | 7.9.8  |
+| Bream           | 8.5.4  |
+| Script Config.  | 6.5.7  |
+| **Firmware**    |        |
+| MinION FPGA     | 1.2.1  |
+| USB FX3         | 1.2.7  |
+
+[Old details (thru minion run G3L2) details]{.underline}\
+Minknow installed version 25.03.9
+
+|                 |        |
+|-----------------|--------|
+| **Subpackages** |        |
+| MinKnow core    | 6.4.9  |
+| Dorado          | 7.8.3  |
+| Bream           | 8.4.4  |
+| Script Config   | 6.4.11 |
+| **Firmware**    |        |
+| MinION FPGA     | 2.0.3  |
+| USB IMXRT1050   | 2.1.3  |

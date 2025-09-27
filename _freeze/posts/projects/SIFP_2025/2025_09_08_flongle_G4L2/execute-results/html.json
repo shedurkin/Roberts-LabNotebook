@@ -1,0 +1,14 @@
+{
+  "hash": "17e56b6cb0fedde0ecaaa835bc41527c",
+  "result": {
+    "markdown": "---\ntitle: \"Flongle Run, Group 4 Library 2\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-09-08\"\ncategories: [\"SIFP-2025\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: TRUE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nRun Flongle flow cell with G4L2 to confirm library prep.\n\nAgain, will use 30 fmol input DNA and gentle negative pressure loading protocol (print-out in back of lab notebook)\n\nG4L2 has avg sample length of 609bp, concentration of 22 ng/ml =\\> 58.64 fmol/ul\n\n$$\n\\frac{30fmol\\ DNA}{5uL\\ EB} \\Rightarrow \\frac{58.64fmol}{9.77uL}\n$$\n\nSo mix **1ul G4L2** with (9.77ul-1) = **8.77ul EB** then use 5ul.\n\n[**Flowcell**]{.underline}\\\nID: AXT6SS \\\n82 pores on 09/01/25 check \\\n84 pores on 09/08/25 check \\\n50 pores after loading\n\nAgain, back to running on MKID.\n\n[**Notes:**]{.underline}\n\n-   Good occupancy on start though \\~80% after 45min.\n\n-   Already seeing accumulation of \"unavailable\" pores\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

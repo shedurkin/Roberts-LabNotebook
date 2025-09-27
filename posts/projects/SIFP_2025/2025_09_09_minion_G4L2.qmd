@@ -1,0 +1,81 @@
+---
+title: "MinION Run, Group 4 Library 2 & DCS"
+author: "Kathleen Durkin"
+date: "2025-09-09"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Sequencing G4L2 on a minION flow cell. Also running DCS library, first to check flow cell function.
+
+### **DCS Library**
+
+DCS library is 3.6 kb long and 0.776 ng/ml = 0.35 fmol/μL. Will load full 12 μL of DCS library, though it will be way below the recommended loading quantity of 100 fmol.
+
+[**Flow cell\
+**]{.underline} ID: FBD36396 \
+1528 pores on 08/14/25 check \
+Note that this is the flow cell I originally tried during the "run error" problems (see [post](./2025_09_02_minion_G2L3.qmd))
+
+MKID passed hardware check after removing Flongle adapter.
+
+**Another "run error" on flow cell check!**
+
+-   Removed + replaced flow cell : veran check - again "run error"
+-   Tried [***switching back to MK1B sequencer***]{.underline}
+-   MK1B hardware check passed
+-   Flow cell check passed: **1512 pores found**
+
+Started sequencing DCS with following settings:
+
+-   All modified basecalling
+
+-   No reserved pores
+
+-   Pore scans every 30 min
+
+**1423 pores after run start**
+
+Stopped DCS run after 2hrs, after 4 pore scans. 1308 pores available on last pore scan.
+
+Wow, this run had really strong output, almost no pore loss in first 2 hours, etc. [Clearly other runs are having sample issues.]{.underline}
+
+### G4L2 library
+
+Now using the same flow cell to sequence G4L2 (flow cell, FBD 36396).
+
+First washed flow cell using normal Flow Cell wash, protocol. Then loaded with 200 fmol in 12 ul EB:
+
+G4L2 = 22 ng/ul \@ 609 bp avg. length, so 58.64 fmol/ul.
+
+200 fmol / 58.64 fmol/ul = 3.4 ul. So mixed **3.4 ul G4L2** with (12-3.4) = **8.6 ul EB.**
+
+After priming + loading, started run with the following settings:
+
+-   all modified basecalling
+
+-   pore check every 1.5 hrs
+
+-   no reserved pores
+
+**1124 pores available**, after run start, so the DCS run + wash, prime & load cost me \~ 300 pores
+
+[**Notes**]{.underline}
+
+-   Again, relatively high adapter content (5% compared to 1-2% from earlier runs), though I again think this is at least partially due to the shorter reads.
+-   Keep in mind that this is the same flow cell used to run the DCS library, so any reads with the 33 barcode are library that wasn't removed during the flow cell wash.
+
+[**Wash #1**]{.underline} \
+\@ 8hr 40 min into the run, (though this is technically the 2nd wash of this flow cell). **180 pores** left. Reloaded with 200 fmol of G4L2. **609 pores** after wash.
+
+[**Wash #2**]{.underline} \
+\@ 22 hr 15min., **130 pores** left, Reloaded with 200 fmol. Had a channel blockage when trying to load the 200 mL priming mix, just before loading. Unable to add the 200 mL w/o overflowing the Spot ON port. Ended up fixing it by drawing up a bunch of library beads that were clogged up by the waste port. I was then able to load as normal. This means the second load of priming mix was actually only \~150 mL, and the first load of 200 mL priming was sitting on the pores for 10 - 15 min, not the instructed 5 min. **463 pores** available after the wash.
+
+[**Wash #3**\
+]{.underline}\@ 1 day 8 hr in. **132 pores** left. Reloaded with 1.5 mL G4L2 + 5 mL Flonge G4L2 + 5 mL EB (should be 1.5 \* 58.64 fmol/mL + 30 fmol = 118 fmol) **332 pores** after wash + reload.

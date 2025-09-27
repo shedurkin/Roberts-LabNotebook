@@ -1,0 +1,79 @@
+---
+title: "Inventory of Kits/Reagents"
+author: "Kathleen Durkin"
+date: "2025-09-12"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+[**Native Barcoding 96 V14 kit**]{.underline}\
+REF: SQK-NBD114.96\
+LOT: NBD1496.40.0007\
+0451\
+11/12 rxns used, 1 reaction remaining
+
+[**Flongle Sequencing Expansion**]{.underline}\
+REF: EXP-FSE002\
+LOT: FSE002.30.0005\
+0780\
+10/12 rxns used, 2 reactions remaining
+
+[**Sequencing Auxiliary Vials**]{.underline}\
+REF: EXP-AUX003\
+LOT: AUX003.30.0020\
+0968
+
+[**Flow Cell Wash Kits**]{.underline}\
+Product Code: EXP-WSH004\
+3 kits (in order of use):\
+Batch #: WSH004.20.0015, 1949. 0 rxns remaining\
+Batch #: WSH004.20.0015, 1950. 0 rxns remaining\
+Batch #: WSH004.20.0015, 1948. 2/6 rxns used, 4 rxns remaining
+
+[**Flongle Flow Cells**]{.underline}\
+Product Code: FLO-FLG114\
+6 remaining cells
+
+| LOT      | SN         | ID     | #pores |
+|----------|------------|--------|--------|
+| 33001524 | B028103996 | AXS408 | 40     |
+| 33001524 | B028103978 | AYL256 | 35     |
+| 33001524 | B028104142 | A9L029 | 44     |
+| 33001524 | B028104112 | AXS867 | 39     |
+| 33001548 | B028107472 | AZG145 | 62     |
+| 33001548 | B028107456 | AXT258 | 61     |
+
+[**Blunt/TA Ligase Master mix**]{.underline}\
+Lot: 10290934\
+Exp. 06/27\
+5ul remaining
+
+[**NEBNext Quick ligation Module**]{.underline}\
+Lot: 10266327\
+Exp. 01/27\
+Buffer: 135ul Remaining\
+Mix: 30ul remaining,
+
+[**NEBNext FFPE DNA Repair Mix**]{.underline}\
+Lot: 10290885\
+Exp. 07/26\
+Buffer: 170ul remaining\
+Mix: 40ul remaining,
+
+[**NEBNext Ultra II End-Repair/dA-Tailing Module**]{.underline}\
+Lot: 10286177\
+Exp. 04/26\
+Buffer: 175 ul remaining\
+Mix: 55 ul remaining,
+
+Stored Nanopore kits, in a labelled bag on the bottom shelf of the freezer next to my bench (Kingpin 3).
+
+Stored DNA extractions and NEB reagents, in labelled boxes on the 3rd shelf from the top of the freezer next to my bench (Kingpin 3).
+
+Stored Flongle flow cells, in Iabelled bag, on the door of the fridge next to my lab bench (Kingpin 3).

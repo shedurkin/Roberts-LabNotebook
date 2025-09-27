@@ -1,0 +1,14 @@
+{
+  "hash": "0b4e7df2d8fb609bb26689ae38c86fe2",
+  "result": {
+    "markdown": "---\ntitle: \"Inventory of Kits/Reagents\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-09-12\"\ncategories: [\"SIFP-2025\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: TRUE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\n[**Native Barcoding 96 V14 kit**]{.underline}\\\nREF: SQK-NBD114.96\\\nLOT: NBD1496.40.0007\\\n0451\\\n11/12 rxns used, 1 reaction remaining\n\n[**Flongle Sequencing Expansion**]{.underline}\\\nREF: EXP-FSE002\\\nLOT: FSE002.30.0005\\\n0780\\\n10/12 rxns used, 2 reactions remaining\n\n[**Sequencing Auxiliary Vials**]{.underline}\\\nREF: EXP-AUX003\\\nLOT: AUX003.30.0020\\\n0968\n\n[**Flow Cell Wash Kits**]{.underline}\\\nProduct Code: EXP-WSH004\\\n3 kits (in order of use):\\\nBatch #: WSH004.20.0015, 1949. 0 rxns remaining\\\nBatch #: WSH004.20.0015, 1950. 0 rxns remaining\\\nBatch #: WSH004.20.0015, 1948. 2/6 rxns used, 4 rxns remaining\n\n[**Flongle Flow Cells**]{.underline}\\\nProduct Code: FLO-FLG114\\\n6 remaining cells\n\n| LOT      | SN         | ID     | #pores |\n|----------|------------|--------|--------|\n| 33001524 | B028103996 | AXS408 | 40     |\n| 33001524 | B028103978 | AYL256 | 35     |\n| 33001524 | B028104142 | A9L029 | 44     |\n| 33001524 | B028104112 | AXS867 | 39     |\n| 33001548 | B028107472 | AZG145 | 62     |\n| 33001548 | B028107456 | AXT258 | 61     |\n\n[**Blunt/TA Ligase Master mix**]{.underline} \\\nLot: 10290934 \\\nExp. 06/27 \\\n5ul remaining\n\n[**NEBNext Quick ligation Module**]{.underline}\\\nLot: 10266327 \\\nExp. 01/27\\\nBuffer: 135ul Remaining \\\nMix: 30ul remaining,\n\n[**NEBNext FFPE DNA Repair Mix**]{.underline} \\\nLot: 10290885 \\\nExp. 07/26 \\\nBuffer: 170ul remaining \\\nMix: 40ul remaining,\n\n[**NEBNext Ultra II End-Repair/dA-Tailing Module**]{.underline} \\\nLot: 10286177\\\nExp. 04/26 \\\nBuffer: 175 ul remaining \\\nMix: 55 ul remaining,\n\nStored Nanopore kits, in a labelled bag on the bottom shelf of the freezer next to my bench (Kingpin 3).\n\nStored DNA extractions and NEB reagents, in labelled boxes on the 3rd shelf from the top of the freezer next to my bench (Kingpin 3).\n\nStored Flongle flow cells, in Iabelled bag, on the door of the fridge next to my lab bench (Kingpin 3).\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

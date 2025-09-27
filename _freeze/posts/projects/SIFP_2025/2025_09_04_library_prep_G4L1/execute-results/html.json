@@ -1,0 +1,14 @@
+{
+  "hash": "1d38373c430a7ee826935b16efbce19c",
+  "result": {
+    "markdown": "---\ntitle: \"Native Barcoding Prep, Group 4 Library 1\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-09-04\"\ncategories: [\"SIFP-2025\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: TRUE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nLibrary prep for Group 4, which is a slightly updated selection of 1800s samples.\n\nFrom Qubit + TapeStation output for 1800s re-extractions, 50368, 42137, 14399 have highest concentrations and decent length distributions.\n\n| Catalog \\# | Qubit conc ng/ml | TapeStation avg length | Conc. Fmol/ul |\n|------------|------------------|------------------------|---------------|\n| 50368      | 135.2 ng/ul      | 681 bp                 | 322.3 fmol/ul |\n| 42137      | 54.4 ng/ul       | 555 bp                 | 159.1 fmol/ul |\n| 14399      | 42.8 ng/ul       | 591 bp                 | 117.6 fmol/ul |\n\n14399 has lowest concentration, so its the limiter in taking equimolar Input from each extraction.\n\n11 ul of 14399 = 11uL \\* 117.6fmol/ul = 1293.6 fmol \\~= **1300 fmol**\n\nSo, I want to use 1300 fmol of input from all 3 samples:\n\n-   50368: 1300 fmol / 322.3 fmol/ul = 4.031 = **4 ul**\n\n-   42137: 1300 fmol / 159.1 fmol/ul = 8.171 = **8.2 ul**\n\nSo, for library prep:\n\n| Catalog \\# | ul for 1300 fmol | rem. volume ul | Barcode |\n|------------|------------------|----------------|---------|\n| 50368      | 4                | 7              | 27      |\n| 42137      | 8.2              | 2.8            | 28      |\n| 14399      | 11               | 0              | 29      |\n\nFollowed [ONT Native Barcoding 96 V14 gDNA protocol](./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-24-document-checklist-MinION-en-NBE_9169_v114_revV_02Jul2025-39.pdf), with the following modifications:\n\n-   changed input quantity for each sample (see above)\n\n-   Did 3 full barcode ligation rxns, each with 3.75 ul of end-prepped DNA, then pooled.\n\n-   Low on SFB, so washed beads during barcode clean with fresh 80% ethanol\n\n[**Qubit:**\\\n]{.underline}Standard 1: 38.87\\\nStandard 2: 16411.03\\\nG4L1 barcodes: 34.0 ng/uL\\\nG4L1 : **59.2 ng/uL**\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

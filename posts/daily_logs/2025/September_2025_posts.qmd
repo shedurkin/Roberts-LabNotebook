@@ -1,0 +1,43 @@
+---
+title: "September 2025, Daily Log"
+author: "Kathleen Durkin"
+date: "last-modified"
+categories: ["daily log"]
+format:
+  html:
+    code-fold: true
+execute:
+  warning: false
+---
+
+## 30 September 2025
+
+#### Tuesday
+
+## 29 September 2025
+
+#### Monday
+
+## 26 September 2025
+
+#### Friday
+
+## 25 September 2025
+
+#### Thursday
+
+-   SWED201 class
+
+-   bought SWED201 textbooks, school materials
+
+-   catching up on last \~2wks of emails (SI and UW)
+
+-   quarter planning:
+
+    -   goals
+
+    -   compiling list of professional development options to keep my eye on coming quarter (SEAS, Seattle Aquarium or Burke Museum volunteering, future teaching options, etc.)
+
+    -   creating spreadsheets of conferences and fellowships/grants to keep an eye on in the coming quarters
+
+-   

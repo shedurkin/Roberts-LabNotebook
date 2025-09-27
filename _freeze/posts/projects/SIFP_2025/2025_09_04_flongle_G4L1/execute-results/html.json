@@ -1,0 +1,14 @@
+{
+  "hash": "3c00c82b9d9b911f55b315bb5f5cb5bb",
+  "result": {
+    "markdown": "---\ntitle: \"Flongle Run, Group 4 Library 1\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-09-04\"\ncategories: [\"SIFP-2025\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: TRUE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nRan G4L1 on Flongle flow cell to confirm successful library prep. Following [gentle, negative, pressure, loading protocol](./protocols/Flow_Cell_Loading_Flongle_2025-Jun-12.pdf) created by Nanopore community members.\n\nI also want to try loading more DNA on the Flongle, as I've seen recommended in community forum posts (and in the gentle Flongle loading protocol), so instead of the recommended 10fmol DNA, I'll prep 30fmol in 5ul EB.\n\nG4L1 is 59.2ng/ul, with an average length of 609bp, so concentration is **157.8 fmol/ul**\n\n$$\n\\frac{30fmol}{5uL\\ EB} = \\frac{157.8fmol}{26.3L\\ EB}\n$$\n\nSo mix **1ul G4L1** with (26.3-1)=**25.3ul EB** , then use 5ul for loading.\n\n[**Flongle Flow cell**]{.underline} \\\n\\[ID\\] AXT657 \\\n87 pores on 09/01/25 check \\\n62 pores after loading\n\nStill running on the MK1B sequencer after error issues with the MKID (see [post](./2025_09_02_minion_G2L3.qmd)).\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

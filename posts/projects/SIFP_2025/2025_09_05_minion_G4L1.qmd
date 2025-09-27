@@ -1,0 +1,62 @@
+---
+title: "MinION Run, Group 4 Library 1"
+author: "Kathleen Durkin"
+date: "2025-09-05"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Run, Group 4 Library, 1 on a minION flow cell for sequencing.
+
+I have a lot of DNA in this library, so I want to try loading 300 fmol DNA to try to increase pore occupancy more (it's been chronically, low-ish, \~75%).
+
+So I want 300 fmol DNA in 12 uL EB:
+
+G4L1 is 59.2 ng/mL = 157.8 fmol/uL, so let's do **2uL G4L1 + 10 uL EB.**
+
+[**Flow cell**\
+]{.underline}\[ID\] FBD08455 \
+1652 pores on 08/14/25 check \
+1645 pores on 09/05/25 check
+
+Trying the MK1D again after the MinKnow software update:
+
+-   Hardware check passed
+
+-   MinION, flow cell health check completed
+
+-   When setting up sequencing run, turned off pore reserve function, to front load data aquisition.
+
+-   After update, there are more base modified basecalling options. Selected all options (6mA, 5mC, & 5hmC in all contexts)
+
+-   Run sequencing on *un-primed, un-loaded* Flow cell for 4 min to evaluate pore health.
+
+-   really weird run stats... only 36 pores available on pore scan, almost everything shows "no pore"...
+
+-   Paused to prime + load.
+
+-   Okay, after priming + loading, resumed run: Initiated pore scan - 1430 pores
+
+```{=html}
+<!-- -->
+```
+-   Seeing some "wild flowering" in the channel states panel early on
+
+-   Occupancy is looking good in first \~15min! ✛ e.g. 47% sequencing, 4.8% available, so (47 / 47 + 4.8) = 90.1%! That's my highest proportion yet of available pores that are actively sequencing
+
+-   There's a notably higher level of adapter than in previous runs - \~7%, compared to previous 1%-2% in MinION runs. This might be expected though, since library is shorter than previous libraries, which means the proportion of adapter:read will be higher
+
+[**Wash #1**]{.underline} \
+\@ 4.5hr in, after \~ ⅔ pore loss (**510 pores** \@ the 3.5hr scan). Very fast pore loss, mostly to the "unavailable" category. Re-loaded w/ 300 fmol again. **783 pores** after wash #1
+
+[**Wash #2**]{.underline} \
+\@ 19.5hr in, **84 pores** remaining. Re-loaded with 300 fmol, and there are **381 pores** after wash/reload.
+
+[**Wash #3**]{.underline} \
+\@ 2 days 1hr in, **40 pores** remaining. Re-loaded with 300 fmol. Run errored out when I tried to resume, so I had to restart the MinKnow software and start a new run. **185 pores** after run started.

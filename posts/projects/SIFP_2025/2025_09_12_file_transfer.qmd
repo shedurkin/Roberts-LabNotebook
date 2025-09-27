@@ -1,0 +1,75 @@
+---
+title: "File transfer of remaining Nanopore output files"
+author: "Kathleen Durkin"
+date: "2025-09-12"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: FALSE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+I've uploaded zipped folders and md5 cehcksums to Google Drive, which was then backed up to my SIFP_2025/CloudSync_deposit folder on Gannet via CloudSync. I then moved the files from the CloudSync_deposit folder up to just the SIFP_2025 folder manually in the Gannet file manager.
+
+Now, check checksums (doing this via ssh into Gannet, but copying here for record)
+
+```{r, engine='bash', eval=FALSE}
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ md5sum Group2_L3_Flongle.zip
+# ba0b938cb6c429f9ca873e779d5d8439  Group2_L3_Flongle.zip
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ head Group2_L3_Flongle.md5
+# Algorithm       Hash                                                                   Path
+# ---------       ----                                                                   ----
+# MD5             BA0B938CB6C429F9CA873E779D5D8439                                       C:\Users\Public\Documents\LAB...
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ md5sum error_experiment.zip
+# ad14d62f7a804fbe798fff5c4939a442  error_experiment.zip
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ head error_experiment.md5
+# Algorithm       Hash                                                                   Path
+# ---------       ----                                                                   ----
+# MD5             AD14D62F7A804FBE798FFF5C4939A442                                       C:\Users\Public\Documents\LAB...
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ md5sum Group4.zip
+# 942d53658625dc8f0be9509263901a8a  Group4.zip
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ head Group4.md5
+# Algorithm       Hash                                                                   Path
+# ---------       ----                                                                   ----
+# MD5             942D53658625DC8F0BE9509263901A8A                                       C:\Users\Public\Documents\LAB...
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ md5sum Group4_MinION.zip
+# aa89c5b3ce7e31944a50d3867c469953  Group4_MinION.zip
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ head Group4_MinION.md5
+# Algorithm       Hash                                                                   Path
+# ---------       ----                                                                   ----
+# MD5             AA89C5B3CE7E31944A50D3867C469953                                       C:\Users\Public\Documents\LAB...
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ md5sum DCS_trial.zip
+# a06792fc783251b9e04a29bd14f627bb  DCS_trial.zip
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ head DCS_trial.md5
+# Algorithm       Hash                                                                   Path
+# ---------       ----                                                                   ----
+# MD5             A06792FC783251B9E04A29BD14F627BB                                       C:\Users\Public\Documents\LAB...
+
+```
+
+```{r}
+# Double check that the md5s match
+
+# Group2_L3_Flongle
+identical(tolower("ba0b938cb6c429f9ca873e779d5d8439"), tolower("BA0B938CB6C429F9CA873E779D5D8439"))
+
+# error_experiment
+identical(tolower("ad14d62f7a804fbe798fff5c4939a442"), tolower("AD14D62F7A804FBE798FFF5C4939A442"))
+
+# Group4
+identical(tolower("942d53658625dc8f0be9509263901a8a"), tolower("942D53658625DC8F0BE9509263901A8A"))
+
+# Group4_MinION
+identical(tolower("aa89c5b3ce7e31944a50d3867c469953"), tolower("AA89C5B3CE7E31944A50D3867C469953"))
+
+# DCS_trial
+identical(tolower("a06792fc783251b9e04a29bd14f627bb"), tolower("A06792FC783251B9E04A29BD14F627BB"))
+```

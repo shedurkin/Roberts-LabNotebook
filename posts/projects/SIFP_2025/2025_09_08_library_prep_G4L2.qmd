@@ -1,0 +1,57 @@
+---
+title: "Native Barcoding, Group 4 Library 2 & DCS"
+author: "Kathleen Durkin"
+date: "2025-09-08"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Library, prep for Group 4 Library 2, since, G4L1 had low MinION output. ONT support has also requested I try prepping and running a DNA control Sample Library for 1-2hr, to check flow cell function, so I'll be doing 2 preps.
+
+Following [Native Barcoding 96 V14 gDNA protocol](./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-24-document-checklist-MinION-en-NBE_9169_v114_revV_02Jul2025-39.pdf) with the following modifications:
+
+-   Use below input quantities
+
+-   For all samples, did 3 full barcode ligation rxns before pooling.
+
+-   Washed beads during barcode clean with 80% ethanol (fresh)
+
+#### [**DCS Library**]{.underline}
+
+Use Full 12uL of diluted DCS as input. DCS is 10ng/uL so diluted DCS is 3.3ng/uL. Will use Barcode 33.
+
+#### [**G4L2**]{.underline}
+
+| Catalog \# | \[dsDNA\]   | volume left | length | ng left | fmol left  |
+|------------|-------------|-------------|--------|---------|------------|
+| 50368      | 135.2 ng/uL | 15uL        | 681    | 2028ng  | 4834 fmol  |
+| 42137      | 54.4 ng/uL  | 9.5uL       | 555    | 516.8ng | 1512 fmol  |
+| 14399      | 42.8 ng/uL  | 6.5uL       | 591    | 278.2ng | 764.2 fmol |
+
+So limiting, extraction is 14399. **Will use \~800 fmol from all extractions.**
+
+| Catalog \# | ng for. 800fmol | uL for 200fmol | uL for 11uL | Barcode |
+|------------|-----------------|----------------|-------------|---------|
+| 50368      | 335.6 ng        | \~2.5uL        | 8.5         | 30      |
+| 42137      | 273.5 ng        | \~5 uL         | 6           | 31      |
+| 14399      | 291.2 ng        | 6.5uL          | 4.5uL       | 32      |
+
+[**End-repair, Master Mix (5x)**]{.underline} \
+FFPE Buffer: 4.375 uL \
+Ultra II Buffer: 4.375 uL \
+Ultra II Mix: 3.75 uL \
+FFPE Mix: 2.5 uL
+
+[**Qubits:**]{.underline}\
+Standard 1: 48.12\
+Standard 2: 15478.64\
+DCS barcode: 0.528 ng/uL\
+DCS library: **0.776 ng/uL** \
+G4L2 barcode: 11.1 ng/uL \
+G4L2 library: **22.0 ng/uL**

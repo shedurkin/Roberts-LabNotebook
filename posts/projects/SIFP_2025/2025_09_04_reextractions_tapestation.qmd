@@ -1,0 +1,42 @@
+---
+title: "TapeStation of 1800 re-extractions"
+author: "Kathleen Durkin"
+date: "2025-09-04"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Using Tapestation to evaluate size distribution, integrity of 1800s re-extractions. Will also run some old extractions to check whether they've degraded since first being extracted.
+
+This time since I expect my 1800s samples to have essentially no HMW DNA, will use an **HS D5000 tape** instead of a gDNA tape.
+
+HS D5000 tape requires 2uL of DNA sample. I want to conserve my extractions, and the HS D5000 tape can handle very low concentrations, so I'll be using a 2x dilution for all samples (1uL extraction + 1uL Zymo EB)
+
+Followed HS D5000 protocol found [here](./protocols/Agilent_4200_D5000_QuickGuide.pdf).
+
+**Tapestation layout:**
+
+|     | 1           | 2       |
+|-----|-------------|---------|
+| A   | Ladder      | 1740363 |
+| B   | 50368 (new) | 51892   |
+| C   | 50603 (new) | 51732   |
+| D   | 19054 (new) | 14399   |
+| E   | 14399 (new) | 50368   |
+| F   | 42137 (new) | 50603   |
+| G   | 1606826     |         |
+| H   | 1740336     |         |
+
+Full tapestation report.
+
+[**Notes:**]{.underline}
+
+-   Looks like 50368 (new), 42137 (new), and 14399 (new) are by far the best 1800s re-extractions to use for sequencing.
+
+-   Don't see an immediately obvious degradation issue comparing new to old extractions of 50368, 50603, 14399, will need to compare to OG tapestation.

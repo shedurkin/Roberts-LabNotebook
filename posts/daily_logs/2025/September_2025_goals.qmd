@@ -1,0 +1,29 @@
+---
+title: "September 2025, Goals"
+author: "Kathleen Durkin"
+date: "last-modified"
+categories: ["monthly goals"]
+format:
+  html:
+    code-fold: true
+execute:
+  warning: false
+---
+
+I'm writing this in the last few days of September, as the Fall 2025 quarter is starting. For the last \~1 week of September, my goals are as follows:
+
+### SIFP
+
+-   Finish transcribing all SIFP lab notebook entries into digital lab notebook
+
+-   Finish all SIFP file transfers, including checksum generation once folders are unzipped
+
+-   Add links to sequencing run reports to all sequencing lab notebook entries, once files are fully available on Gannet
+
+-   Compile summary stats on all MinION sequencing runs (# bases, \# reads, avg. coverage, etc.)
+
+-   Estimate contamination (e.g., fungal) in all MinION sequencing runs, using Kraken
+
+### DDE
+
+-   Figure out DDE figures -- what's the big takeaway(s) of the paper, and how can we best show that in \~3 figures.

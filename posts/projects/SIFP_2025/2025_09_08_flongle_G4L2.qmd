@@ -1,0 +1,39 @@
+---
+title: "Flongle Run, Group 4 Library 2"
+author: "Kathleen Durkin"
+date: "2025-09-08"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Run Flongle flow cell with G4L2 to confirm library prep.
+
+Again, will use 30 fmol input DNA and gentle negative pressure loading protocol (print-out in back of lab notebook)
+
+G4L2 has avg sample length of 609bp, concentration of 22 ng/ml =\> 58.64 fmol/ul
+
+$$
+\frac{30fmol\ DNA}{5uL\ EB} \Rightarrow \frac{58.64fmol}{9.77uL}
+$$
+
+So mix **1ul G4L2** with (9.77ul-1) = **8.77ul EB** then use 5ul.
+
+[**Flowcell**]{.underline}\
+ID: AXT6SS \
+82 pores on 09/01/25 check \
+84 pores on 09/08/25 check \
+50 pores after loading
+
+Again, back to running on MKID.
+
+[**Notes:**]{.underline}
+
+-   Good occupancy on start though \~80% after 45min.
+
+-   Already seeing accumulation of "unavailable" pores

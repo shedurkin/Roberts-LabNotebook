@@ -1,0 +1,41 @@
+---
+title: "KAPA Bead Clean -- 1800s Re-extractions"
+author: "Kathleen Durkin"
+date: "2025-09-04"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: FALSE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Will clean and size-select my 1800s re-extractions to remove the shortest fragments. Followed the [KAPA Pure Beads protocol](./protocols/KAPA-Pure-Beads-Technical-Data-Sheet.pdf) (#2, Cleanup of Fragmented DNA in NGS Workflow).
+
+[**Notes:**]{.underline}
+
+-   Mixed fresh 8-% EtOH. Need 400uL\*5 samples = 2000uL, so miz 2200uL 80% EtOH -\> **1760uL EtOH + 440uL nuc-free H2O.**
+
+-   Currently have **49uL** of each sample (eluted Zymo in 50uL each, used 1uL for Qubit)
+
+-   Want 0.7x bead-to-sample ratio (should remove \<350bp). Bead volume is 0.7\*49uL = **34.3uL** KAPA Pure beads to each sample (50368, 50603, 19054, 14399, 42137)
+
+-   Incubated on beads (step 2.4) for 15min to maximize DNA retention
+
+-   Eluted in 20uL to help concentrate (eluted in Zymo EB)
+
+Qubit of cleaned DNA
+
+Based on post-Zymo qubits, expect 50368 and 42137 may have 20uL concentrations above the threshold of 100ng/uL (past which Qubit cannot accurately quantify), wo will dilute to 1/2 concentration (2uL sample + 2uL Zymo EB)
+
+Performed Qubit quantification as normal (protocol found [here](./2025_07_14_qubit.qmd)).
+
+Standard #1: 37.63\
+Standard #2: 16705.55\
+50368 (dil): 67.6 ng/uL --x2--\> **135.2 ng/uL**\
+50603: **10.3 ng/uL**\
+19054: **0.520 ng/uL**\
+14399: **42.8 ng/uL**\
+42137 (dil): 27.2 ng/uL --x2--\> **54.4 ng/uL**

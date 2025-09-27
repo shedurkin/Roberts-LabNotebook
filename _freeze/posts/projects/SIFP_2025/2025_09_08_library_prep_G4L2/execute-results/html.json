@@ -1,0 +1,14 @@
+{
+  "hash": "b7dd88189d7cb123517a67307cf09633",
+  "result": {
+    "markdown": "---\ntitle: \"Native Barcoding, Group 4 Library 2 & DCS\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-09-08\"\ncategories: [\"SIFP-2025\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: TRUE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nLibrary, prep for Group 4 Library 2, since, G4L1 had low MinION output. ONT support has also requested I try prepping and running a DNA control Sample Library for 1-2hr, to check flow cell function, so I'll be doing 2 preps.\n\nFollowing [Native Barcoding 96 V14 gDNA protocol](./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-24-document-checklist-MinION-en-NBE_9169_v114_revV_02Jul2025-39.pdf) with the following modifications:\n\n-   Use below input quantities\n\n-   For all samples, did 3 full barcode ligation rxns before pooling.\n\n-   Washed beads during barcode clean with 80% ethanol (fresh)\n\n#### [**DCS Library**]{.underline}\n\nUse Full 12uL of diluted DCS as input. DCS is 10ng/uL so diluted DCS is 3.3ng/uL. Will use Barcode 33.\n\n#### [**G4L2**]{.underline}\n\n| Catalog \\# | \\[dsDNA\\]   | volume left | length | ng left | fmol left  |\n|------------|-------------|-------------|--------|---------|------------|\n| 50368      | 135.2 ng/uL | 15uL        | 681    | 2028ng  | 4834 fmol  |\n| 42137      | 54.4 ng/uL  | 9.5uL       | 555    | 516.8ng | 1512 fmol  |\n| 14399      | 42.8 ng/uL  | 6.5uL       | 591    | 278.2ng | 764.2 fmol |\n\nSo limiting, extraction is 14399. **Will use \\~800 fmol from all extractions.**\n\n| Catalog \\# | ng for. 800fmol | uL for 200fmol | uL for 11uL | Barcode |\n|------------|-----------------|----------------|-------------|---------|\n| 50368      | 335.6 ng        | \\~2.5uL        | 8.5         | 30      |\n| 42137      | 273.5 ng        | \\~5 uL         | 6           | 31      |\n| 14399      | 291.2 ng        | 6.5uL          | 4.5uL       | 32      |\n\n[**End-repair, Master Mix (5x)**]{.underline} \\\nFFPE Buffer: 4.375 uL \\\nUltra II Buffer: 4.375 uL \\\nUltra II Mix: 3.75 uL \\\nFFPE Mix: 2.5 uL\n\n[**Qubits:**]{.underline}\\\nStandard 1: 48.12\\\nStandard 2: 15478.64\\\nDCS barcode: 0.528 ng/uL\\\nDCS library: **0.776 ng/uL** \\\nG4L2 barcode: 11.1 ng/uL \\\nG4L2 library: **22.0 ng/uL**\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
