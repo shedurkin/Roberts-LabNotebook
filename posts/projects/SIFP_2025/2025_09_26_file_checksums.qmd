@@ -1,0 +1,337 @@
+---
+title: "File transfer of remaining Nanopore output files"
+author: "Kathleen Durkin"
+date: "2025-09-12"
+categories: ["SIFP-2025"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: FALSE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+For some of the zipped sequencign folders, I've checked the zip files checksums, but not unzipped and generated checksums for the contained files. Will do that here.
+
+[**Need to unzip and generated checksums for contained files:**]{.underline}\
+Group2_L3_Flongle\
+error_experiment\
+Group4\
+Group4_MinION\
+DCS_trial
+
+Unzip
+
+```{r}
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ 7z x Group2_L3_Flongle.zip
+
+# 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+# p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)
+# 
+# 
+# Scanning the drive for archives:
+# 1 file, 955390672 bytes (912 MiB)
+# 
+# Extracting archive: Group2_L3_Flongle.zip
+# --
+# Path = Group2_L3_Flongle.zip
+# Type = zip
+# Physical Size = 955390672
+# 
+# Everything is Ok
+# 
+# Folders: 42
+# Files: 2087
+# Size:       999479170
+# Compressed: 955390672
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ 7z x error_experiment.zip
+
+# 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+# p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)
+# 
+# Scanning the drive for archives:
+# 1 file, 46943797128 bytes (44 GiB)
+# 
+# Extracting archive: error_experiment.zip
+# --
+# Path = error_experiment.zip
+# Type = zip
+# Physical Size = 46943797128
+# 64-bit = +
+# 
+# Everything is Ok
+# 
+# Folders: 183
+# Files: 3666
+# Size:       48732501481
+# Compressed: 46943797128
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ 7z x Group4.zip
+
+# 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+# p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)
+# 
+# Scanning the drive for archives:
+# 1 file, 799029087 bytes (763 MiB)
+# 
+# Extracting archive: Group4.zip
+# --
+# Path = Group4.zip
+# Type = zip
+# Physical Size = 799029087
+# 
+# Everything is Ok
+# 
+# Folders: 74
+# Files: 3162
+# Size:       833905645
+# Compressed: 799029087
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ 7z x DCS_trial.zip
+
+# 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+# p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)
+# 
+# Scanning the drive for archives:
+# 1 file, 7480053883 bytes (7134 MiB)
+# 
+# Extracting archive: DCS_trial.zip
+# --
+# Path = DCS_trial.zip
+# Type = zip
+# Physical Size = 7480053883
+# 64-bit = +
+# 
+# Everything is Ok
+# 
+# Folders: 30
+# Files: 127
+# Size:       7554122324
+# Compressed: 7480053883
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ 7z x Group4_MinION.zip
+
+# 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+# p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)
+# 
+# Scanning the drive for archives:
+# 1 file, 55963835433 bytes (53 GiB)
+# 
+# Extracting archive: Group4_MinION.zip
+# --
+# Path = Group4_MinION.zip
+# Type = zip
+# Physical Size = 55963835433
+# 64-bit = +
+# 
+# Everything is Ok
+# 
+# Folders: 328
+# Files: 15550
+# Size:       58053391433
+# Compressed: 55963835433
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ 7z x Group1_MinION_Library4-without_pod5_pass.zip
+
+# 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+# p7zip Version 16.02 (locale=en_US.utf8,Utf16=on,HugeFiles=on,64 bits,8 CPUs x64)
+# 
+# Scanning the drive for archives:
+# 1 file, 50488535223 bytes (48 GiB)
+# 
+# Extracting archive: Group1_MinION_Library4-without_pod5_pass.zip
+# --
+# Path = Group1_MinION_Library4-without_pod5_pass.zip
+# Type = zip
+# Physical Size = 50488535223
+# 64-bit = +
+# 
+# Everything is Ok
+# 
+# Folders: 218
+# Files: 8774
+# Size:       54433496208
+# Compressed: 50488535223
+
+```
+
+Make checksums for all of the content files in these sequencing folders, so file integrity can be confirmed when downloading for use (e.g. downloading the fastq files to Raven). The bash code used below will iterate through each subfolder and, if the folder contains files, will generate a checksums.md5 containing md5 hashes for all files in that folder.
+
+```{r}
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ cd Group2_L3_Flongle
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group2_L3_Flongle$ find . -type
+d -exec sh -c '
+>   cd "{}" || exit
+>   # Check if there are any regular files in the directory
+>   if find . -maxdepth 1 -type f | grep -q .; then
+>     md5sum * > checksums.md5
+>   fi
+> ' \;
+
+# md5sum: bam_fail: Is a directory
+# md5sum: bam_pass: Is a directory
+# md5sum: fastq_fail: Is a directory
+# md5sum: fastq_pass: Is a directory
+# md5sum: other_reports: Is a directory
+# md5sum: pod5_fail: Is a directory
+# md5sum: pod5_pass: Is a directory
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group2_L3_Flongle$ cd ../error_e
+xperiment
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/error_experiment$ find . -type d
+ -exec sh -c '
+  cd "{}" || exit
+  # Check if there are any regular files in the directory
+  if find . -maxdepth 1 -type f | grep -q .; then
+    md5sum * > checksums.md5
+  fi
+' \;
+
+# md5sum: bam_fail: Is a directory
+# md5sum: bam_pass: Is a directory
+# md5sum: fastq_fail: Is a directory
+# md5sum: fastq_pass: Is a directory
+# md5sum: other_reports: Is a directory
+# md5sum: pod5_fail: Is a directory
+# md5sum: pod5_pass: Is a directory
+# md5sum: bam_fail: Is a directory
+# md5sum: bam_pass: Is a directory
+# md5sum: fastq_fail: Is a directory
+# md5sum: fastq_pass: Is a directory
+# md5sum: other_reports: Is a directory
+# md5sum: pod5_fail: Is a directory
+# md5sum: pod5_pass: Is a directory
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/error_experiment$ cd ../Group4
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group4$ find . -type d -exec sh
+-c '
+  cd "{}" || exit
+  # Check if there are any regular files in the directory
+  if find . -maxdepth 1 -type f | grep -q .; then
+    md5sum * > checksums.md5
+  fi
+' \;
+
+# md5sum: bam_fail: Is a directory
+# md5sum: bam_pass: Is a directory
+# md5sum: fastq_fail: Is a directory
+# md5sum: fastq_pass: Is a directory
+# md5sum: other_reports: Is a directory
+# md5sum: pod5_fail: Is a directory
+# md5sum: pod5_pass: Is a directory
+# md5sum: bam_fail: Is a directory
+# md5sum: bam_pass: Is a directory
+# md5sum: fastq_fail: Is a directory
+# md5sum: fastq_pass: Is a directory
+# md5sum: other_reports: Is a directory
+# md5sum: pod5_fail: Is a directory
+# md5sum: pod5_pass: Is a directory
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group4$ cd ../DCS_trial
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/DCS_trial$ find . -type d -exec
+sh -c '
+  cd "{}" || exit
+  # Check if there are any regular files in the directory
+  if find . -maxdepth 1 -type f | grep -q .; then
+    md5sum * > checksums.md5
+  fi
+' \;
+
+# md5sum: bam_fail: Is a directory
+# md5sum: bam_pass: Is a directory
+# md5sum: fastq_fail: Is a directory
+# md5sum: fastq_pass: Is a directory
+# md5sum: other_reports: Is a directory
+# md5sum: pod5_fail: Is a directory
+# md5sum: pod5_pass: Is a directory
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/DCS_trial$ cd ../Group4_MinION
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group4_MinION$ find . -type d -e
+xec sh -c '
+  cd "{}" || exit
+  # Check if there are any regular files in the directory
+  if find . -maxdepth 1 -type f | grep -q .; then
+    md5sum * > checksums.md5
+  fi
+' \;
+
+# md5sum: bam_fail: Is a directory
+# md5sum: bam_pass: Is a directory
+# md5sum: fastq_fail: Is a directory
+# md5sum: fastq_pass: Is a directory
+# md5sum: other_reports: Is a directory
+# md5sum: pod5_fail: Is a directory
+# md5sum: pod5_pass: Is a directory
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ cd Group1_MinION_Library4-without_pod5_pass
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025/Group1_MinION_Library4-without_pod5_pass$ find . -type d -exec sh -c '
+  cd "{}" || exit
+  # Check if there are any regular files in the directory
+  if find . -maxdepth 1 -type f | grep -q .; then
+    md5sum * > checksums.md5
+  fi
+' \;
+
+# md5sum: bam_fail: Is a directory
+# md5sum: bam_pass: Is a directory
+# md5sum: fastq_fail: Is a directory
+# md5sum: fastq_pass: Is a directory
+# md5sum: other_reports: Is a directory
+# md5sum: pod5_fail: Is a directory
+
+```
+
+Move all the .zips and the zip files .md5 files into the cloudSync_deposit folder -- want to save for a bit, bu declutter the SIFP_2025 folder.
+
+```{r}
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ mv *.zip CloudSync_deposit/
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ mv *.md5 CloudSync_deposit/
+
+```
+
+I had to split one of the MinION sequencing folders for file transfer, due to the storage limit on my Google Drive, so re-combined those two folders. Moved `pod5_pass-Group1_MinION_Library4` into `/volume2/web/kdurkin1/SIFP_2025/Group1_MinION_Library4-without_p od5_pass/Library4/20250819_1337_MD-101223_FBD09922_51407a5d`. Then renamed `pod5_pass-Group1_MinION_Library4` to `pod5_pass`, and renamed `Group1_MinION_Library4-without_pod5_pass` to `Group1_MinION`.
+
+check
+
+```{r}
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ ls
+# CloudSync_deposit  Group1         Group2_L3_Flongle  Group4         TapeStation
+# DCS_trial          Group1_MinION  Group2_MinION      Group4_MinION
+# error_experiment   Group2         Group3_Flongle     Screenshots
+
+```
+
+Also add the Group2_L3_Flongle folder into it parent directory of Group2.
+
+```{r}
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ mv Group2_L3_Flongle/Library3/ Group2/
+
+```
+
+Then rename all the flongle folders to contain the label "Flongle"
+
+```{r}
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ ls
+# CloudSync_deposit  Group1         Group2_MinION   Group4_MinION
+# DCS_trial          Group1_MinION  Group3_Flongle  Screenshots
+# error_experiment   Group2         Group4          TapeStation
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ mv Group1/ Group1_Flongle
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ mv Group2/ Group2_Flongle/
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ mv Group4/ Group4_Flongle/
+
+kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ ls
+# CloudSync_deposit  error_experiment  Group1_MinION   Group2_MinION   Group4_Flongle  Screenshots
+# DCS_trial          Group1_Flongle    Group2_Flongle  Group3_Flongle  Group4_MinION   TapeStation
+
+```
