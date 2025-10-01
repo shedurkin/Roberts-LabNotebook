@@ -33,3 +33,7 @@ Ran for full 24 hours
 [Notes after run completed:]{.underline}
 
 Excluding FFPE during end-repair resulted in significantly lower yield (\~70Mb, compared to 120Mb from the first two Flongle runs), likely because unrepaired "nicked" DNA clogged the pores quickly. This is supported by low pore occupancy throughout run and faster pore degradation.
+
+[**Added 9/30/25:\
+**]{.underline}[Full run report](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group1_Flongle/Group1/Library3/20250815_1736_MD-101223_AYK267_a0699e0e/report_AYK267_20250815_1736_a0699e0e.html)\
+[Output stored here](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group1_Flongle/Group1/Library3/)

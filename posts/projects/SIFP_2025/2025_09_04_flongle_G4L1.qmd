@@ -24,9 +24,13 @@ $$
 
 So mix **1ul G4L1** with (26.3-1)=**25.3ul EB** , then use 5ul for loading.
 
-[**Flongle Flow cell**]{.underline} \
-\[ID\] AXT657 \
-87 pores on 09/01/25 check \
+[**Flongle Flow cell**]{.underline}\
+\[ID\] AXT657\
+87 pores on 09/01/25 check\
 62 pores after loading
 
 Still running on the MK1B sequencer after error issues with the MKID (see [post](./2025_09_02_minion_G2L3.qmd)).
+
+[**Added 9/30/25:\
+**]{.underline}[Full run report](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group4_Flongle/Library1/20250904_2022_MN47571_AXT657_1336ce16/report_AXT657_20250904_2025_1336ce16.html)\
+[Output stored here](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group4_Flongle/Library1/)

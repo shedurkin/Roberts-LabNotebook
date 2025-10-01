@@ -58,3 +58,7 @@ So added **2.4ng G1L4** to (12-2.4) = **9.6uL EB**.
 Prepared the second load as instructed in protocol (SB, LIB, and 2X concentration G1L4 dilution). Paused MinION run at 17minutes and added full 75uL of second library to the SpotOn port in dropwise fashion (opened priming port first to create negative pressure). Library was absorbed into cell as desired.
 
 Un-paused run, and it resumed as normal. Pore occupancy steadily increased. by minute 30, \~75% of available pores were sequencing -- the spike of second library was successful!
+
+[**Added 9/30/25:\
+**]{.underline}[Full run report](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group1_MinION/Library4/20250819_1337_MD-101223_FBD09922_51407a5d/report_FBD09922_20250819_1338_51407a5d.html)\
+[Output stored here](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group1_MinION/Library4/)

@@ -14,13 +14,35 @@ execute:
 
 #### Tuesday
 
+-   SWED201
+
+-   FISH510
+
+-   FISH510 reading
+
+-   finish kraken meta-genomics classifier on all Flongle data
+
+-   
+
 ## 29 September 2025
 
 #### Monday
 
+-   SWED201
+
+-   emails/department stuff (reporting recent awards/honors to Sam, tuition checks, registration update, potentially volunteering as GRFP mentor following increased interest)
+
+-   updating `timeseries-molecular` sRNA count matrices with standardized naming format, and associated debugging issues with running an R script from command line in Raven
+
+-   added trimmed sRNA read links + details to `timeseries-molecular` wiki
+
+-   Started Kraken metagenomics summaries of Group1 Library 2 Flongle and Group 1 Library 3 Flongle (will likely need to run overnight)
+
 ## 26 September 2025
 
 #### Friday
+
+-   SWED201
 
 -   finished all SIFP notebook digital transcriptions
 

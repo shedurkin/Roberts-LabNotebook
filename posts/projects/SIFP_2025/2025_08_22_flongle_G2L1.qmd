@@ -28,3 +28,7 @@ I loaded the Flongle with 10fmol (4.31ng) of Group 2 Library 1 in 5uL of EB. G2L
 $$
 \frac{4.3ng\ DNA}{5uL\ EB} = \frac{20ng\ DNA}{23.3uL\ EB}\ \ \ Added\ 1uL\ G2L1\ to\ (23.3-1)=22.3uL\ EB
 $$
+
+[**Added 9/30/25:\
+**]{.underline}[Full run report](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group2_Flongle/Library1/20250822_1818_MD-101223_AYW871_52078e01/report_AYW871_20250822_1819_52078e01.html)\
+[Output stored here](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group2_Flongle/Library1/)

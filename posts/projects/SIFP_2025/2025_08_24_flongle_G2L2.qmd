@@ -33,3 +33,7 @@ $$
 Can approximate requisite input to 1uL, so mixed 1uL G2L2 with 24uL EB (total 25uL).
 
 Loaded Flongle with 5uL of this.
+
+[**Added 9/30/25:\
+**]{.underline}[Full run report](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group2_Flongle/Library2/20250824_1851_MD-101223_AYX067_7881f908/report_AYX067_20250824_1852_7881f908.html)\
+[Output stored here](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group2_Flongle/Library2/)

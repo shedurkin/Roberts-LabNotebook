@@ -10,7 +10,7 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Tue, 17 Jun 2025 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 17 Jun 2025 07:00:00 GMT</lastBuildDate>
 <item>
   <title>Deep Dive Expression: Results Wrap-up</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -1777,7 +1777,7 @@ precursors - PCC
  ]]></description>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_06_17_dde_results_wrapup.html</guid>
-  <pubDate>Tue, 17 Jun 2025 04:00:00 GMT</pubDate>
+  <pubDate>Tue, 17 Jun 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning – Feature Proximity WGBS UPDATE</title>
@@ -2856,7 +2856,7 @@ font-style: inherit;">FALSE</span>)</span>
  ]]></description>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_05_25_timeseries_ML_feature_proximity_2.html</guid>
-  <pubDate>Sun, 25 May 2025 04:00:00 GMT</pubDate>
+  <pubDate>Sun, 25 May 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning – Feature Proximity</title>
@@ -3985,7 +3985,7 @@ font-style: inherit;">FALSE</span>)</span>
  ]]></description>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_05_16_timeseries_ML_feature_proximity.html</guid>
-  <pubDate>Fri, 16 May 2025 04:00:00 GMT</pubDate>
+  <pubDate>Fri, 16 May 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning – Lit Review</title>
@@ -4295,7 +4295,7 @@ font-style: inherit;">TRUE</span>))</span></code></pre></div>
  ]]></description>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_05_13_timeseries_multiomic_ML_lit_review.html</guid>
-  <pubDate>Tue, 13 May 2025 04:00:00 GMT</pubDate>
+  <pubDate>Tue, 13 May 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning – Part 4</title>
@@ -4664,7 +4664,7 @@ font-style: inherit;">print</span>(p)</span>
  ]]></description>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_05_12_timeseries_multiomic_ML_4.html</guid>
-  <pubDate>Mon, 12 May 2025 04:00:00 GMT</pubDate>
+  <pubDate>Mon, 12 May 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning – Part 3</title>
@@ -11255,7 +11255,7 @@ font-style: inherit;">print</span>(all_features_highR2_FA)</span></code></pre></
  ]]></description>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_05_08_timeseries_multiomic_ML_3.html</guid>
-  <pubDate>Thu, 08 May 2025 04:00:00 GMT</pubDate>
+  <pubDate>Thu, 08 May 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Timeseries molecular: Format input files for Cytoscape – pt.2</title>
@@ -11812,7 +11812,7 @@ font-style: inherit;">FALSE</span>)</span></code></pre></div>
  ]]></description>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_05_07_timeseries_cytoscape_files_2.html</guid>
-  <pubDate>Wed, 07 May 2025 04:00:00 GMT</pubDate>
+  <pubDate>Wed, 07 May 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Timeseries molecular: Format input files for Cytoscape</title>
@@ -13027,7 +13027,7 @@ font-style: inherit;">nrow</span>()</span></code></pre></div>
  ]]></description>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_04_28_timeseries_cytoscape_files.html</guid>
-  <pubDate>Mon, 28 Apr 2025 04:00:00 GMT</pubDate>
+  <pubDate>Mon, 28 Apr 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning – Part 2</title>
@@ -17683,7 +17683,7 @@ font-style: inherit;"># Title of the heatmap</span></span>
  ]]></description>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_04_23_timeseries_multiomic_ML_2.html</guid>
-  <pubDate>Wed, 23 Apr 2025 04:00:00 GMT</pubDate>
+  <pubDate>Wed, 23 Apr 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning – Part 1</title>
@@ -24971,7 +24971,7 @@ font-style: inherit;"># Title of the heatmap</span></span>
  ]]></description>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_04_18_timeseries_multiomic_ML_1.html</guid>
-  <pubDate>Fri, 18 Apr 2025 04:00:00 GMT</pubDate>
+  <pubDate>Fri, 18 Apr 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Timeseries molecular: A.pul phenotype and gene/miRNA machine learning – Part 4</title>
@@ -26364,7 +26364,7 @@ font-style: inherit;"># Title of the heatmap</span></span>
  ]]></description>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_04_11_timeseries_ML_4.html</guid>
-  <pubDate>Fri, 11 Apr 2025 04:00:00 GMT</pubDate>
+  <pubDate>Fri, 11 Apr 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Deep-Dive Expression: Functional comparisons for known miRNA</title>
@@ -27097,7 +27097,7 @@ Teefy, Bryan Barrett. 2020. <span>“The Function of Small RNA Pathways in Cnida
 </div></section></div> ]]></description>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_04_10_dde_named_miRNA_functions.html</guid>
-  <pubDate>Thu, 10 Apr 2025 04:00:00 GMT</pubDate>
+  <pubDate>Thu, 10 Apr 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Timeseries: miRNA-lncRNA Coexpression</title>
@@ -28288,7 +28288,7 @@ font-style: inherit;">FALSE</span>)</span></code></pre></div>
  ]]></description>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_04_16_timeseries_lncRNA_PCC.html</guid>
-  <pubDate>Thu, 10 Apr 2025 04:00:00 GMT</pubDate>
+  <pubDate>Thu, 10 Apr 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Deep-Dive Expression: Functional annotation/enrichment of each miRNA’s targets</title>
@@ -29170,7 +29170,7 @@ font-style: inherit;">"../output/09.1-Apul-mRNA-miRNA-interactions-functional-en
  ]]></description>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_04_09_dde_miranda_miRNA_FE.html</guid>
-  <pubDate>Wed, 09 Apr 2025 04:00:00 GMT</pubDate>
+  <pubDate>Wed, 09 Apr 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Deep-Dive Expression: Functional enrichment of miRNA-mRNA interactions</title>
@@ -33177,7 +33177,7 @@ font-style: inherit;">300</span>)</span></code></pre></div>
  ]]></description>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_04_08_dde_miranda_FE.html</guid>
-  <pubDate>Tue, 08 Apr 2025 04:00:00 GMT</pubDate>
+  <pubDate>Tue, 08 Apr 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Timeseries molecular: A.pul phenotype and gene/miRNA machine learning – Part 3</title>
@@ -38038,7 +38038,7 @@ font-style: inherit;"># Title of the heatmap</span></span>
  ]]></description>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_04_04_timeseries_ML_3.html</guid>
-  <pubDate>Mon, 07 Apr 2025 04:00:00 GMT</pubDate>
+  <pubDate>Mon, 07 Apr 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Timeseries molecular: A.pul, Functional Annotation and Enrichment Analyses</title>
@@ -40921,7 +40921,7 @@ font-style: inherit;">"</span>)</span></code></pre></div>
  ]]></description>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_04_01_timeseries_FA_FE.html</guid>
-  <pubDate>Tue, 01 Apr 2025 04:00:00 GMT</pubDate>
+  <pubDate>Tue, 01 Apr 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Timeseries molecular: A.pul phenotype and gene/miRNA machine learning – Part 2</title>
@@ -43527,7 +43527,7 @@ font-style: inherit;">"Importance Score"</span>)</span></code></pre></div>
  ]]></description>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_04_01_timeseries_ML_2.html</guid>
-  <pubDate>Tue, 01 Apr 2025 04:00:00 GMT</pubDate>
+  <pubDate>Tue, 01 Apr 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Timeseries molecular: A.pul phenotype and gene/miRNA machine learning – Part 1</title>
@@ -45516,7 +45516,7 @@ font-style: italic;">## `geom_smooth()` using formula = 'y ~ x'</span></span></c
  ]]></description>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_03_31_timeseries_ML.html</guid>
-  <pubDate>Mon, 31 Mar 2025 04:00:00 GMT</pubDate>
+  <pubDate>Mon, 31 Mar 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Timeseries molecular: A.pul WGCNA, mRNA and miRNA</title>
@@ -45824,7 +45824,7 @@ font-style: italic;">## `geom_smooth()` using formula = 'y ~ x'</span></span></c
  ]]></description>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_03_11_timeseries_WGCNA.html</guid>
-  <pubDate>Tue, 11 Mar 2025 04:00:00 GMT</pubDate>
+  <pubDate>Tue, 11 Mar 2025 07:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

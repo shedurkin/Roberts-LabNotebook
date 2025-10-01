@@ -1668,6 +1668,7 @@ font-style: inherit;"># CloudSync_deposit  error_experiment  Group1_MinION   Gro
 background-color: null;
 font-style: inherit;"># DCS_trial          Group1_Flongle    Group2_Flongle  Group3_Flongle  Group4_MinION   TapeStation</span></span></code></pre></div>
 </div>
+<p>Finally, moved the sub-directories in <code>error_experiment</code> (<code>Group2_Library3_MK1B_sequencer</code> and <code>Group2_Library3_MK1B_after_wash2</code> ) into the <code>Group2_MinION</code> folder. The “error experiment” name was originally used because I experienced a series of errors from the MinION Mk1D sequencer when trying to sequence Group2 Library3 on a MinION flow cell, and ended up needing to change sequencers (see <a href="../../../posts/projects/SIFP_2025/2025_09_02_minion_G2L3.html">post</a> for details)</p>
 
 
 

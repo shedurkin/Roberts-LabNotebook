@@ -25,9 +25,9 @@ $$
 So mix **1ul G4L2** with (9.77ul-1) = **8.77ul EB** then use 5ul.
 
 [**Flowcell**]{.underline}\
-ID: AXT6SS \
-82 pores on 09/01/25 check \
-84 pores on 09/08/25 check \
+ID: AXT6SS\
+82 pores on 09/01/25 check\
+84 pores on 09/08/25 check\
 50 pores after loading
 
 Again, back to running on MKID.
@@ -37,3 +37,7 @@ Again, back to running on MKID.
 -   Good occupancy on start though \~80% after 45min.
 
 -   Already seeing accumulation of "unavailable" pores
+
+[**Added 9/30/25:\
+**]{.underline}[Full run report](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group4_Flongle/Library2/20250908_1629_MD-101223_AXT655_c9f17be4/report_AXT655_20250908_1630_c9f17be4.html)\
+[Output stored here](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group4_Flongle/Library2/)

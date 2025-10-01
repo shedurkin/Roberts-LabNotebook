@@ -28,3 +28,7 @@ SN: B028104122\
 ID: **AYW685**\
 \# pores on check: **59 pores**\
 \# pores after loading: **43 pores**\
+
+[**Added 9/30/25:\
+**]{.underline}[Full run report](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group1_Flongle/Group1/Library2/20250813_1334_MD-101223_AYW685_7f624b63/report_AYW685_20250813_1334_7f624b63.html)\
+[Output stored here](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group1_Flongle/Group1/Library2/)

@@ -335,3 +335,5 @@ kdurkin1@Gannet:/volume2/web/kdurkin1/SIFP_2025$ ls
 # DCS_trial          Group1_Flongle    Group2_Flongle  Group3_Flongle  Group4_MinION   TapeStation
 
 ```
+
+Finally, moved the sub-directories in `error_experiment` (`Group2_Library3_MK1B_sequencer` and `Group2_Library3_MK1B_after_wash2` ) into the `Group2_MinION` folder. The "error experiment" name was originally used because I experienced a series of errors from the MinION Mk1D sequencer when trying to sequence Group2 Library3 on a MinION flow cell, and ended up needing to change sequencers (see [post](./2025_09_02_minion_G2L3.qmd) for details)

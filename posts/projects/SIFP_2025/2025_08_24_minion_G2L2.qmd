@@ -40,3 +40,12 @@ Wash #1 at 13hr into run. Re-loaded with 200fmol G2L2. 224 pores -\> 867 pores/
 Wash #2 at 23hr in. Reloaded with 200fmol G2L2. 238 pores -\> 563 pores
 
 Wash #3 at 1 day 12 hr into run. Actally had to fully stop run to allow for a mandatory computer update (took \~5min), then restarted "new run", confirmed flow cell was still sequencing, then paused, washed, reloaded, and let run for remaining 36 hours. 212 pores -\> 410 pores. Out of G2L2, so could only load \~100fmol (2uL G2L2 plus 10uL EB).
+
+[**Added 9/30/25:\
+**]{.underline}Full run reports:\
+[Pre-update](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group2_MinION/Library2/20250824_2226_MD-101223_FBD39370_195b7d5f/report_FBD39370_20250824_2226_195b7d5f.html)\
+[Post-update](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group2_MinION/Library2_post_update/20250826_1059_MD-101223_FBD39370_b38d8279/report_FBD39370_20250826_1100_b38d8279.html)
+
+Output stored here:\
+[Pre-update](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group2_MinION/Library2/)\
+[Post-update](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group2_MinION/Library2_post_update/)

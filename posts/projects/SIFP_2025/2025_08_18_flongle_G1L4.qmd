@@ -38,3 +38,7 @@ This is a pretty significant drop in pores after library loading, even for a Flo
 Ran for 24 hours.
 
 This Flongle run had very poor results -- low output and quickly degrading pores. After discussion with Dan, though, he thinks this was a problem with the flow cell itself (supported by the dramatic pore loss after loading), not the library. I'll go ahead with the Group 1 Library 4 prep and try it on a MinION.
+
+[**Added 9/30/25:\
+**]{.underline}[Full run report](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group1_Flongle/Group1/Library4/20250818_1549_MD-101223_AYL248_54e75371/report_AYL248_20250818_1550_54e75371.html)\
+[Output stored here](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group1_Flongle/Group1/Library4/)

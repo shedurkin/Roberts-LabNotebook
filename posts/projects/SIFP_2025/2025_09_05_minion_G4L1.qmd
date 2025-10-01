@@ -21,8 +21,8 @@ So I want 300 fmol DNA in 12 uL EB:
 G4L1 is 59.2 ng/mL = 157.8 fmol/uL, so let's do **2uL G4L1 + 10 uL EB.**
 
 [**Flow cell**\
-]{.underline}\[ID\] FBD08455 \
-1652 pores on 08/14/25 check \
+]{.underline}\[ID\] FBD08455\
+1652 pores on 08/14/25 check\
 1645 pores on 09/05/25 check
 
 Trying the MK1D again after the MinKnow software update:
@@ -43,20 +43,28 @@ Trying the MK1D again after the MinKnow software update:
 
 -   Okay, after priming + loading, resumed run: Initiated pore scan - 1430 pores
 
-```{=html}
 <!-- -->
-```
+
 -   Seeing some "wild flowering" in the channel states panel early on
 
 -   Occupancy is looking good in first \~15min! ✛ e.g. 47% sequencing, 4.8% available, so (47 / 47 + 4.8) = 90.1%! That's my highest proportion yet of available pores that are actively sequencing
 
 -   There's a notably higher level of adapter than in previous runs - \~7%, compared to previous 1%-2% in MinION runs. This might be expected though, since library is shorter than previous libraries, which means the proportion of adapter:read will be higher
 
-[**Wash #1**]{.underline} \
+[**Wash #1**]{.underline}\
 \@ 4.5hr in, after \~ ⅔ pore loss (**510 pores** \@ the 3.5hr scan). Very fast pore loss, mostly to the "unavailable" category. Re-loaded w/ 300 fmol again. **783 pores** after wash #1
 
-[**Wash #2**]{.underline} \
+[**Wash #2**]{.underline}\
 \@ 19.5hr in, **84 pores** remaining. Re-loaded with 300 fmol, and there are **381 pores** after wash/reload.
 
-[**Wash #3**]{.underline} \
+[**Wash #3**]{.underline}\
 \@ 2 days 1hr in, **40 pores** remaining. Re-loaded with 300 fmol. Run errored out when I tried to resume, so I had to restart the MinKnow software and start a new run. **185 pores** after run started.
+
+[**Added 9/30/25:\
+**]{.underline}Full run reports:\
+[Pre-wash3](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group4_MinION/Library1/20250905_1158_MD-101223_FBD08455_b87a1f92/report_FBD08455_20250905_1159_b87a1f92.html)\
+[Post-wash3](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group4_MinION/Library1_wash3/20250907_1505_MD-101223_FBD08455_50a8f15e/report_FBD08455_20250907_1506_50a8f15e.html)
+
+Output stored here:\
+[Pre-wash3](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group4_MinION/Library1/)\
+[Post-wash3](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group4_MinION/Library1_wash3/)

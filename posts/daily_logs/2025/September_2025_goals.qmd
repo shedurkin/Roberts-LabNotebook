@@ -24,7 +24,7 @@ I'm writing this in the last few days of September, as the Fall 2025 quarter is 
 
 -   [ ] Compile summary stats on all MinION sequencing runs (# bases, \# reads, avg. coverage, etc.)
 
--   [ ] Estimate contamination (e.g., fungal) in all MinION sequencing runs, using Kraken
+-   [x] Estimate contamination (e.g., fungal) in all sequencing runs, using Kraken
 
 ### DDE
 

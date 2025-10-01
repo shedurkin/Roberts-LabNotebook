@@ -73,3 +73,12 @@ ID: FBD42232\
 -   Wash #2. Paused run at 1day 6hr for wash #2. After was, primed and loaded with 4uL G2L3 (\~150fmol). After wash and reload, all pores "saturated" and unable to sequence :(. not sure what caused this, since I made no changes to wash protocol. Detailed "channel states" panel showed field of uniform light blue. Pore scan was uniform gray ("saturated"). Tried stopping run, removing cell, reinserting, and starting new run. After removing + reinserting, showed 4 active pores, 84 zero, 1763 saturated, and 190 unavailable.
 
     Theory: Before wash #2 (but after pausing run), I removed the flow cell to take a picture of the bottom of the flow cell (requested by ONT support). I didn't think this would have any effect on the cell, since I kept all ports sealed, and the cells are regularly inverted during shipping/handling. However, during sequencing, the heating of the flow cell + electrical current causes small bubbles to form under the pore cover. There don't normally touch the pores or affect sequencing, but maybe tilting the cell to remove/reinsert it made the bubbles touch the pores, killing them? Not sure if bubble damage would cause a "saturated" signal though...
+
+[**Added 9/30/25:\
+**]{.underline}Full run reports:\
+[Pre-wash2](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group2_MinION/Group2_Library3_MK1B_sequencer/20250902_1444_MN47571_FBD42232_1580300f/report_FBD42232_20250902_1450_1580300f.html)\
+[Post-wash2](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group2_MinION/Group2_Library3_MK1B_after_wash2/20250903_2102_MN47571_FBD42232_3fa04fa7/report_FBD42232_20250903_2106_3fa04fa7.html)
+
+Output stored here:\
+[Pre-wash2](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group2_MinION/Group2_Library3_MK1B_sequencer/)\
+[Post-wash2](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group2_MinION/Group2_Library3_MK1B_after_wash2/)

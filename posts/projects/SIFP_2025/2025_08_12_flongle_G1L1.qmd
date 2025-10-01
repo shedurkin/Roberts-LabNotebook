@@ -47,3 +47,7 @@ Followed Oxford Nanopore Technologies Native Barcoding 96 Kit [protocol for Flon
 After loading library, flow cell only registered 44 pores :(
 
 Ran Flongle for 24 hrs.
+
+[**Added 9/30/25:\
+**]{.underline}[Full run report](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group1_Flongle/Group1/Library1/20250812_1139_MD-101223_AYW935_f9a34344/report_AYW935_20250812_1140_f9a34344.html)\
+[Output stored here](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group1_Flongle/Group1/Library1/)

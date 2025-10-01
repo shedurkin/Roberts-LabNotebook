@@ -35,3 +35,7 @@ I still lost almost 25% of pores, but that's better than last time (G3L1 Flongle
 [**Notes:**]{.underline}
 
 Barcode 24 is low, but that sample had a high proportion of reads in the G2L2 MinION run, so maybe this will help offset. Think its ok to run on a MinION.
+
+[**Added 9/30/25:\
+**]{.underline}[Full run report](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group2_Flongle/Library3/20250901_1604_MD-101223_AYK963_af91d677/report_AYK963_20250901_1604_af91d677.html)\
+[Output stored here](https://gannet.fish.washington.edu/kdurkin1/SIFP_2025/Group2_Flongle/Library3/)
