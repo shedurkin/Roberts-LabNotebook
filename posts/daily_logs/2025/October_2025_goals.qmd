@@ -1,0 +1,41 @@
+---
+title: "October 2025, Goals"
+author: "Kathleen Durkin"
+date: "last-modified"
+categories: ["daily log"]
+format:
+  html:
+    code-fold: true
+execute:
+  warning: false
+---
+
+Ongoing projects:
+
+-   E5 Deep Dive Expression manuscript
+
+-   E5 Timeseries work -- need to re-integrate, figure out my role/contribution
+
+-   ceasmallr data analyses
+
+-   SIFP data analyses.
+
+[**Big goals for month of October:**]{.underline}
+
+-   DDE manuscript ready for submission
+
+-   Summary presentation of SIFP work/results, ready for GSS and IZ No Bones talk
+
+-   Masters Thesis Proposal sent to committee
+
+[**Goals for first two weeks of October (10/1/25 - 10/17/25)**]{.underline}
+
+-   DDE manucript draft finished and sent to collaborators for feedback/edits
+
+-   First draft of masters thesis proposal
+
+-   SIFP:
+
+    -   figure out how to re-basecall data using .pod5 files (modified basecalling ofc)
+
+    -   figure out workflow (tools, parameters, etc.) for trimming (adapter, barcode, and quality), alignment, and DMR analysis.
