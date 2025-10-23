@@ -90,6 +90,20 @@ execute:
 
 #### Monday
 
+-   1 hr -- SWED201 novel reading
+
+-   1 hr -- SWED201 class
+
+-   0.5 hr -- admin (emails, setting the weeks task's/deadlines, responding to slacks)
+
+-   1.5 hr -- Lab meeting
+
+-   1 hr -- FINS meeting
+
+-   2 hr -- SEAS meeting
+
+-   0.5 hr -- Set up and integrate notion calendar, task manager
+
 ## 03 October 2025
 
 #### Friday

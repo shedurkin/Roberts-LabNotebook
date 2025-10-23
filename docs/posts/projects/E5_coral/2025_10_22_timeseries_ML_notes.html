@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Kathleen Durkin">
+<meta name="dcterms.date" content="2025-10-22">
+
+<title>Kathleen’s Lab Notebook - Timeseries: Notes on ML tools + Emma meeting</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Kathleen’s Lab Notebook</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../daily_log.html" rel="" target="">
+ <span class="menu-text">Daily Notebook Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../projects.html" rel="" target="">
+ <span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/shedurkin" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:kdurkin1@uw.edu" rel="" target=""><i class="bi bi-envelope" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Timeseries: Notes on ML tools + Emma meeting</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">E5-coral</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Kathleen Durkin </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 22, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#emma-strand-meeting" id="toc-emma-strand-meeting" class="nav-link active" data-scroll-target="#emma-strand-meeting">Emma Strand Meeting:</a></li>
+  <li><a href="#penalized-regression-elastic-net-lasso-ridge" id="toc-penalized-regression-elastic-net-lasso-ridge" class="nav-link" data-scroll-target="#penalized-regression-elastic-net-lasso-ridge">1) Penalized regression (Elastic Net / Lasso / Ridge)</a></li>
+  <li><a href="#random-forests-ranger-ensemble-tree-models" id="toc-random-forests-ranger-ensemble-tree-models" class="nav-link" data-scroll-target="#random-forests-ranger-ensemble-tree-models">2) Random Forests / Ranger (ensemble tree models)</a></li>
+  <li><a href="#gradient-boosting-xgboost-lightgbm-catboost" id="toc-gradient-boosting-xgboost-lightgbm-catboost" class="nav-link" data-scroll-target="#gradient-boosting-xgboost-lightgbm-catboost">3) Gradient boosting (XGBoost / LightGBM / CatBoost)</a></li>
+  <li><a href="#bayesian-additive-regression-trees-bart" id="toc-bayesian-additive-regression-trees-bart" class="nav-link" data-scroll-target="#bayesian-additive-regression-trees-bart">4) Bayesian Additive Regression Trees (BART)</a></li>
+  <li><a href="#kernel-methods-gaussian-processes-support-vector-regression-svr" id="toc-kernel-methods-gaussian-processes-support-vector-regression-svr" class="nav-link" data-scroll-target="#kernel-methods-gaussian-processes-support-vector-regression-svr">5) Kernel methods / Gaussian Processes / Support Vector Regression (SVR)</a></li>
+  <li><a href="#deep-learning-fully-connected-networks-cnns-resnets-for-methylation-expression" id="toc-deep-learning-fully-connected-networks-cnns-resnets-for-methylation-expression" class="nav-link" data-scroll-target="#deep-learning-fully-connected-networks-cnns-resnets-for-methylation-expression">6) Deep learning (fully connected networks, CNNs, ResNets for methylation → expression)</a></li>
+  <li><a href="#multi-omics-integrative-and-multivariate-methods-diablo-mixomics-mofa-multi-view-methods" id="toc-multi-omics-integrative-and-multivariate-methods-diablo-mixomics-mofa-multi-view-methods" class="nav-link" data-scroll-target="#multi-omics-integrative-and-multivariate-methods-diablo-mixomics-mofa-multi-view-methods">7) Multi-omics integrative and multivariate methods (DIABLO / mixOmics, MOFA, multi-view methods)</a></li>
+  <li><a href="#hybrid-stacked-approaches-and-feature-selection-pipelines" id="toc-hybrid-stacked-approaches-and-feature-selection-pipelines" class="nav-link" data-scroll-target="#hybrid-stacked-approaches-and-feature-selection-pipelines">8) Hybrid / stacked approaches and feature-selection pipelines</a></li>
+  <li><a href="#practical-notes-on-multicollinearity-interactions-and-interpretation" id="toc-practical-notes-on-multicollinearity-interactions-and-interpretation" class="nav-link" data-scroll-target="#practical-notes-on-multicollinearity-interactions-and-interpretation">Practical notes on multicollinearity, interactions, and interpretation</a></li>
+  <li><a href="#implementation-pointers-r-cli-packages-quick-list" id="toc-implementation-pointers-r-cli-packages-quick-list" class="nav-link" data-scroll-target="#implementation-pointers-r-cli-packages-quick-list">Implementation pointers &amp; R / CLI packages (quick list)</a></li>
+  <li><a href="#key-references-start-here" id="toc-key-references-start-here" class="nav-link" data-scroll-target="#key-references-start-here">Key references (start here)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+<section id="emma-strand-meeting" class="level1">
+<h1>Emma Strand Meeting:</h1>
+<ul>
+<li><p>Elastic net has been good basic start, but doesn’t handle non-linear relationships or context-dependence</p></li>
+<li><p><a href="https://shap.readthedocs.io/en/latest/index.html" class="uri">https://shap.readthedocs.io/en/latest/index.html</a></p></li>
+<li><p>^ Designed to have more inputs with different variables</p></li>
+<li><p>Emma’s biggest worry with elastic net was that it isn’t capturing any interactions among the inputs</p></li>
+<li><p>Agrees we’re strapped on sample size for the really big/complicated analyses</p></li>
+<li><p>What are our questions? Do we want to know what the integrations among layers are? Do we just want to know what feature(s) are most important?</p></li>
+<li><p>Recommends being very purposeful about what we’re trying</p></li>
+<li><p>Elastic net: can be very helpful tool if we know what type of outcome we expect , but maybe not best fit here? Especially with DNA methylation, since we pretty much know it’s not a linear relationship between methylation and expression</p></li>
+<li><p>With epigenetic clock, you already know the relationship , you’re just trying to get the smallest number of features that are still predictive</p></li>
+<li><p>Maybe Elastic net is more of a step 2? Like once we know what features have relationships</p></li>
+<li><p>One way to add non-linearity to Elastic Net would be to throw in inputs that are non-linearized (e.g., with inputs X and Y, add in the input of X*Y). Maybe this could be useful? Like try a bunch of combinations to find the most predictive combination?</p></li>
+<li><p>Maybe I can talk with Steve, volunteer @ URI who’s been working with Shelly, whose been studying ML applications. Emma or Shelley can connect me. He’s super helpful</p></li>
+<li><p>Paper from Steve Volmer (?) using a program, think it’s multi-omic. Trying to predict disease susceptibility from SNPs. But program could still be useful. Could maybe just replace disease susceptibility (numerical score) with expression? <a href="https://www.science.org/doi/10.1126/science.adi3601">Genomic signatures of disease resistance in endangered staghorn corals | Science</a></p></li>
+<li><p>How can we decide how to input the methylation data? Could try median % level at the gene level and methylation density over the gene?</p></li>
+<li><p>Maybe try to figure this out in Elastic Net first. Median % gene methylation, median methylation density. Could then easily compare methylation level v expression and methylation % v expression. Could also try a couple variants with just intronic methylation, exonic methylation, etc.</p></li>
+<li><p>Recommends being really mindful of each step to make sure I don’t have to go back and rerun things. Start at the basic, figure out which type of methylation input to use first (which is most correlated with expression level). Doesn’t necessarily take into account interactions, but can’t keep up with spider webbing from multiple routes. <em>After</em> I have the inputs decided, then can start looking into other models to try.</p></li>
+</ul>
+<p>AI summary:</p>
+<p>Prompt:</p>
+<p>“I have a large multi-omics dataset, which I want to use to do the following: Predict gene expression from input epigenetic features (CpG methylation and/or regional methylation, miRNA expression, lncRNA expression), and/or determine the relative importance of different epigenetic features to determining expression. Please suggest several ML models that might be useful for doing this, or which have been used for similar applications in biology/ecology contexts (provide all sources). For each, please explain the basics of the model, its strengths/limitations, assumptions, etc. Keep in mind my data sets will have multi-colinearity, and I want to account for the possibility of non-linear/context-dependent interactions. I also want to be able to implement the model in either R or command-line.”</p>
+</section>
+<section id="penalized-regression-elastic-net-lasso-ridge" class="level1">
+<h1>1) Penalized regression (Elastic Net / Lasso / Ridge)</h1>
+<p>What it is</p>
+<ul>
+<li>Linear regression with penalties on coefficients (L1 = Lasso, L2 = Ridge, Elastic Net = mixture). Elastic Net is very popular for genomics because it does variable selection and handles correlated predictors better than Lasso alone. <a href="https://academic.oup.com/nar/article/43/12/e79/2902606?utm_source=chatgpt.com" alt="https://academic.oup.com/nar/article/43/12/e79/2902606?utm_source=chatgpt.com"><u>OUP Academic+1</u></a></li>
+</ul>
+<p>Why use it for your data</p>
+<ul>
+<li>Good baseline for continuous gene expression prediction. Handles high-dimensional data (p ≫ n). Elastic Net downweights correlated groups rather than arbitrarily keeping one. Coefficients are directly interpretable as effect sizes.</li>
+</ul>
+<p>Strengths</p>
+<ul>
+<li><p>Fast, well understood, and easy to tune (cross-validated penalty λ, mixing α).</p></li>
+<li><p>Produces sparse model (variable selection), helping identify important CpGs/miRNAs/lncRNAs.</p></li>
+<li><p>Robust to multicollinearity compared to plain OLS.</p></li>
+</ul>
+<p>Limitations/assumptions</p>
+<ul>
+<li><p>Linear model — won't capture complex nonlinear or context-dependent interactions unless you add engineered interaction terms / basis expansions (splines, polynomial features).</p></li>
+<li><p>If many nonlinear interactions are important, performance will be limited.</p></li>
+</ul>
+<p>R / CLI implementations</p>
+<ul>
+<li><p>R: <code>glmnet</code> (very widely used).</p></li>
+<li><p>CLI: you can use Rscript to run glmnet, or Python scikit-learn's ElasticNet if you prefer command line.</p></li>
+</ul>
+<p>Papers: robust meta-analysis and applications of Elastic Net in genomic contexts. <a href="https://academic.oup.com/nar/article/43/12/e79/2902606?utm_source=chatgpt.com" alt="https://academic.oup.com/nar/article/43/12/e79/2902606?utm_source=chatgpt.com"><u>OUP Academic+1</u></a></p>
+<p>When to pick it</p>
+<ul>
+<li>Use it as a first model and for feature selection. Good when you want interpretable coefficients and to reduce dimensionality prior to more complex models.</li>
+</ul>
+</section>
+<section id="random-forests-ranger-ensemble-tree-models" class="level1">
+<h1>2) Random Forests / Ranger (ensemble tree models)</h1>
+<p>What it is</p>
+<ul>
+<li>Ensemble of decision trees (bagging) that averages many bootstrap trees; captures nonlinearities and interactions automatically. Widely used in epigenetics and methylation biomarker discovery. <a href="https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-019-0736-8?utm_source=chatgpt.com" alt="https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-019-0736-8?utm_source=chatgpt.com"><u>BioMed Central+1</u></a></li>
+</ul>
+<p>Why use it for your data</p>
+<ul>
+<li>Handles mixed predictor types, nonlinear relationships, and interactions without explicit feature engineering. Not strongly affected by multicollinearity in terms of predictive power, though variable importance measures can be biased if predictors are correlated.</li>
+</ul>
+<p>Strengths</p>
+<ul>
+<li><p>Good off-the-shelf performance, robust, few hyperparameters.</p></li>
+<li><p>Variable importance (Gini, permutation) gives a sense of feature contributions.</p></li>
+<li><p>R: <code>randomForest</code>, faster <code>ranger</code>; CLI: <code>ranger</code> can be run from command line or via R.</p></li>
+</ul>
+<p>Limitations/assumptions</p>
+<ul>
+<li><p>Interpretation is less direct than linear models.</p></li>
+<li><p>Standard importance metrics can be biased with correlated features; permutation importance or conditional importance methods are preferred.</p></li>
+<li><p>Can overfit if not tuned and if sample size is small relative to noise.</p></li>
+</ul>
+<p>Notes on collinearity &amp; interactions</p>
+<ul>
+<li>RF handles interactions, but if you need <em>reliable</em> ranking among highly correlated CpGs, pair RF with conditional permutation importance or follow up with Elastic Net on RF-selected features. <a href="https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-019-0736-8?utm_source=chatgpt.com" alt="https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-019-0736-8?utm_source=chatgpt.com"><u>BioMed Central</u></a></li>
+</ul>
+</section>
+<section id="gradient-boosting-xgboost-lightgbm-catboost" class="level1">
+<h1>3) Gradient boosting (XGBoost / LightGBM / CatBoost)</h1>
+<p>What it is</p>
+<ul>
+<li>Sequential ensemble of trees built to correct residuals (boosting). Often better accuracy than RF when tuned. Frequently used in multi-omics predictive models. <a href="https://www.sciencedirect.com/science/article/pii/S0888754319309449?utm_source=chatgpt.com" alt="https://www.sciencedirect.com/science/article/pii/S0888754319309449?utm_source=chatgpt.com"><u>ScienceDirect</u></a></li>
+</ul>
+<p>Strengths</p>
+<ul>
+<li><p>Strong predictive performance, handles nonlinearities and interactions.</p></li>
+<li><p>Feature importance, SHAP values available for interpretability.</p></li>
+<li><p>Scales well (LightGBM / XGBoost) and has CLI and R bindings.</p></li>
+</ul>
+<p>Limitations</p>
+<ul>
+<li><p>More hyperparameters to tune (learning rate, tree depth).</p></li>
+<li><p>Like RF, correlated features complicate feature-importance interpretation. Use SHAP and careful conditional analyses.</p></li>
+</ul>
+<p>When to pick</p>
+<ul>
+<li>If you need the best off-the-shelf predictive accuracy and can invest time in tuning. Good candidate if nonlinear/context dependencies are expected.</li>
+</ul>
+</section>
+<section id="bayesian-additive-regression-trees-bart" class="level1">
+<h1>4) Bayesian Additive Regression Trees (BART)</h1>
+<p>What it is</p>
+<ul>
+<li>Bayesian ensemble of trees (sum of trees) that gives probabilistic predictions and naturally regularizes to avoid overfitting. Useful for flexible regression with uncertainty estimates. BART has seen use in regulatory genomics and TF prediction contexts (and more broadly in biology). <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6084568/?utm_source=chatgpt.com" alt="https://pmc.ncbi.nlm.nih.gov/articles/PMC6084568/?utm_source=chatgpt.com"><u>PMC+1</u></a></li>
+</ul>
+<p>Strengths</p>
+<ul>
+<li><p>Captures nonlinearities and interactions without explicit specification.</p></li>
+<li><p>Provides full posterior uncertainty (credible intervals) for predictions and effects.</p></li>
+<li><p>Often performs competitively with boosting while offering principled uncertainty.</p></li>
+</ul>
+<p>Limitations</p>
+<ul>
+<li><p>More computationally intensive than RF/XGBoost.</p></li>
+<li><p>Interpretation is harder; partial dependence and variable inclusion proportions can help.</p></li>
+</ul>
+<p>R implementations</p>
+<ul>
+<li>R packages: <code>BART</code>, <code>dbarts</code>, <code>bartMachine</code> (note license/Java dependency). Good choice when uncertainty quantification matters.</li>
+</ul>
+</section>
+<section id="kernel-methods-gaussian-processes-support-vector-regression-svr" class="level1">
+<h1>5) Kernel methods / Gaussian Processes / Support Vector Regression (SVR)</h1>
+<p>What it is</p>
+<ul>
+<li>Kernel regression (e.g., SVR with radial basis kernel, Gaussian Processes) maps inputs to high-dimensional feature spaces to capture nonlinear relations.</li>
+</ul>
+<p>Strengths</p>
+<ul>
+<li>Powerful for smooth nonlinear relationships and small to moderate datasets. Gaussian Processes give uncertainty estimates and work well when you need calibrated intervals.</li>
+</ul>
+<p>Limitations</p>
+<ul>
+<li>Poor scalability to very large feature spaces (CpG arrays with hundreds of thousands of features) without dimensionality reduction. Kernels can struggle when p ≫ n unless you preselect features or use approximate kernels.</li>
+</ul>
+<p>When to pick</p>
+<ul>
+<li>Useful if you have reduced feature sets (selected CpGs / aggregated regional methylation) and want flexible, probabilistic modeling.</li>
+</ul>
+</section>
+<section id="deep-learning-fully-connected-networks-cnns-resnets-for-methylation-expression" class="level1">
+<h1>6) Deep learning (fully connected networks, CNNs, ResNets for methylation → expression)</h1>
+<p>What it is</p>
+<ul>
+<li>Neural networks (MLPs), convolutional networks (if using sequence or spatially ordered CpGs), and specialized architectures (e.g., DeepMethyGene) trained end-to-end to learn nonlinear mapping from epigenetic features to expression. Recent work shows deep nets can predict expression from methylation patterns. <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-025-06115-2?utm_source=chatgpt.com" alt="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-025-06115-2?utm_source=chatgpt.com"><u>BioMed Central</u></a></li>
+</ul>
+<p>Strengths</p>
+<ul>
+<li><p>Can learn complex, high-order interactions and hierarchical features; CNNs can exploit local genomic structure.</p></li>
+<li><p>Flexible architectures let you combine inputs (miRNA, CpG, lncRNA) in multi-branch models.</p></li>
+</ul>
+<p>Limitations</p>
+<ul>
+<li><p>Data hungry — needs many samples (or strong regularization / transfer learning). Risk of overfitting with limited sample size.</p></li>
+<li><p>Harder to interpret (but can use integrated gradients, DeepLIFT, SHAP for NN).</p></li>
+<li><p>Requires more compute (GPUs helpful).</p></li>
+</ul>
+<p>R / CLI implementations</p>
+<ul>
+<li>R: <code>keras</code> + <code>tensorflow</code> (R interface). CLI: Python <code>tensorflow</code>/<code>pytorch</code> scripts.</li>
+</ul>
+<p>Advice</p>
+<ul>
+<li>If sample size is modest, consider pretraining, transfer learning or using deep models to learn features and then feed them into simpler models.</li>
+</ul>
+</section>
+<section id="multi-omics-integrative-and-multivariate-methods-diablo-mixomics-mofa-multi-view-methods" class="level1">
+<h1>7) Multi-omics integrative and multivariate methods (DIABLO / mixOmics, MOFA, multi-view methods)</h1>
+<p>What it is</p>
+<ul>
+<li>Methods tuned for multi-omics integration: DIABLO (supervised sparse PLS for multi-omics discriminant analysis / prediction and feature selection); MOFA (unsupervised factor analysis for multi-omics latent factors). These identify components/latent factors that combine signals across omics and can be used for downstream regression/prediction. DIABLO has been used for integrating mRNA, miRNA, methylation, proteomics in predictive frameworks. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5687754/?utm_source=chatgpt.com" alt="https://pmc.ncbi.nlm.nih.gov/articles/PMC5687754/?utm_source=chatgpt.com"><u>PMC+1</u></a></li>
+</ul>
+<p>Strengths</p>
+<ul>
+<li><p>Explicitly built to integrate heterogeneous omics and find shared signals and cross-omics associations.</p></li>
+<li><p>DIABLO provides sparse multi-omics signatures and is implemented in <code>mixOmics</code> (R). MOFA gives latent factors useful as inputs to regression or for interpretation.</p></li>
+</ul>
+<p>Limitations</p>
+<ul>
+<li><p>DIABLO is supervised and tends to be used for classification/regression with careful tuning; it assumes linear latent relationships (though can capture nonlinearities via components indirectly).</p></li>
+<li><p>MOFA is unsupervised — useful for exploratory factor discovery but needs a downstream supervised model for prediction.</p></li>
+</ul>
+<p>When to pick</p>
+<ul>
+<li>When you want to combine all your omics coherently and identify cross-modal predictors (e.g., miRNA + CpG factors that jointly explain expression variance). Great for feature reduction before complex models. <a href="https://mixomics.org/mixdiablo/diablo-tcga-case-study/?utm_source=chatgpt.com" alt="https://mixomics.org/mixdiablo/diablo-tcga-case-study/?utm_source=chatgpt.com"><u>mixOmics</u></a></li>
+</ul>
+</section>
+<section id="hybrid-stacked-approaches-and-feature-selection-pipelines" class="level1">
+<h1>8) Hybrid / stacked approaches and feature-selection pipelines</h1>
+<p>Practical strategy (recommended)</p>
+<ul>
+<li><p>Step 1: Preprocess &amp; reduce dimensionality:</p>
+<ul>
+<li><p>For methylation: consider aggregating CpGs to biologically plausible regions (promoters, gene bodies, enhancers) or using principal components / variance filtering / domain knowledge to reduce p.</p></li>
+<li><p>For miRNA/lncRNA: variance/abundance filtering and perhaps correlation clustering.</p></li>
+</ul></li>
+<li><p>Step 2: Baseline models &amp; feature selection:</p>
+<ul>
+<li><p>Fit Elastic Net for a sparse, interpretable baseline.</p></li>
+<li><p>Fit Random Forest / XGBoost for nonlinear baseline and feature importance.</p></li>
+</ul></li>
+<li><p>Step 3: Integrative modeling:</p>
+<ul>
+<li>Use DIABLO or MOFA to create joint components fed to regression/ensemble models.</li>
+</ul></li>
+<li><p>Step 4: Final modeling:</p>
+<ul>
+<li>If sample size is large and you need best predictive accuracy, try XGBoost or a small NN; otherwise BART or RF plus Elastic Net on top of selected features.</li>
+</ul></li>
+<li><p>Step 5: Interpretation:</p>
+<ul>
+<li>Use SHAP values (for tree/boosting) or permutation importance, partial dependence plots, interaction detection (SHAP interaction values), and compare with Elastic Net coefficients.</li>
+</ul></li>
+</ul>
+<p>Why this pipeline helps</p>
+<ul>
+<li>Combines the interpretability of penalized regression with the flexibility of tree/boosting methods, addresses multicollinearity (regularization + aggregation), and gives ways to probe interactions.</li>
+</ul>
+</section>
+<section id="practical-notes-on-multicollinearity-interactions-and-interpretation" class="level1">
+<h1>Practical notes on multicollinearity, interactions, and interpretation</h1>
+<ul>
+<li><p>Multicollinearity: use Elastic Net, or aggregate CpGs into regional summaries, or use dimensionality reduction (PCA, MOFA). For variable ranking from tree models with correlated features, prefer conditional permutation importance or SHAP values and follow up with regression on selected features. <a href="https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-019-0736-8?utm_source=chatgpt.com" alt="https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-019-0736-8?utm_source=chatgpt.com"><u>BioMed Central</u></a></p></li>
+<li><p>Nonlinear/context-dependent interactions: tree ensembles, BART, and neural nets naturally capture them. Use interaction detection tools (H statistic, SHAP interaction values) to highlight important interactions.</p></li>
+<li><p>Interpretability: combine sparse linear models (effect sizes) with model-agnostic explainers (SHAP, partial dependence).</p></li>
+<li><p>Uncertainty: BART and Gaussian Processes provide principled uncertainty; bootstrap or Bayesian methods can give intervals for other models.</p></li>
+</ul>
+</section>
+<section id="implementation-pointers-r-cli-packages-quick-list" class="level1">
+<h1>Implementation pointers &amp; R / CLI packages (quick list)</h1>
+<ul>
+<li><p>Elastic Net: <code>glmnet</code> (R). <a href="https://academic.oup.com/nar/article/43/12/e79/2902606?utm_source=chatgpt.com" alt="https://academic.oup.com/nar/article/43/12/e79/2902606?utm_source=chatgpt.com"><u>OUP Academic</u></a></p></li>
+<li><p>Random Forest: <code>randomForest</code>, <code>ranger</code> (R / CLI). <a href="https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-019-0736-8?utm_source=chatgpt.com" alt="https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-019-0736-8?utm_source=chatgpt.com"><u>BioMed Central</u></a></p></li>
+<li><p>Gradient boosting: <code>xgboost</code>, <code>lightgbm</code>, <code>catboost</code> (R + CLI). <a href="https://www.sciencedirect.com/science/article/pii/S0888754319309449?utm_source=chatgpt.com" alt="https://www.sciencedirect.com/science/article/pii/S0888754319309449?utm_source=chatgpt.com"><u>ScienceDirect</u></a></p></li>
+<li><p>BART: <code>BART</code>, <code>dbarts</code>, <code>bartMachine</code> (R). <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6084568/?utm_source=chatgpt.com" alt="https://pmc.ncbi.nlm.nih.gov/articles/PMC6084568/?utm_source=chatgpt.com"><u>PMC</u></a></p></li>
+<li><p>Deep learning: <code>keras</code>/<code>tensorflow</code> (R interface) or Python <code>tensorflow</code>/<code>pytorch</code>. Example architecture papers: DeepMethyGene for methylation→expression. <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-025-06115-2?utm_source=chatgpt.com" alt="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-025-06115-2?utm_source=chatgpt.com"><u>BioMed Central</u></a></p></li>
+<li><p>Multi-omics integrative: <code>mixOmics</code> (DIABLO), <code>MOFA2</code> (R / python). <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5687754/?utm_source=chatgpt.com" alt="https://pmc.ncbi.nlm.nih.gov/articles/PMC5687754/?utm_source=chatgpt.com"><u>PMC+1</u></a></p></li>
+<li><p>Interpretation: <code>SHAPforxgboost</code> / <code>shapper</code> / <code>iml</code> (R), <code>shap</code> (Python).</p></li>
+<li><p>Pipelines / tuning: <code>caret</code>, <code>tidymodels</code>, <code>mlr3</code> (R).</p></li>
+</ul>
+</section>
+<section id="key-references-start-here" class="level1">
+<h1>Key references (start here)</h1>
+<ul>
+<li><p>mixOmics / DIABLO (multi-omics supervised integration &amp; prediction). <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5687754/?utm_source=chatgpt.com" alt="https://pmc.ncbi.nlm.nih.gov/articles/PMC5687754/?utm_source=chatgpt.com"><u>PMC+1</u></a></p></li>
+<li><p>Elastic Net in genomics/meta-analysis (robust penalized regression). <a href="https://academic.oup.com/nar/article/43/12/e79/2902606?utm_source=chatgpt.com" alt="https://academic.oup.com/nar/article/43/12/e79/2902606?utm_source=chatgpt.com"><u>OUP Academic+1</u></a></p></li>
+<li><p>Random Forest applications to methylation / biomarker modeling. <a href="https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-019-0736-8?utm_source=chatgpt.com" alt="https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-019-0736-8?utm_source=chatgpt.com"><u>BioMed Central+1</u></a></p></li>
+<li><p>DeepMethyGene — example of deep CNN to predict expression from methylation (recent). <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-025-06115-2?utm_source=chatgpt.com" alt="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-025-06115-2?utm_source=chatgpt.com"><u>BioMed Central</u></a></p></li>
+<li><p>BART for genomic inference &amp; TF prediction (Bayesian tree ensemble; uncertainty). <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6084568/?utm_source=chatgpt.com" alt="https://pmc.ncbi.nlm.nih.gov/articles/PMC6084568/?utm_source=chatgpt.com"><u>PMC+1</u></a></p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">This notebook is built using <a href="https://quarto.org/">Quarto</a></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
