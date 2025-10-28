@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/projects.html</loc>
-    <lastmod>2025-10-22T21:39:03.174Z</lastmod>
+    <lastmod>2025-10-24T01:00:25.631Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_26_file_checksums.html</loc>
@@ -230,7 +230,7 @@
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.html</loc>
-    <lastmod>2025-10-22T21:33:03.038Z</lastmod>
+    <lastmod>2025-10-28T01:51:37.045Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_06_17_dde_results_wrapup.html</loc>
@@ -566,7 +566,7 @@
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_10_22_timeseries_ML_notes.html</loc>
-    <lastmod>2025-10-22T21:32:58.591Z</lastmod>
+    <lastmod>2025-10-24T23:42:26.014Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_02_SICB.html</loc>
@@ -794,6 +794,14 @@
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025.html</loc>
-    <lastmod>2025-10-22T21:38:58.522Z</lastmod>
+    <lastmod>2025-10-28T01:50:51.167Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_10_27_methylation_summaries.html</loc>
+    <lastmod>2025-10-28T01:51:59.261Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_10_23_timeseries_methyl_cors.html</loc>
+    <lastmod>2025-10-28T01:51:30.758Z</lastmod>
   </url>
 </urlset>
