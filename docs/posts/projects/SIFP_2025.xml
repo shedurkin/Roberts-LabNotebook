@@ -10,7 +10,207 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Mon, 27 Oct 2025 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 29 Oct 2025 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Dorado – re-basecalling pod5 files</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_10_29_dorado_recalling.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I have a bunch of raw Nanopore output pod5 files, which I need to take through basecalling, demultiplexing, trimming, and genome alignment. Note that several of these steps are performed automatically during sequencing, and I have those output files, but there are differences in software version used. To maintain consistency in model used and types of modifications called, I need to re-do it all from the raw pod5s.</p>
+<p>Luckily, all of these steps (modified basecalling, demultiplexing, trimming, alignment) can be done with a single command from the Nanopore <code>Dorado</code> software! I’ve done some preliminary trials using some of the Flongle output in the below code documents:</p>
+<p><a href="https://github.com/shedurkin/SIFP-nanopore/blob/main/A-Group1/code/05-G1-Library4-Flongle-Dorado-recall.md">G1 L4 Flongle</a><br>
+<a href="https://github.com/shedurkin/SIFP-nanopore/blob/main/D-Group4/code/02-G4-Library1-Flongle-Dorado-recall.md">G4 L1 Flongle</a></p>
+<p>Unfortunately, this is very computationally intensive. Scaling up from the Flongle runs (50-200 Mb output) to MinION runs (2-8 Gb output) will require significantly more computational power. Re-calling the trial Flongle data took several hours using CPUs alone, so the MinION runs would take days.</p>
+<p>I started some CPU-based MinION recalling for Group 4 (<a href="https://github.com/shedurkin/SIFP-nanopore/blob/main/D-Group4/code/03-G4-Library1-MinION-Dorado-recall.Rmd">Group4 Library1 MinION recalling</a>, <a href="https://github.com/shedurkin/SIFP-nanopore/blob/main/D-Group4/code/04-G4-Library2-MinION-Dorado-recall.Rmd">Group4 Library2 MinION recalling</a>), which has lowest output. However, I want to figure out how to use Hyak GPUs for the Dorado basecalling to significantly reduce the time required.</p>
+<p>Sam’s previously done this (but on Mox and with the older Dorado output file format and software, <code>fast5</code> and <code>Guppy</code> ) so I’ll be basing my work off of <a href="https://robertslab.github.io/sams-notebook/posts/2020/2020-09-04-Data-Wrangling---NanoPore-Fast5-Conversion-to-FastQ-of-C.bairdi-6129_403_26-on-Mox-with-GPU-Node/index.html">his notebook post</a>.</p>
+<p>After a whole day of modifying and testing the SLURM script (it takes 1-2hrs to test each time, since my jobs have to wait in a <code>ckpt</code> queue), I finally got it to work! The big problem I had to figure out was how to modify Sam’s script to use <em>containerized</em> software – in <a href="https://robertslab.github.io/sams-notebook/posts/2020/2020-09-04-Data-Wrangling---NanoPore-Fast5-Conversion-to-FastQ-of-C.bairdi-6129_403_26-on-Mox-with-GPU-Node/index.html">Sam’s fast5 basecalling script</a>, he just had <code>Guppy</code> installed directly on the Mox server. On Klone, however, <code>Dorado</code> is available in a container (<code>/gscratch/srlab/containers/srlab-R4.4-bioinformatics-container-3886a1c.sif</code>). I found the clue of how to do this by searching Sam’s notebook repo, in the directory for sbatch scripts, for the word “container”, and finding <a href="https://github.com/RobertsLab/sams-notebook/blob/802d4f0801ad65903e64734be65d96153ac4c30f/sbatch_scripts/20241118-cvir-bismark-bowtie2-alignments.sh#L17">this script</a>:</p>
+<pre><code># Execute Roberts Lab bioinformatics container
+# Binds home directory
+# Binds /gscratch directory
+# Directory bindings allow outputs to be written to the hard drive.
+apptainer exec \
+--home "$PWD" \
+--bind /mmfs1/home/ \
+--bind /gscratch \
+/gscratch/srlab/sr320/srlab-bioinformatics-container-586bf21.sif \
+/gscratch/scrubbed/samwhite/gitrepos/ceasmallr/code/02.01-bismark-bowtie2-alignment-SLURM-array.sh</code></pre>
+<p>Sam used the <code>--bind</code> option when executing the container. After looking in to what that is, I learned that you have to “bind” your working directory (the one which contains your input data and output folder) to the container so that it knows where they are. Otherwise the container, which is essentially a self-contained computing environment, won’t have access to them. Such a simple fix after sooo long debugging 🥴</p>
+<p>After adding binding to my container executions, I finally got a working SLURM batch script! For example, <a href="https://github.com/shedurkin/SIFP-nanopore/blob/main/D-Group4/code/03.01_G4L1_MinION_Dorado.sh">here’s the script</a> used to <code>Dorado</code> basecall the sequencing data from the Group 4 Library 1 MinION run:</p>
+<pre><code>#!/bin/bash
+## Job Name
+#SBATCH --job-name=G4L1_MinION_Dorado
+## Allocation Definition
+#SBATCH --account=srlab-ckpt
+#SBATCH --partition=ckpt
+## Resources
+## GPU
+#SBATCH --gres=gpu:2080ti:1
+## Nodes
+#SBATCH --nodes=1
+## Walltime (days-hours:minutes:seconds format)
+#SBATCH --time=0-02:00:00
+## Memory per node
+#SBATCH --mem=120G
+##turn on e-mail notification
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=kdurkin1@uw.edu
+## Specify the working directory for this job
+#SBATCH --chdir=/gscratch/srlab/kdurkin1/SIFP-nanopore/D-Group4/output/03.01-G4-Library1-MinION-Dorado-recall-GPU/
+
+## Script for running ONT Dorado to perform
+## basecalling (i.e. convert raw ONT pod5 to FastQ) of NanaPore data generated
+## Summer 2025, as psrt of K.Durkin SIFP project
+
+## This script utilizes a GPU node. These nodes are only available as part of the checkpoint
+## partition/account. Since we don't own a GPU node, our GPU jobs are lowest priority and
+## can be interrupted at any time if the node owner submits a new job.
+
+###################################################################################
+# These variables need to be set by user
+
+wd=$(pwd)
+
+# Programs array
+# declare -A programs_array
+# programs_array=(
+# [dorado]="apptainer exec --nv --bind /gscratch /gscratch/srlab/containers/srlab-R4.4-bioinformatics-container-3886a1c.sif dorado"
+# )
+
+
+# Establish variables for more readable code
+
+# Input files directory
+raw_pod5_dir=/gscratch/srlab/kdurkin1/SIFP-nanopore/D-Group4/data/03.01-G4-Library1-MinION-Dorado-recall-GPU/
+output_dir=/gscratch/srlab/kdurkin1/SIFP-nanopore/D-Group4/output/03.01-G4-Library1-MinION-Dorado-recall-GPU/
+genome_file=/gscratch/srlab/kdurkin1/SIFP-nanopore/data/GCA_965233905.1_jaEunKnig1.1/GCA_965233905.1_jaEunKnig1.1_genomic.fna
+
+# Output directory
+out_dir=${wd}
+
+# CPU threads
+threads=28
+
+# Sequencing kit used
+kit="SQK-NBD114-96"
+
+# Flow Cell ID
+flow_cell_id="FBD08455"
+
+# GPU devices setting
+GPU_devices=auto
+
+# Set number of FastQ sequences written per file (0 means all in one file)
+records_per_fastq=0
+
+###################################################################################
+
+# Exit script if any command fails
+set -e
+
+# Load CUDA GPU module
+module load cuda/12.9.1
+
+apptainer exec \
+--nv \
+--home "$PWD" \
+--bind /mmfs1/home/ \
+--bind /gscratch \
+/gscratch/srlab/containers/srlab-R4.4-bioinformatics-container-3886a1c.sif \
+dorado basecaller \
+hac \
+-r ${raw_pod5_dir}/ \
+--kit-name SQK-NBD114-96 \
+--trim 'all' \
+--reference ${genome_file} \
+--modified-bases 5mCG_5hmCG 6mA \
+--device ${GPU_devices} \
+&gt; ${output_dir}/FBD08455_pass_recalled.bam
+
+
+###################################################################################
+
+# Document programs in PATH (primarily for program version ID)
+{
+date
+echo ""
+echo "System PATH for $SLURM_JOB_ID"
+echo ""
+printf "%0.s-" {1..10}
+echo "${PATH}" | tr : n
+} &gt;&gt; system_path.log
+
+
+# Capture program options
+for program in "${!programs_array[@]}"
+do
+    {
+  echo "Program options for ${program}: "
+    echo ""
+    ${programs_array[$program]} --help
+    echo ""
+    echo ""
+    echo "----------------------------------------------"
+    echo ""
+    echo ""
+} &amp;&gt;&gt; program_options.log || true
+done</code></pre>
+<p>Note that I specified a fairly small GPU in this script, <code>gpu:2080ti:1</code>, because Hyak has a <em>lot</em> of these, and the queue time ended up being much shorter. For larger jobs, a more powerful GPU may be desirable.</p>
+<p>I set up and ran scripts to <code>Dorado</code> basecall to passed <code>pod5</code> files of all 5 MinION sequencing runs by late night of 10/29/2025. By the next morning, all but the G1L4 runs have finished:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Sequencing Run</th>
+<th>Dorado Basecalling Job ID</th>
+<th>Runtime</th>
+<th>Output Directory</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>G1L4 MinION</td>
+<td>30552584</td>
+<td>-</td>
+<td><a href="https://github.com/shedurkin/SIFP-nanopore/tree/main/A-Group1/output/06.01-G1-Library4-MinION-Dorado-recall-GPU" class="uri">https://github.com/shedurkin/SIFP-nanopore/tree/main/A-Group1/output/06.01-G1-Library4-MinION-Dorado-recall-GPU</a></td>
+</tr>
+<tr class="even">
+<td>G2L2 MinION</td>
+<td>30552393</td>
+<td>03:25:48</td>
+<td><a href="https://github.com/shedurkin/SIFP-nanopore/tree/main/B-Group2/output/04.01-G2-Library2-MinION-Dorado-recall-GPU" class="uri">https://github.com/shedurkin/SIFP-nanopore/tree/main/B-Group2/output/04.01-G2-Library2-MinION-Dorado-recall-GPU</a></td>
+</tr>
+<tr class="odd">
+<td>G2L3 MinION</td>
+<td>30553071</td>
+<td>03:01:26</td>
+<td><a href="https://github.com/shedurkin/SIFP-nanopore/tree/main/B-Group2/output/05.01-G2-Library3-MinION-Dorado-recall-GPU" class="uri">https://github.com/shedurkin/SIFP-nanopore/tree/main/B-Group2/output/05.01-G2-Library3-MinION-Dorado-recall-GPU</a></td>
+</tr>
+<tr class="even">
+<td>G4L1 MinION</td>
+<td>30542902</td>
+<td>01:26:17</td>
+<td><a href="https://github.com/shedurkin/SIFP-nanopore/tree/main/D-Group4/output/03.01-G4-Library1-MinION-Dorado-recall-GPU" class="uri">https://github.com/shedurkin/SIFP-nanopore/tree/main/D-Group4/output/03.01-G4-Library1-MinION-Dorado-recall-GPU</a></td>
+</tr>
+<tr class="odd">
+<td>G4L2 MinION</td>
+<td>30550488</td>
+<td>01:33:34</td>
+<td><a href="https://github.com/shedurkin/SIFP-nanopore/tree/main/D-Group4/output/04.01-G4-Library2-MinION-Dorado-recall-GPU" class="uri">https://github.com/shedurkin/SIFP-nanopore/tree/main/D-Group4/output/04.01-G4-Library2-MinION-Dorado-recall-GPU</a></td>
+</tr>
+</tbody>
+</table>
+<p>I’m soooo excited to have this working, because basecalling on CPUs along was taking a <em>very</em>long time. For the G4L1 MinION data, I had it running on CPUs for <strong>24 hours</strong> and it generated <strong>~120MB</strong> of output (withuot completing the run). On a GPU, the full <strong>~900MB</strong> of output was generated in just an <strong>hour and a half</strong>!</p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_10_29_dorado_recalling.html</guid>
+  <pubDate>Wed, 29 Oct 2025 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Summarizing default output BAM methylation</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -3983,61 +4183,6 @@ G2L3: <strong>15.3ng/uL</strong></p>
  ]]></description>
   <category>SIFP-2025</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_01_library_prep_G2L3.html</guid>
-  <pubDate>Mon, 01 Sep 2025 07:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Re-extraction of 1800s Samples</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_01_reextractions.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>After using most of my 1800s DNA in a partially unsuccessful library prep (<a href="../../../posts/projects/SIFP_2025/2025_08_31_flongle_G3L1.html">Group 3 Library 1</a>), I want extra for additional preps. I need to extract more DNa for 5 specimens:</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Catalog #</th>
-<th>Collection Year</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>50603</td>
-<td>1912</td>
-</tr>
-<tr class="even">
-<td>19054</td>
-<td>1898</td>
-</tr>
-<tr class="odd">
-<td>42137</td>
-<td>1897</td>
-</tr>
-<tr class="even">
-<td>14399</td>
-<td>1886</td>
-</tr>
-<tr class="odd">
-<td>50368</td>
-<td>1880</td>
-</tr>
-</tbody>
-</table>
-<p>Subsampled and began tissue digestion, as detailed <a href="../../../posts/projects/SIFP_2025/2025_07_09_subampling_extractions.html">here</a>.</p>
-<p>Began digestion at 7:00pm, 09/01/2025, will run for ~48hr.</p>
-<p><u><strong>Notes:</strong></u></p>
-<ul>
-<li><p>A power outage interrupted digestion incubation. Incubator stopped at ~9pm 09/02/25, and I restarted it ~7am 09/03/25, so digestions were sitting at room temp for ~10hrs.</p></li>
-<li><p>Spiked in 20uL proteinase K to each tube, will let digestions sit on shaking incubator for another 12-24hr.</p></li>
-</ul>
-
-
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_01_reextractions.html</guid>
   <pubDate>Mon, 01 Sep 2025 07:00:00 GMT</pubDate>
 </item>
 </channel>

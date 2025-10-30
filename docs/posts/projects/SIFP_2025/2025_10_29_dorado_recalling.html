@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Kathleen Durkin">
+<meta name="dcterms.date" content="2025-10-29">
+
+<title>Kathleen’s Lab Notebook - Dorado – re-basecalling pod5 files</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Kathleen’s Lab Notebook</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../daily_log.html" rel="" target="">
+ <span class="menu-text">Daily Notebook Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../projects.html" rel="" target="">
+ <span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/shedurkin" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:kdurkin1@uw.edu" rel="" target=""><i class="bi bi-envelope" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page">
+      <h1 class="title">Dorado – re-basecalling pod5 files</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">SIFP-2025</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Kathleen Durkin </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 29, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+
+
+
+
+<p>I have a bunch of raw Nanopore output pod5 files, which I need to take through basecalling, demultiplexing, trimming, and genome alignment. Note that several of these steps are performed automatically during sequencing, and I have those output files, but there are differences in software version used. To maintain consistency in model used and types of modifications called, I need to re-do it all from the raw pod5s.</p>
+<p>Luckily, all of these steps (modified basecalling, demultiplexing, trimming, alignment) can be done with a single command from the Nanopore <code>Dorado</code> software! I’ve done some preliminary trials using some of the Flongle output in the below code documents:</p>
+<p><a href="https://github.com/shedurkin/SIFP-nanopore/blob/main/A-Group1/code/05-G1-Library4-Flongle-Dorado-recall.md">G1 L4 Flongle</a><br>
+<a href="https://github.com/shedurkin/SIFP-nanopore/blob/main/D-Group4/code/02-G4-Library1-Flongle-Dorado-recall.md">G4 L1 Flongle</a></p>
+<p>Unfortunately, this is very computationally intensive. Scaling up from the Flongle runs (50-200 Mb output) to MinION runs (2-8 Gb output) will require significantly more computational power. Re-calling the trial Flongle data took several hours using CPUs alone, so the MinION runs would take days.</p>
+<p>I started some CPU-based MinION recalling for Group 4 (<a href="https://github.com/shedurkin/SIFP-nanopore/blob/main/D-Group4/code/03-G4-Library1-MinION-Dorado-recall.Rmd">Group4 Library1 MinION recalling</a>, <a href="https://github.com/shedurkin/SIFP-nanopore/blob/main/D-Group4/code/04-G4-Library2-MinION-Dorado-recall.Rmd">Group4 Library2 MinION recalling</a>), which has lowest output. However, I want to figure out how to use Hyak GPUs for the Dorado basecalling to significantly reduce the time required.</p>
+<p>Sam’s previously done this (but on Mox and with the older Dorado output file format and software, <code>fast5</code> and <code>Guppy</code> ) so I’ll be basing my work off of <a href="https://robertslab.github.io/sams-notebook/posts/2020/2020-09-04-Data-Wrangling---NanoPore-Fast5-Conversion-to-FastQ-of-C.bairdi-6129_403_26-on-Mox-with-GPU-Node/index.html">his notebook post</a>.</p>
+<p>After a whole day of modifying and testing the SLURM script (it takes 1-2hrs to test each time, since my jobs have to wait in a <code>ckpt</code> queue), I finally got it to work! The big problem I had to figure out was how to modify Sam’s script to use <em>containerized</em> software – in <a href="https://robertslab.github.io/sams-notebook/posts/2020/2020-09-04-Data-Wrangling---NanoPore-Fast5-Conversion-to-FastQ-of-C.bairdi-6129_403_26-on-Mox-with-GPU-Node/index.html">Sam’s fast5 basecalling script</a>, he just had <code>Guppy</code> installed directly on the Mox server. On Klone, however, <code>Dorado</code> is available in a container (<code>/gscratch/srlab/containers/srlab-R4.4-bioinformatics-container-3886a1c.sif</code>). I found the clue of how to do this by searching Sam’s notebook repo, in the directory for sbatch scripts, for the word “container”, and finding <a href="https://github.com/RobertsLab/sams-notebook/blob/802d4f0801ad65903e64734be65d96153ac4c30f/sbatch_scripts/20241118-cvir-bismark-bowtie2-alignments.sh#L17">this script</a>:</p>
+<pre><code># Execute Roberts Lab bioinformatics container
+# Binds home directory
+# Binds /gscratch directory
+# Directory bindings allow outputs to be written to the hard drive.
+apptainer exec \
+--home "$PWD" \
+--bind /mmfs1/home/ \
+--bind /gscratch \
+/gscratch/srlab/sr320/srlab-bioinformatics-container-586bf21.sif \
+/gscratch/scrubbed/samwhite/gitrepos/ceasmallr/code/02.01-bismark-bowtie2-alignment-SLURM-array.sh</code></pre>
+<p>Sam used the <code>--bind</code> option when executing the container. After looking in to what that is, I learned that you have to “bind” your working directory (the one which contains your input data and output folder) to the container so that it knows where they are. Otherwise the container, which is essentially a self-contained computing environment, won’t have access to them. Such a simple fix after sooo long debugging 🥴</p>
+<p>After adding binding to my container executions, I finally got a working SLURM batch script! For example, <a href="https://github.com/shedurkin/SIFP-nanopore/blob/main/D-Group4/code/03.01_G4L1_MinION_Dorado.sh">here’s the script</a> used to <code>Dorado</code> basecall the sequencing data from the Group 4 Library 1 MinION run:</p>
+<pre><code>#!/bin/bash
+## Job Name
+#SBATCH --job-name=G4L1_MinION_Dorado
+## Allocation Definition
+#SBATCH --account=srlab-ckpt
+#SBATCH --partition=ckpt
+## Resources
+## GPU
+#SBATCH --gres=gpu:2080ti:1
+## Nodes
+#SBATCH --nodes=1
+## Walltime (days-hours:minutes:seconds format)
+#SBATCH --time=0-02:00:00
+## Memory per node
+#SBATCH --mem=120G
+##turn on e-mail notification
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=kdurkin1@uw.edu
+## Specify the working directory for this job
+#SBATCH --chdir=/gscratch/srlab/kdurkin1/SIFP-nanopore/D-Group4/output/03.01-G4-Library1-MinION-Dorado-recall-GPU/
+
+## Script for running ONT Dorado to perform
+## basecalling (i.e. convert raw ONT pod5 to FastQ) of NanaPore data generated
+## Summer 2025, as psrt of K.Durkin SIFP project
+
+## This script utilizes a GPU node. These nodes are only available as part of the checkpoint
+## partition/account. Since we don't own a GPU node, our GPU jobs are lowest priority and
+## can be interrupted at any time if the node owner submits a new job.
+
+###################################################################################
+# These variables need to be set by user
+
+wd=$(pwd)
+
+# Programs array
+# declare -A programs_array
+# programs_array=(
+# [dorado]="apptainer exec --nv --bind /gscratch /gscratch/srlab/containers/srlab-R4.4-bioinformatics-container-3886a1c.sif dorado"
+# )
+
+
+# Establish variables for more readable code
+
+# Input files directory
+raw_pod5_dir=/gscratch/srlab/kdurkin1/SIFP-nanopore/D-Group4/data/03.01-G4-Library1-MinION-Dorado-recall-GPU/
+output_dir=/gscratch/srlab/kdurkin1/SIFP-nanopore/D-Group4/output/03.01-G4-Library1-MinION-Dorado-recall-GPU/
+genome_file=/gscratch/srlab/kdurkin1/SIFP-nanopore/data/GCA_965233905.1_jaEunKnig1.1/GCA_965233905.1_jaEunKnig1.1_genomic.fna
+
+# Output directory
+out_dir=${wd}
+
+# CPU threads
+threads=28
+
+# Sequencing kit used
+kit="SQK-NBD114-96"
+
+# Flow Cell ID
+flow_cell_id="FBD08455"
+
+# GPU devices setting
+GPU_devices=auto
+
+# Set number of FastQ sequences written per file (0 means all in one file)
+records_per_fastq=0
+
+###################################################################################
+
+# Exit script if any command fails
+set -e
+
+# Load CUDA GPU module
+module load cuda/12.9.1
+
+apptainer exec \
+--nv \
+--home "$PWD" \
+--bind /mmfs1/home/ \
+--bind /gscratch \
+/gscratch/srlab/containers/srlab-R4.4-bioinformatics-container-3886a1c.sif \
+dorado basecaller \
+hac \
+-r ${raw_pod5_dir}/ \
+--kit-name SQK-NBD114-96 \
+--trim 'all' \
+--reference ${genome_file} \
+--modified-bases 5mCG_5hmCG 6mA \
+--device ${GPU_devices} \
+&gt; ${output_dir}/FBD08455_pass_recalled.bam
+
+
+###################################################################################
+
+# Document programs in PATH (primarily for program version ID)
+{
+date
+echo ""
+echo "System PATH for $SLURM_JOB_ID"
+echo ""
+printf "%0.s-" {1..10}
+echo "${PATH}" | tr : n
+} &gt;&gt; system_path.log
+
+
+# Capture program options
+for program in "${!programs_array[@]}"
+do
+    {
+  echo "Program options for ${program}: "
+    echo ""
+    ${programs_array[$program]} --help
+    echo ""
+    echo ""
+    echo "----------------------------------------------"
+    echo ""
+    echo ""
+} &amp;&gt;&gt; program_options.log || true
+done</code></pre>
+<p>Note that I specified a fairly small GPU in this script, <code>gpu:2080ti:1</code>, because Hyak has a <em>lot</em> of these, and the queue time ended up being much shorter. For larger jobs, a more powerful GPU may be desirable.</p>
+<p>I set up and ran scripts to <code>Dorado</code> basecall to passed <code>pod5</code> files of all 5 MinION sequencing runs by late night of 10/29/2025. By the next morning, all but the G1L4 runs have finished:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Sequencing Run</th>
+<th>Dorado Basecalling Job ID</th>
+<th>Runtime</th>
+<th>Output Directory</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>G1L4 MinION</td>
+<td>30552584</td>
+<td>-</td>
+<td><a href="https://github.com/shedurkin/SIFP-nanopore/tree/main/A-Group1/output/06.01-G1-Library4-MinION-Dorado-recall-GPU" class="uri">https://github.com/shedurkin/SIFP-nanopore/tree/main/A-Group1/output/06.01-G1-Library4-MinION-Dorado-recall-GPU</a></td>
+</tr>
+<tr class="even">
+<td>G2L2 MinION</td>
+<td>30552393</td>
+<td>03:25:48</td>
+<td><a href="https://github.com/shedurkin/SIFP-nanopore/tree/main/B-Group2/output/04.01-G2-Library2-MinION-Dorado-recall-GPU" class="uri">https://github.com/shedurkin/SIFP-nanopore/tree/main/B-Group2/output/04.01-G2-Library2-MinION-Dorado-recall-GPU</a></td>
+</tr>
+<tr class="odd">
+<td>G2L3 MinION</td>
+<td>30553071</td>
+<td>03:01:26</td>
+<td><a href="https://github.com/shedurkin/SIFP-nanopore/tree/main/B-Group2/output/05.01-G2-Library3-MinION-Dorado-recall-GPU" class="uri">https://github.com/shedurkin/SIFP-nanopore/tree/main/B-Group2/output/05.01-G2-Library3-MinION-Dorado-recall-GPU</a></td>
+</tr>
+<tr class="even">
+<td>G4L1 MinION</td>
+<td>30542902</td>
+<td>01:26:17</td>
+<td><a href="https://github.com/shedurkin/SIFP-nanopore/tree/main/D-Group4/output/03.01-G4-Library1-MinION-Dorado-recall-GPU" class="uri">https://github.com/shedurkin/SIFP-nanopore/tree/main/D-Group4/output/03.01-G4-Library1-MinION-Dorado-recall-GPU</a></td>
+</tr>
+<tr class="odd">
+<td>G4L2 MinION</td>
+<td>30550488</td>
+<td>01:33:34</td>
+<td><a href="https://github.com/shedurkin/SIFP-nanopore/tree/main/D-Group4/output/04.01-G4-Library2-MinION-Dorado-recall-GPU" class="uri">https://github.com/shedurkin/SIFP-nanopore/tree/main/D-Group4/output/04.01-G4-Library2-MinION-Dorado-recall-GPU</a></td>
+</tr>
+</tbody>
+</table>
+<p>I’m soooo excited to have this working, because basecalling on CPUs along was taking a <em>very</em>long time. For the G4L1 MinION data, I had it running on CPUs for <strong>24 hours</strong> and it generated <strong>~120MB</strong> of output (withuot completing the run). On a GPU, the full <strong>~900MB</strong> of output was generated in just an <strong>hour and a half</strong>!</p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">This notebook is built using <a href="https://quarto.org/">Quarto</a></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
