@@ -1,0 +1,49 @@
+---
+title: "Timeseries: Elastic Net to evaluate predictors of Barnacle component24 genes"
+author: "Kathleen Durkin"
+date: "2025-11-12"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Steven has been trying out BArnacle tensor decomposition to generate meaningfully grouped orthologous genes in all 3 species. He's asked me to try running the Elastic NEt pipeline on the top 100 gene members of one of the output components from his most recent run.
+
+I've also been meaning to make some data handling tweaks to the EN pipeline, so I'll show multipel iterations here. Since one of the data tweaks (I think the scaling portion) is causing a weird error I haven't been able to fix for Peve and Ptuh, I'll only show the Apul results for now
+
+# Existing EN pipeline
+
+[Knitted code](https://github.com/urol-e5/timeseries_molecular/blob/main/M-multi-species/scripts/26.1-rank35-optimization-ElasticNet-component24.md)
+
+Briefly, the pipeline applies Elastic Net regression to predict gene expression (in this case, the expression of the top 100 genes from Barnacle rank35 decomposition, component 24) using mlti-omic epigenetic predictors (miRNA, lncRNA, CpG methylation). The workflow cleans and variance stabilizes the data, merges the predictors into a single dataset, then applies EN with bootstrapping.\
+\
+**Inputs**
+
+-   Gene expression counts (component 24 gene set)
+
+-   miRNA counts
+
+-   lncRNA counts
+
+-   CpG site methylation counts (WGBS)
+
+-   Sample metadata (colony ID, timepoint)
+
+**Processing Steps**
+
+**Filtering:** remove all-0 features, apply pOverA filtering, VST transformation
+
+# Introducing M-values and scaling
+
+[knitted code](https://github.com/urol-e5/timeseries_molecular/blob/main/M-multi-species/scripts/26.2-rank35-optimization-ElasticNet-component24-scaling.md)
+
+# Introducing dimensionality reduction
+
+[Knitted code](https://github.com/urol-e5/timeseries_molecular/blob/main/M-multi-species/scripts/26.3-rank35-optimization-ElasticNet-component24-DimRed.md)
+
+Summary: Don't think this is an appropriate change. All gene predictor sets end up dominated by miRNA, presumably because the PCs are too "noisy" to meet their potential for expression matching.

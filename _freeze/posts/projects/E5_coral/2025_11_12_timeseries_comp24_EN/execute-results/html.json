@@ -1,0 +1,14 @@
+{
+  "hash": "b3236ede3d7544d7878b2d874089b580",
+  "result": {
+    "markdown": "---\ntitle: \"Timeseries: Elastic Net to evaluate predictors of Barnacle component24 genes\"\nauthor: \"Kathleen Durkin\"\ndate: \"2025-11-12\"\ncategories: [\"E5-coral\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: TRUE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nSteven has been trying out BArnacle tensor decomposition to generate meaningfully grouped orthologous genes in all 3 species. He's asked me to try running the Elastic NEt pipeline on the top 100 gene members of one of the output components from his most recent run.\n\nI've also been meaning to make some data handling tweaks to the EN pipeline, so I'll show multipel iterations here. Since one of the data tweaks (I think the scaling portion) is causing a weird error I haven't been able to fix for Peve and Ptuh, I'll only show the Apul results for now\n\n# Existing EN pipeline\n\n[Knitted code](https://github.com/urol-e5/timeseries_molecular/blob/main/M-multi-species/scripts/26.1-rank35-optimization-ElasticNet-component24.md)\n\nBriefly, the pipeline applies Elastic Net regression to predict gene expression (in this case, the expression of the top 100 genes from Barnacle rank35 decomposition, component 24) using mlti-omic epigenetic predictors (miRNA, lncRNA, CpG methylation). The workflow cleans and variance stabilizes the data, merges the predictors into a single dataset, then applies EN with bootstrapping.\\\n\\\n**Inputs**\n\n-   Gene expression counts (component 24 gene set)\n\n-   miRNA counts\n\n-   lncRNA counts\n\n-   CpG site methylation counts (WGBS)\n\n-   Sample metadata (colony ID, timepoint)\n\n**Processing Steps**\n\n**Filtering:** remove all-0 features, apply pOverA filtering, VST transformation\n\n# Introducing M-values and scaling\n\n[knitted code](https://github.com/urol-e5/timeseries_molecular/blob/main/M-multi-species/scripts/26.2-rank35-optimization-ElasticNet-component24-scaling.md)\n\n# Introducing dimensionality reduction\n\n[Knitted code](https://github.com/urol-e5/timeseries_molecular/blob/main/M-multi-species/scripts/26.3-rank35-optimization-ElasticNet-component24-DimRed.md)\n\nSummary: Don't think this is an appropriate change. All gene predictor sets end up dominated by miRNA, presumably because the PCs are too \"noisy\" to meet their potential for expression matching.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
