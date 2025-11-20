@@ -148,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page">
+    <div class="quarto-title column-page-left">
       <h1 class="title">Timeseries: Running noise through the Elastic Net</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">E5-coral</div>
@@ -180,11 +180,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#en-using-normal-predictor-set-bootstrap-1" id="toc-en-using-normal-predictor-set-bootstrap-1" class="nav-link active" data-scroll-target="#en-using-normal-predictor-set-bootstrap-1">EN using normal predictor set, bootstrap 1</a></li>
+  <li><a href="#en-using-empirically-generated-noise-for-predictors" id="toc-en-using-empirically-generated-noise-for-predictors" class="nav-link" data-scroll-target="#en-using-empirically-generated-noise-for-predictors">EN using empirically-generated noise for predictors</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
 
@@ -261,8 +268,26 @@ Running as normal (from a conda environment):</p>
 </div>
 <p>I did a preliminary run of the EN with A.pulchra randomized input, with just a few replicates, and the results were pretty striking – <em>no</em> genes were “consistently well predicted” (mean R^2 &gt; 0.5 across replicates). In comparison, ~60 of the 100 response genes were consistently well-predicted by the actual A.pulchra predictor set. This preliminarily suggests to me that the predictors do have significant predictive value, and the model isn’t just being driven by the fact there are a lot of inputs which could fortuitously correlate without biological meaning.</p>
 <p>I’m going to start longer runs of each (Apul EN with actual predictors, and Apul EN with randomized predictors), using 100 replicates during initial boostrapping and 50 replicates during reduced-set bootstrapping, and see what we get.</p>
+<section id="en-using-normal-predictor-set-bootstrap-1" class="level2">
+<h2 class="anchored" data-anchor-id="en-using-normal-predictor-set-bootstrap-1">EN using normal predictor set, bootstrap 1</h2>
+<p>100, bootstrap 2: 50</p>
+<p><img src="https://github.com/urol-e5/timeseries_molecular/blob/main/M-multi-species/output/26.2-ElasticNet-scaling-test/bootstrap1_performance_errorbars.png?raw=true" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/urol-e5/timeseries_molecular/blob/main/M-multi-species/output/26.2-ElasticNet-scaling-test/bootstrap2_performance_errorbars.png?raw=true" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">EN run on only well-predicted genes</figcaption>
+</figure>
+</div>
+<p>The true predictor set could well-predict the expression of <strong>67 of the 100 genes</strong>, and when those 67 were selected and run through the EN again (50 reps), nearly all (65) were again consistently well-predicted</p>
+</section>
+<section id="en-using-empirically-generated-noise-for-predictors" class="level2">
+<h2 class="anchored" data-anchor-id="en-using-empirically-generated-noise-for-predictors">EN using empirically-generated noise for predictors</h2>
+<p>bootstrap 1: 100, bootstrap 2: 50</p>
+<p><img src="https://github.com/urol-e5/timeseries_molecular/blob/main/M-multi-species/output/26.2-ElasticNet-scaling-test-noise/bootstrap1_performance_errorbars.png?raw=true" class="img-fluid"></p>
+<p>The noise predictors were able to consistently <strong>predict the expression of 0 genes</strong></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
