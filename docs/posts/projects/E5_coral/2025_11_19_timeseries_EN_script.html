@@ -285,6 +285,21 @@ Running as normal (from a conda environment):</p>
 <p>bootstrap 1: 100, bootstrap 2: 50</p>
 <p><img src="https://github.com/urol-e5/timeseries_molecular/blob/main/M-multi-species/output/26.2-ElasticNet-scaling-test-noise/bootstrap1_performance_errorbars.png?raw=true" class="img-fluid"></p>
 <p>The noise predictors were able to consistently <strong>predict the expression of 0 genes</strong></p>
+<p>This is great! This is exactly what we’d want to see. We were concerned that the model might be overfitting to fortuitously correlated features that don’t represent a truly meaningful pattern. Instead, this suggests that overfitting is not sufficient to consistently hit R2 &gt; 0.5 (which is probably the absolute <em>minimum</em> R2 value we’d consider). Instead, the actual predictors do seem to be providing a structured signal that is actually being used by the model</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/urol-e5/timeseries_molecular/blob/main/M-multi-species/output/26.2-ElasticNet-scaling-test/bootstrap1_top50_features.png?raw=true" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Actual predictors</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/urol-e5/timeseries_molecular/blob/main/M-multi-species/output/26.2-ElasticNet-scaling-test-noise/bootstrap1_top50_features.png?raw=true" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Random noise predictors</figcaption>
+</figure>
+</div>
+<p><img src="https://github.com/urol-e5/timeseries_molecular/blob/main/M-multi-species/output/26.2-ElasticNet-scaling-test-noise/bootstrap1_top50_features.png?raw=true" class="img-fluid"></p>
+<p>This is similarly suggested by the bar plots, which are showing the features with highest mean “importance” (i.e.&nbsp;coefficients). For the noise inputs, we’d hopefully see that most predictor coefficients are sitting close to 0, while the same is <em>not true</em> for the actual predictors. This is what we see! The top features of the noise model have values 0.00025 - 0.002, mostly sitting around 0.0005. In comparison, the top features of the actual predictors model range in importance from roughly 0.002 - 0.006, with an average around 0.003.</p>
 
 
 </section>
