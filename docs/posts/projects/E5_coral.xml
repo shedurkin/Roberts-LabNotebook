@@ -336,7 +336,6 @@ font-style: inherit;">\</span></span>
 <figcaption class="figure-caption">Random noise predictors</figcaption>
 </figure>
 </div>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/https:/github.com/urol-e5/timeseries_molecular/blob/main/M-multi-species/output/26.2-ElasticNet-scaling-test-noise/bootstrap1_top50_features.png?raw=true" class="img-fluid"></p>
 <p>This is similarly suggested by the bar plots, which are showing the features with highest mean “importance” (i.e.&nbsp;coefficients). For the noise inputs, we’d hopefully see that most predictor coefficients are sitting close to 0, while the same is <em>not true</em> for the actual predictors. This is what we see! The top features of the noise model have values 0.00025 - 0.002, mostly sitting around 0.0005. In comparison, the top features of the actual predictors model range in importance from roughly 0.002 - 0.006, with an average around 0.003.</p>
 
 
