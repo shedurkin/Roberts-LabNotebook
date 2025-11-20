@@ -10,7 +10,7 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Wed, 22 Oct 2025 19:16:30 GMT</lastBuildDate>
+<lastBuildDate>Thu, 06 Nov 2025 00:16:19 GMT</lastBuildDate>
 <item>
   <title>Ideas/Questions Log</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -24,6 +24,7 @@
 <section id="ideas" class="level2">
 <h2 class="anchored" data-anchor-id="ideas">Ideas</h2>
 <ul>
+<li>2025/11/5: Methylated CpGs are more likely to mutate (deaminate into thymines). Does that mean that, at some point in the very distant future, species could “run out” of Cs? Are the mechanisms introducing/reintroducing cytosine residues to the genome keeping pace with those removing them?</li>
 <li>2025/10/14: Talked in FISH510 about potential role of spurious transcription in environmental response (prompted by Liew et al.&nbsp;2018 paper finding that OA treatment <img src="https://latex.codecogs.com/png.latex?%5Crightarrow"> increased methylation <img src="https://latex.codecogs.com/png.latex?%5Crightarrow"> decreased spurious transcription. Maybe an avenue for exploration with our existing transcriptomic data is to look at differential expression on the level of spurious transcripts. E.g. if spurious transcription decreased under stress, were the genes of a specific function dramatically less spuriously-transcribed?)</li>
 </ul>
 <!-- -->
@@ -53,7 +54,7 @@
  ]]></description>
   <category>miscellaneous</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_30_Ideas.html</guid>
-  <pubDate>Wed, 22 Oct 2025 19:16:30 GMT</pubDate>
+  <pubDate>Thu, 06 Nov 2025 00:16:19 GMT</pubDate>
 </item>
 <item>
   <title>Opening an RStudio instance in Klone</title>
