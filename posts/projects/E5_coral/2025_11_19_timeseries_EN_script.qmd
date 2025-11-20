@@ -1,0 +1,92 @@
+---
+title: "Timeseries: Running noise through the Elastic Net"
+author: "Kathleen Durkin"
+date: "2025-11-19"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+First, made existing Elastic Net code (the timeseries M-Multispecies/26.2 code, which includes scaling and WGBS conversion to M-values) into a script that can be run from command line with various input files, parameters, etc.\
+\
+Running as normal (from a conda environment):
+
+```{r, engine='bash', eval=FALSE}
+(r_enet_rscript) shedurkin@raven:~/timeseries_molecular/M-multi-species/scripts$ Rscript 26.2-ElasticNet-scaling.R \
+"https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/M-multi-species/output/26-rank35-optimization/lambda_gene_0.2/top_genes_per_component/Component_24_apul_count_matrix.csv" \
+"https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/M-multi-species/output/10.1-format-miRNA-counts-updated/Apul_miRNA_counts_formatted_updated.txt"\
+"https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/31.5-Apul-lncRNA-discovery/lncRNA_counts.clean.filtered.txt" \
+"https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/22.5-Apul-multiomic-SR/Apul-filtered-WGBS-CpG-counts.csv" \
+"../../M-multi-species/data/rna_metadata.csv" \
+"../output/26.2-ElasticNet-scaling-test" \
+"ACR-225-TP1" \
+0.5 \
+100 \
+50 \
+0.5
+```
+
+Then want to generate a "fake" predictor set of just noise. For now I'll choose to (a) use a fully randomized predictor set, instead of "spiking" noise into the real data, and (b) to generate the random data empirically
+
+```{r, eval=FALSE}
+make_noise_empirical <- function(X) {
+  X_noise <- apply(X, 2, function(col) {
+    sample(col, length(col), replace = TRUE)
+  })
+  colnames(X_noise) <- colnames(X)
+  rownames(X_noise) <- rownames(X)
+  X_noise
+}
+
+make_noise_empirical_safe <- function(X) {
+
+  X_noise <- apply(X, 2, function(col) {
+    sample(col, length(col), replace = TRUE)
+  })
+
+  # Ensure row/col names preserved
+  colnames(X_noise) <- colnames(X)
+  rownames(X_noise) <- rownames(X)
+
+  # Fix rows that become all-zero
+  zero_rows <- which(rowSums(X_noise > 0) == 0)
+  if (length(zero_rows) > 0) {
+    for (i in zero_rows) {
+      # Give the row a single small positive value
+      # Put it in a random column
+      j <- sample(seq_len(ncol(X_noise)), 1)
+      X_noise[i, j] <- 1
+    }
+  }
+
+  return(X_noise)
+}
+
+miRNA_noise <- make_noise_empirical(miRNA)
+lncRNA_noise <- make_noise_empirical(lncRNA)
+WGBS_noise <- make_noise_empirical(WGBS)
+```
+
+```{r, engine='bash', eval=FALSE}
+(r_enet_rscript) shedurkin@raven:~/timeseries_molecular/M-multi-species/scripts$ Rscript 26.2-ElasticNet-scaling.R \
+"https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/M-multi-species/output/26-rank35-optimization/lambda_gene_0.2/top_genes_per_component/Component_24_apul_count_matrix.csv" \
+"../output/26.2-ElasticNet-scaling-test-noise/miRNA_noise_empirical.txt" \
+"../output/26.2-ElasticNet-scaling-test-noise/lncRNA_noise_empirical.txt" \
+"../output/26.2-ElasticNet-scaling-test-noise/WGBS_noise_empirical.csv" \
+"../../M-multi-species/data/rna_metadata.csv" \
+"../output/26.2-ElasticNet-scaling-test-noise" \
+"ACR-225-TP1" \
+0.5 \
+100 \
+50 \
+0.5
+```
+
+I did a preliminary run of the EN with A.pulchra randomized input, with just a few replicates, and the results were pretty striking -- *no* genes were "consistently well predicted" (mean R\^2 \> 0.5 across replicates). In comparison, \~60 of the 100 response genes were consistently well-predicted by the actual A.pulchra predictor set. This preliminarily suggests to me that the predictors do have significant predictive value, and the model isn't just being driven by the fact there are a lot of inputs which could fortuitously correlate without biological meaning.
+
+I'm going to start longer runs of each (Apul EN with actual predictors, and Apul EN with randomized predictors), using 100 replicates during initial boostrapping and 50 replicates during reduced-set bootstrapping, and see what we get.

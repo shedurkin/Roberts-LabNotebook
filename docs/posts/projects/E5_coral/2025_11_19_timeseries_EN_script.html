@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kathleen Durkin">
-<meta name="dcterms.date" content="2025-11-12">
+<meta name="dcterms.date" content="2025-11-19">
 
-<title>Kathleen’s Lab Notebook - Timeseries: Elastic Net to evaluate predictors of Barnacle component24 genes</title>
+<title>Kathleen’s Lab Notebook - Timeseries: Running noise through the Elastic Net</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -114,8 +148,8 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Timeseries: Elastic Net to evaluate predictors of Barnacle component24 genes</h1>
+    <div class="quarto-title column-page">
+      <h1 class="title">Timeseries: Running noise through the Elastic Net</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">E5-coral</div>
               </div>
@@ -135,7 +169,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">November 12, 2025</p>
+        <p class="date">November 19, 2025</p>
       </div>
     </div>
     
@@ -146,43 +180,89 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#existing-en-pipeline" id="toc-existing-en-pipeline" class="nav-link active" data-scroll-target="#existing-en-pipeline">Existing EN pipeline</a></li>
-  <li><a href="#introducing-m-values-and-scaling" id="toc-introducing-m-values-and-scaling" class="nav-link" data-scroll-target="#introducing-m-values-and-scaling">Introducing M-values and scaling</a></li>
-  <li><a href="#introducing-dimensionality-reduction" id="toc-introducing-dimensionality-reduction" class="nav-link" data-scroll-target="#introducing-dimensionality-reduction">Introducing dimensionality reduction</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
 
 
 
 
-<p>Steven has been trying out BArnacle tensor decomposition to generate meaningfully grouped orthologous genes in all 3 species. He’s asked me to try running the Elastic NEt pipeline on the top 100 gene members of one of the output components from his most recent run.</p>
-<p>I’ve also been meaning to make some data handling tweaks to the EN pipeline, so I’ll show multipel iterations here. Since one of the data tweaks (I think the scaling portion) is causing a weird error I haven’t been able to fix for Peve and Ptuh, I’ll only show the Apul results for now</p>
-<section id="existing-en-pipeline" class="level1">
-<h1>Existing EN pipeline</h1>
-<p><a href="https://github.com/urol-e5/timeseries_molecular/blob/main/M-multi-species/scripts/26.1-rank35-optimization-ElasticNet-component24.md">Knitted code</a></p>
-<p>Briefly, the pipeline applies Elastic Net regression to predict gene expression (in this case, the expression of the top 100 genes from Barnacle rank35 decomposition, component 24) using mlti-omic epigenetic predictors (miRNA, lncRNA, CpG methylation). The workflow cleans and variance stabilizes the data, merges the predictors into a single dataset, then applies EN with bootstrapping.</p>
-</section>
-<section id="introducing-m-values-and-scaling" class="level1">
-<h1>Introducing M-values and scaling</h1>
-<p><a href="https://github.com/urol-e5/timeseries_molecular/blob/main/M-multi-species/scripts/26.2-rank35-optimization-ElasticNet-component24-scaling.md">knitted code</a></p>
-<p>This option has one major change from the previous iteration (26.1): <strong>Scale standardization.</strong> Regression techniques require inputs to be on similar scales. That is not the case for our inputs, for two reasons. First, RNA counts are unbounded (could have thousands of transcripts for single RNA), but CpG site methylation is bounded on a 0-100 % scale. I'm <strong>transforming methylation from beta values (0% - 100%) to M values</strong> (log2 transformation of ratio of unmethyl/methyl). M values are unbounded (like expression counts), and also more appropriate for regression analyses because they remove heterodescasticity without need to run methylation values through a DESeq vst transformation, which may not be appropriate for use on data other than gene counts. Second, to get all predictor blocks (miRNA, lncRNA, and WGBS Mvalues on the same scale, ill be <strong>scaling each before combining</strong> into the full predictor set.)</p>
-</section>
-<section id="introducing-dimensionality-reduction" class="level1">
-<h1>Introducing dimensionality reduction</h1>
-<p><a href="https://github.com/urol-e5/timeseries_molecular/blob/main/M-multi-species/scripts/26.3-rank35-optimization-ElasticNet-component24-DimRed.md">Knitted code</a></p>
-<p>This has 1 major change from the previous iteration (26.2): <strong>Dimensionality reduction to address feature imbalance.</strong> The input features are of dramatically different sizes (e.g.&nbsp;in A.pulchra, ~50 miRNA, compared to ~15,000 lncRNA and CpG sites). To address this I'm adding a dimensionality reduction step via PCA for the lncRNA and CpG sites. It's important to note though that this is&nbsp;<em>not</em>&nbsp;equivalent to grouping similar features discretely into bins. Instead, each PC is instead a function of all the features. That means instead of seeing, for example, which lncRNAs comprise PC1, we have to look at which lncRNAs&nbsp;<em>contribute most</em>&nbsp;to PC1 (since all lncRNA are technically part of it)</p>
-<p>Summary: Don’t think this is an appropriate change. All gene predictor sets end up dominated by miRNA, presumably because the PCs are too “noisy” to meet their potential for expression matching.</p>
+<p>First, made existing Elastic Net code (the timeseries M-Multispecies/26.2 code, which includes scaling and WGBS conversion to M-values) into a script that can be run from command line with various input files, parameters, etc.<br>
+<br>
+Running as normal (from a conda environment):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">r_enet_rscript</span><span class="kw">)</span> <span class="ex">shedurkin@raven:~/timeseries_molecular/M-multi-species/scripts$</span> Rscript 26.2-ElasticNet-scaling.R <span class="dt">\</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="st">"https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/M-multi-species/output/26-rank35-optimization/lambda_gene_0.2/top_genes_per_component/Component_24_apul_count_matrix.csv"</span> <span class="dt">\</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="st">"https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/M-multi-species/output/10.1-format-miRNA-counts-updated/Apul_miRNA_counts_formatted_updated.txt"</span><span class="dt">\</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="st">"https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/31.5-Apul-lncRNA-discovery/lncRNA_counts.clean.filtered.txt"</span> <span class="dt">\</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="st">"https://gannet.fish.washington.edu/gitrepos/urol-e5/timeseries_molecular/D-Apul/output/22.5-Apul-multiomic-SR/Apul-filtered-WGBS-CpG-counts.csv"</span> <span class="dt">\</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="st">"../../M-multi-species/data/rna_metadata.csv"</span> <span class="dt">\</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">"../output/26.2-ElasticNet-scaling-test"</span> <span class="dt">\</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">"ACR-225-TP1"</span> <span class="dt">\</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>0.5 <span class="dt">\</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>100 <span class="dt">\</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>50 <span class="dt">\</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>0.5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then want to generate a “fake” predictor set of just noise. For now I’ll choose to (a) use a fully randomized predictor set, instead of “spiking” noise into the real data, and (b) to generate the random data empirically</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>make_noise_empirical <span class="ot">&lt;-</span> <span class="cf">function</span>(X) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  X_noise <span class="ot">&lt;-</span> <span class="fu">apply</span>(X, <span class="dv">2</span>, <span class="cf">function</span>(col) {</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sample</span>(col, <span class="fu">length</span>(col), <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(X_noise) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(X)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames</span>(X_noise) <span class="ot">&lt;-</span> <span class="fu">rownames</span>(X)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  X_noise</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>make_noise_empirical_safe <span class="ot">&lt;-</span> <span class="cf">function</span>(X) {</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  X_noise <span class="ot">&lt;-</span> <span class="fu">apply</span>(X, <span class="dv">2</span>, <span class="cf">function</span>(col) {</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sample</span>(col, <span class="fu">length</span>(col), <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ensure row/col names preserved</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(X_noise) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(X)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames</span>(X_noise) <span class="ot">&lt;-</span> <span class="fu">rownames</span>(X)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fix rows that become all-zero</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  zero_rows <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">rowSums</span>(X_noise <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(zero_rows) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> zero_rows) {</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Give the row a single small positive value</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Put it in a random column</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>      j <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq_len</span>(<span class="fu">ncol</span>(X_noise)), <span class="dv">1</span>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>      X_noise[i, j] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(X_noise)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>miRNA_noise <span class="ot">&lt;-</span> <span class="fu">make_noise_empirical</span>(miRNA)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>lncRNA_noise <span class="ot">&lt;-</span> <span class="fu">make_noise_empirical</span>(lncRNA)</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>WGBS_noise <span class="ot">&lt;-</span> <span class="fu">make_noise_empirical</span>(WGBS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">r_enet_rscript</span><span class="kw">)</span> <span class="ex">shedurkin@raven:~/timeseries_molecular/M-multi-species/scripts$</span> Rscript 26.2-ElasticNet-scaling.R <span class="dt">\</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="st">"https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/M-multi-species/output/26-rank35-optimization/lambda_gene_0.2/top_genes_per_component/Component_24_apul_count_matrix.csv"</span> <span class="dt">\</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">"../output/26.2-ElasticNet-scaling-test-noise/miRNA_noise_empirical.txt"</span> <span class="dt">\</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="st">"../output/26.2-ElasticNet-scaling-test-noise/lncRNA_noise_empirical.txt"</span> <span class="dt">\</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="st">"../output/26.2-ElasticNet-scaling-test-noise/WGBS_noise_empirical.csv"</span> <span class="dt">\</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="st">"../../M-multi-species/data/rna_metadata.csv"</span> <span class="dt">\</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="st">"../output/26.2-ElasticNet-scaling-test-noise"</span> <span class="dt">\</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="st">"ACR-225-TP1"</span> <span class="dt">\</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>0.5 <span class="dt">\</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>100 <span class="dt">\</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>50 <span class="dt">\</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>0.5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I did a preliminary run of the EN with A.pulchra randomized input, with just a few replicates, and the results were pretty striking – <em>no</em> genes were “consistently well predicted” (mean R^2 &gt; 0.5 across replicates). In comparison, ~60 of the 100 response genes were consistently well-predicted by the actual A.pulchra predictor set. This preliminarily suggests to me that the predictors do have significant predictive value, and the model isn’t just being driven by the fact there are a lot of inputs which could fortuitously correlate without biological meaning.</p>
+<p>I’m going to start longer runs of each (Apul EN with actual predictors, and Apul EN with randomized predictors), using 100 replicates during initial boostrapping and 50 replicates during reduced-set bootstrapping, and see what we get.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
