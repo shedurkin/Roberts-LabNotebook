@@ -1,0 +1,66 @@
+---
+title: "Deep Dive Expression: Checking Apul miR-100 multi-binding"
+author: "Kathleen Durkin"
+date: "2025-11-20"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+There are scattered instances across all three DDE species of an miRNA having multiple putative binding sites (\<10) in a single gene, usually appearing in the CDS region (covered in detail [here](https://github.com/urol-e5/deep-dive-expression/blob/main/M-multi-species/code/04.2-miRNA-comparison-targets-FE.md)). However, there is one instance of a remarkably high number of binding sites -- in *A. pulchra*, miR-100 has a remarkable **74** putative binding sites in the CDS of the gene **FUN_014449**. Frankly, this seems like a suspiciously high number (eg., maybe all the sites are just slight variants shifted by 1nt or something), so let's double check it's real.
+
+Look at the [Apul CDS miRanda+PCC results](https://raw.githubusercontent.com/urol-e5/deep-dive-expression/refs/heads/main/D-Apul/output/09.01-Apul-mRNA-miRNA-interactions-CDS_5UTR/miRanda_PCC_miRNA_CDS.csv)
+
+The "raw" (ShortStack-assigned) ID for miR-100 in Apul is `Cluster_18728`
+
+```{r, echo=FALSE, message=FALSE}
+library(dplyr)
+library(IRanges)
+library(ggplot2)
+```
+
+```{r}
+mir <- read.csv("https://gannet.fish.washington.edu/kdurkin1/ravenbackups/deep-dive-expression/D-Apul/output/09.01-Apul-mRNA-miRNA-interactions-CDS_5UTR/miRanda_PCC_miRNA_CDS.csv") %>% select(-X)
+
+mir100 <- mir %>% filter(V1 == "Cluster_18728" & V4.y == "FUN_014449")
+head(mir100)
+```
+
+The relevant columns here are **V7** and **V8**. These show, respectively, the **beginning and end position of the predicted binding region** in the gene's scaffold (V2). If these 74 predicted binding locations are actually just extremely similar "variants", we'd expect many rows to share very similar V7 and V8 values. When I eyeball the table I *don't* see that trend, but let's check it rigorously to be sure.
+
+Use `IRanges`, a package built to work with genomic intervals/positions.
+
+```{r}
+ranges <- IRanges(start = mir100$V7, end = mir100$V8)
+
+# which ranges overlap?
+hits <- findOverlaps(ranges)
+
+# Overlapping row pairs
+overlap_pairs <- as.data.frame(hits)
+# Filter out self-overlaps
+overlap_pairs <- overlap_pairs[overlap_pairs$queryHits != overlap_pairs$subjectHits, ]
+# Remove mirrored pairs
+overlap_pairs <- overlap_pairs[overlap_pairs$queryHits < overlap_pairs$subjectHits, ]
+nrow(overlap_pairs)
+
+```
+
+For the 74 putative binding regions, there are 30 instances of region overlap. That means **the majority of regions are distinct** from each other!
+
+Triple-check by plotting (quick and dirty genome browser)
+
+```{r}
+mir100$id <- 1:nrow(mir100)
+
+ggplot(mir100, aes(x=V7, xend=V8, y=id, yend=id)) +
+  geom_segment(size=4, color="steelblue") +
+  labs(x="Position", y="Interval ID") +
+  theme_minimal()
+
+```
