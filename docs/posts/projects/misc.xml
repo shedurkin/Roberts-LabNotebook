@@ -10,7 +10,52 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Thu, 06 Nov 2025 00:16:19 GMT</lastBuildDate>
+<lastBuildDate>Tue, 02 Dec 2025 08:00:00 GMT</lastBuildDate>
+<item>
+  <title>Molecular Notetaking: How Life Annotates its own Recipes</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2025_12_02_FISH510_blog.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>If you took biology in high school, you probably learned about DNA, the "blueprint of life." It's taught that our genes determine all of our physical traits – eye color, height, risk for some diseases, and even whether you find cilantro delicious or offputtingly-soapy. DNA is usually presented as a fixed instruction manual for our bodies, a hardwired system set at birth.&nbsp;</p>
+<p>While those things are broadly true – your genetic makeup plays a huge role in determining many physical characteristics – there's more to the story. We now know that organisms have an additional, dynamic layer of control over their physical traits. While we can't change our genetic makeup (doing so would require many many generations of slowly accumulating DNA mutations), we can adjust how our genes are used based on environmental cues. This is the world of <strong>epigenetics.</strong></p>
+<section id="the-genomic-cookbook" class="level3">
+<h3 class="anchored" data-anchor-id="the-genomic-cookbook"><strong>The Genomic Cookbook</strong></h3>
+<p>To understand how epigenetics works, think of your genome as a huge cookbook gifted to you by your parents, who included recipes ("genes") from both sides of the family. Your DNA represents all of the words that explain, for each recipe, what ingredients you need, how to mix them together, what temperature to use, etc. It's the physical instruction manual for how to build and maintain your body.&nbsp;</p>
+<p>Once you have this cookbook, you can't change the words printed on the page. However, you can still interact with the book to incorporate new information. Your "epigenome" – the extra layer of chemical marks that sits "on top of" the genome – is the collection of scribbled notes, paperclips, highlighting, and dog-eared pages that you might add to the pages over time. For example, you could make a note for when you might want to switch out an ingredient: "<em>in the fall, use apples instead of apricots</em>". Or if you make a loaf of sourdough every week, you might add a bookmark on that page so that you can find it instantly. These additions don't alter the original printed text, but they change how and when you use the recipes.</p>
+</section>
+<section id="your-annotation-tools" class="level3">
+<h3 class="anchored" data-anchor-id="your-annotation-tools"><strong>Your Annotation Tools</strong></h3>
+<p>Epigenetics is the study of all the notes in this "genomic recipe book" and how they alter gene expression and physiology. There are three main mechanisms that our cells use to annotate the genome:</p>
+<p><strong>DNA methylation:</strong> DNA methylation is a type of chemical tag added directly to the DNA that influences whether that gene is or isn't made into a protein. Think of them as sticky notes placed on certain recipes, signaling "don't make this one right now."</p>
+<p><strong>Histone modifications:</strong> Your DNA is wrapped around proteins called histones, which control how accessible the DNA is to other cellular machinery for use. These can be visualized like the binding of your cookbook. When the binding is very tight, the pages stay closed. When the binding loosens, the pages lie more open, and you can read the recipe easily. Histone modifications adjust that binding, changing how easy it is for you to access each recipe without altering the text.&nbsp;</p>
+<p><strong>Non-coding RNA</strong>: Non-coding RNAs are a diverse group of molecules that act as cellular messengers, directing changes in gene expression in response to to real-time environmental cues. They're like kitchen helpers who shout updates as you cook: "<em>Dad hates garlic, swap the garlic bread for salad</em>" or "<em>Our guests brought extra people – we need to put together more snacks, quick!</em>"</p>
+</section>
+<section id="why-this-matters" class="level3">
+<h3 class="anchored" data-anchor-id="why-this-matters"><strong>Why This Matters</strong></h3>
+<p>The implications of this molecular note-taking system are profound. It means that our environment – what we eat, the stressful things we experience, even the air we breathe – can alter how our genes behave, sometimes in ways that persist long after the environmental cue is gone.</p>
+<p>One famous example (famous, at least, in epigenetic circles) comes from landmark&nbsp;study of rats. Researchers found that mother rats who frequently groomed and licked their pups raised offspring who were calm and well-adjusted. Conversely, pups raised without maternal care grew up to be nervous and highly reactive. This wasn't just learned behavior, and the groups did not differ genetically. Instead, researchers found that pups lacking maternal care had accumulated extra DNA methylation (the "do not make" sticky notes) on genes responsible for managing stress. The neglected pups’ molecular makeup was told to ignore those genes.&nbsp;</p>
+<p>Even more surprisingly, some of these marks can be inherited. There are specific proteins responsible for copying epigenetic marks to newly-created cells, including the gamete cells (eggs and sperm) that form offspring. While many epigenetic tags are wiped clean during early development, like removing sticky notes before gifting the book to your own kid, some persist. The extent of this inheritance remains unclear in many types of animals, including us humans, but it suggests that the experiences of your parents or grandparents could, in some cases, leave a "bookmark" in your genome today.</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/https:/preview.redd.it/epigenetics-v0-v07v8ah8cnj91.png?auto=webp&amp;s=c14a20f1038f61755934f66a5f50f2fbc159239c" class="img-fluid" width="488"></p>
+</section>
+<section id="marine-epigenetics" class="level3">
+<h3 class="anchored" data-anchor-id="marine-epigenetics"><strong>Marine epigenetics</strong></h3>
+<p>In the oceans, epigenetics is proving to be just as important, or perhaps even more so. Many marine organisms can't simply walk away when the going gets tough. A reef coral, or an oyster cemented to a rock has no choice but to respond to environmental changes – temperature increases, ocean acidification,&nbsp; or pollution – right where it lives. As the climate crisis progresses, many marine species can't evolve fast enough to keep up. Epigenetic "note-taking," however, happens in a single lifetime, giving organisms a rapid-response system to adjust gene activity in real time.&nbsp;</p>
+<p>This flexibility has opened a promising frontier in marine conservation. Aquaculture and management programs are already exploring ways to identify epigenetic signatures of stress-resilience, or to "prime" juveniles by exposing them to mild stress so they have the epigenetic notes to respond more effectively later in life. We aren't just looking for individuals with beneficial genes anymore – we want those who know how to use their genes well.</p>
+<hr>
+<p>Epigenetics doesn't replace our genetic foundations or the slow but steady march of evolution, but it adds an important new layer to our understanding of how organisms function. It reminds us that our genes are not our destiny – and for life in a rapidly changing ocean, that flexibility may make all the difference.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>misc</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2025_12_02_FISH510_blog.html</guid>
+  <pubDate>Tue, 02 Dec 2025 08:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Ideas/Questions Log</title>
   <dc:creator>Kathleen Durkin</dc:creator>
