@@ -724,8 +724,8 @@ background-color: null;
 font-style: inherit;">ungroup</span>()</span></code></pre></div>
 </div>
 <p>Since Steven’s includes the possibility of orthologs in species subsets (e.g.&nbsp;genes shared between only A. pulchra and P. evermanni), I’ll use his ortholog set now for plotting.</p>
-<section id="circos-plot" class="level2">
-<h2 class="anchored" data-anchor-id="circos-plot">CIRCOS plot</h2>
+<section id="prelim-circos-plot" class="level2">
+<h2 class="anchored" data-anchor-id="prelim-circos-plot">Prelim CIRCOS plot</h2>
 <p>Note: Holy crappoly this plot was exceedingly difficult to put together, even when using ChatGPT and Claude Sonnet 4.5 for help – I was troubleshooting problems for <em>hours</em>. <strong>But</strong>, once I tried using Lucas’s paid version (Claude Opus 4.5, integrated into VS code terminal, which he has for his work as a software developer), the agent was able to immediately generate exactly what I was envisioning and make requested changes with no back-and-forth or error handling on my end – holy jinkies Claude Opus is powerful!</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">data <span class="ot" style="color: #003B4F;
@@ -2689,8 +2689,8 @@ track '1'.</code></pre>
 </div>
 </div>
 </section>
-<section id="version-3-compact-layout-with-overlapping-unconserved-targets" class="level2">
-<h2 class="anchored" data-anchor-id="version-3-compact-layout-with-overlapping-unconserved-targets">Version 3: Compact layout with overlapping unconserved targets</h2>
+<section id="with-stevens-ortholog-sets-v3" class="level2">
+<h2 class="anchored" data-anchor-id="with-stevens-ortholog-sets-v3">With Steven’s ortholog sets, v3</h2>
 <p>This version combines all species-specific (unconserved) targets into a single segment per target type, where each species’ targets overlap in the same angular space but are not shaded to indicate conservation.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><span class="co" style="color: #5E5E5E;
@@ -4622,7 +4622,7 @@ font-style: inherit;"># Save to png</span></span>
 background-color: null;
 font-style: inherit;">png</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"output/2025_12_08_dde_plot_edits/circos_plot.png"</span>, <span class="at" style="color: #657422;
+font-style: inherit;">"output/2025_12_08_dde_plot_edits/s_orthos_circos_plot.png"</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">width =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
@@ -4721,6 +4721,1985 @@ track '1'.</code></pre>
 track '1'.</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb76" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dev.off</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>png 
+  2 </code></pre>
+</div>
+</div>
+</section>
+<section id="with-hollies-ortholog-sets" class="level2">
+<h2 class="anchored" data-anchor-id="with-hollies-ortholog-sets">With Hollie’s ortholog sets</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Set margins to allow room for outer labels</span></span>
+<span id="cb78-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">par</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mar =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>))</span>
+<span id="cb78-3"></span>
+<span id="cb78-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Define segments for compact version - unconserved targets share same segment</span></span>
+<span id="cb78-5">segment_info_v3 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(</span>
+<span id="cb78-6">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># lncRNA segments (left half of circle)</span></span>
+<span id="cb78-7">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lnc_all_3"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(</span>
+<span id="cb78-8">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"All 3"</span>,</span>
+<span id="cb78-9">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">species =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Apul"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Peve"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Ptuh"</span>),</span>
+<span id="cb78-10">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ortho_type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"three_way"</span>,</span>
+<span id="cb78-11">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">target_type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lncRNA"</span>,</span>
+<span id="cb78-12">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">conserved =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span></span>
+<span id="cb78-13">  ),</span>
+<span id="cb78-14">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lnc_apul_peve"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(</span>
+<span id="cb78-15">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Apul+Peve"</span>,</span>
+<span id="cb78-16">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">species =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Apul"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Peve"</span>),</span>
+<span id="cb78-17">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ortho_type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul_peve"</span>,</span>
+<span id="cb78-18">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">target_type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lncRNA"</span>,</span>
+<span id="cb78-19">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">conserved =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span></span>
+<span id="cb78-20">  ),</span>
+<span id="cb78-21">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lnc_peve_ptuh"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(</span>
+<span id="cb78-22">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Peve+Ptuh"</span>,</span>
+<span id="cb78-23">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">species =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Peve"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Ptuh"</span>),</span>
+<span id="cb78-24">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ortho_type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"peve_ptuh"</span>,</span>
+<span id="cb78-25">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">target_type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lncRNA"</span>,</span>
+<span id="cb78-26">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">conserved =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span></span>
+<span id="cb78-27">  ),</span>
+<span id="cb78-28">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lnc_apul_ptuh"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(</span>
+<span id="cb78-29">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Apul+Ptuh"</span>,</span>
+<span id="cb78-30">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">species =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Apul"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Ptuh"</span>),</span>
+<span id="cb78-31">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ortho_type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul_ptuh"</span>,</span>
+<span id="cb78-32">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">target_type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lncRNA"</span>,</span>
+<span id="cb78-33">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">conserved =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span></span>
+<span id="cb78-34">  ),</span>
+<span id="cb78-35">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lnc_unconserved"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(</span>
+<span id="cb78-36">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Unconserved"</span>,</span>
+<span id="cb78-37">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">species =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Apul"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Peve"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Ptuh"</span>),</span>
+<span id="cb78-38">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ortho_type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>,</span>
+<span id="cb78-39">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">target_type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lncRNA"</span>,</span>
+<span id="cb78-40">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">conserved =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span></span>
+<span id="cb78-41">  ),</span>
+<span id="cb78-42">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Gene segments (right half of circle)</span></span>
+<span id="cb78-43">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene_all_3"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(</span>
+<span id="cb78-44">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"All 3"</span>,</span>
+<span id="cb78-45">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">species =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Apul"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Peve"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Ptuh"</span>),</span>
+<span id="cb78-46">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ortho_type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"three_way"</span>,</span>
+<span id="cb78-47">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">target_type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene"</span>,</span>
+<span id="cb78-48">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">conserved =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span></span>
+<span id="cb78-49">  ),</span>
+<span id="cb78-50">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene_apul_peve"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(</span>
+<span id="cb78-51">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Apul+Peve"</span>,</span>
+<span id="cb78-52">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">species =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Apul"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Peve"</span>),</span>
+<span id="cb78-53">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ortho_type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul_peve"</span>,</span>
+<span id="cb78-54">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">target_type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene"</span>,</span>
+<span id="cb78-55">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">conserved =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span></span>
+<span id="cb78-56">  ),</span>
+<span id="cb78-57">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene_peve_ptuh"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(</span>
+<span id="cb78-58">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Peve+Ptuh"</span>,</span>
+<span id="cb78-59">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">species =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Peve"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Ptuh"</span>),</span>
+<span id="cb78-60">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ortho_type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"peve_ptuh"</span>,</span>
+<span id="cb78-61">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">target_type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene"</span>,</span>
+<span id="cb78-62">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">conserved =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span></span>
+<span id="cb78-63">  ),</span>
+<span id="cb78-64">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene_apul_ptuh"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(</span>
+<span id="cb78-65">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Apul+Ptuh"</span>,</span>
+<span id="cb78-66">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">species =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Apul"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Ptuh"</span>),</span>
+<span id="cb78-67">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ortho_type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apul_ptuh"</span>,</span>
+<span id="cb78-68">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">target_type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene"</span>,</span>
+<span id="cb78-69">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">conserved =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span></span>
+<span id="cb78-70">  ),</span>
+<span id="cb78-71">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene_unconserved"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(</span>
+<span id="cb78-72">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Unconserved"</span>,</span>
+<span id="cb78-73">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">species =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Apul"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Peve"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Ptuh"</span>),</span>
+<span id="cb78-74">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ortho_type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>,</span>
+<span id="cb78-75">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">target_type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene"</span>,</span>
+<span id="cb78-76">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">conserved =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span></span>
+<span id="cb78-77">  )</span>
+<span id="cb78-78">)</span>
+<span id="cb78-79"></span>
+<span id="cb78-80"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Calculate segment sizes for v3 - unconserved segments need max across all species</span></span>
+<span id="cb78-81">calc_segment_sizes_v3 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(data, segment_info) {</span>
+<span id="cb78-82">  sizes <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>()</span>
+<span id="cb78-83"></span>
+<span id="cb78-84">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> (seg_name <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">names</span>(segment_info)) {</span>
+<span id="cb78-85">    seg <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> segment_info[[seg_name]]</span>
+<span id="cb78-86"></span>
+<span id="cb78-87">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (seg<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ortho_type <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>) {</span>
+<span id="cb78-88">      <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Unconserved: find the max count across all species</span></span>
+<span id="cb78-89">      max_n <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb78-90">      <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> (sp <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> seg<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>species) {</span>
+<span id="cb78-91">        n <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> data <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb78-92">          <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(h_ortho_type <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>,</span>
+<span id="cb78-93">                 species <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> sp,</span>
+<span id="cb78-94">                 target_type <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> seg<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>target_type) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb78-95">          <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(target) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">distinct</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>()</span>
+<span id="cb78-96">        max_n <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(max_n, n)</span>
+<span id="cb78-97">      }</span>
+<span id="cb78-98">      sizes[[seg_name]] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(max_n, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb78-99">    } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> {</span>
+<span id="cb78-100">      <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Conserved: filter by ortho type and target type</span></span>
+<span id="cb78-101">      n <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> data <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb78-102">        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(h_ortho_type <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> seg<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ortho_type,</span>
+<span id="cb78-103">               target_type <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> seg<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>target_type) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb78-104">        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(target) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">distinct</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>()</span>
+<span id="cb78-105">      sizes[[seg_name]] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(n, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb78-106">    }</span>
+<span id="cb78-107">  }</span>
+<span id="cb78-108"></span>
+<span id="cb78-109">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(sizes)</span>
+<span id="cb78-110">}</span>
+<span id="cb78-111"></span>
+<span id="cb78-112"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create compact circos plot with overlapping unconserved targets</span></span>
+<span id="cb78-113">create_circos_plot_v3 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(data) {</span>
+<span id="cb78-114"></span>
+<span id="cb78-115"> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Species order (outer to inner): Peve (most), Apul, Ptuh (fewest)</span></span>
+<span id="cb78-116">  species_order <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Peve"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Apul"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Ptuh"</span>)</span>
+<span id="cb78-117"></span>
+<span id="cb78-118">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Calculate segment sizes</span></span>
+<span id="cb78-119">  seg_sizes <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">calc_segment_sizes_v3</span>(data, segment_info_v3)</span>
+<span id="cb78-120"></span>
+<span id="cb78-121">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Define sector order: lncRNA segments first, then gene segments</span></span>
+<span id="cb78-122">  lnc_segments <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lnc_all_3"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lnc_apul_peve"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lnc_peve_ptuh"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lnc_apul_ptuh"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lnc_unconserved"</span>)</span>
+<span id="cb78-123">  gene_segments <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene_all_3"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene_apul_peve"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene_apul_ptuh"</span>,  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene_peve_ptuh"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene_unconserved"</span>)</span>
+<span id="cb78-124"></span>
+<span id="cb78-125">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Filter to only segments with data</span></span>
+<span id="cb78-126">  lnc_segments <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> lnc_segments[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sapply</span>(lnc_segments, <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(s) {</span>
+<span id="cb78-127">    seg <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> segment_info_v3[[s]]</span>
+<span id="cb78-128">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (seg<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ortho_type <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>) {</span>
+<span id="cb78-129">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(data <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(h_ortho_type <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>, target_type <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lncRNA"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb78-130">    } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> {</span>
+<span id="cb78-131">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(data <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(h_ortho_type <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> seg<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ortho_type, target_type <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lncRNA"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb78-132">    }</span>
+<span id="cb78-133">  })]</span>
+<span id="cb78-134"></span>
+<span id="cb78-135">  gene_segments <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> gene_segments[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sapply</span>(gene_segments, <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(s) {</span>
+<span id="cb78-136">    seg <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> segment_info_v3[[s]]</span>
+<span id="cb78-137">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (seg<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ortho_type <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>) {</span>
+<span id="cb78-138">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(data <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(h_ortho_type <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>, target_type <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb78-139">    } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> {</span>
+<span id="cb78-140">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(data <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(h_ortho_type <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> seg<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ortho_type, target_type <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gene"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb78-141">    }</span>
+<span id="cb78-142">  })]</span>
+<span id="cb78-143"></span>
+<span id="cb78-144">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># All sectors in order</span></span>
+<span id="cb78-145">  all_sectors <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(lnc_segments, gene_segments)</span>
+<span id="cb78-146"></span>
+<span id="cb78-147">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">length</span>(all_sectors) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) {</span>
+<span id="cb78-148">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">message</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"No data to plot"</span>)</span>
+<span id="cb78-149">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">invisible</span>(<span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>))</span>
+<span id="cb78-150">  }</span>
+<span id="cb78-151"></span>
+<span id="cb78-152">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Build xlims</span></span>
+<span id="cb78-153">  xlims <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>()</span>
+<span id="cb78-154">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> (seg_name <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> all_sectors) {</span>
+<span id="cb78-155">    xlims[[seg_name]] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, seg_sizes[[seg_name]])</span>
+<span id="cb78-156">  }</span>
+<span id="cb78-157"></span>
+<span id="cb78-158">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Initialize circos</span></span>
+<span id="cb78-159">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">circos.clear</span>()</span>
+<span id="cb78-160"></span>
+<span id="cb78-161">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Calculate gap degrees - larger gaps between lncRNA and gene halves</span></span>
+<span id="cb78-162">  n_lnc <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">length</span>(lnc_segments)</span>
+<span id="cb78-163">  n_gene <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">length</span>(gene_segments)</span>
+<span id="cb78-164">  n_total <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> n_lnc <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> n_gene</span>
+<span id="cb78-165"></span>
+<span id="cb78-166">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create gap vector: small gaps within each half, large gap between halves</span></span>
+<span id="cb78-167">  gap_degrees <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rep</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, n_total)</span>
+<span id="cb78-168">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (n_lnc <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&amp;&amp;</span> n_gene <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) {</span>
+<span id="cb78-169">    gap_degrees[n_lnc] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span></span>
+<span id="cb78-170">    gap_degrees[n_total] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span></span>
+<span id="cb78-171">  }</span>
+<span id="cb78-172"></span>
+<span id="cb78-173">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">circos.par</span>(</span>
+<span id="cb78-174">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">start.degree =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">90</span>,</span>
+<span id="cb78-175">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">gap.degree =</span> gap_degrees,</span>
+<span id="cb78-176">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">track.margin =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.02</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.02</span>),</span>
+<span id="cb78-177">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cell.padding =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.02</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.02</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span>),</span>
+<span id="cb78-178">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">canvas.xlim =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.4</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.4</span>),</span>
+<span id="cb78-179">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">canvas.ylim =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.4</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.4</span>)</span>
+<span id="cb78-180">  )</span>
+<span id="cb78-181"></span>
+<span id="cb78-182">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">circos.initialize</span>(</span>
+<span id="cb78-183">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">factors =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(all_sectors, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">levels =</span> all_sectors),</span>
+<span id="cb78-184">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xlim =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">do.call</span>(rbind, xlims[all_sectors])</span>
+<span id="cb78-185">  )</span>
+<span id="cb78-186"></span>
+<span id="cb78-187">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Colors</span></span>
+<span id="cb78-188">  highlight_col <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rgb</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.6</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.85</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.6</span>)  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Light blue for conserved</span></span>
+<span id="cb78-189">  no_highlight_col <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rgb</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.95</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.95</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.95</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Light grey for unconserved</span></span>
+<span id="cb78-190">  pos_col <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rgb</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.2</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.7</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.2</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.9</span>)  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Green for positive PCC</span></span>
+<span id="cb78-191">  neg_col <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rgb</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.9</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.4</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.6</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.9</span>)  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Pink for negative PCC</span></span>
+<span id="cb78-192">  border_col <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rgb</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.3</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.7</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Blue border</span></span>
+<span id="cb78-193"></span>
+<span id="cb78-194">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create 3 tracks (one per species, outer to inner)</span></span>
+<span id="cb78-195">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> (sp_idx <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>) {</span>
+<span id="cb78-196">    sp <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> species_order[sp_idx]</span>
+<span id="cb78-197"></span>
+<span id="cb78-198">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">circos.track</span>(</span>
+<span id="cb78-199">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">factors =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(all_sectors, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">levels =</span> all_sectors),</span>
+<span id="cb78-200">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ylim =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>),</span>
+<span id="cb78-201">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">track.height =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.15</span>,</span>
+<span id="cb78-202">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">bg.border =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"grey60"</span>,</span>
+<span id="cb78-203">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">bg.lwd =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.5</span>,</span>
+<span id="cb78-204">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">panel.fun =</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(x, y) {</span>
+<span id="cb78-205">        sector_name <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> CELL_META<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>sector.index</span>
+<span id="cb78-206">        seg <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> segment_info_v3[[sector_name]]</span>
+<span id="cb78-207"></span>
+<span id="cb78-208">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># For conserved segments, check if species is in the conservation group</span></span>
+<span id="cb78-209">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># For unconserved, all species appear but no highlighting</span></span>
+<span id="cb78-210">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (seg<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>conserved) {</span>
+<span id="cb78-211">          sp_in_segment <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> sp <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> seg<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>species</span>
+<span id="cb78-212">        } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> {</span>
+<span id="cb78-213">          sp_in_segment <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># All species appear in unconserved segment</span></span>
+<span id="cb78-214">        }</span>
+<span id="cb78-215"></span>
+<span id="cb78-216">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Background color</span></span>
+<span id="cb78-217">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (seg<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>conserved <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&amp;&amp;</span> sp_in_segment) {</span>
+<span id="cb78-218">          bg_col <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> highlight_col</span>
+<span id="cb78-219">          border <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> border_col</span>
+<span id="cb78-220">        } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (sp_in_segment) {</span>
+<span id="cb78-221">          bg_col <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> no_highlight_col</span>
+<span id="cb78-222">          border <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"grey60"</span></span>
+<span id="cb78-223">        } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> {</span>
+<span id="cb78-224">          bg_col <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"white"</span></span>
+<span id="cb78-225">          border <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"grey80"</span></span>
+<span id="cb78-226">        }</span>
+<span id="cb78-227"></span>
+<span id="cb78-228">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Draw background rectangle</span></span>
+<span id="cb78-229">        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">circos.rect</span>(</span>
+<span id="cb78-230">          CELL_META<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>xlim[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>], <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>,</span>
+<span id="cb78-231">          CELL_META<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>xlim[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>], <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,</span>
+<span id="cb78-232">          <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col =</span> bg_col,</span>
+<span id="cb78-233">          <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">border =</span> border,</span>
+<span id="cb78-234">          <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">lwd =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.5</span></span>
+<span id="cb78-235">        )</span>
+<span id="cb78-236"></span>
+<span id="cb78-237">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Plot points</span></span>
+<span id="cb78-238">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (seg<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ortho_type <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>) {</span>
+<span id="cb78-239">          <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Unconserved: each species plots its own targets</span></span>
+<span id="cb78-240">          seg_data <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> data <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb78-241">            <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(species <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> sp,</span>
+<span id="cb78-242">                   h_ortho_type <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>,</span>
+<span id="cb78-243">                   target_type <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> seg<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>target_type) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb78-244">            <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">distinct</span>(target, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.keep_all =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span>
+<span id="cb78-245">        } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (sp_in_segment) {</span>
+<span id="cb78-246">          <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Conserved: filter by ortho type</span></span>
+<span id="cb78-247">          seg_data <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> data <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb78-248">            <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(species <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> sp,</span>
+<span id="cb78-249">                   h_ortho_type <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> seg<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>ortho_type,</span>
+<span id="cb78-250">                   target_type <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> seg<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>target_type) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb78-251">            <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">distinct</span>(target, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.keep_all =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span>
+<span id="cb78-252">        } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> {</span>
+<span id="cb78-253">          seg_data <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>()</span>
+<span id="cb78-254">        }</span>
+<span id="cb78-255"></span>
+<span id="cb78-256">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(seg_data) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) {</span>
+<span id="cb78-257">          n_points <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(seg_data)</span>
+<span id="cb78-258">          <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (n_points <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) {</span>
+<span id="cb78-259">            x_positions <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> CELL_META<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>xlim[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span></span>
+<span id="cb78-260">          } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> {</span>
+<span id="cb78-261">            x_positions <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, CELL_META<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>xlim[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">length.out =</span> n_points)</span>
+<span id="cb78-262">          }</span>
+<span id="cb78-263"></span>
+<span id="cb78-264">          <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> (i <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>n_points) {</span>
+<span id="cb78-265">            pt_col <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ifelse</span>(seg_data<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>PCC_direction[i] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, pos_col, neg_col)</span>
+<span id="cb78-266">            <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">circos.points</span>(</span>
+<span id="cb78-267">              x_positions[i], <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>,</span>
+<span id="cb78-268">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col =</span> pt_col,</span>
+<span id="cb78-269">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pch =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">21</span>,</span>
+<span id="cb78-270">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">bg =</span> pt_col,</span>
+<span id="cb78-271">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cex =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.75</span></span>
+<span id="cb78-272">            )</span>
+<span id="cb78-273">          }</span>
+<span id="cb78-274"></span>
+<span id="cb78-275">          <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add count label above the feature points</span></span>
+<span id="cb78-276">          <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">circos.text</span>(</span>
+<span id="cb78-277">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(x_positions),</span>
+<span id="cb78-278">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.85</span>,</span>
+<span id="cb78-279">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.character</span>(n_points),</span>
+<span id="cb78-280">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">facing =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bending.inside"</span>,</span>
+<span id="cb78-281">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">niceFacing =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>,</span>
+<span id="cb78-282">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cex =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.75</span>,</span>
+<span id="cb78-283">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>,</span>
+<span id="cb78-284">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">font =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span></span>
+<span id="cb78-285">          )</span>
+<span id="cb78-286">        }</span>
+<span id="cb78-287">      }</span>
+<span id="cb78-288">    )</span>
+<span id="cb78-289">  }</span>
+<span id="cb78-290"></span>
+<span id="cb78-291">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add segment labels on the outside</span></span>
+<span id="cb78-292">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> (seg_name <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> all_sectors) {</span>
+<span id="cb78-293">    seg <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> segment_info_v3[[seg_name]]</span>
+<span id="cb78-294"></span>
+<span id="cb78-295">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">circos.text</span>(</span>
+<span id="cb78-296">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(xlims[[seg_name]]),</span>
+<span id="cb78-297">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.8</span>,</span>
+<span id="cb78-298">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sector.index =</span> seg_name,</span>
+<span id="cb78-299">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">track.index =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,</span>
+<span id="cb78-300">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels =</span> seg<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>label,</span>
+<span id="cb78-301">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">facing =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bending.outside"</span>,</span>
+<span id="cb78-302">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">niceFacing =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>,</span>
+<span id="cb78-303">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cex =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.7</span>,</span>
+<span id="cb78-304">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">font =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>,</span>
+<span id="cb78-305">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"grey30"</span></span>
+<span id="cb78-306">    )</span>
+<span id="cb78-307">  }</span>
+<span id="cb78-308"></span>
+<span id="cb78-309">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add "lncRNA" and "Genes" labels for each half</span></span>
+<span id="cb78-310">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (n_lnc <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) {</span>
+<span id="cb78-311">    mid_lnc <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> lnc_segments[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ceiling</span>(n_lnc <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)]</span>
+<span id="cb78-312">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">circos.text</span>(</span>
+<span id="cb78-313">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(xlims[[mid_lnc]]),</span>
+<span id="cb78-314">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.5</span>,</span>
+<span id="cb78-315">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sector.index =</span> mid_lnc,</span>
+<span id="cb78-316">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">track.index =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,</span>
+<span id="cb78-317">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lncRNA Targets"</span>,</span>
+<span id="cb78-318">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">facing =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bending.outside"</span>,</span>
+<span id="cb78-319">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">niceFacing =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>,</span>
+<span id="cb78-320">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cex =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.0</span>,</span>
+<span id="cb78-321">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">font =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>,</span>
+<span id="cb78-322">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"darkblue"</span></span>
+<span id="cb78-323">    )</span>
+<span id="cb78-324">  }</span>
+<span id="cb78-325"></span>
+<span id="cb78-326">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (n_gene <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) {</span>
+<span id="cb78-327">    mid_gene <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> gene_segments[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ceiling</span>(n_gene <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)]</span>
+<span id="cb78-328">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">circos.text</span>(</span>
+<span id="cb78-329">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(xlims[[mid_gene]]),</span>
+<span id="cb78-330">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.5</span>,</span>
+<span id="cb78-331">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sector.index =</span> mid_gene,</span>
+<span id="cb78-332">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">track.index =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,</span>
+<span id="cb78-333">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Gene Targets"</span>,</span>
+<span id="cb78-334">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">facing =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bending.outside"</span>,</span>
+<span id="cb78-335">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">niceFacing =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>,</span>
+<span id="cb78-336">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cex =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.0</span>,</span>
+<span id="cb78-337">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">font =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>,</span>
+<span id="cb78-338">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"darkred"</span></span>
+<span id="cb78-339">    )</span>
+<span id="cb78-340">  }</span>
+<span id="cb78-341"></span>
+<span id="cb78-342">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add title and species labels in the center (outer to inner: Peve, Apul, Ptuh)</span></span>
+<span id="cb78-343">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">text</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.04</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"miR-100 Targets"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">font =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cex =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>)</span>
+<span id="cb78-344">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">text</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.04</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"by Conservation"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">font =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cex =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>)</span>
+<span id="cb78-345">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">text</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.09</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.9</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Peve"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">font =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cex =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.9</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"grey30"</span>)</span>
+<span id="cb78-346">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">text</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.09</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.71</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Apul"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">font =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cex =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.9</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"grey30"</span>)</span>
+<span id="cb78-347">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">text</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.09</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.53</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Ptuh"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">font =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cex =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.9</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"grey30"</span>)</span>
+<span id="cb78-348"></span>
+<span id="cb78-349">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add legend</span></span>
+<span id="cb78-350">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">legend</span>(</span>
+<span id="cb78-351">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bottomright"</span>,</span>
+<span id="cb78-352">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Positive PCC"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Negative PCC"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Conserved region"</span>),</span>
+<span id="cb78-353">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pch =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">21</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">21</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">22</span>),</span>
+<span id="cb78-354">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pt.bg =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(pos_col, neg_col, highlight_col),</span>
+<span id="cb78-355">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(pos_col, neg_col, border_col),</span>
+<span id="cb78-356">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pt.cex =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.5</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.5</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.2</span>),</span>
+<span id="cb78-357">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">bty =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"n"</span>,</span>
+<span id="cb78-358">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cex =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.85</span></span>
+<span id="cb78-359">  )</span>
+<span id="cb78-360"></span>
+<span id="cb78-361">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">circos.clear</span>()</span>
+<span id="cb78-362">}</span>
+<span id="cb78-363"></span>
+<span id="cb78-364"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create the compact plot</span></span>
+<span id="cb78-365"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">create_circos_plot_v3</span>(data)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 1 point is out of plotting region in sector 'lnc_unconserved',
+track '1'.
+Note: 1 point is out of plotting region in sector 'lnc_unconserved',
+track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 11 points are out of plotting region in sector 'lnc_unconserved',
+track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 1 point is out of plotting region in sector 'gene_all_3', track
+'1'.
+Note: 1 point is out of plotting region in sector 'gene_all_3', track
+'1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 5 points are out of plotting region in sector 'gene_all_3', track
+'1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 1 point is out of plotting region in sector 'gene_unconserved',
+track '1'.
+Note: 1 point is out of plotting region in sector 'gene_unconserved',
+track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 11 points are out of plotting region in sector
+'gene_unconserved', track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 1 point is out of plotting region in sector 'lnc_unconserved',
+track '1'.
+Note: 1 point is out of plotting region in sector 'lnc_unconserved',
+track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 14 points are out of plotting region in sector 'lnc_unconserved',
+track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 1 point is out of plotting region in sector 'gene_all_3', track
+'1'.
+Note: 1 point is out of plotting region in sector 'gene_all_3', track
+'1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 12 points are out of plotting region in sector 'gene_all_3',
+track '1'.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_12_08_dde_plot_edits_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb89" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Save to png</span></span>
+<span id="cb89-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">png</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"output/2025_12_08_dde_plot_edits/h_orthos_circos_plot.png"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2000</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">height =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2000</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">res =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">300</span>)</span>
+<span id="cb89-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">create_circos_plot_v3</span>(data)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 1 point is out of plotting region in sector 'lnc_unconserved',
+track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 1 point is out of plotting region in sector 'lnc_unconserved',
+track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 11 points are out of plotting region in sector 'lnc_unconserved',
+track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 1 point is out of plotting region in sector 'gene_all_3', track
+'1'.
+Note: 1 point is out of plotting region in sector 'gene_all_3', track
+'1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 5 points are out of plotting region in sector 'gene_all_3', track
+'1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 1 point is out of plotting region in sector 'gene_unconserved',
+track '1'.
+Note: 1 point is out of plotting region in sector 'gene_unconserved',
+track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 11 points are out of plotting region in sector
+'gene_unconserved', track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 1 point is out of plotting region in sector 'lnc_unconserved',
+track '1'.
+Note: 1 point is out of plotting region in sector 'lnc_unconserved',
+track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 14 points are out of plotting region in sector 'lnc_unconserved',
+track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 1 point is out of plotting region in sector 'gene_all_3', track
+'1'.
+Note: 1 point is out of plotting region in sector 'gene_all_3', track
+'1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 12 points are out of plotting region in sector 'gene_all_3',
+track '1'.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb101" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">dev.off</span>()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">

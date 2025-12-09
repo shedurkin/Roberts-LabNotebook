@@ -185,8 +185,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#circos-plot" id="toc-circos-plot" class="nav-link active" data-scroll-target="#circos-plot">CIRCOS plot</a></li>
-  <li><a href="#version-3-compact-layout-with-overlapping-unconserved-targets" id="toc-version-3-compact-layout-with-overlapping-unconserved-targets" class="nav-link" data-scroll-target="#version-3-compact-layout-with-overlapping-unconserved-targets">Version 3: Compact layout with overlapping unconserved targets</a></li>
+  <li><a href="#prelim-circos-plot" id="toc-prelim-circos-plot" class="nav-link active" data-scroll-target="#prelim-circos-plot">Prelim CIRCOS plot</a></li>
+  <li><a href="#with-stevens-ortholog-sets-v3" id="toc-with-stevens-ortholog-sets-v3" class="nav-link" data-scroll-target="#with-stevens-ortholog-sets-v3">With Steven’s ortholog sets, v3</a></li>
+  <li><a href="#with-hollies-ortholog-sets" id="toc-with-hollies-ortholog-sets" class="nav-link" data-scroll-target="#with-hollies-ortholog-sets">With Hollie’s ortholog sets</a></li>
   </ul>
 </nav>
     </div>
@@ -384,8 +385,8 @@ chr (3): Orthogroup, Species, Proteins
 <span id="cb15-81"><a href="#cb15-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Since Steven’s includes the possibility of orthologs in species subsets (e.g.&nbsp;genes shared between only A. pulchra and P. evermanni), I’ll use his ortholog set now for plotting.</p>
-<section id="circos-plot" class="level2">
-<h2 class="anchored" data-anchor-id="circos-plot">CIRCOS plot</h2>
+<section id="prelim-circos-plot" class="level2">
+<h2 class="anchored" data-anchor-id="prelim-circos-plot">Prelim CIRCOS plot</h2>
 <p>Note: Holy crappoly this plot was exceedingly difficult to put together, even when using ChatGPT and Claude Sonnet 4.5 for help – I was troubleshooting problems for <em>hours</em>. <strong>But</strong>, once I tried using Lucas’s paid version (Claude Opus 4.5, integrated into VS code terminal, which he has for his work as a software developer), the agent was able to immediately generate exactly what I was envisioning and make requested changes with no back-and-forth or error handling on my end – holy jinkies Claude Opus is powerful!</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(Apul_edges_ortho, Peve_edges_ortho, Ptuh_edges_ortho)</span>
@@ -885,8 +886,8 @@ track '1'.</code></pre>
 </div>
 </div>
 </section>
-<section id="version-3-compact-layout-with-overlapping-unconserved-targets" class="level2">
-<h2 class="anchored" data-anchor-id="version-3-compact-layout-with-overlapping-unconserved-targets">Version 3: Compact layout with overlapping unconserved targets</h2>
+<section id="with-stevens-ortholog-sets-v3" class="level2">
+<h2 class="anchored" data-anchor-id="with-stevens-ortholog-sets-v3">With Steven’s ortholog sets, v3</h2>
 <p>This version combines all species-specific (unconserved) targets into a single segment per target type, where each species’ targets overlap in the same angular space but are not shaded to indicate conservation.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set margins to allow room for outer labels</span></span>
@@ -1338,7 +1339,7 @@ track '1'.</code></pre>
 <p><img src="2025_12_08_dde_plot_edits_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save to png</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">"output/2025_12_08_dde_plot_edits/circos_plot.png"</span>, <span class="at">width =</span> <span class="dv">2000</span>, <span class="at">height =</span> <span class="dv">2000</span>, <span class="at">res =</span> <span class="dv">300</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">"output/2025_12_08_dde_plot_edits/s_orthos_circos_plot.png"</span>, <span class="at">width =</span> <span class="dv">2000</span>, <span class="at">height =</span> <span class="dv">2000</span>, <span class="at">res =</span> <span class="dv">300</span>)</span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="fu">create_circos_plot_v3</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Note: 1 point is out of plotting region in sector 'lnc_unconserved',
@@ -1423,6 +1424,489 @@ track '1'.</code></pre>
 track '1'.</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>png 
+  2 </code></pre>
+</div>
+</div>
+</section>
+<section id="with-hollies-ortholog-sets" class="level2">
+<h2 class="anchored" data-anchor-id="with-hollies-ortholog-sets">With Hollie’s ortholog sets</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set margins to allow room for outer labels</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>))</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define segments for compact version - unconserved targets share same segment</span></span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>segment_info_v3 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lncRNA segments (left half of circle)</span></span>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lnc_all_3"</span> <span class="ot">=</span> <span class="fu">list</span>(</span>
+<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"All 3"</span>,</span>
+<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">c</span>(<span class="st">"Apul"</span>, <span class="st">"Peve"</span>, <span class="st">"Ptuh"</span>),</span>
+<span id="cb78-10"><a href="#cb78-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">ortho_type =</span> <span class="st">"three_way"</span>,</span>
+<span id="cb78-11"><a href="#cb78-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">target_type =</span> <span class="st">"lncRNA"</span>,</span>
+<span id="cb78-12"><a href="#cb78-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">conserved =</span> <span class="cn">TRUE</span></span>
+<span id="cb78-13"><a href="#cb78-13" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb78-14"><a href="#cb78-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lnc_apul_peve"</span> <span class="ot">=</span> <span class="fu">list</span>(</span>
+<span id="cb78-15"><a href="#cb78-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"Apul+Peve"</span>,</span>
+<span id="cb78-16"><a href="#cb78-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">c</span>(<span class="st">"Apul"</span>, <span class="st">"Peve"</span>),</span>
+<span id="cb78-17"><a href="#cb78-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">ortho_type =</span> <span class="st">"apul_peve"</span>,</span>
+<span id="cb78-18"><a href="#cb78-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">target_type =</span> <span class="st">"lncRNA"</span>,</span>
+<span id="cb78-19"><a href="#cb78-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">conserved =</span> <span class="cn">TRUE</span></span>
+<span id="cb78-20"><a href="#cb78-20" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb78-21"><a href="#cb78-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lnc_peve_ptuh"</span> <span class="ot">=</span> <span class="fu">list</span>(</span>
+<span id="cb78-22"><a href="#cb78-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"Peve+Ptuh"</span>,</span>
+<span id="cb78-23"><a href="#cb78-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">c</span>(<span class="st">"Peve"</span>, <span class="st">"Ptuh"</span>),</span>
+<span id="cb78-24"><a href="#cb78-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">ortho_type =</span> <span class="st">"peve_ptuh"</span>,</span>
+<span id="cb78-25"><a href="#cb78-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">target_type =</span> <span class="st">"lncRNA"</span>,</span>
+<span id="cb78-26"><a href="#cb78-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">conserved =</span> <span class="cn">TRUE</span></span>
+<span id="cb78-27"><a href="#cb78-27" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb78-28"><a href="#cb78-28" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lnc_apul_ptuh"</span> <span class="ot">=</span> <span class="fu">list</span>(</span>
+<span id="cb78-29"><a href="#cb78-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"Apul+Ptuh"</span>,</span>
+<span id="cb78-30"><a href="#cb78-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">c</span>(<span class="st">"Apul"</span>, <span class="st">"Ptuh"</span>),</span>
+<span id="cb78-31"><a href="#cb78-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">ortho_type =</span> <span class="st">"apul_ptuh"</span>,</span>
+<span id="cb78-32"><a href="#cb78-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">target_type =</span> <span class="st">"lncRNA"</span>,</span>
+<span id="cb78-33"><a href="#cb78-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">conserved =</span> <span class="cn">TRUE</span></span>
+<span id="cb78-34"><a href="#cb78-34" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb78-35"><a href="#cb78-35" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lnc_unconserved"</span> <span class="ot">=</span> <span class="fu">list</span>(</span>
+<span id="cb78-36"><a href="#cb78-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"Unconserved"</span>,</span>
+<span id="cb78-37"><a href="#cb78-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">c</span>(<span class="st">"Apul"</span>, <span class="st">"Peve"</span>, <span class="st">"Ptuh"</span>),</span>
+<span id="cb78-38"><a href="#cb78-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">ortho_type =</span> <span class="st">"none"</span>,</span>
+<span id="cb78-39"><a href="#cb78-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">target_type =</span> <span class="st">"lncRNA"</span>,</span>
+<span id="cb78-40"><a href="#cb78-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">conserved =</span> <span class="cn">FALSE</span></span>
+<span id="cb78-41"><a href="#cb78-41" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb78-42"><a href="#cb78-42" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Gene segments (right half of circle)</span></span>
+<span id="cb78-43"><a href="#cb78-43" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gene_all_3"</span> <span class="ot">=</span> <span class="fu">list</span>(</span>
+<span id="cb78-44"><a href="#cb78-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"All 3"</span>,</span>
+<span id="cb78-45"><a href="#cb78-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">c</span>(<span class="st">"Apul"</span>, <span class="st">"Peve"</span>, <span class="st">"Ptuh"</span>),</span>
+<span id="cb78-46"><a href="#cb78-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">ortho_type =</span> <span class="st">"three_way"</span>,</span>
+<span id="cb78-47"><a href="#cb78-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">target_type =</span> <span class="st">"gene"</span>,</span>
+<span id="cb78-48"><a href="#cb78-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">conserved =</span> <span class="cn">TRUE</span></span>
+<span id="cb78-49"><a href="#cb78-49" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb78-50"><a href="#cb78-50" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gene_apul_peve"</span> <span class="ot">=</span> <span class="fu">list</span>(</span>
+<span id="cb78-51"><a href="#cb78-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"Apul+Peve"</span>,</span>
+<span id="cb78-52"><a href="#cb78-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">c</span>(<span class="st">"Apul"</span>, <span class="st">"Peve"</span>),</span>
+<span id="cb78-53"><a href="#cb78-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">ortho_type =</span> <span class="st">"apul_peve"</span>,</span>
+<span id="cb78-54"><a href="#cb78-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">target_type =</span> <span class="st">"gene"</span>,</span>
+<span id="cb78-55"><a href="#cb78-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">conserved =</span> <span class="cn">TRUE</span></span>
+<span id="cb78-56"><a href="#cb78-56" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb78-57"><a href="#cb78-57" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gene_peve_ptuh"</span> <span class="ot">=</span> <span class="fu">list</span>(</span>
+<span id="cb78-58"><a href="#cb78-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"Peve+Ptuh"</span>,</span>
+<span id="cb78-59"><a href="#cb78-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">c</span>(<span class="st">"Peve"</span>, <span class="st">"Ptuh"</span>),</span>
+<span id="cb78-60"><a href="#cb78-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">ortho_type =</span> <span class="st">"peve_ptuh"</span>,</span>
+<span id="cb78-61"><a href="#cb78-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">target_type =</span> <span class="st">"gene"</span>,</span>
+<span id="cb78-62"><a href="#cb78-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">conserved =</span> <span class="cn">TRUE</span></span>
+<span id="cb78-63"><a href="#cb78-63" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb78-64"><a href="#cb78-64" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gene_apul_ptuh"</span> <span class="ot">=</span> <span class="fu">list</span>(</span>
+<span id="cb78-65"><a href="#cb78-65" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"Apul+Ptuh"</span>,</span>
+<span id="cb78-66"><a href="#cb78-66" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">c</span>(<span class="st">"Apul"</span>, <span class="st">"Ptuh"</span>),</span>
+<span id="cb78-67"><a href="#cb78-67" aria-hidden="true" tabindex="-1"></a>    <span class="at">ortho_type =</span> <span class="st">"apul_ptuh"</span>,</span>
+<span id="cb78-68"><a href="#cb78-68" aria-hidden="true" tabindex="-1"></a>    <span class="at">target_type =</span> <span class="st">"gene"</span>,</span>
+<span id="cb78-69"><a href="#cb78-69" aria-hidden="true" tabindex="-1"></a>    <span class="at">conserved =</span> <span class="cn">TRUE</span></span>
+<span id="cb78-70"><a href="#cb78-70" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb78-71"><a href="#cb78-71" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gene_unconserved"</span> <span class="ot">=</span> <span class="fu">list</span>(</span>
+<span id="cb78-72"><a href="#cb78-72" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"Unconserved"</span>,</span>
+<span id="cb78-73"><a href="#cb78-73" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">c</span>(<span class="st">"Apul"</span>, <span class="st">"Peve"</span>, <span class="st">"Ptuh"</span>),</span>
+<span id="cb78-74"><a href="#cb78-74" aria-hidden="true" tabindex="-1"></a>    <span class="at">ortho_type =</span> <span class="st">"none"</span>,</span>
+<span id="cb78-75"><a href="#cb78-75" aria-hidden="true" tabindex="-1"></a>    <span class="at">target_type =</span> <span class="st">"gene"</span>,</span>
+<span id="cb78-76"><a href="#cb78-76" aria-hidden="true" tabindex="-1"></a>    <span class="at">conserved =</span> <span class="cn">FALSE</span></span>
+<span id="cb78-77"><a href="#cb78-77" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb78-78"><a href="#cb78-78" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb78-79"><a href="#cb78-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-80"><a href="#cb78-80" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate segment sizes for v3 - unconserved segments need max across all species</span></span>
+<span id="cb78-81"><a href="#cb78-81" aria-hidden="true" tabindex="-1"></a>calc_segment_sizes_v3 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, segment_info) {</span>
+<span id="cb78-82"><a href="#cb78-82" aria-hidden="true" tabindex="-1"></a>  sizes <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb78-83"><a href="#cb78-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-84"><a href="#cb78-84" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (seg_name <span class="cf">in</span> <span class="fu">names</span>(segment_info)) {</span>
+<span id="cb78-85"><a href="#cb78-85" aria-hidden="true" tabindex="-1"></a>    seg <span class="ot">&lt;-</span> segment_info[[seg_name]]</span>
+<span id="cb78-86"><a href="#cb78-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-87"><a href="#cb78-87" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (seg<span class="sc">$</span>ortho_type <span class="sc">==</span> <span class="st">"none"</span>) {</span>
+<span id="cb78-88"><a href="#cb78-88" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Unconserved: find the max count across all species</span></span>
+<span id="cb78-89"><a href="#cb78-89" aria-hidden="true" tabindex="-1"></a>      max_n <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb78-90"><a href="#cb78-90" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (sp <span class="cf">in</span> seg<span class="sc">$</span>species) {</span>
+<span id="cb78-91"><a href="#cb78-91" aria-hidden="true" tabindex="-1"></a>        n <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb78-92"><a href="#cb78-92" aria-hidden="true" tabindex="-1"></a>          <span class="fu">filter</span>(h_ortho_type <span class="sc">==</span> <span class="st">"none"</span>,</span>
+<span id="cb78-93"><a href="#cb78-93" aria-hidden="true" tabindex="-1"></a>                 species <span class="sc">==</span> sp,</span>
+<span id="cb78-94"><a href="#cb78-94" aria-hidden="true" tabindex="-1"></a>                 target_type <span class="sc">==</span> seg<span class="sc">$</span>target_type) <span class="sc">%&gt;%</span></span>
+<span id="cb78-95"><a href="#cb78-95" aria-hidden="true" tabindex="-1"></a>          <span class="fu">select</span>(target) <span class="sc">%&gt;%</span> <span class="fu">distinct</span>() <span class="sc">%&gt;%</span> <span class="fu">nrow</span>()</span>
+<span id="cb78-96"><a href="#cb78-96" aria-hidden="true" tabindex="-1"></a>        max_n <span class="ot">&lt;-</span> <span class="fu">max</span>(max_n, n)</span>
+<span id="cb78-97"><a href="#cb78-97" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb78-98"><a href="#cb78-98" aria-hidden="true" tabindex="-1"></a>      sizes[[seg_name]] <span class="ot">&lt;-</span> <span class="fu">max</span>(max_n, <span class="dv">1</span>)</span>
+<span id="cb78-99"><a href="#cb78-99" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb78-100"><a href="#cb78-100" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Conserved: filter by ortho type and target type</span></span>
+<span id="cb78-101"><a href="#cb78-101" aria-hidden="true" tabindex="-1"></a>      n <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb78-102"><a href="#cb78-102" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(h_ortho_type <span class="sc">==</span> seg<span class="sc">$</span>ortho_type,</span>
+<span id="cb78-103"><a href="#cb78-103" aria-hidden="true" tabindex="-1"></a>               target_type <span class="sc">==</span> seg<span class="sc">$</span>target_type) <span class="sc">%&gt;%</span></span>
+<span id="cb78-104"><a href="#cb78-104" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(target) <span class="sc">%&gt;%</span> <span class="fu">distinct</span>() <span class="sc">%&gt;%</span> <span class="fu">nrow</span>()</span>
+<span id="cb78-105"><a href="#cb78-105" aria-hidden="true" tabindex="-1"></a>      sizes[[seg_name]] <span class="ot">&lt;-</span> <span class="fu">max</span>(n, <span class="dv">1</span>)</span>
+<span id="cb78-106"><a href="#cb78-106" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb78-107"><a href="#cb78-107" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb78-108"><a href="#cb78-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-109"><a href="#cb78-109" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sizes)</span>
+<span id="cb78-110"><a href="#cb78-110" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb78-111"><a href="#cb78-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-112"><a href="#cb78-112" aria-hidden="true" tabindex="-1"></a><span class="co"># Create compact circos plot with overlapping unconserved targets</span></span>
+<span id="cb78-113"><a href="#cb78-113" aria-hidden="true" tabindex="-1"></a>create_circos_plot_v3 <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb78-114"><a href="#cb78-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-115"><a href="#cb78-115" aria-hidden="true" tabindex="-1"></a> <span class="co"># Species order (outer to inner): Peve (most), Apul, Ptuh (fewest)</span></span>
+<span id="cb78-116"><a href="#cb78-116" aria-hidden="true" tabindex="-1"></a>  species_order <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Peve"</span>, <span class="st">"Apul"</span>, <span class="st">"Ptuh"</span>)</span>
+<span id="cb78-117"><a href="#cb78-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-118"><a href="#cb78-118" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate segment sizes</span></span>
+<span id="cb78-119"><a href="#cb78-119" aria-hidden="true" tabindex="-1"></a>  seg_sizes <span class="ot">&lt;-</span> <span class="fu">calc_segment_sizes_v3</span>(data, segment_info_v3)</span>
+<span id="cb78-120"><a href="#cb78-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-121"><a href="#cb78-121" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Define sector order: lncRNA segments first, then gene segments</span></span>
+<span id="cb78-122"><a href="#cb78-122" aria-hidden="true" tabindex="-1"></a>  lnc_segments <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"lnc_all_3"</span>, <span class="st">"lnc_apul_peve"</span>, <span class="st">"lnc_peve_ptuh"</span>, <span class="st">"lnc_apul_ptuh"</span>, <span class="st">"lnc_unconserved"</span>)</span>
+<span id="cb78-123"><a href="#cb78-123" aria-hidden="true" tabindex="-1"></a>  gene_segments <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"gene_all_3"</span>, <span class="st">"gene_apul_peve"</span>, <span class="st">"gene_apul_ptuh"</span>,  <span class="st">"gene_peve_ptuh"</span>, <span class="st">"gene_unconserved"</span>)</span>
+<span id="cb78-124"><a href="#cb78-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-125"><a href="#cb78-125" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter to only segments with data</span></span>
+<span id="cb78-126"><a href="#cb78-126" aria-hidden="true" tabindex="-1"></a>  lnc_segments <span class="ot">&lt;-</span> lnc_segments[<span class="fu">sapply</span>(lnc_segments, <span class="cf">function</span>(s) {</span>
+<span id="cb78-127"><a href="#cb78-127" aria-hidden="true" tabindex="-1"></a>    seg <span class="ot">&lt;-</span> segment_info_v3[[s]]</span>
+<span id="cb78-128"><a href="#cb78-128" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (seg<span class="sc">$</span>ortho_type <span class="sc">==</span> <span class="st">"none"</span>) {</span>
+<span id="cb78-129"><a href="#cb78-129" aria-hidden="true" tabindex="-1"></a>      <span class="fu">nrow</span>(data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(h_ortho_type <span class="sc">==</span> <span class="st">"none"</span>, target_type <span class="sc">==</span> <span class="st">"lncRNA"</span>)) <span class="sc">&gt;</span> <span class="dv">0</span></span>
+<span id="cb78-130"><a href="#cb78-130" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb78-131"><a href="#cb78-131" aria-hidden="true" tabindex="-1"></a>      <span class="fu">nrow</span>(data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(h_ortho_type <span class="sc">==</span> seg<span class="sc">$</span>ortho_type, target_type <span class="sc">==</span> <span class="st">"lncRNA"</span>)) <span class="sc">&gt;</span> <span class="dv">0</span></span>
+<span id="cb78-132"><a href="#cb78-132" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb78-133"><a href="#cb78-133" aria-hidden="true" tabindex="-1"></a>  })]</span>
+<span id="cb78-134"><a href="#cb78-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-135"><a href="#cb78-135" aria-hidden="true" tabindex="-1"></a>  gene_segments <span class="ot">&lt;-</span> gene_segments[<span class="fu">sapply</span>(gene_segments, <span class="cf">function</span>(s) {</span>
+<span id="cb78-136"><a href="#cb78-136" aria-hidden="true" tabindex="-1"></a>    seg <span class="ot">&lt;-</span> segment_info_v3[[s]]</span>
+<span id="cb78-137"><a href="#cb78-137" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (seg<span class="sc">$</span>ortho_type <span class="sc">==</span> <span class="st">"none"</span>) {</span>
+<span id="cb78-138"><a href="#cb78-138" aria-hidden="true" tabindex="-1"></a>      <span class="fu">nrow</span>(data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(h_ortho_type <span class="sc">==</span> <span class="st">"none"</span>, target_type <span class="sc">==</span> <span class="st">"gene"</span>)) <span class="sc">&gt;</span> <span class="dv">0</span></span>
+<span id="cb78-139"><a href="#cb78-139" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb78-140"><a href="#cb78-140" aria-hidden="true" tabindex="-1"></a>      <span class="fu">nrow</span>(data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(h_ortho_type <span class="sc">==</span> seg<span class="sc">$</span>ortho_type, target_type <span class="sc">==</span> <span class="st">"gene"</span>)) <span class="sc">&gt;</span> <span class="dv">0</span></span>
+<span id="cb78-141"><a href="#cb78-141" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb78-142"><a href="#cb78-142" aria-hidden="true" tabindex="-1"></a>  })]</span>
+<span id="cb78-143"><a href="#cb78-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-144"><a href="#cb78-144" aria-hidden="true" tabindex="-1"></a>  <span class="co"># All sectors in order</span></span>
+<span id="cb78-145"><a href="#cb78-145" aria-hidden="true" tabindex="-1"></a>  all_sectors <span class="ot">&lt;-</span> <span class="fu">c</span>(lnc_segments, gene_segments)</span>
+<span id="cb78-146"><a href="#cb78-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-147"><a href="#cb78-147" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(all_sectors) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb78-148"><a href="#cb78-148" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="st">"No data to plot"</span>)</span>
+<span id="cb78-149"><a href="#cb78-149" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">invisible</span>(<span class="cn">NULL</span>))</span>
+<span id="cb78-150"><a href="#cb78-150" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb78-151"><a href="#cb78-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-152"><a href="#cb78-152" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Build xlims</span></span>
+<span id="cb78-153"><a href="#cb78-153" aria-hidden="true" tabindex="-1"></a>  xlims <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb78-154"><a href="#cb78-154" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (seg_name <span class="cf">in</span> all_sectors) {</span>
+<span id="cb78-155"><a href="#cb78-155" aria-hidden="true" tabindex="-1"></a>    xlims[[seg_name]] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, seg_sizes[[seg_name]])</span>
+<span id="cb78-156"><a href="#cb78-156" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb78-157"><a href="#cb78-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-158"><a href="#cb78-158" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize circos</span></span>
+<span id="cb78-159"><a href="#cb78-159" aria-hidden="true" tabindex="-1"></a>  <span class="fu">circos.clear</span>()</span>
+<span id="cb78-160"><a href="#cb78-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-161"><a href="#cb78-161" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate gap degrees - larger gaps between lncRNA and gene halves</span></span>
+<span id="cb78-162"><a href="#cb78-162" aria-hidden="true" tabindex="-1"></a>  n_lnc <span class="ot">&lt;-</span> <span class="fu">length</span>(lnc_segments)</span>
+<span id="cb78-163"><a href="#cb78-163" aria-hidden="true" tabindex="-1"></a>  n_gene <span class="ot">&lt;-</span> <span class="fu">length</span>(gene_segments)</span>
+<span id="cb78-164"><a href="#cb78-164" aria-hidden="true" tabindex="-1"></a>  n_total <span class="ot">&lt;-</span> n_lnc <span class="sc">+</span> n_gene</span>
+<span id="cb78-165"><a href="#cb78-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-166"><a href="#cb78-166" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create gap vector: small gaps within each half, large gap between halves</span></span>
+<span id="cb78-167"><a href="#cb78-167" aria-hidden="true" tabindex="-1"></a>  gap_degrees <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">3</span>, n_total)</span>
+<span id="cb78-168"><a href="#cb78-168" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (n_lnc <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;&amp;</span> n_gene <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb78-169"><a href="#cb78-169" aria-hidden="true" tabindex="-1"></a>    gap_degrees[n_lnc] <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb78-170"><a href="#cb78-170" aria-hidden="true" tabindex="-1"></a>    gap_degrees[n_total] <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb78-171"><a href="#cb78-171" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb78-172"><a href="#cb78-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-173"><a href="#cb78-173" aria-hidden="true" tabindex="-1"></a>  <span class="fu">circos.par</span>(</span>
+<span id="cb78-174"><a href="#cb78-174" aria-hidden="true" tabindex="-1"></a>    <span class="at">start.degree =</span> <span class="dv">90</span>,</span>
+<span id="cb78-175"><a href="#cb78-175" aria-hidden="true" tabindex="-1"></a>    <span class="at">gap.degree =</span> gap_degrees,</span>
+<span id="cb78-176"><a href="#cb78-176" aria-hidden="true" tabindex="-1"></a>    <span class="at">track.margin =</span> <span class="fu">c</span>(<span class="fl">0.02</span>, <span class="fl">0.02</span>),</span>
+<span id="cb78-177"><a href="#cb78-177" aria-hidden="true" tabindex="-1"></a>    <span class="at">cell.padding =</span> <span class="fu">c</span>(<span class="fl">0.02</span>, <span class="fl">0.1</span>, <span class="fl">0.02</span>, <span class="fl">0.1</span>),</span>
+<span id="cb78-178"><a href="#cb78-178" aria-hidden="true" tabindex="-1"></a>    <span class="at">canvas.xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.4</span>, <span class="fl">1.4</span>),</span>
+<span id="cb78-179"><a href="#cb78-179" aria-hidden="true" tabindex="-1"></a>    <span class="at">canvas.ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.4</span>, <span class="fl">1.4</span>)</span>
+<span id="cb78-180"><a href="#cb78-180" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb78-181"><a href="#cb78-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-182"><a href="#cb78-182" aria-hidden="true" tabindex="-1"></a>  <span class="fu">circos.initialize</span>(</span>
+<span id="cb78-183"><a href="#cb78-183" aria-hidden="true" tabindex="-1"></a>    <span class="at">factors =</span> <span class="fu">factor</span>(all_sectors, <span class="at">levels =</span> all_sectors),</span>
+<span id="cb78-184"><a href="#cb78-184" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlim =</span> <span class="fu">do.call</span>(rbind, xlims[all_sectors])</span>
+<span id="cb78-185"><a href="#cb78-185" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb78-186"><a href="#cb78-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-187"><a href="#cb78-187" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Colors</span></span>
+<span id="cb78-188"><a href="#cb78-188" aria-hidden="true" tabindex="-1"></a>  highlight_col <span class="ot">&lt;-</span> <span class="fu">rgb</span>(<span class="fl">0.6</span>, <span class="fl">0.85</span>, <span class="dv">1</span>, <span class="fl">0.6</span>)  <span class="co"># Light blue for conserved</span></span>
+<span id="cb78-189"><a href="#cb78-189" aria-hidden="true" tabindex="-1"></a>  no_highlight_col <span class="ot">&lt;-</span> <span class="fu">rgb</span>(<span class="fl">0.95</span>, <span class="fl">0.95</span>, <span class="fl">0.95</span>, <span class="dv">1</span>)  <span class="co"># Light grey for unconserved</span></span>
+<span id="cb78-190"><a href="#cb78-190" aria-hidden="true" tabindex="-1"></a>  pos_col <span class="ot">&lt;-</span> <span class="fu">rgb</span>(<span class="fl">0.2</span>, <span class="fl">0.7</span>, <span class="fl">0.2</span>, <span class="fl">0.9</span>)  <span class="co"># Green for positive PCC</span></span>
+<span id="cb78-191"><a href="#cb78-191" aria-hidden="true" tabindex="-1"></a>  neg_col <span class="ot">&lt;-</span> <span class="fu">rgb</span>(<span class="fl">0.9</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.9</span>)  <span class="co"># Pink for negative PCC</span></span>
+<span id="cb78-192"><a href="#cb78-192" aria-hidden="true" tabindex="-1"></a>  border_col <span class="ot">&lt;-</span> <span class="fu">rgb</span>(<span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">0.7</span>, <span class="dv">1</span>)  <span class="co"># Blue border</span></span>
+<span id="cb78-193"><a href="#cb78-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-194"><a href="#cb78-194" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create 3 tracks (one per species, outer to inner)</span></span>
+<span id="cb78-195"><a href="#cb78-195" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (sp_idx <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) {</span>
+<span id="cb78-196"><a href="#cb78-196" aria-hidden="true" tabindex="-1"></a>    sp <span class="ot">&lt;-</span> species_order[sp_idx]</span>
+<span id="cb78-197"><a href="#cb78-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-198"><a href="#cb78-198" aria-hidden="true" tabindex="-1"></a>    <span class="fu">circos.track</span>(</span>
+<span id="cb78-199"><a href="#cb78-199" aria-hidden="true" tabindex="-1"></a>      <span class="at">factors =</span> <span class="fu">factor</span>(all_sectors, <span class="at">levels =</span> all_sectors),</span>
+<span id="cb78-200"><a href="#cb78-200" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb78-201"><a href="#cb78-201" aria-hidden="true" tabindex="-1"></a>      <span class="at">track.height =</span> <span class="fl">0.15</span>,</span>
+<span id="cb78-202"><a href="#cb78-202" aria-hidden="true" tabindex="-1"></a>      <span class="at">bg.border =</span> <span class="st">"grey60"</span>,</span>
+<span id="cb78-203"><a href="#cb78-203" aria-hidden="true" tabindex="-1"></a>      <span class="at">bg.lwd =</span> <span class="fl">1.5</span>,</span>
+<span id="cb78-204"><a href="#cb78-204" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.fun =</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb78-205"><a href="#cb78-205" aria-hidden="true" tabindex="-1"></a>        sector_name <span class="ot">&lt;-</span> CELL_META<span class="sc">$</span>sector.index</span>
+<span id="cb78-206"><a href="#cb78-206" aria-hidden="true" tabindex="-1"></a>        seg <span class="ot">&lt;-</span> segment_info_v3[[sector_name]]</span>
+<span id="cb78-207"><a href="#cb78-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-208"><a href="#cb78-208" aria-hidden="true" tabindex="-1"></a>        <span class="co"># For conserved segments, check if species is in the conservation group</span></span>
+<span id="cb78-209"><a href="#cb78-209" aria-hidden="true" tabindex="-1"></a>        <span class="co"># For unconserved, all species appear but no highlighting</span></span>
+<span id="cb78-210"><a href="#cb78-210" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (seg<span class="sc">$</span>conserved) {</span>
+<span id="cb78-211"><a href="#cb78-211" aria-hidden="true" tabindex="-1"></a>          sp_in_segment <span class="ot">&lt;-</span> sp <span class="sc">%in%</span> seg<span class="sc">$</span>species</span>
+<span id="cb78-212"><a href="#cb78-212" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> {</span>
+<span id="cb78-213"><a href="#cb78-213" aria-hidden="true" tabindex="-1"></a>          sp_in_segment <span class="ot">&lt;-</span> <span class="cn">TRUE</span>  <span class="co"># All species appear in unconserved segment</span></span>
+<span id="cb78-214"><a href="#cb78-214" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb78-215"><a href="#cb78-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-216"><a href="#cb78-216" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Background color</span></span>
+<span id="cb78-217"><a href="#cb78-217" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (seg<span class="sc">$</span>conserved <span class="sc">&amp;&amp;</span> sp_in_segment) {</span>
+<span id="cb78-218"><a href="#cb78-218" aria-hidden="true" tabindex="-1"></a>          bg_col <span class="ot">&lt;-</span> highlight_col</span>
+<span id="cb78-219"><a href="#cb78-219" aria-hidden="true" tabindex="-1"></a>          border <span class="ot">&lt;-</span> border_col</span>
+<span id="cb78-220"><a href="#cb78-220" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> <span class="cf">if</span> (sp_in_segment) {</span>
+<span id="cb78-221"><a href="#cb78-221" aria-hidden="true" tabindex="-1"></a>          bg_col <span class="ot">&lt;-</span> no_highlight_col</span>
+<span id="cb78-222"><a href="#cb78-222" aria-hidden="true" tabindex="-1"></a>          border <span class="ot">&lt;-</span> <span class="st">"grey60"</span></span>
+<span id="cb78-223"><a href="#cb78-223" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> {</span>
+<span id="cb78-224"><a href="#cb78-224" aria-hidden="true" tabindex="-1"></a>          bg_col <span class="ot">&lt;-</span> <span class="st">"white"</span></span>
+<span id="cb78-225"><a href="#cb78-225" aria-hidden="true" tabindex="-1"></a>          border <span class="ot">&lt;-</span> <span class="st">"grey80"</span></span>
+<span id="cb78-226"><a href="#cb78-226" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb78-227"><a href="#cb78-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-228"><a href="#cb78-228" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Draw background rectangle</span></span>
+<span id="cb78-229"><a href="#cb78-229" aria-hidden="true" tabindex="-1"></a>        <span class="fu">circos.rect</span>(</span>
+<span id="cb78-230"><a href="#cb78-230" aria-hidden="true" tabindex="-1"></a>          CELL_META<span class="sc">$</span>xlim[<span class="dv">1</span>], <span class="dv">0</span>,</span>
+<span id="cb78-231"><a href="#cb78-231" aria-hidden="true" tabindex="-1"></a>          CELL_META<span class="sc">$</span>xlim[<span class="dv">2</span>], <span class="dv">1</span>,</span>
+<span id="cb78-232"><a href="#cb78-232" aria-hidden="true" tabindex="-1"></a>          <span class="at">col =</span> bg_col,</span>
+<span id="cb78-233"><a href="#cb78-233" aria-hidden="true" tabindex="-1"></a>          <span class="at">border =</span> border,</span>
+<span id="cb78-234"><a href="#cb78-234" aria-hidden="true" tabindex="-1"></a>          <span class="at">lwd =</span> <span class="fl">1.5</span></span>
+<span id="cb78-235"><a href="#cb78-235" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb78-236"><a href="#cb78-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-237"><a href="#cb78-237" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Plot points</span></span>
+<span id="cb78-238"><a href="#cb78-238" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (seg<span class="sc">$</span>ortho_type <span class="sc">==</span> <span class="st">"none"</span>) {</span>
+<span id="cb78-239"><a href="#cb78-239" aria-hidden="true" tabindex="-1"></a>          <span class="co"># Unconserved: each species plots its own targets</span></span>
+<span id="cb78-240"><a href="#cb78-240" aria-hidden="true" tabindex="-1"></a>          seg_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb78-241"><a href="#cb78-241" aria-hidden="true" tabindex="-1"></a>            <span class="fu">filter</span>(species <span class="sc">==</span> sp,</span>
+<span id="cb78-242"><a href="#cb78-242" aria-hidden="true" tabindex="-1"></a>                   h_ortho_type <span class="sc">==</span> <span class="st">"none"</span>,</span>
+<span id="cb78-243"><a href="#cb78-243" aria-hidden="true" tabindex="-1"></a>                   target_type <span class="sc">==</span> seg<span class="sc">$</span>target_type) <span class="sc">%&gt;%</span></span>
+<span id="cb78-244"><a href="#cb78-244" aria-hidden="true" tabindex="-1"></a>            <span class="fu">distinct</span>(target, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb78-245"><a href="#cb78-245" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> <span class="cf">if</span> (sp_in_segment) {</span>
+<span id="cb78-246"><a href="#cb78-246" aria-hidden="true" tabindex="-1"></a>          <span class="co"># Conserved: filter by ortho type</span></span>
+<span id="cb78-247"><a href="#cb78-247" aria-hidden="true" tabindex="-1"></a>          seg_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb78-248"><a href="#cb78-248" aria-hidden="true" tabindex="-1"></a>            <span class="fu">filter</span>(species <span class="sc">==</span> sp,</span>
+<span id="cb78-249"><a href="#cb78-249" aria-hidden="true" tabindex="-1"></a>                   h_ortho_type <span class="sc">==</span> seg<span class="sc">$</span>ortho_type,</span>
+<span id="cb78-250"><a href="#cb78-250" aria-hidden="true" tabindex="-1"></a>                   target_type <span class="sc">==</span> seg<span class="sc">$</span>target_type) <span class="sc">%&gt;%</span></span>
+<span id="cb78-251"><a href="#cb78-251" aria-hidden="true" tabindex="-1"></a>            <span class="fu">distinct</span>(target, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb78-252"><a href="#cb78-252" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> {</span>
+<span id="cb78-253"><a href="#cb78-253" aria-hidden="true" tabindex="-1"></a>          seg_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb78-254"><a href="#cb78-254" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb78-255"><a href="#cb78-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-256"><a href="#cb78-256" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="fu">nrow</span>(seg_data) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb78-257"><a href="#cb78-257" aria-hidden="true" tabindex="-1"></a>          n_points <span class="ot">&lt;-</span> <span class="fu">nrow</span>(seg_data)</span>
+<span id="cb78-258"><a href="#cb78-258" aria-hidden="true" tabindex="-1"></a>          <span class="cf">if</span> (n_points <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb78-259"><a href="#cb78-259" aria-hidden="true" tabindex="-1"></a>            x_positions <span class="ot">&lt;-</span> CELL_META<span class="sc">$</span>xlim[<span class="dv">2</span>] <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb78-260"><a href="#cb78-260" aria-hidden="true" tabindex="-1"></a>          } <span class="cf">else</span> {</span>
+<span id="cb78-261"><a href="#cb78-261" aria-hidden="true" tabindex="-1"></a>            x_positions <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, CELL_META<span class="sc">$</span>xlim[<span class="dv">2</span>] <span class="sc">-</span> <span class="fl">0.5</span>, <span class="at">length.out =</span> n_points)</span>
+<span id="cb78-262"><a href="#cb78-262" aria-hidden="true" tabindex="-1"></a>          }</span>
+<span id="cb78-263"><a href="#cb78-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-264"><a href="#cb78-264" aria-hidden="true" tabindex="-1"></a>          <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_points) {</span>
+<span id="cb78-265"><a href="#cb78-265" aria-hidden="true" tabindex="-1"></a>            pt_col <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(seg_data<span class="sc">$</span>PCC_direction[i] <span class="sc">&gt;</span> <span class="dv">0</span>, pos_col, neg_col)</span>
+<span id="cb78-266"><a href="#cb78-266" aria-hidden="true" tabindex="-1"></a>            <span class="fu">circos.points</span>(</span>
+<span id="cb78-267"><a href="#cb78-267" aria-hidden="true" tabindex="-1"></a>              x_positions[i], <span class="fl">0.5</span>,</span>
+<span id="cb78-268"><a href="#cb78-268" aria-hidden="true" tabindex="-1"></a>              <span class="at">col =</span> pt_col,</span>
+<span id="cb78-269"><a href="#cb78-269" aria-hidden="true" tabindex="-1"></a>              <span class="at">pch =</span> <span class="dv">21</span>,</span>
+<span id="cb78-270"><a href="#cb78-270" aria-hidden="true" tabindex="-1"></a>              <span class="at">bg =</span> pt_col,</span>
+<span id="cb78-271"><a href="#cb78-271" aria-hidden="true" tabindex="-1"></a>              <span class="at">cex =</span> <span class="fl">0.75</span></span>
+<span id="cb78-272"><a href="#cb78-272" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb78-273"><a href="#cb78-273" aria-hidden="true" tabindex="-1"></a>          }</span>
+<span id="cb78-274"><a href="#cb78-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-275"><a href="#cb78-275" aria-hidden="true" tabindex="-1"></a>          <span class="co"># Add count label above the feature points</span></span>
+<span id="cb78-276"><a href="#cb78-276" aria-hidden="true" tabindex="-1"></a>          <span class="fu">circos.text</span>(</span>
+<span id="cb78-277"><a href="#cb78-277" aria-hidden="true" tabindex="-1"></a>            <span class="at">x =</span> <span class="fu">mean</span>(x_positions),</span>
+<span id="cb78-278"><a href="#cb78-278" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> <span class="fl">0.85</span>,</span>
+<span id="cb78-279"><a href="#cb78-279" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels =</span> <span class="fu">as.character</span>(n_points),</span>
+<span id="cb78-280"><a href="#cb78-280" aria-hidden="true" tabindex="-1"></a>            <span class="at">facing =</span> <span class="st">"bending.inside"</span>,</span>
+<span id="cb78-281"><a href="#cb78-281" aria-hidden="true" tabindex="-1"></a>            <span class="at">niceFacing =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb78-282"><a href="#cb78-282" aria-hidden="true" tabindex="-1"></a>            <span class="at">cex =</span> <span class="fl">0.75</span>,</span>
+<span id="cb78-283"><a href="#cb78-283" aria-hidden="true" tabindex="-1"></a>            <span class="at">col =</span> <span class="st">"black"</span>,</span>
+<span id="cb78-284"><a href="#cb78-284" aria-hidden="true" tabindex="-1"></a>            <span class="at">font =</span> <span class="dv">2</span></span>
+<span id="cb78-285"><a href="#cb78-285" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb78-286"><a href="#cb78-286" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb78-287"><a href="#cb78-287" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb78-288"><a href="#cb78-288" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb78-289"><a href="#cb78-289" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb78-290"><a href="#cb78-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-291"><a href="#cb78-291" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add segment labels on the outside</span></span>
+<span id="cb78-292"><a href="#cb78-292" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (seg_name <span class="cf">in</span> all_sectors) {</span>
+<span id="cb78-293"><a href="#cb78-293" aria-hidden="true" tabindex="-1"></a>    seg <span class="ot">&lt;-</span> segment_info_v3[[seg_name]]</span>
+<span id="cb78-294"><a href="#cb78-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-295"><a href="#cb78-295" aria-hidden="true" tabindex="-1"></a>    <span class="fu">circos.text</span>(</span>
+<span id="cb78-296"><a href="#cb78-296" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="fu">mean</span>(xlims[[seg_name]]),</span>
+<span id="cb78-297"><a href="#cb78-297" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="fl">1.8</span>,</span>
+<span id="cb78-298"><a href="#cb78-298" aria-hidden="true" tabindex="-1"></a>      <span class="at">sector.index =</span> seg_name,</span>
+<span id="cb78-299"><a href="#cb78-299" aria-hidden="true" tabindex="-1"></a>      <span class="at">track.index =</span> <span class="dv">1</span>,</span>
+<span id="cb78-300"><a href="#cb78-300" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> seg<span class="sc">$</span>label,</span>
+<span id="cb78-301"><a href="#cb78-301" aria-hidden="true" tabindex="-1"></a>      <span class="at">facing =</span> <span class="st">"bending.outside"</span>,</span>
+<span id="cb78-302"><a href="#cb78-302" aria-hidden="true" tabindex="-1"></a>      <span class="at">niceFacing =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb78-303"><a href="#cb78-303" aria-hidden="true" tabindex="-1"></a>      <span class="at">cex =</span> <span class="fl">0.7</span>,</span>
+<span id="cb78-304"><a href="#cb78-304" aria-hidden="true" tabindex="-1"></a>      <span class="at">font =</span> <span class="dv">2</span>,</span>
+<span id="cb78-305"><a href="#cb78-305" aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="st">"grey30"</span></span>
+<span id="cb78-306"><a href="#cb78-306" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb78-307"><a href="#cb78-307" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb78-308"><a href="#cb78-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-309"><a href="#cb78-309" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add "lncRNA" and "Genes" labels for each half</span></span>
+<span id="cb78-310"><a href="#cb78-310" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (n_lnc <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb78-311"><a href="#cb78-311" aria-hidden="true" tabindex="-1"></a>    mid_lnc <span class="ot">&lt;-</span> lnc_segments[<span class="fu">ceiling</span>(n_lnc <span class="sc">/</span> <span class="dv">2</span>)]</span>
+<span id="cb78-312"><a href="#cb78-312" aria-hidden="true" tabindex="-1"></a>    <span class="fu">circos.text</span>(</span>
+<span id="cb78-313"><a href="#cb78-313" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="fu">mean</span>(xlims[[mid_lnc]]),</span>
+<span id="cb78-314"><a href="#cb78-314" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="fl">2.5</span>,</span>
+<span id="cb78-315"><a href="#cb78-315" aria-hidden="true" tabindex="-1"></a>      <span class="at">sector.index =</span> mid_lnc,</span>
+<span id="cb78-316"><a href="#cb78-316" aria-hidden="true" tabindex="-1"></a>      <span class="at">track.index =</span> <span class="dv">1</span>,</span>
+<span id="cb78-317"><a href="#cb78-317" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="st">"lncRNA Targets"</span>,</span>
+<span id="cb78-318"><a href="#cb78-318" aria-hidden="true" tabindex="-1"></a>      <span class="at">facing =</span> <span class="st">"bending.outside"</span>,</span>
+<span id="cb78-319"><a href="#cb78-319" aria-hidden="true" tabindex="-1"></a>      <span class="at">niceFacing =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb78-320"><a href="#cb78-320" aria-hidden="true" tabindex="-1"></a>      <span class="at">cex =</span> <span class="fl">1.0</span>,</span>
+<span id="cb78-321"><a href="#cb78-321" aria-hidden="true" tabindex="-1"></a>      <span class="at">font =</span> <span class="dv">2</span>,</span>
+<span id="cb78-322"><a href="#cb78-322" aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="st">"darkblue"</span></span>
+<span id="cb78-323"><a href="#cb78-323" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb78-324"><a href="#cb78-324" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb78-325"><a href="#cb78-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-326"><a href="#cb78-326" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (n_gene <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb78-327"><a href="#cb78-327" aria-hidden="true" tabindex="-1"></a>    mid_gene <span class="ot">&lt;-</span> gene_segments[<span class="fu">ceiling</span>(n_gene <span class="sc">/</span> <span class="dv">2</span>)]</span>
+<span id="cb78-328"><a href="#cb78-328" aria-hidden="true" tabindex="-1"></a>    <span class="fu">circos.text</span>(</span>
+<span id="cb78-329"><a href="#cb78-329" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="fu">mean</span>(xlims[[mid_gene]]),</span>
+<span id="cb78-330"><a href="#cb78-330" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="fl">2.5</span>,</span>
+<span id="cb78-331"><a href="#cb78-331" aria-hidden="true" tabindex="-1"></a>      <span class="at">sector.index =</span> mid_gene,</span>
+<span id="cb78-332"><a href="#cb78-332" aria-hidden="true" tabindex="-1"></a>      <span class="at">track.index =</span> <span class="dv">1</span>,</span>
+<span id="cb78-333"><a href="#cb78-333" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="st">"Gene Targets"</span>,</span>
+<span id="cb78-334"><a href="#cb78-334" aria-hidden="true" tabindex="-1"></a>      <span class="at">facing =</span> <span class="st">"bending.outside"</span>,</span>
+<span id="cb78-335"><a href="#cb78-335" aria-hidden="true" tabindex="-1"></a>      <span class="at">niceFacing =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb78-336"><a href="#cb78-336" aria-hidden="true" tabindex="-1"></a>      <span class="at">cex =</span> <span class="fl">1.0</span>,</span>
+<span id="cb78-337"><a href="#cb78-337" aria-hidden="true" tabindex="-1"></a>      <span class="at">font =</span> <span class="dv">2</span>,</span>
+<span id="cb78-338"><a href="#cb78-338" aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="st">"darkred"</span></span>
+<span id="cb78-339"><a href="#cb78-339" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb78-340"><a href="#cb78-340" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb78-341"><a href="#cb78-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-342"><a href="#cb78-342" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add title and species labels in the center (outer to inner: Peve, Apul, Ptuh)</span></span>
+<span id="cb78-343"><a href="#cb78-343" aria-hidden="true" tabindex="-1"></a>  <span class="fu">text</span>(<span class="dv">0</span>, <span class="fl">0.04</span>, <span class="st">"miR-100 Targets"</span>, <span class="at">font =</span> <span class="dv">2</span>, <span class="at">cex =</span> <span class="fl">1.1</span>, <span class="at">col =</span> <span class="st">"black"</span>)</span>
+<span id="cb78-344"><a href="#cb78-344" aria-hidden="true" tabindex="-1"></a>  <span class="fu">text</span>(<span class="dv">0</span>, <span class="sc">-</span><span class="fl">0.04</span>, <span class="st">"by Conservation"</span>, <span class="at">font =</span> <span class="dv">2</span>, <span class="at">cex =</span> <span class="fl">1.1</span>, <span class="at">col =</span> <span class="st">"black"</span>)</span>
+<span id="cb78-345"><a href="#cb78-345" aria-hidden="true" tabindex="-1"></a>  <span class="fu">text</span>(<span class="sc">-</span><span class="fl">0.09</span>, <span class="fl">0.9</span>, <span class="st">"Peve"</span>, <span class="at">font =</span> <span class="dv">2</span>, <span class="at">cex =</span> <span class="fl">0.9</span>, <span class="at">col =</span> <span class="st">"grey30"</span>)</span>
+<span id="cb78-346"><a href="#cb78-346" aria-hidden="true" tabindex="-1"></a>  <span class="fu">text</span>(<span class="sc">-</span><span class="fl">0.09</span>, <span class="fl">0.71</span>, <span class="st">"Apul"</span>, <span class="at">font =</span> <span class="dv">2</span>, <span class="at">cex =</span> <span class="fl">0.9</span>, <span class="at">col =</span> <span class="st">"grey30"</span>)</span>
+<span id="cb78-347"><a href="#cb78-347" aria-hidden="true" tabindex="-1"></a>  <span class="fu">text</span>(<span class="sc">-</span><span class="fl">0.09</span>, <span class="fl">0.53</span>, <span class="st">"Ptuh"</span>, <span class="at">font =</span> <span class="dv">2</span>, <span class="at">cex =</span> <span class="fl">0.9</span>, <span class="at">col =</span> <span class="st">"grey30"</span>)</span>
+<span id="cb78-348"><a href="#cb78-348" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-349"><a href="#cb78-349" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add legend</span></span>
+<span id="cb78-350"><a href="#cb78-350" aria-hidden="true" tabindex="-1"></a>  <span class="fu">legend</span>(</span>
+<span id="cb78-351"><a href="#cb78-351" aria-hidden="true" tabindex="-1"></a>    <span class="st">"bottomright"</span>,</span>
+<span id="cb78-352"><a href="#cb78-352" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Positive PCC"</span>, <span class="st">"Negative PCC"</span>, <span class="st">"Conserved region"</span>),</span>
+<span id="cb78-353"><a href="#cb78-353" aria-hidden="true" tabindex="-1"></a>    <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">21</span>, <span class="dv">22</span>),</span>
+<span id="cb78-354"><a href="#cb78-354" aria-hidden="true" tabindex="-1"></a>    <span class="at">pt.bg =</span> <span class="fu">c</span>(pos_col, neg_col, highlight_col),</span>
+<span id="cb78-355"><a href="#cb78-355" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(pos_col, neg_col, border_col),</span>
+<span id="cb78-356"><a href="#cb78-356" aria-hidden="true" tabindex="-1"></a>    <span class="at">pt.cex =</span> <span class="fu">c</span>(<span class="fl">1.5</span>, <span class="fl">1.5</span>, <span class="fl">2.2</span>),</span>
+<span id="cb78-357"><a href="#cb78-357" aria-hidden="true" tabindex="-1"></a>    <span class="at">bty =</span> <span class="st">"n"</span>,</span>
+<span id="cb78-358"><a href="#cb78-358" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex =</span> <span class="fl">0.85</span></span>
+<span id="cb78-359"><a href="#cb78-359" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb78-360"><a href="#cb78-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-361"><a href="#cb78-361" aria-hidden="true" tabindex="-1"></a>  <span class="fu">circos.clear</span>()</span>
+<span id="cb78-362"><a href="#cb78-362" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb78-363"><a href="#cb78-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-364"><a href="#cb78-364" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the compact plot</span></span>
+<span id="cb78-365"><a href="#cb78-365" aria-hidden="true" tabindex="-1"></a><span class="fu">create_circos_plot_v3</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 1 point is out of plotting region in sector 'lnc_unconserved',
+track '1'.
+Note: 1 point is out of plotting region in sector 'lnc_unconserved',
+track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 11 points are out of plotting region in sector 'lnc_unconserved',
+track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 1 point is out of plotting region in sector 'gene_all_3', track
+'1'.
+Note: 1 point is out of plotting region in sector 'gene_all_3', track
+'1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 5 points are out of plotting region in sector 'gene_all_3', track
+'1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 1 point is out of plotting region in sector 'gene_unconserved',
+track '1'.
+Note: 1 point is out of plotting region in sector 'gene_unconserved',
+track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 11 points are out of plotting region in sector
+'gene_unconserved', track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 1 point is out of plotting region in sector 'lnc_unconserved',
+track '1'.
+Note: 1 point is out of plotting region in sector 'lnc_unconserved',
+track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 14 points are out of plotting region in sector 'lnc_unconserved',
+track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 1 point is out of plotting region in sector 'gene_all_3', track
+'1'.
+Note: 1 point is out of plotting region in sector 'gene_all_3', track
+'1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 12 points are out of plotting region in sector 'gene_all_3',
+track '1'.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="2025_12_08_dde_plot_edits_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save to png</span></span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">"output/2025_12_08_dde_plot_edits/h_orthos_circos_plot.png"</span>, <span class="at">width =</span> <span class="dv">2000</span>, <span class="at">height =</span> <span class="dv">2000</span>, <span class="at">res =</span> <span class="dv">300</span>)</span>
+<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a><span class="fu">create_circos_plot_v3</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 1 point is out of plotting region in sector 'lnc_unconserved',
+track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 1 point is out of plotting region in sector 'lnc_unconserved',
+track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 11 points are out of plotting region in sector 'lnc_unconserved',
+track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 1 point is out of plotting region in sector 'gene_all_3', track
+'1'.
+Note: 1 point is out of plotting region in sector 'gene_all_3', track
+'1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 5 points are out of plotting region in sector 'gene_all_3', track
+'1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 1 point is out of plotting region in sector 'gene_unconserved',
+track '1'.
+Note: 1 point is out of plotting region in sector 'gene_unconserved',
+track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 11 points are out of plotting region in sector
+'gene_unconserved', track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 1 point is out of plotting region in sector 'lnc_unconserved',
+track '1'.
+Note: 1 point is out of plotting region in sector 'lnc_unconserved',
+track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 14 points are out of plotting region in sector 'lnc_unconserved',
+track '1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 1 point is out of plotting region in sector 'gene_all_3', track
+'1'.
+Note: 1 point is out of plotting region in sector 'gene_all_3', track
+'1'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Note: 12 points are out of plotting region in sector 'gene_all_3',
+track '1'.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>png 
   2 </code></pre>
