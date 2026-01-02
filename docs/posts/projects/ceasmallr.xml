@@ -9,13 +9,15 @@
 <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr.html</link>
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.3.433</generator>
+<generator>quarto-1.7.32</generator>
 <lastBuildDate>Thu, 07 Aug 2025 07:00:00 GMT</lastBuildDate>
 <item>
   <title>Summary of completed ceasmallr work</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2025_08_07_current_summary.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -60,10 +62,10 @@
 <h3 class="anchored" data-anchor-id="results">Results</h3>
 <p><strong>In all offspring subsets (combined, zygote only, and larvae only), I identified many DMLs associated with parental treatment</strong> (81 in combined analysis, 545 in zygote-only, 1061 in larvae-only).</p>
 <p>Most DMLs occurred in the gene body, with occurrence roughly equally split between intronic and exonic regions.</p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/https:/github.com/course-fish546-2025/kathleen-coral/raw/main/project/code/07.2-DML-adult-comparison-low-cov_files/figure-gfm/unnamed-chunk-13-1.png" class="img-fluid" width="431"></p>
+<p><img src="https://github.com/course-fish546-2025/kathleen-coral/raw/main/project/code/07.2-DML-adult-comparison-low-cov_files/figure-gfm/unnamed-chunk-13-1.png" class="img-fluid" width="431"></p>
 <p>For all groups considered (combined, zygote-only, and larvae-only), <strong>a small subset of offspring DMLs were also differentially methylated in the parent gonads based on OA exposure</strong>. Shared DMLs were almost exclusively found in the male parents. Of the 81 DMLs identified in the combined offspring analysis, 7 sites (8.64%) were also differentially methylated in the male parents (0 in the female parents). Of the 545 DMLs identified in analysis of zygotes alone, 15 (2.75%) were differentially methylated in male parents (0 in female). Finally, in the larvae-only analysis, 31 of the1061 larval DMLs (2.92%) were also differentially methylated in male parents (2 in female parents).</p>
 <p>Plotting the methylation profiles of both parents and offspring, we see a offspring profiles are clearly more similar to male parents, and that both are divergent from female parents. There is not, however, clear grouping by exposure (or parental exposure) to OA treatment.</p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/https:/github.com/course-fish546-2025/kathleen-coral/raw/main/project/code/09-multifactor-diff-methyl_files/figure-gfm/unnamed-chunk-16-1.png" class="img-fluid" width="451"></p>
+<p><img src="https://github.com/course-fish546-2025/kathleen-coral/raw/main/project/code/09-multifactor-diff-methyl_files/figure-gfm/unnamed-chunk-16-1.png" class="img-fluid" width="451"></p>
 
 
 </section>

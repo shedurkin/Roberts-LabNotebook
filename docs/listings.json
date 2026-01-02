@@ -1,22 +1,5 @@
 [
   {
-    "listing": "/projects.html",
-    "items": [
-      "/posts/projects/E5_coral.html",
-      "/posts/projects/SIFP_2025.html",
-      "/posts/projects/ceasmallr.html",
-      "/posts/projects/pacific_cod.html",
-      "/posts/projects/pacific_oyster.html",
-      "/posts/projects/misc.html"
-    ]
-  },
-  {
-    "listing": "/posts/projects/ceasmallr.html",
-    "items": [
-      "/posts/projects/ceasmallr/2025_08_07_current_summary.html"
-    ]
-  },
-  {
     "listing": "/daily_log.html",
     "items": [
       "/posts/daily_logs/2025/2025_06_24_steven_meeting.html",
@@ -63,10 +46,25 @@
     ]
   },
   {
+    "listing": "/posts/projects/pacific_cod.html",
+    "items": [
+      "/posts/projects/pacific_cod/2024_04_29_methylation_subsampling.html",
+      "/posts/projects/pacific_cod/2024_04_25_methylation_subsampling.html",
+      "/posts/projects/pacific_cod/2024_03_19_RNAseq_prelim_kallistoDESeq2.html",
+      "/posts/projects/pacific_cod/2024_03_04_RNAseq_QC_trimming.html",
+      "/posts/projects/pacific_cod/2023_12_13_pacific_cod.html",
+      "/posts/projects/pacific_cod/2023_12_14_pacific_cod.html",
+      "/posts/projects/pacific_cod/2023_12_07_pacific_cod.html",
+      "/posts/projects/pacific_cod/2023_11_02_pacific_cod.html",
+      "/posts/projects/pacific_cod/2023_10_13_pacific_cod.html"
+    ]
+  },
+  {
     "listing": "/posts/projects/E5_coral.html",
     "items": [
       "/posts/projects/E5_coral/2025_12_08_dde_plot_edits.html",
       "/posts/projects/E5_coral/2025_12_05_timeseries_EN_GbM.html",
+      "/posts/projects/E5_coral/2025_12_10_timeseries_EN_permutation.html",
       "/posts/projects/E5_coral/2025_11_20_DDE_miR100_multiBinds.html",
       "/posts/projects/E5_coral/2025_11_19_timeseries_EN_script.html",
       "/posts/projects/E5_coral/2025_11_12_timeseries_comp24_EN.html",
@@ -83,8 +81,8 @@
       "/posts/projects/E5_coral/2025_04_23_timeseries_multiomic_ML_2.html",
       "/posts/projects/E5_coral/2025_04_18_timeseries_multiomic_ML_1.html",
       "/posts/projects/E5_coral/2025_04_11_timeseries_ML_4.html",
-      "/posts/projects/E5_coral/2025_04_10_dde_named_miRNA_functions.html",
       "/posts/projects/E5_coral/2025_04_16_timeseries_lncRNA_PCC.html",
+      "/posts/projects/E5_coral/2025_04_10_dde_named_miRNA_functions.html",
       "/posts/projects/E5_coral/2025_04_09_dde_miranda_miRNA_FE.html",
       "/posts/projects/E5_coral/2025_04_08_dde_miranda_FE.html",
       "/posts/projects/E5_coral/2025_04_04_timeseries_ML_3.html",
@@ -112,40 +110,6 @@
     ]
   },
   {
-    "listing": "/posts/projects/misc.html",
-    "items": [
-      "/posts/projects/misc/2025_12_02_FISH510_blog.html",
-      "/posts/projects/misc/2024_01_30_Ideas.html",
-      "/posts/projects/misc/2025_02_19_klone_rstudio.html",
-      "/posts/projects/misc/2025_01_29_EPIMAR_budgeting.html",
-      "/posts/projects/misc/2024_09_16_hDNA_methylation.html",
-      "/posts/projects/misc/2024_11_08_first_committee_meeting.html",
-      "/posts/projects/misc/2024_06_18_NSF_GRFP_info.html",
-      "/posts/projects/misc/2024_02_22_quarto_features.html",
-      "/posts/projects/misc/2024_03_27_GNM569awk.html",
-      "/posts/projects/misc/2024_02_28_oyster_sampling.html",
-      "/posts/projects/misc/2024_02_26_oyster_sampling_materials.html",
-      "/posts/projects/misc/2024_02_22_paper_organization.html",
-      "/posts/projects/misc/2024_02_08_bedtools_gffvbed.html",
-      "/posts/projects/misc/2024_01_02_SICB.html",
-      "/posts/projects/misc/2024_01_02_TTS.html"
-    ]
-  },
-  {
-    "listing": "/posts/projects/pacific_cod.html",
-    "items": [
-      "/posts/projects/pacific_cod/2024_04_29_methylation_subsampling.html",
-      "/posts/projects/pacific_cod/2024_04_25_methylation_subsampling.html",
-      "/posts/projects/pacific_cod/2024_03_19_RNAseq_prelim_kallistoDESeq2.html",
-      "/posts/projects/pacific_cod/2024_03_04_RNAseq_QC_trimming.html",
-      "/posts/projects/pacific_cod/2023_12_13_pacific_cod.html",
-      "/posts/projects/pacific_cod/2023_12_14_pacific_cod.html",
-      "/posts/projects/pacific_cod/2023_12_07_pacific_cod.html",
-      "/posts/projects/pacific_cod/2023_11_02_pacific_cod.html",
-      "/posts/projects/pacific_cod/2023_10_13_pacific_cod.html"
-    ]
-  },
-  {
     "listing": "/posts/projects/pacific_oyster.html",
     "items": [
       "/posts/projects/pacific_oyster/2024_11_08_diptrip_updates_summary.html",
@@ -170,8 +134,29 @@
     ]
   },
   {
+    "listing": "/posts/projects/misc.html",
+    "items": [
+      "/posts/projects/misc/2025_12_02_FISH510_blog.html",
+      "/posts/projects/misc/2024_01_30_Ideas.html",
+      "/posts/projects/misc/2025_02_19_klone_rstudio.html",
+      "/posts/projects/misc/2025_01_29_EPIMAR_budgeting.html",
+      "/posts/projects/misc/2024_09_16_hDNA_methylation.html",
+      "/posts/projects/misc/2024_11_08_first_committee_meeting.html",
+      "/posts/projects/misc/2024_06_18_NSF_GRFP_info.html",
+      "/posts/projects/misc/2024_02_22_quarto_features.html",
+      "/posts/projects/misc/2024_03_27_GNM569awk.html",
+      "/posts/projects/misc/2024_02_28_oyster_sampling.html",
+      "/posts/projects/misc/2024_02_26_oyster_sampling_materials.html",
+      "/posts/projects/misc/2024_02_22_paper_organization.html",
+      "/posts/projects/misc/2024_02_08_bedtools_gffvbed.html",
+      "/posts/projects/misc/2024_01_02_SICB.html",
+      "/posts/projects/misc/2024_01_02_TTS.html"
+    ]
+  },
+  {
     "listing": "/posts/projects/SIFP_2025.html",
     "items": [
+      "/posts/projects/SIFP_2025/2025_12_14_nobones_plotting.html",
       "/posts/projects/SIFP_2025/2025_10_29_dorado_recalling.html",
       "/posts/projects/SIFP_2025/2025_10_27_methylation_summaries.html",
       "/posts/projects/SIFP_2025/2025_09_12_equipment_details.html",
@@ -180,48 +165,48 @@
       "/posts/projects/SIFP_2025/2025_09_12_lab_notebook_scanned.html",
       "/posts/projects/SIFP_2025/2025_09_26_file_checksums.html",
       "/posts/projects/SIFP_2025/2025_09_09_minion_G4L2.html",
-      "/posts/projects/SIFP_2025/2025_09_08_flongle_G4L2.html",
       "/posts/projects/SIFP_2025/2025_09_08_library_prep_G4L2.html",
+      "/posts/projects/SIFP_2025/2025_09_08_flongle_G4L2.html",
       "/posts/projects/SIFP_2025/2025_09_05_minion_G4L1.html",
       "/posts/projects/SIFP_2025/2025_09_04_flongle_G4L1.html",
-      "/posts/projects/SIFP_2025/2025_09_04_library_prep_G4L1.html",
       "/posts/projects/SIFP_2025/2025_09_04_reextractions_KAPA.html",
       "/posts/projects/SIFP_2025/2025_09_04_reextractions_tapestation.html",
+      "/posts/projects/SIFP_2025/2025_09_04_library_prep_G4L1.html",
       "/posts/projects/SIFP_2025/2025_09_04_rextractions_clean.html",
       "/posts/projects/SIFP_2025/2025_09_03_file_transfer.html",
       "/posts/projects/SIFP_2025/2025_09_02_minion_G2L3.html",
+      "/posts/projects/SIFP_2025/2025_09_01_reextractions.html",
       "/posts/projects/SIFP_2025/2025_09_01_flongle_G2L3.html",
       "/posts/projects/SIFP_2025/2025_09_01_library_prep_G2L3.html",
-      "/posts/projects/SIFP_2025/2025_09_01_reextractions.html",
       "/posts/projects/SIFP_2025/2025_09_01_replacement_flongle_check.html",
       "/posts/projects/SIFP_2025/2025_08_31_flongle_G3L1.html",
       "/posts/projects/SIFP_2025/2025_08_30_library_prep_G3L1.html",
       "/posts/projects/SIFP_2025/2025_08_30_zymo_concentrate.html",
       "/posts/projects/SIFP_2025/2025_08_28_file_transfer.html",
       "/posts/projects/SIFP_2025/2025_08_27_epoch.html",
-      "/posts/projects/SIFP_2025/2025_08_25_minion_wildflower.html",
       "/posts/projects/SIFP_2025/2025_08_25_sequencing_reagents.html",
-      "/posts/projects/SIFP_2025/2025_08_24_flongle_G2L2.html",
+      "/posts/projects/SIFP_2025/2025_08_25_minion_wildflower.html",
       "/posts/projects/SIFP_2025/2025_08_24_library_prep_G2L2.html",
+      "/posts/projects/SIFP_2025/2025_08_24_flongle_G2L2.html",
       "/posts/projects/SIFP_2025/2025_08_24_minion_G2L2.html",
-      "/posts/projects/SIFP_2025/2025_08_22_flongle_G2L1.html",
       "/posts/projects/SIFP_2025/2025_08_22_library_prep_G2L1.html",
+      "/posts/projects/SIFP_2025/2025_08_22_flongle_G2L1.html",
       "/posts/projects/SIFP_2025/2025_08_21_wash3_minion_G1L4.html",
       "/posts/projects/SIFP_2025/2025_08_20_wash1_minion_G1L4.html",
       "/posts/projects/SIFP_2025/2025_08_20_wash2_minion_G1L4.html",
       "/posts/projects/SIFP_2025/2025_08_19_minion_G1L4.html",
-      "/posts/projects/SIFP_2025/2025_08_18_flongle_G1L4.html",
       "/posts/projects/SIFP_2025/2025_08_18_flongle_notes.html",
       "/posts/projects/SIFP_2025/2025_08_18_library_prep_G1L4.html",
+      "/posts/projects/SIFP_2025/2025_08_18_flongle_G1L4.html",
       "/posts/projects/SIFP_2025/2025_08_15_flongle_G1L3.html",
       "/posts/projects/SIFP_2025/2025_08_15_library_prep_G1L3.html",
-      "/posts/projects/SIFP_2025/2025_08_14_Flongle_stats.html",
       "/posts/projects/SIFP_2025/2025_08_14_pore_check_minions.html",
-      "/posts/projects/SIFP_2025/2025_08_13_flongle_G1L2.html",
+      "/posts/projects/SIFP_2025/2025_08_14_Flongle_stats.html",
       "/posts/projects/SIFP_2025/2025_08_13_pore_check_flongles.html",
+      "/posts/projects/SIFP_2025/2025_08_13_flongle_G1L2.html",
       "/posts/projects/SIFP_2025/2025_08_12_flongle_G1L1.html",
-      "/posts/projects/SIFP_2025/2025_08_11_library_prep_G1L1.html",
       "/posts/projects/SIFP_2025/2025_08_11_transfer_DNA.html",
+      "/posts/projects/SIFP_2025/2025_08_11_library_prep_G1L1.html",
       "/posts/projects/SIFP_2025/2025_07_25_KAPA_bead_full.html",
       "/posts/projects/SIFP_2025/2025_07_25_tapestation.html",
       "/posts/projects/SIFP_2025/2025_07_23_KAPA_bead.html",
@@ -241,6 +226,23 @@
       "/posts/projects/SIFP_2025/2025_05_02_Andrea_Dan_meeting.html",
       "/posts/projects/SIFP_2025/2025_04_10_Andrea_meeting.html",
       "/posts/projects/SIFP_2025/2025_04_09_SIFP_planning.html"
+    ]
+  },
+  {
+    "listing": "/posts/projects/ceasmallr.html",
+    "items": [
+      "/posts/projects/ceasmallr/2025_08_07_current_summary.html"
+    ]
+  },
+  {
+    "listing": "/projects.html",
+    "items": [
+      "/posts/projects/E5_coral.html",
+      "/posts/projects/SIFP_2025.html",
+      "/posts/projects/ceasmallr.html",
+      "/posts/projects/pacific_cod.html",
+      "/posts/projects/pacific_oyster.html",
+      "/posts/projects/misc.html"
     ]
   }
 ]

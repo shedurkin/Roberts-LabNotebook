@@ -9,13 +9,65 @@
 <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025.html</link>
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.3.433</generator>
-<lastBuildDate>Wed, 29 Oct 2025 07:00:00 GMT</lastBuildDate>
+<generator>quarto-1.7.32</generator>
+<lastBuildDate>Sun, 14 Dec 2025 08:00:00 GMT</lastBuildDate>
+<item>
+  <title>No Bones prep/plots</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_12_14_nobones_plotting.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>Want to compile some data summary stats (e.g., sequencing output, coverage, modification %s, etc.) and plot for <a href="../../../presentations/Durkin_NoBones_2025_12_16_Nanopore.pptx">Smithsonian No Bones presentation</a> (12/16/25).</p>
+<section id="modkit-summary" class="level2">
+<h2 class="anchored" data-anchor-id="modkit-summary">modkit summary</h2>
+<p>First, finished <code>modkit</code> summaries of the % modifications called in each sample from each sequencing run. The general outline of this process, in full, is:</p>
+<ul>
+<li><p>Recall all the MinION <code>.pod5</code> files (quality-passed only) using <code>Dorado</code>, including both alignment to the <em>E. knighti</em> genome and modified basecalling for 5mCG, 5hmCG, and 6mA modifications (note that only 5mC and 5hmC <em>found in a CG context</em> were basecalled). Outputs are BAM files.</p></li>
+<li><p>From those, separate by barcode and isolate only mapped reads, so I end up with one BAM file per barcode that contains only the reads with that barcode that mapped to the <em>E. knighti</em> genome<em>.</em></p></li>
+<li><p>Then, use <code>modkit</code> <code>summary</code> to summarize the presence of each modification type. This is <em>global modification</em>, e.g.&nbsp;% of all A nucleotides in the BAM file that have the 6mA modification. I performed <code>modkit summary</code> on both the un-separated BAM files and on the barcodes individually, saved outputs, and plotted (e.g.&nbsp;the below plot, taken from G4L2)</p>
+<p><img src="https://github.com/shedurkin/SIFP-nanopore/blob/main/D-Group4/code/04.01-G4-Library2-MinION-Dorado-recall-GPU_files/figure-gfm/unnamed-chunk-11-1.png?raw=true" class="img-fluid"></p></li>
+</ul>
+<p>Knitted code and plots for each sequencing run linked below:<br>
+<a href="https://github.com/shedurkin/SIFP-nanopore/blob/main/A-Group1/code/06.01-G1-Library4-MinION-Dorado-recall-GPU.md">Group 1, Library 4, MinION (2019 vouchers)</a><br>
+<a href="https://github.com/shedurkin/SIFP-nanopore/blob/main/B-Group2/code/04.01-G2-Library2-MinION-Dorado-recall-GPU.md">Group 2, Library 2, MinION (1960s vouchers)</a><br>
+<a href="https://github.com/shedurkin/SIFP-nanopore/blob/main/B-Group2/code/05.01-G2-Library3-MinION-Dorado-recall-GPU.md">Group 2, Library 3, MinION (1960s vouchers)</a><br>
+<a href="https://github.com/shedurkin/SIFP-nanopore/blob/main/D-Group4/code/03.01-G4-Library1-MinION-Dorado-recall-GPU.md">Group 4, Library , MinION (pre-1900 vouchers)</a><br>
+<a href="https://github.com/shedurkin/SIFP-nanopore/blob/main/D-Group4/code/04.01-G4-Library2-MinION-Dorado-recall-GPU.md">Group 4, Library , MinION (pre-1900 vouchers)</a></p>
+</section>
+<section id="plotting" class="level2">
+<h2 class="anchored" data-anchor-id="plotting">Plotting</h2>
+<p>Then generated a <em>bunch</em> of summary plots potentially useful for the presentation, including visualizations of output, quality, modifications, etc. Code writing supported with Claude Sonnet AI. Of particular interest might be plots of specimen output, quality, and modification %s <em>by age</em>, to highlight issues with sequencing older specimens.</p>
+<p>Knitted code, with plots, found here: <a href="https://github.com/shedurkin/SIFP-nanopore/blob/main/M-multi-group/code/03-nobones-plotting.md">03-nobones-plotting</a></p>
+<p><img src="https://github.com/shedurkin/SIFP-nanopore/blob/main/M-multi-group/code/03-nobones-plotting_files/figure-gfm/fig-age-group-summary-1.png?raw=true" class="img-fluid"></p>
+<p><img src="https://github.com/shedurkin/SIFP-nanopore/blob/main/M-multi-group/code/03-nobones-plotting_files/figure-gfm/unnamed-chunk-3-1.png?raw=true" class="img-fluid"></p>
+<p><img src="https://github.com/shedurkin/SIFP-nanopore/blob/main/M-multi-group/code/03-nobones-plotting_files/figure-gfm/unnamed-chunk-3-2.png?raw=true" class="img-fluid"></p>
+<p><img src="https://github.com/shedurkin/SIFP-nanopore/blob/main/M-multi-group/code/03-nobones-plotting_files/figure-gfm/unnamed-chunk-3-3.png?raw=true" class="img-fluid"></p>
+</section>
+<section id="additional-analyses" class="level2">
+<h2 class="anchored" data-anchor-id="additional-analyses">Additional analyses</h2>
+<p>Finally, did some additional data processing. Namely, summarized per-base modifications. Currently have BAM files that show the base called, with and without modifications, for every single read. <code>pileup</code> will summarize these down to BED files that show, for every position in the genome, the % modification (if applicable). Performed this by specimen (barcode), so for specimens that were sequenced multiple times all the data is combined.</p>
+<p>Knitted code: <a href="https://github.com/shedurkin/SIFP-nanopore/blob/main/M-multi-group/code/04-specimen-pileup.md">04-specimen-pileup</a></p>
+
+
+</section>
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_12_14_nobones_plotting.html</guid>
+  <pubDate>Sun, 14 Dec 2025 08:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Dorado – re-basecalling pod5 files</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_10_29_dorado_recalling.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -160,7 +212,7 @@ do
 done</code></pre>
 <p>Note that I specified a fairly small GPU in this script, <code>gpu:2080ti:1</code>, because Hyak has a <em>lot</em> of these, and the queue time ended up being much shorter. For larger jobs, a more powerful GPU may be desirable.</p>
 <p>I set up and ran scripts to <code>Dorado</code> basecall to passed <code>pod5</code> files of all 5 MinION sequencing runs by late night of 10/29/2025. By the next morning, all but the G1L4 runs have finished:</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Sequencing Run</th>
@@ -172,8 +224,8 @@ done</code></pre>
 <tbody>
 <tr class="odd">
 <td>G1L4 MinION</td>
-<td>30552584</td>
-<td>-</td>
+<td>30587784</td>
+<td>06:56:29</td>
 <td><a href="https://github.com/shedurkin/SIFP-nanopore/tree/main/A-Group1/output/06.01-G1-Library4-MinION-Dorado-recall-GPU" class="uri">https://github.com/shedurkin/SIFP-nanopore/tree/main/A-Group1/output/06.01-G1-Library4-MinION-Dorado-recall-GPU</a></td>
 </tr>
 <tr class="even">
@@ -190,8 +242,8 @@ done</code></pre>
 </tr>
 <tr class="even">
 <td>G4L1 MinION</td>
-<td>30542902</td>
-<td>01:26:17</td>
+<td>31837837</td>
+<td>01:27:18</td>
 <td><a href="https://github.com/shedurkin/SIFP-nanopore/tree/main/D-Group4/output/03.01-G4-Library1-MinION-Dorado-recall-GPU" class="uri">https://github.com/shedurkin/SIFP-nanopore/tree/main/D-Group4/output/03.01-G4-Library1-MinION-Dorado-recall-GPU</a></td>
 </tr>
 <tr class="odd">
@@ -220,6 +272,8 @@ done</code></pre>
 
 
 
+
+
 <p>Before I get to the (very time-consuming) process of re-basecalling and aligning all of my Nanopore data, I want to get a quick sense of how much methylation is in my samples.</p>
 <p>I output and saved base-called BAM files during sequencing for all runs, so I can use these to get a quick-and-dirty methylation summary.</p>
 <p>NOTE: There is variation in both <strong>sequencer</strong> and <strong>basecalling software</strong> used during my sequencing reruns (by necessity), and the default-output BAM files are <strong>unaligned</strong>. This means the default BAMs were not generated using consistent methods, some include a more reduced set of modification calls, and likely include contaminant reads. All of this means the below summaries are just a sanity check, and <em>should not be used as conclusive/reliable results</em>.</p>
@@ -229,6 +283,7 @@ done</code></pre>
 <p>This allows usage of Bash variables (e.g.&nbsp;paths to common directories) across R Markdown chunks.</p>
 <div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">{</span></span>
 <span id="cb1-2"><span class="bu" style="color: null;
 background-color: null;
@@ -326,6 +381,7 @@ background-color: null;
 font-style: inherit;">""</span></span>
 <span id="cb1-24"><span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">}</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&gt;</span> .bashvars</span>
@@ -1375,6 +1431,8 @@ font-style: inherit;">${output_dir_top}</span>/G4L2_MinION_barcode32_modkit_summ
 
 
 
+
+
 <p>Details on all equipment used, during this research</p>
 <p><u><strong>Tape Station 4200</strong></u><br>
 SN: DEDAA03520</p>
@@ -1396,7 +1454,7 @@ A100007434</p>
 <p><u><strong>Minknow Software</strong></u><br>
 <u>Updated details (After MinION run G3L2)<br>
 </u>Minknow installed version 25.05.14</p>
-<table class="table">
+<table class="caption-top table">
 <tbody>
 <tr class="odd">
 <td><strong>Subpackages</strong></td>
@@ -1434,7 +1492,7 @@ A100007434</p>
 </table>
 <p><u>Old details (thru minion run G3L2) details</u><br>
 Minknow installed version 25.03.9</p>
-<table class="table">
+<table class="caption-top table">
 <tbody>
 <tr class="odd">
 <td><strong>Subpackages</strong></td>
@@ -1483,6 +1541,8 @@ Minknow installed version 25.03.9</p>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_12_file_transfer.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -1683,6 +1743,8 @@ font-style: inherit;">"A06792FC783251B9E04A29BD14F627BB"</span>))</span></code><
 
 
 
+
+
 <p><u><strong>Native Barcoding 96 V14 kit</strong></u><br>
 REF: SQK-NBD114.96<br>
 LOT: NBD1496.40.0007<br>
@@ -1706,7 +1768,7 @@ Batch #: WSH004.20.0015, 1948. 2/6 rxns used, 4 rxns remaining</p>
 <p><u><strong>Flongle Flow Cells</strong></u><br>
 Product Code: FLO-FLG114<br>
 6 remaining cells</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>LOT</th>
@@ -1793,6 +1855,8 @@ Mix: 55 ul remaining,</p>
 
 
 
+
+
 <p>Scanned my physical lab notebook and saved to pdf as part of this repo – view it <a href="./images/SIFP_2025_Lab_Notebook_Scanned.pdf">here</a>.</p>
 <p>My lab notebook will need to remain at the Smithsonian NMNH, where I conducted this research. To keep a copy for future reference, I’ve already been transcribing entries into this digital lab notebook. I also, however, want an exact copy, just in case I’ve made any transcription errors.</p>
 
@@ -1808,6 +1872,8 @@ Mix: 55 ul remaining,</p>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_26_file_checksums.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -1835,7 +1901,9 @@ font-style: inherit;">/</span>kdurkin1<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">/</span>SIFP_2025<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">$</span> 7z x Group2_L3_Flongle.zip</span>
+font-style: inherit;">$</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>z x Group2_L3_Flongle.zip</span>
 <span id="cb1-2"></span>
 <span id="cb1-3"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -1909,7 +1977,9 @@ font-style: inherit;">/</span>kdurkin1<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">/</span>SIFP_2025<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">$</span> 7z x error_experiment.zip</span>
+font-style: inherit;">$</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>z x error_experiment.zip</span>
 <span id="cb1-24"></span>
 <span id="cb1-25"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -1983,7 +2053,9 @@ font-style: inherit;">/</span>kdurkin1<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">/</span>SIFP_2025<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">$</span> 7z x Group4.zip</span>
+font-style: inherit;">$</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>z x Group4.zip</span>
 <span id="cb1-46"></span>
 <span id="cb1-47"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -2054,7 +2126,9 @@ font-style: inherit;">/</span>kdurkin1<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">/</span>SIFP_2025<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">$</span> 7z x DCS_trial.zip</span>
+font-style: inherit;">$</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>z x DCS_trial.zip</span>
 <span id="cb1-67"></span>
 <span id="cb1-68"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -2128,7 +2202,9 @@ font-style: inherit;">/</span>kdurkin1<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">/</span>SIFP_2025<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">$</span> 7z x Group4_MinION.zip</span>
+font-style: inherit;">$</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>z x Group4_MinION.zip</span>
 <span id="cb1-89"></span>
 <span id="cb1-90"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -2202,7 +2278,9 @@ font-style: inherit;">/</span>kdurkin1<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">/</span>SIFP_2025<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">$</span> 7z x Group1_MinION_Library4<span class="sc" style="color: #5E5E5E;
+font-style: inherit;">$</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>z x Group1_MinION_Library4<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span>without_pod5_pass.zip</span>
 <span id="cb1-111"></span>
@@ -3041,6 +3119,8 @@ font-style: inherit;"># DCS_trial          Group1_Flongle    Group2_Flongle  Gro
 
 
 
+
+
 <p>Sequencing G4L2 on a minION flow cell. Also running DCS library, first to check flow cell function.</p>
 <section id="dcs-library" class="level3">
 <h3 class="anchored" data-anchor-id="dcs-library"><strong>DCS Library</strong></h3>
@@ -3101,43 +3181,12 @@ Note that this is the flow cell I originally tried during the “run error” pr
   <pubDate>Tue, 09 Sep 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
-  <title>Flongle Run, Group 4 Library 2</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_08_flongle_G4L2.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Run Flongle flow cell with G4L2 to confirm library prep.</p>
-<p>Again, will use 30 fmol input DNA and gentle negative pressure loading protocol (print-out in back of lab notebook)</p>
-<p>G4L2 has avg sample length of 609bp, concentration of 22 ng/ml =&gt; 58.64 fmol/ul</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B30fmol%5C%20DNA%7D%7B5uL%5C%20EB%7D%20%5CRightarrow%20%5Cfrac%7B58.64fmol%7D%7B9.77uL%7D%0A"></p>
-<p>So mix <strong>1ul G4L2</strong> with (9.77ul-1) = <strong>8.77ul EB</strong> then use 5ul.</p>
-<p><u><strong>Flowcell</strong></u><br>
-ID: AXT6SS<br>
-82 pores on 09/01/25 check<br>
-84 pores on 09/08/25 check<br>
-50 pores after loading</p>
-<p>Again, back to running on MKID.</p>
-<p><u><strong>Notes:</strong></u></p>
-<ul>
-<li><p>Good occupancy on start though ~80% after 45min.</p></li>
-<li><p>Already seeing accumulation of “unavailable” pores</p></li>
-</ul>
-
-
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_08_flongle_G4L2.html</guid>
-  <pubDate>Mon, 08 Sep 2025 07:00:00 GMT</pubDate>
-</item>
-<item>
   <title>Native Barcoding, Group 4 Library 2 &amp; DCS</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_08_library_prep_G4L2.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -3155,7 +3204,7 @@ ID: AXT6SS<br>
 </section>
 <section id="g4l2" class="level4">
 <h4 class="anchored" data-anchor-id="g4l2"><u><strong>G4L2</strong></u></h4>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 17%">
 <col style="width: 19%">
@@ -3202,7 +3251,7 @@ ID: AXT6SS<br>
 </tbody>
 </table>
 <p>So limiting, extraction is 14399. <strong>Will use ~800 fmol from all extractions.</strong></p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 17%">
 <col style="width: 25%">
@@ -3265,10 +3314,47 @@ G4L2 library: <strong>22.0 ng/uL</strong></p>
   <pubDate>Mon, 08 Sep 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>Flongle Run, Group 4 Library 2</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_08_flongle_G4L2.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>Run Flongle flow cell with G4L2 to confirm library prep.</p>
+<p>Again, will use 30 fmol input DNA and gentle negative pressure loading protocol (print-out in back of lab notebook)</p>
+<p>G4L2 has avg sample length of 609bp, concentration of 22 ng/ml =&gt; 58.64 fmol/ul</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B30fmol%5C%20DNA%7D%7B5uL%5C%20EB%7D%20%5CRightarrow%20%5Cfrac%7B58.64fmol%7D%7B9.77uL%7D%0A"></p>
+<p>So mix <strong>1ul G4L2</strong> with (9.77ul-1) = <strong>8.77ul EB</strong> then use 5ul.</p>
+<p><u><strong>Flowcell</strong></u><br>
+ID: AXT6SS<br>
+82 pores on 09/01/25 check<br>
+84 pores on 09/08/25 check<br>
+50 pores after loading</p>
+<p>Again, back to running on MKID.</p>
+<p><u><strong>Notes:</strong></u></p>
+<ul>
+<li><p>Good occupancy on start though ~80% after 45min.</p></li>
+<li><p>Already seeing accumulation of “unavailable” pores</p></li>
+</ul>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_08_flongle_G4L2.html</guid>
+  <pubDate>Mon, 08 Sep 2025 07:00:00 GMT</pubDate>
+</item>
+<item>
   <title>MinION Run, Group 4 Library 1</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_05_minion_G4L1.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -3321,6 +3407,8 @@ G4L2 library: <strong>22.0 ng/uL</strong></p>
 
 
 
+
+
 <p>Ran G4L1 on Flongle flow cell to confirm successful library prep. Following <a href="./protocols/Flow_Cell_Loading_Flongle_2025-Jun-12.pdf">gentle, negative, pressure, loading protocol</a> created by Nanopore community members.</p>
 <p>I also want to try loading more DNA on the Flongle, as I’ve seen recommended in community forum posts (and in the gentle Flongle loading protocol), so instead of the recommended 10fmol DNA, I’ll prep 30fmol in 5ul EB.</p>
 <p>G4L1 is 59.2ng/ul, with an average length of 609bp, so concentration is <strong>157.8 fmol/ul</strong></p>
@@ -3340,114 +3428,12 @@ G4L2 library: <strong>22.0 ng/uL</strong></p>
   <pubDate>Thu, 04 Sep 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
-  <title>Native Barcoding Prep, Group 4 Library 1</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_04_library_prep_G4L1.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Library prep for Group 4, which is a slightly updated selection of 1800s samples.</p>
-<p>From Qubit + TapeStation output for 1800s re-extractions, 50368, 42137, 14399 have highest concentrations and decent length distributions.</p>
-<table class="table">
-<colgroup>
-<col style="width: 17%">
-<col style="width: 26%">
-<col style="width: 34%">
-<col style="width: 21%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Catalog #</th>
-<th>Qubit conc ng/ml</th>
-<th>TapeStation avg length</th>
-<th>Conc. Fmol/ul</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>50368</td>
-<td>135.2 ng/ul</td>
-<td>681 bp</td>
-<td>322.3 fmol/ul</td>
-</tr>
-<tr class="even">
-<td>42137</td>
-<td>54.4 ng/ul</td>
-<td>555 bp</td>
-<td>159.1 fmol/ul</td>
-</tr>
-<tr class="odd">
-<td>14399</td>
-<td>42.8 ng/ul</td>
-<td>591 bp</td>
-<td>117.6 fmol/ul</td>
-</tr>
-</tbody>
-</table>
-<p>14399 has lowest concentration, so its the limiter in taking equimolar Input from each extraction.</p>
-<p>11 ul of 14399 = 11uL * 117.6fmol/ul = 1293.6 fmol ~= <strong>1300 fmol</strong></p>
-<p>So, I want to use 1300 fmol of input from all 3 samples:</p>
-<ul>
-<li><p>50368: 1300 fmol / 322.3 fmol/ul = 4.031 = <strong>4 ul</strong></p></li>
-<li><p>42137: 1300 fmol / 159.1 fmol/ul = 8.171 = <strong>8.2 ul</strong></p></li>
-</ul>
-<p>So, for library prep:</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Catalog #</th>
-<th>ul for 1300 fmol</th>
-<th>rem. volume ul</th>
-<th>Barcode</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>50368</td>
-<td>4</td>
-<td>7</td>
-<td>27</td>
-</tr>
-<tr class="even">
-<td>42137</td>
-<td>8.2</td>
-<td>2.8</td>
-<td>28</td>
-</tr>
-<tr class="odd">
-<td>14399</td>
-<td>11</td>
-<td>0</td>
-<td>29</td>
-</tr>
-</tbody>
-</table>
-<p>Followed <a href="./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-24-document-checklist-MinION-en-NBE_9169_v114_revV_02Jul2025-39.pdf">ONT Native Barcoding 96 V14 gDNA protocol</a>, with the following modifications:</p>
-<ul>
-<li><p>changed input quantity for each sample (see above)</p></li>
-<li><p>Did 3 full barcode ligation rxns, each with 3.75 ul of end-prepped DNA, then pooled.</p></li>
-<li><p>Low on SFB, so washed beads during barcode clean with fresh 80% ethanol</p></li>
-</ul>
-<p><u><strong>Qubit:</strong><br>
-</u>Standard 1: 38.87<br>
-Standard 2: 16411.03<br>
-G4L1 barcodes: 34.0 ng/uL<br>
-G4L1 : <strong>59.2 ng/uL</strong></p>
-
-
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_04_library_prep_G4L1.html</guid>
-  <pubDate>Thu, 04 Sep 2025 07:00:00 GMT</pubDate>
-</item>
-<item>
   <title>KAPA Bead Clean – 1800s Re-extractions</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_04_reextractions_KAPA.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -3488,12 +3474,14 @@ Standard #2: 16705.55<br>
 
 
 
+
+
 <p>Using Tapestation to evaluate size distribution, integrity of 1800s re-extractions. Will also run some old extractions to check whether they’ve degraded since first being extracted.</p>
 <p>This time since I expect my 1800s samples to have essentially no HMW DNA, will use an <strong>HS D5000 tape</strong> instead of a gDNA tape.</p>
 <p>HS D5000 tape requires 2uL of DNA sample. I want to conserve my extractions, and the HS D5000 tape can handle very low concentrations, so I’ll be using a 2x dilution for all samples (1uL extraction + 1uL Zymo EB)</p>
 <p>Followed HS D5000 protocol found <a href="./protocols/Agilent_4200_D5000_QuickGuide.pdf">here</a>.</p>
 <p><strong>Tapestation layout:</strong></p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -3559,10 +3547,118 @@ Standard #2: 16705.55<br>
   <pubDate>Thu, 04 Sep 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>Native Barcoding Prep, Group 4 Library 1</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_04_library_prep_G4L1.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>Library prep for Group 4, which is a slightly updated selection of 1800s samples.</p>
+<p>From Qubit + TapeStation output for 1800s re-extractions, 50368, 42137, 14399 have highest concentrations and decent length distributions.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 26%">
+<col style="width: 34%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Catalog #</th>
+<th>Qubit conc ng/ml</th>
+<th>TapeStation avg length</th>
+<th>Conc. Fmol/ul</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>50368</td>
+<td>135.2 ng/ul</td>
+<td>681 bp</td>
+<td>322.3 fmol/ul</td>
+</tr>
+<tr class="even">
+<td>42137</td>
+<td>54.4 ng/ul</td>
+<td>555 bp</td>
+<td>159.1 fmol/ul</td>
+</tr>
+<tr class="odd">
+<td>14399</td>
+<td>42.8 ng/ul</td>
+<td>591 bp</td>
+<td>117.6 fmol/ul</td>
+</tr>
+</tbody>
+</table>
+<p>14399 has lowest concentration, so its the limiter in taking equimolar Input from each extraction.</p>
+<p>11 ul of 14399 = 11uL * 117.6fmol/ul = 1293.6 fmol ~= <strong>1300 fmol</strong></p>
+<p>So, I want to use 1300 fmol of input from all 3 samples:</p>
+<ul>
+<li><p>50368: 1300 fmol / 322.3 fmol/ul = 4.031 = <strong>4 ul</strong></p></li>
+<li><p>42137: 1300 fmol / 159.1 fmol/ul = 8.171 = <strong>8.2 ul</strong></p></li>
+</ul>
+<p>So, for library prep:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Catalog #</th>
+<th>ul for 1300 fmol</th>
+<th>rem. volume ul</th>
+<th>Barcode</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>50368</td>
+<td>4</td>
+<td>7</td>
+<td>27</td>
+</tr>
+<tr class="even">
+<td>42137</td>
+<td>8.2</td>
+<td>2.8</td>
+<td>28</td>
+</tr>
+<tr class="odd">
+<td>14399</td>
+<td>11</td>
+<td>0</td>
+<td>29</td>
+</tr>
+</tbody>
+</table>
+<p>Followed <a href="./protocols/ligation-sequencing-gdna-native-barcoding-v14-sqk-nbd114-24-document-checklist-MinION-en-NBE_9169_v114_revV_02Jul2025-39.pdf">ONT Native Barcoding 96 V14 gDNA protocol</a>, with the following modifications:</p>
+<ul>
+<li><p>changed input quantity for each sample (see above)</p></li>
+<li><p>Did 3 full barcode ligation rxns, each with 3.75 ul of end-prepped DNA, then pooled.</p></li>
+<li><p>Low on SFB, so washed beads during barcode clean with fresh 80% ethanol</p></li>
+</ul>
+<p><u><strong>Qubit:</strong><br>
+</u>Standard 1: 38.87<br>
+Standard 2: 16411.03<br>
+G4L1 barcodes: 34.0 ng/uL<br>
+G4L1 : <strong>59.2 ng/uL</strong></p>
+
+
+
+ ]]></description>
+  <category>SIFP-2025</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_04_library_prep_G4L1.html</guid>
+  <pubDate>Thu, 04 Sep 2025 07:00:00 GMT</pubDate>
+</item>
+<item>
   <title>Qiagen Extraction &amp; Zymo Clean of 1800s Re-extractions</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_04_rextractions_clean.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -3604,6 +3700,8 @@ Standard 2: 16857.03<br>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_03_file_transfer.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -4006,6 +4104,8 @@ font-style: inherit;"># 41f04.csv</span></span></code></pre></div>
 
 
 
+
+
 <p>Ran Group 2 Library 3 n a MinION flow cell. This is the second attempt to sequence these samples on a MinION flow cell.</p>
 <p>Group 2 Library 3 has ~700bp avg length (based on TapeStation), and a dsDNA concentration of 15.3ng/uL = 35.5fmol/uL.</p>
 <p>Want to load 200fmol in 12uL of EB:</p>
@@ -4053,136 +4153,60 @@ Power outage didn’t seem to impact sequencing run, the sequencer+PC is connect
   <pubDate>Tue, 02 Sep 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
-  <title>Flongle Run, Group 2 Library 3</title>
+  <title>Re-extraction of 1800s Samples</title>
   <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_01_flongle_G2L3.html</link>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_01_reextractions.html</link>
   <description><![CDATA[ 
 
 
 
 
-<p>Running Group 2 Library 3 on a Flongle to confirm successful library prep.</p>
-<p>Need 10fmol DNA in 5uL EB. Avg. length is ~700bp, and G2L3 library is 15.3ng/uL = 35.48fmol/uL</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B10fmol%7D%7B5uL%5C%20EB%7D%5C%20=%20%5C%20%5Cfrac%7B25.48fmol%7D%7B17.74uL%5C%20EB%7D%0A"></p>
-<p>So mix <strong>1uL G2L3</strong> with (17.74-1) = <strong>16.74uL EB</strong></p>
-<p><u><strong>Flongle flow cell:</strong></u><br>
-ID: AYK963<br>
-89 pores on 8/13/25 check<br>
-86 pores on today’s pore check<br>
-66 pores after loading</p>
-<p>I’ve noticed the Flongle flow cells lose a lot of pores during loading, and community posts suggest this is a) common, and b) related to the ONT loading protocol being too harsh. This time I tried using the community-developed <a href="./protocols/Flow_Cell_Loading_Flongle_2025-Jun-12.pdf">gentle negative pressure loading protocol</a> for Flongles.</p>
-<p>I still lost almost 25% of pores, but that’s better than last time (G3L1 Flongle), when I lost almost 50% of pores. I was also extra careful to seal the cover tape around all ports after loading.</p>
+
+
+<p>After using most of my 1800s DNA in a partially unsuccessful library prep (<a href="../../../posts/projects/SIFP_2025/2025_08_31_flongle_G3L1.html">Group 3 Library 1</a>), I want extra for additional preps. I need to extract more DNa for 5 specimens:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Catalog #</th>
+<th>Collection Year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>50603</td>
+<td>1912</td>
+</tr>
+<tr class="even">
+<td>19054</td>
+<td>1898</td>
+</tr>
+<tr class="odd">
+<td>42137</td>
+<td>1897</td>
+</tr>
+<tr class="even">
+<td>14399</td>
+<td>1886</td>
+</tr>
+<tr class="odd">
+<td>50368</td>
+<td>1880</td>
+</tr>
+</tbody>
+</table>
+<p>Subsampled and began tissue digestion, as detailed <a href="../../../posts/projects/SIFP_2025/2025_07_09_subampling_extractions.html">here</a>.</p>
+<p>Began digestion at 7:00pm, 09/01/2025, will run for ~48hr.</p>
 <p><u><strong>Notes:</strong></u></p>
-<p>Barcode 24 is low, but that sample had a high proportion of reads in the G2L2 MinION run, so maybe this will help offset. Think its ok to run on a MinION.</p>
+<ul>
+<li><p>A power outage interrupted digestion incubation. Incubator stopped at ~9pm 09/02/25, and I restarted it ~7am 09/03/25, so digestions were sitting at room temp for ~10hrs.</p></li>
+<li><p>Spiked in 20uL proteinase K to each tube, will let digestions sit on shaking incubator for another 12-24hr.</p></li>
+</ul>
 
 
 
  ]]></description>
   <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_01_flongle_G2L3.html</guid>
-  <pubDate>Mon, 01 Sep 2025 07:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Native Barcoding, Group 2 Library 3</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_01_library_prep_G2L3.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>My first MinION run of Group 2 (Group 2 Library 3) had low output, so I’m going to do another prep and run of the same samples, to try to get more data.</p>
-<table class="table">
-<colgroup>
-<col style="width: 13%">
-<col style="width: 6%">
-<col style="width: 21%">
-<col style="width: 14%">
-<col style="width: 24%">
-<col style="width: 18%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Catalog #</th>
-<th>Tube</th>
-<th>[dsDNA] (ng/uL)</th>
-<th>length (bp)</th>
-<th>vol.&nbsp;remaining (uL)</th>
-<th>fmol remaining</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>51861</td>
-<td>D6</td>
-<td>94.1</td>
-<td>647</td>
-<td>6uL</td>
-<td>1417</td>
-</tr>
-<tr class="even">
-<td>51892</td>
-<td>A7</td>
-<td>137</td>
-<td>711</td>
-<td>9.5uL</td>
-<td>2972</td>
-</tr>
-<tr class="odd">
-<td>51732</td>
-<td>A6</td>
-<td>157</td>
-<td>724</td>
-<td>13uL</td>
-<td>4576</td>
-</tr>
-</tbody>
-</table>
-<p>During the G2L2 run, the barcodes were not equally present. This could be due to slightly different lengths of each extraction, meaning the 1000ng input DNA wouldn’t be completely equimolar. This time will use equimolar input.</p>
-<p>51861 is the limiting extraction, with the lowest remaining fmol of DNA, so we’ll equalize to that. Want 1400fmol DNA from each extraction to use in library prep. Should be in 11uL total volume, made up with nuclease-free water.</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Catalog #</th>
-<th>vol.&nbsp;for 1400fmol</th>
-<th>uL for 11uL</th>
-<th>Barcode</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>51861</td>
-<td>6uL</td>
-<td>5uL</td>
-<td>24</td>
-</tr>
-<tr class="even">
-<td>51892</td>
-<td>4.5uL</td>
-<td>6.5uL</td>
-<td>25</td>
-</tr>
-<tr class="odd">
-<td>51732</td>
-<td>4.0uL</td>
-<td>7uL</td>
-<td>26</td>
-</tr>
-</tbody>
-</table>
-<p>Haven’t been seeing the expected DCS peak at 3.6kb, so mixed and used new DCS dilution. Used 1X Ampure bead-to-sample raio in both bead cleans.</p>
-<p><u><strong>Qubits:</strong></u><br>
-S1: 36.01<br>
-S2: 15671.74<br>
-G2L3 barcoded: 7.5ng/uL<br>
-G2L3: <strong>15.3ng/uL</strong></p>
-<p>With 15.3ng/uL in 14uL, and an average length of ~700bp, I have <strong>~500fmol total library</strong>. I can roughly do a 200fmol load + 3 100fmol wash/reloads, or a 200fmol load + 200fmol wash/reload + 100fmol wash/reload.</p>
-
-
-
- ]]></description>
-  <category>SIFP-2025</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_01_library_prep_G2L3.html</guid>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/SIFP_2025/2025_09_01_reextractions.html</guid>
   <pubDate>Mon, 01 Sep 2025 07:00:00 GMT</pubDate>
 </item>
 </channel>

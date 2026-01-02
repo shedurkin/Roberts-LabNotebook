@@ -12,6 +12,7 @@ My favorite part of science is constantly interacting with papers/presentations/
 
 ## Ideas
 
+-   2025/11/5: Methylated CpGs are more likely to mutate (deaminate into thymines). Does that mean that, at some point in the very distant future, species could "run out" of Cs? Are the mechanisms introducing/reintroducing cytosine residues to the genome keeping pace with those removing them?
 -   2025/10/14: Talked in FISH510 about potential role of spurious transcription in environmental response (prompted by Liew et al. 2018 paper finding that OA treatment $$\rightarrow$$ increased methylation $$\rightarrow$$ decreased spurious transcription. Maybe an avenue for exploration with our existing transcriptomic data is to look at differential expression on the level of spurious transcripts. E.g. if spurious transcription decreased under stress, were the genes of a specific function dramatically less spuriously-transcribed?)
 
 <!-- -->

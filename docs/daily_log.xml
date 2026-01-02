@@ -9,13 +9,15 @@
 <link>https://shedurkin.github.io/Roberts-LabNotebook/daily_log.html</link>
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/daily_log.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.3.433</generator>
-<lastBuildDate>Fri, 24 Oct 2025 00:53:08 GMT</lastBuildDate>
+<generator>quarto-1.7.32</generator>
+<lastBuildDate>Fri, 24 Oct 2025 00:53:10 GMT</lastBuildDate>
 <item>
   <title>October 2025, Daily Log</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/October_2025_posts.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -192,13 +194,15 @@
  ]]></description>
   <category>daily log</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/October_2025_posts.html</guid>
-  <pubDate>Fri, 24 Oct 2025 00:53:08 GMT</pubDate>
+  <pubDate>Fri, 24 Oct 2025 00:53:10 GMT</pubDate>
 </item>
 <item>
   <title>October 2025, Goals</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/October_2025_goals.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -232,7 +236,7 @@
  ]]></description>
   <category>daily log</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/October_2025_goals.html</guid>
-  <pubDate>Wed, 01 Oct 2025 19:02:37 GMT</pubDate>
+  <pubDate>Wed, 01 Oct 2025 19:02:38 GMT</pubDate>
 </item>
 <item>
   <title>September 2025, Goals</title>
@@ -243,22 +247,24 @@
 
 
 
+
+
 <p>I’m writing this in the last few days of September, as the Fall 2025 quarter is starting. For the last ~1 week of September, my goals are as follows:</p>
 <section id="sifp" class="level3">
 <h3 class="anchored" data-anchor-id="sifp">SIFP</h3>
 <ul class="task-list">
-<li><p><input type="checkbox" checked="">Finish transcribing all SIFP lab notebook entries into digital lab notebook</p></li>
-<li><p><input type="checkbox" checked="">Finish all SIFP file transfers, including checksum generation once folders are unzipped</p></li>
-<li><p><input type="checkbox" checked="">Add links to full tapestation summaries once files are available on Gannet</p></li>
-<li><p><input type="checkbox" checked="">Add links to sequencing run reports to all sequencing lab notebook entries, once files are fully available on Gannet</p></li>
-<li><p><input type="checkbox" checked="">Compile summary stats on all MinION sequencing runs (# bases, # reads, avg. coverage, etc.)</p></li>
-<li><p><input type="checkbox" checked="">Estimate contamination (e.g., fungal) in all sequencing runs, using Kraken</p></li>
+<li><p><label><input type="checkbox" checked="">Finish transcribing all SIFP lab notebook entries into digital lab notebook</label></p></li>
+<li><p><label><input type="checkbox" checked="">Finish all SIFP file transfers, including checksum generation once folders are unzipped</label></p></li>
+<li><p><label><input type="checkbox" checked="">Add links to full tapestation summaries once files are available on Gannet</label></p></li>
+<li><p><label><input type="checkbox" checked="">Add links to sequencing run reports to all sequencing lab notebook entries, once files are fully available on Gannet</label></p></li>
+<li><p><label><input type="checkbox" checked="">Compile summary stats on all MinION sequencing runs (# bases, # reads, avg. coverage, etc.)</label></p></li>
+<li><p><label><input type="checkbox" checked="">Estimate contamination (e.g., fungal) in all sequencing runs, using Kraken</label></p></li>
 </ul>
 </section>
 <section id="dde" class="level3">
 <h3 class="anchored" data-anchor-id="dde">DDE</h3>
 <ul class="task-list">
-<li><input type="checkbox">Figure out DDE figures – what’s the big takeaway(s) of the paper, and how can we best show that in ~3 figures.</li>
+<li><label><input type="checkbox">Figure out DDE figures – what’s the big takeaway(s) of the paper, and how can we best show that in ~3 figures.</label></li>
 </ul>
 
 
@@ -267,13 +273,15 @@
  ]]></description>
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/September_2025_goals.html</guid>
-  <pubDate>Wed, 01 Oct 2025 18:43:58 GMT</pubDate>
+  <pubDate>Wed, 01 Oct 2025 18:44:00 GMT</pubDate>
 </item>
 <item>
   <title>September 2025, Daily Log</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/September_2025_posts.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -340,13 +348,15 @@
  ]]></description>
   <category>daily log</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/September_2025_posts.html</guid>
-  <pubDate>Wed, 01 Oct 2025 01:56:42 GMT</pubDate>
+  <pubDate>Wed, 01 Oct 2025 01:56:44 GMT</pubDate>
 </item>
 <item>
   <title>April 2025, Daily Log</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/April_2025_posts.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -525,13 +535,15 @@
  ]]></description>
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/April_2025_posts.html</guid>
-  <pubDate>Mon, 14 Apr 2025 23:09:37 GMT</pubDate>
+  <pubDate>Mon, 14 Apr 2025 23:09:38 GMT</pubDate>
 </item>
 <item>
   <title>April 15 Steven Meeting</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/2025_04_14_steven meeting.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -574,6 +586,8 @@
 
 
 
+
+
 <section id="april-goals" class="level2">
 <h2 class="anchored" data-anchor-id="april-goals">April Goals</h2>
 <ul>
@@ -608,6 +622,8 @@
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/March_2025_posts.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -867,13 +883,15 @@
  ]]></description>
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/March_2025_posts.html</guid>
-  <pubDate>Tue, 01 Apr 2025 00:20:59 GMT</pubDate>
+  <pubDate>Tue, 01 Apr 2025 00:21:00 GMT</pubDate>
 </item>
 <item>
   <title>February 2025, Daily Log</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/February_2025_posts.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -890,7 +908,7 @@
 </ul>
 <p>Daily total: <strong>6 hr</strong></p>
 <p><u><strong>Weekly summary:</strong></u></p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 14%">
 <col style="width: 14%">
@@ -962,7 +980,7 @@
 <p>Left early on Friday to stay under the 50hr limit, which was pretty nice! Kept my classes commitment low, TAing was higher than I’d want but still under 20, and kept thesis work contributions high!</p>
 <p><u><strong>2 month summary</strong></u></p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1077,7 +1095,7 @@ font-style: inherit;">" hours."</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "My daily average is 9.2 hours, with a weekly average of 46.2 hours."</code></pre>
 </div>
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -1173,9 +1191,13 @@ background-color: null;
 font-style: inherit;">1</span>))</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/February_2025_posts_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/February_2025_posts_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<details>
+</div>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -1244,9 +1266,13 @@ background-color: null;
 font-style: inherit;">1</span>))</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/February_2025_posts_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/February_2025_posts_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<details>
+</div>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -1363,7 +1389,11 @@ background-color: null;
 font-style: inherit;">1</span>))</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/February_2025_posts_files/figure-html/unnamed-chunk-1-3.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/February_2025_posts_files/figure-html/unnamed-chunk-1-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>This is pretty interesting! My weekly hours have stayed pretty consistent over the last two months and, while daily hours vary by day and week, the average breakdown of my hours by day and category makes a lot of sense! My TAing work is heavily front-loaded at the beginning of the week, since I teach labs and host office hours Mon/Tues/Wed and have to finish grading by Wed. Classes remain pretty consistent throughout, with a peak on Thursday when FSH513 meets. My research hours increase over the week as TAing commitments drop off, peaking on Fridays when my day is almost completely clear of other commitments.</p>
@@ -1435,7 +1465,7 @@ font-style: inherit;">1</span>))</span></code></pre></div>
 </ul>
 <p>Daily total: <strong>10 hr</strong></p>
 <p>Weekly summary:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 14%">
 <col style="width: 14%">
@@ -1582,7 +1612,7 @@ font-style: inherit;">1</span>))</span></code></pre></div>
 </ul>
 <p>Daily total: <strong>10.5 hr</strong></p>
 <p>Weekly summary:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 14%">
 <col style="width: 14%">
@@ -1723,7 +1753,7 @@ font-style: inherit;">1</span>))</span></code></pre></div>
 <p><strong>3 hr</strong> – E5 work. Updated gene expression summaries, lncRNA-miRNA binding (miRanda still running), plus lit review into cnidarian/plant miRNA binding and into siRNA binding (in prep for running siRNA target prediction)</p>
 <p>Daily total: <strong>9.5 hr</strong></p>
 <p>Weekly overview:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 14%">
 <col style="width: 14%">
@@ -1859,13 +1889,15 @@ font-style: inherit;">1</span>))</span></code></pre></div>
  ]]></description>
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/February_2025_posts.html</guid>
-  <pubDate>Tue, 11 Mar 2025 18:22:45 GMT</pubDate>
+  <pubDate>Tue, 11 Mar 2025 18:22:46 GMT</pubDate>
 </item>
 <item>
   <title>February 2025, Monthly Goals</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/February_2025_goals.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -1934,6 +1966,8 @@ Last quarter, with the intensive TA position, grant applications, committee prep
 
 
 
+
+
 <section id="january-2025" class="level2">
 <h2 class="anchored" data-anchor-id="january-2025">31 January 2025</h2>
 <section id="friday" class="level4">
@@ -1950,7 +1984,7 @@ Last quarter, with the intensive TA position, grant applications, committee prep
 </ul>
 <p>Daily total: <strong>9.5 hr</strong></p>
 <p>Weekly Overview:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 19%">
 <col style="width: 9%">
@@ -2167,7 +2201,7 @@ This week looks good! I (barely) stayed within the 50 hr limit, I was able to ke
 </ul>
 <p>Daily total: <strong>8.5 hrs</strong></p>
 <p>Weekly Overview:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 19%">
 <col style="width: 8%">
@@ -2373,13 +2407,15 @@ So far I’m happy with my progress! I worked a logged-total of <strong>45.5 hrs
  ]]></description>
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/January_2025_posts.html</guid>
-  <pubDate>Wed, 05 Feb 2025 07:34:15 GMT</pubDate>
+  <pubDate>Wed, 05 Feb 2025 07:34:16 GMT</pubDate>
 </item>
 <item>
   <title>January 2025, Monthly Goals</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2025/January_2025_goals.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -2423,6 +2459,8 @@ Last quarter, with the intensive TA position, grant applications, committee prep
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/November_2024_posts.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -2643,13 +2681,15 @@ Last quarter, with the intensive TA position, grant applications, committee prep
  ]]></description>
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/November_2024_posts.html</guid>
-  <pubDate>Mon, 25 Nov 2024 19:08:43 GMT</pubDate>
+  <pubDate>Mon, 25 Nov 2024 19:08:44 GMT</pubDate>
 </item>
 <item>
   <title>October 2024, Daily Log</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/October_2024_posts.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -2864,13 +2904,15 @@ Last quarter, with the intensive TA position, grant applications, committee prep
  ]]></description>
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/October_2024_posts.html</guid>
-  <pubDate>Fri, 01 Nov 2024 16:01:28 GMT</pubDate>
+  <pubDate>Fri, 01 Nov 2024 16:01:30 GMT</pubDate>
 </item>
 <item>
   <title>October 31 Weekly Steven Meeting</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/2024_10_31_weekly_steven_meeting.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -2921,6 +2963,8 @@ Last quarter, with the intensive TA position, grant applications, committee prep
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/2024_10_25_Degree_ProgressPlan_Meeting.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -3012,13 +3056,15 @@ Last quarter, with the intensive TA position, grant applications, committee prep
  ]]></description>
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/2024_10_25_Degree_ProgressPlan_Meeting.html</guid>
-  <pubDate>Mon, 28 Oct 2024 22:19:43 GMT</pubDate>
+  <pubDate>Mon, 28 Oct 2024 22:19:44 GMT</pubDate>
 </item>
 <item>
   <title>September 2024, Daily Log</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/September_2024_posts.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -3250,13 +3296,15 @@ Last quarter, with the intensive TA position, grant applications, committee prep
  ]]></description>
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/September_2024_posts.html</guid>
-  <pubDate>Tue, 01 Oct 2024 14:51:15 GMT</pubDate>
+  <pubDate>Tue, 01 Oct 2024 14:51:16 GMT</pubDate>
 </item>
 <item>
   <title>September 2024, Monthly Goals</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/September_2024_goals.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -3306,6 +3354,8 @@ I’ve also started looking at gene expression and coexpression, details on that
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/July_2024_posts.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -3509,13 +3559,15 @@ Notes <a href="https://docs.google.com/document/d/1IgbZgJOcZYKogHhHB1Apst1ihhXzm
  ]]></description>
   <category>daily log</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/July_2024_posts.html</guid>
-  <pubDate>Fri, 26 Jul 2024 17:11:04 GMT</pubDate>
+  <pubDate>Fri, 26 Jul 2024 17:11:06 GMT</pubDate>
 </item>
 <item>
   <title>July 2024, Monthly Goals</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/July_2024_goals.html</link>
   <description><![CDATA[ 
+
+
 
 
 

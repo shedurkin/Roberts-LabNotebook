@@ -1,0 +1,84 @@
+---
+title: "Timeseries: Running the Elastic Net with GbM (instead of CpG methylation)"
+author: "Kathleen Durkin"
+date: "2025-12-05"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Used Claude Opus 4.5 to, from my existing Elastic Net script (timeseries/M-multi-species/scripts/26.2-ElasticNet-scaling.R), make a script that uses permutation approach to evaluate predictor significance. The command used:
+
+> I have an R script to take, as input, matrices of gene expression, lncRNA expression, miRNA expression, and methylation to use an Elastic Net regression to predict gene expression from the combined epigenetic predictor set of lncRNA, miRNA, and methylation. The script is attached below. I want to modify the script to be able to produce significance values for each predictor of a given gene (to evaluate confidence in that predictor actually being related to the gene), from a permutation approach. Please write a new script, based on the current script, which can do this. Please include explanations of each step and justification of statistical soundness.
+
+Think it works like this:
+
+-   runs EN on response/predictor set as usual (bootstrapping round, remove poorly-predicted response genes, and then re-runs bootstrapping again on the well-predicted stuff)
+
+-   Then, [for each gene]{.underline}, runs n_rep many permutations:
+
+    -   On each permutation, scrambles the response values (expression for the gene being run) and fits the EN model (keeping real predictors)
+
+    -   For the given gene, compares the "real" predictor coefficients to the (mean?) permutation coefficients generated to calculate a pvalue (essentially \[# perm\>real\]/\[# total perm\])
+
+    -   Applies FDR multiple-testing correction
+
+    Escience office hours: Curtis Atkisson, Valentina Stenava (has used tensor decomp in work)
+
+To use, run following command (I've needed to do so in a conda environment when working in Raven):
+
+```{r, eval=FALSE}
+Rscript 26.4-ElasticNet-permutation-sig.R \
+"ortholog_gene_counts_path.csv" \  # genes file (response)
+"miRNA_counts_path.txt" \          # miRNA file (predictor)
+"lncRNA_counts_path.txt" \         # lncRNA file (predictor)
+"methylation_matrix_path.tsv" \    # methylation file (predictor)
+"metadata_file_path.csv" \         # metadata file
+"output_dir_path" \                # output directory
+"list_samples_to_exclude" \        # (comma-separated string like "s1,s2")
+0.5 \   # alpha value for EN model (optional, default 0.5)
+25 \    # Num. replicates for first bootstrapping round (optional, default 50)
+50 \    # Num. replicates for second bootstrapping round (optional, default 50)
+0.5 \   # r^2 threshold for "well-predicted" genes (optional, default 0.5)
+1000 \  # Num. permutations (optional, default 1000)
+1 \     # Num cores for parallel processing (optional, default 1)
+```
+
+Now, rerunning with new inputs: Using gene set of orthologs involved in biomineralization, and GbM for the WGBS predictor input
+
+Output directory:
+
+## Apul
+
+```{r, engine='bash', eval=FALSE}
+((r_enet_rscript) shedurkin@raven:~/timeseries_molecular/M-multi-species/scripts$ Rscript 26.4-ElasticNet-permutation-sig.R \
+"https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/M-multi-species/output/33-biomin-pathway-counts/apul_biomin_counts.csv" \
+"https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/M-multi-species/output/10.1-format-miRNA-counts-updated/Apul_miRNA_counts_formatted_updated.txt" \
+"https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/31.5-Apul-lncRNA-discovery/lncRNA_counts.clean.filtered.txt" \
+"https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/D-Apul/output/40-Apul-Gene-Methylation/Apul-gene-methylation_75pct.tsv" \
+"../../M-multi-species/data/rna_metadata.csv" \
+"../output/26.4-ElasticNet-permutation-sig" \
+"ACR-225-TP1" \
+0.5 \
+25 \
+25 \
+0.5 \
+5000 \
+10
+
+```
+
+Output has a weird/potentially concerning pattern. Every non-zero coefficient has been assigned significance following the permutation significance evaluation.
+
+After looking through the output tables, I noticed that the permutation-based mean coefficients are all *extremely* small (very close to 0). I think the problem may be related to how the permuted model fits are being done. In the current code, there are 2 types of Elastic Net model fitting functions being used: `cv.glmnet()` and `glmnet()`
+
+. The first, `cv.glmnet()` actually runs several iterations of the model with different lambda values, then choses the bestmodel fit for continued use. This is the version used during all of the bootstrapped model runs. `glmnet()` takes a lambda value as input and only runs the model once, using the provided lambda. This is the version currently being used during the permutation rounds, with the lambda value selected during "real" model fitting as input. This was done to reduce computational intensity, since there are so many rounds of permutation.
+
+However, I think this may be artificially deflating coefficient values produced during permuted model fitting. The lambda chosen during "real" model fitting will produce a level of sparsity appropriate to the "real" data. However, when the same lambda is used to fit a model to *permuted* data, in which all of the "real" correlations are essentially broken, the sparsity level could be too intense. In other words, the correlation threshold needed to be retained in the model could be too high, and could drive almost every coefficient to 0. This would, in turn, make every "real" coefficient artifically larger than the permuted coefficients, making them all significant.
+
+The fix is pretty simple: use `cv.glmnet()` during permuted model fitting as well. This will, unfortunately, make the script even more computationally intensive and time-consuming to run.

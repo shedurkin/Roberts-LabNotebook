@@ -9,13 +9,15 @@
 <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.html</link>
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.3.433</generator>
+<generator>quarto-1.7.32</generator>
 <lastBuildDate>Tue, 02 Dec 2025 08:00:00 GMT</lastBuildDate>
 <item>
   <title>Molecular Notetaking: How Life Annotates its own Recipes</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2025_12_02_FISH510_blog.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -39,7 +41,7 @@
 <p>The implications of this molecular note-taking system are profound. It means that our environment – what we eat, the stressful things we experience, even the air we breathe – can alter how our genes behave, sometimes in ways that persist long after the environmental cue is gone.</p>
 <p>One famous example (famous, at least, in epigenetic circles) comes from landmark&nbsp;study of rats. Researchers found that mother rats who frequently groomed and licked their pups raised offspring who were calm and well-adjusted. Conversely, pups raised without maternal care grew up to be nervous and highly reactive. This wasn't just learned behavior, and the groups did not differ genetically. Instead, researchers found that pups lacking maternal care had accumulated extra DNA methylation (the "do not make" sticky notes) on genes responsible for managing stress. The neglected pups’ molecular makeup was told to ignore those genes.&nbsp;</p>
 <p>Even more surprisingly, some of these marks can be inherited. There are specific proteins responsible for copying epigenetic marks to newly-created cells, including the gamete cells (eggs and sperm) that form offspring. While many epigenetic tags are wiped clean during early development, like removing sticky notes before gifting the book to your own kid, some persist. The extent of this inheritance remains unclear in many types of animals, including us humans, but it suggests that the experiences of your parents or grandparents could, in some cases, leave a "bookmark" in your genome today.</p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/https:/preview.redd.it/epigenetics-v0-v07v8ah8cnj91.png?auto=webp&amp;s=c14a20f1038f61755934f66a5f50f2fbc159239c" class="img-fluid" width="488"></p>
+<p><img src="https://preview.redd.it/epigenetics-v0-v07v8ah8cnj91.png?auto=webp&amp;s=c14a20f1038f61755934f66a5f50f2fbc159239c" class="img-fluid" width="488"></p>
 </section>
 <section id="marine-epigenetics" class="level3">
 <h3 class="anchored" data-anchor-id="marine-epigenetics"><strong>Marine epigenetics</strong></h3>
@@ -61,6 +63,8 @@
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_30_Ideas.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -99,13 +103,15 @@
  ]]></description>
   <category>miscellaneous</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_30_Ideas.html</guid>
-  <pubDate>Thu, 06 Nov 2025 00:16:19 GMT</pubDate>
+  <pubDate>Thu, 06 Nov 2025 00:16:20 GMT</pubDate>
 </item>
 <item>
   <title>Opening an RStudio instance in Klone</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2025_02_19_klone_rstudio.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -151,6 +157,8 @@ cat *.out</code></pre>
 
 
 
+
+
 <p>I submitted an abstract to the 2025 conference for Epigenetics in Marine and Aquatic Research (EPIMAR) and, after learning Steven is a member of the EPIMAR team, it seems likely I’ll be able to present!</p>
 <p>The funding sources available to me through the department, and college are:</p>
 <ul>
@@ -185,6 +193,8 @@ cat *.out</code></pre>
 
 
 
+
+
 <p>Literature review on DNA methylation mapping of historical DNA (hDNA), collected from museum specimens. Prepping for SIFP proposal to work with Andrea Quattrini at the Smithsonian NMNH.</p>
 <section id="what-is-hdna" class="level3">
 <h3 class="anchored" data-anchor-id="what-is-hdna">What is hDNA?</h3>
@@ -193,7 +203,7 @@ cat *.out</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/Screenshot 2024-09-16 174607.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption"><span class="citation" data-cites="raxworthy_mining_2021">Raxworthy and Smith (2021)</span></figcaption>
+<figcaption><span class="citation" data-cites="raxworthy_mining_2021">Raxworthy and Smith (2021)</span></figcaption>
 </figure>
 </div>
 </section>
@@ -239,7 +249,7 @@ Question
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/Screenshot 2024-09-16 174756.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption"><span class="citation" data-cites="raxworthy_mining_2021">Raxworthy and Smith (2021)</span></figcaption>
+<figcaption><span class="citation" data-cites="raxworthy_mining_2021">Raxworthy and Smith (2021)</span></figcaption>
 </figure>
 </div>
 <ul>
@@ -334,7 +344,7 @@ Question
 </section>
 <section id="comparison-table" class="level4">
 <h4 class="anchored" data-anchor-id="comparison-table"><strong>Comparison Table</strong></h4>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 19%">
 <col style="width: 19%">
@@ -439,7 +449,7 @@ Question
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
 <div id="ref-ahsan_signal_2024" class="csl-entry">
 Ahsan, Mian Umair, Anagha Gouru, Joe Chan, Wanding Zhou, and Kai Wang. 2024. <span>“A Signal Processing and Deep Learning Framework for Methylation Detection Using <span>Oxford</span> <span>Nanopore</span> Sequencing.”</span> <em>Nature Communications</em> 15 (1): 1448. <a href="https://doi.org/10.1038/s41467-024-45778-y">https://doi.org/10.1038/s41467-024-45778-y</a>.
 </div>
@@ -458,13 +468,15 @@ Rubi, Tricia L., L. Lacey Knowles, and Ben Dantzer. 2020. <span>“Museum Epigen
 </div></section></div> ]]></description>
   <category>misc</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_09_16_hDNA_methylation.html</guid>
-  <pubDate>Fri, 08 Nov 2024 19:16:03 GMT</pubDate>
+  <pubDate>Fri, 08 Nov 2024 19:16:04 GMT</pubDate>
 </item>
 <item>
   <title>Outlining Plans for First Committee Meeting</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_11_08_first_committee_meeting.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -482,6 +494,8 @@ Rubi, Tricia L., L. Lacey Knowles, and Ben Dantzer. 2020. <span>“Museum Epigen
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_06_18_NSF_GRFP_info.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -515,6 +529,8 @@ Rubi, Tricia L., L. Lacey Knowles, and Ben Dantzer. 2020. <span>“Museum Epigen
 
 
 
+
+
 <p>After looking through one of Sarah’s posts I noticed she has some super cool features included in <a href="https://sarahtanja.github.io/quarto-blog/">her Quarto digital lab notebook</a>, so I’m doing a deep dive into the Quarto documentation!</p>
 <section id="embedding-source-code" class="level3">
 <h3 class="anchored" data-anchor-id="embedding-source-code"><a href="https://quarto.org/docs/output-formats/html-code.html#code-tools">Embedding source code</a></h3>
@@ -539,9 +555,11 @@ Rubi, Tricia L., L. Lacey Knowles, and Ben Dantzer. 2020. <span>“Museum Epigen
 <div id="tabset-1-1" class="tab-pane active" aria-labelledby="tabset-1-1-tab">
 <div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">def</span> even_or_odd(number):</span>
 <span id="cb2-2">    <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span> number <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%</span> <span class="dv" style="color: #AD0000;
@@ -558,6 +576,7 @@ background-color: null;
 font-style: inherit;">"even"</span></span>
 <span id="cb2-4">    <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">else</span>:</span>
 <span id="cb2-5">        result <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -566,6 +585,7 @@ background-color: null;
 font-style: inherit;">"odd"</span></span>
 <span id="cb2-6">    <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">return</span> result</span></code></pre></div>
 </div>
 <div id="tabset-1-2" class="tab-pane" aria-labelledby="tabset-1-2-tab">
@@ -573,9 +593,11 @@ font-style: inherit;">return</span> result</span></code></pre></div>
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(number) {</span>
 <span id="cb3-2">  <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span> (number <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%%</span> <span class="dv" style="color: #AD0000;
@@ -592,6 +614,7 @@ background-color: null;
 font-style: inherit;">"even"</span></span>
 <span id="cb3-4">  } <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">else</span> {</span>
 <span id="cb3-5">    result <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -645,8 +668,12 @@ font-style: inherit;">return</span>(result)</span>
 <p>There are a bunch of different ways to attach links and captions to text/images very easily, and to quickly generate sets of figures.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="https://www.fisheries.noaa.gov/species/staghorn-coral"><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/https:/www.fisheries.noaa.gov/s3/styles/full_width/s3/2021-11/Acropora_cervicornis_staghorn_coral.jpg?itok=8sYkq8lb" class="img-fluid figure-img" width="400"></a></p>
-<figcaption class="figure-caption">Dead man walking</figcaption>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://www.fisheries.noaa.gov/species/staghorn-coral"><img src="https://www.fisheries.noaa.gov/s3/styles/full_width/s3/2021-11/Acropora_cervicornis_staghorn_coral.jpg?itok=8sYkq8lb" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></a></p>
+</figure>
+</div>
+<figcaption>Dead man walking</figcaption>
 </figure>
 </div>
 </section>
@@ -658,9 +685,10 @@ font-style: inherit;">return</span>(result)</span>
 <section id="diagrams" class="level3">
 <h3 class="anchored" data-anchor-id="diagrams"><a href="https://quarto.org/docs/authoring/diagrams.html#overview">Diagrams</a></h3>
 <p>There are two types of diagrams that are supported by Quarto, Mermaid and Graphviz, and they both have webtools you can use to more easily design a diagram and get the code needed to generate it</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
   A[Hard edge] --&gt; B(Round edge)
@@ -669,6 +697,7 @@ font-style: inherit;">return</span>(result)</span>
   C --&gt; E[Result two]
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -781,11 +810,11 @@ font-style: inherit;">*</span> bill_length_mm</span>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="3" data-code-cell="annotated-cell-2">Take <code>penguins</code>, and then,</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="3" data-code-annotation="1">Take <code>penguins</code>, and then,</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-lines="4,5,6,7" data-code-cell="annotated-cell-2">add new columns for the bill ratio and bill area.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="4,5,6,7" data-code-annotation="2">add new columns for the bill ratio and bill area.</span>
 </dd>
 </dl>
 </section>
@@ -801,20 +830,22 @@ font-style: inherit;">*</span> bill_length_mm</span>
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
 <div id="ref-george_triploid_2023" class="csl-entry">
 George, Matthew N., Olivia Cattau, Mollie A. Middleton, Delaney Lawson, Brent Vadopalas, Mackenzie Gavery, and Steven B. Roberts. 2023. <span>“Triploid <span>Pacific</span> Oysters Exhibit Stress Response Dysregulation and Elevated Mortality Following Heatwaves.”</span> <em>Global Change Biology</em> 29 (24): 6969–87. <a href="https://doi.org/10.1111/gcb.16880">https://doi.org/10.1111/gcb.16880</a>.
 </div>
 </div></section></div> ]]></description>
   <category>miscellaneous</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_22_quarto_features.html</guid>
-  <pubDate>Tue, 04 Jun 2024 19:46:32 GMT</pubDate>
+  <pubDate>Tue, 04 Jun 2024 19:46:34 GMT</pubDate>
 </item>
 <item>
   <title>Learning awk for GNM569</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_03_27_GNM569awk.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -959,6 +990,8 @@ Another cell line is MCF7</code></pre>
 
 
 
+
+
 <p>We (Eric, Grace L., Ariana, and I) spent the day at the Point Whitney research station, performing a reciprocal heat stress treatment and sampling on 4 Pacific oyster (<em>Crassostrea gigas</em>) life stages (spat, seed, juvenile, adult) for Eric’s thesis work. See <a href="../../../posts/projects/misc/2024_02_26_oyster_sampling_materials.html">previous post for materials</a> and <a href="https://ahuffmyer.github.io/ASH_Putnam_Lab_Notebook/Lifestage-Carryover-Project-Sampling/">Ariana’s post</a> for project details.</p>
 <p><u>Organism:</u> Pacific oyster (<em>Crassostrea gigas</em>)</p>
 <p><u>Lifestages:</u> Seed, Spat, Juvenile, Adult</p>
@@ -967,7 +1000,7 @@ Another cell line is MCF7</code></pre>
 <p><u>Acute stress treatment groups:</u> Ambient, High (32*C)</p>
 <p><u>Possible treatment group combinations:</u> Control/Ambient, Control/High, Treated/Ambient, Treated/High</p>
 <p>For each age class, each set of treatment conditions was sampled. Sampling was performed slightly differently for each age, due to size restrictions:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 2%">
 <col style="width: 97%">
@@ -1001,7 +1034,7 @@ Another cell line is MCF7</code></pre>
 </tr>
 </tbody>
 </table>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 13%">
 <col style="width: 16%">
@@ -1125,42 +1158,42 @@ frozen: 92</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/IMG_8128.jpg" class="img-fluid figure-img" width="500"></p>
-<figcaption class="figure-caption">The oysters (each age class and treatment group in individual tubes or bags)</figcaption>
+<figcaption>The oysters (each age class and treatment group in individual tubes or bags)</figcaption>
 </figure>
 </div>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 64.0%;justify-content: center;">
+<div class="quarto-layout-panel" data-layout-nrow="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/IMG_8129.jpg" class="img-fluid figure-img" width="890"></p>
-<figcaption class="figure-caption">Sampling station</figcaption>
+<figcaption>Sampling station</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 36.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/IMG_8130.jpg" class="img-fluid figure-img" width="500"></p>
-<figcaption class="figure-caption">Sampling station</figcaption>
+<figcaption>Sampling station</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/IMG_8138.jpg" class="img-fluid figure-img" width="695"></p>
-<figcaption class="figure-caption">A juvenile oyster during sampling</figcaption>
+<figcaption>A juvenile oyster during sampling</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/images/IMG_8139.jpg" class="img-fluid figure-img" width="695"></p>
-<figcaption class="figure-caption">Oysters post-sampling</figcaption>
+<figcaption>Oysters post-sampling</figcaption>
 </figure>
 </div>
 </div>
@@ -1179,6 +1212,8 @@ frozen: 92</p>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_26_oyster_sampling_materials.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -1209,13 +1244,15 @@ frozen: 92</p>
  ]]></description>
   <category>miscellaneous</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_26_oyster_sampling_materials.html</guid>
-  <pubDate>Mon, 26 Feb 2024 21:19:45 GMT</pubDate>
+  <pubDate>Mon, 26 Feb 2024 21:19:46 GMT</pubDate>
 </item>
 <item>
   <title>Google sheets template for organizing allllllll the papers</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_22_paper_organization.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -1246,13 +1283,15 @@ frozen: 92</p>
  ]]></description>
   <category>miscellaneous</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_22_paper_organization.html</guid>
-  <pubDate>Thu, 22 Feb 2024 23:40:19 GMT</pubDate>
+  <pubDate>Thu, 22 Feb 2024 23:40:20 GMT</pubDate>
 </item>
 <item>
   <title>Testing bedtools: gff vs bed input file</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_08_bedtools_gffvbed.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -1442,6 +1481,8 @@ font-style: inherit;">head</span> test_gff_to_bed_to_fasta.fasta</span></code></
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_02_SICB.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -1648,12 +1689,14 @@ font-style: inherit;">head</span> test_gff_to_bed_to_fasta.fasta</span></code></
 
 
 
+
+
 <p>updated Jan 10, 2024</p>
 <p>I get very fidgety when I have to sit and read papers for hours on end, and I’ve found that being able to listen to content while occupying my hands with a mindless task (origami, weaving, embroidery,doodling, etc.) really helps me stay engaged for longer periods of time. With this in mind I’ve been looking for a text-to-speech tool that would enable me to listen to academic papers, textbooks, etc.! I’m hoping this could really improve my lit review workflow, especially since many of the papers I’m reading right now are reviews with fewer tables/figures that sometimes complicate applying TTS to academic material. Here’s a review of some of the services I’ve tried so far:</p>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <p><u>Speechify is ultimately the winner for me</u>. Even though it seems exorbitantly expensive, it’s also the option with the most features I find useful and the best voice options, which means it’s most likely to be truly useful in my lit review workflow.</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>

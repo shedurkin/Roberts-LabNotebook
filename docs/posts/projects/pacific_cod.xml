@@ -9,13 +9,15 @@
 <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod.html</link>
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.3.433</generator>
+<generator>quarto-1.7.32</generator>
 <lastBuildDate>Mon, 29 Apr 2024 07:00:00 GMT</lastBuildDate>
 <item>
   <title>Tissue subsampling for WGBS (cont.)</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/2024_04_29_methylation_subsampling.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -40,7 +42,7 @@
 </section>
 <section id="wgbs-samples" class="level3">
 <h3 class="anchored" data-anchor-id="wgbs-samples">WGBS Samples</h3>
-<table class="table">
+<table class="caption-top table">
 <tbody>
 <tr class="odd">
 <td><strong>0C treatment</strong></td>
@@ -67,7 +69,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/images/IMG_8692.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Final set of liver, blood, and gill samples prepped to send for WGBS</figcaption>
+<figcaption>Final set of liver, blood, and gill samples prepped to send for WGBS</figcaption>
 </figure>
 </div>
 
@@ -84,6 +86,8 @@
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/2024_04_25_methylation_subsampling.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -108,7 +112,7 @@
 </section>
 <section id="wgbs-samples" class="level3">
 <h3 class="anchored" data-anchor-id="wgbs-samples">WGBS Samples</h3>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 24%">
 <col style="width: 24%">
@@ -176,13 +180,13 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/images/IMG_8631.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">All methylation liver subsamples</figcaption>
+<figcaption>All methylation liver subsamples</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/images/IMG_8635.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Samples with no remaining tissue post-subsampling</figcaption>
+<figcaption>Samples with no remaining tissue post-subsampling</figcaption>
 </figure>
 </div>
 
@@ -199,6 +203,8 @@
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/2024_03_19_RNAseq_prelim_kallistoDESeq2.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -227,6 +233,8 @@ Kallisto pseudoalignment<br>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/2024_03_04_RNAseq_QC_trimming.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -264,6 +272,8 @@ Kallisto pseudoalignment<br>
 
 
 
+
+
 <p>Compiled <a href="https://docs.google.com/spreadsheets/d/19CqqS3wOhmG7drw163v7evUylRWwOjBOdvuR-y0RqF0/edit#gid=0">spreadsheets</a> for the samples we plan to send for RNAseq and methylation.</p>
 <p>In the cod experiment we subjected cod to four temperature treatments, with four different tanks in each treatment (total of 16 tanks)</p>
 <p>For RNAseq we selected:</p>
@@ -273,7 +283,7 @@ Kallisto pseudoalignment<br>
 <li><p>Gill samples from two individuals in the 0°C treatment (same tank) and two individuals in the 16°C treatment (same tank) (4 gill samples total). Selected the same four individuals as chosen for blood samples. For gill, subsampling to be able to send same individuals for both RNAseq and methylation.</p></li>
 <li><p>Spleen samples from two individuals in the 0°C treatment (same tank) and two individuals in the 16°C treatment (same tank) (4 spleen samples total). Selected the same four individuals as chosen for blood and gill samples. For spleen, sending full original sample for RNAseq.</p></li>
 </ul>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 13%">
 <col style="width: 15%">
@@ -321,7 +331,7 @@ Kallisto pseudoalignment<br>
 <li><p>Blood samples from two individuals in the 0°C treatment (same tank) and two individuals in the 16°C treatment (same tank) (4 blood samples total). Selected from individuals that are already being sequenced with liver samples. Since all of the blood sent for RNAseq required full sample volume, can’t send exact same blood samples as sent for RNAseq.</p></li>
 <li><p>Gill samples from two individuals in the 0°C treatment (same tank) and two individuals in the 16°C treatment (same tank) (4 gill samples total). These are gill subsamples from the same four individuals that are being sent for gill RNAseq.</p></li>
 </ul>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Tissue</th>
@@ -369,6 +379,8 @@ Kallisto pseudoalignment<br>
 
 
 
+
+
 <p>Subsampled the four selected gill samples for RNAseq (in blue below) to retain half of the sample for methylation work later. Pulled the four selected spleen samples (yellow) and set aside whole tissue for RNAseq. Pulled remaining four liver samples (yellow) and subsampled, setting aside ~half of the tissue for RNAseq and retaining the rest.</p>
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/images/cod_RNAseq_samples_sheet_partial.png" class="img-fluid"></p>
 <p>Also realized we were missing liver from one other sample we intend to send for RNAseq (sample 128), so pulled and subsampled that as well.</p>
@@ -390,8 +402,10 @@ Kallisto pseudoalignment<br>
 
 
 
+
+
 <p>Started sampling cod liver tissue samples for RNAseq. (excluded samples with intestinal tapeworms) – bolding indicates sampled this morning (~30mg), and then stored at -80*C.</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 8%">
 <col style="width: 32%">
@@ -444,6 +458,8 @@ Kallisto pseudoalignment<br>
 
 
 
+
+
 <p>Calculated necessary sample size for cod RNA sequencing, given an assumed coefficient of variation and detectable difference in expression – view document <a href="https://github.com/RobertsLab/project-cod-temperature/blob/main/code/04-RNASeq-sample-size.md">here</a>.</p>
 
 
@@ -462,13 +478,15 @@ Kallisto pseudoalignment<br>
 
 
 
+
+
 <p>I finished the code temp/growth analysis assigned by Steven, <a href="https://github.com/RobertsLab/project-cod-temperature/blob/main/code/01_temp-size-analysis/01_temp-size-analysis.Rmd">code</a> and <a href="https://github.com/RobertsLab/project-cod-temperature/blob/main/code/01_temp-size-analysis/01_temp-size-analysis.pdf">output pdf</a> can be found on lab github.</p>
 <p>I aimed to identify whether temperature treatment affected cod growth, and analyzed data using two growth variables, size (mm) and weight (g) sampled three times between Nov.2022 and Feb.2023.</p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/https:/raw.githubusercontent.com/RobertsLab/project-cod-temperature/main/output/01_temp-size-analysis/01_sizeVtreatment-all-dates.png" class="img-fluid" width="1500"></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/https:/raw.githubusercontent.com/RobertsLab/project-cod-temperature/main/output/01_temp-size-analysis/02_weightVtreatment-all-dates.png" class="img-fluid" width="1500"></p>
+<p><img src="https://raw.githubusercontent.com/RobertsLab/project-cod-temperature/main/output/01_temp-size-analysis/01_sizeVtreatment-all-dates.png" class="img-fluid" width="1500"></p>
+<p><img src="https://raw.githubusercontent.com/RobertsLab/project-cod-temperature/main/output/01_temp-size-analysis/02_weightVtreatment-all-dates.png" class="img-fluid" width="1500"></p>
 <p>One-way ANOVA tests indicated statistically significant differences in both change in size (F(3, 156) = 37.9, p = 1.79e-18), and change in weight (F(3, 156) = 29.4, p = 3.73e-15) among the treatment temperatures. Additional application of Tukey’s HSD test of multiple comparisons indicated that both mean size change and mean weight change were significantly different among all treatment temperatures <em>except</em> between the 9 and 16 degree treatments.</p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/https:/raw.githubusercontent.com/RobertsLab/project-cod-temperature/main/output/01_temp-size-analysis/03_size-change-TukeyHSD-plot.png" class="img-fluid" width="1500"></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_cod/https:/raw.githubusercontent.com/RobertsLab/project-cod-temperature/main/output/01_temp-size-analysis/04_weight-change-TukeyHSD-plot.png" class="img-fluid" width="1500"></p>
+<p><img src="https://raw.githubusercontent.com/RobertsLab/project-cod-temperature/main/output/01_temp-size-analysis/03_size-change-TukeyHSD-plot.png" class="img-fluid" width="1500"></p>
+<p><img src="https://raw.githubusercontent.com/RobertsLab/project-cod-temperature/main/output/01_temp-size-analysis/04_weight-change-TukeyHSD-plot.png" class="img-fluid" width="1500"></p>
 <section id="section" class="level3">
 <h3 class="anchored" data-anchor-id="section"></h3>
 

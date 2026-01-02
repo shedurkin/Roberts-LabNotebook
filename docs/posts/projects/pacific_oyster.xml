@@ -9,13 +9,15 @@
 <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster.html</link>
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.3.433</generator>
+<generator>quarto-1.7.32</generator>
 <lastBuildDate>Fri, 08 Nov 2024 08:00:00 GMT</lastBuildDate>
 <item>
   <title>Dip/Trip Hardening, Experimental Summary</title>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_11_08_diptrip_updates_summary.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -31,7 +33,7 @@
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="do" style="color: #5E5E5E;
 background-color: null;
@@ -69,7 +71,7 @@ Attaching package: 'dplyr'</code></pre>
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -471,7 +473,11 @@ background-color: null;
 font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_11_08_diptrip_updates_summary_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_11_08_diptrip_updates_summary_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>As of 8/22 we’re sitting at roughly 50% mortality in the round 2 stressed oysters and roughly 10% mortality in the controls. Interestingly, while there doesn’t appear to be any difference among the original hardening groups, the round 1 survivorship does seem to have had a hardening effect!</p>
@@ -497,6 +503,8 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 
 
 
+
+
 <p>Second attempt at a survivorship test with my remaining hardened diploid and triploid oysters (see first survivorship test <a href="../../../posts/projects/pacific_oyster/2024_08_02_diptrip_survivorship_round1.html">here</a>). See all details and original data collection in physical lab notebook, digital copy of mortality and meta data <a href="https://docs.google.com/spreadsheets/d/1e0EcJ3Jrjq-a_IehlJsX7WaRoSG3tCUWKyWhY5yJfMs/edit?gid=0#gid=0">here</a>.</p>
 <p>As a reminder, I have diploid and triploid Pacific oysters that were hardened using 6 treatments of 35C for 4hours, over the course of 2 weeks. After 2 weeks of recovery they were brought back to FTR, acclimated, sampled, and used in a survivorship test of 42C Resazurin for 4hours. However, since I made the mistake of pooling all oysters in each treatment group, I compromised independence, making the results statistically meaningless. During this second attempt at a survivorship trial I’ll keep all individual oysters in separate containers, and I won’t be using Resazurin, since the ambient temp Resazurin groups in the first survivorship test still saw high mortality. For the purposes of this second survivorship test, survivorship round 1 will essentially be treated like an additional hardening treatment.</p>
 <section id="survivorship-round-2-protocol" class="level2">
@@ -504,7 +512,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <ol type="1">
 <li><p>Preheated 15 gallon bucket of seawater (mixed to ~25psu using dechlorinated tap water and Instant Ocean) to 42C using a rod heater.</p></li>
 <li><p>Evenly split the remaining oysters in all survivorship round 1 groups into two even groups, maintaining size distributions. Assigned a randomly selected label to each group. Each oyster will be individually labelled with the alphanumeric of GroupLabel##.</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 30%">
 <col style="width: 24%">
@@ -653,7 +661,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <li><p>The original hardening was performed at too low a temperature to see an effect at 42C stress. The original hardening was done at 35C, while survivorship round 1 was at 42C, the same temperature the oysters then experienced during this survivorship round. My brief <a href="./2024_06_20_experimental_design_questions">review</a> of other papers that attempted hardening in bivalves did suggest that hardening was most effective when conditions were similar to those the organism would experience during an extreme stress event post-hardening.</p></li>
 </ol>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="do" style="color: #5E5E5E;
 background-color: null;
@@ -691,7 +699,7 @@ Attaching package: 'dplyr'</code></pre>
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1093,7 +1101,11 @@ background-color: null;
 font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_08_09_diptrip_survivorship_round2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_08_09_diptrip_survivorship_round2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Faceted by Round 2 treatment, color indicates Round 1 treatment (i.e.&nbsp;“second hardening”)</p>
@@ -1111,6 +1123,8 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_08_02_diptrip_survivorship_round1.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -1284,7 +1298,11 @@ font-style: inherit;">+</span></span>
 background-color: null;
 font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_08_02_diptrip_survivorship_round1_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_08_02_diptrip_survivorship_round1_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 
@@ -1305,9 +1323,11 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 
 
 
+
+
 <p>Sampled each of the four treatment groups of the diploid and triploid thermal hardening experiment. As a reminder, diploid and triploid Pacific oysters were hardened using 6 treatments of 35C for 4 hours over the course of two weeks. This was followed by a 2 week recovery period, transfer to FTR, and several day acclimation period.</p>
 <p>Sampled 16 oysters from each bag, four from each size class</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Size class</th>
@@ -1335,7 +1355,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 </table>
 <p>Full sampling details can be found in my physical lab notebook.</p>
 <p>Took 5 tissue samples from each oyster:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 10%">
 <col style="width: 8%">
@@ -1418,6 +1438,8 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 
 
 
+
+
 <section id="checking-mortalities" class="level2">
 <h2 class="anchored" data-anchor-id="checking-mortalities">Checking mortalities</h2>
 <p>I transferred the hardened diploid and triploid oysters from Point Whitney to an FTR 208 seawater tank held at 20C on July 23 (see <a href="../../../posts/projects/pacific_oyster/2024_07_23_Point_Whitney.html">post</a>). They’ve now had a few days to acclimate to the tank, so I checked post-hardening mortality, making note of size as well.</p>
@@ -1427,29 +1449,29 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/Bag045.jpg" class="img-fluid figure-img" width="400"></p>
-<figcaption class="figure-caption">Bag 045 – 81/100 surviving (~20% mortality)</figcaption>
+<figcaption>Bag 045 – 81/100 surviving (~20% mortality)</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/Bag060.jpg" class="img-fluid figure-img" width="400"></p>
-<figcaption class="figure-caption">Bag 060 – 65/100 surviving (~35% mortality)</figcaption>
+<figcaption>Bag 060 – 65/100 surviving (~35% mortality)</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/Bag064.jpg" class="img-fluid figure-img" width="400"></p>
-<figcaption class="figure-caption">Bag 064 – 61/100 surviving (~40% mortality)</figcaption>
+<figcaption>Bag 064 – 61/100 surviving (~40% mortality)</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/Bag065.jpg" class="img-fluid figure-img" width="400"></p>
-<figcaption class="figure-caption">Bag 065 – 68/100 surviving (~30% mortality)</figcaption>
+<figcaption>Bag 065 – 68/100 surviving (~30% mortality)</figcaption>
 </figure>
 </div>
 <p>During sampling I want to sample a roughly even size distribution from each group. To standardize, I set four size classes based on the average lower quartile, median, and upper quartiles of surviving oysters in each group.</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 35%">
 <col style="width: 12%">
@@ -1497,7 +1519,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 </table>
 <p>Size classes:</p>
 <p>Round to nearest mm</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Size class</th>
@@ -1541,6 +1563,8 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 
 
 
+
+
 <p>Some notes and pictures from working with the FTR-stored oysters today.</p>
 <section id="white-spotting-in-extreme-stress-bags" class="level3">
 <h3 class="anchored" data-anchor-id="white-spotting-in-extreme-stress-bags">White spotting in extreme stress bags</h3>
@@ -1580,7 +1604,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 </section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
 <div id="ref-houssin2019" class="csl-entry">
 Houssin, Maryline, Suzanne Trancart, Lucie Denechere, Elise Oden, Beatrice Adeline, Mélanie Lepoitevin, and Pierre-Hugues Pitel. 2019. <span>“Abnormal Mortality of Triploid Adult Pacific Oysters: Is There a Correlation with High Gametogenesis in Normandy, France?”</span> <em>Aquaculture</em> 505 (April): 63–71. <a href="https://doi.org/10.1016/j.aquaculture.2019.02.043">https://doi.org/10.1016/j.aquaculture.2019.02.043</a>.
 </div>
@@ -1597,6 +1621,8 @@ J. Brianik, Christopher, and Bassem Allam. 2023. <span>“The Need for More Info
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_07_23_Point_Whitney.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -1633,6 +1659,8 @@ J. Brianik, Christopher, and Bassem Allam. 2023. <span>“The Need for More Info
 
 
 
+
+
 <p>Second trial of an extreme stress test on our extra Pacific oysters. The experimental setup of Trial 1 didn’t work well, and ended up stress the oysters at the sublethal35-38C, instead of a lethal temp of 43C.</p>
 <p>This time I’ll be using full bucket of water with a heater + thermostat, instead of warming water in the incubator. This should heat the water faster and better regulate the temperature following addition of oysters.</p>
 <section id="trial-2-protocol" class="level3">
@@ -1658,7 +1686,7 @@ J. Brianik, Christopher, and Bassem Allam. 2023. <span>“The Need for More Info
 <section id="mortality" class="level3">
 <h3 class="anchored" data-anchor-id="mortality">Mortality</h3>
 <p>Checked bags daily at roughly noon for mortality. Mortality evaluated by prodding oysters and squeezing lightly at base of hinge. Empty shells or oysters that gaped and remained open during stimulation were considered dead.</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 6%">
 <col style="width: 7%">
@@ -1724,6 +1752,8 @@ J. Brianik, Christopher, and Bassem Allam. 2023. <span>“The Need for More Info
 
 
 
+
+
 <p>Trial run of extreme stress test using the extra untreated, diploid “13” oysters currently stored in seawater cold room in FTR.<br>
 <br>
 </p>
@@ -1765,7 +1795,7 @@ The <strong>rod heaters used at PW seem much faster</strong> and capable of main
 <section id="mortality" class="level3">
 <h3 class="anchored" data-anchor-id="mortality">Mortality</h3>
 <p>Checked bags daily at roughly noon for mortality. Mortality evaluated by prodding oysters and squeezing lightly at base of hinge. Empty shells or oysters that gaped and remained open during stimulation were considered dead.</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 6%">
 <col style="width: 7%">
@@ -1820,6 +1850,8 @@ The <strong>rod heaters used at PW seem much faster</strong> and capable of main
 
 
 
+
+
 <p>Another day at Point Whitney doing stress hardening</p>
 <ul>
 <li><p>KD dioploid/triploid stress hardening</p></li>
@@ -1830,7 +1862,7 @@ The <strong>rod heaters used at PW seem much faster</strong> and capable of main
 <section id="stress-hardening" class="level3">
 <h3 class="anchored" data-anchor-id="stress-hardening">Stress hardening</h3>
 <p>Treatments I did today:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 16%">
 <col style="width: 16%">
@@ -1924,6 +1956,8 @@ The <strong>rod heaters used at PW seem much faster</strong> and capable of main
 
 
 
+
+
 <p>Another day at Point Whitney doing stress hardening</p>
 <ul>
 <li><p>KD dioploid/triploid stress hardening</p></li>
@@ -1934,7 +1968,7 @@ The <strong>rod heaters used at PW seem much faster</strong> and capable of main
 <section id="stress-hardening" class="level3">
 <h3 class="anchored" data-anchor-id="stress-hardening">Stress hardening</h3>
 <p>Treatments I did today:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 17%">
 <col style="width: 20%">
@@ -2027,6 +2061,8 @@ The <strong>rod heaters used at PW seem much faster</strong> and capable of main
 
 
 
+
+
 <p>Another day at Point Whitney doing stress hardening and clearance rate trials</p>
 <ul>
 <li><p>KD dioploid/triploid stress hardening</p></li>
@@ -2038,7 +2074,7 @@ The <strong>rod heaters used at PW seem much faster</strong> and capable of main
 <section id="stress-hardening" class="level3">
 <h3 class="anchored" data-anchor-id="stress-hardening">Stress hardening</h3>
 <p>Treatments I did today:</p>
-<table class="table">
+<table class="caption-top table">
 <caption>Water still took <em>forever</em> (~3 hr) to heat up to 35C. We’re putting one heater on a timer so it will hopefully pre-heat the water for me before I arrive on Friday</caption>
 <colgroup>
 <col style="width: 22%">
@@ -2104,20 +2140,20 @@ The <strong>rod heaters used at PW seem much faster</strong> and capable of main
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/Trial 3.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Note: values shown are the third of each set of triplicate measurements from each time point (column “Fluoro3” in the raw datasheet)</figcaption>
+<figcaption>Note: values shown are the third of each set of triplicate measurements from each time point (column “Fluoro3” in the raw datasheet)</figcaption>
 </figure>
 </div>
 <p>As expected, the small oysters (13 26mm and Bird 24mm) have a much lower clearance rate. Interestingly though, all of the larger oysters (13 75mm, 13 88mm, Bird 61mm, and Bird 76mm) see to have pretty similar clearance rates, with the Bird 61mm oyster actually beating the others at most time points!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9158.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Trial 3 oysters. “Bird” triploid untreated (top) and “13” diploid untreated (bottom)</figcaption>
+<figcaption>Trial 3 oysters. “Bird” triploid untreated (top) and “13” diploid untreated (bottom)</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9163.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Trial 3 setup</figcaption>
+<figcaption>Trial 3 setup</figcaption>
 </figure>
 </div>
 <p>Overall, since the fluorometer is non-invasive and very easy to use, it seems like the best option may just be to measure clearance rate of the full cohorts (i.e.&nbsp;place the full treatment bags in algae-rich water and monitor feeding). The oysters don’t always open to feed and the fluorometer doesn’t seem sensitive/consistent enough to use with smaller sample sizes.</p>
@@ -2155,6 +2191,8 @@ The <strong>rod heaters used at PW seem much faster</strong> and capable of main
 
 
 
+
+
 <p>Field day at Point Whitney to continue hardening stress treatments</p>
 <ul>
 <li><p>KD dioploid/triploid stress hardening</p></li>
@@ -2165,7 +2203,7 @@ The <strong>rod heaters used at PW seem much faster</strong> and capable of main
 <section id="stress-hardening" class="level3">
 <h3 class="anchored" data-anchor-id="stress-hardening">Stress hardening</h3>
 <p>Treatments I did today:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 21%">
 <col style="width: 15%">
@@ -2224,13 +2262,13 @@ The <strong>rod heaters used at PW seem much faster</strong> and capable of main
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9129.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">35C seawater tank</figcaption>
+<figcaption>35C seawater tank</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9128.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">35C freshwater bucket</figcaption>
+<figcaption>35C freshwater bucket</figcaption>
 </figure>
 </div>
 </section>
@@ -2248,7 +2286,7 @@ The <strong>rod heaters used at PW seem much faster</strong> and capable of main
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9126.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Trial 1</figcaption>
+<figcaption>Trial 1</figcaption>
 </figure>
 </div>
 <p>Quick chart below of Trial 1 fluorometry readings (blue is 13, red is Bird)</p>
@@ -2265,7 +2303,7 @@ The <strong>rod heaters used at PW seem much faster</strong> and capable of main
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9130.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Trial 2</figcaption>
+<figcaption>Trial 2</figcaption>
 </figure>
 </div>
 <p>Quick chart below of Trial 2 fluorometry readings (blue is 13, red is Bird, yellow is control)</p>
@@ -2278,14 +2316,14 @@ The <strong>rod heaters used at PW seem much faster</strong> and capable of main
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9134.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">“Bird” oysters (right) much more open than “13” oyster (left)</figcaption>
+<figcaption>“Bird” oysters (right) much more open than “13” oyster (left)</figcaption>
 </figure>
 </div>
 <p>I also noticed after the trial that the “Bird” oyster I was using actually had a second, smaller oyster fused to it (see below), which may have affected the rate of decrease.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9136.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">small second oyster attached to Trial 2 “Bird” oyster</figcaption>
+<figcaption>small second oyster attached to Trial 2 “Bird” oyster</figcaption>
 </figure>
 </div>
 </section>
@@ -2322,6 +2360,8 @@ The <strong>rod heaters used at PW seem much faster</strong> and capable of main
 
 
 
+
+
 <p>Today Ariana and I did stress hardening treatments for several oyster cohorts.</p>
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9109.jpg" class="img-fluid"></p>
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/IMG_9110.jpg" class="img-fluid"></p>
@@ -2340,6 +2380,8 @@ The <strong>rod heaters used at PW seem much faster</strong> and capable of main
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_06_25_Resazurin.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -2393,6 +2435,8 @@ The <strong>rod heaters used at PW seem much faster</strong> and capable of main
 
 
 
+
+
 <p>Today we did a rough inventory of what diploid/triploid families we had at Point Whitney, selected two cohorts for the stress priming experiment, and counted, measured, and separated 200 individuals from each cohort for stress hardening.</p>
 <section id="compiling-and-measuring-treatment-groups" class="level3">
 <h3 class="anchored" data-anchor-id="compiling-and-measuring-treatment-groups">Compiling and measuring treatment groups</h3>
@@ -2400,7 +2444,7 @@ The <strong>rod heaters used at PW seem much faster</strong> and capable of main
 <p><u>Observations:</u></p>
 <p>The diploids were generally a bit bigger, there were more oysters larger than the desired size range (20mm - 60mm), and there were more dead oysters. There were also several instances in both groups of two oysters fused together, and these were excluded from the oysters compiled for the experiment.6</p>
 <p><u>Length summary stats (mm):</u></p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 14%">
 <col style="width: 14%">
@@ -2462,7 +2506,7 @@ The <strong>rod heaters used at PW seem much faster</strong> and capable of main
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/datasheet2_2024_06_25.JPG" class="img-fluid"></p>
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/datasheet3_2024_06_25.JPG" class="img-fluid"></p>
 <p>Bags are green mesh, and were labelled with a number (Bag 1, Bag 2, Bag 3, Bag 4), ploidy (triploid or diploid), and treatment group (control or treatment), as well as the identifier “UW-KD, Roberts” to distinguish our bags from others in the hatchery. For each bag, one tag was placed inside the bag and an identical tag was attached to the exterior with a zip tie.</p>
-<table class="table">
+<table class="caption-top table">
 <tbody>
 <tr class="odd">
 <td>Bag 1</td>
@@ -2489,7 +2533,7 @@ The <strong>rod heaters used at PW seem much faster</strong> and capable of main
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/tag_bag1.JPG" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">sample bag tag</figcaption>
+<figcaption>sample bag tag</figcaption>
 </figure>
 </div>
 </section>
@@ -2521,28 +2565,28 @@ The <strong>rod heaters used at PW seem much faster</strong> and capable of main
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/ucar_checkout.JPG" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">UCar checkout</figcaption>
+<figcaption>UCar checkout</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/ucar_checkin.JPG" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">UCar dash at check in</figcaption>
+<figcaption>UCar dash at check in</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/ferry_reciept_1.jpeg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">ferry receipt out</figcaption>
+<figcaption>ferry receipt out</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/images/ferry_reciept_2.jpeg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">ferry receipt back</figcaption>
+<figcaption>ferry receipt back</figcaption>
 </figure>
 </div>
-<table class="table">
+<table class="caption-top table">
 <tbody>
 <tr class="odd">
 <td>UCar max <a href="https://facilities.uw.edu/services/rates/fleet">daily rate</a> (5+ hrs):</td>
@@ -2585,6 +2629,8 @@ Mileage difference: 120 miles = $40.80</p>
 
 
 
+
+
 <p>The oyster project will involve evaluating some metric(s) of body condition or energy storage (e.g.&nbsp;glycogen content) in attempt to ID condition indicative of stress tolerance <em>before</em> the stress occurs. This necessitates some understanding of energetics in invertebrates (which I don’t currently have) – to the literature!</p>
 <section id="developmental-cost-theory" class="level2">
 <h2 class="anchored" data-anchor-id="developmental-cost-theory">Developmental cost theory</h2>
@@ -2604,7 +2650,7 @@ Mileage difference: 120 miles = $40.80</p>
 <ul>
 <li>“Importantly, the net energy exchange and energy balance of an organism depends not only on the amount of the available food, but also on the <strong>rates of its incorporation and metabolic conversio</strong>n that channel the energy flux to different processes.”</li>
 </ul>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/https:/ars.els-cdn.com/content/image/1-s2.0-S0141113612000712-gr1.jpg" class="img-fluid"></p>
+<p><img src="https://ars.els-cdn.com/content/image/1-s2.0-S0141113612000712-gr1.jpg" class="img-fluid"></p>
 <ul>
 <li><p>“the ability (or lack thereof) to sustain aerobic scope emerges as a major criterion that distinguishes between moderate and extreme stress”</p>
 <ul>
@@ -2619,7 +2665,7 @@ Mileage difference: 120 miles = $40.80</p>
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
 <div id="ref-marshall_developmental_2020" class="csl-entry">
 Marshall, Dustin J., Amanda K. Pettersen, Michael Bode, and Craig R. White. 2020. <span>“Developmental Cost Theory Predicts Thermal Environment and Vulnerability to Global Warming.”</span> <em>Nature Ecology &amp; Evolution</em> 4 (3): 406–11. <a href="https://doi.org/10.1038/s41559-020-1114-9">https://doi.org/10.1038/s41559-020-1114-9</a>.
 </div>
@@ -2636,6 +2682,8 @@ Sokolova, Inna M., Markus Frederich, Rita Bagwe, Gisela Lannig, and Alexey A. Su
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_06_20_experimental_design_questions.html</link>
   <description><![CDATA[ 
+
+
 
 
 
@@ -2663,7 +2711,7 @@ Sokolova, Inna M., Markus Frederich, Rita Bagwe, Gisela Lannig, and Alexey A. Su
 <ul>
 <li><p>Experimental testing of environmental conditions impact on gametogenisis (gonadal development/broodstock conditioning)</p>
 <p><strong>Fastest gonadal development (oocyte maturation) at 22C (first mature oocytes in 19 days)</strong></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/https:/ars.els-cdn.com/content/image/1-s2.0-S0044848601008985-gr4.jpg" class="img-fluid"></p>
+<p><img src="https://ars.els-cdn.com/content/image/1-s2.0-S0044848601008985-gr4.jpg" class="img-fluid"></p>
 <p><span class="citation" data-cites="chavez-villalba_broodstock_2002">(Chávez-Villalba et al. 2002)</span></p></li>
 </ul>
 <p>Summary: Generally speaking, gametogenisis is prompted by a minimum temperature of 17C - 18C in the presence of sufficient energy storage. Fastest maturation happens around 22C, with spawning triggered by warmer temperatures than used during conditioning (e.g., 25C to 30C). If we’re acclimatizing in the 25C range there will likely be resultant gametogenisis, but conditioning for ~2 weeks is sufficiently short to prevent full gonadal maturation (“ripening”) and subsequent spawning. Not entirely clear though what happens if you hold at 20C for 2 weeks and then drop back down in temp – would gametogenisis continue?</p>
@@ -2671,7 +2719,7 @@ Sokolova, Inna M., Markus Frederich, Rita Bagwe, Gisela Lannig, and Alexey A. Su
 <section id="hardening-timeline" class="level3">
 <h3 class="anchored" data-anchor-id="hardening-timeline">Hardening timeline</h3>
 <p>Should look at all the hardening papers to try to assess best timeline (e.g.&nbsp;how long to harden, how long to wait between hardening and stress)</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 13%">
 <col style="width: 8%">
@@ -2785,7 +2833,7 @@ Sokolova, Inna M., Markus Frederich, Rita Bagwe, Gisela Lannig, and Alexey A. Su
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
 <div id="ref-breese1975" class="csl-entry">
 Breese, Wilbur P, and Robert E Malouf. 1975. <span>“Hatchery Manual for the Pacific Oyster.”</span> <em>Oregon State University Sea Grant College Program</em> Agricultural Experiment Station (443). <a href="https://ir.library.oregonstate.edu/downloads/db78td066">https://ir.library.oregonstate.edu/downloads/db78td066</a>.
 </div>
@@ -2823,6 +2871,8 @@ Zhang, Yanming, Hongtao Nie, and Xiwu Yan. 2023. <span>“Metabolomic Analysis P
   <dc:creator>Kathleen Durkin</dc:creator>
   <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/pacific_oyster/2024_06_19_Project_Outline.html</link>
   <description><![CDATA[ 
+
+
 
 
 
