@@ -1,0 +1,109 @@
+---
+title: "January 2026, Daily Log"
+author: "Kathleen Durkin"
+date: "last-modified"
+categories: ["daily log"]
+format:
+  html:
+    code-fold: true
+execute:
+  warning: false
+---
+
+## 30 January 2026
+
+#### Friday
+
+## 29 January 2026
+
+#### Thursday
+
+## 28 January 2026
+
+#### Wednesday
+
+## 27 January 2026
+
+#### Tuesday
+
+## 26 January 2026
+
+#### Monday
+
+## 23 January 2026
+
+#### Friday
+
+## 22 January 2026
+
+#### Thursday
+
+## 21 January 2026
+
+#### Wednesday
+
+## 20 January 2026
+
+#### Tuesday
+
+## 19 January 2026
+
+#### Monday
+
+## 16 January 2026
+
+#### Friday
+
+## 15 January 2026
+
+#### Thursday
+
+## 14 January 2026
+
+#### Wednesday
+
+## 13 January 2026
+
+#### Tuesday
+
+## 12 January 2026
+
+#### Monday
+
+## 09 January 2026
+
+#### Friday
+
+## 08 January 2026
+
+#### Thursday
+
+## 07 January 2026
+
+#### Wednesday
+
+## 06 January 2026
+
+#### Tuesday
+
+## 05 January 2026
+
+#### Monday
+
+## 02 January 2026
+
+#### Friday
+
+-   6hr — Thesis Proposal edits. Kerry had \~80 comments, today I addressed half of them, down to 39 comments.
+
+-   1 hr — General prep work/maintenance. Some lab notebook updates and finagling related to the move to my new computer. New goals and daily posts docs for Jan 2026. Setting up the WIN 2026 quarter's schedule (calendar, etc.). Sorting through holiday emails. Completed registration (delayed for a bit by schedule conflict)
+
+-   1 hr — TA prep work. Setting up new gradescope course, copying over assignments and rubrics, linking with canvas course, and syncing roster. Updating my "meet the instructor" portion on Canvas and familiarizing myself with Canvas site, Jupyter/Github organization, and getting on Ed Discussion. Reading through preliminary course materials.
+
+## 01 January 2026
+
+#### Thursday
+
+-   getting lab notebook up-to-date (adding No Bones presentation prep work from before my vacation period)
+
+-   
