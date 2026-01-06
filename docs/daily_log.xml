@@ -10,26 +10,7 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/daily_log.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Sat, 03 Jan 2026 04:31:41 GMT</lastBuildDate>
-<item>
-  <title>January_2026_goals</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2026/January_2026_goals.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-
-
-
-
- ]]></description>
-  <category>daily log</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2026/January_2026_goals.html</guid>
-  <pubDate>Sat, 03 Jan 2026 04:31:41 GMT</pubDate>
-</item>
+<lastBuildDate>Tue, 06 Jan 2026 00:05:41 GMT</lastBuildDate>
 <item>
   <title>January 2026, Daily Log</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -159,10 +140,23 @@
 <h2 class="anchored" data-anchor-id="january-2026-19">05 January 2026</h2>
 <section id="monday-3" class="level4">
 <h4 class="anchored" data-anchor-id="monday-3">Monday</h4>
+<p>1 hr – SWED202 class</p>
+<p>0.75 hr – TA meeting/planning for lab</p>
+<p>0.25 hr – Emails, calendar scheduling</p>
+<p>1 hr – TA prep (getting to room, prepping an intro R doc, reading through course materials again, etc.)</p>
+<p>4 hr – TAing lab sections</p>
+<p>1 hr – TA work: updating publish dates and due dates for all HW assignments in Canvas and Gradescope, renaming all to correclty indicate associated module, linking each Gradescope assignment with its associated Canvas assignment. Fielding some student messages that popped up on Canvas and Ed Discussion following first labs, and messaging Steven/Clare about a few course kinks that came up.</p>
 </section>
 </section>
 <section id="january-2026-20" class="level2">
-<h2 class="anchored" data-anchor-id="january-2026-20">02 January 2026</h2>
+<h2 class="anchored" data-anchor-id="january-2026-20">04 January 2026</h2>
+<section id="sunday" class="level4">
+<h4 class="anchored" data-anchor-id="sunday">Sunday</h4>
+<p>1 hr – TA prep for lab tomorrow (reading through this week’s module, syllabus, course materials, etc.)</p>
+</section>
+</section>
+<section id="january-2026-21" class="level2">
+<h2 class="anchored" data-anchor-id="january-2026-21">02 January 2026</h2>
 <section id="friday-4" class="level4">
 <h4 class="anchored" data-anchor-id="friday-4">Friday</h4>
 <ul>
@@ -172,8 +166,8 @@
 </ul>
 </section>
 </section>
-<section id="january-2026-21" class="level2">
-<h2 class="anchored" data-anchor-id="january-2026-21">01 January 2026</h2>
+<section id="january-2026-22" class="level2">
+<h2 class="anchored" data-anchor-id="january-2026-22">01 January 2026</h2>
 <section id="thursday-4" class="level4">
 <h4 class="anchored" data-anchor-id="thursday-4">Thursday</h4>
 <ul>
@@ -188,7 +182,26 @@
  ]]></description>
   <category>daily log</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2026/January_2026_posts.html</guid>
-  <pubDate>Sat, 03 Jan 2026 04:31:38 GMT</pubDate>
+  <pubDate>Tue, 06 Jan 2026 00:05:41 GMT</pubDate>
+</item>
+<item>
+  <title>January_2026_goals</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2026/January_2026_goals.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+
+
+
+ ]]></description>
+  <category>daily log</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2026/January_2026_goals.html</guid>
+  <pubDate>Sat, 03 Jan 2026 04:31:41 GMT</pubDate>
 </item>
 <item>
   <title>October 2025, Daily Log</title>

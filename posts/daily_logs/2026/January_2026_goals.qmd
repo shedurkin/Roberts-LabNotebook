@@ -1,0 +1,14 @@
+---
+title: "January 2026, Goals"
+author: "Kathleen Durkin"
+date: "last-modified"
+categories: ["daily log"]
+format:
+  html:
+    code-fold: true
+execute:
+  warning: false
+---
+
+
+
