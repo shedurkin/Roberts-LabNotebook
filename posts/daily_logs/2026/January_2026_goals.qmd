@@ -10,5 +10,14 @@ execute:
   warning: false
 ---
 
+Primary goals for the month of January:
 
+-   Finish and submit Thesis Proposal
 
+-   Finish and submit DDE manuscript (carryover)
+
+Primary goals for the WI 2026 quarter:
+
+-   **Complete bypass package**
+
+-   Consistently track time usage again (trying out `toggl`, but bare minimum is logging general list of daily activity in lab notebook)
