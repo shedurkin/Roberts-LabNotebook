@@ -10,7 +10,194 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Mon, 08 Dec 2025 08:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 10 Dec 2025 08:00:00 GMT</lastBuildDate>
+<item>
+  <title>Timeseries: Running the Elastic Net with permutation-based sig</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_12_10_timeseries_EN_permutation.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>Used Claude Opus 4.5 to, from my existing Elastic Net script (timeseries/M-multi-species/scripts/26.2-ElasticNet-scaling.R), make a script that uses permutation approach to evaluate predictor significance. The command used:</p>
+<blockquote class="blockquote">
+<p>I have an R script to take, as input, matrices of gene expression, lncRNA expression, miRNA expression, and methylation to use an Elastic Net regression to predict gene expression from the combined epigenetic predictor set of lncRNA, miRNA, and methylation. The script is attached below. I want to modify the script to be able to produce significance values for each predictor of a given gene (to evaluate confidence in that predictor actually being related to the gene), from a permutation approach. Please write a new script, based on the current script, which can do this. Please include explanations of each step and justification of statistical soundness.</p>
+</blockquote>
+<p>Think it works like this:</p>
+<ul>
+<li><p>runs EN on response/predictor set as usual (bootstrapping round, remove poorly-predicted response genes, and then re-runs bootstrapping again on the well-predicted stuff)</p></li>
+<li><p>Then, <u>for each gene</u>, runs n_rep many permutations:</p>
+<ul>
+<li><p>On each permutation, scrambles the response values (expression for the gene being run) and fits the EN model (keeping real predictors)</p></li>
+<li><p>For the given gene, compares the “real” predictor coefficients to the (mean?) permutation coefficients generated to calculate a pvalue (essentially [# perm&gt;real]/[# total perm])</p></li>
+<li><p>Applies FDR multiple-testing correction</p></li>
+</ul>
+<p>Escience office hours: Curtis Atkisson, Valentina Stenava (has used tensor decomp in work)</p></li>
+</ul>
+<p>To use, run following command (I’ve needed to do so in a conda environment when working in Raven):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">Rscript <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">26.4</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>ElasticNet<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>permutation<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>sig.R \</span>
+<span id="cb1-2"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ortholog_gene_counts_path.csv"</span> \  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># genes file (response)</span></span>
+<span id="cb1-3"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"miRNA_counts_path.txt"</span> \          <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># miRNA file (predictor)</span></span>
+<span id="cb1-4"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lncRNA_counts_path.txt"</span> \         <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># lncRNA file (predictor)</span></span>
+<span id="cb1-5"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"methylation_matrix_path.tsv"</span> \    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># methylation file (predictor)</span></span>
+<span id="cb1-6"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"metadata_file_path.csv"</span> \         <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># metadata file</span></span>
+<span id="cb1-7"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"output_dir_path"</span> \                <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># output directory</span></span>
+<span id="cb1-8"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"list_samples_to_exclude"</span> \        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># (comma-separated string like "s1,s2")</span></span>
+<span id="cb1-9"><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span> \   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># alpha value for EN model (optional, default 0.5)</span></span>
+<span id="cb1-10"><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">25</span> \    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Num. replicates for first bootstrapping round (optional, default 50)</span></span>
+<span id="cb1-11"><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span> \    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Num. replicates for second bootstrapping round (optional, default 50)</span></span>
+<span id="cb1-12"><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span> \   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># r^2 threshold for "well-predicted" genes (optional, default 0.5)</span></span>
+<span id="cb1-13"><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span> \  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Num. permutations (optional, default 1000)</span></span>
+<span id="cb1-14"><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> \     <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Num cores for parallel processing (optional, default 1)</span></span></code></pre></div>
+</div>
+<p>Now, rerunning with new inputs: Using gene set of orthologs involved in biomineralization, and GbM for the WGBS predictor input</p>
+<p>Output directory:</p>
+<section id="apul" class="level2">
+<h2 class="anchored" data-anchor-id="apul">Apul</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">((</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">r_enet_rscript</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">)</span> <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">shedurkin@raven:~/timeseries_molecular/M-multi-species/scripts$</span> Rscript 26.4-ElasticNet-permutation-sig.R <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-2"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/M-multi-species/output/33-biomin-pathway-counts/apul_biomin_counts.csv"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-3"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/M-multi-species/output/10.1-format-miRNA-counts-updated/Apul_miRNA_counts_formatted_updated.txt"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-4"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/31.5-Apul-lncRNA-discovery/lncRNA_counts.clean.filtered.txt"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-5"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/D-Apul/output/40-Apul-Gene-Methylation/Apul-gene-methylation_75pct.tsv"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-6"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../../M-multi-species/data/rna_metadata.csv"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-7"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/26.4-ElasticNet-permutation-sig"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-8"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ACR-225-TP1"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-9">0.5 <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-10">25 <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-11">25 <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-12">0.5 <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-13">5000 <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-14">10</span></code></pre></div>
+</div>
+<p>Output has a weird/potentially concerning pattern. Every non-zero coefficient has been assigned significance following the permutation significance evaluation.</p>
+<p>After looking through the output tables, I noticed that the permutation-based mean coefficients are all <em>extremely</em> small (very close to 0). I think the problem may be related to how the permuted model fits are being done. In the current code, there are 2 types of Elastic Net model fitting functions being used: <code>cv.glmnet()</code> and <code>glmnet()</code></p>
+<p>. The first, <code>cv.glmnet()</code> actually runs several iterations of the model with different lambda values, then choses the bestmodel fit for continued use. This is the version used during all of the bootstrapped model runs. <code>glmnet()</code> takes a lambda value as input and only runs the model once, using the provided lambda. This is the version currently being used during the permutation rounds, with the lambda value selected during “real” model fitting as input. This was done to reduce computational intensity, since there are so many rounds of permutation.</p>
+<p>However, I think this may be artificially deflating coefficient values produced during permuted model fitting. The lambda chosen during “real” model fitting will produce a level of sparsity appropriate to the “real” data. However, when the same lambda is used to fit a model to <em>permuted</em> data, in which all of the “real” correlations are essentially broken, the sparsity level could be too intense. In other words, the correlation threshold needed to be retained in the model could be too high, and could drive almost every coefficient to 0. This would, in turn, make every “real” coefficient artifically larger than the permuted coefficients, making them all significant.</p>
+<p>The fix is pretty simple: use <code>cv.glmnet()</code> during permuted model fitting as well. This will, unfortunately, make the script even more computationally intensive and time-consuming to run.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>E5-coral</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_12_10_timeseries_EN_permutation.html</guid>
+  <pubDate>Wed, 10 Dec 2025 08:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Deep Dive Expression: Figure edits</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -7575,193 +7762,6 @@ font-style: inherit;">"Proportion"</span>)</span></code></pre></div>
  ]]></description>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_12_05_timeseries_EN_GbM.html</guid>
-  <pubDate>Fri, 05 Dec 2025 08:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Timeseries: Running the Elastic Net with GbM (instead of CpG methylation)</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_12_10_timeseries_EN_permutation.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-
-<p>Used Claude Opus 4.5 to, from my existing Elastic Net script (timeseries/M-multi-species/scripts/26.2-ElasticNet-scaling.R), make a script that uses permutation approach to evaluate predictor significance. The command used:</p>
-<blockquote class="blockquote">
-<p>I have an R script to take, as input, matrices of gene expression, lncRNA expression, miRNA expression, and methylation to use an Elastic Net regression to predict gene expression from the combined epigenetic predictor set of lncRNA, miRNA, and methylation. The script is attached below. I want to modify the script to be able to produce significance values for each predictor of a given gene (to evaluate confidence in that predictor actually being related to the gene), from a permutation approach. Please write a new script, based on the current script, which can do this. Please include explanations of each step and justification of statistical soundness.</p>
-</blockquote>
-<p>Think it works like this:</p>
-<ul>
-<li><p>runs EN on response/predictor set as usual (bootstrapping round, remove poorly-predicted response genes, and then re-runs bootstrapping again on the well-predicted stuff)</p></li>
-<li><p>Then, <u>for each gene</u>, runs n_rep many permutations:</p>
-<ul>
-<li><p>On each permutation, scrambles the response values (expression for the gene being run) and fits the EN model (keeping real predictors)</p></li>
-<li><p>For the given gene, compares the “real” predictor coefficients to the (mean?) permutation coefficients generated to calculate a pvalue (essentially [# perm&gt;real]/[# total perm])</p></li>
-<li><p>Applies FDR multiple-testing correction</p></li>
-</ul>
-<p>Escience office hours: Curtis Atkisson, Valentina Stenava (has used tensor decomp in work)</p></li>
-</ul>
-<p>To use, run following command (I’ve needed to do so in a conda environment when working in Raven):</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">Rscript <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">26.4</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>ElasticNet<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>permutation<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>sig.R \</span>
-<span id="cb1-2"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"ortholog_gene_counts_path.csv"</span> \  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># genes file (response)</span></span>
-<span id="cb1-3"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"miRNA_counts_path.txt"</span> \          <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># miRNA file (predictor)</span></span>
-<span id="cb1-4"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"lncRNA_counts_path.txt"</span> \         <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># lncRNA file (predictor)</span></span>
-<span id="cb1-5"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"methylation_matrix_path.tsv"</span> \    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># methylation file (predictor)</span></span>
-<span id="cb1-6"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"metadata_file_path.csv"</span> \         <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># metadata file</span></span>
-<span id="cb1-7"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"output_dir_path"</span> \                <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># output directory</span></span>
-<span id="cb1-8"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"list_samples_to_exclude"</span> \        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># (comma-separated string like "s1,s2")</span></span>
-<span id="cb1-9"><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.5</span> \   <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># alpha value for EN model (optional, default 0.5)</span></span>
-<span id="cb1-10"><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">25</span> \    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Num. replicates for first bootstrapping round (optional, default 50)</span></span>
-<span id="cb1-11"><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">50</span> \    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Num. replicates for second bootstrapping round (optional, default 50)</span></span>
-<span id="cb1-12"><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.5</span> \   <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># r^2 threshold for "well-predicted" genes (optional, default 0.5)</span></span>
-<span id="cb1-13"><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1000</span> \  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Num. permutations (optional, default 1000)</span></span>
-<span id="cb1-14"><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span> \     <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Num cores for parallel processing (optional, default 1)</span></span></code></pre></div>
-</div>
-<p>Now, rerunning with new inputs: Using gene set of orthologs involved in biomineralization, and GbM for the WGBS predictor input</p>
-<p>Output directory:</p>
-<section id="apul" class="level2">
-<h2 class="anchored" data-anchor-id="apul">Apul</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">((</span><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">r_enet_rscript</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">)</span> <span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">shedurkin@raven:~/timeseries_molecular/M-multi-species/scripts$</span> Rscript 26.4-ElasticNet-permutation-sig.R <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\</span></span>
-<span id="cb2-2"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/M-multi-species/output/33-biomin-pathway-counts/apul_biomin_counts.csv"</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\</span></span>
-<span id="cb2-3"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/M-multi-species/output/10.1-format-miRNA-counts-updated/Apul_miRNA_counts_formatted_updated.txt"</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\</span></span>
-<span id="cb2-4"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://gannet.fish.washington.edu/v1_web/owlshell/bu-github/timeseries_molecular/D-Apul/output/31.5-Apul-lncRNA-discovery/lncRNA_counts.clean.filtered.txt"</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\</span></span>
-<span id="cb2-5"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/D-Apul/output/40-Apul-Gene-Methylation/Apul-gene-methylation_75pct.tsv"</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\</span></span>
-<span id="cb2-6"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"../../M-multi-species/data/rna_metadata.csv"</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\</span></span>
-<span id="cb2-7"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"../output/26.4-ElasticNet-permutation-sig"</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\</span></span>
-<span id="cb2-8"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"ACR-225-TP1"</span> <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\</span></span>
-<span id="cb2-9">0.5 <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\</span></span>
-<span id="cb2-10">25 <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\</span></span>
-<span id="cb2-11">25 <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\</span></span>
-<span id="cb2-12">0.5 <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\</span></span>
-<span id="cb2-13">5000 <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\</span></span>
-<span id="cb2-14">10</span></code></pre></div>
-</div>
-<p>Output has a weird/potentially concerning pattern. Every non-zero coefficient has been assigned significance following the permutation significance evaluation.</p>
-<p>After looking through the output tables, I noticed that the permutation-based mean coefficients are all <em>extremely</em> small (very close to 0). I think the problem may be related to how the permuted model fits are being done. In the current code, there are 2 types of Elastic Net model fitting functions being used: <code>cv.glmnet()</code> and <code>glmnet()</code></p>
-<p>. The first, <code>cv.glmnet()</code> actually runs several iterations of the model with different lambda values, then choses the bestmodel fit for continued use. This is the version used during all of the bootstrapped model runs. <code>glmnet()</code> takes a lambda value as input and only runs the model once, using the provided lambda. This is the version currently being used during the permutation rounds, with the lambda value selected during “real” model fitting as input. This was done to reduce computational intensity, since there are so many rounds of permutation.</p>
-<p>However, I think this may be artificially deflating coefficient values produced during permuted model fitting. The lambda chosen during “real” model fitting will produce a level of sparsity appropriate to the “real” data. However, when the same lambda is used to fit a model to <em>permuted</em> data, in which all of the “real” correlations are essentially broken, the sparsity level could be too intense. In other words, the correlation threshold needed to be retained in the model could be too high, and could drive almost every coefficient to 0. This would, in turn, make every “real” coefficient artifically larger than the permuted coefficients, making them all significant.</p>
-<p>The fix is pretty simple: use <code>cv.glmnet()</code> during permuted model fitting as well. This will, unfortunately, make the script even more computationally intensive and time-consuming to run.</p>
-
-
-</section>
-
- ]]></description>
-  <category>E5-coral</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_12_10_timeseries_EN_permutation.html</guid>
   <pubDate>Fri, 05 Dec 2025 08:00:00 GMT</pubDate>
 </item>
 <item>

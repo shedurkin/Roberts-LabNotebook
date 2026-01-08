@@ -1,7 +1,7 @@
 ---
-title: "Timeseries: Running the Elastic Net with GbM (instead of CpG methylation)"
+title: "Timeseries: Running the Elastic Net with permutation-based sig"
 author: "Kathleen Durkin"
-date: "2025-12-05"
+date: "2025-12-10"
 categories: ["E5-coral"]
 format:
   html:
