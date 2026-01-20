@@ -10,7 +10,67 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Tue, 02 Dec 2025 08:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 15 Jan 2026 23:12:18 GMT</lastBuildDate>
+<item>
+  <title>Ideas/Questions Log</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_30_Ideas.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>My favorite part of science is constantly interacting with papers/presentations/people that prompt new ideas and questions about the stuff I’m working in, and I want to make sure I don’t forget things when that happens. This is my brain dump of thoughts/questions I want to remember and reference in the future!</p>
+<section id="ideas" class="level2">
+<h2 class="anchored" data-anchor-id="ideas">Ideas</h2>
+<ul>
+<li><p>2026/01/15: Read in FISH444 textbook about how organelle DNA is more susceptible to molecular leakage, which can lead to examples like:</p>
+<blockquote class="blockquote">
+<p>A Quebec population of brook trout share identical mtDNA to the Quebec Arctic char, but have retained brook trout alleles at diagnostic loci and are morphologically indistinguishable.</p>
+</blockquote>
+<p>So the trout have Arctic char mtDNA, but retained all brook trout nDNA. “mismatch” between an organism’s mtDNA and nuclear DNA can lead to reduced <strong>cytonuclear compatibility</strong>, which can manifest as reduced ATP production efficiency, increase in ROS, effects on energy-intensive process (e.g., thermal tolerance, reproduction), etc.</p>
+<p>Coral hybridize frequently. Is it possible that this means reduced cytonuclear comparability is of increased concern in corals? Or does coral mtDNA not vary much, leading to functional compatibility?</p>
+<ul>
+<li><p><a href="https://doi.org/10.1038/s41598-023-34059-1">Quattrini et al.&nbsp;2023</a> report that mt-nuclear discordance is highly prevelant in octocorals (and present to a lesser degree in hexacorals), and is likely related to introgression. They frame, however, as a [beneficial?] component of diversity in ocotocorals</p></li>
+<li><p>Interestingly, <a href="https://doi.org/10.1111/eva.13642">Iverson 2024</a> suggests pursuing assisted evolution via “Conservation Mitonuclear Replacment” (CmNR), which would entail “replacing the core metabolic machinery of a threatened species—the mitochondrial genome and key nuclear loci—with those from a closely related species or a divergent population, which may be better-adapted to climatic changes”</p></li>
+</ul></li>
+</ul>
+<!-- -->
+<ul>
+<li>2025/11/5: Methylated CpGs are more likely to mutate (deaminate into thymines). Does that mean that, at some point in the very distant future, species could “run out” of Cs? Are the mechanisms introducing/reintroducing cytosine residues to the genome keeping pace with those removing them?</li>
+<li>2025/10/14: Talked in FISH510 about potential role of spurious transcription in environmental response (prompted by Liew et al.&nbsp;2018 paper finding that OA treatment <img src="https://latex.codecogs.com/png.latex?%5Crightarrow"> increased methylation <img src="https://latex.codecogs.com/png.latex?%5Crightarrow"> decreased spurious transcription. Maybe an avenue for exploration with our existing transcriptomic data is to look at differential expression on the level of spurious transcripts. E.g. if spurious transcription decreased under stress, were the genes of a specific function dramatically less spuriously-transcribed?)</li>
+</ul>
+<!-- -->
+<ul>
+<li>At SICB, Jackie talked about how coral life history traits may cause “mismatch” of heat-acclimatized and non-acclimatized eggs and sperm (bc eggs are developing during summer/bleaching season, while sperm don’t start developing till months later). Study something similar in oysters (if their life history makes sense)? Interesting to think about possible <strong>epigenetic mismatch of gametes</strong>…</li>
+<li>study set of multiple stressors and/or multiple generations on methylation/expression/phenotype/etc. (e.g.&nbsp;Feiner et al.&nbsp;2022, set of chemical and thermal environmental stressors on daphnia to investigate epigenetic heritability)</li>
+<li>In same daphnia paper (Feiner er al.&nbsp;2022), saw responses to naturally occurring stressors were more inherited than those to non-naturally occurring ones — possible suggestion of <strong>underlying preadaptation towards certain epigenetic modifications</strong> that helps allow them to be passed on successfully and retained?</li>
+<li>keep in mind MHW conditions (sudden dramatic swings), not just slow warming creep of climate crisis</li>
+<li>If epigeneitc modification is heritable, what are <strong>epigenetic impacts of releasing captive/bred stock</strong> back into wild?</li>
+<li>Is it possible to study gene expression/methylation/ncRNA in <strong>ancient DNA</strong>? A study investigating gene expression or epigenetic modifications over the course of ancient climate change (e.g.&nbsp;end of last ice age) would be soooooo cool</li>
+</ul>
+</section>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">Questions</h2>
+<ul>
+<li><p>Need to look more into <strong>epigenetic reprogramming</strong> – how does it work, mechanistically? How does it differ among taxa, especially between model organisms and inverts? How would it differ among sexual reproduction and the many forms of asexual reproduction?</p></li>
+<li><p><strong>Heritability of ncRNA-related epigenetic changes?</strong></p></li>
+<li><p>While reading <a href="https://doi.org/10.1111/gcb.16880">George et al.&nbsp;2023</a>, I noticed they used heat shock to induce triploidy in their Pacific oysters (referenced Yamamoto et al.&nbsp;1988, which showed you can apply a heat shock of 35*C to 20*C-acclimated larvae during meiosis to induce triploidy). Raised the question of whether this can/does happen in the wild? And if it’s possible to achieve triploidy-inducing heat shock conditions in the wild, does that mean that climate change/increased incidence of MHW will begin shifting wild oyster populations to more triploids, and thus affect fertility/reproductive viability of wild pops?</p></li>
+<li><p>A common way of producing triploid oyster stocks nowadays is crossing tetraploid and diploid oysters (genertes 100% triploid offspring without the mortality associated with heat-shock or chemically induced triploidy). We know that induced-triploids are less robust to temperature/aerial exposure stress than diploids (George et al.&nbsp;2023). <strong>Is it possible that, in induced triploids, the heat/chemical shock at an early life stage epigenetically “primes” them poorly</strong>? Epigenetic modifications and genetic adaptations to stress are heritable, though, so how do tetraploidXdiploid triploids fare under stress conditions, and can this be modulated by the acclimation/adaptation of the parents?</p></li>
+<li><p>During some preliminary lit review on Pacific cod and MHW related mortality, I read that overall warming and early-year MHWs can affect the timing of marine primary production (e.g.&nbsp;phytoplankton reproduction and abundance). Oysters feed on phytoplankton through filter feeding – <strong>does that mean that, as oceans warm, oysters may be facing more starvation stress?</strong> Especially if there ends up being a “mismatch” of spawning and primary production?</p></li>
+<li><p><strong>Does polyploidy affect the way you analyze and compare gene expression data?</strong> Since a triploid would have an extra set of chromosomes, could that affect number of transcripts even if [# transcripts expressed per chromosome] didnt change?</p></li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>miscellaneous</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_30_Ideas.html</guid>
+  <pubDate>Thu, 15 Jan 2026 23:12:18 GMT</pubDate>
+</item>
 <item>
   <title>Molecular Notetaking: How Life Annotates its own Recipes</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -57,53 +117,6 @@
   <category>misc</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2025_12_02_FISH510_blog.html</guid>
   <pubDate>Tue, 02 Dec 2025 08:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Ideas/Questions Log</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_30_Ideas.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-
-<p>My favorite part of science is constantly interacting with papers/presentations/people that prompt new ideas and questions about the stuff I’m working in, and I want to make sure I don’t forget things when that happens. This is my brain dump of thoughts/questions I want to remember and reference in the future!</p>
-<section id="ideas" class="level2">
-<h2 class="anchored" data-anchor-id="ideas">Ideas</h2>
-<ul>
-<li>2025/11/5: Methylated CpGs are more likely to mutate (deaminate into thymines). Does that mean that, at some point in the very distant future, species could “run out” of Cs? Are the mechanisms introducing/reintroducing cytosine residues to the genome keeping pace with those removing them?</li>
-<li>2025/10/14: Talked in FISH510 about potential role of spurious transcription in environmental response (prompted by Liew et al.&nbsp;2018 paper finding that OA treatment <img src="https://latex.codecogs.com/png.latex?%5Crightarrow"> increased methylation <img src="https://latex.codecogs.com/png.latex?%5Crightarrow"> decreased spurious transcription. Maybe an avenue for exploration with our existing transcriptomic data is to look at differential expression on the level of spurious transcripts. E.g. if spurious transcription decreased under stress, were the genes of a specific function dramatically less spuriously-transcribed?)</li>
-</ul>
-<!-- -->
-<ul>
-<li>At SICB, Jackie talked about how coral life history traits may cause “mismatch” of heat-acclimatized and non-acclimatized eggs and sperm (bc eggs are developing during summer/bleaching season, while sperm don’t start developing till months later). Study something similar in oysters (if their life history makes sense)? Interesting to think about possible <strong>epigenetic mismatch of gametes</strong>…</li>
-<li>study set of multiple stressors and/or multiple generations on methylation/expression/phenotype/etc. (e.g.&nbsp;Feiner et al.&nbsp;2022, set of chemical and thermal environmental stressors on daphnia to investigate epigenetic heritability)</li>
-<li>In same daphnia paper (Feiner er al.&nbsp;2022), saw responses to naturally occurring stressors were more inherited than those to non-naturally occurring ones — possible suggestion of <strong>underlying preadaptation towards certain epigenetic modifications</strong> that helps allow them to be passed on successfully and retained?</li>
-<li>keep in mind MHW conditions (sudden dramatic swings), not just slow warming creep of climate crisis</li>
-<li>If epigeneitc modification is heritable, what are <strong>epigenetic impacts of releasing captive/bred stock</strong> back into wild?</li>
-<li>Is it possible to study gene expression/methylation/ncRNA in <strong>ancient DNA</strong>? A study investigating gene expression or epigenetic modifications over the course of ancient climate change (e.g.&nbsp;end of last ice age) would be soooooo cool</li>
-</ul>
-</section>
-<section id="questions" class="level2">
-<h2 class="anchored" data-anchor-id="questions">Questions</h2>
-<ul>
-<li><p>Need to look more into <strong>epigenetic reprogramming</strong> – how does it work, mechanistically? How does it differ among taxa, especially between model organisms and inverts? How would it differ among sexual reproduction and the many forms of asexual reproduction?</p></li>
-<li><p><strong>Heritability of ncRNA-related epigenetic changes?</strong></p></li>
-<li><p>While reading <a href="https://doi.org/10.1111/gcb.16880">George et al.&nbsp;2023</a>, I noticed they used heat shock to induce triploidy in their Pacific oysters (referenced Yamamoto et al.&nbsp;1988, which showed you can apply a heat shock of 35*C to 20*C-acclimated larvae during meiosis to induce triploidy). Raised the question of whether this can/does happen in the wild? And if it’s possible to achieve triploidy-inducing heat shock conditions in the wild, does that mean that climate change/increased incidence of MHW will begin shifting wild oyster populations to more triploids, and thus affect fertility/reproductive viability of wild pops?</p></li>
-<li><p>A common way of producing triploid oyster stocks nowadays is crossing tetraploid and diploid oysters (genertes 100% triploid offspring without the mortality associated with heat-shock or chemically induced triploidy). We know that induced-triploids are less robust to temperature/aerial exposure stress than diploids (George et al.&nbsp;2023). <strong>Is it possible that, in induced triploids, the heat/chemical shock at an early life stage epigenetically “primes” them poorly</strong>? Epigenetic modifications and genetic adaptations to stress are heritable, though, so how do tetraploidXdiploid triploids fare under stress conditions, and can this be modulated by the acclimation/adaptation of the parents?</p></li>
-<li><p>During some preliminary lit review on Pacific cod and MHW related mortality, I read that overall warming and early-year MHWs can affect the timing of marine primary production (e.g.&nbsp;phytoplankton reproduction and abundance). Oysters feed on phytoplankton through filter feeding – <strong>does that mean that, as oceans warm, oysters may be facing more starvation stress?</strong> Especially if there ends up being a “mismatch” of spawning and primary production?</p></li>
-<li><p><strong>Does polyploidy affect the way you analyze and compare gene expression data?</strong> Since a triploid would have an extra set of chromosomes, could that affect number of transcripts even if [# transcripts expressed per chromosome] didnt change?</p></li>
-</ul>
-
-
-</section>
-
- ]]></description>
-  <category>miscellaneous</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_30_Ideas.html</guid>
-  <pubDate>Thu, 06 Nov 2025 00:16:20 GMT</pubDate>
 </item>
 <item>
   <title>Opening an RStudio instance in Klone</title>

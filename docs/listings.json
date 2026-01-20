@@ -3,8 +3,8 @@
     "listing": "/daily_log.html",
     "items": [
       "/posts/daily_logs/2025/2025_06_24_steven_meeting.html",
-      "/posts/daily_logs/2026/January_2026_goals.html",
       "/posts/daily_logs/2026/January_2026_posts.html",
+      "/posts/daily_logs/2026/January_2026_goals.html",
       "/posts/daily_logs/2025/October_2025_posts.html",
       "/posts/daily_logs/2025/October_2025_goals.html",
       "/posts/daily_logs/2025/September_2025_goals.html",
@@ -64,6 +64,7 @@
   {
     "listing": "/posts/projects/E5_coral.html",
     "items": [
+      "/posts/projects/E5_coral/2026_01_08_timeseries_EN_fixing_permut.html",
       "/posts/projects/E5_coral/2025_12_10_timeseries_EN_permutation.html",
       "/posts/projects/E5_coral/2025_12_08_dde_plot_edits.html",
       "/posts/projects/E5_coral/2025_12_05_timeseries_EN_GbM.html",
@@ -138,8 +139,8 @@
   {
     "listing": "/posts/projects/misc.html",
     "items": [
-      "/posts/projects/misc/2025_12_02_FISH510_blog.html",
       "/posts/projects/misc/2024_01_30_Ideas.html",
+      "/posts/projects/misc/2025_12_02_FISH510_blog.html",
       "/posts/projects/misc/2025_02_19_klone_rstudio.html",
       "/posts/projects/misc/2025_01_29_EPIMAR_budgeting.html",
       "/posts/projects/misc/2024_09_16_hDNA_methylation.html",
