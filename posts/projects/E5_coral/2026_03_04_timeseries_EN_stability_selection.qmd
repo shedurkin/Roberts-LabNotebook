@@ -1,0 +1,441 @@
+---
+title: "Timeseries: Trying EN with stability selection for significance + eScience presentation"
+author: "Kathleen Durkin"
+date: "2026-03-04"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: FALSE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Biomineralization orthologs:
+
+"[https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/M-multi-species/output/33-biomin-pathway-counts/apul_biomin_counts.csv"](https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/M-multi-species/output/33-biomin-pathway-counts/apul_biomin_counts.csv%22)
+
+Apul:
+
+```{bash, eval=FALSE}
+Rscript 26.6-ElasticNet-stability-selection-2.R \
+"../../../timeseries-molecular-calcification/M-multi-species/output/33-biomin-pathway-counts/apul_biomin_counts.csv" \
+"../output/10.1-format-miRNA-counts-updated/Apul_miRNA_counts_formatted_updated.txt" \
+"../../D-Apul/output/31.5-Apul-lncRNA-discovery/lncRNA_counts.clean.filtered.txt" \
+"../../D-Apul/output/40-Apul-Gene-Methylation/Apul-gene-methylation.tsv" \
+"../../M-multi-species/data/rna_metadata.csv" \
+"../output/26.6-ElasticNet-stability-selection-2/Apul" \
+"ACR-225-TP1" \
+0.2 \
+10 \
+10 \
+0.5 \
+10 \
+10 \
+0.6
+```
+
+Peve:
+
+```{bash, eval=FALSE}
+Rscript 26.6-ElasticNet-stability-selection-2.R \
+"../../../timeseries-molecular-calcification/M-multi-species/output/33-biomin-pathway-counts/peve_biomin_counts.csv" \
+"../output/10.1-format-miRNA-counts-updated/Peve_miRNA_counts_formatted_updated.txt" \
+"../../E-Peve/output/12-Peve-lncRNA-discovery/lncRNA_counts.clean.filtered.txt" \
+"../../../timeseries-molecular-calcification/E-Peve/output/15-Peve-Gene-Methylation/Peve-gene-methylation_75pct.tsv" \
+"../../M-multi-species/data/rna_metadata.csv" \
+"../output/26.6-ElasticNet-stability-selection-2/Peve" \
+"POR-69-TP2,POR-69-TP3,POR-73-TP2,POR-74-TP4,POR-236-TP2,POR-262-TP4,POR-262-TP3" \
+0.2 \
+10 \
+10 \
+0.5 \
+10 \
+10 \
+0.6
+
+```
+
+Ptuh
+
+```{bash, eval=FALSE}
+Rscript 26.6-ElasticNet-stability-selection-2.R \
+"../../../timeseries-molecular-calcification/M-multi-species/output/33-biomin-pathway-counts/ptua_biomin_counts.csv" \
+"../output/10.1-format-miRNA-counts-updated/Ptuh_miRNA_counts_formatted_updated.txt" \
+"../../F-Ptua/output/06-Ptua-lncRNA-discovery/lncRNA_counts.clean.filtered.txt" \
+"../../../timeseries-molecular-calcification/F-Ptua/output/09-Ptua-Gene-Methylation/Ptua-gene-methylation_75pct.tsv" \
+"../../M-multi-species/data/rna_metadata.csv" \
+"../output/26.6-ElasticNet-stability-selection-2/Ptuh" \
+"POC-201-TP3,POC-222-TP2,POC-255-TP4,POC-259-TP3,POC-259-TP4,POC-42-TP1,POC-42-TP3" \
+0.2 \
+10 \
+10 \
+0.5 \
+10 \
+10 \
+0.6
+```
+
+
+
+
+
+
+
+
+
+## Load and filter to shared genes
+
+```{r load-data}
+library(tidyverse)
+
+files <- c(
+  Apul = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/26.6-ElasticNet-stability-selection-2/Apul/Apul_stabsel_results_nonzero.csv",
+  Peve = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/26.6-ElasticNet-stability-selection-2/Peve/Peve_stabsel_results_nonzero.csv",
+  Pmea = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/26.6-ElasticNet-stability-selection-2/Ptuh/Ptuh_stabsel_results_nonzero.csv"
+)
+
+df_list <- imap(files, ~ read_csv(.x) %>% mutate(Species = .y))
+df_all  <- bind_rows(df_list)
+
+shared_genes <- Reduce(intersect, map(df_list, ~ unique(.x$Gene)))
+cat("Shared genes:", length(shared_genes), "\n")
+
+df_all$Feature_Type <- ifelse(grepl("^lncRNA", df_all$Predictor), "lncRNA",
+                   ifelse(grepl("^Cluster", df_all$Predictor), "miRNA", 
+                          "GbM"))
+
+df_shared <- df_all %>%
+  filter(Gene %in% shared_genes)
+
+table(df_shared$Feature_Type)
+```
+
+# ---- TEMPLATE: copy and modify per species ----
+
+## Apul — All predictors
+
+```{r apul-all, fig.height=8}
+# Filter to species
+sp_df <- df_shared %>% filter(Species == "Apul")
+
+# Summarise |coef| per gene x feature type
+bar_df <- sp_df %>%
+  group_by(Gene, Feature_Type) %>%
+  summarise(Abs_Coef = sum(Mean_Abs_Coef), .groups = "drop")
+
+# Count distinct predictors per gene
+npred_df <- sp_df %>%
+  group_by(Gene) %>%
+  summarise(N_Predictors = n_distinct(Predictor))
+
+# Order genes by total magnitude
+gene_order <- bar_df %>%
+  group_by(Gene) %>%
+  summarise(Total = sum(Abs_Coef)) %>%
+  arrange(desc(Total)) %>%
+  pull(Gene)
+
+bar_df$Gene   <- factor(bar_df$Gene,   levels = gene_order)
+npred_df$Gene <- factor(npred_df$Gene, levels = gene_order)
+
+# Scaling factor to map N_Predictors onto the coef axis
+coef_max  <- max(bar_df %>% group_by(Gene) %>% summarise(T = sum(Abs_Coef)) %>% pull(T))
+npred_max <- max(npred_df$N_Predictors)
+scale_factor <- coef_max / npred_max
+
+ggplot(bar_df, aes(x = Gene, y = Abs_Coef, fill = Feature_Type)) +
+  geom_bar(stat = "identity") +
+  geom_point(data = npred_df,
+             aes(x = Gene, y = N_Predictors * scale_factor),
+             shape = 23, size = 2, fill = "black",
+             inherit.aes = FALSE) +
+  scale_y_continuous(
+    name = "Sum of |Coefficient|",
+    sec.axis = sec_axis(~ . / scale_factor, name = "N Predictors")
+  ) +
+  labs(title = "Apul — all predictors", x = "Gene", fill = "Feature Type") +
+  theme_minimal(base_size = 13) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 6),
+        legend.position = "bottom")
+```
+
+## Apul — Stable predictors only
+
+```{r apul-stable, fig.height=8}
+sp_df <- df_shared %>% filter(Species == "Apul", Stable == TRUE)
+
+bar_df <- sp_df %>%
+  group_by(Gene, Feature_Type) %>%
+  summarise(Abs_Coef = sum(Mean_Abs_Coef), .groups = "drop")
+
+npred_df <- sp_df %>%
+  group_by(Gene) %>%
+  summarise(N_Predictors = n_distinct(Predictor))
+
+gene_order <- bar_df %>%
+  group_by(Gene) %>%
+  summarise(Total = sum(Abs_Coef)) %>%
+  arrange(desc(Total)) %>%
+  pull(Gene)
+
+bar_df$Gene   <- factor(bar_df$Gene,   levels = gene_order)
+npred_df$Gene <- factor(npred_df$Gene, levels = gene_order)
+
+coef_max  <- max(bar_df %>% group_by(Gene) %>% summarise(T = sum(Abs_Coef)) %>% pull(T))
+npred_max <- max(npred_df$N_Predictors)
+scale_factor <- coef_max / npred_max
+
+ggplot(bar_df, aes(x = Gene, y = Abs_Coef, fill = Feature_Type)) +
+  geom_bar(stat = "identity") +
+  geom_point(data = npred_df,
+             aes(x = Gene, y = N_Predictors * scale_factor),
+             shape = 23, size = 2, fill = "black",
+             inherit.aes = FALSE) +
+  scale_y_continuous(
+    name = "Sum of |Coefficient|",
+    sec.axis = sec_axis(~ . / scale_factor, name = "N Predictors")
+  ) +
+  labs(title = "Apul — stable predictors only", x = "Gene", fill = "Feature Type") +
+  theme_minimal(base_size = 13) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 6),
+        legend.position = "bottom")
+```
+
+## Peve — All predictors
+
+```{r peve-all, fig.height=8}
+sp_df <- df_shared %>% filter(Species == "Peve")
+
+bar_df <- sp_df %>%
+  group_by(Gene, Feature_Type) %>%
+  summarise(Abs_Coef = sum(Mean_Abs_Coef), .groups = "drop")
+
+npred_df <- sp_df %>%
+  group_by(Gene) %>%
+  summarise(N_Predictors = n_distinct(Predictor))
+
+gene_order <- bar_df %>%
+  group_by(Gene) %>%
+  summarise(Total = sum(Abs_Coef)) %>%
+  arrange(desc(Total)) %>%
+  pull(Gene)
+
+bar_df$Gene   <- factor(bar_df$Gene,   levels = gene_order)
+npred_df$Gene <- factor(npred_df$Gene, levels = gene_order)
+
+coef_max  <- max(bar_df %>% group_by(Gene) %>% summarise(T = sum(Abs_Coef)) %>% pull(T))
+npred_max <- max(npred_df$N_Predictors)
+scale_factor <- coef_max / npred_max
+
+ggplot(bar_df, aes(x = Gene, y = Abs_Coef, fill = Feature_Type)) +
+  geom_bar(stat = "identity") +
+  geom_point(data = npred_df,
+             aes(x = Gene, y = N_Predictors * scale_factor),
+             shape = 23, size = 2, fill = "black",
+             inherit.aes = FALSE) +
+  scale_y_continuous(
+    name = "Sum of |Coefficient|",
+    sec.axis = sec_axis(~ . / scale_factor, name = "N Predictors")
+  ) +
+  labs(title = "Peve — all predictors", x = "Gene", fill = "Feature Type") +
+  theme_minimal(base_size = 13) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 6),
+        legend.position = "bottom")
+```
+
+## Peve — Stable predictors only
+
+```{r peve-stable, fig.height=8}
+sp_df <- df_all %>% filter(Species == "Peve", Stable == TRUE)
+
+bar_df <- sp_df %>%
+  group_by(Gene, Feature_Type) %>%
+  summarise(Abs_Coef = sum(Mean_Abs_Coef), .groups = "drop")
+
+npred_df <- sp_df %>%
+  group_by(Gene) %>%
+  summarise(N_Predictors = n_distinct(Predictor))
+
+gene_order <- bar_df %>%
+  group_by(Gene) %>%
+  summarise(Total = sum(Abs_Coef)) %>%
+  arrange(desc(Total)) %>%
+  pull(Gene)
+
+bar_df$Gene   <- factor(bar_df$Gene,   levels = gene_order)
+npred_df$Gene <- factor(npred_df$Gene, levels = gene_order)
+
+coef_max  <- max(bar_df %>% group_by(Gene) %>% summarise(T = sum(Abs_Coef)) %>% pull(T))
+npred_max <- max(npred_df$N_Predictors)
+scale_factor <- coef_max / npred_max
+
+feature_colors <- c(
+  "miRNA"  = "orange",
+  "lncRNA" = "#377EB8",
+  "GbM"    = "darkgrey"
+)
+
+ggplot(bar_df, aes(x = Gene, y = Abs_Coef, fill = Feature_Type)) +
+  geom_bar(stat = "identity") +
+  # geom_point(data = npred_df,
+  #            aes(x = Gene, y = N_Predictors * scale_factor),
+  #            shape = 23, size = 2, fill = "black",
+  #            inherit.aes = FALSE) +
+  scale_fill_manual(values = feature_colors) +
+  scale_y_continuous(
+    name = "Sum of |Coefficient|",
+    #sec.axis = sec_axis(~ . / scale_factor, name = "N Predictors")
+  ) +
+  labs(title = "Peve — stable predictors only", x = "Gene", fill = "Feature Type") +
+  theme_minimal(base_size = 13) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 6),
+        legend.position = "bottom")
+```
+
+## Pmea — All predictors
+
+```{r pmea-all, fig.height=8}
+sp_df <- df_shared %>% filter(Species == "Pmea")
+
+bar_df <- sp_df %>%
+  group_by(Gene, Feature_Type) %>%
+  summarise(Abs_Coef = sum(Mean_Abs_Coef), .groups = "drop")
+
+npred_df <- sp_df %>%
+  group_by(Gene) %>%
+  summarise(N_Predictors = n_distinct(Predictor))
+
+gene_order <- bar_df %>%
+  group_by(Gene) %>%
+  summarise(Total = sum(Abs_Coef)) %>%
+  arrange(desc(Total)) %>%
+  pull(Gene)
+
+bar_df$Gene   <- factor(bar_df$Gene,   levels = gene_order)
+npred_df$Gene <- factor(npred_df$Gene, levels = gene_order)
+
+coef_max  <- max(bar_df %>% group_by(Gene) %>% summarise(T = sum(Abs_Coef)) %>% pull(T))
+npred_max <- max(npred_df$N_Predictors)
+scale_factor <- coef_max / npred_max
+
+ggplot(bar_df, aes(x = Gene, y = Abs_Coef, fill = Feature_Type)) +
+  geom_bar(stat = "identity") +
+  geom_point(data = npred_df,
+             aes(x = Gene, y = N_Predictors * scale_factor),
+             shape = 23, size = 2, fill = "black",
+             inherit.aes = FALSE) +
+  scale_y_continuous(
+    name = "Sum of |Coefficient|",
+    sec.axis = sec_axis(~ . / scale_factor, name = "N Predictors")
+  ) +
+  labs(title = "Pmea — all predictors", x = "Gene", fill = "Feature Type") +
+  theme_minimal(base_size = 13) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 6),
+        legend.position = "bottom")
+```
+
+## Pmea — Stable predictors only
+
+```{r pmea-stable, fig.height=8}
+sp_df <- df_shared %>% filter(Species == "Pmea", Stable == TRUE)
+
+bar_df <- sp_df %>%
+  group_by(Gene, Feature_Type) %>%
+  summarise(Abs_Coef = sum(Mean_Abs_Coef), .groups = "drop")
+
+npred_df <- sp_df %>%
+  group_by(Gene) %>%
+  summarise(N_Predictors = n_distinct(Predictor))
+
+gene_order <- bar_df %>%
+  group_by(Gene) %>%
+  summarise(Total = sum(Abs_Coef)) %>%
+  arrange(desc(Total)) %>%
+  pull(Gene)
+
+bar_df$Gene   <- factor(bar_df$Gene,   levels = gene_order)
+npred_df$Gene <- factor(npred_df$Gene, levels = gene_order)
+
+coef_max  <- max(bar_df %>% group_by(Gene) %>% summarise(T = sum(Abs_Coef)) %>% pull(T))
+npred_max <- max(npred_df$N_Predictors)
+scale_factor <- coef_max / npred_max
+
+ggplot(bar_df, aes(x = Gene, y = Abs_Coef, fill = Feature_Type)) +
+  geom_bar(stat = "identity") +
+  geom_point(data = npred_df,
+             aes(x = Gene, y = N_Predictors * scale_factor),
+             shape = 23, size = 2, fill = "black",
+             inherit.aes = FALSE) +
+  scale_y_continuous(
+    name = "Sum of |Coefficient|",
+    sec.axis = sec_axis(~ . / scale_factor, name = "N Predictors")
+  ) +
+  labs(title = "Pmea — stable predictors only", x = "Gene", fill = "Feature Type") +
+  theme_minimal(base_size = 13) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 6),
+        legend.position = "bottom")
+```
+
+
+
+
+
+
+
+
+# ---- TEMPLATE: copy and modify per species ----
+# barplots
+
+```{r fig.height=8}
+barplot_function <- function(df, species_prefix, stable){
+  sp_df <- df %>% filter(Species == species_prefix, Stable == stable)
+  
+  bar_df <- sp_df %>%
+    mutate(Direction = if_else(Mean_Coef >= 0, "pos", "neg")) %>%
+    group_by(Gene, Feature_Type, Direction) %>%
+    summarise(Coef_Sum = sum(Mean_Coef), .groups = "drop")
+  
+  gene_order <- bar_df %>%
+    group_by(Gene) %>%
+    summarise(Net = sum(Coef_Sum)) %>%
+    arrange(desc(Gene)) %>%
+    pull(Gene)
+  
+  bar_df$Gene <- factor(bar_df$Gene, levels = gene_order)
+  
+  feature_colors <- c(
+    "miRNA"  = "#E69F00",
+    "lncRNA" = "#377EB8",
+    "GbM"    = "#009E73"
+  )
+  
+  ggplot(bar_df, aes(x = Gene, y = Coef_Sum, fill = Feature_Type)) +
+    geom_bar(stat = "identity") +
+    geom_hline(yintercept = 0, linewidth = 0.5) +
+    scale_fill_manual(values = feature_colors) +
+    labs(title = paste0(species_prefix, 
+                        ifelse(stable, " — stable predictors only", " — all predictors")),
+         x = "Gene", y = "Sum of Coefficients", fill = "Feature Type") +
+    theme_minimal(base_size = 13) +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 6),
+          legend.position = "bottom") +
+    ylim(c(-1, 1.6))
+}
+
+barplot_function(df_shared, "Apul", TRUE)
+barplot_function(df_shared, "Peve", TRUE)
+barplot_function(df_shared, "Pmea", TRUE)
+
+barplot_function(df_all, "Apul", TRUE)
+barplot_function(df_all, "Peve", TRUE)
+barplot_function(df_all, "Pmea", TRUE)
+```
+
+
+
+
+
+
+

@@ -1,0 +1,15 @@
+{
+  "hash": "efe788da9a36d2214c0282334152d950",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Timeseries: Fixing EN with permutation-based sig\"\nauthor: \"Kathleen Durkin\"\ndate: \"2026-01-08\"\ncategories: [\"E5-coral\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: TRUE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\nAs discussed in\n\nWas planning on running this in Klone with a higher \\# of cores, since it'll be more computationally intensive, but I'm (as usual) hitting an annoying package deficiency in Klone. One of the script's required packages, `WGCNA`, couldn't be installed on Klone because some of its dependencies aren't available for Klone's version of R:\n\n```         \nERROR: dependencies ‘impute’, ‘preprocessCore’ are not available for package ‘WGCNA’\n```\n\nThis can probably be remedied with help from Sam, but for now I just want to make sure the updated script will operate correctly, so I'm just going to try running it from Raven with a reduced input set. (The most obvious choice for reducing computational intensity during trial runs might be to lower the \\# of permutes, but this could prevent any features from being deemed significant post-FDR)\n\n\"[https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/M-multi-species/output/33-biomin-pathway-counts/apul_biomin_counts.csv\"](https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/M-multi-species/output/33-biomin-pathway-counts/apul_biomin_counts.csv%22)\n\nSubsetted to just the first 50 genes in this set\n\n\n::: {.cell}\n\n```{.bash .cell-code}\nRscript 26.5-ElasticNet-permutation-sig.R \\\n\"../output/26.5-ElasticNet-permutation-sig/SUBSET50_apul_biomin_counts.csv\" \\\n\"../output/10.1-format-miRNA-counts-updated/Apul_miRNA_counts_formatted_updated.txt\" \\\n\"../../D-Apul/output/31.5-Apul-lncRNA-discovery/lncRNA_counts.clean.filtered.txt\" \\\n\"../../D-Apul/output/40-Apul-Gene-Methylation/Apul-gene-methylation.tsv\" \\\n\"../../M-multi-species/data/rna_metadata.csv\" \\\n\"../output/26.5-ElasticNet-permutation-sig\" \\\n\"ACR-225-TP1\" \\\n0.5 \\\n5 \\\n5 \\\n0.5 \\\n5000 \\\n10\n```\n:::\n\n\nI did end up doing this, but I just realized that I can use a conda environment when working in Klone to sidestep the package install issues. Will start a full run on Klone with higher number of cores\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

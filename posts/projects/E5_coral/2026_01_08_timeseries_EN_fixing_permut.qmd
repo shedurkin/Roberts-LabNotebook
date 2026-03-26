@@ -1,0 +1,46 @@
+---
+title: "Timeseries: Fixing EN with permutation-based sig"
+author: "Kathleen Durkin"
+date: "2026-01-08"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+As discussed in
+
+Was planning on running this in Klone with a higher \# of cores, since it'll be more computationally intensive, but I'm (as usual) hitting an annoying package deficiency in Klone. One of the script's required packages, `WGCNA`, couldn't be installed on Klone because some of its dependencies aren't available for Klone's version of R:
+
+```         
+ERROR: dependencies ‘impute’, ‘preprocessCore’ are not available for package ‘WGCNA’
+```
+
+This can probably be remedied with help from Sam, but for now I just want to make sure the updated script will operate correctly, so I'm just going to try running it from Raven with a reduced input set. (The most obvious choice for reducing computational intensity during trial runs might be to lower the \# of permutes, but this could prevent any features from being deemed significant post-FDR)
+
+"[https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/M-multi-species/output/33-biomin-pathway-counts/apul_biomin_counts.csv"](https://raw.githubusercontent.com/urol-e5/timeseries-molecular-calcification/refs/heads/main/M-multi-species/output/33-biomin-pathway-counts/apul_biomin_counts.csv%22)
+
+Subsetted to just the first 50 genes in this set
+
+```{r, engine='bash', eval=FALSE}
+Rscript 26.5-ElasticNet-permutation-sig.R \
+"../output/26.5-ElasticNet-permutation-sig/SUBSET50_apul_biomin_counts.csv" \
+"../output/10.1-format-miRNA-counts-updated/Apul_miRNA_counts_formatted_updated.txt" \
+"../../D-Apul/output/31.5-Apul-lncRNA-discovery/lncRNA_counts.clean.filtered.txt" \
+"../../D-Apul/output/40-Apul-Gene-Methylation/Apul-gene-methylation.tsv" \
+"../../M-multi-species/data/rna_metadata.csv" \
+"../output/26.5-ElasticNet-permutation-sig" \
+"ACR-225-TP1" \
+0.5 \
+5 \
+5 \
+0.5 \
+5000 \
+10
+```
+
+I did end up doing this, but I just realized that I can use a conda environment when working in Klone to sidestep the package install issues. Will start a full run on Klone with higher number of cores
