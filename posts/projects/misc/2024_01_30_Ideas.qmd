@@ -12,6 +12,10 @@ My favorite part of science is constantly interacting with papers/presentations/
 
 ## Ideas
 
+-   2026/03/05: In CSE 527, professor mentioned how it's much harder to get papers published these days because AI has led to more submissions (more efficient research), which means many journals are overwhelmed. I'm wondering, could this mean that journals might start trending towards publishing authors who are already highly-published, and thus have some degree of "confidence" associated with their name? (or rather, might this trend become more pronounced than it probably already is?)
+
+<!-- -->
+
 -   2026/01/15: Read in FISH444 textbook about how organelle DNA is more susceptible to molecular leakage, which can lead to examples like:
 
     > A Quebec population of brook trout share identical mtDNA to the Quebec Arctic char, but have retained brook trout alleles at diagnostic loci and are morphologically indistinguishable.
