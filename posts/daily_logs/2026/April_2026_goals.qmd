@@ -1,0 +1,50 @@
+---
+title: "April 2026 Goals: Part 1"
+author: "Kathleen Durkin"
+date: "April 6, 2026"
+categories: ["daily log"]
+format:
+  html:
+    code-fold: true
+execute:
+  warning: false
+---
+
+At the end of the end of March (end of the winter quarter) I outlined the following goals for my upcoming weeks:
+
+> This quarter, I need to:
+>
+> Degree stuff:
+>
+> -   finish incorporating Kerry's MS thesis proposal comments and get it back out to committee
+> -   draft a PhD dissertation proposal, get committee comments, and incorporate
+> -   finalize DDE draft and get it submitted somewhere
+> -   finalize remaining bypass package materials
+>
+> Other:
+>
+> -   finalize and give CSE 500 public research talk
+> -   register and source travel funding for ICRS this summer
+> -   put together ICRS presentation
+>
+> **For the next \~2 weeks I'll focus on the most time-sensitive: registering and applying for funding for ICRS; finalizing the CSE 500 talk (I have a practice run scheduled for April 2); and the MS thesis proposal.**
+
+## Progress
+
+**I completed all of my goals for the last two weeks!** I [registered for ICRS]{.underline}, booked preliminary accommodations (which are fully refundable thru July 17), and [submitted travel funding applications]{.underline} (details [here](../../projects/E5_coral/2026_03_25_ICRS_prep.qmd)). I [finished the CENV 500 presentation]{.underline} and gave my my practice talk -- feedback was very positive, and I have minimal tweaks to make before the real deal on April 17. Finally, I [finished incorporating committee feedback on my MS thesis proposal]{.underline} today and sent it back to committee for any additional comments! This is super exciting for me, as I'm really trying to finish the bypass package this quarter.
+
+## Next 2 weeks (April 6 - April 17)
+
+For the next two weeks I want to (in no particular order):
+
+-   Incorporate final comments on my CENV 500 talk and then give the Town Hall talk (April 17) -- invite lab members!
+-   Outline of PhD proposal for bypass package
+-   Document and familiarize myself with all remaining steps/deliverables for bypassing
+-   Complete all follow-up analyses/tasks for the DDE manuscript that have been sitting on the back burner (e.g., re-running epimachinery analysis, fixing figures, etc)
+
+## Full-month goal
+
+By the end of April I'd ideally like to:
+
+-   have a draft of PhD proposal to send to committee
+-   have finalized updated draft of DDE manuscript with coauthor comments

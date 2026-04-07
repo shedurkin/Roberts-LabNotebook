@@ -12,6 +12,8 @@ engine: knitr
 bibliography: ../../../references.bib
 ---
 
+TLDR: Applying for travle funding for ICRS this summer in Auckland, New Zealand. More details on trip plannign [here](https://docs.google.com/document/d/1ddZ2nDEAb9HWEInXYi2vnGIoFtsWaTKq6x2OjHzwDf8/edit?usp=sharing).
+
 I had an abstract accepted for presentation at the International Coral Reef Symposium (ICRS) this summer in Auckland, New Zealand! This is super exciting, because I've been wanting to attend ICRS since their last meeting four years ago, in 2022. It does, however, mean I'll need to source a *lot* of travel funding, since the E5 NSF grant concluded at the end of last summer. 
 
 Today I officially registered for ICRS (\$380) and confirmed that I will be presenting. I also became an ICRS student member first (\$40), because it ended up net lowering the registration cost.
