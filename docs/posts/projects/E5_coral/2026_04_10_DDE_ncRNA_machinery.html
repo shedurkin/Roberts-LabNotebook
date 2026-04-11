@@ -1,0 +1,2649 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Kathleen Durkin">
+<meta name="dcterms.date" content="2026-04-10">
+
+<title>Deep Dive Expression: compiled ncRNA machinery list – Kathleen’s Lab Notebook</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-b515dea5baab39ffcfcd4bae179e3bdb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-195886546b2eb1f67ede645fd062ce19.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-b515dea5baab39ffcfcd4bae179e3bdb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Kathleen’s Lab Notebook</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../daily_log.html"> 
+<span class="menu-text">Daily Notebook Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/shedurkin"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:kdurkin1@uw.edu"> <i class="bi bi-envelope" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Deep Dive Expression: compiled ncRNA machinery list</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">E5-coral</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page-left">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Kathleen Durkin </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 10, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#protein-machinery-involved-in-mirna-and-lncrna-biogenesis-and-function" id="toc-protein-machinery-involved-in-mirna-and-lncrna-biogenesis-and-function" class="nav-link active" data-scroll-target="#protein-machinery-involved-in-mirna-and-lncrna-biogenesis-and-function">Protein Machinery Involved in miRNA and lncRNA Biogenesis and Function</a>
+  <ul class="collapse">
+  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents">TABLE OF CONTENTS</a></li>
+  <li><a href="#mirna-biogenesis-nuclear-step" id="toc-mirna-biogenesis-nuclear-step" class="nav-link" data-scroll-target="#mirna-biogenesis-nuclear-step">1. miRNA Biogenesis — Nuclear Step</a>
+  <ul class="collapse">
+  <li><a href="#the-microprocessor-complex" id="toc-the-microprocessor-complex" class="nav-link" data-scroll-target="#the-microprocessor-complex">1.1 The Microprocessor Complex</a></li>
+  </ul></li>
+  <li><a href="#mirna-biogenesis-nuclear-export" id="toc-mirna-biogenesis-nuclear-export" class="nav-link" data-scroll-target="#mirna-biogenesis-nuclear-export">2. miRNA Biogenesis — Nuclear Export</a></li>
+  <li><a href="#mirna-biogenesis-cytoplasmic-step" id="toc-mirna-biogenesis-cytoplasmic-step" class="nav-link" data-scroll-target="#mirna-biogenesis-cytoplasmic-step">3. miRNA Biogenesis — Cytoplasmic Step</a>
+  <ul class="collapse">
+  <li><a href="#the-dicer-complex" id="toc-the-dicer-complex" class="nav-link" data-scroll-target="#the-dicer-complex">3.1 The Dicer Complex</a></li>
+  </ul></li>
+  <li><a href="#mirna-function-risc-and-effector-machinery" id="toc-mirna-function-risc-and-effector-machinery" class="nav-link" data-scroll-target="#mirna-function-risc-and-effector-machinery">4. miRNA Function — RISC and Effector Machinery</a>
+  <ul class="collapse">
+  <li><a href="#core-risc-components" id="toc-core-risc-components" class="nav-link" data-scroll-target="#core-risc-components">4.1 Core RISC Components</a></li>
+  <li><a href="#gw182tnrc6-scaffolding-proteins" id="toc-gw182tnrc6-scaffolding-proteins" class="nav-link" data-scroll-target="#gw182tnrc6-scaffolding-proteins">4.2 GW182/TNRC6 Scaffolding Proteins</a></li>
+  <li><a href="#deadenylation-machinery-recruited-by-tnrc6" id="toc-deadenylation-machinery-recruited-by-tnrc6" class="nav-link" data-scroll-target="#deadenylation-machinery-recruited-by-tnrc6">4.3 Deadenylation Machinery (Recruited by TNRC6)</a></li>
+  <li><a href="#decapping-53-decay-machinery" id="toc-decapping-53-decay-machinery" class="nav-link" data-scroll-target="#decapping-53-decay-machinery">4.4 Decapping &amp; 5′–3′ Decay Machinery</a></li>
+  <li><a href="#risc-loading-chaperones" id="toc-risc-loading-chaperones" class="nav-link" data-scroll-target="#risc-loading-chaperones">4.5 RISC Loading Chaperones</a></li>
+  <li><a href="#translational-repression" id="toc-translational-repression" class="nav-link" data-scroll-target="#translational-repression">4.6 Translational Repression</a></li>
+  </ul></li>
+  <li><a href="#mirna-biogenesis-accessoryregulatory-proteins" id="toc-mirna-biogenesis-accessoryregulatory-proteins" class="nav-link" data-scroll-target="#mirna-biogenesis-accessoryregulatory-proteins">5. miRNA Biogenesis — Accessory/Regulatory Proteins</a>
+  <ul class="collapse">
+  <li><a href="#microprocessor-associated-nuclear-regulators" id="toc-microprocessor-associated-nuclear-regulators" class="nav-link" data-scroll-target="#microprocessor-associated-nuclear-regulators">5.1 Microprocessor-Associated (Nuclear) Regulators</a></li>
+  <li><a href="#cytoplasmic-regulators" id="toc-cytoplasmic-regulators" class="nav-link" data-scroll-target="#cytoplasmic-regulators">5.2 Cytoplasmic Regulators</a></li>
+  </ul></li>
+  <li><a href="#lncrna-biogenesis-transcription-processing" id="toc-lncrna-biogenesis-transcription-processing" class="nav-link" data-scroll-target="#lncrna-biogenesis-transcription-processing">6. lncRNA Biogenesis — Transcription &amp; Processing</a>
+  <ul class="collapse">
+  <li><a href="#core-transcription-processing-machinery-shared-with-mrna" id="toc-core-transcription-processing-machinery-shared-with-mrna" class="nav-link" data-scroll-target="#core-transcription-processing-machinery-shared-with-mrna">6.1 Core Transcription &amp; Processing Machinery (Shared with mRNA)</a></li>
+  <li><a href="#lncrna-specific-processing-machinery" id="toc-lncrna-specific-processing-machinery" class="nav-link" data-scroll-target="#lncrna-specific-processing-machinery">6.2 lncRNA-Specific Processing Machinery</a></li>
+  <li><a href="#nuclear-export-of-lncrnas" id="toc-nuclear-export-of-lncrnas" class="nav-link" data-scroll-target="#nuclear-export-of-lncrnas">6.3 Nuclear Export of lncRNAs</a></li>
+  <li><a href="#nuclear-surveillance-degradation" id="toc-nuclear-surveillance-degradation" class="nav-link" data-scroll-target="#nuclear-surveillance-degradation">6.4 Nuclear Surveillance / Degradation</a></li>
+  </ul></li>
+  <li><a href="#lncrna-function-chromatin-interacting-machinery" id="toc-lncrna-function-chromatin-interacting-machinery" class="nav-link" data-scroll-target="#lncrna-function-chromatin-interacting-machinery">7. lncRNA Function — Chromatin-Interacting Machinery</a>
+  <ul class="collapse">
+  <li><a href="#polycomb-repressive-complex-2-prc2" id="toc-polycomb-repressive-complex-2-prc2" class="nav-link" data-scroll-target="#polycomb-repressive-complex-2-prc2">7.1 Polycomb Repressive Complex 2 (PRC2)</a></li>
+  <li><a href="#swisnf-baf-chromatin-remodeling-complex" id="toc-swisnf-baf-chromatin-remodeling-complex" class="nav-link" data-scroll-target="#swisnf-baf-chromatin-remodeling-complex">7.2 SWI/SNF (BAF) Chromatin Remodeling Complex</a></li>
+  <li><a href="#histone-modification-complexes-beyond-prc2" id="toc-histone-modification-complexes-beyond-prc2" class="nav-link" data-scroll-target="#histone-modification-complexes-beyond-prc2">7.3 Histone Modification Complexes (Beyond PRC2)</a></li>
+  <li><a href="#nuclear-organization-proteins" id="toc-nuclear-organization-proteins" class="nav-link" data-scroll-target="#nuclear-organization-proteins">7.4 Nuclear Organization Proteins</a></li>
+  </ul></li>
+  <li><a href="#lncrna-function-post-transcriptional-cytoplasmic" id="toc-lncrna-function-post-transcriptional-cytoplasmic" class="nav-link" data-scroll-target="#lncrna-function-post-transcriptional-cytoplasmic">8. lncRNA Function — Post-Transcriptional &amp; Cytoplasmic</a>
+  <ul class="collapse">
+  <li><a href="#lncrna-mirna-interactions-cerna-sponge-mechanism" id="toc-lncrna-mirna-interactions-cerna-sponge-mechanism" class="nav-link" data-scroll-target="#lncrna-mirna-interactions-cerna-sponge-mechanism">8.1 lncRNA-miRNA Interactions (ceRNA / Sponge Mechanism)</a></li>
+  <li><a href="#lncrna-protein-interactions-in-cytoplasm" id="toc-lncrna-protein-interactions-in-cytoplasm" class="nav-link" data-scroll-target="#lncrna-protein-interactions-in-cytoplasm">8.2 lncRNA-Protein Interactions in Cytoplasm</a></li>
+  </ul></li>
+  <li><a href="#shared-machinery-between-mirna-and-lncrna-pathways" id="toc-shared-machinery-between-mirna-and-lncrna-pathways" class="nav-link" data-scroll-target="#shared-machinery-between-mirna-and-lncrna-pathways">9. Shared Machinery Between miRNA and lncRNA Pathways</a></li>
+  <li><a href="#final-list" id="toc-final-list" class="nav-link" data-scroll-target="#final-list">10. FINAL LIST</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">11. References</a>
+  <ul class="collapse">
+  <li><a href="#primary-reviews-cited" id="toc-primary-reviews-cited" class="nav-link" data-scroll-target="#primary-reviews-cited">Primary Reviews Cited</a></li>
+  <li><a href="#key-primary-research-articles" id="toc-key-primary-research-articles" class="nav-link" data-scroll-target="#key-primary-research-articles">Key Primary Research Articles</a></li>
+  </ul></li>
+  <li><a href="#addendum-notes-for-coral-epigenetics-research" id="toc-addendum-notes-for-coral-epigenetics-research" class="nav-link" data-scroll-target="#addendum-notes-for-coral-epigenetics-research">ADDENDUM: Notes for Coral Epigenetics Research</a>
+  <ul class="collapse">
+  <li><a href="#considerations-for-non-model-organism-work" id="toc-considerations-for-non-model-organism-work" class="nav-link" data-scroll-target="#considerations-for-non-model-organism-work">Considerations for Non-Model Organism Work</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+
+
+<p>Used GLM 5.1 tool to compile list of protein machinery involved in the biogenisis and function of miRNA and lncRNA in corals. This will be used to put together an ncRNA machinery fasta file, to be used in conjunction with Steven/Hollie’s <code>Machinery.fasta</code>, to look for miRNA targets that are involved in epigenetic function. This is necessary as the <code>Machinery.fasta</code> file appears to exclude machinery related to ncRNAs, instead focusing on the “classic” epigenetic features (DNA methylation, chromatin modification, and histone variants and modifications)</p>
+<p>Prompt used:</p>
+<blockquote class="blockquote">
+<p>I am a molecular ecology scientist researching epigenetics in corals. Please compile a list of protein machinery that are involved in miRNA and lncRNA biogenisis and function. Provide all relevant sources that you utilize. Add a column that details the function/contribution of each protein/complex in the context of miRNA and lncRNA biogenisis and function.</p>
+</blockquote>
+<section id="protein-machinery-involved-in-mirna-and-lncrna-biogenesis-and-function" class="level1">
+<h1>Protein Machinery Involved in miRNA and lncRNA Biogenesis and Function</h1>
+<hr>
+<section id="table-of-contents" class="level2">
+<h2 class="anchored" data-anchor-id="table-of-contents">TABLE OF CONTENTS</h2>
+<ol type="1">
+<li><a href="#1-mirna-biogenesis--nuclear-step">miRNA Biogenesis — Nuclear Step</a></li>
+<li><a href="#2-mirna-biogenesis--nuclear-export">miRNA Biogenesis — Nuclear Export</a></li>
+<li><a href="#3-mirna-biogenesis--cytoplasmic-step">miRNA Biogenesis — Cytoplasmic Step</a></li>
+<li><a href="#4-mirna-function--risc-and-effector-machinery">miRNA Function — RISC and Effector Machinery</a></li>
+<li><a href="#5-mirna-biogenesis--accessoryregulatory-proteins">miRNA Biogenesis — Accessory/Regulatory Proteins</a></li>
+<li><a href="#6-lncrna-biogenesis--transcription--processing">lncRNA Biogenesis — Transcription &amp; Processing</a></li>
+<li><a href="#7-lncrna-function--chromatin-interacting-machinery">lncRNA Function — Chromatin-Interacting Machinery</a></li>
+<li><a href="#8-lncrna-function--post-transcriptional--cytoplasmic">lncRNA Function — Post-Transcriptional &amp; Cytoplasmic</a></li>
+<li><a href="#9-shared-machinery-between-mirna-and-lncrna-pathways">Shared Machinery Between miRNA and lncRNA Pathways</a></li>
+<li><a href="#10-references">References</a></li>
+</ol>
+<hr>
+</section>
+<section id="mirna-biogenesis-nuclear-step" class="level2">
+<h2 class="anchored" data-anchor-id="mirna-biogenesis-nuclear-step">1. miRNA Biogenesis — Nuclear Step</h2>
+<section id="the-microprocessor-complex" class="level3">
+<h3 class="anchored" data-anchor-id="the-microprocessor-complex">1.1 The Microprocessor Complex</h3>
+<p>The Microprocessor is the core nuclear complex that cleaves primary miRNA transcripts (pri-miRNAs) into precursor miRNAs (pre-miRNAs). It is minimally composed of:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Protein</th>
+<th>Gene</th>
+<th>Function</th>
+<th>Contribution to miRNA Pathway</th>
+<th>Key References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>DROSHA</strong></td>
+<td><em>DROSHA</em> (formerly <em>RNASEN</em>)</td>
+<td>Class 2 RNase III endonuclease; catalytic subunit that cleaves pri-miRNA at the base of the hairpin stem ~11 bp from the ssRNA-dsRNA junction, generating a ~70 nt pre-miRNA with a 2-nt 3′ overhang</td>
+<td><strong>Gatekeeper of canonical miRNA biogenesis.</strong> Acts at the first committed step — without DROSHA cleavage, no canonical miRNA can be produced. DROSHA determines the 5′ and 3′ boundaries of the mature miRNA by its precise cleavage position, directly defining the miRNA seed sequence and hence target specificity. Loss of DROSHA abolishes virtually all canonical miRNA production, leading to embryonic lethality and impaired stem cell differentiation. The 2-nt 3′ overhang it generates is the recognition signal for the next step (Exportin-5 and Dicer), coupling nuclear and cytoplasmic processing.</td>
+<td>Lee et al.&nbsp;(2003) <em>Nature</em> 425:415–419; Han et al.&nbsp;(2004) <em>Genes Dev.</em> 18:3016–3027</td>
+</tr>
+<tr class="even">
+<td><strong>DGCR8</strong></td>
+<td><em>DGCR8</em> (DiGeorge syndrome critical region 8; aka Pasha in <em>Drosophila</em> and <em>C. elegans</em>)</td>
+<td>dsRNA-binding protein cofactor; dimerizes and stabilizes DROSHA; recognizes the ssRNA-dsRNA junction of pri-miRNA via its heme-binding domain and dsRBDs; essential for proper positioning of DROSHA on pri-miRNA substrates</td>
+<td><strong>Essential orientation factor for the Microprocessor.</strong> DGCR8 determines WHERE DROSHA cleaves by recognizing the junction between the single-stranded flanking RNA and the double-stranded stem of the pri-miRNA hairpin. Without DGCR8, DROSHA cannot accurately locate its cleavage site, leading to aberrant or absent pre-miRNA production. DGCR8 also stabilizes DROSHA protein (preventing its degradation) and heme binding to DGCR8 stimulates dimerization and processing activity. In an auto-regulatory feedback loop, DROSHA cleaves DGCR8 mRNA to control DGCR8 levels, ensuring homeostatic balance of Microprocessor output.</td>
+<td>Gregory et al.&nbsp;(2004) <em>Nature</em> 432:235–240; Han et al.&nbsp;(2004) <em>Genes Dev.</em> 18:3016–3027; Nguyen et al.&nbsp;(2015) <em>Cell</em> 161:1374–1387; Partin et al.&nbsp;(2020) <em>Nat. Commun.</em> 8:1737</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Structural notes:</strong> The functional Microprocessor is a heterotrimer of one DROSHA and two DGCR8 molecules. DGCR8 dimerization is stimulated by heme binding. DROSHA contains two RNase III domains (RIIID1 and RIIID2) that form the catalytic center, a central domain (CED), an arginine/serine-rich (R/S-rich) domain, and C-terminal dsRBDs. DGCR8 contains an N-terminal heme-binding domain, dsRBDs, and a C-terminal tail (CTT) that stabilizes DROSHA. DROSHA and DGCR8 engage in an auto-regulatory feedback loop: DROSHA cleaves DGCR8 mRNA to control DGCR8 levels, while DGCR8 stabilizes DROSHA protein (Han et al.&nbsp;2009 <em>Cell</em> 136:75–84).</p>
+<hr>
+</section>
+</section>
+<section id="mirna-biogenesis-nuclear-export" class="level2">
+<h2 class="anchored" data-anchor-id="mirna-biogenesis-nuclear-export">2. miRNA Biogenesis — Nuclear Export</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Protein</th>
+<th>Gene</th>
+<th>Function</th>
+<th>Contribution to miRNA Pathway</th>
+<th>Key References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Exportin-5 (XPO5)</strong></td>
+<td><em>XPO5</em></td>
+<td>Karyopherin-β family nuclear export receptor; recognizes the ~2-nt 3′ overhang and dsRNA stem of pre-miRNA; transports pre-miRNA from nucleus to cytoplasm in a RanGTP-dependent manner; also stabilizes pre-miRNA by protecting from nuclear degradation</td>
+<td><strong>Essential nuclear-cytoplasmic shuttle for miRNA maturation.</strong> XPO5 is the sole export receptor for pre-miRNAs and bridges the nuclear and cytoplasmic steps of miRNA biogenesis. Without XPO5, pre-miRNAs accumulate in the nucleus and are degraded by the nuclear exosome, causing a global collapse of mature miRNA levels. XPO5 also acts as a quality control checkpoint — it selectively exports RNAs with the correct 2-nt 3′ overhang and stem length, ensuring that only properly processed DROSHA products reach DICER. XPO5 binding additionally stabilizes pre-miRNA by shielding it from nuclear nucleases.</td>
+<td>Lund et al.&nbsp;(2004) <em>Science</em> 303:95–98; Yi et al.&nbsp;(2003) <em>Genes Dev.</em> 17:3011–3016; Kim et al.&nbsp;(2024) <em>Nat. Rev.&nbsp;Mol. Cell Biol.</em> (re-evaluation of XPO5 roles)</td>
+</tr>
+<tr class="even">
+<td><strong>RanGTP</strong></td>
+<td><em>RAN</em></td>
+<td>GTPase; provides the energy and directionality for XPO5-mediated nuclear export</td>
+<td><strong>Energy provider for directional pre-miRNA export.</strong> RanGTP hydrolysis drives the conformational change in XPO5 that releases pre-miRNA into the cytoplasm. The RanGTP gradient (high nuclear, low cytoplasmic) ensures unidirectional transport — without it, pre-miRNA export stalls and miRNA biogenesis fails at the nuclear-cytoplasmic boundary.</td>
+<td>Lund et al.&nbsp;(2004) <em>Science</em> 303:95–98</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="mirna-biogenesis-cytoplasmic-step" class="level2">
+<h2 class="anchored" data-anchor-id="mirna-biogenesis-cytoplasmic-step">3. miRNA Biogenesis — Cytoplasmic Step</h2>
+<section id="the-dicer-complex" class="level3">
+<h3 class="anchored" data-anchor-id="the-dicer-complex">3.1 The Dicer Complex</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Protein</th>
+<th>Gene</th>
+<th>Function</th>
+<th>Contribution to miRNA Pathway</th>
+<th>Key References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>DICER</strong></td>
+<td><em>DICER1</em></td>
+<td>Class 3 RNase III endonuclease; cleaves pre-miRNA at the terminal loop to generate a ~22 nt miRNA duplex; acts as a “molecular ruler” measuring distance from the 5′/3′ ends of the pre-miRNA; contains a PAZ domain (binds 3′ overhang), two RNase III domains, a helicase domain, and a dsRBD</td>
+<td><strong>Final processing enzyme that liberates the mature miRNA duplex.</strong> DICER performs the second and final endonucleolytic cleavage, converting the ~70 nt pre-miRNA hairpin into a ~22 nt miRNA duplex ready for RISC loading. DICER’s PAZ domain recognizes the 2-nt 3′ overhang left by DROSHA, and its RNase III domains cleave both strands at a measured distance from the ends — this “molecular ruler” mechanism ensures consistent miRNA length across the miRNA repertoire. DICER loss abolishes mature miRNA production from pre-miRNAs, causing developmental lethality, defective stem cell differentiation, and widespread derepression of miRNA target genes. DICER also partners with TRBP/AGO2 to form the RISC Loading Complex.</td>
+<td>Hutvágner et al.&nbsp;(2001) <em>Science</em> 293:834–838; Ketting et al.&nbsp;(2001) <em>EMBO J.</em> 20:4234–4243</td>
+</tr>
+<tr class="even">
+<td><strong>TRBP</strong> (TAR RNA-binding protein)</td>
+<td><em>TARBP2</em></td>
+<td>dsRNA-binding protein; cofactor of DICER; binds pre-miRNA and enhances DICER processing efficiency; contains three dsRBDs (two bind pre-miRNA, one interacts with DICER); part of the RISC Loading Complex (RLC)</td>
+<td><strong>DICER cofactor that optimizes pre-miRNA cleavage and bridges DICER to AGO.</strong> TRBP positions the pre-miRNA substrate for efficient and accurate DICER cleavage by binding the dsRNA stem via its dsRBDs. Critically, TRBP also serves as the molecular bridge between DICER and AGO2 in the RISC Loading Complex, directly coupling pre-miRNA cleavage with strand selection and AGO loading — ensuring that the miRNA duplex is efficiently transferred to its effector protein without release into the cytoplasm. Loss of TRBP reduces DICER processing efficiency and impairs RLC assembly, leading to decreased mature miRNA levels.</td>
+<td>Chendrimada et al.&nbsp;(2005) <em>Nature</em> 436:740–744; Haase et al.&nbsp;(2005) <em>EMBO J.</em> 24:4089–4100</td>
+</tr>
+<tr class="odd">
+<td><strong>PACT</strong> (Protein activator of PKR)</td>
+<td><em>PRKRA</em></td>
+<td>dsRNA-binding protein; paralog of TRBP; associates with DICER to facilitate miRNA processing similarly to TRBP; contains dsRBDs</td>
+<td><strong>Parallel DICER cofactor with partially redundant function.</strong> PACT enhances DICER processing of pre-miRNAs similarly to TRBP but can also function independently in specific contexts. Unlike TRBP, PACT also activates PKR (protein kinase R) in response to dsRNA, linking miRNA biogenesis to innate immune signaling. Loss of PACT reduces miRNA production in certain cell types and impairs the cellular response to viral infection.</td>
+<td>Lee et al.&nbsp;(2006) <em>EMBO J.</em> 25:522–532; Lee HY et al.&nbsp;(2013) <em>Mol. Cell</em> 51:735–747</td>
+</tr>
+<tr class="even">
+<td><strong>Loqs-PB</strong></td>
+<td><em>loquacious</em> (in <em>Drosophila</em>)</td>
+<td><em>Drosophila</em> homolog of TRBP/PACT; required for efficient pre-miRNA processing by Dicer-1</td>
+<td><strong>The invertebrate functional equivalent of TRBP/PACT.</strong> Loqs-PB is essential for Dicer-1 activity in flies; without it, pre-miRNA processing is severely impaired. Included here for comparative purposes when studying miRNA machinery in cnidarians/corals, where homologs of Loqs/TRBP/PACT are expected but may not yet be fully annotated.</td>
+<td>Jouravleva et al.&nbsp;(2022) <em>Mol. Cell</em> 82:4049–4063</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="mirna-function-risc-and-effector-machinery" class="level2">
+<h2 class="anchored" data-anchor-id="mirna-function-risc-and-effector-machinery">4. miRNA Function — RISC and Effector Machinery</h2>
+<section id="core-risc-components" class="level3">
+<h3 class="anchored" data-anchor-id="core-risc-components">4.1 Core RISC Components</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Protein</th>
+<th>Gene</th>
+<th>Function</th>
+<th>Contribution to miRNA Pathway</th>
+<th>Key References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>AGO1</strong></td>
+<td><em>AGO1</em></td>
+<td>Argonaute protein; loads miRNA guide strand; mediates translational repression and mRNA destabilization</td>
+<td><strong>Effector protein that executes miRNA-guided gene silencing (non-slicing).</strong> AGO1 binds the mature miRNA guide strand and uses its sequence as a template to find complementary mRNA targets. Upon target recognition, AGO1 recruits GW182/TNRC6 and downstream effectors to repress translation and promote mRNA decay. Without AGO1, a significant fraction of miRNAs have no effector platform for silencing. AGO1 also stabilizes bound miRNAs — AGO loading protects miRNAs from degradation.</td>
+<td>Meister et al.&nbsp;(2004) <em>Mol. Cell</em> 15:185–197</td>
+</tr>
+<tr class="even">
+<td><strong>AGO2</strong></td>
+<td><em>AGO2</em></td>
+<td>Argonaute protein; the only human AGO with endonucleolytic (“slicer”) activity for perfectly complementary targets; core component of RISC; binds miRNA guide strand via MID (5′ phosphate recognition) and PAZ (3′ end recognition) domains</td>
+<td><strong>The catalytic heart of miRNA-mediated silencing and the only AGO with slicer activity.</strong> AGO2 is the most studied Argonaute and performs two critical roles: (1) as the universal RISC effector, it uses the miRNA guide to find and bind target mRNAs, then recruits TNRC6 and deadenylase machinery for translational repression and mRNA decay; (2) uniquely among human AGOs, it can endonucleolytically cleave (“slice”) perfectly complementary targets (e.g., some viral RNAs or siRNA-directed cleavage). AGO2 also plays a role in miRNA biogenesis itself — it processes some noncanonical pre-miRNAs independently of DICER. Loss of AGO2 disrupts the majority of miRNA-mediated silencing and is embryonic lethal.</td>
+<td>Liu et al.&nbsp;(2004) <em>Science</em> 305:1437–1441; Rivas et al.&nbsp;(2005) <em>Nat. Struct. Mol. Biol.</em> 12:340–349</td>
+</tr>
+<tr class="odd">
+<td><strong>AGO3</strong></td>
+<td><em>AGO3</em></td>
+<td>Argonaute protein; miRNA-mediated gene silencing; lacks slicer activity</td>
+<td><strong>Effector for miRNA-guided silencing (non-slicing).</strong> AGO3 contributes to the overall pool of RISC complexes that execute miRNA-mediated translational repression and mRNA destabilization, but lacks the slicer activity of AGO2. Functional redundancy with AGO1 and AGO4 in standard miRNA silencing, but may have specialized roles in specific cell types or contexts.</td>
+<td>Hauptmann et al.&nbsp;(2005) <em>RNA</em> 11:1580–1590</td>
+</tr>
+<tr class="even">
+<td><strong>AGO4</strong></td>
+<td><em>AGO4</em></td>
+<td>Argonaute protein; miRNA-mediated gene silencing; lacks slicer activity</td>
+<td><strong>Effector for miRNA-guided silencing (non-slicing).</strong> Similar to AGO1 and AGO3, AGO4 forms miRNA-loaded RISC complexes for target repression. AGO4 may have specialized nuclear functions, including roles in transcriptional gene silencing and heterochromatin formation in some contexts.</td>
+<td>Hauptmann et al.&nbsp;(2005) <em>RNA</em> 11:1580–1590</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="gw182tnrc6-scaffolding-proteins" class="level3">
+<h3 class="anchored" data-anchor-id="gw182tnrc6-scaffolding-proteins">4.2 GW182/TNRC6 Scaffolding Proteins</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Protein</th>
+<th>Gene</th>
+<th>Function</th>
+<th>Contribution to miRNA Pathway</th>
+<th>Key References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>TNRC6A</strong> (GW182)</td>
+<td><em>TNRC6A</em></td>
+<td>Scaffolding protein; binds AGO proteins via Gly-Trp (GW) repeats; recruits deadenylase complexes; bridges AGO-miRNA complex to mRNA decay machinery; essential for miRNA-mediated gene silencing</td>
+<td><strong>The critical bridge between miRNA-target recognition and mRNA destruction.</strong> TNRC6A is the essential scaffolding protein that converts AGO-miRNA binding from a simple recognition event into an active mRNA silencing event. When AGO-miRNA finds its target mRNA, TNRC6A is recruited via GW repeats and serves as a docking platform for: (1) CCR4-NOT deadenylase complex (initiating poly(A) tail removal), (2) PAN2-PAN3 (initial deadenylation), and (3) PABP (coordinating deadenylation with translation repression). Without TNRC6, AGO-miRNA can bind targets but cannot efficiently repress them — silencing is severely compromised.</td>
+<td>Liu et al.&nbsp;(2005) <em>Nat. Cell Biol.</em> 7:1261–1266; Behm-Ansmant et al.&nbsp;(2006) <em>Genes Dev.</em> 20:1885–1898</td>
+</tr>
+<tr class="even">
+<td><strong>TNRC6B</strong></td>
+<td><em>TNRC6B</em></td>
+<td>Paralog of TNRC6A; binds AGO proteins; recruits deadenylase machinery for mRNA silencing</td>
+<td><strong>Redundant scaffolding bridge for miRNA silencing.</strong> TNRC6B performs the same scaffolding function as TNRC6A, providing functional redundancy. The three TNRC6 paralogs may have tissue-specific expression patterns or subtle differences in AGO binding preference, but all can independently mediate miRNA-directed mRNA decay and translational repression.</td>
+<td>Baillat &amp; Shiekhattar (2009) <em>Mol. Cell. Biol.</em> 29:4144–4155</td>
+</tr>
+<tr class="odd">
+<td><strong>TNRC6C</strong></td>
+<td><em>TNRC6C</em></td>
+<td>Paralog of TNRC6A; binds AGO proteins; can recapitulate biphasic deadenylation for mRNA decay</td>
+<td><strong>Redundant scaffolding bridge for miRNA silencing.</strong> Same function as TNRC6A/B with demonstrated ability to independently drive the biphasic deadenylation (PAN2-PAN3 followed by CCR4-NOT) that commits miRNA-targeted mRNAs to decay.</td>
+<td>Chen et al.&nbsp;(2009) <em>Nat. Struct. Mol. Biol.</em> 16:1208–1214; Lazzaretti et al.&nbsp;(2009) <em>Mol. Cell. Biol.</em> 29:6379–6392</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="deadenylation-machinery-recruited-by-tnrc6" class="level3">
+<h3 class="anchored" data-anchor-id="deadenylation-machinery-recruited-by-tnrc6">4.3 Deadenylation Machinery (Recruited by TNRC6)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Protein/Complex</th>
+<th>Gene(s)</th>
+<th>Function</th>
+<th>Contribution to miRNA Pathway</th>
+<th>Key References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CCR4-NOT complex</strong></td>
+<td><em>CNOT1–CNOT11</em>, <em>CNOT7</em> (CAF1), <em>CNOT6</em> (CCR4)</td>
+<td>Major deadenylase complex; recruited by TNRC6; removes poly(A) tail leading to mRNA destabilization; CAF1 (CNOT7/CNOT8) and CCR4 (CNOT6/CNOT6L) are the catalytic deadenylase subunits</td>
+<td><strong>Primary executioner of miRNA-directed mRNA degradation.</strong> The CCR4-NOT complex is the major deadenylase recruited by TNRC6 and carries out the second (major) phase of poly(A) tail removal during miRNA-mediated mRNA decay. CCR4 and CAF1 are the catalytic subunits that progressively remove adenosine residues from the poly(A) tail. Deadenylation is the rate-limiting step in miRNA-mediated silencing — once the poly(A) tail is shortened, the mRNA becomes vulnerable to decapping and exonucleolytic degradation. CCR4-NOT also contributes to translational repression independent of deadenylation. Loss of CCR4-NOT severely impairs miRNA-mediated mRNA decay.</td>
+<td>Behm-Ansmant et al.&nbsp;(2006) <em>Genes Dev.</em> 20:1885–1898; Braun et al.&nbsp;(2013) <em>Adv. Exp. Med. Biol.</em> 768:147–163</td>
+</tr>
+<tr class="even">
+<td><strong>PAN2–PAN3 complex</strong></td>
+<td><em>PAN2</em>, <em>PAN3</em></td>
+<td>Deadenylase complex; mediates the initial (first phase) poly(A) tail trimming; PAN2 is the catalytic subunit; PAN3 bridges to TNRC6</td>
+<td><strong>Initiator of miRNA-directed biphasic deadenylation.</strong> PAN2-PAN3 performs the first, rapid phase of poly(A) tail trimming before CCR4-NOT carries out the extensive removal. PAN3 directly interacts with TNRC6, linking the miRISC to the first deadenylation step. This biphasic mechanism (PAN2-PAN3 → CCR4-NOT) ensures efficient and processive poly(A) removal, accelerating mRNA decay beyond what would be achieved by either deadenylase alone.</td>
+<td>Chen et al.&nbsp;(2009) <em>Nat. Struct. Mol. Biol.</em> 16:1208–1214</td>
+</tr>
+<tr class="odd">
+<td><strong>PABP</strong> (Poly(A)-binding protein)</td>
+<td><em>PABPC1</em></td>
+<td>Binds poly(A) tail; interacts with TNRC6 (via PAM2 motif); coordinates deadenylation</td>
+<td><strong>Coordinator of deadenylation and translational repression.</strong> PABP bound to the poly(A) tail must be displaced or reconfigured for deadenylases to access the tail. TNRC6’s PAM2 motif interacts with PABP, displacing it from the poly(A) tail and simultaneously recruiting deadenylases. PABP is also a positive regulator of translation; its displacement by TNRC6 contributes directly to translational repression. Thus, PABP serves as a nexus connecting miRNA-directed deadenylation and translation inhibition.</td>
+<td>Zekri et al.&nbsp;(2013) <em>Mol. Cell. Biol.</em> 33:22–34</td>
+</tr>
+<tr class="even">
+<td><strong>PARN</strong> (Poly(A)-specific ribonuclease)</td>
+<td><em>PARN</em></td>
+<td>Deadenylase; involved in context-specific miRISC-mediated decay (e.g., miR-125b-AGO2 RISC)</td>
+<td><strong>Context-specific deadenylase for select miRISC complexes.</strong> PARN provides an alternative deadenylation route in specific miRISC contexts (e.g., miR-125b-AGO2 RISC), expanding the repertoire of deadenylation mechanisms available to miRNA-mediated silencing. Its role appears more specialized than the CCR4-NOT/PAN2-PAN3 axis.</td>
+<td>Narasimhan et al.&nbsp;(2025) <em>Noncoding RNA</em> 11(4):62</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="decapping-53-decay-machinery" class="level3">
+<h3 class="anchored" data-anchor-id="decapping-53-decay-machinery">4.4 Decapping &amp; 5′–3′ Decay Machinery</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Protein/Complex</th>
+<th>Gene</th>
+<th>Function</th>
+<th>Contribution to miRNA Pathway</th>
+<th>Key References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>DCP1–DCP2</strong></td>
+<td><em>DCP1A/B</em>, <em>DCP2</em></td>
+<td>Decapping enzyme complex; removes the 5′ m7G cap after deadenylation, committing the mRNA to 5′→3′ exonucleolytic decay</td>
+<td><strong>The irreversible commitment step in miRNA-mediated mRNA destruction.</strong> After deadenylation removes the poly(A) tail, DCP2 (the catalytic subunit) removes the 5′ m7G cap, making the mRNA irreversibly committed to degradation. DCP1 stimulates DCP2 activity. Decapping is the critical “point of no return” — once the cap is removed, the mRNA cannot be rescued by re-polyadenylation. This step is downstream of and dependent upon miRNA-directed deadenylation.</td>
+<td>Chen et al.&nbsp;(2009) <em>Nat. Struct. Mol. Biol.</em> 16:1208–1214; Wang et al.&nbsp;(2002) <em>Proc. Natl Acad. Sci. USA</em> 99:12663–12668</td>
+</tr>
+<tr class="even">
+<td><strong>EDC3, EDC4 (Hedls)</strong></td>
+<td><em>EDC3</em>, <em>EDC4</em></td>
+<td>Enhancers of decapping; facilitate DCP1–DCP2 activity</td>
+<td><strong>Decapping enhancers that accelerate miRNA-mediated mRNA decay.</strong> EDC3 and EDC4 stimulate DCP2 decapping activity and help assemble mRNA decay complexes in P-bodies, ensuring efficient miRNA-directed mRNA turnover.</td>
+<td>Narasimhan et al.&nbsp;(2025) <em>Noncoding RNA</em> 11(4):62</td>
+</tr>
+<tr class="odd">
+<td><strong>XRN1</strong></td>
+<td><em>XRN1</em></td>
+<td>5′→3′ exoribonuclease; degrades decapped mRNA; also degrades mature miRNAs in some contexts</td>
+<td><strong>Terminal exonuclease that degrades miRNA-targeted mRNAs after decapping.</strong> XRN1 carries out the final degradation of the mRNA body after DCP2 removes the cap — this is the last step in miRNA-directed mRNA destruction. XRN1 also plays a role in mature miRNA turnover (degradation) in some contexts, providing a mechanism for regulating miRNA abundance independently of biogenesis.</td>
+<td>Chang et al.&nbsp;(2012) <em>Nat. Struct. Mol. Biol.</em> 19:572–579</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="risc-loading-chaperones" class="level3">
+<h3 class="anchored" data-anchor-id="risc-loading-chaperones">4.5 RISC Loading Chaperones</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Protein</th>
+<th>Gene</th>
+<th>Function</th>
+<th>Contribution to miRNA Pathway</th>
+<th>Key References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Hsc70/Hsp90</strong> chaperone machinery</td>
+<td><em>HSPA8</em> (Hsc70), <em>HSP90AA1/HSP90AB1</em></td>
+<td>ATP-dependent chaperone machinery; required for loading of small RNA duplexes onto AGO proteins; facilitates conformational changes in AGO during RISC assembly</td>
+<td><strong>Essential chaperones that open AGO for miRNA loading and activate RISC.</strong> AGO proteins in their apo (empty) state are in a “closed” conformation that cannot accept miRNA duplexes. Hsc70/Hsp90 use ATP hydrolysis to induce a conformational opening of AGO, allowing the miRNA duplex to enter. The chaperones then facilitate the retention of the guide strand and ejection of the passenger strand. Without this chaperone activity, RISC loading fails and miRNAs cannot be loaded into their effector proteins — silencing is abrogated even if miRNA duplexes are produced.</td>
+<td>Nakanishi (2016) <em>Wiley Interdiscip. Rev.&nbsp;RNA</em> 7:637–660; Iwasaki et al.&nbsp;(2010) <em>Cell</em> 140:672–680</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="translational-repression" class="level3">
+<h3 class="anchored" data-anchor-id="translational-repression">4.6 Translational Repression</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Protein</th>
+<th>Gene</th>
+<th>Function</th>
+<th>Contribution to miRNA Pathway</th>
+<th>Key References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>DDX6</strong></td>
+<td><em>DDX6</em> (RCK/p54)</td>
+<td>DEAD-box RNA helicase; recruited by CCR4-NOT complex; promotes translational repression and P-body formation</td>
+<td><strong>Effector of miRNA-mediated translational repression.</strong> DDX6 is recruited by the CCR4-NOT complex upon miRNA target recognition and directly inhibits translation initiation by interfering with eIF4F assembly and promoting 48S complex disassembly. DDX6 also promotes the aggregation of silenced mRNPs into P-bodies (processing bodies), where miRNA-targeted mRNAs are stored or degraded. This makes DDX6 a key executor of translational silencing — the earliest detectable effect of miRNA action, occurring before mRNA decay.</td>
+<td>Narasimhan et al.&nbsp;(2025) <em>Noncoding RNA</em> 11(4):62; Chen et al.&nbsp;(2014) <em>Nat. Commun.</em> 5:4722</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="mirna-biogenesis-accessoryregulatory-proteins" class="level2">
+<h2 class="anchored" data-anchor-id="mirna-biogenesis-accessoryregulatory-proteins">5. miRNA Biogenesis — Accessory/Regulatory Proteins</h2>
+<p>These RNA-binding proteins (RBPs) modulate miRNA biogenesis by binding pri-miRNA or pre-miRNA terminal loops, altering structure, or interacting with the core processing machinery.</p>
+<section id="microprocessor-associated-nuclear-regulators" class="level3">
+<h3 class="anchored" data-anchor-id="microprocessor-associated-nuclear-regulators">5.1 Microprocessor-Associated (Nuclear) Regulators</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Protein</th>
+<th>Gene</th>
+<th>Function</th>
+<th>Effect</th>
+<th>Contribution to miRNA Pathway</th>
+<th>Key References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>DDX5</strong> (p68)</td>
+<td><em>DDX5</em></td>
+<td>DEAD-box RNA helicase; Microprocessor auxiliary factor; facilitates pri-miRNA recognition and processing</td>
+<td>Promotes</td>
+<td><strong>RNA helicase cofactor that broadens Microprocessor substrate range and efficiency.</strong> DDX5 associates with the Microprocessor and is required for efficient processing of a large subset of pri-miRNAs (94 of 266 examined in knockout studies). It likely remodels pri-miRNA secondary structure or resolves RNP complexes to make the cleavage site more accessible to DROSHA-DGCR8. Without DDX5, many pri-miRNAs are processed inefficiently, leading to reduced levels of a broad set of mature miRNAs. DDX5 thus acts as a global amplifier of Microprocessor activity.</td>
+<td>Gregory et al.&nbsp;(2004) <em>Nature</em> 432:235–240; Shiohama et al.&nbsp;(2007) <em>Nucleic Acids Res.</em> 35:5899–5911</td>
+</tr>
+<tr class="even">
+<td><strong>DDX17</strong> (p72)</td>
+<td><em>DDX17</em></td>
+<td>DEAD-box RNA helicase; Microprocessor auxiliary factor; works cooperatively with p68; its sequestration by YAP downregulates Microprocessor activity</td>
+<td>Promotes</td>
+<td><strong>RNA helicase cofactor that cooperates with DDX5 and links Microprocessor to signaling pathways.</strong> DDX17 works alongside DDX5 to promote pri-miRNA processing. Critically, DDX17 is sequestered by the Hippo pathway effector YAP in low cell-density conditions — this provides a direct signaling-Microprocessor link, allowing cellular context (e.g., cell density, proliferation status) to globally tune miRNA output. Without DDX5/DDX17, the Microprocessor processes many pri-miRNAs less efficiently, and this regulatory connection to signaling is lost.</td>
+<td>Gregory et al.&nbsp;(2004) <em>Nature</em> 432:235–240; Newman et al.&nbsp;(2010) <em>Genes Dev.</em> 24:1086–1092</td>
+</tr>
+<tr class="odd">
+<td><strong>hnRNP A1</strong></td>
+<td><em>HNRNPA1</em></td>
+<td>Heterogeneous nuclear ribonucleoprotein; binds pri-miR-18a terminal loop and facilitates processing by altering pri-miRNA structure</td>
+<td>Promotes (context-dependent)</td>
+<td><strong>Structure-remodeling RBP that enables processing of specific pri-miRNAs.</strong> hnRNP A1 binds the terminal loop of pri-miR-18a and induces a conformational change in the hairpin structure that facilitates DROSHA recognition and cleavage. This is a context-dependent requirement — moving the miR-18a hairpin to a different flanking sequence context eliminates the need for hnRNP A1, suggesting that hnRNP A1 overcomes inhibitory structural features in the native context. This demonstrates that individual miRNAs can have dedicated processing cofactors that overcome structural barriers, adding a layer of specificity to miRNA biogenesis regulation.</td>
+<td>Guil &amp; Cáceres (2007) <em>Nat. Struct. Mol. Biol.</em> 14:701–707</td>
+</tr>
+<tr class="even">
+<td><strong>KSRP</strong> (KH-type splicing regulatory protein)</td>
+<td><em>KHSRP</em></td>
+<td>KH-domain RBP; binds G-rich terminal loop sequences of a subset of pri/pre-miRNAs (let-7, miR-20, miR-26b, miR-106a, miR-21, miR-16); component of both Drosha and Dicer complexes; promotes recruitment of both</td>
+<td>Promotes</td>
+<td><strong>Biphasic miRNA processing activator that operates at both nuclear and cytoplasmic steps.</strong> KSRP is unique among miRNA regulators in that it functions in BOTH the nucleus (promoting DROSHA processing) and the cytoplasm (promoting DICER processing). By binding the terminal loop of a specific subset of pri/pre-miRNAs, KSRP recruits the processing machinery and enhances cleavage efficiency at both steps. This dual-step promotion ensures robust production of a defined subset of miRNAs. KSRP antagonizes LIN28 binding to let-7 loops — where LIN28 blocks processing, KSRP promotes it — creating a competitive switch for let-7 biogenesis that determines stem cell vs.&nbsp;differentiated cell fates.</td>
+<td>Trabucchi et al.&nbsp;(2009) <em>Nature</em> 459:1010–1014</td>
+</tr>
+<tr class="odd">
+<td><strong>LIN28A / LIN28B</strong></td>
+<td><em>LIN28A</em>, <em>LIN28B</em></td>
+<td>RNA-binding protein with cold-shock domain and zinc knuckles; selectively binds let-7 family pri/pre-miRNA terminal loops; blocks Drosha and Dicer processing; recruits TUT4/ZCCHC11 for pre-let-7 uridylation and degradation</td>
+<td>Inhibits (let-7 specific)</td>
+<td><strong>Master developmental switch that blocks let-7 miRNA production to maintain pluripotency.</strong> LIN28 proteins are the most selective miRNA regulators known — they specifically target the let-7 family, which promotes differentiation. LIN28 acts at TWO steps: (1) in the nucleus, binding to pri-let-7 terminal loops to block DROSHA processing; (2) in the cytoplasm, binding pre-let-7 to block DICER processing AND recruiting TUT4/TUT7 to add oligo-U tails that mark pre-let-7 for DIS3L2-mediated degradation. This multi-step blockade ensures near-complete suppression of let-7 in stem cells. The LIN28/let-7 axis is a bistable switch governing the pluripotent-to-differentiated state transition — high LIN28 maintains stemness, high let-7 drives differentiation. Misregulation of this axis drives tumorigenesis.</td>
+<td>Viswanathan et al.&nbsp;(2008) <em>Science</em> 320:97–100; Newman et al.&nbsp;(2008) <em>RNA</em> 14:1539–1549; Heo et al.&nbsp;(2008) <em>Mol. Cell</em> 32:276–284</td>
+</tr>
+<tr class="even">
+<td><strong>TDP-43</strong></td>
+<td><em>TARDBP</em></td>
+<td>DNA/RNA-binding protein; stimulates pri- and pre-miRNA processing for miR-132, miR-143, and others</td>
+<td>Promotes</td>
+<td><strong>RBP that promotes a specific subset of miRNAs at both processing steps.</strong> TDP-43 enhances both DROSHA and DICER processing of a subset of miRNAs (miR-132, miR-143, and others) by binding their precursors. TDP-43 loss leads to reduced levels of these miRNAs, linking neurodegenerative disease-associated TDP-43 pathology to miRNA dysregulation.</td>
+<td>Kawahara &amp; Mieda-Sato (2012) <em>Nucleic Acids Res.</em> 40:3415–3427</td>
+</tr>
+<tr class="odd">
+<td><strong>BRCA1</strong></td>
+<td><em>BRCA1</em></td>
+<td>DNA-binding tumor suppressor; interacts with DROSHA; stimulates pri-miRNA processing</td>
+<td>Promotes</td>
+<td><strong>Tumor suppressor that globally enhances pri-miRNA processing.</strong> BRCA1 physically interacts with DROSHA and promotes pri-miRNA processing, connecting DNA damage response and tumor suppression to miRNA biogenesis. Loss of BRCA1 leads to reduced mature miRNA levels, contributing to oncogenic derepression of miRNA targets. This provides a mechanism for the tumor suppressor function of BRCA1 beyond its DNA repair role.</td>
+<td>Kawai et al.&nbsp;(2014) <em>Oncogene</em> 33:3907–3917</td>
+</tr>
+<tr class="even">
+<td><strong>EWSR1</strong></td>
+<td><em>EWSR1</em></td>
+<td>RNA-binding protein; auxiliary component of the larger Drosha complex</td>
+<td>Facilitates</td>
+<td><strong>Auxiliary factor of the extended Microprocessor complex.</strong> EWSR1 is part of the larger DROSHA-associated complex but its precise mechanistic contribution remains less well defined than DDX5/DDX17. It may assist in substrate recognition or in coupling transcription to pri-miRNA processing.</td>
+<td>Gregory et al.&nbsp;(2004) <em>Nature</em> 432:235–240</td>
+</tr>
+<tr class="odd">
+<td><strong>FUS</strong></td>
+<td><em>FUS</em></td>
+<td>RNA-binding protein; auxiliary component of the larger Drosha complex</td>
+<td>Facilitates</td>
+<td><strong>Auxiliary factor of the extended Microprocessor complex.</strong> Like EWSR1, FUS is part of the larger DROSHA-associated complex and may assist in substrate recognition or coupling of transcription with pri-miRNA processing. FUS mutations are linked to ALS, and miRNA biogenesis defects may contribute to disease pathology.</td>
+<td>Gregory et al.&nbsp;(2004) <em>Nature</em> 432:235–240</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cytoplasmic-regulators" class="level3">
+<h3 class="anchored" data-anchor-id="cytoplasmic-regulators">5.2 Cytoplasmic Regulators</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Protein</th>
+<th>Gene</th>
+<th>Function</th>
+<th>Effect</th>
+<th>Contribution to miRNA Pathway</th>
+<th>Key References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>TUT4/ZCCHC11</strong></td>
+<td><em>ZCCHC11</em></td>
+<td>Terminal uridylyl transferase (TUTase); recruited by LIN28 to add oligo-U tail to pre-let-7, marking it for degradation by DIS3L2</td>
+<td>Inhibits (let-7)</td>
+<td><strong>Effector of LIN28-mediated let-7 degradation via oligo-uridylation.</strong> TUT4 is the enzymatic effector that carries out LIN28’s instructions to destroy let-7 precursors. When LIN28 binds pre-let-7, it recruits TUT4, which adds an oligo-U tail (3′ uridylation) to the pre-miRNA. This oligo-U tail is recognized by the exonuclease DIS3L2, which degrades the uridylated pre-let-7. This is a critical switch — without TUT4, LIN28 cannot efficiently eliminate pre-let-7, and let-7 accumulates even in the presence of LIN28, driving premature differentiation.</td>
+<td>Heo et al.&nbsp;(2009) <em>Mol. Cell</em> 32:276–284; Hagan et al.&nbsp;(2009) <em>Nat. Cell Biol.</em> 11:1152–1157</td>
+</tr>
+<tr class="even">
+<td><strong>TUT7/ZCCHC6</strong></td>
+<td><em>ZCCHC6</em></td>
+<td>TUTase; works with TUT4 in LIN28-mediated pre-let-7 uridylation</td>
+<td>Inhibits (let-7)</td>
+<td><strong>Cooperative TUTase that enhances LIN28-mediated pre-let-7 uridylation.</strong> TUT7 works redundantly with TUT4 to uridylate pre-let-7. Double knockout of both TUT4 and TUT7 completely abrogates LIN28-mediated let-7 suppression, whereas single knockouts show partial effects, demonstrating their cooperative action in this pathway.</td>
+<td>Thornton et al.&nbsp;(2012) <em>RNA</em> 18:1983–1993</td>
+</tr>
+<tr class="odd">
+<td><strong>DIS3L2</strong></td>
+<td><em>DIS3L2</em></td>
+<td>3′→5′ exoribonuclease; degrades oligouridylated pre-let-7</td>
+<td>Degrades</td>
+<td><strong>Terminal exonuclease that degrades LIN28/TUT4-marked pre-let-7.</strong> DIS3L2 specifically recognizes and degrades oligo-uridylated pre-miRNAs (the product of LIN28-TUT4 activity), completing the let-7 destruction pathway. DIS3L2 is unique among 3′→5′ exonucleases in its strong preference for uridylated substrates, making it the dedicated “cleanup” enzyme for the LIN28 pathway. Loss of DIS3L2 leads to accumulation of uridylated pre-let-7 fragments and is associated with Wilms tumor.</td>
+<td>Chang et al.&nbsp;(2013) <em>EMBO J.</em> 32:2173–2185</td>
+</tr>
+<tr class="even">
+<td><strong>ADAR1/ADAR2</strong></td>
+<td><em>ADAR1</em>, <em>ADAR2</em></td>
+<td>Adenosine deaminases acting on RNA; edit adenosine to inosine in pri-/pre-miRNAs; editing can reduce processing efficiency or alter target specificity</td>
+<td>Context-dependent</td>
+<td><strong>RNA editing enzymes that diversify or block miRNA function.</strong> A-to-I editing within pri-miRNA or pre-miRNA sequences can have two major consequences: (1) editing within the stem can disrupt dsRNA structure, reducing DROSHA or DICER processing efficiency (blocking miRNA production); (2) editing within the mature miRNA sequence can alter the seed region, changing the set of mRNA targets the miRNA recognizes (retargeting the miRNA). This creates a mechanism for generating miRNA isoforms (isomiRs) with different target specificities from the same genomic locus, adding a layer of regulatory diversity.</td>
+<td>Yang et al.&nbsp;(2006) <em>J. Biol. Chem.</em> 281:15857–15864</td>
+</tr>
+<tr class="odd">
+<td><strong>MCPIP1/ZC3H12A</strong></td>
+<td><em>ZC3H12A</em></td>
+<td>Endoribonuclease; cleaves pre-miRNAs to inhibit processing</td>
+<td>Inhibits</td>
+<td><strong>Pre-miRNA nuclease that directly destroys miRNA precursors.</strong> MCPIP1 directly cleaves pre-miRNAs at the terminal loop, destroying them before they can be processed by DICER. This is a rare example of a dedicated anti-miRNA nuclease that acts independently of the LIN28/TUT4 pathway. MCPIP1 provides a mechanism for rapidly downregulating miRNA levels in response to inflammatory signals, linking innate immunity to miRNA regulation.</td>
+<td>Suzuki et al.&nbsp;(2011) <em>Nat. Immunol.</em> 12:1156–1163</td>
+</tr>
+<tr class="even">
+<td><strong>RBM3</strong></td>
+<td><em>RBM3</em></td>
+<td>RNA-binding motif protein; stimulates pre-miRNA processing</td>
+<td>Promotes</td>
+<td><strong>Cold-inducible RBP that enhances pre-miRNA processing.</strong> RBM3 promotes DICER processing of pre-miRNAs and is upregulated in response to mild hypothermia, providing a mechanism for temperature-dependent regulation of miRNA biogenesis. This is particularly relevant for coral biology, where temperature fluctuations directly impact miRNA regulation through as-yet poorly characterized mechanisms.</td>
+<td>Dresios et al.&nbsp;(2005) <em>J. Neurosci.</em> 25:5418–5425</td>
+</tr>
+<tr class="odd">
+<td><strong>YB-1</strong></td>
+<td><em>YBX1</em></td>
+<td>RNA-binding protein; regulates a subset of miRNAs at the Dicer step</td>
+<td>Context-dependent</td>
+<td><strong>RBP that modulates DICER processing of a subset of pre-miRNAs.</strong> YB-1 binds pre-miRNAs and can either promote or inhibit DICER processing depending on the specific miRNA and cellular context. YB-1 is also a major component of mRNA mRNP particles and links miRNA biogenesis to broader RNA metabolism.</td>
+<td>Wu et al.&nbsp;(2015) <em>RNA Biol.</em> 12:133–144</td>
+</tr>
+<tr class="even">
+<td><strong>DAZL</strong></td>
+<td><em>DAZL</em></td>
+<td>RNA-binding protein; promotes pre-miRNA processing in germ cells</td>
+<td>Promotes</td>
+<td><strong>Germ cell-specific miRNA processing factor.</strong> DAZL promotes pre-miRNA processing specifically in germ cells, contributing to the specialized miRNA repertoire required for gametogenesis. This demonstrates tissue-specific regulation of miRNA biogenesis.</td>
+<td>Yan et al.&nbsp;(2022) as cited in Hynes &amp; Kakumani (2024)</td>
+</tr>
+<tr class="odd">
+<td><strong>Nibbler</strong></td>
+<td><em>Nibbler</em> (fly) / <em>PNPT1</em> (mammalian homolog)</td>
+<td>3′→5′ exonuclease; trims mature miRNA 3′ ends (miRNA trimming/ismiR formation)</td>
+<td>Modifies</td>
+<td><strong>Post-loading miRNA trimming enzyme that refines miRNA target specificity.</strong> After a mature miRNA is loaded into AGO, Nibbler can trim nucleotides from the 3′ end, generating shorter miRNA isoforms (isomiRs) with altered target specificity. This “fine-tuning” of miRNA length after RISC loading provides a mechanism for adjusting the miRNA targetome without changing miRNA expression levels.</td>
+<td>Han et al.&nbsp;(2011) <em>Mol. Cell</em> 43:1024–1034</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="lncrna-biogenesis-transcription-processing" class="level2">
+<h2 class="anchored" data-anchor-id="lncrna-biogenesis-transcription-processing">6. lncRNA Biogenesis — Transcription &amp; Processing</h2>
+<p>lncRNAs share many biogenesis steps with mRNAs (Pol II transcription, 5′ capping, splicing, 3′ polyadenylation), but several features and processing pathways are distinct.</p>
+<section id="core-transcription-processing-machinery-shared-with-mrna" class="level3">
+<h3 class="anchored" data-anchor-id="core-transcription-processing-machinery-shared-with-mrna">6.1 Core Transcription &amp; Processing Machinery (Shared with mRNA)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 26%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Protein/Complex</th>
+<th>Function</th>
+<th>Contribution to lncRNA Pathway</th>
+<th>Key References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>RNA Polymerase II (Pol II)</strong></td>
+<td>Transcribes most lncRNA genes; lncRNA genes often display distinct Pol II CTD phosphorylation patterns compared to mRNA genes (more Ser5P, less Ser2P)</td>
+<td><strong>The sole polymerase for lncRNA transcription.</strong> Pol II transcribes virtually all lncRNA genes, but with distinct kinetic and CTD phosphorylation signatures compared to mRNA genes. lncRNA genes typically show more Ser5P (associated with transcription initiation and early elongation) and less Ser2P (associated with productive elongation and 3′ processing), reflecting their generally slower transcription, reduced processivity, and weaker coupling to downstream processing. These distinct Pol II dynamics directly contribute to the characteristic low abundance and nuclear retention of many lncRNAs.</td>
+<td>Nojima &amp; Proudfoot (2022) <em>Nat. Rev.&nbsp;Mol. Cell Biol.</em> 23:123–137</td>
+</tr>
+<tr class="even">
+<td><strong>CPSF</strong> (Cleavage and Polyadenylation Specificity Factor: CPSF160/WDR33/CPSF30/CPSF73/CPSF100)</td>
+<td>3′-end processing of polyadenylated lncRNAs; CPSF73 (encoded by <em>CPSF3</em>) is the endonuclease that cleaves at the poly(A) signal (AAUAAA); CPSF100 is its inactive homolog</td>
+<td><strong>3′ end formation for polyadenylated lncRNAs.</strong> CPSF recognizes the AAUAAA poly(A) signal and cleaves the nascent transcript via CPSF73 endonuclease activity, defining the 3′ end of polyadenylated lncRNAs. This is a critical decision point — CPSF cleavage also triggers transcription termination by Pol II, coupling RNA 3′ end formation with the end of transcription. Many lncRNA genes have weaker poly(A) signals or use alternative polyadenylation sites compared to mRNA genes, contributing to their reduced stability and nuclear retention.</td>
+<td>Nojima &amp; Proudfoot (2022) <em>Nat. Rev.&nbsp;Mol. Cell Biol.</em> 23:123–137; Sun et al.&nbsp;(2018) <em>Proc. Natl Acad. Sci. USA</em> 115:E1419–E1428</td>
+</tr>
+<tr class="odd">
+<td><strong>CstF</strong> (Cleavage Stimulation Factor: CstF50/CstF64/CstF77)</td>
+<td>Binds U/GU-rich downstream elements; stimulates cleavage at 3′ end</td>
+<td><strong>Enhancer of 3′ cleavage for lncRNA processing.</strong> CstF binds downstream U/GU-rich elements and stimulates CPSF-mediated cleavage. The relative weakness of downstream elements in many lncRNA genes leads to less efficient CstF recruitment, contributing to reduced 3′ processing and the characteristic instability of many lncRNA transcripts.</td>
+<td>Nojima &amp; Proudfoot (2022) <em>Nat. Rev.&nbsp;Mol. Cell Biol.</em> 23:123–137</td>
+</tr>
+<tr class="even">
+<td><strong>CFI/CFIm</strong> (Cleavage Factor I: CFIm25/NUDT21, CFIm59, CFIm68)</td>
+<td>Binds UGUA upstream elements; enhancer-dependent activator of 3′ processing</td>
+<td><strong>Alternative polyadenylation regulator that determines lncRNA isoform identity.</strong> CFIm binds UGUA elements upstream of the poly(A) site and influences the choice of alternative polyadenylation (APA) sites. For lncRNAs like NEAT1, APA choice determines which isoform is produced (NEAT1_1 vs.&nbsp;NEAT1_2), with radically different functional consequences (NEAT1_1 is a short cytoplasmic lncRNA; NEAT1_2 is a long nuclear scaffold essential for paraspeckle formation). CFIm thus acts as a master switch for lncRNA isoform identity.</td>
+<td>Nojima &amp; Proudfoot (2022) <em>Nat. Rev.&nbsp;Mol. Cell Biol.</em> 23:123–137</td>
+</tr>
+<tr class="odd">
+<td><strong>PAP</strong> (Poly(A) Polymerase)</td>
+<td>Adds poly(A) tail to 3′ end of cleaved lncRNA</td>
+<td><strong>Poly(A) tail addition for lncRNA stability and export.</strong> PAP adds the poly(A) tail after CPSF cleavage, which protects the lncRNA 3′ end from exonucleolytic degradation and facilitates nuclear export. Many non-polyadenylated lncRNAs use alternative 3′ end formation mechanisms (Integrator, RNase P, snoRNP capping) that bypass PAP entirely.</td>
+<td>Standard</td>
+</tr>
+<tr class="even">
+<td><strong>PABPN1</strong> (Poly(A)-binding protein nuclear 1)</td>
+<td>Nuclear poly(A)-binding protein; controls poly(A) tail length; prevents nuclear export of improperly processed transcripts</td>
+<td><strong>Nuclear poly(A) quality control for lncRNA export competence.</strong> PABPN1 binds the poly(A) tail in the nucleus and controls its length, serving as a quality control checkpoint — only properly polyadenylated lncRNAs are allowed to be exported. PABPN1 also prevents the nuclear export of unspliced or improperly processed transcripts, ensuring that defective lncRNAs are retained and degraded. Loss of PABPN1 leads to nuclear export of aberrant lncRNAs and mRNA processing defects.</td>
+<td>Kwiatek et al.&nbsp;(2021) <em>Nucleic Acids Res.</em> 48:6889–6905</td>
+</tr>
+<tr class="odd">
+<td><strong>Spliceosome</strong> (U1, U2, U4/U5/U6 snRNPs + ~150 proteins)</td>
+<td>Removes introns from lncRNA primary transcripts; many lncRNAs are weakly or partially spliced compared to mRNAs</td>
+<td><strong>Intron removal and nuclear retention decision-maker for lncRNAs.</strong> The spliceosome processes lncRNA introns, but many lncRNAs are spliced far less efficiently than mRNAs — they often retain introns, have fewer exons, and use weaker splice sites. This weak splicing is not merely defective processing; it is functionally important: (1) intron retention contributes to nuclear retention of many lncRNAs, (2) inefficient splicing targets many lncRNAs for nuclear degradation, keeping their abundance low, and (3) some lncRNA functions (e.g., intron-derived sno-lncRNAs) specifically require unspliced regions. The spliceosome thus acts as a gatekeeper determining whether a lncRNA transcript is fully processed, exported, and functional, or retained and degraded.</td>
+<td>Matera &amp; Wang (2014) <em>Nat. Rev.&nbsp;Mol. Cell Biol.</em> 15:108–121</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="lncrna-specific-processing-machinery" class="level3">
+<h3 class="anchored" data-anchor-id="lncrna-specific-processing-machinery">6.2 lncRNA-Specific Processing Machinery</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Protein/Complex</th>
+<th>Gene(s)</th>
+<th>Function</th>
+<th>Contribution to lncRNA Pathway</th>
+<th>Key References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Integrator complex</strong> (INTS1–INTS14)</td>
+<td><em>INTS1</em>–<em>INTS14</em></td>
+<td>14-subunit complex; endonucleolytic 3′ processing of non-polyadenylated lncRNAs, enhancer RNAs (eRNAs), and snRNAs; INTS11 is the catalytic β-CASP/MBL endonuclease (homolog of CPSF73); INTS9 is the inactive homolog (homolog of CPSF100); binds Pol II CTD; restrains paraspeckle assembly by promoting NEAT1_2 to NEAT1_1 isoform switching</td>
+<td><strong>The dedicated 3′ processing machinery for non-polyadenylated lncRNAs and the master regulator of lncRNA isoform switching.</strong> Integrator is the primary 3′ endonuclease for lncRNAs that lack poly(A) tails — it cleaves nascent transcripts bound to the Pol II CTD, generating mature 3′ ends without polyadenylation. This is essential for eRNAs, many snRNA-like lncRNAs, and critically, for controlling NEAT1 isoform balance: Integrator cleaves NEAT1_2 (the long paraspeckle-scaffolding isoform), converting it to NEAT1_1 (the short isoform), thereby restraining paraspeckle formation. Loss of Integrator leads to NEAT1_2 accumulation, uncontrolled paraspeckle assembly, and misregulation of paraspeckle-sequestered proteins and RNAs. Integrator thus acts as a critical switch for nuclear body homeostasis through lncRNA isoform control.</td>
+<td>Baillat et al.&nbsp;(2005) <em>Cell</em> 123:265–276; Lai et al.&nbsp;(2015) <em>Nature</em> 525:399–403; Plant et al.&nbsp;(2020) <em>Sci. Adv.</em> 6:eaaz9072; Pfleiderer &amp; Moresco (2022) <em>Transcription</em> 12:251–265</td>
+</tr>
+<tr class="even">
+<td><strong>RNase P</strong></td>
+<td><em>RPPH1</em> and multiple subunits</td>
+<td>Endoribonuclease; generates mature 3′ ends of some non-polyadenylated lncRNAs (e.g., MALAT1) by cleavage</td>
+<td><strong>Alternative 3′ end formation for non-polyadenylated lncRNAs.</strong> RNase P cleaves the 3′ end of specific non-polyadenylated lncRNAs like MALAT1, generating a stable 3′ end without a poly(A) tail. The cleavage product (the upstream fragment) is further stabilized by a triple-helix structure at its 3′ end that protects it from degradation. This noncanonical 3′ end processing allows MALAT1 to accumulate to very high levels in the nucleus without a poly(A) tail, demonstrating an alternative stability mechanism that is critical for the function of certain nuclear-retained lncRNAs.</td>
+<td>Wilusz et al.&nbsp;(2008) <em>Cell</em> 135:919–932; Wu et al.&nbsp;(2017) <em>Trends Genet.</em> 33:55–66</td>
+</tr>
+<tr class="odd">
+<td><strong>snoRNP complexes</strong> (snoRNA + fibrillarin, NOP56, NOP58, etc.)</td>
+<td>Multiple</td>
+<td>Cap both ends of some intron-derived lncRNAs (sno-lncRNAs) or one end (5′ snoRNA-ended, 3′ polyadenylated SPAs); protect from exonucleolytic degradation</td>
+<td><strong>Noncanonical end-protection machinery for intron-derived lncRNAs.</strong> snoRNP complexes bind the terminal loops of excised introns that contain snoRNAs, protecting both ends from exonucleases and generating stable intron-derived lncRNAs (sno-lncRNAs). This creates an entirely distinct class of lncRNAs that are protected at their ends not by m7G caps and poly(A) tails, but by snoRNP protein-RNA complexes. Without this snoRNP capping, these intronic sequences would be rapidly degraded by the nuclear debranching and exonuclease machinery. This mechanism generates functionally important lncRNAs (e.g., those from the Prader-Willi syndrome region) from what would otherwise be discarded intronic waste.</td>
+<td>Wu et al.&nbsp;(2017) <em>Trends Genet.</em> 33:55–66; Yin et al.&nbsp;(2012) <em>Mol. Cell</em> 47:399–410</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="nuclear-export-of-lncrnas" class="level3">
+<h3 class="anchored" data-anchor-id="nuclear-export-of-lncrnas">6.3 Nuclear Export of lncRNAs</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Protein</th>
+<th>Gene</th>
+<th>Function</th>
+<th>Contribution to lncRNA Pathway</th>
+<th>Key References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>NXF1/TAP</strong></td>
+<td><em>NXF1</em></td>
+<td>Major mRNA export receptor; exports polyadenylated lncRNAs</td>
+<td><strong>Primary export receptor for polyadenylated lncRNAs.</strong> NXF1 exports the majority of polyadenylated lncRNAs from nucleus to cytoplasm, the same pathway used by mRNAs. Many lncRNAs are poor NXF1 substrates due to weak splicing and low association with the TREX export complex, contributing to their nuclear retention. The efficiency of NXF1-mediated export is a major determinant of whether a lncRNA acts in the nucleus (if retained) or cytoplasm (if exported), directly shaping its functional role.</td>
+<td>Nojima &amp; Proudfoot (2022) <em>Nat. Rev.&nbsp;Mol. Cell Biol.</em> 23:123–137</td>
+</tr>
+<tr class="even">
+<td><strong>CRM1/Exportin-1</strong></td>
+<td><em>XPO1</em></td>
+<td>Exports non-polyadenylated snRNAs and some lncRNAs; works with PHAX adaptor</td>
+<td><strong>Alternative export receptor for non-polyadenylated lncRNAs.</strong> CRM1 exports non-polyadenylated lncRNAs and snRNAs via the PHAX adaptor, providing an export route independent of the NXF1/TREX pathway. This is essential for lncRNAs that lack poly(A) tails and cannot use the NXF1 pathway.</td>
+<td>Matera &amp; Wang (2014) <em>Nat. Rev.&nbsp;Mol. Cell Biol.</em> 15:108–121</td>
+</tr>
+<tr class="odd">
+<td><strong>PHAX</strong></td>
+<td><em>PHAX</em></td>
+<td>Phosphorylated adaptor for snRNA export; links CBC to CRM1</td>
+<td><strong>Adaptor that bridges cap-bound lncRNAs to the CRM1 export receptor.</strong> PHAX connects the cap-binding complex (CBC) to CRM1, specifically for snRNA and non-polyadenylated lncRNA export. Without PHAX, these non-polyadenylated RNAs cannot exit the nucleus.</td>
+<td>Matera &amp; Wang (2014) <em>Nat. Rev.&nbsp;Mol. Cell Biol.</em> 15:108–121</td>
+</tr>
+<tr class="even">
+<td><strong>CBC</strong> (Cap-binding complex: CBP80/CBP20)</td>
+<td><em>NCBP1</em>, <em>NCBP2</em></td>
+<td>Binds 5′ m7G cap; links to export adaptors</td>
+<td><strong>5′ cap sensor that initiates lncRNA export pathway selection.</strong> CBC binds the m7G cap of newly transcribed lncRNAs and recruits export adaptors (PHAX for CRM1-dependent export, or TREX components for NXF1-dependent export). CBC thus acts as the initial “decision point” that determines which export pathway a lncRNA will use, based on its processing state and associated factors.</td>
+<td>Matera &amp; Wang (2014) <em>Nat. Rev.&nbsp;Mol. Cell Biol.</em> 15:108–121</td>
+</tr>
+<tr class="odd">
+<td><strong>ARS2</strong> (Arsenite resistance protein 2)</td>
+<td><em>SRRT</em></td>
+<td>Links CBC to export pathways; involved in snRNA and lncRNA fate decisions</td>
+<td><strong>Fate decision factor that routes lncRNAs toward export or degradation.</strong> ARS2 binds CBC and helps determine whether a capped lncRNA will be exported or targeted for nuclear degradation. ARS2 promotes the export of snRNA-like lncRNAs (via PHAX/CRM1) while directing other lncRNAs toward the nuclear exosome for degradation (via the NEXT complex). ARS2 is thus a key junction in lncRNA fate: export for function, or degradation for quality control.</td>
+<td>Matera &amp; Wang (2014) <em>Nat. Rev.&nbsp;Mol. Cell Biol.</em> 15:108–121</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="nuclear-surveillance-degradation" class="level3">
+<h3 class="anchored" data-anchor-id="nuclear-surveillance-degradation">6.4 Nuclear Surveillance / Degradation</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 26%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Protein/Complex</th>
+<th>Function</th>
+<th>Contribution to lncRNA Pathway</th>
+<th>Key References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Nuclear exosome</strong> (EXOSC1–EXOSC10, DIS3, DIS3L)</td>
+<td>3′→5′ exoribonuclease complex; degrades many nascent lncRNAs cotranscriptionally; many lncRNAs are rapidly degraded by the exosome and accumulate only in specific cell types</td>
+<td><strong>Primary quality control and regulatory degradation machinery for lncRNAs.</strong> The nuclear exosome is the major 3′→5′ exonuclease that degrades the majority of nascent lncRNAs cotranscriptionally. This is not merely quality control — it is a regulatory mechanism that keeps lncRNA expression extremely low by default. Most lncRNAs are transcribed but immediately degraded; only those that escape exosome surveillance (through protective structures, polyadenylation, or specific RNP assembly) accumulate to functional levels. The exosome thus acts as a gatekeeper that determines which lncRNAs achieve functional expression, making it one of the most important regulators of lncRNA steady-state levels.</td>
+<td>Nojima &amp; Proudfoot (2022) <em>Nat. Rev.&nbsp;Mol. Cell Biol.</em> 23:123–137; Davis &amp; Ares (2006) <em>Proc. Natl Acad. Sci. USA</em> 103:3262–3267</td>
+</tr>
+<tr class="even">
+<td><strong>NEXT complex</strong> (Nuclear EXosome Targeting; ZFC3H1, RBM7, MTR4)</td>
+<td>Targets nascent PROMPTs and lncRNAs for exosome degradation</td>
+<td><strong>Adapter that delivers unstable lncRNAs to the nuclear exosome.</strong> NEXT recognizes and binds a class of short, unstable lncRNAs called PROMPTs (promoter upstream transcripts) and other nuclear-retained lncRNAs, and delivers them to the nuclear exosome via the MTR4 helicase (which unwinds RNA for exosome threading). Without NEXT, these lncRNAs accumulate aberrantly in the nucleus, potentially interfering with transcription and chromatin organization.</td>
+<td>Lubas et al.&nbsp;(2015) <em>EMBO J.</em> 34:1399–1416</td>
+</tr>
+<tr class="odd">
+<td><strong>PAXT complex</strong> (PolyA tail exosome targeting; ZFC3H1, PAPD5, etc.)</td>
+<td>Targets polyadenylated lncRNAs for exosome degradation</td>
+<td><strong>Adapter that delivers polyadenylated lncRNAs to the nuclear exosome.</strong> PAXT specifically targets polyadenylated lncRNAs for degradation, working in parallel with NEXT (which targets non-polyadenylated lncRNAs). Together, NEXT and PAXT ensure that both polyadenylated and non-polyadenylated lncRNAs are surveilled, with PAXT serving as the quality control pathway for those lncRNAs that have received a poly(A) tail but should not be expressed.</td>
+<td>Meola et al.&nbsp;(2016) <em>EMBO J.</em> 35:1499–1514</td>
+</tr>
+<tr class="even">
+<td><strong>NMD</strong> (Nonsense-mediated decay; UPF1, UPF2, UPF3, SMG1, SMG5, SMG6, SMG7)</td>
+<td>Degrades lncRNAs with premature termination codons; some lncRNAs are preferentially subject to NMD</td>
+<td><strong>Cytoplasmic quality control that degrades aberrant or regulatory lncRNAs.</strong> NMD degrades lncRNAs that contain premature termination codons (PTCs), either as a quality control mechanism for aberrant transcripts or as a regulated process for controlling the levels of specific lncRNAs. Some lncRNAs are intentionally designed with PTCs as a regulatory mechanism — they are constantly produced and degraded, creating a “transcriptional pulse” that may serve cis-regulatory functions at their locus of origin even though the RNA itself is rapidly destroyed. NMD thus shapes both the quality and quantity of cytoplasmic lncRNAs.</td>
+<td>Quinn &amp; Chang (2016) <em>Nat. Rev.&nbsp;Genet.</em> 17:47–62</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="lncrna-function-chromatin-interacting-machinery" class="level2">
+<h2 class="anchored" data-anchor-id="lncrna-function-chromatin-interacting-machinery">7. lncRNA Function — Chromatin-Interacting Machinery</h2>
+<p>This is where lncRNAs exert some of their most impactful epigenetic functions. Nuclear lncRNAs interact with chromatin-modifying complexes to direct their activity to specific genomic loci.</p>
+<section id="polycomb-repressive-complex-2-prc2" class="level3">
+<h3 class="anchored" data-anchor-id="polycomb-repressive-complex-2-prc2">7.1 Polycomb Repressive Complex 2 (PRC2)</h3>
+<p>PRC2 is one of the most extensively studied lncRNA-interacting complexes. lncRNAs serve as “address codes” or “guides” that recruit PRC2 to specific genomic loci for H3K27 trimethylation and gene silencing.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Protein</th>
+<th>Gene</th>
+<th>Function in PRC2</th>
+<th>lncRNA Interaction</th>
+<th>Contribution to lncRNA Pathway</th>
+<th>Key References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>EZH2</strong></td>
+<td><em>EZH2</em></td>
+<td>Catalytic subunit; H3K27 methyltransferase (SET domain); adds 1–3 methyl groups to K27 on histone H3; phosphorylation at T350 (CDK1/2) enhances lncRNA binding; preferentially binds G-quadruplex RNA</td>
+<td>Binds HOTAIR, XIST, MALAT1, ANRIL, KCNQ1OT1, and many other lncRNAs</td>
+<td><strong>The catalytic engine of lncRNA-directed epigenetic silencing.</strong> EZH2 is the enzymatic subunit that PRC2 uses to deposit H3K27me3, the repressive histone mark. lncRNAs serve as “address codes” that direct EZH2/PRC2 to specific genomic loci — without lncRNA guidance, PRC2 lacks sequence-specific DNA binding and cannot achieve locus-specific silencing. HOTAIR recruits EZH2 to the HOXD locus; XIST recruits PRC2 to the inactive X chromosome; ANRIL recruits PRC2 to the CDKN2B locus. Critically, lncRNA binding can both recruit PRC2 to chromatin AND modulate its catalytic activity — some lncRNAs inhibit EZH2 methyltransferase activity until JARID2 relieves this inhibition, adding another layer of regulation. Phosphorylation of EZH2 at T350 enhances its lncRNA-binding capacity, linking cell cycle signaling to lncRNA-directed epigenetic silencing.</td>
+<td>Zhao et al.&nbsp;(2008) <em>Science</em> 322:750–756; Kaneko et al.&nbsp;(2010) <em>Genes Dev.</em> 24:2015–2025; Davidovich &amp; Cech (2015) <em>RNA</em> 21:2007–2022</td>
+</tr>
+<tr class="even">
+<td><strong>EZH1</strong></td>
+<td><em>EZH1</em></td>
+<td>Alternative catalytic subunit of PRC2; predominates in post-mitotic tissues; forms PRC2-EZH1 variant; MALAT1 interaction stabilizes PRC2-EZH1 on chromatin under oxidative stress</td>
+<td>MALAT1 binds EED to promote PRC2-EZH1 assembly</td>
+<td><strong>Oxidative stress-responsive PRC2 variant directed by MALAT1.</strong> EZH1 replaces EZH2 as the catalytic subunit of PRC2 in post-mitotic and differentiated tissues. Under oxidative stress, MALAT1 lncRNA binds EED to promote shuttling of EED into the nucleus, facilitating assembly of the PRC2-EZH1 variant. This enables stress-responsive epigenetic reprogramming through H3K27me3 redistribution. In the context of coral biology, this PRC2-EZH1/MALAT1 mechanism may be particularly relevant for understanding how oxidative stress from thermal bleaching triggers epigenetic changes.</td>
+<td>El Said et al.&nbsp;(2021) <em>Cell Death Dis.</em> 12:850</td>
+</tr>
+<tr class="odd">
+<td><strong>EED</strong></td>
+<td><em>EED</em></td>
+<td>Core PRC2 subunit; WD40 repeat protein; recognizes and binds H3K27me3 (allosteric activation of PRC2); binds MALAT1 under oxidative stress</td>
+<td>MALAT1</td>
+<td><strong>Allosteric activator of PRC2 that links lncRNA binding to catalytic stimulation.</strong> EED recognizes existing H3K27me3 marks and allosterically stimulates EZH2/EZH1 methyltransferase activity, creating a positive feedback loop for epigenetic spreading. EED also directly binds MALAT1 under oxidative stress, serving as the RNA-binding subunit that triggers PRC2-EZH1 nuclear import and assembly. EED thus plays a dual role: maintaining epigenetic memory through H3K27me3 recognition, and responding to lncRNA signals for de novo recruitment.</td>
+<td>El Said et al.&nbsp;(2021) <em>Cell Death Dis.</em> 12:850</td>
+</tr>
+<tr class="even">
+<td><strong>SUZ12</strong></td>
+<td><em>SUZ12</em></td>
+<td>Core PRC2 subunit; zinc finger domain with RNA-binding role; essential for PRC2 structural integrity and histone methyltransferase activity</td>
+<td>Binds lncRNAs; role in RNA binding demonstrated</td>
+<td><strong>Structural scaffold and RNA-binding subunit of PRC2.</strong> SUZ12 is essential for PRC2 structural integrity — without SUZ12, EZH2 is unstable and PRC2 cannot form. SUZ12’s zinc finger domain contributes to RNA binding, providing an additional lncRNA contact point beyond EZH2. SUZ12 thus serves as both the structural backbone of PRC2 and a participant in lncRNA-directed targeting, ensuring that the complex remains intact while being guided to specific loci.</td>
+<td>Kanhere et al.&nbsp;(2010) <em>Mol. Cell</em> 38:675–687; Cifuentes-Rojas et al.&nbsp;(2014) <em>RNA</em> 20:598–611</td>
+</tr>
+<tr class="odd">
+<td><strong>RBBP4</strong> (RbAp48)</td>
+<td><em>RBBP4</em></td>
+<td>PRC2 core subunit; WD40 repeat histone-binding protein; interacts with histone H3 tails</td>
+<td>Part of PRC2-lncRNA complexes</td>
+<td><strong>Histone-binding subunit that anchors PRC2 to nucleosomes.</strong> RBBP4 directly binds histone H3 tails on nucleosomes, anchoring the PRC2 complex to chromatin. This histone contact is essential for PRC2 to engage its substrate (the H3K27 residue) for methylation. RBBP4 ensures that lncRNA-guided PRC2 is properly positioned on the nucleosome for catalytic activity.</td>
+<td>Cao &amp; Zhang (2004) <em>Mol. Cell</em> 15:57–67</td>
+</tr>
+<tr class="even">
+<td><strong>AEBP2</strong></td>
+<td><em>AEBP2</em></td>
+<td>PRC2 accessory subunit; zinc finger protein; stimulates PRC2 activity</td>
+<td>Part of PRC2 holoenzyme</td>
+<td><strong>Activity-stimulating accessory factor for PRC2.</strong> AEBP2 enhances the methyltransferase activity of PRC2, particularly for the transition from mono- to tri-methylation of H3K27. AEBP2 is part of the PRC2 holoenzyme that is guided by lncRNAs to specific loci.</td>
+<td>Cao &amp; Zhang (2004) <em>Curr. Biol.</em> 14:331–336</td>
+</tr>
+<tr class="odd">
+<td><strong>JARID2</strong></td>
+<td><em>JARID2</em></td>
+<td>PRC2 accessory factor; reduces PRC2-RNA interaction to promote PRC2-chromatin binding; relieves lncRNA-mediated inhibition of EZH2 catalytic activity</td>
+<td>Modulates PRC2-lncRNA interactions</td>
+<td><strong>Switch factor that transitions PRC2 from RNA-bound to chromatin-bound state.</strong> JARID2 plays a sophisticated regulatory role: many lncRNAs bind PRC2 but inhibit EZH2 catalytic activity (acting as a “brake”). JARID2 reduces PRC2-RNA interaction, promoting transfer of PRC2 from lncRNA-bound to chromatin-bound state, and simultaneously relieving the lncRNA-mediated inhibition of EZH2 catalytic activity. This “handoff” mechanism — from lncRNA-guided (inactive) to chromatin-bound (active) — ensures that PRC2 deposits H3K27me3 only when properly positioned on target chromatin, preventing promiscuous silencing.</td>
+<td>Hao et al.&nbsp;(2021) <em>Int. J. Biol. Sci.</em> 17:3268–3280</td>
+</tr>
+<tr class="even">
+<td><strong>PHF1</strong></td>
+<td><em>PHF1</em></td>
+<td>PRC2 accessory subunit; stimulates H3K27me3 activity</td>
+<td>Part of PRC2-lncRNA complexes</td>
+<td><strong>Stimulatory accessory factor that enhances PRC2 processivity.</strong> PHF1 stimulates the processivity of PRC2, promoting the transition from H3K27me1 to H3K27me3. PHF1 is part of the PRC2 holoenzyme that can be directed by lncRNAs to specific loci.</td>
+<td>Standard</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="swisnf-baf-chromatin-remodeling-complex" class="level3">
+<h3 class="anchored" data-anchor-id="swisnf-baf-chromatin-remodeling-complex">7.2 SWI/SNF (BAF) Chromatin Remodeling Complex</h3>
+<p>lncRNAs direct the SWI/SNF complex to cell type-specific enhancers, controlling chromatin accessibility.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Protein</th>
+<th>Function</th>
+<th>lncRNA Interaction</th>
+<th>Contribution to lncRNA Pathway</th>
+<th>Key References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>BRG1/SMARCA4</strong></td>
+<td>ATP-dependent catalytic subunit of SWI/SNF; remodels nucleosomes to increase DNA accessibility</td>
+<td>lncRNAs preferentially bind SWI/SNF and direct it to enhancers</td>
+<td><strong>The ATP-driven motor of lncRNA-directed chromatin opening.</strong> BRG1 is the catalytic engine that uses ATP hydrolysis to slide, evict, or restructure nucleosomes, opening chromatin for transcription factor binding and gene activation. lncRNAs preferentially bind SWI/SNF and direct BRG1 to cell type-specific enhancers, providing the sequence specificity that SWI/SNF lacks on its own. This lncRNA-SWI/SNF-enahancer axis activates gene expression programs — in contrast to the lncRNA-PRC2 axis which silences them — making lncRNA-directed SWI/SNF the counterpart activation pathway to PRC2-mediated repression.</td>
+<td>Oo et al.&nbsp;(2025) <em>Nat. Commun.</em> 16:131</td>
+</tr>
+<tr class="even">
+<td><strong>BRM/SMARCA2</strong></td>
+<td>Alternative ATPase subunit of SWI/SNF</td>
+<td>Part of lncRNA-directed SWI/SNF</td>
+<td><strong>Alternative catalytic subunit for lncRNA-directed remodeling.</strong> BRM can replace BRG1 as the ATPase subunit in certain SWI/SNF complexes, providing functional diversity in lncRNA-directed chromatin remodeling.</td>
+<td>Oo et al.&nbsp;(2025) <em>Nat. Commun.</em> 16:131</td>
+</tr>
+<tr class="odd">
+<td><strong>BAF155/SMARCC1</strong>, <strong>BAF170/SMARCC2</strong></td>
+<td>Core SWI/SNF subunits; scaffolding</td>
+<td>Part of lncRNA-directed SWI/SNF enhancer hub</td>
+<td><strong>Structural scaffolds of the lncRNA-SWI/SNF enhancer hub.</strong> BAF155 and BAF170 are core scaffolding subunits that maintain SWI/SNF complex integrity and mediate protein-protein interactions within the complex. They are part of the “enhancer hub” model where lncRNAs competitively recruit SWI/SNF to specific enhancers.</td>
+<td>Oo et al.&nbsp;(2025) <em>Nat. Commun.</em> 16:131</td>
+</tr>
+<tr class="even">
+<td><strong>BAF47/INI1/SMARCB1</strong></td>
+<td>Core SWI/SNF subunit; tumor suppressor</td>
+<td>Part of SWI/SNF</td>
+<td><strong>Tumor suppressor subunit essential for SWI/SNF function.</strong> BAF47 is required for the full chromatin remodeling activity of SWI/SNF and is a potent tumor suppressor. Its loss (as in malignant rhabdoid tumors) abrogates SWI/SNF activity and may disrupt lncRNA-directed gene activation programs.</td>
+<td>Standard</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="histone-modification-complexes-beyond-prc2" class="level3">
+<h3 class="anchored" data-anchor-id="histone-modification-complexes-beyond-prc2">7.3 Histone Modification Complexes (Beyond PRC2)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Protein/Complex</th>
+<th>Gene(s)</th>
+<th>Function</th>
+<th>lncRNA Interaction</th>
+<th>Contribution to lncRNA Pathway</th>
+<th>Key References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>LSD1/KDM1A</strong></td>
+<td><em>KDM1A</em></td>
+<td>Histone H3K4me1/2 demethylase; transcriptional repression; part of CoREST complex</td>
+<td>HOTAIR binds both PRC2 (5′ domain) and LSD1 (3′ domain) to coordinate H3K27me3 and H3K4 demethylation for gene silencing</td>
+<td><strong>Dual-modification silencing effector recruited by HOTAIR to erase active marks.</strong> LSD1 removes activating H3K4me1/2 marks, working in concert with PRC2’s deposition of repressive H3K27me3. HOTAIR is a modular scaffold — its 5′ domain recruits PRC2 (for H3K27me3 silencing) and its 3′ domain recruits LSD1/CoREST (for H3K4 demethylation). This dual recruitment achieves a “double hit” on target genes: simultaneous removal of the active mark (H3K4me) and deposition of the repressive mark (H3K27me3), ensuring robust and stable epigenetic silencing. This demonstrates that a single lncRNA can coordinate multiple chromatin-modifying complexes for synergistic gene regulation.</td>
+<td>Tsai et al.&nbsp;(2010) <em>Science</em> 329:689–693</td>
+</tr>
+<tr class="even">
+<td><strong>CoREST complex</strong> (RCOR1, LSD1, HDAC1/2)</td>
+<td>Multiple</td>
+<td>Histone demethylation and deacetylation</td>
+<td>HOTAIR bridges PRC2 and LSD1/CoREST</td>
+<td><strong>Tripartite silencing machine that erases active marks and removes acetylation.</strong> The CoREST complex (LSD1 + RCOR1 + HDAC1/2) couples H3K4 demethylation with histone deacetylation, providing a triple silencing effect when recruited by HOTAIR: (1) H3K4 demethylation by LSD1, (2) histone deacetylation by HDAC1/2, and (3) H3K27 trimethylation by PRC2. This demonstrates the extraordinary combinatorial power of lncRNA scaffolding — one lncRNA can orchestrate multiple layers of chromatin modification simultaneously.</td>
+<td>Tsai et al.&nbsp;(2010) <em>Science</em> 329:689–693</td>
+</tr>
+<tr class="odd">
+<td><strong>MLL1/KMT2A</strong></td>
+<td><em>KMT2A</em></td>
+<td>H3K4 methyltransferase; transcriptional activation</td>
+<td>HOTTIP lncRNA recruits WDR5/MLL complex to activate HOXA genes</td>
+<td><strong>Gene activation engine directed by HOTTIP lncRNA.</strong> MLL1 deposits activating H3K4me3 marks at gene promoters. HOTTIP lncRNA binds WDR5 to recruit the MLL1 complex to specific HOXA loci, switching on gene expression — the functional opposite of HOTAIR-PRC2-mediated silencing. This demonstrates that lncRNAs direct both activating and repressing chromatin machinery, and the same histone modification (H3K4 methylation) can be targeted by lncRNAs for either activation (via MLL1) or removal (via LSD1).</td>
+<td>Wang et al.&nbsp;(2011) <em>Nature</em> 467:340–344</td>
+</tr>
+<tr class="even">
+<td><strong>WDR5</strong></td>
+<td><em>WDR5</em></td>
+<td>Core component of MLL/COMPASS complex; H3K4 methylation</td>
+<td>HOTTIP binds WDR5 to target MLL to HOXA loci</td>
+<td><strong>The lncRNA-docking subunit of the MLL activation complex.</strong> WDR5 is the direct binding target of HOTTIP lncRNA — WDR5’s WD40 repeat domain binds a specific motif in HOTTIP, and this interaction is essential for recruiting the entire MLL1 complex to target loci. WDR5 thus serves as the “receptor” that translates lncRNA localization information into chromatin modification (H3K4me3 deposition), making it a critical interface between lncRNA signals and epigenetic activation.</td>
+<td>Wang et al.&nbsp;(2011) <em>Nature</em> 467:340–344</td>
+</tr>
+<tr class="odd">
+<td><strong>MOF/KAT8</strong></td>
+<td><em>KAT8</em></td>
+<td>H4K16 acetyltransferase (MYST family); part of MSL complex</td>
+<td>XIST and other lncRNAs interact with dosage compensation complexes</td>
+<td><strong>Histone acetyltransferase for lncRNA-directed chromatin opening.</strong> MOF deposits the activating H4K16ac mark, which opens chromatin by neutralizing the charge interaction between histone H4 and DNA. lncRNA-directed MOF recruitment (e.g., in dosage compensation complexes guided by XIST-related RNAs) provides a mechanism for locus-specific chromatin opening through acetylation.</td>
+<td>Standard</td>
+</tr>
+<tr class="even">
+<td><strong>DNMT1/3A/3B</strong></td>
+<td><em>DNMT1</em>, <em>DNMT3A</em>, <em>DNMT3B</em></td>
+<td>DNA methyltransferases; CpG methylation</td>
+<td>CDKN2B-AS1 lncRNA forms RNA-DNA triplexes to recruit DNMTs; lncRNAs guide de novo DNA methylation</td>
+<td><strong>DNA methylation machinery recruited by lncRNAs for stable gene silencing.</strong> lncRNAs recruit DNMTs to specific CpG islands to deposit DNA methylation, a highly stable epigenetic mark that persists through cell division. CDKN2B-AS1 forms RNA-DNA triplex structures at target gene promoters to recruit DNMTs, while other lncRNAs use protein intermediaries (e.g., PRC2-DNMT connections). DNA methylation directed by lncRNAs provides a more durable silencing mechanism than histone modifications alone, and may be particularly relevant for transgenerational epigenetic inheritance in corals.</td>
+<td>Liu et al.&nbsp;(2025) <em>Biomolecules</em> 15:881</td>
+</tr>
+<tr class="odd">
+<td><strong>HDAC1/2/3</strong></td>
+<td><em>HDAC1</em>, <em>HDAC2</em>, <em>HDAC3</em></td>
+<td>Histone deacetylases; remove acetyl marks for chromatin compaction</td>
+<td>Various lncRNAs recruit HDACs to specific loci</td>
+<td><strong>Deacetylation machinery for lncRNA-directed chromatin compaction.</strong> HDACs remove activating acetyl marks (e.g., H3K27ac, H4K16ac), compacting chromatin and repressing transcription. lncRNA-directed HDAC recruitment (e.g., through the CoREST complex, or independently) provides a mechanism for reversing gene activation. Combined with PRC2-mediated H3K27me3 deposition, HDAC-mediated deacetylation achieves multi-layered epigenetic silencing.</td>
+<td>Standard</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="nuclear-organization-proteins" class="level3">
+<h3 class="anchored" data-anchor-id="nuclear-organization-proteins">7.4 Nuclear Organization Proteins</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Protein</th>
+<th>Gene</th>
+<th>Function</th>
+<th>lncRNA Interaction</th>
+<th>Contribution to lncRNA Pathway</th>
+<th>Key References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CTCF</strong></td>
+<td><em>CTCF</em></td>
+<td>CCCTC-binding factor; insulator protein; 3D genome organizer</td>
+<td>lncRNAs cooperate with CTCF to mediate genome topology</td>
+<td><strong>3D genome organizer that cooperates with lncRNAs for locus-specific chromatin architecture.</strong> CTCF defines topologically associating domain (TAD) boundaries and insulator elements, creating 3D chromatin loops that regulate enhancer-promoter interactions. lncRNAs cooperate with CTCF to mediate specific genome topology — for example, by stabilizing CTCF binding at specific loci or by bridging CTCF to cohesin. This lncRNA-CTCF partnership can dynamically reshape 3D genome architecture in response to cellular signals, controlling which genes are in contact with which enhancers.</td>
+<td>Spandidos-Publications (2025) <em>Int. J. Oncol.</em> <a href="DOI:10.3892/ijo.2025.5735" class="uri">DOI:10.3892/ijo.2025.5735</a></td>
+</tr>
+<tr class="even">
+<td><strong>Cohesin</strong> (SMC1A, SMC3, RAD21, SA1/SA2)</td>
+<td>Multiple</td>
+<td>3D genome architecture; loops; facilitates enhancer-promoter contacts</td>
+<td>NUP153 modulates gene activation by coordinating CTCF and cohesin with lncRNAs</td>
+<td><strong>Loop extrusion machinery that works with lncRNAs to shape enhancer-promoter contacts.</strong> Cohesin extrudes chromatin loops that bring enhancers into contact with their target promoters. lncRNAs influence this process by guiding cohesin loading sites, stabilizing loop structures, or recruiting cohesin via CTCF. The lncRNA-Cohesin-CTCF axis is a major mechanism for dynamic 3D genome reorganization in response to signaling, and its misregulation disrupts gene expression programs.</td>
+<td>Oo et al.&nbsp;(2025) <em>Nat. Commun.</em> 16:131</td>
+</tr>
+<tr class="odd">
+<td><strong>NONO/SFPQ</strong> (Paraspeckle proteins)</td>
+<td><em>NONO</em>, <em>SFPQ</em></td>
+<td>Nuclear paraspeckle assembly; bind NEAT1 lncRNA scaffold</td>
+<td>Essential for paraspeckle biogenesis; bind NEAT1</td>
+<td><strong>Core structural proteins of NEAT1-dependent paraspeckles.</strong> NONO and SFPQ bind directly to NEAT1_2 lncRNA and are essential for the formation of paraspeckles — nuclear bodies that sequester specific proteins and RNAs to regulate their availability. Paraspeckles function as “molecular sponges” — by sequestering transcription factors, RNA-editing enzymes (ADAR1), and mRNAs, they indirectly regulate gene expression. NEAT1_2 is the essential architectural scaffold; without NONO/SFPQ binding, paraspeckles cannot form and their sequestered molecules are released into the nucleoplasm, altering gene expression.</td>
+<td>Plant et al.&nbsp;(2020) <em>Sci. Adv.</em> 6:eaaz9072</td>
+</tr>
+<tr class="even">
+<td><strong>PSPC1</strong>, <strong>PSF</strong></td>
+<td><em>PSPC1</em>, <em>SFPQ</em></td>
+<td>Paraspeckle proteins</td>
+<td>Bind NEAT1 for paraspeckle integrity</td>
+<td><strong>Additional structural proteins for paraspeckle integrity and function.</strong> PSPC1 is a paraspeckle component that binds NEAT1 and contributes to the structural integrity of these nuclear bodies. PSF (SFPQ) serves dual roles in both paraspeckle structure and in DNA repair/RNA processing, linking paraspeckle dynamics to genome maintenance.</td>
+<td>Plant et al.&nbsp;(2020) <em>Sci. Adv.</em> 6:eaaz9072</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="lncrna-function-post-transcriptional-cytoplasmic" class="level2">
+<h2 class="anchored" data-anchor-id="lncrna-function-post-transcriptional-cytoplasmic">8. lncRNA Function — Post-Transcriptional &amp; Cytoplasmic</h2>
+<section id="lncrna-mirna-interactions-cerna-sponge-mechanism" class="level3">
+<h3 class="anchored" data-anchor-id="lncrna-mirna-interactions-cerna-sponge-mechanism">8.1 lncRNA-miRNA Interactions (ceRNA / Sponge Mechanism)</h3>
+<p>lncRNAs can act as competing endogenous RNAs (ceRNAs) or “sponges” that sequester miRNAs away from their mRNA targets. The proteins involved are the same RISC machinery described in Section 4 (AGO, TNRC6, etc.), but the lncRNA provides additional binding sites.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Protein</th>
+<th>Function in lncRNA-miRNA crosstalk</th>
+<th>Contribution to lncRNA Pathway</th>
+<th>Key References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>AGO1–4</strong></td>
+<td>miRNA-loaded AGO binds lncRNA ceRNA/sponge via miRNA seed pairing</td>
+<td><strong>Effector that executes the ceRNA/sponge interaction between lncRNAs and miRNAs.</strong> AGO proteins mediate the physical interaction between miRNAs and lncRNA ceRNAs — the miRNA guide strand, loaded in AGO, base-pairs with complementary sites in the lncRNA just as it would with an mRNA target. When a lncRNA contains multiple miRNA binding sites, it can “soak up” multiple AGO-miRNA complexes, effectively depleting the pool of free miRNA available to repress its true mRNA targets. This ceRNA mechanism allows lncRNAs to indirectly upregulate genes that would otherwise be silenced by miRNAs, creating a post-transcriptional regulatory network.</td>
+<td>Singh et al.&nbsp;(2025) <em>Mol. Biol. Rep.</em> <a href="DOI:10.1007/s11033-025-10906-4" class="uri">DOI:10.1007/s11033-025-10906-4</a></td>
+</tr>
+<tr class="even">
+<td><strong>TNRC6A/B/C</strong></td>
+<td>Scaffold for miRISC recruited to lncRNA targets</td>
+<td><strong>Scaffolding that enables miRNA-mediated silencing on lncRNA ceRNA targets.</strong> TNRC6 proteins are recruited when AGO-miRNA binds lncRNA ceRNA sites, forming functional miRISC on the lncRNA. This means that the lncRNA ceRNA not only sequesters the miRNA but also engages the full silencing machinery (deadenylases, decapping enzymes), potentially leading to lncRNA degradation. The balance between miRNA sequestration (ceRNA function) and miRNA-directed lncRNA degradation determines whether the lncRNA acts as a sponge or as a miRNA target.</td>
+<td>Standard</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="lncrna-protein-interactions-in-cytoplasm" class="level3">
+<h3 class="anchored" data-anchor-id="lncrna-protein-interactions-in-cytoplasm">8.2 lncRNA-Protein Interactions in Cytoplasm</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Protein</th>
+<th>Gene</th>
+<th>Function</th>
+<th>Contribution to lncRNA Pathway</th>
+<th>Key References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>YBX1</strong></td>
+<td><em>YBX1</em></td>
+<td>RNA-binding protein; interacts with lncRNAs to regulate mRNA stability and translation</td>
+<td><strong>lncRNA cofactor that links cytoplasmic lncRNAs to mRNA fate regulation.</strong> YBX1 interacts with cytoplasmic lncRNAs and serves as an effector for lncRNA-mediated regulation of mRNA stability and translation. lncRNAs can guide YBX1 to specific mRNA targets or modulate its RNA-binding activity, providing a mechanism for sequence-specific mRNA regulation by lncRNAs in the cytoplasm.</td>
+<td>Liu et al.&nbsp;(2025) <em>Biomolecules</em> 15:881</td>
+</tr>
+<tr class="even">
+<td><strong>HNRNPK</strong></td>
+<td><em>HNRNPK</em></td>
+<td>Heterogeneous nuclear ribonucleoprotein K; scaffolding for lncRNA-mediated regulation of metabolic enzymes (e.g., IDH2)</td>
+<td><strong>Scaffolding RBP that assembles lncRNA-metabolic enzyme complexes.</strong> HNRNPK mediates the interaction between lncRNAs and metabolic enzymes, enabling lncRNA-directed regulation of cellular metabolism. For example, LINC00571 uses HNRNPK as a scaffold to assemble a complex with ILF2 and IDH2, regulating TCA cycle metabolism. This demonstrates a cytoplasmic lncRNA mechanism where the lncRNA scaffolds protein complexes to regulate enzymatic reactions, extending lncRNA function beyond gene expression regulation into direct metabolic control.</td>
+<td>Xi et al.&nbsp;(2024) <em>J. Exp. Clin. Cancer Res.</em> 43:22</td>
+</tr>
+<tr class="odd">
+<td><strong>HNRNPA2B1</strong></td>
+<td><em>HNRNPA2B1</em></td>
+<td>RBP; interacts with DGCR8; mediates m6A-dependent pri-miRNA processing; also binds lncRNAs</td>
+<td><strong>Dual-function RBP at the intersection of m6A modification, miRNA biogenesis, and lncRNA function.</strong> HNRNPA2B1 recognizes m6A-modified RNAs and mediates m6A-dependent pri-miRNA processing by recruiting DGCR8, directly linking RNA modification to miRNA biogenesis. It also binds lncRNAs, potentially recruiting them to the Microprocessor or other processing machinery. This makes HNRNPA2B1 a key integrator of epitranscriptomic (m6A) modification with both miRNA and lncRNA regulation.</td>
+<td>Alarcón et al.&nbsp;(2015) <em>Nat. Commun.</em> 6:7216</td>
+</tr>
+<tr class="even">
+<td><strong>E3 ubiquitin ligases</strong> (DZIP3, MEX3B, TRIM25)</td>
+<td>Multiple</td>
+<td>lncRNAs scaffold E3 ligase-substrate interactions to promote ubiquitination and degradation of target proteins (e.g., HOTAIR-DZIP3-MEX3B; LINC00955-TRIM25-Sp1)</td>
+<td><strong>lncRNA-scaffolded protein ubiquitination machinery for targeted protein degradation.</strong> lncRNAs can function as molecular scaffolds that physically bring E3 ubiquitin ligases into proximity with their substrate proteins, dramatically enhancing ubiquitination and proteasomal degradation. HOTAIR scaffolds DZIP3 and MEX3B to promote degradation of their targets; LINC00955 scaffolds TRIM25 and Sp1 to enhance Sp1 ubiquitination. This represents a fundamentally different lncRNA mechanism — not regulating gene expression at the RNA level, but directly controlling protein stability through the ubiquitin-proteasome system. This “scaffold” function of lncRNAs in post-translational modification is an emerging area with broad implications for cellular regulation.</td>
+<td>Yoon et al.&nbsp;(2013) <em>Nat. Commun.</em> 4:2939; Shin et al.&nbsp;(2025) <em>Exp. Mol. Med.</em> 57:1641–1650</td>
+</tr>
+<tr class="odd">
+<td><strong>BRD3/BRD4</strong></td>
+<td><em>BRD3</em>, <em>BRD4</em></td>
+<td>Bromodomain proteins; lncRNA DIGIT and BRD3 form phase-separated condensates</td>
+<td><strong>Bromodomain proteins that form lncRNA-driven phase-separated condensates for transcriptional activation.</strong> BRD3 and BRD4 are readers of acetylated histones that promote transcription. The lncRNA DIGIT binds BRD3 to form phase-separated condensates at specific genomic loci, creating concentrated zones of transcriptional activity. This demonstrates that lncRNAs can organize 3D nuclear compartments through liquid-liquid phase separation (LLPS), bringing together transcription factors and chromatin regulators in dynamic, membraneless organelles that activate gene expression programs.</td>
+<td>Daneshvar et al.&nbsp;(2020) <em>eLife</em> 9:e55258</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="shared-machinery-between-mirna-and-lncrna-pathways" class="level2">
+<h2 class="anchored" data-anchor-id="shared-machinery-between-mirna-and-lncrna-pathways">9. Shared Machinery Between miRNA and lncRNA Pathways</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Protein/Complex</th>
+<th>Role in miRNA Pathway</th>
+<th>Role in lncRNA Pathway</th>
+<th>Contribution to Both Pathways</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>DROSHA</strong></td>
+<td>Cleaves pri-miRNAs</td>
+<td>Cleaves some lncRNA hairpins (e.g., DGCR8 mRNA, some lncRNA-derived miRNA precursors); noncanonical processing of lncRNAs</td>
+<td><strong>Dual-function endonuclease at the apex of both miRNA and lncRNA processing.</strong> DROSHA’s primary role is cleaving pri-miRNAs, but it also processes certain lncRNA hairpin structures and regulates lncRNA levels through noncanonical cleavage. The Microprocessor can cleave hairpin structures within lncRNAs to produce miRNAs (as in miRNA-host lncRNAs) or to degrade the lncRNA itself. This creates a regulatory intersection: lncRNA levels can be controlled by DROSHA, and some lncRNAs are both miRNA precursors and functional lncRNA molecules.</td>
+</tr>
+<tr class="even">
+<td><strong>DICER</strong></td>
+<td>Cleaves pre-miRNAs</td>
+<td>Some lncRNA-derived small RNAs are Dicer-dependent; Dicer processes some lncRNA substrates</td>
+<td><strong>Shared processing enzyme for small RNA production from both miRNA and lncRNA precursors.</strong> DICER processes pre-miRNAs into mature miRNA duplexes, but also processes certain lncRNA-derived hairpins that produce small RNAs. Some lncRNAs contain hairpin structures that are Dicer substrates, generating small RNAs with regulatory functions. This shared processing creates functional overlap between the miRNA and lncRNA pathways.</td>
+</tr>
+<tr class="odd">
+<td><strong>DGCR8</strong></td>
+<td>Cofactor for DROSHA</td>
+<td>Recognizes lncRNA secondary structures for Microprocessor; DGCR8 mRNA is itself a lncRNA-like substrate</td>
+<td><strong>Junction protein that bridges miRNA processing and lncRNA regulation via the Microprocessor feedback loop.</strong> DGCR8 is essential for DROSHA activity in miRNA processing, but DGCR8 mRNA is itself a substrate for DROSHA cleavage (an auto-regulatory feedback loop). Since DGCR8 mRNA has lncRNA-like features, this feedback loop sits at the intersection of miRNA and lncRNA regulation.</td>
+</tr>
+<tr class="even">
+<td><strong>RNA Pol II</strong></td>
+<td>Transcribes pri-miRNAs and miRNA host genes</td>
+<td>Transcribes lncRNA genes</td>
+<td><strong>The universal transcription engine for both pri-miRNAs and lncRNAs.</strong> Pol II transcribes both pri-miRNA genes (including miRNAs embedded in lncRNA host genes) and independent lncRNA genes. Distinct Pol II CTD phosphorylation patterns differentiate the transcription of miRNA host genes vs.&nbsp;lncRNA genes vs.&nbsp;mRNA genes, coupling transcription kinetics to downstream RNA processing fate.</td>
+</tr>
+<tr class="odd">
+<td><strong>Spliceosome</strong></td>
+<td>Processes intronic miRNAs (mirtrons bypass this)</td>
+<td>Processes lncRNA introns</td>
+<td><strong>Shared splicing machinery with divergent efficiency for miRNA hosts vs.&nbsp;lncRNAs.</strong> The spliceosome processes both miRNA host gene introns (which may contain miRNAs) and lncRNA introns. However, lncRNAs are typically spliced far less efficiently than mRNAs, which has consequences for both pathways: retained introns in lncRNAs contribute to nuclear retention, and mirtrons (intronic miRNAs that bypass Drosha) depend on the spliceosome for their biogenesis.</td>
+</tr>
+<tr class="even">
+<td><strong>Exportin-5</strong></td>
+<td>Exports pre-miRNA</td>
+<td>Exports some lncRNA intermediates</td>
+<td><strong>Shared nuclear export receptor with distinct substrate preferences.</strong> XPO5 primarily exports pre-miRNAs but can also export some structured lncRNA intermediates. The 2-nt 3′ overhang and stem length requirements for XPO5 recognition overlap with features found in certain lncRNA structures.</td>
+</tr>
+<tr class="odd">
+<td><strong>AGO proteins</strong></td>
+<td>Core of miRISC</td>
+<td>Bind some lncRNAs; lncRNAs can be AGO targets (cleaved or repressed)</td>
+<td><strong>Shared effector proteins with opposing consequences for miRNA vs.&nbsp;lncRNA function.</strong> AGO proteins are the core of miRISC (executing miRNA-mediated silencing), but they also bind lncRNAs as targets — lncRNAs with miRNA complementarity can be cleaved or repressed by AGO. Additionally, in the ceRNA mechanism, AGO-miRNA binding to lncRNA sponges depletes miRNA from mRNA targets, effectively converting AGO from a silencer to a vehicle for lncRNA-mediated gene activation.</td>
+</tr>
+<tr class="even">
+<td><strong>KSRP</strong></td>
+<td>Promotes Drosha and Dicer processing</td>
+<td>Regulates RNA stability including lncRNA</td>
+<td><strong>Biphasic processing activator for miRNAs with emerging roles in lncRNA stability.</strong> KSRP promotes both nuclear and cytoplasmic miRNA processing steps, and also regulates the stability of select lncRNAs, suggesting broader roles in RNA metabolism that span both pathways.</td>
+</tr>
+<tr class="odd">
+<td><strong>LIN28</strong></td>
+<td>Blocks let-7 processing</td>
+<td>Interacts with lncRNAs in pluripotency networks</td>
+<td><strong>Developmental switch protein that integrates let-7 miRNA suppression with lncRNA pluripotency networks.</strong> LIN28 specifically blocks let-7 miRNA biogenesis, but also interacts with lncRNAs in pluripotency networks, suggesting it may coordinate miRNA and lncRNA regulation during the stem cell-to-differentiated cell transition.</td>
+</tr>
+<tr class="even">
+<td><strong>hnRNP proteins</strong></td>
+<td>Regulate miRNA processing</td>
+<td>Bind and regulate lncRNA splicing, stability, and function</td>
+<td><strong>Broad-spectrum RNA regulators that operate across both miRNA and lncRNA pathways.</strong> hnRNP proteins (A1, A2/B1, K, etc.) regulate miRNA processing (e.g., hnRNP A1 promotes pri-miR-18a processing; hnRNP A2/B1 interacts with DGCR8) and also regulate lncRNA splicing, stability, and function. Their broad RNA-binding activity makes them common mediators of cross-talk between the two pathways.</td>
+</tr>
+<tr class="odd">
+<td><strong>ADAR</strong></td>
+<td>Edits miRNA precursors</td>
+<td>Edits lncRNA transcripts (e.g., in nuclear paraspeckles)</td>
+<td><strong>Shared RNA editing enzyme that diversifies both miRNAs and lncRNAs.</strong> ADAR edits adenosine to inosine in both miRNA precursors (altering processing efficiency or target specificity) and lncRNAs (e.g., creating inosine-containing NEAT1 that is recognized by paraspeckle proteins). This shared editing creates regulatory diversity in both pathways.</td>
+</tr>
+<tr class="even">
+<td><strong>Nuclear exosome</strong></td>
+<td>Degrades aberrant miRNA intermediates</td>
+<td>Primary degradation pathway for many lncRNAs</td>
+<td><strong>Shared quality control and regulatory degradation machinery.</strong> The nuclear exosome degrades aberrant miRNA processing intermediates and is the primary degradation pathway for most nascent lncRNAs. Exosome activity thus determines steady-state levels of both miRNA precursors and lncRNAs, making it a master regulator of non-coding RNA abundance.</td>
+</tr>
+<tr class="odd">
+<td><strong>CPSF/CstF</strong></td>
+<td>3′ processing of pri-miRNAs in some contexts</td>
+<td>3′ processing of polyadenylated lncRNAs</td>
+<td><strong>Shared 3′ end processing machinery that defines the 3′ termini of both pri-miRNAs and lncRNAs.</strong> CPSF/CstF process the 3′ ends of polyadenylated lncRNAs and also contribute to 3′ processing of some pri-miRNAs. Alternative polyadenylation choice (mediated by CPSF/CstF/CFIm) determines both lncRNA isoform identity and pri-miRNA processing efficiency.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="final-list" class="level2">
+<h2 class="anchored" data-anchor-id="final-list">10. FINAL LIST</h2>
+<p>These are the genes I will need to obtain FASTAs for, to use in a BLAST search on our coral genomes. Note that I chose to exclude genes identified in <strong>6.1</strong>, which play core transcription roles relevant for mRNA as well, and would thus be unable to confidently ascribe to ncRNA regulation.<br>
+<br>
+Also, note a few manual changes from the agentic summary above, to account for coral miRNAs’ plant-like features:<br>
+<br>
+<strong>Coral-Specific Dicer Partners (replacing TRBP/PACT)</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Gene</th>
+<th>Protein</th>
+<th>Relevance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>HYL1La</em></td>
+<td>HYL1-like a</td>
+<td><strong>Plant-like Dicer partner; essential in corals; NO bilaterian equivalent</strong></td>
+</tr>
+<tr class="even">
+<td><em>HYL1Lb</em></td>
+<td>HYL1-like b</td>
+<td>Second HYL1 paralog; present in corals</td>
+</tr>
+</tbody>
+</table>
+<p>🪸 <strong>Coral-Specific miRNA Methylation (absent from bilaterian miRNA pathway)</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Gene</th>
+<th>Protein</th>
+<th>Relevance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>HEN1</em></td>
+<td>HEN1 methyltransferase</td>
+<td><strong>2′-O-methylates miRNA 3′ ends in corals; essential for miRNA stability; plant-like feature</strong></td>
+</tr>
+</tbody>
+</table>
+<p>🪸 <strong>Coral-Specific: RdRP Amplification</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Gene</th>
+<th>Protein</th>
+<th>Relevance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>RdRP</em> (multiple)</td>
+<td>RNA-dependent RNA polymerase</td>
+<td><strong>8 candidates in&nbsp;<em>S. pistillata</em>; enables transitive RNAi — ABSENT from most bilaterians; plant/<em>C. elegans</em>-like</strong></td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 49%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Protein</th>
+<th>Gene</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>DROSHA</strong></td>
+<td><em>DROSHA</em> (formerly <em>RNASEN</em>)</td>
+</tr>
+<tr class="even">
+<td><strong>DGCR8</strong></td>
+<td><em>DGCR8</em> (DiGeorge syndrome critical region 8; aka Pasha in <em>Drosophila</em> and <em>C. elegans</em>)</td>
+</tr>
+<tr class="odd">
+<td><strong>Exportin-5 (XPO5)</strong></td>
+<td><em>XPO5</em></td>
+</tr>
+<tr class="even">
+<td><strong>RanGTP</strong></td>
+<td><em>RAN</em></td>
+</tr>
+<tr class="odd">
+<td><strong>DICER</strong></td>
+<td><em>DICER1</em></td>
+</tr>
+<tr class="even">
+<td><strong>TRBP</strong> (TAR RNA-binding protein)</td>
+<td><em>TARBP2</em></td>
+</tr>
+<tr class="odd">
+<td><strong>PACT</strong> (Protein activator of PKR)</td>
+<td><em>PRKRA</em></td>
+</tr>
+<tr class="even">
+<td><strong>Loqs-PB</strong></td>
+<td><em>loquacious</em> (in <em>Drosophila</em>)</td>
+</tr>
+<tr class="odd">
+<td><strong>AGO1</strong></td>
+<td><em>AGO1</em></td>
+</tr>
+<tr class="even">
+<td><strong>AGO2</strong></td>
+<td><em>AGO2</em></td>
+</tr>
+<tr class="odd">
+<td><strong>AGO3</strong></td>
+<td><em>AGO3</em></td>
+</tr>
+<tr class="even">
+<td><strong>AGO4</strong></td>
+<td><em>AGO4</em></td>
+</tr>
+<tr class="odd">
+<td><strong>TNRC6A</strong> (GW182)</td>
+<td><em>TNRC6A</em></td>
+</tr>
+<tr class="even">
+<td><strong>TNRC6B</strong></td>
+<td><em>TNRC6B</em></td>
+</tr>
+<tr class="odd">
+<td><strong>TNRC6C</strong></td>
+<td><em>TNRC6C</em></td>
+</tr>
+<tr class="even">
+<td><strong>CCR4-NOT complex</strong></td>
+<td><em>CNOT1–CNOT11</em>, <em>CNOT7</em> (CAF1), <em>CNOT6</em> (CCR4)</td>
+</tr>
+<tr class="odd">
+<td><strong>PAN2–PAN3 complex</strong></td>
+<td><em>PAN2</em>, <em>PAN3</em></td>
+</tr>
+<tr class="even">
+<td><strong>PABP</strong> (Poly(A)-binding protein)</td>
+<td><em>PABPC1</em></td>
+</tr>
+<tr class="odd">
+<td><strong>PARN</strong> (Poly(A)-specific ribonuclease)</td>
+<td><em>PARN</em></td>
+</tr>
+<tr class="even">
+<td><strong>DCP1–DCP2</strong></td>
+<td><em>DCP1A/B</em>, <em>DCP2</em></td>
+</tr>
+<tr class="odd">
+<td><strong>EDC3, EDC4 (Hedls)</strong></td>
+<td><em>EDC3</em>, <em>EDC4</em></td>
+</tr>
+<tr class="even">
+<td><strong>XRN1</strong></td>
+<td><em>XRN1</em></td>
+</tr>
+<tr class="odd">
+<td><strong>Hsc70/Hsp90</strong> chaperone machinery</td>
+<td><em>HSPA8</em> (Hsc70), <em>HSP90AA1/HSP90AB1</em></td>
+</tr>
+<tr class="even">
+<td><strong>DDX6</strong></td>
+<td><em>DDX6</em> (RCK/p54)</td>
+</tr>
+<tr class="odd">
+<td><strong>DDX5</strong> (p68)</td>
+<td><em>DDX5</em></td>
+</tr>
+<tr class="even">
+<td><strong>DDX17</strong> (p72)</td>
+<td><em>DDX17</em></td>
+</tr>
+<tr class="odd">
+<td><strong>hnRNP A1</strong></td>
+<td><em>HNRNPA1</em></td>
+</tr>
+<tr class="even">
+<td><strong>KSRP</strong> (KH-type splicing regulatory protein)</td>
+<td><em>KHSRP</em></td>
+</tr>
+<tr class="odd">
+<td><strong>LIN28A / LIN28B</strong></td>
+<td><em>LIN28A</em>, <em>LIN28B</em></td>
+</tr>
+<tr class="even">
+<td><strong>TDP-43</strong></td>
+<td><em>TARDBP</em></td>
+</tr>
+<tr class="odd">
+<td><strong>BRCA1</strong></td>
+<td><em>BRCA1</em></td>
+</tr>
+<tr class="even">
+<td><strong>EWSR1</strong></td>
+<td><em>EWSR1</em></td>
+</tr>
+<tr class="odd">
+<td><strong>FUS</strong></td>
+<td><em>FUS</em></td>
+</tr>
+<tr class="even">
+<td><strong>TUT4/ZCCHC11</strong></td>
+<td><em>ZCCHC11</em></td>
+</tr>
+<tr class="odd">
+<td><strong>TUT7/ZCCHC6</strong></td>
+<td><em>ZCCHC6</em></td>
+</tr>
+<tr class="even">
+<td><strong>DIS3L2</strong></td>
+<td><em>DIS3L2</em></td>
+</tr>
+<tr class="odd">
+<td><strong>ADAR1/ADAR2</strong></td>
+<td><em>ADAR1</em>, <em>ADAR2</em></td>
+</tr>
+<tr class="even">
+<td><strong>MCPIP1/ZC3H12A</strong></td>
+<td><em>ZC3H12A</em></td>
+</tr>
+<tr class="odd">
+<td><strong>RBM3</strong></td>
+<td><em>RBM3</em></td>
+</tr>
+<tr class="even">
+<td><strong>YB-1</strong></td>
+<td><em>YBX1</em></td>
+</tr>
+<tr class="odd">
+<td><strong>DAZL</strong></td>
+<td><em>DAZL</em></td>
+</tr>
+<tr class="even">
+<td><strong>Nibbler</strong></td>
+<td><em>Nibbler</em> (fly) / <em>PNPT1</em> (mammalian homolog)</td>
+</tr>
+<tr class="odd">
+<td><strong>Integrator complex</strong> (INTS1–INTS14)</td>
+<td><em>INTS1</em>–<em>INTS14</em></td>
+</tr>
+<tr class="even">
+<td><strong>RNase P</strong></td>
+<td><em>RPPH1</em> and multiple subunits</td>
+</tr>
+<tr class="odd">
+<td><strong>snoRNP complexes</strong> (snoRNA + fibrillarin, NOP56, NOP58, etc.)</td>
+<td>Multiple</td>
+</tr>
+<tr class="even">
+<td><strong>NXF1/TAP</strong></td>
+<td><em>NXF1</em></td>
+</tr>
+<tr class="odd">
+<td><strong>CRM1/Exportin-1</strong></td>
+<td><em>XPO1</em></td>
+</tr>
+<tr class="even">
+<td><strong>PHAX</strong></td>
+<td><em>PHAX</em></td>
+</tr>
+<tr class="odd">
+<td><strong>CBC</strong> (Cap-binding complex: CBP80/CBP20)</td>
+<td><em>NCBP1</em>, <em>NCBP2</em></td>
+</tr>
+<tr class="even">
+<td><strong>ARS2</strong> (Arsenite resistance protein 2)</td>
+<td><em>SRRT</em></td>
+</tr>
+<tr class="odd">
+<td><strong>Nuclear exosome</strong> (EXOSC1–EXOSC10, DIS3, DIS3L)</td>
+<td><em>EXOSC1–EXOSC10, DIS3, DIS3L</em></td>
+</tr>
+<tr class="even">
+<td><strong>NEXT complex</strong> (Nuclear EXosome Targeting; ZFC3H1, RBM7, MTR4)</td>
+<td><em>ZFC3H1, RBM7, MTR4</em></td>
+</tr>
+<tr class="odd">
+<td><strong>PAXT complex</strong> (PolyA tail exosome targeting; ZFC3H1, PAPD5, etc.)</td>
+<td><em>ZFC3H1, PAPD5</em></td>
+</tr>
+<tr class="even">
+<td><strong>NMD</strong> (Nonsense-mediated decay; UPF1, UPF2, UPF3, SMG1, SMG5, SMG6, SMG7)</td>
+<td><em>UPF1, UPF2, UPF3, SMG1, SMG5, SMG6, SMG7</em></td>
+</tr>
+<tr class="odd">
+<td><strong>EZH2</strong></td>
+<td><em>EZH2</em></td>
+</tr>
+<tr class="even">
+<td><strong>EZH1</strong></td>
+<td><em>EZH1</em></td>
+</tr>
+<tr class="odd">
+<td><strong>EED</strong></td>
+<td><em>EED</em></td>
+</tr>
+<tr class="even">
+<td><strong>SUZ12</strong></td>
+<td><em>SUZ12</em></td>
+</tr>
+<tr class="odd">
+<td><strong>RBBP4</strong> (RbAp48)</td>
+<td><em>RBBP4</em></td>
+</tr>
+<tr class="even">
+<td><strong>AEBP2</strong></td>
+<td><em>AEBP2</em></td>
+</tr>
+<tr class="odd">
+<td><strong>JARID2</strong></td>
+<td><em>JARID2</em></td>
+</tr>
+<tr class="even">
+<td><strong>PHF1</strong></td>
+<td><em>PHF1</em></td>
+</tr>
+<tr class="odd">
+<td><strong>BRG1/SMARCA4</strong></td>
+<td><em>BRG1/SMARCA4</em></td>
+</tr>
+<tr class="even">
+<td><strong>BRM/SMARCA2</strong></td>
+<td><em>BRM/SMARCA2</em></td>
+</tr>
+<tr class="odd">
+<td><strong>BAF155/SMARCC1</strong>, <strong>BAF170/SMARCC2</strong></td>
+<td><em>BAF155/SMARCC1, BAF170/SMARCC2</em></td>
+</tr>
+<tr class="even">
+<td><strong>BAF47/INI1/SMARCB1</strong></td>
+<td><em>BAF47/INI1/SMARCB1</em></td>
+</tr>
+<tr class="odd">
+<td><strong>LSD1/KDM1A</strong></td>
+<td><em>LSD1/KDM1A</em></td>
+</tr>
+<tr class="even">
+<td><strong>CoREST complex</strong> (RCOR1, LSD1, HDAC1/2)</td>
+<td><em>RCOR1, LSD1, HDAC1/2</em></td>
+</tr>
+<tr class="odd">
+<td><strong>MLL1/KMT2A</strong></td>
+<td><em>MLL1/KMT2A</em></td>
+</tr>
+<tr class="even">
+<td><strong>WDR5</strong></td>
+<td><em>WDR5</em></td>
+</tr>
+<tr class="odd">
+<td><strong>MOF/KAT8</strong></td>
+<td><em>MOF/KAT8</em></td>
+</tr>
+<tr class="even">
+<td><strong>DNMT1/3A/3B</strong></td>
+<td><em>DNMT1/3A/3B</em></td>
+</tr>
+<tr class="odd">
+<td><strong>HDAC1/2/3</strong></td>
+<td><em>HDAC1/2/3</em></td>
+</tr>
+<tr class="even">
+<td><strong>CTCF</strong></td>
+<td><em>CTCF</em></td>
+</tr>
+<tr class="odd">
+<td><strong>Cohesin</strong> (SMC1A, SMC3, RAD21, SA1/SA2)</td>
+<td><em>SMC1A, SMC3, RAD21, SA1/SA2</em></td>
+</tr>
+<tr class="even">
+<td><strong>NONO/SFPQ</strong> (Paraspeckle proteins)</td>
+<td><em>NONO</em>, <em>SFPQ</em></td>
+</tr>
+<tr class="odd">
+<td><strong>PSPC1</strong>, <strong>PSF</strong></td>
+<td><em>PSPC1</em>, <em>SFPQ</em></td>
+</tr>
+<tr class="even">
+<td><strong>AGO1–4</strong></td>
+<td><em>AGO1–4</em></td>
+</tr>
+<tr class="odd">
+<td><strong>TNRC6A/B/C</strong></td>
+<td><em>TNRC6A/B/C</em></td>
+</tr>
+<tr class="even">
+<td><strong>YBX1</strong></td>
+<td><em>YBX1</em></td>
+</tr>
+<tr class="odd">
+<td><strong>HNRNPK</strong></td>
+<td><em>HNRNPK</em></td>
+</tr>
+<tr class="even">
+<td><strong>HNRNPA2B1</strong></td>
+<td><em>HNRNPA2B1</em></td>
+</tr>
+<tr class="odd">
+<td><strong>E3 ubiquitin ligases</strong> (DZIP3, MEX3B, TRIM25)</td>
+<td><em>DZIP3, MEX3B, TRIM25</em></td>
+</tr>
+<tr class="even">
+<td><strong>BRD3/BRD4</strong></td>
+<td><em>BRD3</em>, <em>BRD4</em></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">11. References</h2>
+<section id="primary-reviews-cited" class="level3">
+<h3 class="anchored" data-anchor-id="primary-reviews-cited">Primary Reviews Cited</h3>
+<ol type="1">
+<li><p>Kim H, Lee YY, Kim VN. (2024) The biogenesis and regulation of animal microRNAs. <em>Nature Reviews Molecular Cell Biology</em>. <a href="https://doi.org/10.1038/s41580-024-00805-0" class="uri">https://doi.org/10.1038/s41580-024-00805-0</a></p></li>
+<li><p>Ha M, Kim VN. (2014) Regulation of microRNA biogenesis. <em>Nature Reviews Molecular Cell Biology</em> 15:509–524.</p></li>
+<li><p>Michlewski G, Cáceres JF. (2019) Post-transcriptional control of miRNA biogenesis. <em>RNA</em> 25:1–16.</p></li>
+<li><p>Hynes C, Kakumani PK. (2024) Regulatory role of RNA-binding proteins in microRNA biogenesis. <em>Frontiers in Molecular Biosciences</em> 11:1374843. <a href="https://doi.org/10.3389/fmolb.2024.1374843" class="uri">https://doi.org/10.3389/fmolb.2024.1374843</a></p></li>
+<li><p>Finnegan EF, Pasquinelli AE. (2013) MicroRNA biogenesis: regulating the regulators. <em>Critical Reviews in Biochemistry and Molecular Biology</em> 48:51–68.</p></li>
+<li><p>Newman MA, Hammond SM. (2010) Emerging paradigms of regulated microRNA processing. <em>Genes &amp; Development</em> 24:1086–1092.</p></li>
+<li><p>Narasimhan S et al.&nbsp;(2025) Partners in silencing: decoding the mammalian Argonaute interactome. <em>Noncoding RNA</em> 11(4):62. <a href="https://doi.org/10.3390/ncrna11040062" class="uri">https://doi.org/10.3390/ncrna11040062</a></p></li>
+<li><p>Mauro M et al.&nbsp;(2023) The multiplicity of Argonaute complexes in mammalian cells. <em>J Pharmacol Exp Ther</em> 384:1–9.</p></li>
+<li><p>Nakanishi K. (2016) Anatomy of RISC: how do small RNAs and chaperones activate Argonaute proteins? <em>Wiley Interdiscip. Rev.&nbsp;RNA</em> 7:637–660.</p></li>
+<li><p>Chen CY et al.&nbsp;(2009) Ago–TNRC6 triggers microRNA-mediated decay by promoting two deadenylation steps. <em>Nature Structural &amp; Molecular Biology</em> 16:1208–1214.</p></li>
+<li><p>Chong MMW, Leong KW. (2025) Regulation of the microprocessor by post-translational modifications. <em>Frontiers in Cell and Developmental Biology</em> 13:1721087. <a href="https://doi.org/10.3389/fcell.2025.1721087" class="uri">https://doi.org/10.3389/fcell.2025.1721087</a></p></li>
+<li><p>Quinn JJ, Chang HY. (2016) Unique features of long non-coding RNA biogenesis and function. <em>Nature Reviews Genetics</em> 17:47–62.</p></li>
+<li><p>Nojima T, Proudfoot NJ. (2022) Mechanisms of lncRNA biogenesis as revealed by nascent transcriptomics. <em>Nature Reviews Molecular Cell Biology</em> 23:123–137.</p></li>
+<li><p>Ferrer J, Dimitrova N. (2024) Transcription regulation by long non-coding RNAs: mechanisms and disease relevance. <em>Nature Reviews Molecular Cell Biology</em> 25:396–415. <a href="https://doi.org/10.1038/s41580-023-00694-9" class="uri">https://doi.org/10.1038/s41580-023-00694-9</a></p></li>
+<li><p>Davidovich C, Cech TR. (2015) The recruitment of chromatin modifiers by long noncoding RNAs: lessons from PRC2. <em>RNA</em> 21:2007–2022.</p></li>
+<li><p>Wozniak M, Czyz M. (2023) lncRNAs-EZH2 interaction as promising therapeutic target in cutaneous melanoma. <em>Frontiers in Molecular Biosciences</em> 10:1170026.</p></li>
+<li><p>Hao A et al.&nbsp;(2021) Emerging roles of lncRNAs in the EZH2-regulated oncogenic network. <em>International Journal of Biological Sciences</em> 17:3268–3280.</p></li>
+<li><p>Oo JA, Warwick T, Pálfi K et al.&nbsp;(2025) Long non-coding RNAs direct the SWI/SNF complex to cell type-specific enhancers. <em>Nature Communications</em> 16:131. <a href="https://doi.org/10.1038/s41467-024-55539-6" class="uri">https://doi.org/10.1038/s41467-024-55539-6</a></p></li>
+<li><p>Liu K et al.&nbsp;(2025) LncRNA–protein interactions: a key to deciphering lncRNA mechanisms. <em>Biomolecules</em> 15:881. <a href="https://doi.org/10.3390/biom15060881" class="uri">https://doi.org/10.3390/biom15060881</a></p></li>
+<li><p>Shin CH et al.&nbsp;(2025) Long noncoding RNAs regulating enzymatic reactions in cancer. <em>Experimental &amp; Molecular Medicine</em> 57:1641–1650. <a href="https://doi.org/10.1038/s12276-025-01464-7" class="uri">https://doi.org/10.1038/s12276-025-01464-7</a></p></li>
+<li><p>Singh M et al.&nbsp;(2025) Emerging landscape of lncRNA-miRNA interactions as architects of gene expression patterns. <em>Molecular Biology Reports</em>. <a href="https://doi.org/10.1007/s11033-025-10906-4" class="uri">https://doi.org/10.1007/s11033-025-10906-4</a></p></li>
+<li><p>Wu H et al.&nbsp;(2017) The diversity of long noncoding RNAs and their generation. <em>Trends in Genetics</em> 33:55–66.</p></li>
+<li><p>Pfleiderer MM, Moresco JJ. (2022) Emerging insights into the function and structure of the Integrator complex. <em>Transcription</em> 12:251–265.</p></li>
+<li><p>Plant N et al.&nbsp;(2020) Integrator restrains paraspeckles assembly by promoting isoform switching of the lncRNA NEAT1. <em>Science Advances</em> 6:eaaz9072.</p></li>
+<li><p>Matera AG, Wang Z. (2014) A day in the life of the spliceosome. <em>Nature Reviews Molecular Cell Biology</em> 15:108–121.</p></li>
+</ol>
+</section>
+<section id="key-primary-research-articles" class="level3">
+<h3 class="anchored" data-anchor-id="key-primary-research-articles">Key Primary Research Articles</h3>
+<ol start="26" type="1">
+<li><p>Lee Y et al.&nbsp;(2003) The nuclear RNase III Drosha initiates microRNA processing. <em>Nature</em> 425:415–419.</p></li>
+<li><p>Gregory RI et al.&nbsp;(2004) The Microprocessor complex mediates the genesis of microRNAs. <em>Nature</em> 432:235–240.</p></li>
+<li><p>Han J et al.&nbsp;(2004) The Drosha-DGCR8 complex in primary miRNA processing. <em>Genes &amp; Development</em> 18:3016–3027.</p></li>
+<li><p>Nguyen TA et al.&nbsp;(2015) Functional anatomy of the human Microprocessor. <em>Cell</em> 161:1374–1387.</p></li>
+<li><p>Lund E et al.&nbsp;(2004) Nuclear export of microRNA precursors. <em>Science</em> 303:95–98.</p></li>
+<li><p>Hutvágner G et al.&nbsp;(2001) A cellular function for the RNA-interference enzyme Dicer in the maturation of the let-7 small temporal RNA. <em>Science</em> 293:834–838.</p></li>
+<li><p>Chendrimada TP et al.&nbsp;(2005) TRBP recruits the Dicer complex to Ago2 for microRNA processing and gene silencing. <em>Nature</em> 436:740–744.</p></li>
+<li><p>Trabucchi M et al.&nbsp;(2009) The RNA-binding protein KSRP promotes the biogenesis of a subset of microRNAs. <em>Nature</em> 459:1010–1014.</p></li>
+<li><p>Viswanathan SR et al.&nbsp;(2008) Selective blockade of microRNA processing by Lin28. <em>Science</em> 320:97–100.</p></li>
+<li><p>Heo I et al.&nbsp;(2008) Lin28 mediates the terminal uridylation of let-7 precursor microRNA. <em>Molecular Cell</em> 32:276–284.</p></li>
+<li><p>Zhao J et al.&nbsp;(2008) Polycomb proteins targeted by a short repeat RNA to the mouse X chromosome. <em>Science</em> 322:750–756.</p></li>
+<li><p>Tsai MC et al.&nbsp;(2010) Long noncoding RNA as modular scaffold of histone modification complexes. <em>Science</em> 329:689–693.</p></li>
+<li><p>Wang KC et al.&nbsp;(2011) A long noncoding RNA maintains active chromatin to coordinate homeotic gene expression. <em>Nature</em> 467:340–344.</p></li>
+<li><p>Baillat D et al.&nbsp;(2005) Integrator, a multiprotein mediator of small nuclear RNA processing, associates with the C-terminal repeat of RNA polymerase II. <em>Cell</em> 123:265–276.</p></li>
+<li><p>Wilusz JE et al.&nbsp;(2008) 3′ end processing of a long nuclear-retained noncoding RNA yields a tRNA-like cytoplasmic RNA. <em>Cell</em> 135:919–932.</p></li>
+<li><p>Guil S, Cáceres JF. (2007) The multifunctional RNA-binding protein hnRNP A1 is required for processing of miR-18a. <em>Nature Structural &amp; Molecular Biology</em> 14:701–707.</p></li>
+<li><p>El Said NH et al.&nbsp;(2021) Malat-1-PRC2-EZH1 interaction supports adaptive oxidative stress response in adult tissues. <em>Cell Death &amp; Disease</em> 12:850.</p></li>
+<li><p>Baillat D, Shiekhattar R. (2009) Functional dissection of the human TNRC6 (GW182-related) family of proteins. <em>Molecular and Cellular Biology</em> 29:4144–4155.</p></li>
+<li><p>Yoon JH et al.&nbsp;(2013) Scaffold function of long non-coding RNA HOTAIR in protein ubiquitination. <em>Nature Communications</em> 4:2939.</p></li>
+<li><p>Kwon SC et al.&nbsp;(2016) Structure of human DROSHA. <em>Cell</em> 164:81–90.</p></li>
+<li><p>Partin AC et al.&nbsp;(2020) Cryo-EM structures of human Drosha and DGCR8 in complex with primary microRNA. <em>Molecular Cell</em> 78:411–422.</p></li>
+</ol>
+<hr>
+<p><em>This document was compiled from peer-reviewed literature. All protein names follow standard human gene/protein nomenclature. Homologs in non-model organisms (including corals) may have different names or may not yet be annotated — see notes below for coral-specific considerations.</em></p>
+<hr>
+</section>
+</section>
+<section id="addendum-notes-for-coral-epigenetics-research" class="level2">
+<h2 class="anchored" data-anchor-id="addendum-notes-for-coral-epigenetics-research">ADDENDUM: Notes for Coral Epigenetics Research</h2>
+<section id="considerations-for-non-model-organism-work" class="level3">
+<h3 class="anchored" data-anchor-id="considerations-for-non-model-organism-work">Considerations for Non-Model Organism Work</h3>
+<ol type="1">
+<li><strong>Homolog identification:</strong> Many of the proteins listed above have conserved homologs in cnidarians. Key databases for coral homolog searches include:
+<ul>
+<li>NCBI RefSeq for <em>Acropora</em>, <em>Nematostella</em>, <em>Hydra</em></li>
+<li>Ensembl Metazoa</li>
+<li>Coral-specific genome portals (e.g., Reef Genomics: <a href="http://reefgenomics.org" class="uri">http://reefgenomics.org</a>)</li>
+</ul></li>
+<li><strong>Cnidarian-specific observations:</strong>
+<ul>
+<li>The core miRNA machinery (Drosha, Dicer, DGCR8, AGO) is conserved in cnidarians (Grimson et al.&nbsp;2008 <em>Nature</em> 453:1193–1197; Moran et al.&nbsp;2014 <em>BMC Genomics</em> 15:433)</li>
+<li>PRC2 components (EZH2, EED, SUZ12) have been identified in <em>Nematostella vectensis</em>, suggesting lncRNA-chromatin modification pathways exist in cnidarians</li>
+<li>LIN28 homologs are present in cnidarians and may regulate let-7 similarly</li>
+</ul></li>
+<li><strong>Environmental epigenetics relevance:</strong> In corals, miRNA and lncRNA pathways are likely involved in:
+<ul>
+<li>Thermal stress response and acclimatization</li>
+<li>Symbiosis establishment/maintenance with <em>Symbiodiniaceae</em></li>
+<li>Epigenetic memory and transgenerational plasticity</li>
+<li>DNA methylation changes under ocean acidification</li>
+</ul></li>
+<li><strong>Experimental approaches:</strong> When studying these pathways in corals, consider:
+<ul>
+<li>RNA-seq with small RNA and long RNA fractions</li>
+<li>CLIP-seq (e.g., AGO-CLIP) for identifying miRNA targets</li>
+<li>ChIRP/CHART for identifying lncRNA-chromatin interactions</li>
+<li>ATAC-seq combined with lncRNA profiling for chromatin accessibility</li>
+</ul></li>
+</ol>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/shedurkin\.github\.io\/Roberts-LabNotebook");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>This notebook is built using <a href="https://quarto.org/">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
