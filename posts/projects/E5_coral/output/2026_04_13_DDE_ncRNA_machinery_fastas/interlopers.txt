@@ -1,0 +1,3115 @@
+Reviewed tool_d89c3f7bd001SdDIyZGD890bfd
+
+Read xlsx file to see protein/gene names
+
+Read remaining xlsx rows
+
+Invalid Tool
+REQUEST
+{
+  "tool": "read",
+  "error": "Invalid input for tool read: JSON parsing failed: Text: {\"filePath\": \"/Users/Owner/.local/share/opencode/tool-output/tool_d89c3f7bd001SdDIyZGD890bfd\"{}.\nError message: JSON Parse error: Expected '}'"
+}
+RESULT
+The arguments provided to the tool are invalid: Invalid input for tool read: JSON parsing failed: Text: {"filePath": "/Users/Owner/.local/share/opencode/tool-output/tool_d89c3f7bd001SdDIyZGD890bfd"{}.
+Error message: JSON Parse error: Expected '}'
+
+Invalid Tool
+REQUEST
+{
+  "tool": "read",
+  "error": "Invalid input for tool read: JSON parsing failed: Text: {\"filePath\": \"/Users/Owner/.local/share/opencode/tool-output/tool_d89c3f7bd001SdDIyZGD890bfd\"{}.\nError message: JSON Parse error: Expected '}'"
+}
+RESULT
+The arguments provided to the tool are invalid: Invalid input for tool read: JSON parsing failed: Text: {"filePath": "/Users/Owner/.local/share/opencode/tool-output/tool_d89c3f7bd001SdDIyZGD890bfd"{}.
+Error message: JSON Parse error: Expected '}'
+
+Invalid Tool
+
+Invalid Tool
+
+Invalid Tool
+REQUEST
+{
+  "tool": "read",
+  "error": "Invalid input for tool read: JSON parsing failed: Text: {\"filePath\": \"/Users/Owner/.local/share/opencode/tool-output/tool_d89c3f7bd001SdDIyZGD890bfd\",\"offset\": 282{\"filePath\": \"/Users/Owner/.local/share/opencode/tool-output/tool_d89c3f7bd001SdDIyZGD890bfd\", \"offset\": 282}.\nError message: JSON Parse error: Expected '}'"
+}
+RESULT
+The arguments provided to the tool are invalid: Invalid input for tool read: JSON parsing failed: Text: {"filePath": "/Users/Owner/.local/share/opencode/tool-output/tool_d89c3f7bd001SdDIyZGD890bfd","offset": 282{"filePath": "/Users/Owner/.local/share/opencode/tool-output/tool_d89c3f7bd001SdDIyZGD890bfd", "offset": 282}.
+Error message: JSON Parse error: Expected '}'
+Let me read the rest of the fasta headers file using a different approach, and then do the analysis:
+
+
+Count total lines in fasta headers file
+REQUEST
+{
+  "command": "wc -l \"/Users/Owner/.local/share/opencode/tool-output/tool_d89c3f7bd001SdDIyZGD890bfd\"",
+  "description": "Count total lines in fasta headers file"
+}
+RESULT
+753 /Users/Owner/.local/share/opencode/tool-output/tool_d89c3f7bd001SdDIyZGD890bfd
+
+Parse xlsx to extract all target genes
+REQUEST
+{
+  "command": "python3 << 'PYEOF'\nimport openpyxl\nimport re\n\n# 1. Parse the xlsx to get targeted gene names\nwb = openpyxl.load_workbook('/Users/Owner/Downloads/The Big One/Documents/UW/Roberts Lab/OpenWork/ncRNA_machinery.xlsx')\nws = wb.active\n\ntarget_genes = set()\ntarget_proteins = set()\n\nfor row in ws.iter_rows(min_row=2, max_row=89, values_only=True):\n    protein = row[1]  # Column B: Protein\n    gene = row[2]     # Column C: Gene\n    if protein is None and gene is None:\n        continue\n    \n    # Add protein names\n    if protein:\n        target_proteins.add(protein.strip())\n    \n    # Parse gene names - they can be comma-separated, include ranges, etc.\n    if gene:\n        gene_str = str(gene).strip()\n        # Split by comma, semicolon, slash, or hyphen in ranges\n        # Handle patterns like \"CNOT1–CNOT11\", \"INTS1–INTS14\", \"AGO1–4\", etc.\n        parts = re.split(r'[,;/]', gene_str)\n        for part in parts:\n            part = part.strip()\n            # Handle range patterns like \"CNOT1–CNOT11\" (en-dash) or \"AGO1–4\"\n            range_match = re.match(r'(\\D+?)(\\d+)\\s*[–\\-]\\s*(\\d+)', part)\n            if range_match:\n                prefix = range_match.group(1)\n                start_n = int(range_match.group(2))\n                end_n = int(range_match.group(3))\n                # For patterns like \"CNOT1–CNOT11\", the prefix is \"CNOT\"\n                # For patterns like \"AGO1–4\", the prefix is \"AGO\"\n                for n in range(start_n, end_n + 1):\n                    target_genes.add(f\"{prefix}{n}\")\n            else:\n                # Handle parenthetical info\n                part = re.sub(r'\\s*\\(.*?\\)', '', part)\n                part = part.strip()\n                if part:\n                    target_genes.add(part)\n\n# Also add individual gene tokens from complex gene entries\nfor row in ws.iter_rows(min_row=2, max_row=89, values_only=True):\n    gene = row[2]\n    if gene:\n        gene_str = str(gene).strip()\n        # Split on commas, semicolons, slashes\n        parts = re.split(r'[,;/]', gene_str)\n        for part in parts:\n            part = part.strip()\n            # Remove parenthetical notes\n            part = re.sub(r'\\s*\\(.*?\\)', '', part)\n            part = part.strip()\n            if part:\n                target_genes.add(part)\n\nprint(\"=== TARGET GENES FROM XLSX ===\")\nfor g in sorted(target_genes):\n    print(f\"  {g}\")\nprint(f\"\\nTotal target gene entries: {len(target_genes)}\")\n\nprint(\"\\n=== TARGET PROTEINS FROM XLSX ===\")\nfor p in sorted(target_proteins):\n    print(f\"  {p}\")\nprint(f\"\\nTotal target protein entries: {len(target_proteins)}\")\n\nPYEOF\n",
+  "description": "Parse xlsx to extract all target genes"
+}
+RESULT
+=== TARGET GENES FROM XLSX ===
+  2
+  3
+  3A
+  3B
+  ADAR1
+  ADAR2
+  AEBP2
+  AGO1
+  AGO1–4
+  AGO2
+  AGO3
+  AGO4
+  B
+  BAF155
+  BAF170
+  BAF47
+  BRCA1
+  BRD3
+  BRD4
+  BRG1
+  BRM
+  C
+  CNOT1–CNOT11
+  CNOT6
+  CNOT7
+  CTCF
+  DAZL
+  DCP1A
+  DCP2
+  DDX17
+  DDX5
+  DDX6 (RCK
+  DGCR8 (DiGeorge syndrome critical region 8
+  DICER1
+  DIS3
+  DIS3L
+  DIS3L2
+  DNMT1
+  DROSHA
+  DZIP3
+  EDC3
+  EDC4
+  EED
+  EWSR1
+  EXOSC1–EXOSC10
+  EZH1
+  EZH2
+  FUS
+  HDAC1
+  HENMT1
+  HNRNPA1
+  HNRNPA2B1
+  HNRNPK
+  HSP90AA1
+  HSP90AB1
+  HSPA8
+  HYL1La
+  HYL1Lb
+  INI1
+  INTS1–INTS14
+  JARID2
+  KAT8
+  KDM1A
+  KHSRP
+  KMT2A
+  LIN28A
+  LIN28B
+  LSD1
+  MEX3B
+  MLL1
+  MOF
+  MTR4
+  Multiple
+  NCBP1
+  NCBP2
+  NONO
+  NXF1
+  Nibbler
+  PABPC1
+  PAN2
+  PAN3
+  PAPD5
+  PARN
+  PHAX
+  PHF1
+  PNPT1
+  PRKRA
+  PSPC1
+  RAD21
+  RAN
+  RBBP4
+  RBM3
+  RBM7
+  RCOR1
+  RPPH1 and multiple subunits
+  RdRP
+  SA1
+  SA2
+  SFPQ
+  SMARCA2
+  SMARCA4
+  SMARCB1
+  SMARCC1
+  SMARCC2
+  SMC1A
+  SMC3
+  SMG1
+  SMG5
+  SMG6
+  SMG7
+  SRRT
+  SUZ12
+  TARBP2
+  TARDBP
+  TNRC6A
+  TNRC6B
+  TNRC6C
+  TRIM25
+  UPF1
+  UPF2
+  UPF3
+  WDR5
+  XPO1
+  XPO5
+  XRN1
+  YBX1
+  ZC3H12A
+  ZCCHC11
+  ZCCHC6
+  ZFC3H1
+  aka Pasha in Drosophila and C. elegans)
+  loquacious
+  p54)
+
+Total target gene entries: 133
+
+=== TARGET PROTEINS FROM XLSX ===
+  ADAR1/ADAR2
+  AEBP2
+  AGO1
+  AGO1–4
+  AGO2
+  AGO3
+  AGO4
+  ARS2 (Arsenite resistance protein 2)
+  BAF155/SMARCC1, BAF170/SMARCC2
+  BAF47/INI1/SMARCB1
+  BRCA1
+  BRD3/BRD4
+  BRG1/SMARCA4
+  BRM/SMARCA2
+  CBC (Cap-binding complex: CBP80/CBP20)
+  CCR4-NOT complex
+  CRM1/Exportin-1
+  CTCF
+  CoREST complex (RCOR1, LSD1, HDAC1/2)
+  Cohesin (SMC1A, SMC3, RAD21, SA1/SA2)
+  DAZL
+  DCP1–DCP2
+  DDX17 (p72)
+  DDX5 (p68)
+  DDX6
+  DGCR8
+  DICER
+  DIS3L2
+  DNMT1/3A/3B
+  DROSHA
+  E3 ubiquitin ligases (DZIP3, MEX3B, TRIM25)
+  EDC3, EDC4 (Hedls)
+  EED
+  EWSR1
+  EZH1
+  EZH2
+  Exportin-5 (XPO5)
+  FUS
+  HDAC1/2/3
+  HENMT1 methyltransferase
+  HNRNPA2B1
+  HNRNPK
+  HYL1-like a
+  HYL1-like b
+  Hsc70/Hsp90 chaperone machinery
+  Integrator complex (INTS1–INTS14)
+  JARID2
+  KSRP (KH-type splicing regulatory protein)
+  LIN28A / LIN28B
+  LSD1/KDM1A
+  Loqs-PB
+  MCPIP1/ZC3H12A
+  MLL1/KMT2A
+  MOF/KAT8
+  NEXT complex (Nuclear EXosome Targeting; ZFC3H1, RBM7, MTR4)
+  NMD (Nonsense-mediated decay; UPF1, UPF2, UPF3, SMG1, SMG5, SMG6, SMG7)
+  NONO/SFPQ (Paraspeckle proteins)
+  NXF1/TAP
+  Nibbler
+  Nuclear exosome (EXOSC1–EXOSC10, DIS3, DIS3L)
+  PABP (Poly(A)-binding protein)
+  PACT (Protein activator of PKR)
+  PAN2–PAN3 complex
+  PARN (Poly(A)-specific ribonuclease)
+  PAXT complex (PolyA tail exosome targeting; ZFC3H1, PAPD5, etc.)
+  PHAX
+  PHF1
+  PSPC1, PSF
+  RBBP4 (RbAp48)
+  RBM3
+  RNA-dependent RNA polymerase
+  RNase P
+  RanGTP
+  SUZ12
+  TDP-43
+  TNRC6A (GW182)
+  TNRC6A/B/C
+  TNRC6B
+  TNRC6C
+  TRBP (TAR RNA-binding protein)
+  TUT4/ZCCHC11
+  TUT7/ZCCHC6
+  WDR5
+  XRN1
+  YB-1
+  YBX1
+  hnRNP A1
+  snoRNP complexes (snoRNA + fibrillarin, NOP56, NOP58, etc.)
+
+Total target protein entries: 88
+
+Build target gene set and parse fasta headers
+REQUEST
+{
+  "command": "python3 << 'PYEOF'\nimport openpyxl\nimport re\n\n# 1. Parse xlsx to build a comprehensive set of target gene names\nwb = openpyxl.load_workbook('/Users/Owner/Downloads/The Big One/Documents/UW/Roberts Lab/OpenWork/ncRNA_machinery.xlsx')\nws = wb.active\n\n# Build canonical gene name set - these are the gene symbols we should match against\ntarget_genes_canonical = set()\n\nfor row in ws.iter_rows(min_row=2, max_row=89, values_only=True):\n    gene = row[2]\n    if gene is None:\n        continue\n    gene_str = str(gene).strip()\n    \n    # Remove parenthetical notes\n    gene_str = re.sub(r'\\s*\\(.*?\\)', '', gene_str)\n    \n    # Split by comma, semicolon, slash\n    parts = re.split(r'[,;/]', gene_str)\n    for part in parts:\n        part = part.strip()\n        if not part:\n            continue\n        \n        # Handle range patterns with en-dash or hyphen\n        # Pattern: \"CNOT1–CNOT11\" -> expand to CNOT1..CNOT11\n        range_match1 = re.match(r'(\\D+)(\\d+)\\s*[–\\-]\\s*\\1?(\\d+)', part)\n        # Pattern: \"AGO1–4\" -> expand to AGO1..AGO4\n        range_match2 = re.match(r'(\\D+?)(\\d+)\\s*[–\\-]\\s*(\\d+)', part)\n        \n        if range_match1:\n            prefix = range_match1.group(1)\n            start_n = int(range_match1.group(2))\n            end_n = int(range_match1.group(3))\n            for n in range(start_n, end_n + 1):\n                target_genes_canonical.add(f\"{prefix}{n}\")\n        elif range_match2 and range_match2.group(1):\n            prefix = range_match2.group(1)\n            start_n = int(range_match2.group(2))\n            end_n = int(range_match2.group(3))\n            if end_n - start_n <= 20:  # sanity check\n                for n in range(start_n, end_n + 1):\n                    target_genes_canonical.add(f\"{prefix}{n}\")\n        else:\n            # Clean up \"and\" connector\n            part = part.replace(' and ', ' ')\n            for token in part.split():\n                token = token.strip()\n                if token and not token.startswith('='):\n                    target_genes_canonical.add(token)\n\n# Also parse protein column for key protein name tokens\ntarget_protein_keywords = set()\nfor row in ws.iter_rows(min_row=2, max_row=89, values_only=True):\n    protein = row[1]\n    if protein is None:\n        continue\n    prot_str = str(protein).strip()\n    # Remove parenthetical descriptions\n    prot_str = re.sub(r'\\s*\\(.*?\\)', '', prot_str)\n    target_protein_keywords.add(prot_str.strip())\n\n# Print canonical gene list\nprint(\"=== CANONICAL TARGET GENES ===\")\nfor g in sorted(target_genes_canonical):\n    print(f\"  {g}\")\nprint(f\"\\nTotal: {len(target_genes_canonical)}\")\n\n# Now parse the fasta headers file\nheaders = []\nwith open('/Users/Owner/.local/share/opencode/tool-output/tool_d89c3f7bd001SdDIyZGD890bfd', 'r') as f:\n    for line in f:\n        line = line.strip()\n        if not line:\n            continue\n        # Format: LINE_NUM: FILE:filename\\theader\n        match = re.match(r'\\d+:\\s+FILE:(\\S+)\\t(.+)', line)\n        if match:\n            fasta_file = match.group(1)\n            header = match.group(2)\n            headers.append((fasta_file, header))\n\nprint(f\"\\nTotal fasta headers: {len(headers)}\")\n\n# For each header, extract the GN= gene name and the protein description\n# Then check if the gene name or protein description matches anything in our target list\n\n# First, let's look at what genes are in the headers\nheader_genes = set()\nfor fasta_file, header in headers:\n    gn_match = re.search(r'GN=(\\S+)', header)\n    if gn_match:\n        header_genes.add(gn_match.group(1))\n\nprint(\"\\n=== UNIQUE GN= VALUES IN FASTA HEADERS ===\")\nfor g in sorted(header_genes):\n    print(f\"  {g}\")\n\nPYEOF\n",
+  "description": "Build target gene set and parse fasta headers"
+}
+RESULT
+=== CANONICAL TARGET GENES ===
+  2
+  3
+  3A
+  3B
+  ADAR1
+  ADAR2
+  AEBP2
+  AGO1
+  AGO2
+  AGO3
+  AGO4
+  B
+  BAF155
+  BAF170
+  BAF47
+  BRCA1
+  BRD3
+  BRD4
+  BRG1
+  BRM
+  C
+  CNOT1
+  CNOT10
+  CNOT11
+  CNOT2
+  CNOT3
+  CNOT4
+  CNOT5
+  CNOT6
+  CNOT7
+  CNOT8
+  CNOT9
+  CTCF
+  DAZL
+  DCP1A
+  DCP2
+  DDX17
+  DDX5
+  DDX6
+  DGCR8
+  DICER1
+  DIS3
+  DIS3L
+  DIS3L2
+  DNMT1
+  DROSHA
+  DZIP3
+  EDC3
+  EDC4
+  EED
+  EWSR1
+  EXOSC1
+  EXOSC10
+  EXOSC2
+  EXOSC3
+  EXOSC4
+  EXOSC5
+  EXOSC6
+  EXOSC7
+  EXOSC8
+  EXOSC9
+  EZH1
+  EZH2
+  FUS
+  HDAC1
+  HENMT1
+  HNRNPA1
+  HNRNPA2B1
+  HNRNPK
+  HSP90AA1
+  HSP90AB1
+  HSPA8
+  HYL1La
+  HYL1Lb
+  INI1
+  INTS1
+  INTS10
+  INTS11
+  INTS12
+  INTS13
+  INTS14
+  INTS2
+  INTS3
+  INTS4
+  INTS5
+  INTS6
+  INTS7
+  INTS8
+  INTS9
+  JARID2
+  KAT8
+  KDM1A
+  KHSRP
+  KMT2A
+  LIN28A
+  LIN28B
+  LSD1
+  MEX3B
+  MLL1
+  MOF
+  MTR4
+  Multiple
+  NCBP1
+  NCBP2
+  NONO
+  NXF1
+  Nibbler
+  PABPC1
+  PAN2
+  PAN3
+  PAPD5
+  PARN
+  PHAX
+  PHF1
+  PNPT1
+  PRKRA
+  PSPC1
+  RAD21
+  RAN
+  RBBP4
+  RBM3
+  RBM7
+  RCOR1
+  RPPH1
+  RdRP
+  SA1
+  SA2
+  SFPQ
+  SMARCA2
+  SMARCA4
+  SMARCB1
+  SMARCC1
+  SMARCC2
+  SMC1A
+  SMC3
+  SMG1
+  SMG5
+  SMG6
+  SMG7
+  SRRT
+  SUZ12
+  TARBP2
+  TARDBP
+  TNRC6A
+  TNRC6B
+  TNRC6C
+  TRIM25
+  UPF1
+  UPF2
+  UPF3
+  WDR5
+  XPO1
+  XPO5
+  XRN1
+  YBX1
+  ZC3H12A
+  ZCCHC11
+  ZCCHC6
+  ZFC3H1
+  loquacious
+  multiple
+  subunits
+
+Total: 162
+
+Total fasta headers: 0
+
+=== UNIQUE GN= VALUES IN FASTA HEADERS ===
+
+Check raw format of fasta headers file
+REQUEST
+{
+  "command": "python3 << 'PYEOF'\n# The tab-separated format might not have been matched. Let me check the raw format\nwith open('/Users/Owner/.local/share/opencode/tool-output/tool_d89c3f7bd001SdDIyZGD890bfd', 'r') as f:\n    for i, line in enumerate(f):\n        if i < 5:\n            print(repr(line))\n        else:\n            break\nPYEOF\n",
+  "description": "Check raw format of fasta headers file"
+}
+RESULT
+"FILE:uniprotkb_Small_RNA_2_O_methyltransfera_2026_04_13.fasta.gz\ttr|A0A2B4RT85|A0A2B4RT85_STYPI Small RNA 2'-O-methyltransferase OS=Stylophora pistillata OX=50429 GN=Henmt1 PE=3 SV=1\n"
+"FILE:uniprotkb_Small_RNA_2_O_methyltransfera_2026_04_13.fasta.gz\ttr|A0A3M6TXM5|A0A3M6TXM5_POCDA Small RNA 2'-O-methyltransferase OS=Pocillopora damicornis OX=46731 GN=pdam_00007839 PE=3 SV=1\n"
+"FILE:uniprotkb_Small_RNA_2_O_methyltransfera_2026_04_13.fasta.gz\ttr|A0A6P8IAV1|A0A6P8IAV1_ACTTE Small RNA 2'-O-methyltransferase OS=Actinia tenebrosa OX=6105 GN=LOC116297700 PE=3 SV=1\n"
+"FILE:uniprotkb_Small_RNA_2_O_methyltransfera_2026_04_13.fasta.gz\ttr|A0A7D9I5P4|A0A7D9I5P4_PARCT Small RNA 2'-O-methyltransferase OS=Paramuricea clavata OX=317549 GN=PACLA_8A072682 PE=3 SV=1\n"
+"FILE:uniprotkb_Small_RNA_2_O_methyltransfera_2026_04_13.fasta.gz\ttr|A0A7M5V1U7|A0A7M5V1U7_9CNID Small RNA 2'-O-methyltransferase OS=Clytia hemisphaerica OX=252671 PE=3 SV=1\n"
+
+Parse headers and find unmatched genes
+REQUEST
+{
+  "command": "python3 << 'PYEOF'\nimport re\nimport openpyxl\n\n# 1. Build comprehensive target gene set from xlsx\nwb = openpyxl.load_workbook('/Users/Owner/Downloads/The Big One/Documents/UW/Roberts Lab/OpenWork/ncRNA_machinery.xlsx')\nws = wb.active\n\ntarget_genes = set()\n\nfor row in ws.iter_rows(min_row=2, max_row=89, values_only=True):\n    gene = row[2]\n    if gene is None:\n        continue\n    gene_str = str(gene).strip()\n    gene_str = re.sub(r'\\s*\\(.*?\\)', '', gene_str)\n    \n    parts = re.split(r'[,;/]', gene_str)\n    for part in parts:\n        part = part.strip()\n        if not part:\n            continue\n        \n        # Handle range: \"CNOT1–CNOT11\"\n        range_match = re.match(r'(\\D+)(\\d+)\\s*[–\\-]\\s*\\1?(\\d+)', part)\n        if range_match:\n            prefix = range_match.group(1)\n            start_n = int(range_match.group(2))\n            end_n = int(range_match.group(3))\n            for n in range(start_n, end_n + 1):\n                target_genes.add(f\"{prefix}{n}\")\n            continue\n        \n        # Handle range: \"AGO1–4\"\n        range_match2 = re.match(r'(\\D+?)(\\d+)\\s*[–\\-]\\s*(\\d+)', part)\n        if range_match2:\n            prefix = range_match2.group(1)\n            start_n = int(range_match2.group(2))\n            end_n = int(range_match2.group(3))\n            if end_n - start_n <= 20:\n                for n in range(start_n, end_n + 1):\n                    target_genes.add(f\"{prefix}{n}\")\n                continue\n        \n        part = part.replace(' and ', ' ')\n        for token in part.split():\n            token = token.strip()\n            if token and not token.startswith('='):\n                target_genes.add(token)\n\n# Remove non-gene artifacts\nartifacts = {'2', '3', '3A', '3B', 'B', 'C', 'Multiple', 'multiple', 'subunits', 'loquacious', 'Nibbler', 'RdRP'}\ntarget_genes -= artifacts\n\n# Also build a mapping: for some gene names, we know common aliases/orthologs\n# Key insight: the GN= field in UniProt headers often uses the species-specific gene name\n# We need to match both the human gene name AND the protein description\n\n# Let's also extract key protein description keywords from xlsx\ntarget_protein_desc_patterns = []\nfor row in ws.iter_rows(min_row=2, max_row=89, values_only=True):\n    protein = row[1]\n    if protein is None:\n        continue\n    prot_str = str(protein).strip()\n    # Remove parenthetical\n    prot_str = re.sub(r'\\s*\\(.*?\\)', '', prot_str)\n    prot_str = prot_str.strip()\n    if prot_str:\n        target_protein_desc_patterns.append(prot_str)\n\n# 2. Parse fasta headers\nheaders = []\nwith open('/Users/Owner/.local/share/opencode/tool-output/tool_d89c3f7bd001SdDIyZGD890bfd', 'r') as f:\n    for line in f:\n        line = line.strip().strip('\"')\n        if not line:\n            continue\n        match = re.match(r'FILE:(\\S+)\\t(.+)', line)\n        if match:\n            fasta_file = match.group(1)\n            header = match.group(2)\n            headers.append((fasta_file, header))\n\nprint(f\"Total fasta headers parsed: {len(headers)}\")\n\n# 3. For each header, determine if its protein matches a target\n# Strategy: Check the GN= gene name (case-insensitive) AND the protein description\n\n# Build a more comprehensive matching: canonical gene names + known species variants\n# The key issue is: some fasta entries have GN= values that are LOC* or species-specific names\n# We need to match based on the protein DESCRIPTION (what the protein IS)\n\n# Let's extract the protein description from each header\n# Header format: tr|ACCESSION|ACCESSION_SPECIES Protein_Description OS=... OX=... GN=... PE=... SV=...\n\ndef extract_protein_desc(header):\n    \"\"\"Extract the protein description from a UniProt header\"\"\"\n    # Remove the tr|...|... SPECIES prefix\n    match = re.match(r'tr\\|\\w+\\|\\w+_\\w+\\s+(.+?)\\s+OS=', header)\n    if match:\n        return match.group(1)\n    return \"\"\n\ndef extract_gene_name(header):\n    \"\"\"Extract GN= value from header\"\"\"\n    match = re.search(r'GN=(\\S+)', header)\n    if match:\n        return match.group(1)\n    return \"\"\n\n# Now let's identify which genes in the fasta files DON'T match the xlsx target list\n# We need to be smart about this - match by gene name (case-insensitive) OR by protein description\n\n# First, let's see what unique GN= values exist and which ones don't match\nall_gn_values = set()\nfor fasta_file, header in headers:\n    gn = extract_gene_name(header)\n    if gn:\n        all_gn_values.add(gn)\n\n# Check which GN values match target genes (case-insensitive)\ntarget_genes_lower = {g.lower() for g in target_genes}\nmatched_gn = set()\nunmatched_gn = set()\nfor gn in sorted(all_gn_values):\n    if gn.lower() in target_genes_lower:\n        matched_gn.add(gn)\n    else:\n        unmatched_gn.add(gn)\n\nprint(f\"\\n=== UNIQUE GN= values ({len(all_gn_values)} total) ===\")\nprint(f\"Matched to xlsx target: {len(matched_gn)}\")\nprint(f\"NOT matched to xlsx target: {len(unmatched_gn)}\")\n\nprint(f\"\\n=== UNMATCHED GN= values ===\")\nfor g in sorted(unmatched_gn):\n    print(f\"  {g}\")\n\nPYEOF\n",
+  "description": "Parse headers and find unmatched genes"
+}
+RESULT
+Total fasta headers parsed: 753
+
+=== UNIQUE GN= values (512 total) ===
+Matched to xlsx target: 56
+NOT matched to xlsx target: 456
+
+=== UNMATCHED GN= values ===
+  AWC38_SpisGene23562
+  BRAT1
+  BRCC3
+  BRE
+  C12orf41
+  CNOT1_4
+  DBR1_1
+  DCP1B_1
+  DHX9_1
+  DICER1_1
+  DICER1_2
+  DIS3L2_2
+  DNMT1_1
+  DNMT1_3
+  DNMT3A
+  Dcp1b
+  EIF2C2
+  ERI1
+  GNL2
+  Gnl2
+  HDAC2
+  HDAC3
+  HDAC4
+  HDAC6
+  HDAC7
+  HDAC8
+  HDAC8_1
+  Hdac11
+  Hdac2
+  Hdac3
+  Hdac4
+  Hdac8
+  Jmjd1c
+  KDM3B
+  KIAA1267
+  LOC100197122
+  LOC100197638
+  LOC100197980
+  LOC100199910
+  LOC100200525
+  LOC100200659
+  LOC100200676
+  LOC100200697
+  LOC100202201
+  LOC100202736
+  LOC100203032
+  LOC100203326
+  LOC100204338
+  LOC100204834
+  LOC100204958
+  LOC100204990
+  LOC100205078
+  LOC100205936
+  LOC100206464
+  LOC100206712
+  LOC100207934
+  LOC100208672
+  LOC100209870
+  LOC100211559
+  LOC100211661
+  LOC100211666
+  LOC100212457
+  LOC100213777
+  LOC100214909
+  LOC100214986
+  LOC100215019
+  LOC100215123
+  LOC100215888
+  LOC101240070
+  LOC105849422
+  LOC116286294
+  LOC116286431
+  LOC116286475
+  LOC116286987
+  LOC116287372
+  LOC116287776
+  LOC116288105
+  LOC116288436
+  LOC116288452
+  LOC116288463
+  LOC116288465
+  LOC116288571
+  LOC116288839
+  LOC116288841
+  LOC116289439
+  LOC116289667
+  LOC116289775
+  LOC116290186
+  LOC116290611
+  LOC116291036
+  LOC116291099
+  LOC116292354
+  LOC116293154
+  LOC116293197
+  LOC116293499
+  LOC116294578
+  LOC116294837
+  LOC116294948
+  LOC116295200
+  LOC116295312
+  LOC116295809
+  LOC116296182
+  LOC116296338
+  LOC116297700
+  LOC116297931
+  LOC116298033
+  LOC116298230
+  LOC116298623
+  LOC116298674
+  LOC116298742
+  LOC116299595
+  LOC116300631
+  LOC116300739
+  LOC116301398
+  LOC116301533
+  LOC116302054
+  LOC116302774
+  LOC116303814
+  LOC116304364
+  LOC116305228
+  LOC116305432
+  LOC116305788
+  LOC116306056
+  LOC116306454
+  LOC116306653
+  LOC116306759
+  LOC116306918
+  LOC116308252
+  LOC136071648
+  LOC136072046
+  LOC136072151
+  NEMVEDRAFT_v1g111922
+  NEMVEDRAFT_v1g120884
+  NEMVEDRAFT_v1g122610
+  NEMVEDRAFT_v1g161349
+  NEMVEDRAFT_v1g165676
+  NEMVEDRAFT_v1g169110
+  NEMVEDRAFT_v1g170199
+  NEMVEDRAFT_v1g172115
+  NEMVEDRAFT_v1g173618
+  NEMVEDRAFT_v1g180719
+  NEMVEDRAFT_v1g190860
+  NEMVEDRAFT_v1g223683
+  NEMVEDRAFT_v1g229512
+  NEMVEDRAFT_v1g230864
+  NEMVEDRAFT_v1g237480
+  NEMVEDRAFT_v1g239938
+  NEMVEDRAFT_v1g240231
+  NEMVEDRAFT_v1g241031
+  NEMVEDRAFT_v1g245600
+  NEMVEDRAFT_v1g247256
+  NEMVEDRAFT_v1g247517
+  NEMVEDRAFT_v1g90783
+  NEMVEDRAFT_v1g92540
+  NFX1
+  NFXL1
+  OS493_000812
+  OS493_000813
+  OS493_000814
+  OS493_000815
+  OS493_000816
+  OS493_000817
+  OS493_000818
+  OS493_000819
+  OS493_000820
+  OS493_000821
+  OS493_000823
+  OS493_000824
+  OS493_003289
+  OS493_003322
+  OS493_003323
+  OS493_006716
+  OS493_007886
+  OS493_007887
+  OS493_013539
+  OS493_018344
+  OS493_020019
+  OS493_020020
+  OS493_029854
+  OS493_032899
+  OS493_032900
+  P5673_000489
+  P5673_001653
+  P5673_001754
+  P5673_002241
+  P5673_003441
+  P5673_003461
+  P5673_005401
+  P5673_008755
+  P5673_009540
+  P5673_009805
+  P5673_009985
+  P5673_012182
+  P5673_012838
+  P5673_012961
+  P5673_013237
+  P5673_013332
+  P5673_014581
+  P5673_015327
+  P5673_015674
+  P5673_016712
+  P5673_016780
+  P5673_017352
+  P5673_017353
+  P5673_017394
+  P5673_017499
+  P5673_017502
+  P5673_017503
+  P5673_017544
+  P5673_018073
+  P5673_019672
+  P5673_020265
+  P5673_020665
+  P5673_023711
+  P5673_024743
+  P5673_024940
+  P5673_024941
+  P5673_024942
+  P5673_025398
+  P5673_025679
+  P5673_026320
+  P5673_027697
+  P5673_028803
+  P5673_030896
+  P5673_032103
+  PACLA_8A000559
+  PACLA_8A004317
+  PACLA_8A005820
+  PACLA_8A010163
+  PACLA_8A013212
+  PACLA_8A015944
+  PACLA_8A019277
+  PACLA_8A022424
+  PACLA_8A022609
+  PACLA_8A023353
+  PACLA_8A023564
+  PACLA_8A028635
+  PACLA_8A031707
+  PACLA_8A032947
+  PACLA_8A033275
+  PACLA_8A039157
+  PACLA_8A041319
+  PACLA_8A041910
+  PACLA_8A042928
+  PACLA_8A044474
+  PACLA_8A045214
+  PACLA_8A046140
+  PACLA_8A050538
+  PACLA_8A053281
+  PACLA_8A058506
+  PACLA_8A059650
+  PACLA_8A060218
+  PACLA_8A061743
+  PACLA_8A063003
+  PACLA_8A066255
+  PACLA_8A067313
+  PACLA_8A068368
+  PACLA_8A070647
+  PACLA_8A071132
+  PACLA_8A072682
+  PACLA_8A073078
+  PACLA_8A073124
+  PACLA_8A073209
+  PACLA_8A076861
+  PACLA_8A077160
+  PACLA_8A078685
+  PACLA_8A079896
+  PACLA_8A085192
+  PEVE_00000032
+  PEVE_00001166
+  PEVE_00001361
+  PEVE_00002139
+  PEVE_00003957
+  PEVE_00004333
+  PEVE_00004734
+  PEVE_00005781
+  PEVE_00006200
+  PEVE_00006288
+  PEVE_00007312
+  PEVE_00009757
+  PEVE_00010916
+  PEVE_00012249
+  PEVE_00013932
+  PEVE_00017138
+  PEVE_00017724
+  PEVE_00020237
+  PEVE_00022235
+  PEVE_00023282
+  PEVE_00023930
+  PEVE_00024876
+  PEVE_00025667
+  PEVE_00026319
+  PEVE_00026320
+  PEVE_00029921
+  PEVE_00032709
+  PEVE_00032712
+  PEVE_00032720
+  PEVE_00033504
+  PEVE_00037296
+  PEVE_00040185
+  PEVE_00040999
+  PEVE_00043354
+  PEVE_00043609
+  PEVE_00044383
+  PHF2
+  PLOB_00000008
+  PLOB_00001028
+  PLOB_00003734
+  PLOB_00004656
+  PLOB_00006469
+  PLOB_00006655
+  PLOB_00007626
+  PLOB_00008760
+  PLOB_00009086
+  PLOB_00009696
+  PLOB_00010202
+  PLOB_00011295
+  PLOB_00012830
+  PLOB_00017705
+  PLOB_00018123
+  PLOB_00018126
+  PLOB_00018147
+  PLOB_00018878
+  PLOB_00020977
+  PLOB_00023719
+  PLOB_00027107
+  PLOB_00027714
+  PLOB_00028393
+  PLOB_00028650
+  PLOB_00033694
+  PLOB_00035319
+  PLOB_00037094
+  PLOB_00038235
+  PLOB_00039470
+  PLOB_00041966
+  PLOB_00042824
+  PLOB_00043749
+  PLOB_00047317
+  PLOB_00047865
+  PLOB_00048927
+  PMEA_00000120
+  PMEA_00000182
+  PMEA_00000675
+  PMEA_00001206
+  PMEA_00002098
+  PMEA_00002255
+  PMEA_00003736
+  PMEA_00003986
+  PMEA_00004259
+  PMEA_00004260
+  PMEA_00004263
+  PMEA_00004267
+  PMEA_00004724
+  PMEA_00006268
+  PMEA_00006701
+  PMEA_00008436
+  PMEA_00009157
+  PMEA_00009658
+  PMEA_00010590
+  PMEA_00011214
+  PMEA_00011307
+  PMEA_00012343
+  PMEA_00014470
+  PMEA_00015679
+  PMEA_00016946
+  PMEA_00017417
+  PMEA_00020655
+  PMEA_00021362
+  PMEA_00022243
+  PMEA_00022263
+  PMEA_00025316
+  PMEA_00025319
+  PMEA_00025341
+  PMEA_00026387
+  PMEA_00028537
+  PMEA_00029226
+  PMEA_00029708
+  PMEA_00031289
+  PMEA_00031580
+  PMEA_00031583
+  PMEA_00031589
+  PMEA_00031590
+  PMEA_00031593
+  PMEA_00031792
+  PMEA_00032273
+  PMEA_00034257
+  RAN1
+  RDR1
+  RDR2
+  RF11_00284
+  RF11_02025
+  RF11_02958
+  RF11_04210
+  RF11_05707
+  RF11_09612
+  RF11_10207
+  RF11_10819
+  RQCD1
+  SAP130
+  SAP30L
+  STAG1
+  STAG2
+  Scc3
+  TARBP1_4
+  TRDMT1
+  WDR5_2
+  XRN2
+  XRN2_1
+  XRN2_2
+  eed-a
+  hdac3
+  hsp90
+  pdam_00000477
+  pdam_00001143
+  pdam_00001455
+  pdam_00001825
+  pdam_00003714
+  pdam_00003769
+  pdam_00004021
+  pdam_00005739
+  pdam_00005872
+  pdam_00006618
+  pdam_00006627
+  pdam_00007070
+  pdam_00007094
+  pdam_00007839
+  pdam_00009227
+  pdam_00009550
+  pdam_00009601
+  pdam_00009604
+  pdam_00009608
+  pdam_00009609
+  pdam_00010249
+  pdam_00011591
+  pdam_00012166
+  pdam_00013845
+  pdam_00015197
+  pdam_00015911
+  pdam_00017150
+  pdam_00017463
+  pdam_00017517
+  pdam_00018319
+  pdam_00019033
+  pdam_00019097
+  pdam_00019776
+  pdam_00020045
+  pdam_00020892
+  pdam_00021771
+  pdam_00022040
+  pdam_00022399
+  pdam_00023034
+  pdam_00023599
+  rqcd1
+  sap130-a
+  sap30l
+  xrn-2
+
+Identify interloper fasta entries
+REQUEST
+{
+  "command": "python3 << 'PYEOF'\nimport re\nimport openpyxl\n\n# 1. Build comprehensive target gene/protein set from xlsx\nwb = openpyxl.load_workbook('/Users/Owner/Downloads/The Big One/Documents/UW/Roberts Lab/OpenWork/ncRNA_machinery.xlsx')\nws = wb.active\n\ntarget_genes = set()\n\nfor row in ws.iter_rows(min_row=2, max_row=89, values_only=True):\n    gene = row[2]\n    if gene is None:\n        continue\n    gene_str = str(gene).strip()\n    gene_str = re.sub(r'\\s*\\(.*?\\)', '', gene_str)\n    \n    parts = re.split(r'[,;/]', gene_str)\n    for part in parts:\n        part = part.strip()\n        if not part:\n            continue\n        range_match = re.match(r'(\\D+)(\\d+)\\s*[–\\-]\\s*\\1?(\\d+)', part)\n        if range_match:\n            prefix = range_match.group(1)\n            start_n = int(range_match.group(2))\n            end_n = int(range_match.group(3))\n            for n in range(start_n, end_n + 1):\n                target_genes.add(f\"{prefix}{n}\")\n            continue\n        range_match2 = re.match(r'(\\D+?)(\\d+)\\s*[–\\-]\\s*(\\d+)', part)\n        if range_match2:\n            prefix = range_match2.group(1)\n            start_n = int(range_match2.group(2))\n            end_n = int(range_match2.group(3))\n            if end_n - start_n <= 20:\n                for n in range(start_n, end_n + 1):\n                    target_genes.add(f\"{prefix}{n}\")\n                continue\n        part = part.replace(' and ', ' ')\n        for token in part.split():\n            token = token.strip()\n            if token and not token.startswith('='):\n                target_genes.add(token)\n\n# Remove non-gene artifacts\nartifacts = {'2', '3', '3A', '3B', 'B', 'C', 'Multiple', 'multiple', 'subunits', 'loquacious', 'Nibbler', 'RdRP'}\ntarget_genes -= artifacts\n\n# Build a case-insensitive lookup\ntarget_genes_lower = {g.lower() for g in target_genes}\n\n# Also add known aliases: some genes have alternate names that appear in headers\n# From the xlsx notes and common knowledge:\naliases = {\n    'EIF2C2': 'AGO2',  # AGO2 is also called EIF2C2\n    'EIF2C1': 'AGO1',\n    'EIF2C3': 'AGO3',\n    'EIF2C4': 'AGO4',\n    'KDM1A': 'LSD1',\n}\nfor alias, canonical in aliases.items():\n    target_genes.add(alias)\n    target_genes_lower.add(alias.lower())\n\n# 2. Parse fasta headers\nheaders = []\nwith open('/Users/Owner/.local/share/opencode/tool-output/tool_d89c3f7bd001SdDIyZGD890bfd', 'r') as f:\n    for line in f:\n        line = line.strip().strip('\"')\n        if not line:\n            continue\n        match = re.match(r'FILE:(\\S+)\\t(.+)', line)\n        if match:\n            fasta_file = match.group(1)\n            header = match.group(2)\n            headers.append((fasta_file, header))\n\nprint(f\"Total fasta headers: {len(headers)}\")\n\n# 3. For each header, check if it's a target protein or an interloper\n# The matching needs to be protein-level, not just gene-name level\n# We check: (a) GN= value matches target genes, (b) the protein description\n# corresponds to a targeted protein\n\n# Some headers have GN=LOC* or species-specific gene IDs, but the protein\n# description tells us what the protein actually is. Those are fine if the \n# protein is a target. The problem is proteins that are NOT targets.\n\n# Strategy: extract the \"identity\" of each protein from its description\n# and check if that identity corresponds to a target.\n\n# Let's categorize each entry by what protein it IS (from the description)\n# Then check if that protein type is in our target list.\n\n# For now, use a multi-pronged approach:\n# 1. If GN= matches a target gene (case-insensitive, ignoring _N suffixes) → target\n# 2. If GN= is a LOC/pdam/PACLA/etc. species-specific ID → check the protein description\n# 3. If the protein description clearly corresponds to a target → target\n# 4. Otherwise → interloper\n\ndef extract_protein_desc(header):\n    match = re.match(r'tr\\|\\w+\\|\\w+_\\w+\\s+(.+?)\\s+OS=', header)\n    if match:\n        return match.group(1)\n    return \"\"\n\ndef extract_gn(header):\n    match = re.search(r'GN=(\\S+)', header)\n    return match.group(1) if match else \"\"\n\ndef extract_ox(header):\n    match = re.search(r'OX=(\\d+)', header)\n    return match.group(1) if match else \"\"\n\n# Known cnidarian taxonomy IDs for reference\n# Cnidaria = 6073\nCNIDARIA_OX = \"6073\"\n\n# Build protein-description-level matching\n# Map protein descriptions to target gene names\n# This handles cases where GN= is a LOC* ID\n\n# Let's be explicit about what protein descriptions are NOT targets\n# by looking at all entries that don't match by GN=\n\ninterlopers = []\n\nfor fasta_file, header in headers:\n    gn = extract_gn(header)\n    desc = extract_protein_desc(header)\n    ox = extract_ox(header)\n    \n    # Strip _N suffixes from GN for matching (e.g., DICER1_1 → DICER1)\n    gn_clean = re.sub(r'_\\d+$', '', gn)\n    \n    # Check if GN matches target (case-insensitive)\n    gn_matches = gn_clean.lower() in target_genes_lower or gn.lower() in target_genes_lower\n    \n    if gn_matches:\n        continue  # This is a target\n    \n    # For LOC* and species-specific gene IDs, we need to check the description\n    # But first, let's flag obvious non-cnidarian entries\n    # Thelohanellus kitauei (OX=669202) is a myxozoan parasite, not cnidarian\n    if ox == \"669202\":\n        interlopers.append((fasta_file, header, f\"Non-cnidarian species (Thelohanellus kitauei, OX={ox})\"))\n        continue\n    \n    # Now check: does the protein description indicate this is a protein\n    # that's NOT in our target list?\n    \n    # Check GN against known non-target genes\n    # These are gene names that appeared in the search results but are NOT targets\n    non_target_genes = {\n        'GNL2', 'Gnl2',  # Nucleolar GTP-binding protein 2 - NOT RAN\n        'NFXL1',  # NF-X1-type zinc finger protein - NOT NFX1\n        'PHF2',  # Lsd1/2 complex PHD finger - NOT LSD1\n        'BRE',  # BRISC and BRCA1-A complex member - NOT BRCA1\n        'BRAT1',  # BRCA1-associated ATM activator 1 - NOT BRCA1\n        'BRCC3',  # BRCA1 BRCA2-containing complex subunit 3 - NOT BRCA1\n        'ERF3A',  # Eukaryotic peptide chain release factor - NOT RAN\n        'DHX36',  # ATP-dependent DNA/RNA helicase - NOT RAN\n        'HDAC4', 'HDAC6', 'HDAC7', 'HDAC8', 'Hdac4', 'Hdac8', 'Hdac11', 'HDAC8_1',  # NOT HDAC1/2/3\n        'DNMT3A',  # NOT DNMT1 (xlsx says no 3a or 3b found)\n        'XRN2', 'XRN2_1', 'XRN2_2', 'xrn-2',  # NOT XRN1\n        'SAP130', 'sap130-a',  # NOT a target\n        'SAP30L', 'sap30l',  # NOT a target\n        'ERI1',  # NOT a target (exosomal ribonuclease, different from targets)\n        'KDM3B', 'Jmjd1c',  # NOT a target (KDM1A/LSD1 is the target, not KDM3B)\n        'KIAA1267',  # NOT a target\n        'C12orf41',  # NOT a target\n        'DBR1_1',  # NOT a target\n        'TARBP1_4',  # NOT TARBP2\n        'TRDMT1',  # NOT a target (DNA methyltransferase, not DNMT1)\n        'RDR1', 'RDR2',  # RNA-dependent RNA polymerase variants - need to check\n        'RQCD1', 'rqcd1',  # This IS CNOT9 - which IS a target\n        'STAG1', 'STAG2', 'Scc3',  # Cohesin SA1/SA2 subunits - ARE targets\n        'AWC38_SpisGene23562',  # NOT a target\n        'hdac3', 'Hdac2', 'Hdac3',  # These ARE targets (HDAC1/2/3)\n    }\n    \n    # For species-specific gene IDs (LOC*, pdam*, PACLA*, P5673*, OS493*, PEVE*, PLOB*, PMEA*, NEMVEDRAFT*),\n    # we need to determine what protein they encode from the description\n    \n    species_specific_prefixes = ('LOC', 'pdam_', 'PACLA_', 'P5673_', 'OS493_', 'PEVE_', 'PLOB_', 'PMEA_', 'NEMVEDRAFT_')\n    is_species_specific = any(gn.startswith(prefix) for prefix in species_specific_prefixes)\n    \n    if is_species_specific:\n        # We need to determine if the protein description matches a target\n        # Look at the protein description and check against known target protein descriptions\n        # This is the tricky part - we need to match descriptions to targets\n        \n        # For now, we'll check the protein description against known non-target patterns\n        non_target_desc_patterns = [\n            r'Nucleolar GTP-binding protein 2',  # GNL2, not RAN\n            r'NF-X1-type zinc finger protein NFXL1',  # NFXL1, not NFX1\n            r'BRISC and BRCA1-A complex',  # BRE, not BRCA1\n            r'BRCA1-associated ATM activator',  # BRAT1, not BRCA1\n            r'BRCA1 BRCA2-containing complex',  # BRCC3, not BRCA1\n            r'Eukaryotic peptide chain release factor',  # ERF3A, not RAN\n            r'ATP-dependent DNA/RNA helicase DHX36',  # not RAN\n            r'Lsd1/2 complex PHD finger',  # PHF2, not LSD1\n            r'Zinc finger AEBP2-like',  # Actually AEBP2-like IS close to AEBP2 target... \n            r'Histone deacetylase [4-9]|HDAC[4-9]|Hdac[4-9]|Hdac11',  # NOT HDAC1/2/3\n        ]\n        \n        is_non_target_desc = False\n        for pattern in non_target_desc_patterns:\n            if re.search(pattern, desc):\n                is_non_target_desc = True\n                interlopers.append((fasta_file, header, f\"Non-target protein (desc match): {desc}\"))\n                break\n        \n        if not is_non_target_desc:\n            # This species-specific entry's protein description doesn't match any obvious non-target pattern\n            # It's likely a legitimate target protein with a species-specific gene name\n            pass\n        continue\n    \n    # Check if GN is a known non-target\n    if gn in non_target_genes or gn_clean in non_target_genes:\n        interlopers.append((fasta_file, header, f\"Non-target gene: GN={gn}\"))\n        continue\n    \n    # For remaining entries with recognizable gene names that aren't in target_genes\n    # Check if the clean GN (without _N suffix) matches\n    if gn_clean not in target_genes and gn not in target_genes:\n        # Check case-insensitively\n        if gn_clean.lower() not in target_genes_lower and gn.lower() not in target_genes_lower:\n            interlopers.append((fasta_file, header, f\"Unmatched gene: GN={gn}\"))\n\nprint(f\"\\n{'='*80}\")\nprint(f\"INTERLOPERS FOUND: {len(interlopers)}\")\nprint(f\"{'='*80}\")\n\nfor i, (ff, hdr, reason) in enumerate(interlopers, 1):\n    print(f\"\\n--- Interloper {i} ---\")\n    print(f\"  Source file: {ff}\")\n    print(f\"  Header: {hdr}\")\n    print(f\"  Reason: {reason}\")\n\nPYEOF\n",
+  "description": "Identify interloper fasta entries"
+}
+RESULT
+Total fasta headers: 753
+
+================================================================================
+INTERLOPERS FOUND: 226
+================================================================================
+
+--- Interloper 1 ---
+  Source file: uniprotkb_Small_RNA_2_O_methyltransfera_2026_04_13.fasta.gz
+  Header: tr|A0A7M5V1U7|A0A7M5V1U7_9CNID Small RNA 2'-O-methyltransferase OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 2 ---
+  Source file: uniprotkb_Small_RNA_2_O_methyltransfera_2026_04_13.fasta.gz
+  Header: tr|A0A7M5XM45|A0A7M5XM45_9CNID Small RNA 2'-O-methyltransferase OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 3 ---
+  Source file: uniprotkb_Small_RNA_2_O_methyltransfera_2026_04_13.fasta.gz
+  Header: tr|A0A913XH97|A0A913XH97_EXADI Small RNA 2'-O-methyltransferase OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 4 ---
+  Source file: uniprotkb_Small_RNA_2_O_methyltransfera_2026_04_13.fasta.gz
+  Header: tr|A0A913YLG0|A0A913YLG0_EXADI Small RNA 2'-O-methyltransferase OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 5 ---
+  Source file: uniprotkb_Small_RNA_2_O_methyltransfera_2026_04_13.fasta.gz
+  Header: tr|U3MHT1|U3MHT1_NEMVE Small RNA 2'-O-methyltransferase OS=Nematostella vectensis OX=45351 PE=2 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 6 ---
+  Source file: uniprotkb_accession_A0A224ASV7_OR_access_2026_04_14.fasta.gz
+  Header: tr|A0A224ASV7|A0A224ASV7_ACRTE Heat shock protein 90 OS=Acropora tenuis OX=70783 GN=hsp90 PE=2 SV=1
+  Reason: Unmatched gene: GN=hsp90
+
+--- Interloper 7 ---
+  Source file: uniprotkb_accession_A0A224ASV7_OR_access_2026_04_14.fasta.gz
+  Header: tr|Q967E1|Q967E1_DENKL Heat shock protein 90 OS=Dendronephthya klunzingeri OX=84964 GN=hsp90 gene PE=2 SV=1
+  Reason: Unmatched gene: GN=hsp90
+
+--- Interloper 8 ---
+  Source file: uniprotkb_dcp1_AND_taxonomy_id_6073_AND_2026_04_13.fasta.gz
+  Header: tr|A0A2B4RFS2|A0A2B4RFS2_STYPI mRNA-decapping enzyme 1B OS=Stylophora pistillata OX=50429 GN=Dcp1b PE=3 SV=1
+  Reason: Unmatched gene: GN=Dcp1b
+
+--- Interloper 9 ---
+  Source file: uniprotkb_dcp1_AND_taxonomy_id_6073_AND_2026_04_13.fasta.gz
+  Header: tr|A0A7M5UW04|A0A7M5UW04_9CNID mRNA-decapping enzyme C-terminal domain-containing protein OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 10 ---
+  Source file: uniprotkb_dcp1_AND_taxonomy_id_6073_AND_2026_04_13.fasta.gz
+  Header: tr|A0A913XFQ4|A0A913XFQ4_EXADI mRNA-decapping enzyme C-terminal domain-containing protein OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 11 ---
+  Source file: uniprotkb_dcp1_AND_taxonomy_id_6073_AND_2026_04_13.fasta.gz
+  Header: tr|A0A9W9YCJ7|A0A9W9YCJ7_9CNID mRNA-decapping enzyme 1B OS=Desmophyllum pertusum OX=174260 GN=DCP1B_1 PE=3 SV=1
+  Reason: Unmatched gene: GN=DCP1B_1
+
+--- Interloper 12 ---
+  Source file: uniprotkb_dis3l2_AND_taxonomy_id_6073_A_2026_04_13.fasta.gz
+  Header: tr|A0A913XKY9|A0A913XKY9_EXADI DIS3-like exonuclease 2 OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 13 ---
+  Source file: uniprotkb_dis3l2_AND_taxonomy_id_6073_A_2026_04_13.fasta.gz
+  Header: tr|A0A913YMU4|A0A913YMU4_EXADI DIS3-like exonuclease 2 OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 14 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|A0A3M6TB07|A0A3M6TB07_POCDA ATP-dependent DNA/RNA helicase DHX36 OS=Pocillopora damicornis OX=46731 GN=pdam_00010249 PE=3 SV=1
+  Reason: Non-target protein (desc match): ATP-dependent DNA/RNA helicase DHX36
+
+--- Interloper 15 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|A0AAU9WBL2|A0AAU9WBL2_9CNID ATP-dependent DNA/RNA helicase DHX36 OS=Pocillopora meandrina OX=46732 GN=PMEA_00003986 PE=3 SV=1
+  Reason: Non-target protein (desc match): ATP-dependent DNA/RNA helicase DHX36
+
+--- Interloper 16 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|A0A0C2M9A5|A0A0C2M9A5_THEKT GTP-binding nuclear protein OS=Thelohanellus kitauei OX=669202 GN=RF11_05707 PE=3 SV=1
+  Reason: Non-cnidarian species (Thelohanellus kitauei, OX=669202)
+
+--- Interloper 17 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|A0A0C2MVV0|A0A0C2MVV0_THEKT Nucleolar GTP-binding protein 2 OS=Thelohanellus kitauei OX=669202 GN=RF11_00284 PE=3 SV=1
+  Reason: Non-cnidarian species (Thelohanellus kitauei, OX=669202)
+
+--- Interloper 18 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|A0A2B4SDK1|A0A2B4SDK1_STYPI Nucleolar GTP-binding protein 2 OS=Stylophora pistillata OX=50429 GN=Gnl2 PE=3 SV=1
+  Reason: Non-target gene: GN=Gnl2
+
+--- Interloper 19 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|A0A3M6U7C2|A0A3M6U7C2_POCDA Nucleolar GTP-binding protein 2 OS=Pocillopora damicornis OX=46731 GN=pdam_00023599 PE=3 SV=1
+  Reason: Non-target protein (desc match): Nucleolar GTP-binding protein 2
+
+--- Interloper 20 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|A0A6P8I442|A0A6P8I442_ACTTE Eukaryotic peptide chain release factor GTP-binding subunit ERF3A-like OS=Actinia tenebrosa OX=6105 GN=LOC116298033 PE=3 SV=1
+  Reason: Non-target protein (desc match): Eukaryotic peptide chain release factor GTP-binding subunit ERF3A-like
+
+--- Interloper 21 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|A0A6P8J3C4|A0A6P8J3C4_ACTTE Nucleolar GTP-binding protein 2 OS=Actinia tenebrosa OX=6105 GN=LOC116308252 PE=3 SV=1
+  Reason: Non-target protein (desc match): Nucleolar GTP-binding protein 2
+
+--- Interloper 22 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|A0A6S7FF30|A0A6S7FF30_PARCT Nucleolar GTP-binding protein 2 OS=Paramuricea clavata OX=317549 GN=PACLA_8A085192 PE=3 SV=1
+  Reason: Non-target protein (desc match): Nucleolar GTP-binding protein 2
+
+--- Interloper 23 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|A0A7D9HA51|A0A7D9HA51_PARCT Nucleolar GTP-binding protein 2 OS=Paramuricea clavata OX=317549 GN=PACLA_8A085192 PE=3 SV=1
+  Reason: Non-target protein (desc match): Nucleolar GTP-binding protein 2
+
+--- Interloper 24 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|A0A7M5VCA2|A0A7M5VCA2_9CNID GTP-binding nuclear protein OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 25 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|A0A7M5WTL1|A0A7M5WTL1_9CNID Nucleolar GTP-binding protein 2 OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 26 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|A0A7M5WTL8|A0A7M5WTL8_9CNID Nucleolar GTP-binding protein 2 OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 27 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|A0A913WV20|A0A913WV20_EXADI Nucleolar GTP-binding protein 2 OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 28 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|A0A913WV31|A0A913WV31_EXADI Nucleolar GTP-binding protein 2 OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 29 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|A0A913Y4H3|A0A913Y4H3_EXADI GTP-binding nuclear protein OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 30 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|A0A9W9Z9F5|A0A9W9Z9F5_9CNID GTP-binding nuclear protein OS=Desmophyllum pertusum OX=174260 GN=RAN1 PE=3 SV=1
+  Reason: Unmatched gene: GN=RAN1
+
+--- Interloper 31 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|A0AAD9V5S0|A0AAD9V5S0_ACRCE Nucleolar GTP-binding protein 2 OS=Acropora cervicornis OX=6130 GN=P5673_014581 PE=3 SV=1
+  Reason: Non-target protein (desc match): Nucleolar GTP-binding protein 2
+
+--- Interloper 32 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|A0AAU9VTE6|A0AAU9VTE6_9CNID Nucleolar GTP-binding protein 2 OS=Pocillopora meandrina OX=46732 GN=PMEA_00022243 PE=3 SV=1
+  Reason: Non-target protein (desc match): Nucleolar GTP-binding protein 2
+
+--- Interloper 33 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|A0ABM4B3Z9|A0ABM4B3Z9_HYDVU Nucleolar GTP-binding protein 2 OS=Hydra vulgaris OX=6087 GN=LOC100211559 PE=3 SV=1
+  Reason: Non-target protein (desc match): Nucleolar GTP-binding protein 2
+
+--- Interloper 34 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|T2MD07|T2MD07_HYDVU Nucleolar GTP-binding protein 2 OS=Hydra vulgaris OX=6087 GN=GNL2 PE=2 SV=1
+  Reason: Non-target gene: GN=GNL2
+
+--- Interloper 35 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|A0ABN8NVD7|A0ABN8NVD7_9CNID Nucleolar GTP-binding protein 2 OS=Porites lobata OX=104759 GN=PLOB_00027714 PE=3 SV=1
+  Reason: Non-target protein (desc match): Nucleolar GTP-binding protein 2
+
+--- Interloper 36 ---
+  Source file: uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+  Header: tr|A0ABN8R9P0|A0ABN8R9P0_9CNID Nucleolar GTP-binding protein 2 OS=Porites evermanni OX=104178 GN=PEVE_00009757 PE=3 SV=1
+  Reason: Non-target protein (desc match): Nucleolar GTP-binding protein 2
+
+--- Interloper 37 ---
+  Source file: uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+  Header: tr|A0A2B4S8E0|A0A2B4S8E0_STYPI Transcriptional repressor NF-X1 OS=Stylophora pistillata OX=50429 GN=NFX1 PE=3 SV=1
+  Reason: Unmatched gene: GN=NFX1
+
+--- Interloper 38 ---
+  Source file: uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+  Header: tr|A0A6P8H1R1|A0A6P8H1R1_ACTTE NF-X1-type zinc finger protein NFXL1-like OS=Actinia tenebrosa OX=6105 GN=LOC116287776 PE=3 SV=1
+  Reason: Non-target protein (desc match): NF-X1-type zinc finger protein NFXL1-like
+
+--- Interloper 39 ---
+  Source file: uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+  Header: tr|A0A7M5V8B8|A0A7M5V8B8_9CNID NF-X1-type zinc finger protein NFXL1 OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 40 ---
+  Source file: uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+  Header: tr|A0A7M5XPW6|A0A7M5XPW6_9CNID NF-X1-type zinc finger protein NFXL1 OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 41 ---
+  Source file: uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+  Header: tr|A0A913WYN6|A0A913WYN6_EXADI Transcriptional repressor NF-X1-like OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 42 ---
+  Source file: uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+  Header: tr|A0A913XZY2|A0A913XZY2_EXADI Transcriptional repressor NF-X1-like OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 43 ---
+  Source file: uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+  Header: tr|A0A9W9ZIJ8|A0A9W9ZIJ8_9CNID Transcriptional repressor NF-X1 OS=Desmophyllum pertusum OX=174260 GN=NFX1 PE=3 SV=1
+  Reason: Unmatched gene: GN=NFX1
+
+--- Interloper 44 ---
+  Source file: uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+  Header: tr|A0AAD9QMC9|A0AAD9QMC9_ACRCE NF-X1-type zinc finger protein NFXL1 OS=Acropora cervicornis OX=6130 GN=P5673_013332 PE=3 SV=1
+  Reason: Non-target protein (desc match): NF-X1-type zinc finger protein NFXL1
+
+--- Interloper 45 ---
+  Source file: uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+  Header: tr|A0A0C2MF24|A0A0C2MF24_THEKT Transcriptional repressor NF-X1 OS=Thelohanellus kitauei OX=669202 GN=RF11_09612 PE=3 SV=1
+  Reason: Non-cnidarian species (Thelohanellus kitauei, OX=669202)
+
+--- Interloper 46 ---
+  Source file: uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+  Header: tr|A0A9W9Y9M6|A0A9W9Y9M6_9CNID NF-X1-type zinc finger protein nfxl1 OS=Desmophyllum pertusum OX=174260 GN=NFXL1 PE=3 SV=1
+  Reason: Non-target gene: GN=NFXL1
+
+--- Interloper 47 ---
+  Source file: uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+  Header: tr|A0ABM4D5C7|A0ABM4D5C7_HYDVU NF-X1-type zinc finger protein NFXL1 isoform X2 OS=Hydra vulgaris OX=6087 GN=LOC100215019 PE=3 SV=1
+  Reason: Non-target protein (desc match): NF-X1-type zinc finger protein NFXL1 isoform X2
+
+--- Interloper 48 ---
+  Source file: uniprotkb_lsd1_AND_taxonomy_id_6073_AND_2026_04_13.fasta.gz
+  Header: tr|A0A9W9ZD35|A0A9W9ZD35_9CNID Lsd1/2 complex PHD finger containing protein Phf2 OS=Desmophyllum pertusum OX=174260 GN=PHF2 PE=3 SV=1
+  Reason: Non-target gene: GN=PHF2
+
+--- Interloper 49 ---
+  Source file: uniprotkb_protein_name_aebp2_AND_taxono_2026_04_13.fasta
+  Header: tr|A0A7D9EQ62|A0A7D9EQ62_PARCT Zinc finger AEBP2-like OS=Paramuricea clavata OX=317549 GN=PACLA_8A059650 PE=3 SV=1
+  Reason: Non-target protein (desc match): Zinc finger AEBP2-like
+
+--- Interloper 50 ---
+  Source file: uniprotkb_protein_name_aebp2_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A7D9EQ62|A0A7D9EQ62_PARCT Zinc finger AEBP2-like OS=Paramuricea clavata OX=317549 GN=PACLA_8A059650 PE=3 SV=1
+  Reason: Non-target protein (desc match): Zinc finger AEBP2-like
+
+--- Interloper 51 ---
+  Source file: uniprotkb_protein_name_ago_OR_protein_n_2026_04_13.fasta
+  Header: tr|A0A913WVM7|A0A913WVM7_EXADI Protein argonaute-1 OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 52 ---
+  Source file: uniprotkb_protein_name_ago_OR_protein_n_2026_04_13.fasta
+  Header: tr|U3MIG1|U3MIG1_NEMVE Protein argonaute-1 OS=Nematostella vectensis OX=45351 PE=2 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 53 ---
+  Source file: uniprotkb_protein_name_ago_OR_protein_n_2026_04_13.fasta
+  Header: tr|A0A2S1PRW9|A0A2S1PRW9_ACTEQ Putative argonaute-2 OS=Actinia equina OX=6106 PE=2 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 54 ---
+  Source file: uniprotkb_protein_name_ago_OR_protein_n_2026_04_13.fasta
+  Header: tr|U3MH35|U3MH35_NEMVE Argonaute 2 OS=Nematostella vectensis OX=45351 PE=2 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 55 ---
+  Source file: uniprotkb_protein_name_ago_OR_protein_n_2026_04_13.fasta.gz
+  Header: tr|A0A913WVM7|A0A913WVM7_EXADI Protein argonaute-1 OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 56 ---
+  Source file: uniprotkb_protein_name_ago_OR_protein_n_2026_04_13.fasta.gz
+  Header: tr|U3MIG1|U3MIG1_NEMVE Protein argonaute-1 OS=Nematostella vectensis OX=45351 PE=2 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 57 ---
+  Source file: uniprotkb_protein_name_ago_OR_protein_n_2026_04_13.fasta.gz
+  Header: tr|A0A2S1PRW9|A0A2S1PRW9_ACTEQ Putative argonaute-2 OS=Actinia equina OX=6106 PE=2 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 58 ---
+  Source file: uniprotkb_protein_name_ago_OR_protein_n_2026_04_13.fasta.gz
+  Header: tr|U3MH35|U3MH35_NEMVE Argonaute 2 OS=Nematostella vectensis OX=45351 PE=2 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 59 ---
+  Source file: uniprotkb_protein_name_ars2_OR_gene_srr_2026_04_14.fasta.gz
+  Header: tr|A0A913WYP4|A0A913WYP4_EXADI SERRATE/Ars2 C-terminal domain-containing protein OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 60 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A2B4RWG7|A0A2B4RWG7_STYPI BRISC and BRCA1-A complex member 2 OS=Stylophora pistillata OX=50429 GN=BRE PE=3 SV=1
+  Reason: Non-target gene: GN=BRE
+
+--- Interloper 61 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A3M6UEE6|A0A3M6UEE6_POCDA BRISC and BRCA1-A complex member 2 OS=Pocillopora damicornis OX=46731 GN=pdam_00003769 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRISC and BRCA1-A complex member 2
+
+--- Interloper 62 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A6P8IAC3|A0A6P8IAC3_ACTTE BRISC and BRCA1-A complex member 2 OS=Actinia tenebrosa OX=6105 GN=LOC116299595 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRISC and BRCA1-A complex member 2
+
+--- Interloper 63 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A6P8IMD6|A0A6P8IMD6_ACTTE BRISC and BRCA1-A complex member 1 OS=Actinia tenebrosa OX=6105 GN=LOC116302774 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRISC and BRCA1-A complex member 1
+
+--- Interloper 64 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A913X8Q5|A0A913X8Q5_EXADI BRISC and BRCA1-A complex member 2 OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 65 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A3M6UGC0|A0A3M6UGC0_POCDA BRISC and BRCA1-A complex member 1 OS=Pocillopora damicornis OX=46731 GN=pdam_00022399 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRISC and BRCA1-A complex member 1
+
+--- Interloper 66 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A3M6V0G1|A0A3M6V0G1_POCDA BRCA1-associated ATM activator 1 OS=Pocillopora damicornis OX=46731 GN=pdam_00005739 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRCA1-associated ATM activator 1
+
+--- Interloper 67 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A6S7GDI8|A0A6S7GDI8_PARCT BRISC and BRCA1-A complex member 1 OS=Paramuricea clavata OX=317549 GN=PACLA_8A077160 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRISC and BRCA1-A complex member 1
+
+--- Interloper 68 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A6S7JT93|A0A6S7JT93_PARCT BRISC and BRCA1-A complex member 2 OS=Paramuricea clavata OX=317549 GN=PACLA_8A039157 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRISC and BRCA1-A complex member 2
+
+--- Interloper 69 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A7D9L3X8|A0A7D9L3X8_PARCT BRISC and BRCA1-A complex member 2 OS=Paramuricea clavata OX=317549 GN=PACLA_8A000559 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRISC and BRCA1-A complex member 2
+
+--- Interloper 70 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A7M5UWW5|A0A7M5UWW5_9CNID BRISC and BRCA1-A complex member 1 OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 71 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A7M5VE39|A0A7M5VE39_9CNID BRISC and BRCA1-A complex member 2 OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 72 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A913WZF3|A0A913WZF3_EXADI BRISC and BRCA1-A complex member 1 OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 73 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A9W9YJ40|A0A9W9YJ40_9CNID BRISC and BRCA1-A complex member 2 OS=Desmophyllum pertusum OX=174260 GN=OS493_032899 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRISC and BRCA1-A complex member 2
+
+--- Interloper 74 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A9W9YJC3|A0A9W9YJC3_9CNID BRISC and BRCA1-A complex member 2 OS=Desmophyllum pertusum OX=174260 GN=OS493_032900 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRISC and BRCA1-A complex member 2
+
+--- Interloper 75 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A9X0DCB9|A0A9X0DCB9_9CNID BRCA1 BRCA2-containing complex, subunit 3 OS=Desmophyllum pertusum OX=174260 GN=BRCC3 PE=3 SV=1
+  Reason: Non-target gene: GN=BRCC3
+
+--- Interloper 76 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0AAD9PSD9|A0AAD9PSD9_ACRCE BRISC and BRCA1-A complex member 1 OS=Acropora cervicornis OX=6130 GN=P5673_032103 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRISC and BRCA1-A complex member 1
+
+--- Interloper 77 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0AAU9VW98|A0AAU9VW98_9CNID BRCA1-associated ATM activator 1 OS=Pocillopora meandrina OX=46732 GN=PMEA_00026387 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRCA1-associated ATM activator 1
+
+--- Interloper 78 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0AAU9W1N3|A0AAU9W1N3_9CNID BRISC and BRCA1-A complex member 2 OS=Pocillopora meandrina OX=46732 GN=PMEA_00031792 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRISC and BRCA1-A complex member 2
+
+--- Interloper 79 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0AAU9WKK2|A0AAU9WKK2_9CNID BRISC and BRCA1-A complex member 1 OS=Pocillopora meandrina OX=46732 GN=PMEA_00006701 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRISC and BRCA1-A complex member 1
+
+--- Interloper 80 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0ABM4CFX1|A0ABM4CFX1_HYDVU BRISC and BRCA1-A complex member 2 OS=Hydra vulgaris OX=6087 GN=LOC105849422 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRISC and BRCA1-A complex member 2
+
+--- Interloper 81 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A7SJ60|A7SJ60_NEMVE BRISC and BRCA1-A complex member 1 OS=Nematostella vectensis OX=45351 GN=NEMVEDRAFT_v1g245600 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRISC and BRCA1-A complex member 1
+
+--- Interloper 82 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A2B4STG7|A0A2B4STG7_STYPI BRCA1-associated ATM activator 1 OS=Stylophora pistillata OX=50429 GN=BRAT1 PE=3 SV=1
+  Reason: Non-target gene: GN=BRAT1
+
+--- Interloper 83 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A7D9DNY1|A0A7D9DNY1_PARCT BRCA1-associated ATM activator 1-like OS=Paramuricea clavata OX=317549 GN=PACLA_8A042928 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRCA1-associated ATM activator 1-like
+
+--- Interloper 84 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A913XRE5|A0A913XRE5_EXADI BRCA1-associated ATM activator 1 OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 85 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A9X0CI79|A0A9X0CI79_9CNID BRCA1-associated ATM activator 1 OS=Desmophyllum pertusum OX=174260 GN=BRAT1 PE=3 SV=1
+  Reason: Non-target gene: GN=BRAT1
+
+--- Interloper 86 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0AAD9VFI7|A0AAD9VFI7_ACRCE BRCA1-associated ATM activator 1 OS=Acropora cervicornis OX=6130 GN=P5673_003461 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRCA1-associated ATM activator 1
+
+--- Interloper 87 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0ABM4CFV4|A0ABM4CFV4_HYDVU BRISC and BRCA1-A complex member 2 OS=Hydra vulgaris OX=6087 GN=LOC105849422 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRISC and BRCA1-A complex member 2
+
+--- Interloper 88 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0ABM4CFX0|A0ABM4CFX0_HYDVU BRISC and BRCA1-A complex member 2 OS=Hydra vulgaris OX=6087 GN=LOC105849422 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRISC and BRCA1-A complex member 2
+
+--- Interloper 89 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0ABM4CFX2|A0ABM4CFX2_HYDVU BRISC and BRCA1-A complex member 2 OS=Hydra vulgaris OX=6087 GN=LOC105849422 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRISC and BRCA1-A complex member 2
+
+--- Interloper 90 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0ABN8L8U2|A0ABN8L8U2_9CNID BRCA1-associated ATM activator 1 OS=Porites evermanni OX=104178 GN=PEVE_00000032 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRCA1-associated ATM activator 1
+
+--- Interloper 91 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0ABN8N6M0|A0ABN8N6M0_9CNID BRISC and BRCA1-A complex member 2 OS=Porites evermanni OX=104178 GN=PEVE_00040185 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRISC and BRCA1-A complex member 2
+
+--- Interloper 92 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0ABN8N8U6|A0ABN8N8U6_9CNID BRCA1-associated ATM activator 1 OS=Porites lobata OX=104759 GN=PLOB_00004656 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRCA1-associated ATM activator 1
+
+--- Interloper 93 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0ABN8Q3M0|A0ABN8Q3M0_9CNID BRISC and BRCA1-A complex member 1 OS=Porites evermanni OX=104178 GN=PEVE_00001361 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRISC and BRCA1-A complex member 1
+
+--- Interloper 94 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0ABN8QSW6|A0ABN8QSW6_9CNID BRISC and BRCA1-A complex member 1 OS=Porites lobata OX=104759 GN=PLOB_00009086 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRISC and BRCA1-A complex member 1
+
+--- Interloper 95 ---
+  Source file: uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0ABN8RU35|A0ABN8RU35_9CNID BRISC and BRCA1-A complex member 2 OS=Porites lobata OX=104759 GN=PLOB_00027107 PE=3 SV=1
+  Reason: Non-target protein (desc match): BRISC and BRCA1-A complex member 2
+
+--- Interloper 96 ---
+  Source file: uniprotkb_protein_name_ccr4_not_AND_tax_2026_04_13.fasta.gz
+  Header: tr|A0A2B4RKW2|A0A2B4RKW2_STYPI CCR4-NOT transcription complex subunit 9 OS=Stylophora pistillata OX=50429 GN=rqcd1 PE=3 SV=1
+  Reason: Non-target gene: GN=rqcd1
+
+--- Interloper 97 ---
+  Source file: uniprotkb_protein_name_ccr4_not_AND_tax_2026_04_13.fasta.gz
+  Header: tr|A0A7M5UWH2|A0A7M5UWH2_9CNID CCR4-NOT transcription complex subunit 11 OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 98 ---
+  Source file: uniprotkb_protein_name_ccr4_not_AND_tax_2026_04_13.fasta.gz
+  Header: tr|A0A7M5VGD3|A0A7M5VGD3_9CNID CCR4-NOT transcription complex subunit 1 OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 99 ---
+  Source file: uniprotkb_protein_name_ccr4_not_AND_tax_2026_04_13.fasta.gz
+  Header: tr|A0A7M5WMI6|A0A7M5WMI6_9CNID CCR4-NOT transcription complex subunit 1 OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 100 ---
+  Source file: uniprotkb_protein_name_ccr4_not_AND_tax_2026_04_13.fasta.gz
+  Header: tr|A0A7M5WRU6|A0A7M5WRU6_9CNID CCR4-NOT transcription complex subunit 9 OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 101 ---
+  Source file: uniprotkb_protein_name_ccr4_not_AND_tax_2026_04_13.fasta.gz
+  Header: tr|A0A7M5WXZ1|A0A7M5WXZ1_9CNID CCR4-NOT transcription complex subunit 10 OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 102 ---
+  Source file: uniprotkb_protein_name_ccr4_not_AND_tax_2026_04_13.fasta.gz
+  Header: tr|A0A913WQI1|A0A913WQI1_EXADI CCR4-NOT transcription complex subunit 10 OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 103 ---
+  Source file: uniprotkb_protein_name_ccr4_not_AND_tax_2026_04_13.fasta.gz
+  Header: tr|A0A913X2C4|A0A913X2C4_EXADI CCR4-NOT transcription complex subunit 10 OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 104 ---
+  Source file: uniprotkb_protein_name_ccr4_not_AND_tax_2026_04_13.fasta.gz
+  Header: tr|A0A913X8I0|A0A913X8I0_EXADI CCR4-NOT transcription complex subunit 9 OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 105 ---
+  Source file: uniprotkb_protein_name_ccr4_not_AND_tax_2026_04_13.fasta.gz
+  Header: tr|A0A913YFB7|A0A913YFB7_EXADI CCR4-NOT transcription complex subunit 1 OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 106 ---
+  Source file: uniprotkb_protein_name_ccr4_not_AND_tax_2026_04_13.fasta.gz
+  Header: tr|A0A913YPT4|A0A913YPT4_EXADI CCR4-NOT transcription complex subunit 3 OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 107 ---
+  Source file: uniprotkb_protein_name_ccr4_not_AND_tax_2026_04_13.fasta.gz
+  Header: tr|A0A9W9YNI7|A0A9W9YNI7_9CNID CCR4-NOT transcription complex subunit 9 OS=Desmophyllum pertusum OX=174260 GN=RQCD1 PE=3 SV=1
+  Reason: Non-target gene: GN=RQCD1
+
+--- Interloper 108 ---
+  Source file: uniprotkb_protein_name_ccr4_not_AND_tax_2026_04_13.fasta.gz
+  Header: tr|T2M7T1|T2M7T1_HYDVU CCR4-NOT transcription complex subunit 9 OS=Hydra vulgaris OX=6087 GN=RQCD1 PE=2 SV=1
+  Reason: Non-target gene: GN=RQCD1
+
+--- Interloper 109 ---
+  Source file: uniprotkb_protein_name_ccr4_not_AND_tax_2026_04_13.fasta.gz
+  Header: tr|A0A0C2MMK7|A0A0C2MMK7_THEKT CCR4-NOT transcription complex subunit 3 OS=Thelohanellus kitauei OX=669202 GN=RF11_10819 PE=3 SV=1
+  Reason: Non-cnidarian species (Thelohanellus kitauei, OX=669202)
+
+--- Interloper 110 ---
+  Source file: uniprotkb_protein_name_ccr4_not_AND_tax_2026_04_13.fasta.gz
+  Header: tr|A0A6G3MG50|A0A6G3MG50_HENSL CCR4-NOT transcription complex subunit 9 OS=Henneguya salminicola OX=69463 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 111 ---
+  Source file: uniprotkb_protein_name_ccr4_not_AND_tax_2026_04_13.fasta.gz
+  Header: tr|A0A6G3MJW9|A0A6G3MJW9_HENSL CCR4-NOT transcription complex subunit 3 (Trinotate prediction) OS=Henneguya salminicola OX=69463 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 112 ---
+  Source file: uniprotkb_protein_name_ccr4_not_AND_tax_2026_04_13.fasta.gz
+  Header: tr|A0A913X1U9|A0A913X1U9_EXADI CCR4-NOT transcription complex subunit 11 OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 113 ---
+  Source file: uniprotkb_protein_name_dgcr8_OR_protein_2026_04_13.fasta
+  Header: tr|U3MIG6|U3MIG6_NEMVE Pasha/DGCR8 OS=Nematostella vectensis OX=45351 PE=2 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 114 ---
+  Source file: uniprotkb_protein_name_dicer_AND_taxono_2026_04_13.fasta
+  Header: tr|A0A977XUP0|A0A977XUP0_9CNID Endoribonuclease dicer OS=Calyptrophora lyra OX=2864141 PE=2 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 115 ---
+  Source file: uniprotkb_protein_name_dicer_AND_taxono_2026_04_13.fasta
+  Header: tr|U3MG90|U3MG90_NEMVE Dicer 2 OS=Nematostella vectensis OX=45351 PE=2 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 116 ---
+  Source file: uniprotkb_protein_name_dicer_AND_taxono_2026_04_13.fasta
+  Header: tr|U3MHS9|U3MHS9_NEMVE Dicer 1 OS=Nematostella vectensis OX=45351 PE=2 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 117 ---
+  Source file: uniprotkb_protein_name_dnmt_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A7M5WVQ1|A0A7M5WVQ1_9CNID DNA (cytosine-5)-methyltransferase OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 118 ---
+  Source file: uniprotkb_protein_name_dnmt_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A913XJJ0|A0A913XJJ0_EXADI DNA (cytosine-5)-methyltransferase OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 119 ---
+  Source file: uniprotkb_protein_name_dnmt_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A2B4S3R1|A0A2B4S3R1_STYPI DNA (cytosine-5-)-methyltransferase OS=Stylophora pistillata OX=50429 GN=DNMT3A PE=3 SV=1
+  Reason: Non-target gene: GN=DNMT3A
+
+--- Interloper 120 ---
+  Source file: uniprotkb_protein_name_dnmt_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A2B4S7T7|A0A2B4S7T7_STYPI tRNA (cytosine(38)-C(5))-methyltransferase OS=Stylophora pistillata OX=50429 GN=TRDMT1 PE=3 SV=1
+  Reason: Non-target gene: GN=TRDMT1
+
+--- Interloper 121 ---
+  Source file: uniprotkb_protein_name_dnmt_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A7M5WTF5|A0A7M5WTF5_9CNID DNA (cytosine-5-)-methyltransferase OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 122 ---
+  Source file: uniprotkb_protein_name_dnmt_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A913Y8F8|A0A913Y8F8_EXADI tRNA (cytosine(38)-C(5))-methyltransferase OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 123 ---
+  Source file: uniprotkb_protein_name_dnmt_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A9W9Y834|A0A9W9Y834_9CNID tRNA (cytosine(38)-C(5))-methyltransferase OS=Desmophyllum pertusum OX=174260 GN=TRDMT1 PE=3 SV=1
+  Reason: Non-target gene: GN=TRDMT1
+
+--- Interloper 124 ---
+  Source file: uniprotkb_protein_name_drosha_AND_taxon_2026_04_13.fasta
+  Header: tr|A0A913YT85|A0A913YT85_EXADI Ribonuclease 3 OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 125 ---
+  Source file: uniprotkb_protein_name_drosha_AND_taxon_2026_04_13.fasta
+  Header: tr|U3MMT8|U3MMT8_NEMVE Drosha OS=Nematostella vectensis OX=45351 PE=2 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 126 ---
+  Source file: uniprotkb_protein_name_edc3_OR_protein_2026_04_13.fasta
+  Header: tr|A0A7M5WQI7|A0A7M5WQI7_9CNID Enhancer of mRNA-decapping protein 4 WD40 repeat region domain-containing protein OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 127 ---
+  Source file: uniprotkb_protein_name_edc3_OR_protein_2026_04_13.fasta
+  Header: tr|A0A7M5WZX2|A0A7M5WZX2_9CNID Enhancer of mRNA-decapping protein 3 OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 128 ---
+  Source file: uniprotkb_protein_name_edc3_OR_protein_2026_04_13.fasta
+  Header: tr|A0A913XG81|A0A913XG81_EXADI Enhancer of mRNA-decapping protein 3 OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 129 ---
+  Source file: uniprotkb_protein_name_edc3_OR_protein_2026_04_13.fasta
+  Header: tr|A0A913YNN4|A0A913YNN4_EXADI Enhancer of mRNA-decapping protein 4 OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 130 ---
+  Source file: uniprotkb_protein_name_edc4_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A7M5WQI7|A0A7M5WQI7_9CNID Enhancer of mRNA-decapping protein 4 WD40 repeat region domain-containing protein OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 131 ---
+  Source file: uniprotkb_protein_name_edc4_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A913YNN4|A0A913YNN4_EXADI Enhancer of mRNA-decapping protein 4 OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 132 ---
+  Source file: uniprotkb_protein_name_eed_AND_taxonomy_2026_04_13.fasta.gz
+  Header: tr|A0A7M6DQP6|A0A7M6DQP6_9CNID Polycomb protein EED OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 133 ---
+  Source file: uniprotkb_protein_name_eed_AND_taxonomy_2026_04_13.fasta.gz
+  Header: tr|A0A2B4T083|A0A2B4T083_STYPI Polycomb protein eed-A OS=Stylophora pistillata OX=50429 GN=eed-a PE=3 SV=1
+  Reason: Unmatched gene: GN=eed-a
+
+--- Interloper 134 ---
+  Source file: uniprotkb_protein_name_eed_AND_taxonomy_2026_04_13.fasta.gz
+  Header: tr|A0A913XDB0|A0A913XDB0_EXADI Polycomb protein EED OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 135 ---
+  Source file: uniprotkb_protein_name_gw182_OR_protein_2026_04_13.fasta.gz
+  Header: tr|U3MIH3|U3MIH3_NEMVE GW182/TNRC6-like protein OS=Nematostella vectensis OX=45351 PE=2 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 136 ---
+  Source file: uniprotkb_protein_name_gw182_OR_protein_2026_04_14.fasta.gz
+  Header: tr|U3MIH3|U3MIH3_NEMVE GW182/TNRC6-like protein OS=Nematostella vectensis OX=45351 PE=2 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 137 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A1P8L011|A0A1P8L011_HYDEC Histone deacetylase OS=Hydractinia echinata OX=3283270 GN=Hdac8 PE=2 SV=1
+  Reason: Non-target gene: GN=Hdac8
+
+--- Interloper 138 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A2B4S9D4|A0A2B4S9D4_STYPI Putative JmjC domain-containing histone demethylation protein 2C OS=Stylophora pistillata OX=50429 GN=Jmjd1c PE=3 SV=1
+  Reason: Non-target gene: GN=Jmjd1c
+
+--- Interloper 139 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A2B4SGZ9|A0A2B4SGZ9_STYPI Histone deacetylase OS=Stylophora pistillata OX=50429 GN=Hdac8 PE=3 SV=1
+  Reason: Non-target gene: GN=Hdac8
+
+--- Interloper 140 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A913XZK0|A0A913XZK0_EXADI Histone deacetylase OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 141 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A913YBR8|A0A913YBR8_EXADI Histone deacetylase OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 142 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A9X0A7Z3|A0A9X0A7Z3_9CNID Histone deacetylase 8 OS=Desmophyllum pertusum OX=174260 GN=HDAC8_1 PE=3 SV=1
+  Reason: Non-target gene: GN=HDAC8_1
+
+--- Interloper 143 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|T2M6N6|T2M6N6_HYDVU Histone deacetylase OS=Hydra vulgaris OX=6087 GN=HDAC8 PE=2 SV=1
+  Reason: Non-target gene: GN=HDAC8
+
+--- Interloper 144 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A0C2N2B9|A0A0C2N2B9_THEKT Histone deacetylase OS=Thelohanellus kitauei OX=669202 GN=RF11_02025 PE=3 SV=1
+  Reason: Non-cnidarian species (Thelohanellus kitauei, OX=669202)
+
+--- Interloper 145 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A1P8KZZ0|A0A1P8KZZ0_HYDEC histone deacetylase OS=Hydractinia echinata OX=3283270 GN=Hdac4 PE=2 SV=1
+  Reason: Non-target gene: GN=Hdac4
+
+--- Interloper 146 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A1P8KZZ1|A0A1P8KZZ1_HYDEC histone deacetylase OS=Hydractinia echinata OX=3283270 GN=Hdac2 PE=2 SV=1
+  Reason: Non-target gene: GN=Hdac2
+
+--- Interloper 147 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A1P8KZZ3|A0A1P8KZZ3_HYDEC Histone deacetylase OS=Hydractinia echinata OX=3283270 GN=Hdac3 PE=2 SV=1
+  Reason: Non-target gene: GN=Hdac3
+
+--- Interloper 148 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A1P8L010|A0A1P8L010_HYDEC Histone deacetylase 11 OS=Hydractinia echinata OX=3283270 GN=Hdac11 PE=2 SV=1
+  Reason: Non-target gene: GN=Hdac11
+
+--- Interloper 149 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A2B4S445|A0A2B4S445_STYPI Histone deacetylase 11 OS=Stylophora pistillata OX=50429 GN=Hdac11 PE=3 SV=1
+  Reason: Non-target gene: GN=Hdac11
+
+--- Interloper 150 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A2B4SBM6|A0A2B4SBM6_STYPI histone deacetylase OS=Stylophora pistillata OX=50429 GN=HDAC4 PE=3 SV=1
+  Reason: Non-target gene: GN=HDAC4
+
+--- Interloper 151 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A2B4SUT8|A0A2B4SUT8_STYPI Histone deacetylase OS=Stylophora pistillata OX=50429 GN=hdac3 PE=3 SV=1
+  Reason: Non-target gene: GN=hdac3
+
+--- Interloper 152 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A7M5VA08|A0A7M5VA08_9CNID histone deacetylase OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 153 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A7M5VH73|A0A7M5VH73_9CNID Histone deacetylase 11 OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 154 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A7M5WWG2|A0A7M5WWG2_9CNID Histone deacetylase OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 155 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A7M5WWX1|A0A7M5WWX1_9CNID histone deacetylase OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 156 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A913X9C4|A0A913X9C4_EXADI histone deacetylase OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 157 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A913XE38|A0A913XE38_EXADI Histone deacetylase OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 158 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A913XN27|A0A913XN27_EXADI Histone deacetylase 11 OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 159 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A913XNJ1|A0A913XNJ1_EXADI Histone deacetylase domain-containing protein OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 160 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A913XPM0|A0A913XPM0_EXADI Histone deacetylase OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 161 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A913XPM1|A0A913XPM1_EXADI Histone deacetylase domain-containing protein OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 162 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A913Y4K4|A0A913Y4K4_EXADI Histone deacetylase complex subunit SAP30 homolog OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 163 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A9W9ZEZ5|A0A9W9ZEZ5_9CNID histone deacetylase OS=Desmophyllum pertusum OX=174260 GN=HDAC7 PE=3 SV=1
+  Reason: Non-target gene: GN=HDAC7
+
+--- Interloper 164 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A9X0CEI1|A0A9X0CEI1_9CNID histone deacetylase OS=Desmophyllum pertusum OX=174260 GN=HDAC2 PE=3 SV=1
+  Reason: Unmatched gene: GN=HDAC2
+
+--- Interloper 165 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A9X0DA49|A0A9X0DA49_9CNID [histone H3]-dimethyl-L-lysine(9) demethylase OS=Desmophyllum pertusum OX=174260 GN=KDM3B PE=3 SV=1
+  Reason: Non-target gene: GN=KDM3B
+
+--- Interloper 166 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|T2M8M1|T2M8M1_HYDVU histone deacetylase OS=Hydra vulgaris OX=6087 GN=HDAC2 PE=2 SV=1
+  Reason: Unmatched gene: GN=HDAC2
+
+--- Interloper 167 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|T2MF04|T2MF04_HYDVU histone deacetylase OS=Hydra vulgaris OX=6087 GN=HDAC4 PE=2 SV=1
+  Reason: Non-target gene: GN=HDAC4
+
+--- Interloper 168 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|T2MIU4|T2MIU4_HYDVU Histone deacetylase OS=Hydra vulgaris OX=6087 GN=HDAC3 PE=2 SV=1
+  Reason: Unmatched gene: GN=HDAC3
+
+--- Interloper 169 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A2B4RE12|A0A2B4RE12_STYPI Histone deacetylase complex subunit SAP30L OS=Stylophora pistillata OX=50429 GN=sap30l PE=3 SV=1
+  Reason: Non-target gene: GN=sap30l
+
+--- Interloper 170 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A2B4STY4|A0A2B4STY4_STYPI Histone deacetylase complex subunit SAP130-A OS=Stylophora pistillata OX=50429 GN=sap130-a PE=3 SV=1
+  Reason: Non-target gene: GN=sap130-a
+
+--- Interloper 171 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A6P8HM43|A0A6P8HM43_ACTTE Histone deacetylase 6-like isoform X2 OS=Actinia tenebrosa OX=6105 GN=LOC116293499 PE=3 SV=1
+  Reason: Non-target protein (desc match): Histone deacetylase 6-like isoform X2
+
+--- Interloper 172 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A7M5U0Q9|A0A7M5U0Q9_9CNID Histone deacetylase complex subunit SAP130 C-terminal domain-containing protein OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 173 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A7M5UUX3|A0A7M5UUX3_9CNID Histone deacetylase complex subunit SAP130 C-terminal domain-containing protein OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 174 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A913XCG3|A0A913XCG3_EXADI Histone deacetylase complex subunit SAP130 C-terminal domain-containing protein OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 175 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A9W9YM18|A0A9W9YM18_9CNID Histone deacetylase complex subunit sap30l OS=Desmophyllum pertusum OX=174260 GN=SAP30L PE=3 SV=1
+  Reason: Non-target gene: GN=SAP30L
+
+--- Interloper 176 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|T2M410|T2M410_HYDVU Histone deacetylase 6 OS=Hydra vulgaris OX=6087 GN=HDAC6 PE=2 SV=1
+  Reason: Non-target gene: GN=HDAC6
+
+--- Interloper 177 ---
+  Source file: uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+  Header: tr|T2M691|T2M691_HYDVU Histone deacetylase complex subunit SAP130 OS=Hydra vulgaris OX=6087 GN=SAP130 PE=2 SV=1
+  Reason: Non-target gene: GN=SAP130
+
+--- Interloper 178 ---
+  Source file: uniprotkb_protein_name_hyl1_AND_taxonom_2026_04_13.fasta
+  Header: tr|U3MH39|U3MH39_NEMVE HYL1-like a protein OS=Nematostella vectensis OX=45351 PE=2 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 179 ---
+  Source file: uniprotkb_protein_name_mll1_OR_gene_mll_2026_04_13.fasta.gz
+  Header: tr|T2MB73|T2MB73_HYDVU MLL1/MLL complex subunit KIAA1267 OS=Hydra vulgaris OX=6087 GN=KIAA1267 PE=2 SV=1
+  Reason: Non-target gene: GN=KIAA1267
+
+--- Interloper 180 ---
+  Source file: uniprotkb_protein_name_mof_OR_protein_n_2026_04_13.fasta.gz
+  Header: tr|T2M568|T2M568_HYDVU KAT8 regulatory NSL complex subunit 2 OS=Hydra vulgaris OX=6087 GN=C12orf41 PE=2 SV=1
+  Reason: Non-target gene: GN=C12orf41
+
+--- Interloper 181 ---
+  Source file: uniprotkb_protein_name_pabp_AND_taxonom_2026_04_13.fasta.gz
+  Header: tr|A0A7M5WMY6|A0A7M5WMY6_9CNID Polyadenylate-binding protein OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 182 ---
+  Source file: uniprotkb_protein_name_pabp_AND_taxonom_2026_04_13.fasta.gz
+  Header: tr|A0A913XXZ3|A0A913XXZ3_EXADI Polyadenylate-binding protein OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 183 ---
+  Source file: uniprotkb_protein_name_parn_AND_taxonom_2026_04_13.fasta.gz
+  Header: tr|A0A7M5V2D9|A0A7M5V2D9_9CNID Poly(A)-specific ribonuclease PARN OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 184 ---
+  Source file: uniprotkb_protein_name_parn_AND_taxonom_2026_04_13.fasta.gz
+  Header: tr|A0A0C2MY59|A0A0C2MY59_THEKT Poly(A)-specific ribonuclease PARN OS=Thelohanellus kitauei OX=669202 GN=RF11_04210 PE=3 SV=1
+  Reason: Non-cnidarian species (Thelohanellus kitauei, OX=669202)
+
+--- Interloper 185 ---
+  Source file: uniprotkb_protein_name_phax_OR_protein_2026_04_13.fasta
+  Header: tr|A0A7M5U7M1|A0A7M5U7M1_9CNID Phosphorylated adapter RNA export protein OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 186 ---
+  Source file: uniprotkb_protein_name_phax_OR_protein_2026_04_13.fasta
+  Header: tr|A0A913XXU5|A0A913XXU5_EXADI Phosphorylated adapter RNA export protein OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 187 ---
+  Source file: uniprotkb_protein_name_phax_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A7M5U7M1|A0A7M5U7M1_9CNID Phosphorylated adapter RNA export protein OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 188 ---
+  Source file: uniprotkb_protein_name_phax_OR_protein_2026_04_13.fasta.gz
+  Header: tr|A0A913XXU5|A0A913XXU5_EXADI Phosphorylated adapter RNA export protein OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 189 ---
+  Source file: uniprotkb_protein_name_rad21_OR_gene_ra_2026_04_14.fasta.gz
+  Header: tr|A0A913X8D1|A0A913X8D1_EXADI Double-strand-break repair protein rad21 homolog OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 190 ---
+  Source file: uniprotkb_protein_name_rbbp4_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A0C2MZV1|A0A0C2MZV1_THEKT Histone-binding protein RBBP4 OS=Thelohanellus kitauei OX=669202 GN=RF11_10207 PE=3 SV=1
+  Reason: Non-cnidarian species (Thelohanellus kitauei, OX=669202)
+
+--- Interloper 191 ---
+  Source file: uniprotkb_protein_name_rbbp4_AND_taxono_2026_04_13.fasta.gz
+  Header: tr|A0A7M5V8C8|A0A7M5V8C8_9CNID Histone-binding protein RBBP4-like N-terminal domain-containing protein OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
+  Reason: Unmatched gene: GN=
+
+--- Interloper 192 ---
+  Source file: uniprotkb_protein_name_rbbp4_AND_taxono_2026_04_13.fasta.gz
+
+...8789 bytes truncated...
+
+The tool call succeeded but the output was truncated. Full output saved to: /Users/Owner/.local/share/opencode/tool-output/tool_d8ad0b9f50014c7lbhYOZlKpOA
+Use the Task tool to have explore agent process this file with Grep and Read (with offset/limit). Do NOT read the full file yourself - delegate to save context.
+
+Run command
+At "/Users/Owner/.local/share/opencode/tool-output/tool_d89c3f7bd001SdDIyZGD890bfd" is a temp file that lists fasta and fasta.gz file names in the first column and Uniprot fasta headers in the second column. At "/Users/Owner/Downloads/The\ Big\ One/Documents/UW/Roberts\ Lab/OpenWork/ncRNA_machinery.xlsx" there’s a spreadsheet that contains in the first and second columns proteins and corresponding gene names for protein machinery related to ncRNA biogenisis and function.
+
+When compiling fastas for these proteins, some related but not targeted proteins slipped through because of overly permissive searches. Get a list of all targeted proteins from the xlsx file. Then search the file listing fasta headers and check for any fasta headers corresponding to proteins that are not actually included in the xlsx. If you find such instances, output both the fasta header and its source fasta/fasta.gz file.
+
+Note that the protein and gene names shown in the fastas may use different format than in the xlsx (e.g., full protein name instead of abbreviation). Additionally, the gene names in the fastas will often be blank or incorrect becuase these entries come from unreviewed, non-model sources and are not necessarily named by convention — the protein names will be more accurate. Additionally, a simple word match search is not sufficient. For example, searching for hsp90 will still permit "Cdc37 Hsp90 binding domain-containing protein” through, which is not the hsp90 protein.
+
+Invalid Tool
+Let me write the analysis as a proper Python script file to avoid shell escaping issues:
+
+
+Write find_interlopers.py
+
+Invalid Tool
+
+Invalid Tool
+
+Invalid Tool
+
+Invalid Tool
+
+Invalid Tool
+
+Invalid Tool
+
+Run interloper detection script
+I can see the output was truncated. Let me also notice that some entries in the "OTHER INTERLOPERS" category are actually EDC4 entries found in EDC3 search files, which ARE legitimate targets. Let me refine the script to remove false positives and get a clean final output:
+
+
+Write find_interlopers.py
+
+Run refined interloper detection
+REQUEST
+{
+  "command": "python3 find_interlopers.py",
+  "description": "Run refined interloper detection",
+  "workdir": "/Users/Owner/Downloads/The Big One/Documents/UW/Roberts Lab/OpenWork"
+}
+RESULT
+Total fasta headers: 753
+Total interloper entries (incl. fasta/fasta.gz dupes): 153
+Unique interloper proteins (deduped): 152
+
+
+================================================================================
+  AEBP2 SEARCH INTERLOPERS (AEBP2-like) — 1 unique interloper(s)
+================================================================================
+    1. File:  uniprotkb_protein_name_aebp2_AND_taxono_2026_04_13.fasta
+       Acc:   A0A7D9EQ62
+       Desc:  Zinc finger AEBP2-like
+       GN:    PACLA_8A059650
+       Org:   Paramuricea clavata
+       Why:   "AEBP2-like" is NOT AEBP2 itself
+
+
+================================================================================
+  BRCA1 SEARCH INTERLOPERS (BRE/BRAT1/BRCC3) — 36 unique interloper(s)
+================================================================================
+    1. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0A2B4RWG7
+       Desc:  BRISC and BRCA1-A complex member 2
+       GN:    BRE
+       Org:   Stylophora pistillata
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+    2. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0A3M6UEE6
+       Desc:  BRISC and BRCA1-A complex member 2
+       GN:    pdam_00003769
+       Org:   Pocillopora damicornis
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+    3. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0A6P8IAC3
+       Desc:  BRISC and BRCA1-A complex member 2
+       GN:    LOC116299595
+       Org:   Actinia tenebrosa
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+    4. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0A6P8IMD6
+       Desc:  BRISC and BRCA1-A complex member 1
+       GN:    LOC116302774
+       Org:   Actinia tenebrosa
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+    5. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0A913X8Q5
+       Desc:  BRISC and BRCA1-A complex member 2
+       GN:    
+       Org:   Exaiptasia diaphana
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+    6. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0A3M6UGC0
+       Desc:  BRISC and BRCA1-A complex member 1
+       GN:    pdam_00022399
+       Org:   Pocillopora damicornis
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+    7. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0A3M6V0G1
+       Desc:  BRCA1-associated ATM activator 1
+       GN:    pdam_00005739
+       Org:   Pocillopora damicornis
+       Why:   BRAT1 (BRCA1-associated protein) is NOT BRCA1 itself
+
+    8. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0A6S7GDI8
+       Desc:  BRISC and BRCA1-A complex member 1
+       GN:    PACLA_8A077160
+       Org:   Paramuricea clavata
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+    9. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0A6S7JT93
+       Desc:  BRISC and BRCA1-A complex member 2
+       GN:    PACLA_8A039157
+       Org:   Paramuricea clavata
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+   10. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0A7D9L3X8
+       Desc:  BRISC and BRCA1-A complex member 2
+       GN:    PACLA_8A000559
+       Org:   Paramuricea clavata
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+   11. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0A7M5UWW5
+       Desc:  BRISC and BRCA1-A complex member 1
+       GN:    
+       Org:   Clytia hemisphaerica
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+   12. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0A7M5VE39
+       Desc:  BRISC and BRCA1-A complex member 2
+       GN:    
+       Org:   Clytia hemisphaerica
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+   13. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0A913WZF3
+       Desc:  BRISC and BRCA1-A complex member 1
+       GN:    
+       Org:   Exaiptasia diaphana
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+   14. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0A9W9YJ40
+       Desc:  BRISC and BRCA1-A complex member 2
+       GN:    OS493_032899
+       Org:   Desmophyllum pertusum
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+   15. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0A9W9YJC3
+       Desc:  BRISC and BRCA1-A complex member 2
+       GN:    OS493_032900
+       Org:   Desmophyllum pertusum
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+   16. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0A9X0DCB9
+       Desc:  BRCA1 BRCA2-containing complex, subunit 3
+       GN:    BRCC3
+       Org:   Desmophyllum pertusum
+       Why:   BRCC3 (BRCA complex subunit) is NOT BRCA1 itself
+
+   17. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0AAD9PSD9
+       Desc:  BRISC and BRCA1-A complex member 1
+       GN:    P5673_032103
+       Org:   Acropora cervicornis
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+   18. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0AAU9VW98
+       Desc:  BRCA1-associated ATM activator 1
+       GN:    PMEA_00026387
+       Org:   Pocillopora meandrina
+       Why:   BRAT1 (BRCA1-associated protein) is NOT BRCA1 itself
+
+   19. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0AAU9W1N3
+       Desc:  BRISC and BRCA1-A complex member 2
+       GN:    PMEA_00031792
+       Org:   Pocillopora meandrina
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+   20. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0AAU9WKK2
+       Desc:  BRISC and BRCA1-A complex member 1
+       GN:    PMEA_00006701
+       Org:   Pocillopora meandrina
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+   21. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0ABM4CFX1
+       Desc:  BRISC and BRCA1-A complex member 2
+       GN:    LOC105849422
+       Org:   Hydra vulgaris
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+   22. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A7SJ60
+       Desc:  BRISC and BRCA1-A complex member 1
+       GN:    NEMVEDRAFT_v1g245600
+       Org:   Nematostella vectensis
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+   23. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0A2B4STG7
+       Desc:  BRCA1-associated ATM activator 1
+       GN:    BRAT1
+       Org:   Stylophora pistillata
+       Why:   BRAT1 (BRCA1-associated protein) is NOT BRCA1 itself
+
+   24. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0A7D9DNY1
+       Desc:  BRCA1-associated ATM activator 1-like
+       GN:    PACLA_8A042928
+       Org:   Paramuricea clavata
+       Why:   BRAT1 (BRCA1-associated protein) is NOT BRCA1 itself
+
+   25. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0A913XRE5
+       Desc:  BRCA1-associated ATM activator 1
+       GN:    
+       Org:   Exaiptasia diaphana
+       Why:   BRAT1 (BRCA1-associated protein) is NOT BRCA1 itself
+
+   26. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0A9X0CI79
+       Desc:  BRCA1-associated ATM activator 1
+       GN:    BRAT1
+       Org:   Desmophyllum pertusum
+       Why:   BRAT1 (BRCA1-associated protein) is NOT BRCA1 itself
+
+   27. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0AAD9VFI7
+       Desc:  BRCA1-associated ATM activator 1
+       GN:    P5673_003461
+       Org:   Acropora cervicornis
+       Why:   BRAT1 (BRCA1-associated protein) is NOT BRCA1 itself
+
+   28. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0ABM4CFV4
+       Desc:  BRISC and BRCA1-A complex member 2
+       GN:    LOC105849422
+       Org:   Hydra vulgaris
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+   29. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0ABM4CFX0
+       Desc:  BRISC and BRCA1-A complex member 2
+       GN:    LOC105849422
+       Org:   Hydra vulgaris
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+   30. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0ABM4CFX2
+       Desc:  BRISC and BRCA1-A complex member 2
+       GN:    LOC105849422
+       Org:   Hydra vulgaris
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+   31. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0ABN8L8U2
+       Desc:  BRCA1-associated ATM activator 1
+       GN:    PEVE_00000032
+       Org:   Porites evermanni
+       Why:   BRAT1 (BRCA1-associated protein) is NOT BRCA1 itself
+
+   32. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0ABN8N6M0
+       Desc:  BRISC and BRCA1-A complex member 2
+       GN:    PEVE_00040185
+       Org:   Porites evermanni
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+   33. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0ABN8N8U6
+       Desc:  BRCA1-associated ATM activator 1
+       GN:    PLOB_00004656
+       Org:   Porites lobata
+       Why:   BRAT1 (BRCA1-associated protein) is NOT BRCA1 itself
+
+   34. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0ABN8Q3M0
+       Desc:  BRISC and BRCA1-A complex member 1
+       GN:    PEVE_00001361
+       Org:   Porites evermanni
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+   35. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0ABN8QSW6
+       Desc:  BRISC and BRCA1-A complex member 1
+       GN:    PLOB_00009086
+       Org:   Porites lobata
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+   36. File:  uniprotkb_protein_name_brca1_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0ABN8RU35
+       Desc:  BRISC and BRCA1-A complex member 2
+       GN:    PLOB_00027107
+       Org:   Porites lobata
+       Why:   BRE/BRCC36 (BRCA1-A complex member) is NOT BRCA1 itself
+
+
+================================================================================
+  DNMT SEARCH INTERLOPERS (TRDMT1/DNMT3A) — 10 unique interloper(s)
+================================================================================
+    1. File:  uniprotkb_protein_name_dnmt_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A2B4S3R1
+       Desc:  DNA (cytosine-5-)-methyltransferase
+       GN:    DNMT3A
+       Org:   Stylophora pistillata
+       Why:   Non-target gene: GN=DNMT3A
+
+    2. File:  uniprotkb_protein_name_dnmt_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A2B4S7T7
+       Desc:  tRNA (cytosine(38)-C(5))-methyltransferase
+       GN:    TRDMT1
+       Org:   Stylophora pistillata
+       Why:   TRDMT1 (tRNA methyltransferase) is NOT DNMT1
+
+    3. File:  uniprotkb_protein_name_dnmt_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A3M6UVB4
+       Desc:  tRNA (cytosine(38)-C(5))-methyltransferase
+       GN:    pdam_00015911
+       Org:   Pocillopora damicornis
+       Why:   TRDMT1 (tRNA methyltransferase) is NOT DNMT1
+
+    4. File:  uniprotkb_protein_name_dnmt_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A6P8IYY0
+       Desc:  tRNA (cytosine(38)-C(5))-methyltransferase
+       GN:    LOC116306454
+       Org:   Actinia tenebrosa
+       Why:   TRDMT1 (tRNA methyltransferase) is NOT DNMT1
+
+    5. File:  uniprotkb_protein_name_dnmt_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A6S7G2N9
+       Desc:  tRNA (cytosine(38)-C(5))-methyltransferase
+       GN:    PACLA_8A045214
+       Org:   Paramuricea clavata
+       Why:   TRDMT1 (tRNA methyltransferase) is NOT DNMT1
+
+    6. File:  uniprotkb_protein_name_dnmt_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A913Y8F8
+       Desc:  tRNA (cytosine(38)-C(5))-methyltransferase
+       GN:    
+       Org:   Exaiptasia diaphana
+       Why:   TRDMT1 (tRNA methyltransferase) is NOT DNMT1
+
+    7. File:  uniprotkb_protein_name_dnmt_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A9W9Y834
+       Desc:  tRNA (cytosine(38)-C(5))-methyltransferase
+       GN:    TRDMT1
+       Org:   Desmophyllum pertusum
+       Why:   TRDMT1 (tRNA methyltransferase) is NOT DNMT1
+
+    8. File:  uniprotkb_protein_name_dnmt_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0AAU9VJT2
+       Desc:  tRNA (cytosine(38)-C(5))-methyltransferase
+       GN:    PMEA_00001206
+       Org:   Pocillopora meandrina
+       Why:   TRDMT1 (tRNA methyltransferase) is NOT DNMT1
+
+    9. File:  uniprotkb_protein_name_dnmt_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0ABN8LCL4
+       Desc:  tRNA (cytosine(38)-C(5))-methyltransferase
+       GN:    PEVE_00006200
+       Org:   Porites evermanni
+       Why:   TRDMT1 (tRNA methyltransferase) is NOT DNMT1
+
+   10. File:  uniprotkb_protein_name_dnmt_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0ABN8N893
+       Desc:  tRNA (cytosine(38)-C(5))-methyltransferase
+       GN:    PLOB_00006655
+       Org:   Porites lobata
+       Why:   TRDMT1 (tRNA methyltransferase) is NOT DNMT1
+
+
+================================================================================
+  HDAC SEARCH INTERLOPERS (HDAC4-11, SAP, demethylases) — 52 unique interloper(s)
+================================================================================
+    1. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A2B4S9D4
+       Desc:  Putative JmjC domain-containing histone demethylation protein 2C
+       GN:    Jmjd1c
+       Org:   Stylophora pistillata
+       Why:   JmjC domain demethylase is NOT an HDAC
+
+    2. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A6P8HUV8
+       Desc:  [histone H3]-dimethyl-L-lysine(9) demethylase
+       GN:    LOC116296338
+       Org:   Actinia tenebrosa
+       Why:   Histone demethylase (KDM3B/JMJD1C etc.) is NOT an HDAC
+
+    3. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A6P8I656
+       Desc:  [histone H3]-dimethyl-L-lysine(9) demethylase
+       GN:    LOC116296338
+       Org:   Actinia tenebrosa
+       Why:   Histone demethylase (KDM3B/JMJD1C etc.) is NOT an HDAC
+
+    4. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A9X0A7Z3
+       Desc:  Histone deacetylase 8
+       GN:    HDAC8_1
+       Org:   Desmophyllum pertusum
+       Why:   HDAC4-11 are NOT in target set (only HDAC1/2/3)
+
+    5. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   T2M6N6
+       Desc:  Histone deacetylase
+       GN:    HDAC8
+       Org:   Hydra vulgaris
+       Why:   Non-target gene: GN=HDAC8
+
+    6. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A1P8L010
+       Desc:  Histone deacetylase 11
+       GN:    Hdac11
+       Org:   Hydractinia echinata
+       Why:   HDAC4-11 are NOT in target set (only HDAC1/2/3)
+
+    7. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A2B4S445
+       Desc:  Histone deacetylase 11
+       GN:    Hdac11
+       Org:   Stylophora pistillata
+       Why:   HDAC4-11 are NOT in target set (only HDAC1/2/3)
+
+    8. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A2B4SBM6
+       Desc:  histone deacetylase
+       GN:    HDAC4
+       Org:   Stylophora pistillata
+       Why:   Non-target gene: GN=HDAC4
+
+    9. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A3M6T759
+       Desc:  [histone H3]-dimethyl-L-lysine(9) demethylase
+       GN:    pdam_00019033
+       Org:   Pocillopora damicornis
+       Why:   Histone demethylase (KDM3B/JMJD1C etc.) is NOT an HDAC
+
+   10. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A3M6UPZ2
+       Desc:  Histone deacetylase 11
+       GN:    pdam_00019097
+       Org:   Pocillopora damicornis
+       Why:   HDAC4-11 are NOT in target set (only HDAC1/2/3)
+
+   11. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A3M6UQH3
+       Desc:  Histone deacetylase complex subunit SAP30 Sin3 binding domain-containing protein
+       GN:    pdam_00009550
+       Org:   Pocillopora damicornis
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   12. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A6P8IZJ4
+       Desc:  Histone deacetylase 11
+       GN:    LOC116306653
+       Org:   Actinia tenebrosa
+       Why:   HDAC4-11 are NOT in target set (only HDAC1/2/3)
+
+   13. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A7D9I2J0
+       Desc:  Histone deacetylase 11
+       GN:    PACLA_8A078685
+       Org:   Paramuricea clavata
+       Why:   HDAC4-11 are NOT in target set (only HDAC1/2/3)
+
+   14. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A7D9I3B3
+       Desc:  Histone deacetylase 11
+       GN:    PACLA_8A078685
+       Org:   Paramuricea clavata
+       Why:   HDAC4-11 are NOT in target set (only HDAC1/2/3)
+
+   15. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A7M5VH73
+       Desc:  Histone deacetylase 11
+       GN:    
+       Org:   Clytia hemisphaerica
+       Why:   HDAC4-11 are NOT in target set (only HDAC1/2/3)
+
+   16. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A913XN27
+       Desc:  Histone deacetylase 11
+       GN:    
+       Org:   Exaiptasia diaphana
+       Why:   HDAC4-11 are NOT in target set (only HDAC1/2/3)
+
+   17. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A913XNJ1
+       Desc:  Histone deacetylase domain-containing protein
+       GN:    
+       Org:   Exaiptasia diaphana
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   18. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A913XPM1
+       Desc:  Histone deacetylase domain-containing protein
+       GN:    
+       Org:   Exaiptasia diaphana
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   19. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A913Y4K4
+       Desc:  Histone deacetylase complex subunit SAP30 homolog
+       GN:    
+       Org:   Exaiptasia diaphana
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   20. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A9W9ZEZ5
+       Desc:  histone deacetylase
+       GN:    HDAC7
+       Org:   Desmophyllum pertusum
+       Why:   Non-target gene: GN=HDAC7
+
+   21. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A9X0DA49
+       Desc:  [histone H3]-dimethyl-L-lysine(9) demethylase
+       GN:    KDM3B
+       Org:   Desmophyllum pertusum
+       Why:   Histone demethylase (KDM3B/JMJD1C etc.) is NOT an HDAC
+
+   22. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0AAD9R4N8
+       Desc:  JmjC domain-containing histone demethylation protein 2C
+       GN:    P5673_001754
+       Org:   Acropora cervicornis
+       Why:   JmjC domain demethylase is NOT an HDAC
+
+   23. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0AAU9WR81
+       Desc:  [histone H3]-dimethyl-L-lysine(9) demethylase
+       GN:    PMEA_00009658
+       Org:   Pocillopora meandrina
+       Why:   Histone demethylase (KDM3B/JMJD1C etc.) is NOT an HDAC
+
+   24. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0AAU9Y1F1
+       Desc:  Histone deacetylase 11
+       GN:    PMEA_00002255
+       Org:   Pocillopora meandrina
+       Why:   HDAC4-11 are NOT in target set (only HDAC1/2/3)
+
+   25. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A7RVS1
+       Desc:  Histone deacetylase 11
+       GN:    NEMVEDRAFT_v1g241031
+       Org:   Nematostella vectensis
+       Why:   HDAC4-11 are NOT in target set (only HDAC1/2/3)
+
+   26. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A7SJW7
+       Desc:  Histone deacetylase complex subunit SAP30 homolog
+       GN:    NEMVEDRAFT_v1g120884
+       Org:   Nematostella vectensis
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   27. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   T2MF04
+       Desc:  histone deacetylase
+       GN:    HDAC4
+       Org:   Hydra vulgaris
+       Why:   Non-target gene: GN=HDAC4
+
+   28. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A2B4RE12
+       Desc:  Histone deacetylase complex subunit SAP30L
+       GN:    sap30l
+       Org:   Stylophora pistillata
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   29. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A2B4STY4
+       Desc:  Histone deacetylase complex subunit SAP130-A
+       GN:    sap130-a
+       Org:   Stylophora pistillata
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   30. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A3M6TP64
+       Desc:  Histone deacetylase complex subunit SAP130 C-terminal domain-containing protein
+       GN:    pdam_00001825
+       Org:   Pocillopora damicornis
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   31. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A6P8HM43
+       Desc:  Histone deacetylase 6-like isoform X2
+       GN:    LOC116293499
+       Org:   Actinia tenebrosa
+       Why:   HDAC4-11 are NOT in target set (only HDAC1/2/3)
+
+   32. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A6P8HU72
+       Desc:  Histone deacetylase complex subunit SAP130-A-like isoform X2
+       GN:    LOC116295312
+       Org:   Actinia tenebrosa
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   33. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A6P8I275
+       Desc:  Histone deacetylase complex subunit SAP130-A-like isoform X1
+       GN:    LOC116295312
+       Org:   Actinia tenebrosa
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   34. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A6P8IS20
+       Desc:  Histone deacetylase complex subunit SAP30L-like
+       GN:    LOC116304364
+       Org:   Actinia tenebrosa
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   35. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A6S7IR53
+       Desc:  Histone deacetylase complex subunit SAP130 C-terminal domain-containing protein
+       GN:    PACLA_8A067313
+       Org:   Paramuricea clavata
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   36. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A7D9J240
+       Desc:  Histone deacetylase complex subunit SAP130 C-terminal domain-containing protein
+       GN:    PACLA_8A067313
+       Org:   Paramuricea clavata
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   37. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A7M5U0Q9
+       Desc:  Histone deacetylase complex subunit SAP130 C-terminal domain-containing protein
+       GN:    
+       Org:   Clytia hemisphaerica
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   38. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A7M5UUX3
+       Desc:  Histone deacetylase complex subunit SAP130 C-terminal domain-containing protein
+       GN:    
+       Org:   Clytia hemisphaerica
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   39. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A913XCG3
+       Desc:  Histone deacetylase complex subunit SAP130 C-terminal domain-containing protein
+       GN:    
+       Org:   Exaiptasia diaphana
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   40. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A9W9YC19
+       Desc:  Histone deacetylase complex subunit SAP130 C-terminal domain-containing protein
+       GN:    OS493_018344
+       Org:   Desmophyllum pertusum
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   41. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A9W9YM18
+       Desc:  Histone deacetylase complex subunit sap30l
+       GN:    SAP30L
+       Org:   Desmophyllum pertusum
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   42. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0AAD9QLI5
+       Desc:  Histone deacetylase complex subunit SAP30L
+       GN:    P5673_013237
+       Org:   Acropora cervicornis
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   43. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0AAD9VA21
+       Desc:  Histone deacetylase complex subunit SAP130
+       GN:    P5673_009540
+       Org:   Acropora cervicornis
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   44. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0AAU9WMY6
+       Desc:  Histone deacetylase complex subunit SAP130 C-terminal domain-containing protein
+       GN:    PMEA_00008436
+       Org:   Pocillopora meandrina
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   45. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0AAU9WUC2
+       Desc:  Histone deacetylase complex subunit SAP30 Sin3 binding domain-containing protein
+       GN:    PMEA_00012343
+       Org:   Pocillopora meandrina
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   46. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0ABM4B837
+       Desc:  Histone deacetylase complex subunit SAP130
+       GN:    LOC100212457
+       Org:   Hydra vulgaris
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   47. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0ABN8NMW8
+       Desc:  Histone deacetylase domain-containing protein
+       GN:    PLOB_00023719
+       Org:   Porites lobata
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   48. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0ABN8QYU4
+       Desc:  Histone deacetylase complex subunit SAP130 C-terminal domain-containing protein
+       GN:    PLOB_00012830
+       Org:   Porites lobata
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   49. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0ABN8S5L0
+       Desc:  Histone deacetylase domain-containing protein
+       GN:    PEVE_00017138
+       Org:   Porites evermanni
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   50. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0ABN8SJK1
+       Desc:  Histone deacetylase complex subunit SAP130 C-terminal domain-containing protein
+       GN:    PEVE_00022235
+       Org:   Porites evermanni
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+   51. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   T2M410
+       Desc:  Histone deacetylase 6
+       GN:    HDAC6
+       Org:   Hydra vulgaris
+       Why:   HDAC4-11 are NOT in target set (only HDAC1/2/3)
+
+   52. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   T2M691
+       Desc:  Histone deacetylase complex subunit SAP130
+       GN:    SAP130
+       Org:   Hydra vulgaris
+       Why:   HDAC complex subunit/domain protein is NOT HDAC1/2/3 itself
+
+
+================================================================================
+  LSD1 SEARCH INTERLOPERS (PHF2) — 1 unique interloper(s)
+================================================================================
+    1. File:  uniprotkb_lsd1_AND_taxonomy_id_6073_AND_2026_04_13.fasta.gz
+       Acc:   A0A9W9ZD35
+       Desc:  Lsd1/2 complex PHD finger containing protein Phf2
+       GN:    PHF2
+       Org:   Desmophyllum pertusum
+       Why:   PHF2 (Lsd1/2 complex PHD finger protein) is NOT LSD1/KDM1A
+
+
+================================================================================
+  MLL1 SEARCH INTERLOPERS (KIAA1267) — 1 unique interloper(s)
+================================================================================
+    1. File:  uniprotkb_protein_name_mll1_OR_gene_mll_2026_04_13.fasta.gz
+       Acc:   T2MB73
+       Desc:  MLL1/MLL complex subunit KIAA1267
+       GN:    KIAA1267
+       Org:   Hydra vulgaris
+       Why:   KIAA1267 (MLL complex subunit) is NOT MLL1/KMT2A itself
+
+
+================================================================================
+  MOF/KAT8 SEARCH INTERLOPERS (C12orf41) — 1 unique interloper(s)
+================================================================================
+    1. File:  uniprotkb_protein_name_mof_OR_protein_n_2026_04_13.fasta.gz
+       Acc:   T2M568
+       Desc:  KAT8 regulatory NSL complex subunit 2
+       GN:    C12orf41
+       Org:   Hydra vulgaris
+       Why:   C12orf41 (NSL complex subunit) is NOT KAT8/MOF itself
+
+
+================================================================================
+  NFX1 SEARCH INTERLOPERS (NFXL1 paralog) — 11 unique interloper(s)
+================================================================================
+    1. File:  uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+       Acc:   A0A6P8H1R1
+       Desc:  NF-X1-type zinc finger protein NFXL1-like
+       GN:    LOC116287776
+       Org:   Actinia tenebrosa
+       Why:   NFXL1 is a paralog of NFX1, not NFX1 itself
+
+    2. File:  uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+       Acc:   A0A6P8H8P8
+       Desc:  Transcriptional repressor NF-X1-like
+       GN:    LOC116286431
+       Org:   Actinia tenebrosa
+       Why:   "NF-X1-like" is not the same as NF-X1
+
+    3. File:  uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+       Acc:   A0A7M5V8B8
+       Desc:  NF-X1-type zinc finger protein NFXL1
+       GN:    
+       Org:   Clytia hemisphaerica
+       Why:   NFXL1 is a paralog of NFX1, not NFX1 itself
+
+    4. File:  uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+       Acc:   A0A7M5XPW6
+       Desc:  NF-X1-type zinc finger protein NFXL1
+       GN:    
+       Org:   Clytia hemisphaerica
+       Why:   NFXL1 is a paralog of NFX1, not NFX1 itself
+
+    5. File:  uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+       Acc:   A0A913WYN6
+       Desc:  Transcriptional repressor NF-X1-like
+       GN:    
+       Org:   Exaiptasia diaphana
+       Why:   "NF-X1-like" is not the same as NF-X1
+
+    6. File:  uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+       Acc:   A0A913XZY2
+       Desc:  Transcriptional repressor NF-X1-like
+       GN:    
+       Org:   Exaiptasia diaphana
+       Why:   "NF-X1-like" is not the same as NF-X1
+
+    7. File:  uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+       Acc:   A0AAD9QMC9
+       Desc:  NF-X1-type zinc finger protein NFXL1
+       GN:    P5673_013332
+       Org:   Acropora cervicornis
+       Why:   NFXL1 is a paralog of NFX1, not NFX1 itself
+
+    8. File:  uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+       Acc:   A0A6S7GEG8
+       Desc:  NF-X1-type zinc finger NFXL1
+       GN:    PACLA_8A022424
+       Org:   Paramuricea clavata
+       Why:   NFXL1 is a paralog of NFX1, not NFX1 itself
+
+    9. File:  uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+       Acc:   A0A7D9HSX8
+       Desc:  NF-X1-type zinc finger NFXL1
+       GN:    PACLA_8A022424
+       Org:   Paramuricea clavata
+       Why:   NFXL1 is a paralog of NFX1, not NFX1 itself
+
+   10. File:  uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+       Acc:   A0A9W9Y9M6
+       Desc:  NF-X1-type zinc finger protein nfxl1
+       GN:    NFXL1
+       Org:   Desmophyllum pertusum
+       Why:   Non-target gene: GN=NFXL1
+
+   11. File:  uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+       Acc:   A0ABM4D5C7
+       Desc:  NF-X1-type zinc finger protein NFXL1 isoform X2
+       GN:    LOC100215019
+       Org:   Hydra vulgaris
+       Why:   NFXL1 is a paralog of NFX1, not NFX1 itself
+
+
+================================================================================
+  NON-CNIDARIAN SPECIES — 11 unique interloper(s)
+================================================================================
+    1. File:  uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+       Acc:   A0A0C2M9A5
+       Desc:  GTP-binding nuclear protein
+       GN:    RF11_05707
+       Org:   Thelohanellus kitauei
+       Why:   Non-cnidarian species: Thelohanellus kitauei (OX=669202)
+
+    2. File:  uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+       Acc:   A0A0C2MVV0
+       Desc:  Nucleolar GTP-binding protein 2
+       GN:    RF11_00284
+       Org:   Thelohanellus kitauei
+       Why:   Non-cnidarian species: Thelohanellus kitauei (OX=669202)
+
+    3. File:  uniprotkb_gene_nfx1_OR_protein_name_nf_2026_04_13.fasta.gz
+       Acc:   A0A0C2MF24
+       Desc:  Transcriptional repressor NF-X1
+       GN:    RF11_09612
+       Org:   Thelohanellus kitauei
+       Why:   Non-cnidarian species: Thelohanellus kitauei (OX=669202)
+
+    4. File:  uniprotkb_protein_name_ccr4_not_AND_tax_2026_04_13.fasta.gz
+       Acc:   A0A0C2MMK7
+       Desc:  CCR4-NOT transcription complex subunit 3
+       GN:    RF11_10819
+       Org:   Thelohanellus kitauei
+       Why:   Non-cnidarian species: Thelohanellus kitauei (OX=669202)
+
+    5. File:  uniprotkb_protein_name_ccr4_not_AND_tax_2026_04_13.fasta.gz
+       Acc:   A0A6G3MG50
+       Desc:  CCR4-NOT transcription complex subunit 9
+       GN:    
+       Org:   Henneguya salminicola
+       Why:   Non-cnidarian species: Henneguya salminicola (OX=69463)
+
+    6. File:  uniprotkb_protein_name_ccr4_not_AND_tax_2026_04_13.fasta.gz
+       Acc:   A0A6G3MJW9
+       Desc:  CCR4-NOT transcription complex subunit 3 (Trinotate prediction)
+       GN:    
+       Org:   Henneguya salminicola
+       Why:   Non-cnidarian species: Henneguya salminicola (OX=69463)
+
+    7. File:  uniprotkb_protein_name_dicer_AND_taxono_2026_04_13.fasta
+       Acc:   A0A977XUP0
+       Desc:  Endoribonuclease dicer
+       GN:    
+       Org:   Calyptrophora lyra
+       Why:   Non-cnidarian species: Calyptrophora lyra (OX=2864141)
+
+    8. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A0C2N2B9
+       Desc:  Histone deacetylase
+       GN:    RF11_02025
+       Org:   Thelohanellus kitauei
+       Why:   Non-cnidarian species: Thelohanellus kitauei (OX=669202)
+
+    9. File:  uniprotkb_protein_name_parn_AND_taxonom_2026_04_13.fasta.gz
+       Acc:   A0A0C2MY59
+       Desc:  Poly(A)-specific ribonuclease PARN
+       GN:    RF11_04210
+       Org:   Thelohanellus kitauei
+       Why:   Non-cnidarian species: Thelohanellus kitauei (OX=669202)
+
+   10. File:  uniprotkb_protein_name_rbbp4_AND_taxono_2026_04_13.fasta.gz
+       Acc:   A0A0C2MZV1
+       Desc:  Histone-binding protein RBBP4
+       GN:    RF11_10207
+       Org:   Thelohanellus kitauei
+       Why:   Non-cnidarian species: Thelohanellus kitauei (OX=669202)
+
+   11. File:  uniprotkb_protein_name_xrn1_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A0C2NBT3
+       Desc:  5'-3' exoribonuclease 1
+       GN:    RF11_02958
+       Org:   Thelohanellus kitauei
+       Why:   Non-cnidarian species: Thelohanellus kitauei (OX=669202)
+
+
+================================================================================
+  OTHER NON-TARGET GENES — 4 unique interloper(s)
+================================================================================
+    1. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A1P8L011
+       Desc:  Histone deacetylase
+       GN:    Hdac8
+       Org:   Hydractinia echinata
+       Why:   Non-target gene: GN=Hdac8
+
+    2. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A2B4SGZ9
+       Desc:  Histone deacetylase
+       GN:    Hdac8
+       Org:   Stylophora pistillata
+       Why:   Non-target gene: GN=Hdac8
+
+    3. File:  uniprotkb_protein_name_hdac_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A1P8KZZ0
+       Desc:  histone deacetylase
+       GN:    Hdac4
+       Org:   Hydractinia echinata
+       Why:   Non-target gene: GN=Hdac4
+
+    4. File:  uniprotkb_protein_name_rdrp_OR_protein_2026_04_13.fasta
+       Acc:   A0A2B4R7Z3
+       Desc:  RNA-dependent RNA polymerase
+       GN:    AWC38_SpisGene23562
+       Org:   Stylophora pistillata
+       Why:   Non-target gene: GN=AWC38_SpisGene23562
+
+
+================================================================================
+  RAN SEARCH INTERLOPERS (GNL2/ERF3A/DHX36) — 18 unique interloper(s)
+================================================================================
+    1. File:  uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+       Acc:   A0A3M6TB07
+       Desc:  ATP-dependent DNA/RNA helicase DHX36
+       GN:    pdam_00010249
+       Org:   Pocillopora damicornis
+       Why:   DHX36 helicase is NOT RAN
+
+    2. File:  uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+       Acc:   A0AAU9WBL2
+       Desc:  ATP-dependent DNA/RNA helicase DHX36
+       GN:    PMEA_00003986
+       Org:   Pocillopora meandrina
+       Why:   DHX36 helicase is NOT RAN
+
+    3. File:  uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+       Acc:   A0A2B4SDK1
+       Desc:  Nucleolar GTP-binding protein 2
+       GN:    Gnl2
+       Org:   Stylophora pistillata
+       Why:   GNL2 (Nucleolar GTP-binding protein 2) is NOT RAN (GTP-binding nuclear protein)
+
+    4. File:  uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+       Acc:   A0A3M6U7C2
+       Desc:  Nucleolar GTP-binding protein 2
+       GN:    pdam_00023599
+       Org:   Pocillopora damicornis
+       Why:   GNL2 (Nucleolar GTP-binding protein 2) is NOT RAN (GTP-binding nuclear protein)
+
+    5. File:  uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+       Acc:   A0A6P8I442
+       Desc:  Eukaryotic peptide chain release factor GTP-binding subunit ERF3A-like
+       GN:    LOC116298033
+       Org:   Actinia tenebrosa
+       Why:   ERF3A (release factor GTP-binding subunit) is NOT RAN
+
+    6. File:  uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+       Acc:   A0A6P8J3C4
+       Desc:  Nucleolar GTP-binding protein 2
+       GN:    LOC116308252
+       Org:   Actinia tenebrosa
+       Why:   GNL2 (Nucleolar GTP-binding protein 2) is NOT RAN (GTP-binding nuclear protein)
+
+    7. File:  uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+       Acc:   A0A6S7FF30
+       Desc:  Nucleolar GTP-binding protein 2
+       GN:    PACLA_8A085192
+       Org:   Paramuricea clavata
+       Why:   GNL2 (Nucleolar GTP-binding protein 2) is NOT RAN (GTP-binding nuclear protein)
+
+    8. File:  uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+       Acc:   A0A7D9HA51
+       Desc:  Nucleolar GTP-binding protein 2
+       GN:    PACLA_8A085192
+       Org:   Paramuricea clavata
+       Why:   GNL2 (Nucleolar GTP-binding protein 2) is NOT RAN (GTP-binding nuclear protein)
+
+    9. File:  uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+       Acc:   A0A7M5WTL1
+       Desc:  Nucleolar GTP-binding protein 2
+       GN:    
+       Org:   Clytia hemisphaerica
+       Why:   GNL2 (Nucleolar GTP-binding protein 2) is NOT RAN (GTP-binding nuclear protein)
+
+   10. File:  uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+       Acc:   A0A7M5WTL8
+       Desc:  Nucleolar GTP-binding protein 2
+       GN:    
+       Org:   Clytia hemisphaerica
+       Why:   GNL2 (Nucleolar GTP-binding protein 2) is NOT RAN (GTP-binding nuclear protein)
+
+   11. File:  uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+       Acc:   A0A913WV20
+       Desc:  Nucleolar GTP-binding protein 2
+       GN:    
+       Org:   Exaiptasia diaphana
+       Why:   GNL2 (Nucleolar GTP-binding protein 2) is NOT RAN (GTP-binding nuclear protein)
+
+   12. File:  uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+       Acc:   A0A913WV31
+       Desc:  Nucleolar GTP-binding protein 2
+       GN:    
+       Org:   Exaiptasia diaphana
+       Why:   GNL2 (Nucleolar GTP-binding protein 2) is NOT RAN (GTP-binding nuclear protein)
+
+   13. File:  uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+       Acc:   A0AAD9V5S0
+       Desc:  Nucleolar GTP-binding protein 2
+       GN:    P5673_014581
+       Org:   Acropora cervicornis
+       Why:   GNL2 (Nucleolar GTP-binding protein 2) is NOT RAN (GTP-binding nuclear protein)
+
+   14. File:  uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+       Acc:   A0AAU9VTE6
+       Desc:  Nucleolar GTP-binding protein 2
+       GN:    PMEA_00022243
+       Org:   Pocillopora meandrina
+       Why:   GNL2 (Nucleolar GTP-binding protein 2) is NOT RAN (GTP-binding nuclear protein)
+
+   15. File:  uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+       Acc:   A0ABM4B3Z9
+       Desc:  Nucleolar GTP-binding protein 2
+       GN:    LOC100211559
+       Org:   Hydra vulgaris
+       Why:   GNL2 (Nucleolar GTP-binding protein 2) is NOT RAN (GTP-binding nuclear protein)
+
+   16. File:  uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+       Acc:   T2MD07
+       Desc:  Nucleolar GTP-binding protein 2
+       GN:    GNL2
+       Org:   Hydra vulgaris
+       Why:   GNL2 (Nucleolar GTP-binding protein 2) is NOT RAN (GTP-binding nuclear protein)
+
+   17. File:  uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+       Acc:   A0ABN8NVD7
+       Desc:  Nucleolar GTP-binding protein 2
+       GN:    PLOB_00027714
+       Org:   Porites lobata
+       Why:   GNL2 (Nucleolar GTP-binding protein 2) is NOT RAN (GTP-binding nuclear protein)
+
+   18. File:  uniprotkb_gene_RAN_OR_protein_name_rang_2026_04_13.fasta.gz
+       Acc:   A0ABN8R9P0
+       Desc:  Nucleolar GTP-binding protein 2
+       GN:    PEVE_00009757
+       Org:   Porites evermanni
+       Why:   GNL2 (Nucleolar GTP-binding protein 2) is NOT RAN (GTP-binding nuclear protein)
+
+
+================================================================================
+  XRN1 SEARCH INTERLOPERS (ERI1) — 1 unique interloper(s)
+================================================================================
+    1. File:  uniprotkb_protein_name_xrn1_OR_protein_2026_04_13.fasta.gz
+       Acc:   T2MAJ4
+       Desc:  3'-5' exoribonuclease 1
+       GN:    ERI1
+       Org:   Hydra vulgaris
+       Why:   Non-target gene: GN=ERI1
+
+
+================================================================================
+  XRN1 SEARCH INTERLOPERS (XRN2) — 5 unique interloper(s)
+================================================================================
+    1. File:  uniprotkb_protein_name_xrn1_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A2B4S237
+       Desc:  5'-3' exoribonuclease 2-like
+       GN:    xrn-2
+       Org:   Stylophora pistillata
+       Why:   XRN2 is NOT XRN1 (the target)
+
+    2. File:  uniprotkb_protein_name_xrn1_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A7M5XDQ4
+       Desc:  5'-3' exoribonuclease 2
+       GN:    
+       Org:   Clytia hemisphaerica
+       Why:   XRN2 is NOT XRN1 (the target)
+
+    3. File:  uniprotkb_protein_name_xrn1_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A9W9Z2J3
+       Desc:  5'-3' exoribonuclease
+       GN:    XRN2_1
+       Org:   Desmophyllum pertusum
+       Why:   Non-target gene: GN=XRN2_1
+
+    4. File:  uniprotkb_protein_name_xrn1_OR_protein_2026_04_13.fasta.gz
+       Acc:   T2M5Q6
+       Desc:  5'-3' exoribonuclease
+       GN:    XRN2
+       Org:   Hydra vulgaris
+       Why:   Non-target gene: GN=XRN2
+
+    5. File:  uniprotkb_protein_name_xrn1_OR_protein_2026_04_13.fasta.gz
+       Acc:   A0A9W9Z178
+       Desc:  5'-3' exoribonuclease 2
+       GN:    XRN2_2
+       Org:   Desmophyllum pertusum
+       Why:   XRN2 is NOT XRN1 (the target)
+
+
+================================================================================
+SUMMARY
+================================================================================
+  AEBP2 SEARCH INTERLOPERS (AEBP2-like): 1
+  BRCA1 SEARCH INTERLOPERS (BRE/BRAT1/BRCC3): 36
+  DNMT SEARCH INTERLOPERS (TRDMT1/DNMT3A): 10
+  HDAC SEARCH INTERLOPERS (HDAC4-11, SAP, demethylases): 52
+  LSD1 SEARCH INTERLOPERS (PHF2): 1
+  MLL1 SEARCH INTERLOPERS (KIAA1267): 1
+  MOF/KAT8 SEARCH INTERLOPERS (C12orf41): 1
+  NFX1 SEARCH INTERLOPERS (NFXL1 paralog): 11
+  NON-CNIDARIAN SPECIES: 11
+  OTHER NON-TARGET GENES: 4
+  RAN SEARCH INTERLOPERS (GNL2/ERF3A/DHX36): 18
+  XRN1 SEARCH INTERLOPERS (ERI1): 1
+  XRN1 SEARCH INTERLOPERS (XRN2): 5
+
+  TOTAL unique interlopers: 152
+  TOTAL headers: 753
+  
+  
+==================
+Search 2
+==================
+
+4 Interlopers Found
+#	Accession	Description	Source File	Why
+1	P52948	Nuclear pore complex protein Nup98-Nup96	uniprotkb_gene_adar2_OR_protein_name_ad_2026_04_14.fasta.gz	NUP98 is NOT ADAR2 — a nuclear pore protein that matched the ADAR2 UniProt search
+2	P37326	Prophage integrase IntS	uniprotkb_gene_ints_AND_fragment_false_2026_04_14.fasta.gz	E. coli prophage integrase is NOT an Integrator complex subunit — the "IntS" gene name matched the "ints" search
+3	Q9VEX5	Protein asunder	uniprotkb_gene_ints_AND_fragment_false_2026_04_14.fasta.gz	Drosophila "asunder" is NOT an Integrator complex subunit — involved in mitotic spindle, matched the INTS gene search
+4	Q8GYE0	SEC12-like protein 1	uniprotkb_gene_phf1_AND_fragment_false_2026_04_14.fasta.gz	SEC12-like is NOT PHF1 — an Arabidopsis ER-Golgi transport protein whose gene name is PHF1 (a PHF1 homolog name in plants)

@@ -1,0 +1,100 @@
+---
+title: "Deep Dive Expression: compiling ncRNA machinery fastas"
+author: "Kathleen Durkin"
+date: "2026-04-13"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+---
+
+
+In my last post I used GLM 5.1 (via OpenWork) to compile a list of protein machinery important to miRNA and lncRNA biogenesis and function. I've synthesized this to an Excel sheet of proteins and associated gene names, `ncRNA_machinery.xlsx`. It and all other files associated with this post are available at `./output/2026_04_13_DDE_ncRNA_machinery_fastas`
+
+Now I need protein fastas for all of these, preferably from a close relative of our coral species. To get these, I'll be using the [Uniprot protein database](https://www.uniprot.org/) with the following searching approach:
+
+Use search parameters to limit results to Cnidarians, and to exclude fragmentary/incomplete sequences. I also restricted to proteins that were identified based on evidence at protein level, evidence at transcript level, or based on homology -- this will *exclude* proteins with a predicted or uncertain identification basis.
+
+> (taxonomy_id:6073) AND (fragment:false) NOT (existence:4) NOT (existence:5)
+
+I then included search terms for each protein/gene, generally in the format:
+
+> ((protein_name:PROT_ABBRV) OR (gene:GENE_ABBRV))
+
+This was occasionally modified to also include a search for full protein or gene names (for example, "Exportin-5", in addition to "XPO5"). This was sometimes necessary because many sequences are not annotated with the "standard" gene name.
+
+I then downloaded sequence results in `.fasta` and `.fasta.gz` file formats. 
+
+Some of the selected proteins weren't annotated in any cnidarians, so I instead searched in bilaterians and restricted to only reviewed entries. These are highlighted in the `ncRNA_machinery.xlsx` file.
+
+I realized after almost fully completing my protein list that I'd been too permissive in my searches and, in some cases, proteins had "snuck through" because their names indicated a functional association with the searched protein. For example, when searching for Hsp90 proteins, entries for "Hsp90 chaperone protein kinase-targeting subunit" also showed up and were downloaded. 
+
+To address this, I again turned to GLM 5.1. I gave it both the protein .xlsx file and the set of fastas/fasta.gz files. I instructed check all fasta headers and identify any instances of unintended proteins.
+
+Prompt:
+
+> At "/Users/Owner/.local/share/opencode/tool-output/tool_d89c3f7bd001SdDIyZGD890bfd" is a temp file that lists fasta and fasta.gz file names in the first column and Uniprot fasta headers in the second column. At "/Users/Owner/Downloads/The\ Big\ One/Documents/UW/Roberts\ Lab/OpenWork/ncRNA_machinery.xlsx" there’s a spreadsheet that contains in the first and second columns proteins and corresponding gene names for protein machinery related to ncRNA biogenisis and function.
+
+> When compiling fastas for these proteins, some related but not targeted proteins slipped through because of overly permissive searches. Get a list of all targeted proteins from the xlsx file. Then search the file listing fasta headers and check for any fasta headers corresponding to proteins that are not actually included in the xlsx. If you find such instances, output both the fasta header and its source fasta/fasta.gz file.
+
+
+
+Unzip all .fasta.gz files, then combine all fastas
+
+```{bash, eval=FALSE}
+# Unzip all .gz files
+gunzip ./output/2026_04_13_DDE_ncRNA_machinery_fastas/*.fasta.gz
+
+# Combine all fasta files into one
+cat ./output/2026_04_13_DDE_ncRNA_machinery_fastas/*.fasta > ./output/2026_04_13_DDE_ncRNA_machinery_fastas/ncRNA_machinery_unfiltered.fasta
+```
+
+```{bash}
+cd ./output/2026_04_13_DDE_ncRNA_machinery_fastas/
+
+grep -c '^>' ncRNA_machinery_unfiltered.fasta
+
+grep '^>' ncRNA_machinery_unfiltered.fasta | head -3
+```
+
+From the "interlopers" file compiled agentically, extract all the accession numbers I want to exclude from my compiled fasta. I'm expecting 152 accessions, plus the extra 4 from a second-round search.
+
+```{bash, eval=FALSE}
+cd ./output/2026_04_13_DDE_ncRNA_machinery_fastas/
+
+grep "Acc:" interlopers.txt | awk '{print $NF}' > interloper_accessions.txt
+
+# Append the extra 4 from a second-round search at the bottom
+awk -F'\t' '/^[0-9]+\t[A-Z0-9]+\t/ {print $2}' interlopers.txt >> interloper_accessions.txt
+```
+
+```{bash}
+wc -l ./output/2026_04_13_DDE_ncRNA_machinery_fastas/interloper_accessions.txt
+```
+
+Nice! So I have the 156 proteins I want to exclude from my compiled fasta
+
+```{bash, eval=FALSE}
+cd ./output/2026_04_13_DDE_ncRNA_machinery_fastas/
+
+# filter out sequences with interloper accessions
+awk 'NR==FNR {acc[$1]; next} 
+     /^>/ {skip=0; for(a in acc) if(index($0, a)) {skip=1; break}} 
+     !skip' interloper_accessions.txt ncRNA_machinery_unfiltered.fasta > ncRNA_machinery.fasta
+```
+
+```{bash}
+echo "Before: $(grep -c '^>' ncRNA_machinery_unfiltered.fasta)"
+echo "After:  $(grep -c '^>' ncRNA_machinery.fasta)"
+```
+
+Perfect! The filtered file contains 156 fewer sequences than the original, just as expected!
+
+
+So I now have a final fasta file containing protein sequences for ncRNA protein machinery! The majority of sequences were obtained from cnidarians, but a small subset weren't annotated in any cnidarians and were instead sourced from reviewed bilaterian entries. 
+
+I'll now use this fasta, in combination with the epimachinery fasta provided by Hollie and Steven to look for epigenetic protein machinery in the miRNA targets of our DDE data (and probably in the timeseries data in the future)
+

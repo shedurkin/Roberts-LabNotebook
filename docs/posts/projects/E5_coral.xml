@@ -10,7 +10,216 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Fri, 10 Apr 2026 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 13 Apr 2026 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Deep Dive Expression: compiling ncRNA machinery fastas</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2026_04_13_DDE_ncRNA_machinery_fastas.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>In my last post I used GLM 5.1 (via OpenWork) to compile a list of protein machinery important to miRNA and lncRNA biogenesis and function. I’ve synthesized this to an Excel sheet of proteins and associated gene names, <code>ncRNA_machinery.xlsx</code>. It and all other files associated with this post are available at <code>./output/2026_04_13_DDE_ncRNA_machinery_fastas</code></p>
+<p>Now I need protein fastas for all of these, preferably from a close relative of our coral species. To get these, I’ll be using the <a href="https://www.uniprot.org/">Uniprot protein database</a> with the following searching approach:</p>
+<p>Use search parameters to limit results to Cnidarians, and to exclude fragmentary/incomplete sequences. I also restricted to proteins that were identified based on evidence at protein level, evidence at transcript level, or based on homology – this will <em>exclude</em> proteins with a predicted or uncertain identification basis.</p>
+<blockquote class="blockquote">
+<p>(taxonomy_id:6073) AND (fragment:false) NOT (existence:4) NOT (existence:5)</p>
+</blockquote>
+<p>I then included search terms for each protein/gene, generally in the format:</p>
+<blockquote class="blockquote">
+<p>((protein_name:PROT_ABBRV) OR (gene:GENE_ABBRV))</p>
+</blockquote>
+<p>This was occasionally modified to also include a search for full protein or gene names (for example, “Exportin-5”, in addition to “XPO5”). This was sometimes necessary because many sequences are not annotated with the “standard” gene name.</p>
+<p>I then downloaded sequence results in <code>.fasta</code> and <code>.fasta.gz</code> file formats.</p>
+<p>Some of the selected proteins weren’t annotated in any cnidarians, so I instead searched in bilaterians and restricted to only reviewed entries. These are highlighted in the <code>ncRNA_machinery.xlsx</code> file.</p>
+<p>I realized after almost fully completing my protein list that I’d been too permissive in my searches and, in some cases, proteins had “snuck through” because their names indicated a functional association with the searched protein. For example, when searching for Hsp90 proteins, entries for “Hsp90 chaperone protein kinase-targeting subunit” also showed up and were downloaded.</p>
+<p>To address this, I again turned to GLM 5.1. I gave it both the protein .xlsx file and the set of fastas/fasta.gz files. I instructed check all fasta headers and identify any instances of unintended proteins.</p>
+<p>Prompt:</p>
+<blockquote class="blockquote">
+<p>At “/Users/Owner/.local/share/opencode/tool-output/tool_d89c3f7bd001SdDIyZGD890bfd” is a temp file that lists fasta and fasta.gz file names in the first column and Uniprot fasta headers in the second column. At “/Users/Owner/Downloads/The&nbsp;Big&nbsp;One/Documents/UW/Roberts&nbsp;Lab/OpenWork/ncRNA_machinery.xlsx” there’s a spreadsheet that contains in the first and second columns proteins and corresponding gene names for protein machinery related to ncRNA biogenisis and function.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>When compiling fastas for these proteins, some related but not targeted proteins slipped through because of overly permissive searches. Get a list of all targeted proteins from the xlsx file. Then search the file listing fasta headers and check for any fasta headers corresponding to proteins that are not actually included in the xlsx. If you find such instances, output both the fasta header and its source fasta/fasta.gz file.</p>
+</blockquote>
+<p>Unzip all .fasta.gz files, then combine all fastas</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Unzip all .gz files</span></span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gunzip</span> ./output/2026_04_13_DDE_ncRNA_machinery_fastas/<span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">*</span>.fasta.gz</span>
+<span id="cb1-3"></span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Combine all fasta files into one</span></span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span> ./output/2026_04_13_DDE_ncRNA_machinery_fastas/<span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">*</span>.fasta <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> ./output/2026_04_13_DDE_ncRNA_machinery_fastas/ncRNA_machinery_unfiltered.fasta</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> ./output/2026_04_13_DDE_ncRNA_machinery_fastas/</span>
+<span id="cb2-2"></span>
+<span id="cb2-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grep</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'^&gt;'</span> ncRNA_machinery_unfiltered.fasta</span>
+<span id="cb2-4"></span>
+<span id="cb2-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grep</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'^&gt;'</span> ncRNA_machinery_unfiltered.fasta <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-3</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1027
+&gt;tr|A0A0C2N1X6|A0A0C2N1X6_THEKT Nuclear cap-binding protein subunit 1 OS=Thelohanellus kitauei OX=669202 GN=RF11_00163 PE=3 SV=1
+&gt;tr|A0A2B4SX82|A0A2B4SX82_STYPI Nuclear cap-binding protein subunit 1 OS=Stylophora pistillata OX=50429 GN=ncbp1 PE=3 SV=1
+&gt;tr|A0A6P8J329|A0A6P8J329_ACTTE Nuclear cap-binding protein subunit 1 OS=Actinia tenebrosa OX=6105 GN=LOC116306115 PE=3 SV=1</code></pre>
+</div>
+</div>
+<p>From the “interlopers” file compiled agentically, extract all the accession numbers I want to exclude from my compiled fasta. I’m expecting 152 accessions, plus the extra 4 from a second-round search.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> ./output/2026_04_13_DDE_ncRNA_machinery_fastas/</span>
+<span id="cb4-2"></span>
+<span id="cb4-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grep</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Acc:"</span> interlopers.txt <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">awk</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'{print $NF}'</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> interloper_accessions.txt</span>
+<span id="cb4-4"></span>
+<span id="cb4-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Append the extra 4 from a second-round search at the bottom</span></span>
+<span id="cb4-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">awk</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-F</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'\t'</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'/^[0-9]+\t[A-Z0-9]+\t/ {print $2}'</span> interlopers.txt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;&gt;</span> interloper_accessions.txt</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">wc</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-l</span> ./output/2026_04_13_DDE_ncRNA_machinery_fastas/interloper_accessions.txt</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     156 ./output/2026_04_13_DDE_ncRNA_machinery_fastas/interloper_accessions.txt</code></pre>
+</div>
+</div>
+<p>Nice! So I have the 156 proteins I want to exclude from my compiled fasta</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> ./output/2026_04_13_DDE_ncRNA_machinery_fastas/</span>
+<span id="cb7-2"></span>
+<span id="cb7-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># filter out sequences with interloper accessions</span></span>
+<span id="cb7-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">awk</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'NR==FNR {acc[$1]; next} </span></span>
+<span id="cb7-5"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">     /^&gt;/ {skip=0; for(a in acc) if(index($0, a)) {skip=1; break}} </span></span>
+<span id="cb7-6"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">     !skip'</span> interloper_accessions.txt ncRNA_machinery_unfiltered.fasta <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> ncRNA_machinery.fasta</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Before: </span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$(</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grep</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'^&gt;'</span> ncRNA_machinery_unfiltered.fasta<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">)</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span></span>
+<span id="cb8-2"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"After:  </span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$(</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grep</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'^&gt;'</span> ncRNA_machinery.fasta<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">)</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>grep: ncRNA_machinery_unfiltered.fasta: No such file or directory
+Before: 
+grep: ncRNA_machinery.fasta: No such file or directory
+After:  </code></pre>
+</div>
+</div>
+<p>Perfect! The filtered file contains 156 fewer sequences than the original, just as expected!</p>
+<p>So I now have a final fasta file containing protein sequences for ncRNA protein machinery! The majority of sequences were obtained from cnidarians, but a small subset weren’t annotated in any cnidarians and were instead sourced from reviewed bilaterian entries.</p>
+<p>I’ll now use this fasta, in combination with the epimachinery fasta provided by Hollie and Steven to look for epigenetic protein machinery in the miRNA targets of our DDE data (and probably in the timeseries data in the future)</p>
+
+
+
+ ]]></description>
+  <category>E5-coral</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2026_04_13_DDE_ncRNA_machinery_fastas.html</guid>
+  <pubDate>Mon, 13 Apr 2026 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Deep Dive Expression: compiled ncRNA machinery list</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -27558,565 +27767,6 @@ font-style: inherit;">print</span>(all_features_highR2_FA)</span></code></pre></
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_05_08_timeseries_multiomic_ML_3.html</guid>
   <pubDate>Thu, 08 May 2025 07:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Timeseries molecular: Format input files for Cytoscape – pt.2</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_05_07_timeseries_cytoscape_files_2.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-
-<p>Continuation of <a href="../../../posts/projects/E5_coral/2025_04_28_timeseries_cytoscape_files.html">Timeseries molecular: Format input files for Cytoscape</a>. I want to add DEG information to nodes.</p>
-<p>I’m choosing to add annotations for features that are differentially expressed in a comparison of Timepoint 2 to Timepoint 4, as these are seasonally very divergent, and yield the highest number of DEGs.</p>
-<p>I only need to add DEG annotations to the “Nodes” files, which contain metadata for all the features (miRNA, lncRNA, genes) included in my networks.</p>
-<p>Input files:</p>
-<ul>
-<li><p>Cytoscape “Nodes” file, generated in <a href="../../../posts/projects/E5_coral/2025_04_28_timeseries_cytoscape_files.html">Timeseries molecular: Format input files for Cytoscape</a>: <code>./output/nodes_timeseries_miRNA_lncRNA_genes.csv</code></p></li>
-<li><p>genes DEGs for Timepoint 2 v Timepoint 4: https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/output/03.00-D-Apul-RNAseq-gene-expression-DESeq2/tp2.v.tp4.results.table.csv</p></li>
-<li><p>miRNA DEGs for Timepoint 2 v Timepoint 4: https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/output/03.10-D-Apul-sRNAseq-expression-DESeq2/miRNA_tp2.v.tp4.results.table.csv</p></li>
-<li><p>lncRNA DEGs for Timepoint 2 v Timepoint 4: https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/output/03.20-D-Apul-lncRNA-expression-DESeq2/lncRNA_tp2.v.tp4.results.table.csv</p></li>
-</ul>
-<section id="load-packages" class="level1">
-<h1>Load packages</h1>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(dplyr)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'dplyr' was built under R version 4.2.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(tidyr)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyr' was built under R version 4.2.3</code></pre>
-</div>
-</div>
-</section>
-<section id="read-in-files" class="level1">
-<h1>Read in files</h1>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">nodes <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"./output/2025_04_28_timeseries_cytoscape_files/nodes_timeseries_miRNA_lncRNA_genes.csv"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>X)</span>
-<span id="cb8-2"></span>
-<span id="cb8-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Using raw htmls</span></span>
-<span id="cb8-4">genes_2v4 <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/D-Apul/output/03.00-D-Apul-RNAseq-gene-expression-DESeq2/tp2.v.tp4.results.table.csv"</span>)</span>
-<span id="cb8-5"></span>
-<span id="cb8-6">miRNA_2v4 <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/D-Apul/output/03.10-D-Apul-sRNAseq-expression-DESeq2/miRNA_tp2.v.tp4.results.table.csv"</span>)</span>
-<span id="cb8-7"></span>
-<span id="cb8-8">lncRNA_2v4 <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://github.com/urol-e5/timeseries_molecular/raw/refs/heads/main/D-Apul/output/03.20-D-Apul-lncRNA-expression-DESeq2/lncRNA_tp2.v.tp4.results.table.csv"</span>)</span></code></pre></div>
-</div>
-<p>Merge DEG files (type will still be denoted by feature name – “FUNXXXX” for genes, “ClusterXXX” for miRNA, “lncRNAXXX” for lncRNA)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">merged_2v4 <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">rbind</span>(genes_2v4, miRNA_2v4, lncRNA_2v4)</span></code></pre></div>
-</div>
-<p>Reduce to significantly differentially expressed features (padj &lt; 0.05)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">merged_2v4_sig <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> merged_2v4 <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">filter</span>(padj <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.05</span>)</span>
-<span id="cb10-2"></span>
-<span id="cb10-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">nrow</span>(merged_2v4_sig[<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"FUN"</span>, merged_2v4_sig<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>X),])</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 684</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">nrow</span>(merged_2v4_sig[<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Cluster"</span>, merged_2v4_sig<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>X),])</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">nrow</span>(merged_2v4_sig[<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"lncRNA"</span>, merged_2v4_sig<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>X),])</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 347</code></pre>
-</div>
-</div>
-<p>When comparing expression in Timepoint 2 to Timepoint 4, there are 684 differentially expressed genes, 1 differentially expressed miRNA, and 347 differentially expressed lncRNA</p>
-<p>Add to Nodes file</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">nodes<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>DEG_tp2_tp4 <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ifelse</span>(nodes<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>id <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%in%</span> merged_2v4_sig<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>X, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"yes"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"no"</span>)</span>
-<span id="cb16-2"></span>
-<span id="cb16-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">nrow</span>(nodes[nodes<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>DEG_tp2_tp4 <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"yes"</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&amp;</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"FUN"</span>, nodes<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>id),])</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 360</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">nrow</span>(nodes[nodes<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>DEG_tp2_tp4 <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"yes"</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&amp;</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Cluster"</span>, nodes<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>id),])</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">nrow</span>(nodes[nodes<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>DEG_tp2_tp4 <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"yes"</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&amp;</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">grepl</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"lncRNA"</span>, nodes<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>id),])</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 28</code></pre>
-</div>
-</div>
-<p>OF the nodes in our (unfiltered) interaction network, 360 genes, 1 miRNA, and 28 lncRNA are differentially expressed between TP2 and TP4. The genes number is surprising to me, since that means more than half of all the differentially expressed genes are present in our interaction network!</p>
-<p>Save</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">write.csv</span>(nodes, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"./output/2025_05_07_timeseries_cytoscape_files_2/nodes_timeseries_miRNA_lncRNA_genes_DEG2v4.csv"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">quote=</span><span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">FALSE</span>)</span></code></pre></div>
-</div>
-<p>Load edges</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1">edges_PCC_0_7<span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"./output/2025_04_28_timeseries_cytoscape_files/edges_PCC_0.7_timeseries_miRNA_lncRNA_genes.csv"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>X)</span></code></pre></div>
-</div>
-<p>Load functional annotations</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1">FA <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read.table</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://github.com/urol-e5/deep-dive-expression/raw/refs/heads/main/D-Apul/output/02-Apul-reference-annotation/Apulcra-genome-mRNA-IDmapping-2024_12_12.tab"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">header=</span><span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">TRUE</span>)</span>
-<span id="cb24-2">FUNids <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read.table</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://github.com/urol-e5/deep-dive-expression/raw/refs/heads/main/D-Apul/output/15-Apul-annotate-UTRs/Apul-mRNA-FUNids.txt"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">header=</span><span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">FALSE</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(V1, V4)</span>
-<span id="cb24-3"></span>
-<span id="cb24-4">FUNids<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>V4 <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">gsub</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Parent="</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">""</span>, FUNids<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>V4)</span>
-<span id="cb24-5">FA <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">left_join</span>(FA, FUNids, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">by=</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"V1"</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"V1"</span>))</span>
-<span id="cb24-6">FA <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> FA <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(V4, Gene.Ontology.IDs, Gene.Ontology..biological.process.) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">distinct</span>()</span>
-<span id="cb24-7"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">colnames</span>(FA) <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"gene_id"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"GO_id"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"GO_BP"</span>)</span></code></pre></div>
-</div>
-<p>Join</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1">edges_PCC_0_7_GO <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">left_join</span>(edges_PCC_0_7, FA, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">by =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"target"</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"gene_id"</span>))</span></code></pre></div>
-</div>
-<p>Format</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1">edges_PCC_0<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">.7</span>_GOid <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> edges_PCC_0_7_GO <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span> </span>
-<span id="cb26-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>GO_BP) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb26-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">filter</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">is.na</span>(GO_id)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb26-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">separate_rows</span>(GO_id, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">sep=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"; "</span>)</span>
-<span id="cb26-5"></span>
-<span id="cb26-6">edges_PCC_0<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">.7</span>_GOBP <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> edges_PCC_0_7_GO <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span> </span>
-<span id="cb26-7">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>GO_id) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb26-8">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">filter</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">is.na</span>(GO_BP)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb26-9">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">separate_rows</span>(GO_BP, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">sep=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"; "</span>)</span></code></pre></div>
-</div>
-<p>Annotate nodes</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1">nodes_GO <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">left_join</span>(nodes, FA, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">by =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"id"</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"gene_id"</span>))</span>
-<span id="cb27-2"></span>
-<span id="cb27-3">nodes_GOid <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> nodes_GO <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb27-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>GO_BP) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb27-5">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">filter</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">is.na</span>(GO_id)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb27-6">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">separate_rows</span>(GO_id, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">sep=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"; "</span>)</span>
-<span id="cb27-7"></span>
-<span id="cb27-8">nodes_GOBP <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> nodes_GO <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb27-9">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>GO_id) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb27-10">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">filter</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">is.na</span>(GO_BP)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb27-11">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">separate_rows</span>(GO_BP, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">sep=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"; "</span>)</span></code></pre></div>
-</div>
-<p>Save</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">write.csv</span>(edges_PCC_0<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">.7</span>_GOid, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"./output/2025_05_07_timeseries_cytoscape_files_2/edges_PCC_0.7_timeseries_miRNA_lncRNA_genes_DEG2v4_GOid.csv"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">quote=</span><span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">FALSE</span>)</span>
-<span id="cb28-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">write.csv</span>(edges_PCC_0<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">.7</span>_GOBP, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"./output/2025_05_07_timeseries_cytoscape_files_2/edges_PCC_0.7_timeseries_miRNA_lncRNA_genes_DEG2v4_GOBP.csv"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">quote=</span><span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">FALSE</span>)</span>
-<span id="cb28-3"></span>
-<span id="cb28-4"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">write.csv</span>(nodes_GOid, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"./output/2025_05_07_timeseries_cytoscape_files_2/nodes_timeseries_miRNA_lncRNA_genes_DEG2v4_GOid.csv"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">quote=</span><span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">FALSE</span>)</span>
-<span id="cb28-5"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">write.csv</span>(nodes_GOBP, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"./output/2025_05_07_timeseries_cytoscape_files_2/nodes_timeseries_miRNA_lncRNA_genes_DEG2v4_GOBP.csv"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">quote=</span><span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">FALSE</span>)</span></code></pre></div>
-</div>
-
-
-</section>
-
- ]]></description>
-  <category>E5-coral</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_05_07_timeseries_cytoscape_files_2.html</guid>
-  <pubDate>Wed, 07 May 2025 07:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
