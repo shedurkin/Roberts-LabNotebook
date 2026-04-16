@@ -83,16 +83,27 @@ cd ./output/2026_04_13_DDE_ncRNA_machinery_fastas/
 # filter out sequences with interloper accessions
 awk 'NR==FNR {acc[$1]; next} 
      /^>/ {skip=0; for(a in acc) if(index($0, a)) {skip=1; break}} 
-     !skip' interloper_accessions.txt ncRNA_machinery_unfiltered.fasta > ncRNA_machinery.fasta
+     !skip' interloper_accessions.txt ncRNA_machinery_unfiltered.fasta > ncRNA_machinery_filtered.fasta
 ```
 
 ```{bash}
+cd ./output/2026_04_13_DDE_ncRNA_machinery_fastas/
+
 echo "Before: $(grep -c '^>' ncRNA_machinery_unfiltered.fasta)"
-echo "After:  $(grep -c '^>' ncRNA_machinery.fasta)"
+echo "After:  $(grep -c '^>' ncRNA_machinery_filtered.fasta)"
 ```
 
 Perfect! The filtered file contains 156 fewer sequences than the original, just as expected!
 
+Finally, most of the protein sequences have non-standard gene names as a consequence of using unreviewed Trembl entries from cnidarians (e.g., using source-specific names for transcripts, like "LOC###"). We'll probably want standardized gene names down the like, since full protein names can be lengthy. As far as I'm aware, there's no good way to look up protein names and obtain corresponding gene names in a standardized way, so I think I have to fall back on manual curation. I used Claude Opus 4.6 to help me with this task of parsing protein names to obtain standardized gene names, and obtained an R script for this purpose: `standardize_gene_names.R`
+
+```{bash}
+cd ./output/2026_04_13_DDE_ncRNA_machinery_fastas/
+
+Rscript standardize_gene_names.R ncRNA_machinery_filtered.fasta ncRNA_machinery.fasta
+```
+
+Great! The manually-corrected fasta has the same number of sequences, no unmapped sequences, the original gene names (GN:) were not overwritten, and each sequence now contains a curated gene name field (CGN:) with standardized gene names.
 
 So I now have a final fasta file containing protein sequences for ncRNA protein machinery! The majority of sequences were obtained from cnidarians, but a small subset weren't annotated in any cnidarians and were instead sourced from reviewed bilaterian entries. 
 

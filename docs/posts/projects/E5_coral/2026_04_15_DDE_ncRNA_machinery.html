@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kathleen Durkin">
-<meta name="dcterms.date" content="2026-04-13">
+<meta name="dcterms.date" content="2026-04-15">
 
-<title>Deep Dive Expression: compiling ncRNA machinery fastas – Kathleen’s Lab Notebook</title>
+<title>Deep Dive Expression: completed epigenetic machinery analysis – Kathleen’s Lab Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,41 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -321,8 +286,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page">
-      <h1 class="title">Deep Dive Expression: compiling ncRNA machinery fastas</h1>
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Deep Dive Expression: completed epigenetic machinery analysis</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">E5-coral</div>
               </div>
@@ -330,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
     
   
-  <div class="quarto-title-meta column-page">
+  <div class="quarto-title-meta column-page-left">
 
       <div>
       <div class="quarto-title-meta-heading">Author</div>
@@ -342,7 +307,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">April 13, 2026</p>
+        <p class="date">April 15, 2026</p>
       </div>
     </div>
     
@@ -353,296 +318,75 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#results-summary" id="toc-results-summary" class="nav-link active" data-scroll-target="#results-summary">Results summary</a>
+  <ul class="collapse">
+  <li><a href="#histone-methylation" id="toc-histone-methylation" class="nav-link" data-scroll-target="#histone-methylation">Histone Methylation</a></li>
+  <li><a href="#dna-methylation-reading" id="toc-dna-methylation-reading" class="nav-link" data-scroll-target="#dna-methylation-reading">DNA Methylation &amp; Reading</a></li>
+  <li><a href="#adp-ribosylation-form-of-chromatin-regulation" id="toc-adp-ribosylation-form-of-chromatin-regulation" class="nav-link" data-scroll-target="#adp-ribosylation-form-of-chromatin-regulation">ADP-Ribosylation (form of chromatin regulation)</a></li>
+  <li><a href="#ubiquitin-signaling-form-of-protien-modification" id="toc-ubiquitin-signaling-form-of-protien-modification" class="nav-link" data-scroll-target="#ubiquitin-signaling-form-of-protien-modification">Ubiquitin Signaling (form of protien modification)</a></li>
+  <li><a href="#rna-modification-epitranscriptomics" id="toc-rna-modification-epitranscriptomics" class="nav-link" data-scroll-target="#rna-modification-epitranscriptomics">RNA Modification (Epitranscriptomics)</a></li>
+  <li><a href="#ncrna-biogenesis-silencing" id="toc-ncrna-biogenesis-silencing" class="nav-link" data-scroll-target="#ncrna-biogenesis-silencing">ncRNA Biogenesis &amp; Silencing</a></li>
+  <li><a href="#other-regulators" id="toc-other-regulators" class="nav-link" data-scroll-target="#other-regulators">Other Regulators</a></li>
+  <li><a href="#plot" id="toc-plot" class="nav-link" data-scroll-target="#plot">Plot</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
 
 
 
 
-<p>In my last post I used GLM 5.1 (via OpenWork) to compile a list of protein machinery important to miRNA and lncRNA biogenesis and function. I’ve synthesized this to an Excel sheet of proteins and associated gene names, <code>ncRNA_machinery.xlsx</code>. It and all other files associated with this post are available at <code>./output/2026_04_13_DDE_ncRNA_machinery_fastas</code></p>
-<p>Now I need protein fastas for all of these, preferably from a close relative of our coral species. To get these, I’ll be using the <a href="https://www.uniprot.org/">Uniprot protein database</a> with the following searching approach:</p>
-<p>Use search parameters to limit results to Cnidarians, and to exclude fragmentary/incomplete sequences. I also restricted to proteins that were identified based on evidence at protein level, evidence at transcript level, or based on homology – this will <em>exclude</em> proteins with a predicted or uncertain identification basis.</p>
-<blockquote class="blockquote">
-<p>(taxonomy_id:6073) AND (fragment:false) NOT (existence:4) NOT (existence:5)</p>
-</blockquote>
-<p>I then included search terms for each protein/gene, generally in the format:</p>
-<blockquote class="blockquote">
-<p>((protein_name:PROT_ABBRV) OR (gene:GENE_ABBRV))</p>
-</blockquote>
-<p>This was occasionally modified to also include a search for full protein or gene names (for example, “Exportin-5”, in addition to “XPO5”). This was sometimes necessary because many sequences are not annotated with the “standard” gene name.</p>
-<p>I then downloaded sequence results in <code>.fasta</code> and <code>.fasta.gz</code> file formats.</p>
-<p>Some of the selected proteins weren’t annotated in any cnidarians, so I instead searched in bilaterians and restricted to only reviewed entries. These are highlighted in the <code>ncRNA_machinery.xlsx</code> file.</p>
-<p>I realized after almost fully completing my protein list that I’d been too permissive in my searches and, in some cases, proteins had “snuck through” because their names indicated a functional association with the searched protein. For example, when searching for Hsp90 proteins, entries for “Hsp90 chaperone protein kinase-targeting subunit” also showed up and were downloaded.</p>
-<p>To address this, I again turned to GLM 5.1. I gave it both the protein .xlsx file and the set of fastas/fasta.gz files. I instructed check all fasta headers and identify any instances of unintended proteins.</p>
-<p>Prompt:</p>
-<blockquote class="blockquote">
-<p>At “/Users/Owner/.local/share/opencode/tool-output/tool_d89c3f7bd001SdDIyZGD890bfd” is a temp file that lists fasta and fasta.gz file names in the first column and Uniprot fasta headers in the second column. At “/Users/Owner/Downloads/The&nbsp;Big&nbsp;One/Documents/UW/Roberts&nbsp;Lab/OpenWork/ncRNA_machinery.xlsx” there’s a spreadsheet that contains in the first and second columns proteins and corresponding gene names for protein machinery related to ncRNA biogenisis and function.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>When compiling fastas for these proteins, some related but not targeted proteins slipped through because of overly permissive searches. Get a list of all targeted proteins from the xlsx file. Then search the file listing fasta headers and check for any fasta headers corresponding to proteins that are not actually included in the xlsx. If you find such instances, output both the fasta header and its source fasta/fasta.gz file.</p>
-</blockquote>
-<p>Unzip all .fasta.gz files, then combine all fastas</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Unzip all .gz files</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> ./output/2026_04_13_DDE_ncRNA_machinery_fastas/<span class="pp">*</span>.fasta.gz</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine all fasta files into one</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ./output/2026_04_13_DDE_ncRNA_machinery_fastas/<span class="pp">*</span>.fasta <span class="op">&gt;</span> ./output/2026_04_13_DDE_ncRNA_machinery_fastas/ncRNA_machinery_unfiltered.fasta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ./output/2026_04_13_DDE_ncRNA_machinery_fastas/</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">'^&gt;'</span> ncRNA_machinery_unfiltered.fasta</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">'^&gt;'</span> ncRNA_machinery_unfiltered.fasta <span class="kw">|</span> <span class="fu">head</span> <span class="at">-3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>1027
-&gt;tr|A0A0C2N1X6|A0A0C2N1X6_THEKT Nuclear cap-binding protein subunit 1 OS=Thelohanellus kitauei OX=669202 GN=RF11_00163 PE=3 SV=1
-&gt;tr|A0A2B4SX82|A0A2B4SX82_STYPI Nuclear cap-binding protein subunit 1 OS=Stylophora pistillata OX=50429 GN=ncbp1 PE=3 SV=1
-&gt;tr|A0A6P8J329|A0A6P8J329_ACTTE Nuclear cap-binding protein subunit 1 OS=Actinia tenebrosa OX=6105 GN=LOC116306115 PE=3 SV=1</code></pre>
-</div>
-</div>
-<p>From the “interlopers” file compiled agentically, extract all the accession numbers I want to exclude from my compiled fasta. I’m expecting 152 accessions, plus the extra 4 from a second-round search.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ./output/2026_04_13_DDE_ncRNA_machinery_fastas/</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"Acc:"</span> interlopers.txt <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'{print $NF}'</span> <span class="op">&gt;</span> interloper_accessions.txt</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Append the extra 4 from a second-round search at the bottom</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span><span class="st">'\t'</span> <span class="st">'/^[0-9]+\t[A-Z0-9]+\t/ {print $2}'</span> interlopers.txt <span class="op">&gt;&gt;</span> interloper_accessions.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> ./output/2026_04_13_DDE_ncRNA_machinery_fastas/interloper_accessions.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     156 ./output/2026_04_13_DDE_ncRNA_machinery_fastas/interloper_accessions.txt</code></pre>
-</div>
-</div>
-<p>Nice! So I have the 156 proteins I want to exclude from my compiled fasta</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ./output/2026_04_13_DDE_ncRNA_machinery_fastas/</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out sequences with interloper accessions</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'NR==FNR {acc[$1]; next} </span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="st">     /^&gt;/ {skip=0; for(a in acc) if(index($0, a)) {skip=1; break}} </span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="st">     !skip'</span> interloper_accessions.txt ncRNA_machinery_unfiltered.fasta <span class="op">&gt;</span> ncRNA_machinery_filtered.fasta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ./output/2026_04_13_DDE_ncRNA_machinery_fastas/</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Before: </span><span class="va">$(</span><span class="fu">grep</span> <span class="at">-c</span> <span class="st">'^&gt;'</span> ncRNA_machinery_unfiltered.fasta<span class="va">)</span><span class="st">"</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"After:  </span><span class="va">$(</span><span class="fu">grep</span> <span class="at">-c</span> <span class="st">'^&gt;'</span> ncRNA_machinery_filtered.fasta<span class="va">)</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Before: 1027
-After:  871</code></pre>
-</div>
-</div>
-<p>Perfect! The filtered file contains 156 fewer sequences than the original, just as expected!</p>
-<p>Finally, most of the protein sequences have non-standard gene names as a consequence of using unreviewed Trembl entries from cnidarians (e.g., using source-specific names for transcripts, like “LOC###”). We’ll probably want standardized gene names down the like, since full protein names can be lengthy. As far as I’m aware, there’s no good way to look up protein names and obtain corresponding gene names in a standardized way, so I think I have to fall back on manual curation. I used Claude Opus 4.6 to help me with this task of parsing protein names to obtain standardized gene names, and obtained an R script for this purpose: <code>standardize_gene_names.R</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ./output/2026_04_13_DDE_ncRNA_machinery_fastas/</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> standardize_gene_names.R ncRNA_machinery_filtered.fasta ncRNA_machinery.fasta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.6
-✔ forcats   1.0.1     ✔ stringr   1.6.0
-✔ ggplot2   4.0.1     ✔ tibble    3.3.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.2
-✔ purrr     1.2.1     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors
-
-── Mapping summary ──
-  Total headers:  871
-  Mapped:         862 (99.0%)
-  Unmapped:       9
-
-── Unmapped entries ──
-# A tibble: 9 × 3
-  accession  description                                             existing_gn
-  &lt;chr&gt;      &lt;chr&gt;                                                   &lt;chr&gt;      
-1 A0A6S7FTL3 RNA-binding FUS-like isoform X1                         PACLA_8A05…
-2 A0A6S7GPJ7 Enhancer of mRNA-decapping 4-like, partial              PACLA_8A02…
-3 A0A6S7GPJ7 Enhancer of mRNA-decapping 4-like, partial              PACLA_8A02…
-4 A0ABN8PT06 Exportin 5                                              PLOB_00047…
-5 A0A3M6UAH0 Rad21/Rec8-like protein N-terminal domain-containing p… pdam_00017…
-6 A0A7D9DY23 Double-strand-break repair rad21 homolog                PACLA_8A00…
-7 A0A9W9ZGW1 ATP-dependent helicase NAM7                             UPF1_1     
-8 A0A9W9ZHT8 ATP-dependent helicase NAM7                             UPF1_2     
-9 A0A3M6UJK3 Xrn1 helical domain-containing protein                  pdam_00023…
-
-── Unique gene symbol assignments ──
-# A tibble: 130 × 2
-    std_gene      n
-    &lt;chr&gt;     &lt;int&gt;
-  1 RDRP         56
-  2 HDAC         39
-  3 EDC4         24
-  4 AGO2         22
-  5 DIS3L2       22
-  6 DICER1       20
-  7 DNMT1        18
-  8 CNOT1        17
-  9 NCBP2        17
- 10 HENMT1       16
- 11 RAN          16
- 12 CNOT10       15
- 13 CNOT3        15
- 14 DIS3L        14
- 15 PABPC1       14
- 16 CNOT11       13
- 17 CNOT9        13
- 18 INTS3        13
- 19 PAN3         13
- 20 PARN         13
- 21 PHAX         13
- 22 CNOT2        12
- 23 NCBP1        12
- 24 EED          11
- 25 RAD21        11
- 26 SMARCC2      11
- 27 WDR5         11
- 28 INTS12       10
- 29 XRN1         10
- 30 DAZL          9
- 31 INTS11        9
- 32 INTS9         9
- 33 NFX1          9
- 34 UNMAPPED      9
- 35 XRN           9
- 36 YBX1          9
- 37 PAN2          8
- 38 RBBP4         8
- 39 TARBP1        8
- 40 DIS3          7
- 41 DROSHA        7
- 42 HNRNPA1       7
- 43 INTS14        7
- 44 INTS6         7
- 45 INTS7         7
- 46 PRKRA         7
- 47 SRRT          7
- 48 STAG2         7
- 49 SUZ12         7
- 50 DCP1          6
- 51 EDC3          6
- 52 HDAC2         6
- 53 HNRNPA2B1     6
- 54 INTS10        6
- 55 AEBP2         5
- 56 BRD4          5
- 57 INTS2         5
- 58 INTS4         5
- 59 MTREX         5
- 60 POP7          5
- 61 UPF1          5
- 62 ZC3H12A       5
- 63 AGO1          4
- 64 CTCF          4
- 65 DCP1B         4
- 66 DNMT3A        4
- 67 EZH1          4
- 68 FUS           4
- 69 HDAC3         4
- 70 INTS1         4
- 71 INTS13        4
- 72 INTS15        4
- 73 INTS8         4
- 74 JARID2        4
- 75 KHSRP         4
- 76 NONO          4
- 77 RBM3          4
- 78 EXOSC2        3
- 79 EXOSC5        3
- 80 EXOSC9        3
- 81 INTS5         3
- 82 NOP58         3
- 83 PAPD5         3
- 84 PHF1          3
- 85 STAG1         3
- 86 ADARB1        2
- 87 DCP1A         2
- 88 DDX17         2
- 89 DDX6          2
- 90 DNMT3B        2
- 91 EXOSC1        2
- 92 EXOSC3        2
- 93 EXOSC4        2
- 94 EXOSC6        2
- 95 EXOSC7        2
- 96 EXOSC8        2
- 97 HDAC1         2
- 98 HSP90         2
- 99 INTS6L        2
-100 NOP56         2
-101 SFPQ          2
-102 SMARCA2       2
-103 SMC3          2
-104 TARDBP        2
-105 TNRC6         2
-106 TUT4          2
-107 TUT7          2
-108 XPO1          2
-109 XPO5          2
-110 ADAR          1
-111 BRD3          1
-112 CNOT          1
-113 CNOT4         1
-114 DGCR8         1
-115 DHX9          1
-116 DICER2        1
-117 EWSR1         1
-118 EXOSC10       1
-119 EZH2          1
-120 HNRNPK        1
-121 HYL1          1
-122 LIN28A        1
-123 LOQS          1
-124 PNPT1         1
-125 PSPC1         1
-126 RBM7          1
-127 SMARCA4       1
-128 SMG1          1
-129 SMG5          1
-130 ZFC3H1        1
-
-── Output written to: ncRNA_machinery.fasta ──
-
-Done.</code></pre>
-</div>
-</div>
-<p>Check</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ./output/2026_04_13_DDE_ncRNA_machinery_fastas/</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">"^&gt;"</span> ncRNA_machinery.fasta</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"^&gt;"</span> ncRNA_machinery.fasta <span class="kw">|</span> <span class="fu">head</span> <span class="at">-10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>871
-&gt;tr|A0A0C2N1X6|A0A0C2N1X6_THEKT Nuclear cap-binding protein subunit 1 CGN=NCBP1 OS=Thelohanellus kitauei OX=669202 GN=RF11_00163 PE=3 SV=1
-&gt;tr|A0A2B4SX82|A0A2B4SX82_STYPI Nuclear cap-binding protein subunit 1 CGN=NCBP1 OS=Stylophora pistillata OX=50429 GN=ncbp1 PE=3 SV=1
-&gt;tr|A0A6P8J329|A0A6P8J329_ACTTE Nuclear cap-binding protein subunit 1 CGN=NCBP1 OS=Actinia tenebrosa OX=6105 GN=LOC116306115 PE=3 SV=1
-&gt;tr|A0A6S7G2D7|A0A6S7G2D7_PARCT Nuclear cap-binding protein subunit 1 CGN=NCBP1 OS=Paramuricea clavata OX=317549 GN=PACLA_8A083348 PE=3 SV=1
-&gt;tr|A0A7M5V3C0|A0A7M5V3C0_9CNID Nuclear cap-binding protein subunit 1 CGN=NCBP1 OS=Clytia hemisphaerica OX=252671 PE=3 SV=1
-&gt;tr|A0A913XIF0|A0A913XIF0_EXADI Nuclear cap-binding protein subunit 1 CGN=NCBP1 OS=Exaiptasia diaphana OX=2652724 PE=3 SV=1
-&gt;tr|A0A9W9ZWX6|A0A9W9ZWX6_9CNID Nuclear cap-binding protein subunit 1 CGN=NCBP1 OS=Desmophyllum pertusum OX=174260 GN=NCBP1 PE=3 SV=1
-&gt;tr|A0AAD9QN77|A0AAD9QN77_ACRCE Nuclear cap-binding protein subunit 1 CGN=NCBP1 OS=Acropora cervicornis OX=6130 GN=P5673_011848 PE=3 SV=1
-&gt;tr|A0AAU9VQE5|A0AAU9VQE5_9CNID Nuclear cap-binding protein subunit 1 CGN=NCBP1 OS=Pocillopora meandrina OX=46732 GN=PMEA_00011059 PE=3 SV=1
-&gt;tr|A0ABM4DB04|A0ABM4DB04_HYDVU Nuclear cap-binding protein subunit 1-like CGN=NCBP1 OS=Hydra vulgaris OX=6087 GN=LOC136089457 PE=3 SV=1</code></pre>
-</div>
-</div>
-<p>Great! The manually-corrected fasta has the same number of sequences, the original gene names (GN:) were not overwritten, and each sequence now contains a curated gene name field (CGN:) with standardized gene names.</p>
-<p>So I now have a final fasta file containing protein sequences for ncRNA protein machinery! The majority of sequences were obtained from cnidarians, but a small subset weren’t annotated in any cnidarians and were instead sourced from reviewed bilaterian entries.</p>
-<p>I’ll now use this fasta, in combination with the epimachinery fasta provided by Hollie and Steven to look for epigenetic protein machinery in the miRNA targets of our DDE data (and probably in the timeseries data in the future)</p>
+<p>Finally finished with the epigenetic machinery analysis for the Deep Dive Expression manuscript!</p>
+<p>After <a href="../../../posts/projects/E5_coral/2026_04_10_DDE_ncRNA_machinery.html">compiling a list of ~90 proteins/genes</a> involved in ncRNA biogenesis and function, and then <a href="../../../posts/projects/E5_coral/2026_04_13_DDE_ncRNA_machinery_fastas.html">manually curating fastas</a> (primarily cnidarian) for those proteins, I’ve now identified miRNA targets in all 3 of our study species that correspond to these ncRNA machinery proteins. I also searched for targets that match other epigenetic machinery (e.g., histone modifier, chromatin signaling, etc.), from an epigenetic machinery fasta compiled by Hollie/Steven.</p>
+<p>Code for annotating ncRNA machinery in <a href="https://github.com/urol-e5/deep-dive-expression/blob/main/D-Apul/code/34-Apul-ncRNA-machinery-BLAST.md">A. pulchra</a>, <a href="https://github.com/urol-e5/deep-dive-expression/blob/main/E-Peve/code/32-Peve-ncRNA-machinery-BLAST.md">P. evermanni</a>, and <a href="https://github.com/urol-e5/deep-dive-expression/blob/main/F-Ptuh/code/32-Ptuh-ncRNA-machinery-BLAST.md">P. tuahiniensis</a></p>
+<p>Code for <a href="https://github.com/urol-e5/deep-dive-expression/blob/main/M-multi-species/code/12-miRNA-epimachinery.md">annotating miRNA targets in all 3 species</a> for both my curated ncRNA machinery and Hollie’s epigenetic machinery.</p>
+<section id="results-summary" class="level2">
+<h2 class="anchored" data-anchor-id="results-summary">Results summary</h2>
+<p>Generally, the protein machinery that are putatively targeted by our coral miRNAs is extremely diverse, covering all major “branches” of epigenetic regulation:</p>
+<section id="histone-methylation" class="level3">
+<h3 class="anchored" data-anchor-id="histone-methylation">Histone Methylation</h3>
+<p>Covering demethylases (KDM3, KDM6, RIOX1), methyltransferases (KMT5A, KMT2E), acetyltransferases (KAT6A/B, KAT14, KAT2A/B), and deacetylases (HDAC4/5/7/9, SIRT7), plus arginine methylation (PRMT7)</p>
+</section>
+<section id="dna-methylation-reading" class="level3">
+<h3 class="anchored" data-anchor-id="dna-methylation-reading">DNA Methylation &amp; Reading</h3>
+<p>DNMT1 (maintenance methyltransferase), TET3 (active demethylation), MBD1/2/3 (methylation readers/NuRD recruitment), and PRDM14 (pluripotency-associated methylation regulator)</p>
+</section>
+<section id="adp-ribosylation-form-of-chromatin-regulation" class="level3">
+<h3 class="anchored" data-anchor-id="adp-ribosylation-form-of-chromatin-regulation">ADP-Ribosylation (form of chromatin regulation)</h3>
+<p>Tankyrases (PARP5a/b), PARP7/TIPARP, macro-PARPs (PARP9/14/15), and the eraser ARH1</p>
+</section>
+<section id="ubiquitin-signaling-form-of-protien-modification" class="level3">
+<h3 class="anchored" data-anchor-id="ubiquitin-signaling-form-of-protien-modification">Ubiquitin Signaling (form of protien modification)</h3>
+<p>Deubiquitinases (USPs, PSMD14, BAP1), E2/E3 ligases (UBE2D, UBE3A, CUL4A, DDB1, UBR2, RNF8, BRCA1)</p>
+</section>
+<section id="rna-modification-epitranscriptomics" class="level3">
+<h3 class="anchored" data-anchor-id="rna-modification-epitranscriptomics">RNA Modification (Epitranscriptomics)</h3>
+<p>tRNA modifiers (TRMT1, TRMT61A/B, PUS7L, DUS1L), demethylases (ALKBH3), m6A reader (HNRNPA2B1), and ADAR (A-to-I editing)</p>
+</section>
+<section id="ncrna-biogenesis-silencing" class="level3">
+<h3 class="anchored" data-anchor-id="ncrna-biogenesis-silencing">ncRNA Biogenesis &amp; Silencing</h3>
+<p>Core RISC silencing complex (AGO1/2, TNRC6), biogenesis regulators (LIN28A, KHSRP, SRRT), Integrator complex (INTS1/4/6), RNA decay machinery (exosome, EDC4, CCR4-NOT, SMG1, PAN2), and chromatin/structural components (RBBP4, STAG1/2, SMARCA2/4, RDRP)</p>
+</section>
+<section id="other-regulators" class="level3">
+<h3 class="anchored" data-anchor-id="other-regulators">Other Regulators</h3>
+<p>Signaling kinases (PKN1, MAP3K12, MAP2K1, Chuk/IKKα), phosphatases (PP1), and protein quality control (COPS6, Hspbap1)</p>
+</section>
+<section id="plot" class="level3">
+<h3 class="anchored" data-anchor-id="plot">Plot</h3>
+<p><img src="images/miRNA_target_categories_by_species.png" class="img-fluid"></p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
