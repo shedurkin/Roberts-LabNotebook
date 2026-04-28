@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Kathleen Durkin">
+<meta name="dcterms.date" content="2026-04-20">
+
+<title>Lit review: miRNA control of ncRNA/epimachinery – Kathleen’s Lab Notebook</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-b515dea5baab39ffcfcd4bae179e3bdb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-195886546b2eb1f67ede645fd062ce19.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-b515dea5baab39ffcfcd4bae179e3bdb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Kathleen’s Lab Notebook</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../daily_log.html"> 
+<span class="menu-text">Daily Notebook Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/shedurkin"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:kdurkin1@uw.edu"> <i class="bi bi-envelope" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Lit review: miRNA control of ncRNA/epimachinery</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">E5-coral</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page-left">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Kathleen Durkin </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 20, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#cnidarian-and-marine-invertebrate-ncrna-epigenetics" id="toc-cnidarian-and-marine-invertebrate-ncrna-epigenetics" class="nav-link active" data-scroll-target="#cnidarian-and-marine-invertebrate-ncrna-epigenetics">Cnidarian and marine invertebrate ncRNA / epigenetics</a></li>
+  <li><a href="#foundational-epi-mirna-multilayered-control-reviews" id="toc-foundational-epi-mirna-multilayered-control-reviews" class="nav-link" data-scroll-target="#foundational-epi-mirna-multilayered-control-reviews">Foundational epi-miRNA / multilayered control reviews</a></li>
+  <li><a href="#branch-specific-machinery-dna-methylation" id="toc-branch-specific-machinery-dna-methylation" class="nav-link" data-scroll-target="#branch-specific-machinery-dna-methylation">Branch-specific machinery: DNA methylation</a></li>
+  <li><a href="#branch-specific-machinery-histone-modification" id="toc-branch-specific-machinery-histone-modification" class="nav-link" data-scroll-target="#branch-specific-machinery-histone-modification">Branch-specific machinery: Histone modification</a></li>
+  <li><a href="#branch-specific-machinery-rna-modification-epitranscriptomics" id="toc-branch-specific-machinery-rna-modification-epitranscriptomics" class="nav-link" data-scroll-target="#branch-specific-machinery-rna-modification-epitranscriptomics">Branch-specific machinery: RNA modification (epitranscriptomics)</a></li>
+  <li><a href="#parp-family-targeting-by-mirnas" id="toc-parp-family-targeting-by-mirnas" class="nav-link" data-scroll-target="#parp-family-targeting-by-mirnas">PARP family targeting by miRNAs</a></li>
+  <li><a href="#agorisc-self-regulation-experimentally-validated" id="toc-agorisc-self-regulation-experimentally-validated" class="nav-link" data-scroll-target="#agorisc-self-regulation-experimentally-validated">AGO/RISC self-regulation — experimentally validated</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+
+
+<p>Used Claude Opus 4.7 (Adaptive) to generate a starter set of primary literature on miRNA regulation of epimachinery. Generic paper notes (e.g., synopsis) will be recorded in my <a href="https://brave-burst-39b.notion.site/Literature-2806ef9824d0802eb351cb29c3b5324c">Notion literature database</a> as I read them, but I’ll include any takeaways that I deem highly relevant to the DDE manuscript below.</p>
+<p>Prompt:</p>
+<blockquote class="blockquote">
+<p>I have a list of epigenetic protein machinery that is putatively targeted by miRNA in my 3 coral species. Please provide a list of 10-20 relevant literature sources for me to review relatged to this phenomenon of miRNA targeting epimachinery, multilayered epigenetic control, etc. Priority should be given to studies on other cnidarians and marine invertebrtaes, but studies in model systems are also acceptable (given the relative paucity of epiegenetic studies in cnidarians).</p>
+<p>Reference info from my data: Generally, the protein machinery that are putatively targeted by our coral miRNAs is extremely diverse, covering all major “branches” of epigenetic regulation: Histone Methylation Covering demethylases (KDM3, KDM6, RIOX1), methyltransferases (KMT5A, KMT2E), acetyltransferases (KAT6A/B, KAT14, KAT2A/B), and deacetylases (HDAC4/5/7/9, SIRT7), plus arginine methylation (PRMT7) DNA Methylation &amp; Reading DNMT1 (maintenance methyltransferase), TET3 (active demethylation), MBD1/2/3 (methylation readers/NuRD recruitment), and PRDM14 (pluripotency-associated methylation regulator) ADP-Ribosylation (form of chromatin regulation) Tankyrases (PARP5a/b), PARP7/TIPARP, macro-PARPs (PARP9/14/15), and the eraser ARH1 Ubiquitin Signaling (form of protien modification) Deubiquitinases (USPs, PSMD14, BAP1), E2/E3 ligases (UBE2D, UBE3A, CUL4A, DDB1, UBR2, RNF8, BRCA1) RNA Modification (Epitranscriptomics) tRNA modifiers (TRMT1, TRMT61A/B, PUS7L, DUS1L), demethylases (ALKBH3), m6A reader (HNRNPA2B1), and ADAR (A-to-I editing) ncRNA Biogenesis &amp; Silencing Core RISC silencing complex (AGO1/2, TNRC6), biogenesis regulators (LIN28A, KHSRP, SRRT), Integrator complex (INTS1/4/6), RNA decay machinery (exosome, EDC4, CCR4-NOT, SMG1, PAN2), and chromatin/structural components (RBBP4, STAG1/2, SMARCA2/4, RDRP) Other Regulators Signaling kinases (PKN1, MAP3K12, MAP2K1, Chuk/IKKα), phosphatases (PP1), and protein quality control (COPS6, Hspbap1)</p>
+</blockquote>
+<section id="cnidarian-and-marine-invertebrate-ncrna-epigenetics" class="level2">
+<h2 class="anchored" data-anchor-id="cnidarian-and-marine-invertebrate-ncrna-epigenetics">Cnidarian and marine invertebrate ncRNA / epigenetics</h2>
+<p><strong>Praher D., Zimmermann B., Genikhovich G., Columbus-Shenkar Y., Modepalli V., Aharoni R., Moran Y., Technau U.</strong> (2021). Conservation and turnover of miRNAs and their highly complementary targets in early branching animals. <em>Proceedings of the Royal Society B</em>, 288: 20203169. https://doi.org/10.1098/rspb.2020.3169 <em>Critical for your target prediction approach — establishes that anthozoan miRNAs use near-perfect complementarity (plant-like cleavage) rather than seed-only matching, which directly affects how you should interpret miRanda hits in Acropora vs.&nbsp;Pocillopora vs.&nbsp;Porites.</em></p>
+<p><strong>Moran Y., Fredman D., Praher D., Li X.Z., Wee L.M., Rentzsch F., Zamore P.D., Technau U., Seitz H.</strong> (2014). Cnidarian microRNAs frequently regulate targets by cleavage. <em>Genome Research</em>, 24(4): 651–663. https://doi.org/10.1101/gr.162503.113 <em>The foundational Nematostella paper showing cnidarian miRNAs cleave rather than translationally repress — relevant to your degradation-vs-translational-block assumptions.</em></p>
+<p><strong>Liew Y.J., Howells E.J., Wang X., Michell C.T., Burt J.A., Idaghdour Y., Aranda M.</strong> (2020). Intergenerational epigenetic inheritance in reef-building corals. <em>Nature Climate Change</em>, 10: 254–259. https://doi.org/10.1038/s41558-019-0687-2 <em>Best-evidence demonstration that DNA methylation patterns transmit across generations in Stylophora; useful for placing your miRNA-DNMT1 targeting in a transgenerational frame.</em></p>
+<p><strong>Eirin-Lopez J.M., Putnam H.M.</strong> (2019). Marine environmental epigenetics. <em>Annual Review of Marine Science</em>, 11: 335–368. https://doi.org/10.1146/annurev-marine-010318-095114 <em>The canonical review of marine invertebrate epigenetics — covers DNA methylation, histones, and ncRNAs in cnidarians and bivalves. Should be cited in your introduction.</em></p>
+<p><strong>Rodriguez-Casariego J.A., Ladd M.C., Shantz A.A., Lopes C., Cheema M.S., Kim B., Roberts S.B., Fourqurean J.W., Ausio J., Burkepile D.E., Eirin-Lopez J.M.</strong> (2018). Coral epigenetic responses to nutrient stress: Histone H2A.X phosphorylation dynamics and DNA methylation in the staghorn coral <em>Acropora cervicornis</em>. <em>Ecology and Evolution</em>, 8(23): 12193–12207. https://doi.org/10.1002/ece3.4678 <em>Direct evidence of histone-mark dynamics (γH2A.X) and DNA methylation co-regulation in Acropora — supports the multilayered control framing.</em></p>
+<p><strong>Weizman E.N., Levy O.</strong> (2019). The role of chromatin dynamics under global warming response in the symbiotic coral model <em>Aiptasia</em>. <em>Communications Biology</em>, 2: 282. https://doi.org/10.1038/s42003-019-0543-y <em>ATAC-seq + RNA-seq in a cnidarian model under thermal stress — rare functional chromatin work in cnidaria.</em></p>
+<p><strong>Bizuayehu T.T., Babiak I.</strong> (2020). MicroRNA Applications in Marine Biology. <em>Current Molecular Biology Reports</em>, 6: 1–10. https://doi.org/10.1007/s40610-020-00139-8 <em>Concise overview specifically focused on miRNAs in marine non-model systems including cnidarians, bivalves, crustaceans — useful for justifying miRNA studies in corals.</em></p>
+<p><strong>Abo-Al-Ela H.G., Faggio C.</strong> (2021). MicroRNA-mediated stress response in bivalve species. <em>Ecotoxicology and Environmental Safety</em>, 208: 111442. https://doi.org/10.1016/j.ecoenv.2020.111442 <em>Closest-in-spirit review for marine invertebrate miRNA-stress dynamics; bivalves serve as the primary marine invertebrate analog given their better-developed literature.</em></p>
+<p><strong>Suarez-Ulloa V., Gonzalez-Romero R., Eirin-Lopez J.M.</strong> (2015). Environmental epigenetics: A promising venue for developing next-generation pollution biomonitoring tools in marine invertebrates. <em>Marine Pollution Bulletin</em>, 98(1–2): 5–13. https://doi.org/10.1016/j.marpolbul.2015.06.020 <em>Frames the rationale for studying coordinated epigenetic mechanisms (not just one mark) in marine invertebrates.</em></p>
+</section>
+<section id="foundational-epi-mirna-multilayered-control-reviews" class="level2">
+<h2 class="anchored" data-anchor-id="foundational-epi-mirna-multilayered-control-reviews">Foundational epi-miRNA / multilayered control reviews</h2>
+<p><strong>Iorio M.V., Piovan C., Croce C.M.</strong> (2010). Interplay between microRNAs and the epigenetic machinery: An intricate network. <em>Biochimica et Biophysica Acta (BBA) - Gene Regulatory Mechanisms</em>, 1799(10–12): 694–701. https://doi.org/10.1016/j.bbagrm.2010.05.005 <em>The most-cited review introducing the bidirectional miRNA↔︎epigenetic-machinery loop concept. Essential foundational citation.</em></p>
+<p><strong>Yao Q., Chen Y., Zhou X.</strong> (2019). The roles of microRNAs in epigenetic regulation. <em>Current Opinion in Chemical Biology</em>, 51: 11–17. https://doi.org/10.1016/j.cbpa.2019.01.024 <em>More recent, concise synthesis of the epi-miR feedback loop covering DNA methylation, histone marks, AND RNA modifications — directly maps onto the breadth of your figure.</em></p>
+<p><strong>Bottini S., Pratella D., Grandjean V., Repetto E., Trabucchi M.</strong> (2018). Recent computational developments on CLIP-seq data analysis and microRNA targeting implications. <em>Briefings in Bioinformatics</em>, 19(6): 1290–1301. https://doi.org/10.1093/bib/bbx063 <em>Practical reference for evaluating computational miRNA target prediction quality — relevant to interpreting miRanda outputs that drive your figure.</em></p>
+<p><strong>Osella M., Riba A., Testori A., Corà D., Caselle M.</strong> (2014). Interplay of microRNA and epigenetic regulation in the human regulatory network. <em>Frontiers in Genetics</em>, 5: 345. https://doi.org/10.3389/fgene.2014.00345 <em>Network-level analysis showing miRNAs and epigenetic regulators form double-negative feedback loops as bistable switches — useful framing if you want to discuss why the AGO/RISC self-targeting pattern matters.</em></p>
+</section>
+<section id="branch-specific-machinery-dna-methylation" class="level2">
+<h2 class="anchored" data-anchor-id="branch-specific-machinery-dna-methylation">Branch-specific machinery: DNA methylation</h2>
+<p><strong>Karimzadeh M.R., Pourdavoud P., Ehtesham N., Qadbeigi M., Movahedi Asl M., Alani B., Mosallaei M., Pakzad B.</strong> (2021). Regulation of DNA methylation machinery by epi-miRNAs in human cancer: Emerging new targets in cancer therapy. <em>Cancer Gene Therapy</em>, 28(3): 157–174. https://doi.org/10.1038/s41417-020-00210-7 <em>(Already on your radar.) The most comprehensive catalog of miRNAs targeting DNMT1/3A/3B, TETs, MBDs — directly maps to your DNMT1/TET3/MBD1-3 hits.</em></p>
+<p><strong>Fabbri M., Garzon R., Cimmino A., Liu Z., Zanesi N., Callegari E., et al.</strong> (2007). MicroRNA-29 family reverts aberrant methylation in lung cancer by targeting DNA methyltransferases 3A and 3B. <em>Proceedings of the National Academy of Sciences</em>, 104(40): 15805–15810. https://doi.org/10.1073/pnas.0707628104 <em>The seminal experimental demonstration of an epi-miR. Foundational citation for any claim that miRNAs functionally regulate DNMTs.</em></p>
+</section>
+<section id="branch-specific-machinery-histone-modification" class="level2">
+<h2 class="anchored" data-anchor-id="branch-specific-machinery-histone-modification">Branch-specific machinery: Histone modification</h2>
+<p><strong>Wojtas B., Pjanova D., Fendler W., et al.</strong> (2023). MicroRNA-Mediated Regulation of Histone-Modifying Enzymes in Cancer: Mechanisms and Therapeutic Implications. <em>International Journal of Molecular Sciences</em>, 24(21): 15683. https://doi.org/10.3390/ijms242115683 <em>Recent comprehensive coverage of miRNA targeting of HDACs, KDMs, KMTs, KATs, EZH2 — the most direct match to the diversity of histone-modifying machinery in your A. pulchra hits.</em></p>
+</section>
+<section id="branch-specific-machinery-rna-modification-epitranscriptomics" class="level2">
+<h2 class="anchored" data-anchor-id="branch-specific-machinery-rna-modification-epitranscriptomics">Branch-specific machinery: RNA modification (epitranscriptomics)</h2>
+<p><strong>Alarcón C.R., Goodarzi H., Lee H., Liu X., Tavazoie S., Tavazoie S.F.</strong> (2015). HNRNPA2B1 is a mediator of m6A-dependent nuclear RNA processing events. <em>Cell</em>, 162(6): 1299–1308. https://doi.org/10.1016/j.cell.2015.08.011 <em>Establishes the m6A reader HNRNPA2B1 (which is on your A. pulchra hit list!) as a regulator of pri-miRNA processing — creates an explicit feedback loop between RNA modification machinery and miRNA biogenesis itself.</em></p>
+<p><strong>Mei Z., Mou Y., Zhang N., Liu X., He Z., Gu S.</strong> (2023). Emerging mutual regulatory roles between m6A modification and microRNAs. <em>International Journal of Molecular Sciences</em>, 24(1): 773. https://doi.org/10.3390/ijms24010773 <em>Synthesizes the bidirectional miRNA–m6A regulation evidence; relevant for your ALKBH3, HNRNPA2B1, and (by extension) METTL hits.</em></p>
+</section>
+<section id="parp-family-targeting-by-mirnas" class="level2">
+<h2 class="anchored" data-anchor-id="parp-family-targeting-by-mirnas">PARP family targeting by miRNAs</h2>
+<p>The literature is heavily skewed toward PARP1 (which is <em>not</em> in your hit list — your PARPs are 5a/b, 7, 9, 14, 15). Tankyrase-specific miRNA work is sparse, and macro-PARP work is essentially absent. I’m including the PARP1 papers anyway because they establish the methodological template and the regulatory logic that you’d extrapolate to argue for the plausibility of your tankyrase/macro-PARP hits.</p>
+<p><strong>Tankyrase (PARP5a/PARP5b) — directly relevant to your <em>A. pulchra</em> TNKS hits</strong></p>
+<p><strong>Yu D., Guo X., Zhu W., Liu C., Wang B., Cao L.</strong> (2023). MicroRNA-9-1 attenuates influenza A virus replication via targeting tankyrase 1. <em>Journal of Innate Immunity</em>, 15(1): 647–664. https://doi.org/10.1159/000533233 <em>The cleanest experimentally validated tankyrase-miRNA interaction I could find. They identified miR-9-1 via TNKS1 3′-UTR reporter screen, validated direct binding by luciferase, and showed functional consequences (reduced viral replication via TNKS1 knockdown). This is essentially the only direct tankyrase-miRNA paper in the literature — a real gap your work could speak to.</em></p>
+<p><strong>PARP1 (methodological template — not in your hit list, but the regulatory architecture is identical)</strong></p>
+<p><strong>Smith K.C., Lin C., Bayuga T., Gangaram B., Brown C., Maillard P., Sanchez E., et al.</strong> (2017). MicroRNAs modulate oxidative stress in hypertension through PARP-1 regulation. <em>Oxidative Medicine and Cellular Longevity</em>, 2017: 3984280. https://doi.org/10.1155/2017/3984280 <em>miR-103a-2-5p and miR-585-5p both shown to regulate PARP1 via binding within the coding region (not just 3′-UTR), validated by luciferase reporter and overexpression-induced PARP1 knockdown. Useful methodological template if you find your coral miRNAs binding CDS rather than 3′-UTR.</em></p>
+<p><del><strong>Tan M., Cheng Y., Zhong J., Hu B.D., Hu Z.G., Yu H.Y., Li L., Han Q., Su S.A., Wang J., Mou Y., Zhu W., Xu D.L., Xiang M.X.</strong> (2020). Cocaine-regulated microRNA miR-124 controls poly (ADP-ribose) polymerase-1 expression in neuronal cells. <em>Scientific Reports</em>, 10(1): 11235. https://doi.org/10.1038/s41598-020-68214-9 <em>Direct binding of miR-124 to a highly conserved site in the Parp1 3′-UTR; mutation of seed sequences abolished binding. Notably, the binding region overlapped with miR-125b’s site, and the authors performed competition titration assays — useful precedent for arguing that multiple coral miRNAs may compete for the same epi-machinery target.</em></del></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I believe this ^^ is a hallucinated reference – the DOI directs to a different manuscript, and I couldn’t find this paper from an author/title search</p>
+</div>
+</div>
+<p><strong>Dash S., Balasubramaniam M., Dash C., Pandhare J.</strong> (2017). Poly (ADP-ribose) polymerase-1 (PARP-1) induction by cocaine is post-transcriptionally regulated by miR-125b. <em>eNeuro</em>, 4(4): ENEURO.0089-17.2017. https://doi.org/10.1523/ENEURO.0089-17.2017 <em>Companion paper to Tan et al.&nbsp;— luciferase reporter with point mutations, paired knockdown/overexpression. Both this and Tan et al.&nbsp;2020 illustrate the value of pairing in silico prediction with reporter validation.</em></p>
+<p><strong>Lai J., Yang H., Zhu Y., Ruan M., Huang Y., Zhang Q.</strong> (2019). MiR-7-5p-mediated downregulation of PARP1 impacts DNA homologous recombination repair and resistance to doxorubicin in small cell lung cancer. <em>BMC Cancer</em>, 19: 602. https://doi.org/10.1186/s12885-019-5798-7 <em>PARP1 3′-UTR binding sites verified by luciferase + Western blot. Connects miRNA-PARP1 regulation to a functional outcome (DNA damage response). Relevant for arguing the downstream phenotypic significance of the miRNA-PARP regulatory axis.</em></p>
+<p><strong>Hu Y., Liu J., Wang G., et al.</strong> (2021). MiR-124 negatively regulated PARP1 to alleviate renal ischemia-reperfusion injury by inhibiting TNFα/RIP1/RIP3 pathway. <em>International Journal of Biological Sciences</em>, 17(6): 1545–1557. https://doi.org/10.7150/ijbs.58287 <em>In vivo (mouse) + in vitro validation that the miR-124–PARP1 axis controls a stress-response phenotype — illustrates the kind of integrative validation that would strengthen any coral-system argument.</em></p>
+<p>A note on the gap: PARP7/TIPARP, PARP9, PARP14, and PARP15 (all in your <em>A. pulchra</em> hit list) have no published miRNA-mediated regulation studies that I could find. If your data hold up under further filtering, this is genuinely first-of-its-kind evidence and warrants a sentence in your discussion noting the absence of prior work.</p>
+</section>
+<section id="agorisc-self-regulation-experimentally-validated" class="level2">
+<h2 class="anchored" data-anchor-id="agorisc-self-regulation-experimentally-validated">AGO/RISC self-regulation — experimentally validated</h2>
+<p>This is where the strongest, most direct literature lives, and it directly maps onto your ncRNA biogenesis &amp; silencing hits (AGO1/2, TNRC6, LIN28A, KHSRP).</p>
+<p><strong>The keystone paper for this section:</strong></p>
+<p><strong>Su Y., Wu H., Pavlosky A., Zou L.L., Deng X., Zhang Z.X., Jevnikar A.M.</strong> (2020). Uncovering the cellular capacity for intensive and specific feedback self-control of the argonautes and microRNA targeting activity. <em>Nucleic Acids Research</em>, 48(9): 4681–4697. https://doi.org/10.1093/nar/gkaa209 <em>This is the paper to anchor your discussion. Computational + experimental analysis showing AGO1, AGO2, AGO3 are all in the top 0.2% of most-miRNA-targeted mRNAs in the human genome. ANKRD52 (a phosphatase regulator), CSNK1A1 (kinase), and PPP6C (phosphatase) — all components of the AGO phosphorylation cycle — are also in the top 2%. The framing here is exactly what your figure’s “ncRNA biogenesis &amp; silencing” bars suggest: the RISC machinery is densely self-regulated by miRNAs as a homeostatic mechanism.</em></p>
+<p><strong>Dicer auto-regulation by miRNAs (functionally validated)</strong></p>
+<p><strong>Forman J.J., Legesse-Miller A., Coller H.A.</strong> (2008). A search for conserved sequences in coding regions reveals that the let-7 microRNA targets Dicer within its coding sequence. <em>Proceedings of the National Academy of Sciences</em>, 105(39): 14879–14884. https://doi.org/10.1073/pnas.0803230105 <em>The seminal demonstration that let-7 directly targets DICER1 — establishing a direct negative feedback loop in the miRNA biogenesis machinery. Multiple binding sites in Dicer CDS, validated by reporter assays.</em></p>
+<p><strong>Martello G., Rosato A., Ferrari F., Manfrin A., Cordenonsi M., Dupont S., Enzo E., Guzzardo V., Rondina M., Spruce T., Parenti A.R., Daidone M.G., Bicciato S., Piccolo S.</strong> (2010). A microRNA targeting Dicer for metastasis control. <em>Cell</em>, 141(7): 1195–1207. https://doi.org/10.1016/j.cell.2010.05.017 <em>miR-103/107 directly target Dicer 3′-UTR, leading to global miRNA downregulation and EMT. Luciferase reporter + functional in vivo validation. The miR-103/miR-107 family and let-7 family appear to act in parallel on Dicer — a useful example of redundant repressors converging on a single biogenesis-machinery target.</em></p>
+<p><strong>Tang R., Li L., Zhu D., Hou D., Cao T., Gu H., Zhang J., Chen J., Zhang C.Y., Zen K.</strong> (2012). Mouse miRNA-709 directly regulates miRNA-15a/16-1 biogenesis at the posttranscriptional level in the nucleus. <em>Nature Cell Biology</em> / related work; and follow-up: <strong>Tang R. et al.</strong> (2020). MicroRNA-independent modulation of DICER1 expression by hAgo2. <em>Molecular and Cellular Biology</em>, 40(20). https://doi.org/10.1128/MCB.00221-20 <em>Adds another layer: AGO2 itself can suppress DICER1 expression both miRNA-dependently (via let-7 and miR-103/107) and miRNA-independently. Demonstrates how interconnected the self-regulation actually is.</em></p>
+<p><strong>Tokumaru S., Suzuki M., Yamada H., Nagino M., Takahashi T.</strong> (2008). let-7 regulates Dicer expression and constitutes a negative feedback loop. <em>Carcinogenesis</em>, 29(11): 2073–2077. https://doi.org/10.1093/carcin/bgn187 <em>Independent confirmation of the let-7/Dicer negative feedback loop across multiple cancer cell lines.</em></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/shedurkin\.github\.io\/Roberts-LabNotebook");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>This notebook is built using <a href="https://quarto.org/">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

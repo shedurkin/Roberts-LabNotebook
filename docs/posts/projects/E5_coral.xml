@@ -10,7 +10,102 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Wed, 15 Apr 2026 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 20 Apr 2026 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Lit review: miRNA control of ncRNA/epimachinery</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2026_04_20_DDE_epimachinery_litreview.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>Used Claude Opus 4.7 (Adaptive) to generate a starter set of primary literature on miRNA regulation of epimachinery. Generic paper notes (e.g., synopsis) will be recorded in my <a href="https://brave-burst-39b.notion.site/Literature-2806ef9824d0802eb351cb29c3b5324c">Notion literature database</a> as I read them, but I’ll include any takeaways that I deem highly relevant to the DDE manuscript below.</p>
+<p>Prompt:</p>
+<blockquote class="blockquote">
+<p>I have a list of epigenetic protein machinery that is putatively targeted by miRNA in my 3 coral species. Please provide a list of 10-20 relevant literature sources for me to review relatged to this phenomenon of miRNA targeting epimachinery, multilayered epigenetic control, etc. Priority should be given to studies on other cnidarians and marine invertebrtaes, but studies in model systems are also acceptable (given the relative paucity of epiegenetic studies in cnidarians).</p>
+<p>Reference info from my data: Generally, the protein machinery that are putatively targeted by our coral miRNAs is extremely diverse, covering all major “branches” of epigenetic regulation: Histone Methylation Covering demethylases (KDM3, KDM6, RIOX1), methyltransferases (KMT5A, KMT2E), acetyltransferases (KAT6A/B, KAT14, KAT2A/B), and deacetylases (HDAC4/5/7/9, SIRT7), plus arginine methylation (PRMT7) DNA Methylation &amp; Reading DNMT1 (maintenance methyltransferase), TET3 (active demethylation), MBD1/2/3 (methylation readers/NuRD recruitment), and PRDM14 (pluripotency-associated methylation regulator) ADP-Ribosylation (form of chromatin regulation) Tankyrases (PARP5a/b), PARP7/TIPARP, macro-PARPs (PARP9/14/15), and the eraser ARH1 Ubiquitin Signaling (form of protien modification) Deubiquitinases (USPs, PSMD14, BAP1), E2/E3 ligases (UBE2D, UBE3A, CUL4A, DDB1, UBR2, RNF8, BRCA1) RNA Modification (Epitranscriptomics) tRNA modifiers (TRMT1, TRMT61A/B, PUS7L, DUS1L), demethylases (ALKBH3), m6A reader (HNRNPA2B1), and ADAR (A-to-I editing) ncRNA Biogenesis &amp; Silencing Core RISC silencing complex (AGO1/2, TNRC6), biogenesis regulators (LIN28A, KHSRP, SRRT), Integrator complex (INTS1/4/6), RNA decay machinery (exosome, EDC4, CCR4-NOT, SMG1, PAN2), and chromatin/structural components (RBBP4, STAG1/2, SMARCA2/4, RDRP) Other Regulators Signaling kinases (PKN1, MAP3K12, MAP2K1, Chuk/IKKα), phosphatases (PP1), and protein quality control (COPS6, Hspbap1)</p>
+</blockquote>
+<section id="cnidarian-and-marine-invertebrate-ncrna-epigenetics" class="level2">
+<h2 class="anchored" data-anchor-id="cnidarian-and-marine-invertebrate-ncrna-epigenetics">Cnidarian and marine invertebrate ncRNA / epigenetics</h2>
+<p><strong>Praher D., Zimmermann B., Genikhovich G., Columbus-Shenkar Y., Modepalli V., Aharoni R., Moran Y., Technau U.</strong> (2021). Conservation and turnover of miRNAs and their highly complementary targets in early branching animals. <em>Proceedings of the Royal Society B</em>, 288: 20203169. https://doi.org/10.1098/rspb.2020.3169 <em>Critical for your target prediction approach — establishes that anthozoan miRNAs use near-perfect complementarity (plant-like cleavage) rather than seed-only matching, which directly affects how you should interpret miRanda hits in Acropora vs.&nbsp;Pocillopora vs.&nbsp;Porites.</em></p>
+<p><strong>Moran Y., Fredman D., Praher D., Li X.Z., Wee L.M., Rentzsch F., Zamore P.D., Technau U., Seitz H.</strong> (2014). Cnidarian microRNAs frequently regulate targets by cleavage. <em>Genome Research</em>, 24(4): 651–663. https://doi.org/10.1101/gr.162503.113 <em>The foundational Nematostella paper showing cnidarian miRNAs cleave rather than translationally repress — relevant to your degradation-vs-translational-block assumptions.</em></p>
+<p><strong>Liew Y.J., Howells E.J., Wang X., Michell C.T., Burt J.A., Idaghdour Y., Aranda M.</strong> (2020). Intergenerational epigenetic inheritance in reef-building corals. <em>Nature Climate Change</em>, 10: 254–259. https://doi.org/10.1038/s41558-019-0687-2 <em>Best-evidence demonstration that DNA methylation patterns transmit across generations in Stylophora; useful for placing your miRNA-DNMT1 targeting in a transgenerational frame.</em></p>
+<p><strong>Eirin-Lopez J.M., Putnam H.M.</strong> (2019). Marine environmental epigenetics. <em>Annual Review of Marine Science</em>, 11: 335–368. https://doi.org/10.1146/annurev-marine-010318-095114 <em>The canonical review of marine invertebrate epigenetics — covers DNA methylation, histones, and ncRNAs in cnidarians and bivalves. Should be cited in your introduction.</em></p>
+<p><strong>Rodriguez-Casariego J.A., Ladd M.C., Shantz A.A., Lopes C., Cheema M.S., Kim B., Roberts S.B., Fourqurean J.W., Ausio J., Burkepile D.E., Eirin-Lopez J.M.</strong> (2018). Coral epigenetic responses to nutrient stress: Histone H2A.X phosphorylation dynamics and DNA methylation in the staghorn coral <em>Acropora cervicornis</em>. <em>Ecology and Evolution</em>, 8(23): 12193–12207. https://doi.org/10.1002/ece3.4678 <em>Direct evidence of histone-mark dynamics (γH2A.X) and DNA methylation co-regulation in Acropora — supports the multilayered control framing.</em></p>
+<p><strong>Weizman E.N., Levy O.</strong> (2019). The role of chromatin dynamics under global warming response in the symbiotic coral model <em>Aiptasia</em>. <em>Communications Biology</em>, 2: 282. https://doi.org/10.1038/s42003-019-0543-y <em>ATAC-seq + RNA-seq in a cnidarian model under thermal stress — rare functional chromatin work in cnidaria.</em></p>
+<p><strong>Bizuayehu T.T., Babiak I.</strong> (2020). MicroRNA Applications in Marine Biology. <em>Current Molecular Biology Reports</em>, 6: 1–10. https://doi.org/10.1007/s40610-020-00139-8 <em>Concise overview specifically focused on miRNAs in marine non-model systems including cnidarians, bivalves, crustaceans — useful for justifying miRNA studies in corals.</em></p>
+<p><strong>Abo-Al-Ela H.G., Faggio C.</strong> (2021). MicroRNA-mediated stress response in bivalve species. <em>Ecotoxicology and Environmental Safety</em>, 208: 111442. https://doi.org/10.1016/j.ecoenv.2020.111442 <em>Closest-in-spirit review for marine invertebrate miRNA-stress dynamics; bivalves serve as the primary marine invertebrate analog given their better-developed literature.</em></p>
+<p><strong>Suarez-Ulloa V., Gonzalez-Romero R., Eirin-Lopez J.M.</strong> (2015). Environmental epigenetics: A promising venue for developing next-generation pollution biomonitoring tools in marine invertebrates. <em>Marine Pollution Bulletin</em>, 98(1–2): 5–13. https://doi.org/10.1016/j.marpolbul.2015.06.020 <em>Frames the rationale for studying coordinated epigenetic mechanisms (not just one mark) in marine invertebrates.</em></p>
+</section>
+<section id="foundational-epi-mirna-multilayered-control-reviews" class="level2">
+<h2 class="anchored" data-anchor-id="foundational-epi-mirna-multilayered-control-reviews">Foundational epi-miRNA / multilayered control reviews</h2>
+<p><strong>Iorio M.V., Piovan C., Croce C.M.</strong> (2010). Interplay between microRNAs and the epigenetic machinery: An intricate network. <em>Biochimica et Biophysica Acta (BBA) - Gene Regulatory Mechanisms</em>, 1799(10–12): 694–701. https://doi.org/10.1016/j.bbagrm.2010.05.005 <em>The most-cited review introducing the bidirectional miRNA↔︎epigenetic-machinery loop concept. Essential foundational citation.</em></p>
+<p><strong>Yao Q., Chen Y., Zhou X.</strong> (2019). The roles of microRNAs in epigenetic regulation. <em>Current Opinion in Chemical Biology</em>, 51: 11–17. https://doi.org/10.1016/j.cbpa.2019.01.024 <em>More recent, concise synthesis of the epi-miR feedback loop covering DNA methylation, histone marks, AND RNA modifications — directly maps onto the breadth of your figure.</em></p>
+<p><strong>Bottini S., Pratella D., Grandjean V., Repetto E., Trabucchi M.</strong> (2018). Recent computational developments on CLIP-seq data analysis and microRNA targeting implications. <em>Briefings in Bioinformatics</em>, 19(6): 1290–1301. https://doi.org/10.1093/bib/bbx063 <em>Practical reference for evaluating computational miRNA target prediction quality — relevant to interpreting miRanda outputs that drive your figure.</em></p>
+<p><strong>Osella M., Riba A., Testori A., Corà D., Caselle M.</strong> (2014). Interplay of microRNA and epigenetic regulation in the human regulatory network. <em>Frontiers in Genetics</em>, 5: 345. https://doi.org/10.3389/fgene.2014.00345 <em>Network-level analysis showing miRNAs and epigenetic regulators form double-negative feedback loops as bistable switches — useful framing if you want to discuss why the AGO/RISC self-targeting pattern matters.</em></p>
+</section>
+<section id="branch-specific-machinery-dna-methylation" class="level2">
+<h2 class="anchored" data-anchor-id="branch-specific-machinery-dna-methylation">Branch-specific machinery: DNA methylation</h2>
+<p><strong>Karimzadeh M.R., Pourdavoud P., Ehtesham N., Qadbeigi M., Movahedi Asl M., Alani B., Mosallaei M., Pakzad B.</strong> (2021). Regulation of DNA methylation machinery by epi-miRNAs in human cancer: Emerging new targets in cancer therapy. <em>Cancer Gene Therapy</em>, 28(3): 157–174. https://doi.org/10.1038/s41417-020-00210-7 <em>(Already on your radar.) The most comprehensive catalog of miRNAs targeting DNMT1/3A/3B, TETs, MBDs — directly maps to your DNMT1/TET3/MBD1-3 hits.</em></p>
+<p><strong>Fabbri M., Garzon R., Cimmino A., Liu Z., Zanesi N., Callegari E., et al.</strong> (2007). MicroRNA-29 family reverts aberrant methylation in lung cancer by targeting DNA methyltransferases 3A and 3B. <em>Proceedings of the National Academy of Sciences</em>, 104(40): 15805–15810. https://doi.org/10.1073/pnas.0707628104 <em>The seminal experimental demonstration of an epi-miR. Foundational citation for any claim that miRNAs functionally regulate DNMTs.</em></p>
+</section>
+<section id="branch-specific-machinery-histone-modification" class="level2">
+<h2 class="anchored" data-anchor-id="branch-specific-machinery-histone-modification">Branch-specific machinery: Histone modification</h2>
+<p><strong>Wojtas B., Pjanova D., Fendler W., et al.</strong> (2023). MicroRNA-Mediated Regulation of Histone-Modifying Enzymes in Cancer: Mechanisms and Therapeutic Implications. <em>International Journal of Molecular Sciences</em>, 24(21): 15683. https://doi.org/10.3390/ijms242115683 <em>Recent comprehensive coverage of miRNA targeting of HDACs, KDMs, KMTs, KATs, EZH2 — the most direct match to the diversity of histone-modifying machinery in your A. pulchra hits.</em></p>
+</section>
+<section id="branch-specific-machinery-rna-modification-epitranscriptomics" class="level2">
+<h2 class="anchored" data-anchor-id="branch-specific-machinery-rna-modification-epitranscriptomics">Branch-specific machinery: RNA modification (epitranscriptomics)</h2>
+<p><strong>Alarcón C.R., Goodarzi H., Lee H., Liu X., Tavazoie S., Tavazoie S.F.</strong> (2015). HNRNPA2B1 is a mediator of m6A-dependent nuclear RNA processing events. <em>Cell</em>, 162(6): 1299–1308. https://doi.org/10.1016/j.cell.2015.08.011 <em>Establishes the m6A reader HNRNPA2B1 (which is on your A. pulchra hit list!) as a regulator of pri-miRNA processing — creates an explicit feedback loop between RNA modification machinery and miRNA biogenesis itself.</em></p>
+<p><strong>Mei Z., Mou Y., Zhang N., Liu X., He Z., Gu S.</strong> (2023). Emerging mutual regulatory roles between m6A modification and microRNAs. <em>International Journal of Molecular Sciences</em>, 24(1): 773. https://doi.org/10.3390/ijms24010773 <em>Synthesizes the bidirectional miRNA–m6A regulation evidence; relevant for your ALKBH3, HNRNPA2B1, and (by extension) METTL hits.</em></p>
+</section>
+<section id="parp-family-targeting-by-mirnas" class="level2">
+<h2 class="anchored" data-anchor-id="parp-family-targeting-by-mirnas">PARP family targeting by miRNAs</h2>
+<p>The literature is heavily skewed toward PARP1 (which is <em>not</em> in your hit list — your PARPs are 5a/b, 7, 9, 14, 15). Tankyrase-specific miRNA work is sparse, and macro-PARP work is essentially absent. I’m including the PARP1 papers anyway because they establish the methodological template and the regulatory logic that you’d extrapolate to argue for the plausibility of your tankyrase/macro-PARP hits.</p>
+<p><strong>Tankyrase (PARP5a/PARP5b) — directly relevant to your <em>A. pulchra</em> TNKS hits</strong></p>
+<p><strong>Yu D., Guo X., Zhu W., Liu C., Wang B., Cao L.</strong> (2023). MicroRNA-9-1 attenuates influenza A virus replication via targeting tankyrase 1. <em>Journal of Innate Immunity</em>, 15(1): 647–664. https://doi.org/10.1159/000533233 <em>The cleanest experimentally validated tankyrase-miRNA interaction I could find. They identified miR-9-1 via TNKS1 3′-UTR reporter screen, validated direct binding by luciferase, and showed functional consequences (reduced viral replication via TNKS1 knockdown). This is essentially the only direct tankyrase-miRNA paper in the literature — a real gap your work could speak to.</em></p>
+<p><strong>PARP1 (methodological template — not in your hit list, but the regulatory architecture is identical)</strong></p>
+<p><strong>Smith K.C., Lin C., Bayuga T., Gangaram B., Brown C., Maillard P., Sanchez E., et al.</strong> (2017). MicroRNAs modulate oxidative stress in hypertension through PARP-1 regulation. <em>Oxidative Medicine and Cellular Longevity</em>, 2017: 3984280. https://doi.org/10.1155/2017/3984280 <em>miR-103a-2-5p and miR-585-5p both shown to regulate PARP1 via binding within the coding region (not just 3′-UTR), validated by luciferase reporter and overexpression-induced PARP1 knockdown. Useful methodological template if you find your coral miRNAs binding CDS rather than 3′-UTR.</em></p>
+<p><del><strong>Tan M., Cheng Y., Zhong J., Hu B.D., Hu Z.G., Yu H.Y., Li L., Han Q., Su S.A., Wang J., Mou Y., Zhu W., Xu D.L., Xiang M.X.</strong> (2020). Cocaine-regulated microRNA miR-124 controls poly (ADP-ribose) polymerase-1 expression in neuronal cells. <em>Scientific Reports</em>, 10(1): 11235. https://doi.org/10.1038/s41598-020-68214-9 <em>Direct binding of miR-124 to a highly conserved site in the Parp1 3′-UTR; mutation of seed sequences abolished binding. Notably, the binding region overlapped with miR-125b’s site, and the authors performed competition titration assays — useful precedent for arguing that multiple coral miRNAs may compete for the same epi-machinery target.</em></del></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I believe this ^^ is a hallucinated reference – the DOI directs to a different manuscript, and I couldn’t find this paper from an author/title search</p>
+</div>
+</div>
+<p><strong>Dash S., Balasubramaniam M., Dash C., Pandhare J.</strong> (2017). Poly (ADP-ribose) polymerase-1 (PARP-1) induction by cocaine is post-transcriptionally regulated by miR-125b. <em>eNeuro</em>, 4(4): ENEURO.0089-17.2017. https://doi.org/10.1523/ENEURO.0089-17.2017 <em>Companion paper to Tan et al.&nbsp;— luciferase reporter with point mutations, paired knockdown/overexpression. Both this and Tan et al.&nbsp;2020 illustrate the value of pairing in silico prediction with reporter validation.</em></p>
+<p><strong>Lai J., Yang H., Zhu Y., Ruan M., Huang Y., Zhang Q.</strong> (2019). MiR-7-5p-mediated downregulation of PARP1 impacts DNA homologous recombination repair and resistance to doxorubicin in small cell lung cancer. <em>BMC Cancer</em>, 19: 602. https://doi.org/10.1186/s12885-019-5798-7 <em>PARP1 3′-UTR binding sites verified by luciferase + Western blot. Connects miRNA-PARP1 regulation to a functional outcome (DNA damage response). Relevant for arguing the downstream phenotypic significance of the miRNA-PARP regulatory axis.</em></p>
+<p><strong>Hu Y., Liu J., Wang G., et al.</strong> (2021). MiR-124 negatively regulated PARP1 to alleviate renal ischemia-reperfusion injury by inhibiting TNFα/RIP1/RIP3 pathway. <em>International Journal of Biological Sciences</em>, 17(6): 1545–1557. https://doi.org/10.7150/ijbs.58287 <em>In vivo (mouse) + in vitro validation that the miR-124–PARP1 axis controls a stress-response phenotype — illustrates the kind of integrative validation that would strengthen any coral-system argument.</em></p>
+<p>A note on the gap: PARP7/TIPARP, PARP9, PARP14, and PARP15 (all in your <em>A. pulchra</em> hit list) have no published miRNA-mediated regulation studies that I could find. If your data hold up under further filtering, this is genuinely first-of-its-kind evidence and warrants a sentence in your discussion noting the absence of prior work.</p>
+</section>
+<section id="agorisc-self-regulation-experimentally-validated" class="level2">
+<h2 class="anchored" data-anchor-id="agorisc-self-regulation-experimentally-validated">AGO/RISC self-regulation — experimentally validated</h2>
+<p>This is where the strongest, most direct literature lives, and it directly maps onto your ncRNA biogenesis &amp; silencing hits (AGO1/2, TNRC6, LIN28A, KHSRP).</p>
+<p><strong>The keystone paper for this section:</strong></p>
+<p><strong>Su Y., Wu H., Pavlosky A., Zou L.L., Deng X., Zhang Z.X., Jevnikar A.M.</strong> (2020). Uncovering the cellular capacity for intensive and specific feedback self-control of the argonautes and microRNA targeting activity. <em>Nucleic Acids Research</em>, 48(9): 4681–4697. https://doi.org/10.1093/nar/gkaa209 <em>This is the paper to anchor your discussion. Computational + experimental analysis showing AGO1, AGO2, AGO3 are all in the top 0.2% of most-miRNA-targeted mRNAs in the human genome. ANKRD52 (a phosphatase regulator), CSNK1A1 (kinase), and PPP6C (phosphatase) — all components of the AGO phosphorylation cycle — are also in the top 2%. The framing here is exactly what your figure’s “ncRNA biogenesis &amp; silencing” bars suggest: the RISC machinery is densely self-regulated by miRNAs as a homeostatic mechanism.</em></p>
+<p><strong>Dicer auto-regulation by miRNAs (functionally validated)</strong></p>
+<p><strong>Forman J.J., Legesse-Miller A., Coller H.A.</strong> (2008). A search for conserved sequences in coding regions reveals that the let-7 microRNA targets Dicer within its coding sequence. <em>Proceedings of the National Academy of Sciences</em>, 105(39): 14879–14884. https://doi.org/10.1073/pnas.0803230105 <em>The seminal demonstration that let-7 directly targets DICER1 — establishing a direct negative feedback loop in the miRNA biogenesis machinery. Multiple binding sites in Dicer CDS, validated by reporter assays.</em></p>
+<p><strong>Martello G., Rosato A., Ferrari F., Manfrin A., Cordenonsi M., Dupont S., Enzo E., Guzzardo V., Rondina M., Spruce T., Parenti A.R., Daidone M.G., Bicciato S., Piccolo S.</strong> (2010). A microRNA targeting Dicer for metastasis control. <em>Cell</em>, 141(7): 1195–1207. https://doi.org/10.1016/j.cell.2010.05.017 <em>miR-103/107 directly target Dicer 3′-UTR, leading to global miRNA downregulation and EMT. Luciferase reporter + functional in vivo validation. The miR-103/miR-107 family and let-7 family appear to act in parallel on Dicer — a useful example of redundant repressors converging on a single biogenesis-machinery target.</em></p>
+<p><strong>Tang R., Li L., Zhu D., Hou D., Cao T., Gu H., Zhang J., Chen J., Zhang C.Y., Zen K.</strong> (2012). Mouse miRNA-709 directly regulates miRNA-15a/16-1 biogenesis at the posttranscriptional level in the nucleus. <em>Nature Cell Biology</em> / related work; and follow-up: <strong>Tang R. et al.</strong> (2020). MicroRNA-independent modulation of DICER1 expression by hAgo2. <em>Molecular and Cellular Biology</em>, 40(20). https://doi.org/10.1128/MCB.00221-20 <em>Adds another layer: AGO2 itself can suppress DICER1 expression both miRNA-dependently (via let-7 and miR-103/107) and miRNA-independently. Demonstrates how interconnected the self-regulation actually is.</em></p>
+<p><strong>Tokumaru S., Suzuki M., Yamada H., Nagino M., Takahashi T.</strong> (2008). let-7 regulates Dicer expression and constitutes a negative feedback loop. <em>Carcinogenesis</em>, 29(11): 2073–2077. https://doi.org/10.1093/carcin/bgn187 <em>Independent confirmation of the let-7/Dicer negative feedback loop across multiple cancer cell lines.</em></p>
+
+
+</section>
+
+ ]]></description>
+  <category>E5-coral</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2026_04_20_DDE_epimachinery_litreview.html</guid>
+  <pubDate>Mon, 20 Apr 2026 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Deep Dive Expression: completed epigenetic machinery analysis</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -21033,381 +21128,6 @@ font-style: inherit;">TRUE</span>))</span></code></pre></div>
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_05_13_timeseries_multiomic_ML_lit_review.html</guid>
   <pubDate>Tue, 13 May 2025 07:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Timeseries molecular: A.pul, multiomic features to predict expression. Machine learning – Part 4</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_05_12_timeseries_multiomic_ML_4.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-
-<p><a href="https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/code/22.3-Apul-multiomic-machine-learning-byTP.Rmd">Code</a></p>
-<p><a href="https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/code/22.3-Apul-multiomic-machine-learning-byTP.md">Rendered Code</a></p>
-<p>For each of the consistently well-predicted genes identified in <a href="../../../posts/projects/E5_coral/2025_05_08_timeseries_multiomic_ML_3.html">my last post</a>, I plotted thegene’s expression with that of its top 5 most important predictors.</p>
-<section id="plot-expression-of-genes-and-their-predictors" class="level1">
-<h1>10 Plot expression of genes and their predictors</h1>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Put predictor expression in format with samples in columns</span></span>
-<span id="cb1-2">full_pred_counts_t <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">t</span>(full_pred_counts)</span>
-<span id="cb1-3"></span>
-<span id="cb1-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Loop over each feature in the list</span></span>
-<span id="cb1-5"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> (feature <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">names</span>(top_predictors)) {</span>
-<span id="cb1-6">  </span>
-<span id="cb1-7">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Get top 5 predictors for this feature</span></span>
-<span id="cb1-8">  top_df <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> top_predictors[[feature]]</span>
-<span id="cb1-9">  predictors <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> top_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Predictor</span>
-<span id="cb1-10">  </span>
-<span id="cb1-11">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Combine feature and predictors</span></span>
-<span id="cb1-12">  all_genes <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(feature, predictors)</span>
-<span id="cb1-13">  </span>
-<span id="cb1-14">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Check which genes are actually present</span></span>
-<span id="cb1-15">  present_genes <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> all_genes[all_genes <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">rownames</span>(full_pred_counts_t) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|</span> all_genes <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">rownames</span>(vsd_energetic_state_GO)]</span>
-<span id="cb1-16">  </span>
-<span id="cb1-17">  <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> (<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">!</span>(feature <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">rownames</span>(vsd_energetic_state_GO))) {</span>
-<span id="cb1-18">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">warning</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Feature"</span>, feature, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"not found in vsd_energetic_state_GO Skipping..."</span>))</span>
-<span id="cb1-19">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">next</span></span>
-<span id="cb1-20">  }</span>
-<span id="cb1-21"></span>
-<span id="cb1-22">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Extract predictor expression (only those present)</span></span>
-<span id="cb1-23">  predictor_expr <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> full_pred_counts_t[<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">intersect</span>(predictors, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">rownames</span>(full_pred_counts_t)), , drop <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">FALSE</span>] <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">as.data.frame</span>()</span>
-<span id="cb1-24"></span>
-<span id="cb1-25">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Add the feature expression</span></span>
-<span id="cb1-26">  feature_expr <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> vsd_energetic_state_GO[feature, , drop <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">FALSE</span>] <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">as.data.frame</span>()</span>
-<span id="cb1-27">  </span>
-<span id="cb1-28">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Combine into one data frame</span></span>
-<span id="cb1-29">  combined_expr <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">rbind</span>(predictor_expr, feature_expr)</span>
-<span id="cb1-30">  combined_expr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">rownames</span>(combined_expr)</span>
-<span id="cb1-31">  </span>
-<span id="cb1-32">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Convert to long format</span></span>
-<span id="cb1-33">  expr_long <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> combined_expr <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb1-34">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pivot_longer</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>Gene, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">names_to =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Sample"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">values_to =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Expression"</span>)</span>
-<span id="cb1-35">  </span>
-<span id="cb1-36">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Join with sample metadata</span></span>
-<span id="cb1-37">  expr_long <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> expr_long <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb1-38">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">left_join</span>(metadata, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">by =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Sample"</span>)</span>
-<span id="cb1-39">  </span>
-<span id="cb1-40">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Plot, with colonies aggregated by timepoint</span></span>
-<span id="cb1-41">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># p &lt;- ggplot(expr_long, aes(x = interaction(Timepoint), y = Expression, color = Gene, group = Gene)) +</span></span>
-<span id="cb1-42">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#   geom_point(alpha = 0.7) +</span></span>
-<span id="cb1-43">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#   geom_smooth(se = FALSE, method = "loess") +</span></span>
-<span id="cb1-44">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#   labs(title = paste("Expression of", feature, "and Top 5 Predictors"),</span></span>
-<span id="cb1-45">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#        x = "Colony-Timepoint",</span></span>
-<span id="cb1-46">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#        y = "Expression") +</span></span>
-<span id="cb1-47">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#   theme_minimal() +</span></span>
-<span id="cb1-48">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#   theme(axis.text.x = element_text(angle = 45, hjust = 1))</span></span>
-<span id="cb1-49">  </span>
-<span id="cb1-50">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Plot, faceted by colony</span></span>
-<span id="cb1-51">  p <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(expr_long, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> Timepoint, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> Expression, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> Gene, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">group =</span> Gene)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb1-52">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.7</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb1-53">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_smooth</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">se =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"loess"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">linewidth =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.8</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb1-54">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span>ColonyID) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb1-55">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">title =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Expression of"</span>, feature, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"and Top 5 Predictors by Colony"</span>),</span>
-<span id="cb1-56">       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Timepoint"</span>,</span>
-<span id="cb1-57">       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Expression"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb1-58">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb1-59">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">axis.text.x =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">angle =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">45</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">hjust =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>))</span>
-<span id="cb1-60"></span>
-<span id="cb1-61">  </span>
-<span id="cb1-62">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">print</span>(p)</span>
-<span id="cb1-63">}</span></code></pre></div>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-1.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-2.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-3.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-4.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-5.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-6.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-7.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-8.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-9.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-10.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-11.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-12.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-13.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-14.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-15.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-16.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-17.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-18.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-19.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-20.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-21.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-22.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-23.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-24.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-25.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-26.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-27.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-28.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-29.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-30.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-31.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-32.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-33.png" class="img-fluid"><!-- --></p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-34.png" class="img-fluid"><!-- --></p>
-<section id="notes" class="level4">
-<h4 class="anchored" data-anchor-id="notes">Notes</h4>
-<p>This gene stood out to me before because one of its primary predictors is an miRNA.</p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-7.png" class="img-fluid"></p>
-<p>The miRNA Cluster_17173 both putatively binds to FUN_00702 (with several possible binding configurations) and is strongly negatively correlated based on pairwise PCC (PCC = -0.676).</p>
-<p>Cluster_17173 <em>also</em> putatively binds to and is strongly positively a correlated with lncRNA_5655, which is the most highly predictive feature for FUN_007022 expression (several possible binding configurations, PCC = 0.522).</p>
-<p>Cluster_17173 doesn’t match any previously described miRNA (see ShortStack results <a href="https://github.com/urol-e5/timeseries_molecular/blob/main/D-Apul/output/04-Apul-sRNA-discovery-ShortStack/ShortStack_out/Results.txt">here</a>).</p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files/figure-gfm/unnamed-chunk-72-7.png" class="img-fluid"></p>
-<p>This is also a useful sanity check in general, because we see some “highly predicted” genes are actually just invariant. For example, FUN_026128 was well-predicted by just a couple of lncRNA, which was potentially very interesting.</p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files/figure-gfm/unnamed-chunk-72-19.png" class="img-fluid"></p>
-<p>However, upon plotting the expression, we see the gene is just invariant over time, and was “predicted by” other largely invariant features.</p>
-<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/images/22.3-Apul-multiomic-machine-learning-byTP_files_2/unnamed-chunk-73-19.png" class="img-fluid"><!-- --></p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <category>E5-coral</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_05_12_timeseries_multiomic_ML_4.html</guid>
-  <pubDate>Mon, 12 May 2025 07:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
