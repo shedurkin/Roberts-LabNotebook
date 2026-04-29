@@ -1,0 +1,56 @@
+---
+title: "Deep Dive Expression: epimachinery reruns"
+author: "Kathleen Durkin"
+date: "2026-04-28"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+---
+
+I realized two things while writing up the miRNA-epimachinery targeting analyses:
+
+(a) I was reminded that Jill had run an early analysis of ncRNA machinery expression levels across species, but using an extremely limited set of ncRNA/epi-machinery protiens, and
+
+(b) Jill's analysis used a different BLAST e-value threshold when matching ncRNA machinery proteins to coral genes.
+
+Today I addressed both of these discrepancies to maintain consistency in BLAST parameters and epimachinery protein sets throughout the manuscript.
+
+## Adjusting BLAST parameter
+
+First, I re-ran all of the protein BLASTs for my curated ncRNA machinery and Steven/Hollie's epimachinery sets using the same e-value threshold as Jill (1e-40, instead of Steven's less stringent 1e-05).
+
+This reduced matches by \~15% in each of the 3 species.
+
+[Apul ncRNA machinery BLASTp](https://github.com/urol-e5/deep-dive-expression/blob/main/D-Apul/code/34-Apul-ncRNA-machinery-BLAST.md)
+
+[Apul epimachinery BLASTp](https://github.com/urol-e5/deep-dive-expression/blob/main/D-Apul/code/35-Apul-epi-machinery-BLAST.md)
+
+[Peve ncRNA machinery BLASTp](https://github.com/urol-e5/deep-dive-expression/blob/main/E-Peve/code/32-Peve-ncRNA-machinery-BLAST.md)
+
+[Peve epimachinery BLASTp](https://github.com/urol-e5/deep-dive-expression/blob/main/E-Peve/code/33-Peve-epi-machinery-BLAST.md)
+
+[Ptuh ncRNA machinery BLASTp](https://github.com/urol-e5/deep-dive-expression/blob/main/F-Ptuh/code/32-Ptuh-ncRNA-machinery-BLAST.md)
+
+[Ptuh epimachinery BLASTp](https://github.com/urol-e5/deep-dive-expression/blob/main/F-Ptuh/code/33-Ptuh-epi-machinery-BLAST.md)
+
+I then re-ran the search for ncRNA/epimachinery miRNA targets in all three species. There was essentially no change in the final results from this search, which is great!
+
+[Code](https://github.com/urol-e5/deep-dive-expression/blob/main/M-multi-species/code/12-miRNA-epimachinery.md)
+
+## Re-doing ncRNA/epimachinery expression analysis
+
+When Jill originally ran her analysis of ncRNA machinery expression, she used a protein db of just 10 proteins: AGO2, DGCR8, Dicer, DNMT1, DNMT3A, Drosha, Pip5k1a, Piwi, RNase P, and XPO5.
+
+Since then, Steven/Hollie provided a db of epimachinery (proteins involved in dna methylation, histone mods, chromatin remodeling, etc.), and I've curated a more extensive db of protein machinery involved in miRNA/lncRNA biogenisis and function. These are the protein sets used in the epi-miRNA analyses. To maintain consistency I'd like to re-do Jill's expression analyses with these protein sets, since they were curated differently from hers. Also, this will expand the expression analysis to a larger number of epimachinery proteins, which could potentially be useful.
+
+::: callout-note
+Some of Jill's OG proteins didn't come up for me as highly relevant to miRNA/lncRNA biogenesis and function or to general epigenetic function, and are thus not included in the new epimachinery sets. For example, PIWI is relevant to piRNAs – these were discussed at some length in Ashey et al. 2025, but do not feature in the DDE manuscript. Since PIWI is not important to miRNAs or lncRNAs, it is not included in my curated ncRNA machinery set.
+:::
+
+[Code](https://github.com/urol-e5/deep-dive-expression/blob/main/M-multi-species/code/09.1-epimachinery-ncRNA-protein-expression.Rmd.md)
+
+Outputs for the proteins originally targeted by Jill generally match her original analyses – good!
