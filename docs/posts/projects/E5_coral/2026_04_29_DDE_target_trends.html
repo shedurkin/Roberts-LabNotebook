@@ -367,6 +367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
   </ul></li>
+  <li><a href="#plots" id="toc-plots" class="nav-link" data-scroll-target="#plots">Plots</a></li>
   </ul>
 </nav>
     </div>
@@ -517,14 +518,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="summarywrite-up">Summary/write-up</h2>
 <section id="methods" class="level3">
 <h3 class="anchored" data-anchor-id="methods">Methods</h3>
-<p>For each miRNA in each species, I calculated three proportions: the proportion of its binding sites located in the CDS versus UTR regions, the proportion of its UTR-bound sites located in 3’UTR versus 5’UTR, and the proportion of its sites that were positively coexpressed with target mRNAs. To compare these proportions across species, I used Kruskal-Wallis tests followed by pairwise Wilcoxon rank-sum tests with Benjamini-Hochberg false discovery rate (FDR) adjustment; the two global p-values for the region-distribution tests (CDS vs UTR; 3’UTR vs 5’UTR) were additionally FDR-adjusted together. To test whether positive coexpression differed between CDS and UTR sites within each species, we restricted analysis to miRNAs with at least 5 binding sites in both region classes and used paired Wilcoxon signed-rank tests on each miRNA’s per-region proportion-positive</p>
+<p>For each miRNA in each species, I calculated three proportions: the proportion of its binding sites located in the CDS versus UTR regions, the proportion of its UTR-bound sites located in 3’UTR versus 5’UTR, and the proportion of its sites that were positively coexpressed with target mRNAs. To compare these proportions across species, I used Kruskal-Wallis tests followed by pairwise Wilcoxon rank-sum tests with Benjamini-Hochberg false discovery rate (FDR) adjustment. To test whether positive coexpression differed between CDS and UTR sites within each species, we restricted analysis to miRNAs with at least 5 binding sites in both region classes and used paired Wilcoxon signed-rank tests on each miRNA’s per-region proportion-positive</p>
 </section>
 <section id="results" class="level3">
 <h3 class="anchored" data-anchor-id="results">Results</h3>
 <p><strong>The proportion of binding sites located in CDS versus UTR regions differed strongly across species</strong> (Kruskal-Wallis ChiSq = 36.48, df = 2, FDR-adj. p = 2.4 × 10^-8), with <em>A. pulchra miRNAs showing a substantially higher CDS bias</em> than those of either P. evermanni (FDR-adj. p = 6.1 × 10^-7) or P. tuahiniensis (FDR-adj. p = 1.4 × 10⁻⁶), while P. evermanni and P. tuahiniensis miRNAs did not differ from each other (FDR-adjusted p = 0.47). Among UTR-bound sites only, the relative proportion of 3’UTR versus 5’UTR sites did not differ across species (Kruskal-Wallis χ² = 2.29, FDR-adjusted p = 0.32). The <strong>proportion of positively-coexpressed miRNA-target pairs also differed across species</strong> (mean per-miRNA proportion-positive: A. pulchra = 0.68, P. evermanni = 0.49, P. tuahiniensis = 0.53; Kruskal-Wallis χ² = 6.54, df = 2, p = 0.038), with <em>A. pulchra miRNAs trending toward higher proportions</em> than miRNAs of both P. evermanni (FDR-adj. p = 0.059) and P. tuahiniensis (FDR-adj. p = 0.056), while P. evermanni and P. tuahiniensis miRNAs did not differ (FDR-adj. p = 0.67). Within-species paired comparisons across miRNAs that putatively targeted both UTR and CDS regions identified a species-specific pattern. In <strong>P. tuahiniensis</strong>, all 9 miRNAs targeting both regions showed a <strong>higher proportion of positive coexpression in CDS than in UTR targets</strong> (mean prop_pos: CDS = 0.47, UTR = 0.30; Wilcoxon signed-rank V = 45, p = 0.004), whereas in A. pulchra (13 of 26 miRNAs CDS &gt; UTR; CDS = 0.69, UTR = 0.67; p = 0.75) and P. evermanni (4 of 8 miRNAs CDS &gt; UTR; CDS = 0.51, UTR = 0.49; p = 0.64) miRNAs were evenly split with no preferential direction.</p>
-
-
 </section>
+</section>
+<section id="plots" class="level2">
+<h2 class="anchored" data-anchor-id="plots">Plots</h2>
+<p><img src="https://github.com/urol-e5/deep-dive-expression/blob/main/M-multi-species/output/04.2-miRNA-comparison-targets-FE/direction.png?raw=true" class="img-fluid"></p>
+<p><img src="https://github.com/urol-e5/deep-dive-expression/blob/main/M-multi-species/output/04.2-miRNA-comparison-targets-FE/region_distribution.png?raw=true" class="img-fluid"></p>
+<p><img src="https://github.com/urol-e5/deep-dive-expression/blob/main/M-multi-species/output/04.2-miRNA-comparison-targets-FE/paired_CDS_vs_UTR.png?raw=true" class="img-fluid"></p>
+
+
 </section>
 
 </main> <!-- /main -->

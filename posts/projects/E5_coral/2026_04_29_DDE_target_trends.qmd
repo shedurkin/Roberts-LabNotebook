@@ -11,9 +11,9 @@ execute:
 engine: knitr
 ---
 
-A while ago I ran a quick-and dirty ChiSq test of independce on the relationship between miRNA target region (3UTR, 5UTR, CDS) and coexpression direction (pos or neg) and found that, in Ptuh, CDS binding regions were more likely to resultin negative target coexpressoin. 
+A while ago I ran a quick-and dirty ChiSq test of independce on the relationship between miRNA target region (3UTR, 5UTR, CDS) and coexpression direction (pos or neg) and found that, in Ptuh, CDS binding regions were more likely to resultin negative target coexpressoin.
 
-However, I (a) realized that analysis was flawed by a failure to meet test assumptions, and (b) wanted to do some additional testing on the species-region-cor.direction dynamics. While that sounds like a relatively simple task, this ended up taking me *alllll dayyyyy* because I kept trialing different approaches that both answered my questions of interest and were statistically sound and justifiable. The biggest barrier is that the number of targets each miRNA has is highly variable across all species -- some miRNA have >100 targets, some have <5. On top of that, target coexpression is variable within individual miRNAs -- some miRNAs have almost exclusively negatively coexpressed targets, some are almost exclusively positively coexpressed, and some are a mix. So figuring out the best way to evaluate higher-order trends while accurately accounting for thos intricacies was a longish process today. 
+However, I (a) realized that analysis was flawed by a failure to meet test assumptions, and (b) wanted to do some additional testing on the species-region-cor.direction dynamics. While that sounds like a relatively simple task, this ended up taking me *alllll dayyyyy* because I kept trialing different approaches that both answered my questions of interest and were statistically sound and justifiable. The biggest barrier is that the number of targets each miRNA has is highly variable across all species -- some miRNA have \>100 targets, some have \<5. On top of that, target coexpression is variable within individual miRNAs -- some miRNAs have almost exclusively negatively coexpressed targets, some are almost exclusively positively coexpressed, and some are a mix. So figuring out the best way to evaluate higher-order trends while accurately accounting for thos intricacies was a longish process today.
 
 I settled on first summarizing the dataset to individual miRNA's proportion of positive coexpressions, to handle the failed independence assumption -- now, each miRNA constitutes a single observation, and the miRNAs can be considered independent from each other. I then applied the Kruskal-Wallis test, which is essentially the non-parametric equivalent of ANOVA (it's important that the test be non-parametric, since our data is not normally distributed).
 
@@ -26,6 +26,7 @@ The portions discussed here are:
 ### miRNA-level proportion tests
 
 Data prep
+
 ```{r}
 # Format df
 prep <- function(df, sp) {
@@ -75,6 +76,7 @@ mir_props %>%
 ```
 
 Across-species comparisons via Kruskal-Wallis + pairwise Wilcoxon
+
 ```{r}
 
 cat("\n--- Does CDS vs UTR distribution differ across species? ---\n")
@@ -110,12 +112,12 @@ print(pw_pos)
 
 So there IS a significant difference in miRNA proportion of positive target correlations between the CDS and UTR binding regions (Kruskal-Wallis, FDR-adjusted p = 2.395488e-08). **CDS regions are enriched for positively coexpressed targets**, compared to the UTRs. There is not, however, a difference between the two UTR regions (3UTR v 5 UTR) (Kruskal-Wallis, FDR-adjusted p = 3.184918e-01).
 
-There is also an indication that coexpression direction may differ across species (Kruskal-Wasllis, p = 0.038), with Apul miRNAs showing more positive target coexpression, but the trend does not reach significance in FDR-corrected pairwise tests (Wilcoxon rank sum test with cont. correction. Apul-Peve: FDR p = 0.059; Apul-Ptuh: FDR p = 0.056; Peve-Ptuh: FDR p = 0.670). 
-
+There is also an indication that coexpression direction may differ across species (Kruskal-Wasllis, p = 0.038), with Apul miRNAs showing more positive target coexpression, but the trend does not reach significance in FDR-corrected pairwise tests (Wilcoxon rank sum test with cont. correction. Apul-Peve: FDR p = 0.059; Apul-Ptuh: FDR p = 0.056; Peve-Ptuh: FDR p = 0.670).
 
 Within-species paired Wilcoxon
 
 Does direction depend on region (CDS vs collapsed-UTR), within each species?
+
 ```{r}
 # Build per-miRNA, per-region-class proportions (CDS vs UTR-collapsed)
 # Restrict to miRNAs with >= 5 sites in EACH region class for stable proportions
@@ -156,17 +158,24 @@ within_species_paired("Peve")
 within_species_paired("Ptuh")
 ```
 
-Within-species comparisons show that, in Ptuh, target coexpression direction and target binding region are significantly related (paired Wilcoxon, p = 0.0039). In all Ptuh miRNAs that target both CDS and UTR regions, the CDS targets are significantly more frequently *positively* coexpressed. There is no such relationship for Apul (p = 0.745) or Peve (p = 0.641). 
+Within-species comparisons show that, in Ptuh, target coexpression direction and target binding region are significantly related (paired Wilcoxon, p = 0.0039). In all Ptuh miRNAs that target both CDS and UTR regions, the CDS targets are significantly more frequently *positively* coexpressed. There is no such relationship for Apul (p = 0.745) or Peve (p = 0.641).
 
 This is a notable difference from the preliminary chisq test used above, which showed Ptuh CDS targets were more likely to to have *negative correlation*. Tests based on miRNAs' positive proportions show the exact opposite! This difference is likely because the Chisq test, which used raw correlation counts instead of miRNA-level proportions, was dominated by a few miRNA with many many largely-negative targets (e.g., miR-100). We should **discard that Chisq test's results** in favor of this more robust approach.
-
 
 ## Summary/write-up
 
 ### Methods
 
-For each miRNA in each species, I calculated three proportions: the proportion of its binding sites located in the CDS versus UTR regions, the proportion of its UTR-bound sites located in 3'UTR versus 5'UTR, and the proportion of its sites that were positively coexpressed with target mRNAs. To compare these proportions across species, I used Kruskal-Wallis tests followed by pairwise Wilcoxon rank-sum tests with Benjamini-Hochberg false discovery rate (FDR) adjustment; the two global p-values for the region-distribution tests (CDS vs UTR; 3'UTR vs 5'UTR) were additionally FDR-adjusted together. To test whether positive coexpression differed between CDS and UTR sites within each species, we restricted analysis to miRNAs with at least 5 binding sites in both region classes and used paired Wilcoxon signed-rank tests on each miRNA's per-region proportion-positive
+For each miRNA in each species, I calculated three proportions: the proportion of its binding sites located in the CDS versus UTR regions, the proportion of its UTR-bound sites located in 3'UTR versus 5'UTR, and the proportion of its sites that were positively coexpressed with target mRNAs. To compare these proportions across species, I used Kruskal-Wallis tests followed by pairwise Wilcoxon rank-sum tests with Benjamini-Hochberg false discovery rate (FDR) adjustment. To test whether positive coexpression differed between CDS and UTR sites within each species, we restricted analysis to miRNAs with at least 5 binding sites in both region classes and used paired Wilcoxon signed-rank tests on each miRNA's per-region proportion-positive
 
 ### Results
 
-**The proportion of binding sites located in CDS versus UTR regions differed strongly across species** (Kruskal-Wallis ChiSq = 36.48, df = 2, FDR-adj. p = 2.4 × 10^-8), with *A. pulchra miRNAs showing a substantially higher CDS bias* than those of either P. evermanni (FDR-adj. p = 6.1 × 10^-7) or P. tuahiniensis (FDR-adj. p = 1.4 × 10⁻⁶), while P. evermanni and P. tuahiniensis miRNAs did not differ from each other (FDR-adjusted p = 0.47). Among UTR-bound sites only, the relative proportion of 3'UTR versus 5'UTR sites did not differ across species (Kruskal-Wallis χ² = 2.29, FDR-adjusted p = 0.32). The **proportion of positively-coexpressed miRNA-target pairs also differed across species** (mean per-miRNA proportion-positive: A. pulchra = 0.68, P. evermanni = 0.49, P. tuahiniensis = 0.53; Kruskal-Wallis χ² = 6.54, df = 2, p = 0.038), with *A. pulchra miRNAs trending toward higher proportions* than miRNAs of both P. evermanni (FDR-adj. p = 0.059) and P. tuahiniensis (FDR-adj. p = 0.056), while P. evermanni and P. tuahiniensis miRNAs did not differ (FDR-adj. p = 0.67). Within-species paired comparisons across miRNAs that putatively targeted both UTR and CDS regions identified a species-specific pattern. In **P. tuahiniensis**, all 9 miRNAs targeting both regions showed a **higher proportion of positive coexpression in CDS than in UTR targets** (mean prop_pos: CDS = 0.47, UTR = 0.30; Wilcoxon signed-rank V = 45, p = 0.004), whereas in A. pulchra (13 of 26 miRNAs CDS > UTR; CDS = 0.69, UTR = 0.67; p = 0.75) and P. evermanni (4 of 8 miRNAs CDS > UTR; CDS = 0.51, UTR = 0.49; p = 0.64) miRNAs were evenly split with no preferential direction.
+**The proportion of binding sites located in CDS versus UTR regions differed strongly across species** (Kruskal-Wallis ChiSq = 36.48, df = 2, FDR-adj. p = 2.4 × 10\^-8), with *A. pulchra miRNAs showing a substantially higher CDS bias* than those of either P. evermanni (FDR-adj. p = 6.1 × 10\^-7) or P. tuahiniensis (FDR-adj. p = 1.4 × 10⁻⁶), while P. evermanni and P. tuahiniensis miRNAs did not differ from each other (FDR-adjusted p = 0.47). Among UTR-bound sites only, the relative proportion of 3'UTR versus 5'UTR sites did not differ across species (Kruskal-Wallis χ² = 2.29, FDR-adjusted p = 0.32). The **proportion of positively-coexpressed miRNA-target pairs also differed across species** (mean per-miRNA proportion-positive: A. pulchra = 0.68, P. evermanni = 0.49, P. tuahiniensis = 0.53; Kruskal-Wallis χ² = 6.54, df = 2, p = 0.038), with *A. pulchra miRNAs trending toward higher proportions* than miRNAs of both P. evermanni (FDR-adj. p = 0.059) and P. tuahiniensis (FDR-adj. p = 0.056), while P. evermanni and P. tuahiniensis miRNAs did not differ (FDR-adj. p = 0.67). Within-species paired comparisons across miRNAs that putatively targeted both UTR and CDS regions identified a species-specific pattern. In **P. tuahiniensis**, all 9 miRNAs targeting both regions showed a **higher proportion of positive coexpression in CDS than in UTR targets** (mean prop_pos: CDS = 0.47, UTR = 0.30; Wilcoxon signed-rank V = 45, p = 0.004), whereas in A. pulchra (13 of 26 miRNAs CDS \> UTR; CDS = 0.69, UTR = 0.67; p = 0.75) and P. evermanni (4 of 8 miRNAs CDS \> UTR; CDS = 0.51, UTR = 0.49; p = 0.64) miRNAs were evenly split with no preferential direction.
+
+## Plots
+
+![](https://github.com/urol-e5/deep-dive-expression/blob/main/M-multi-species/output/04.2-miRNA-comparison-targets-FE/direction.png?raw=true)
+
+![](https://github.com/urol-e5/deep-dive-expression/blob/main/M-multi-species/output/04.2-miRNA-comparison-targets-FE/region_distribution.png?raw=true)
+
+![](https://github.com/urol-e5/deep-dive-expression/blob/main/M-multi-species/output/04.2-miRNA-comparison-targets-FE/paired_CDS_vs_UTR.png?raw=true)
