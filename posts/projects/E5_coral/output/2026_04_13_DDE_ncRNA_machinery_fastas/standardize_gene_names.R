@@ -31,6 +31,7 @@ desc_to_gene <- tribble(
   
   # ── Heat shock ──
   "Heat shock protein 90",                                     "HSP90",
+  "Heat shock cognate 71 kDa protein",                         "HSPA8",
   
   # ── SWI/SNF chromatin remodeling ──
   "SWI/SNF complex subunit SMARCC2",                           "SMARCC2",
@@ -55,6 +56,12 @@ desc_to_gene <- tribble(
   "DIS3-like exonuclease 1",                                   "DIS3L",
   "DIS3 mitotic control",                                      "DIS3L",
   "Protein DIS3 homolog",                                      "DIS3",
+  "Exosome complex exonuclease RRP44",                         "DIS3",
+  "E3 ubiquitin-protein ligase DZIP3",                         "DZIP3",
+  "Exosome component 4",                                       "EXOSC4",
+  "Exosome complex exonuclease RRP41",                         "EXOSC4",
+  "Exosome complex exonuclease RRP46",                         "EXOSC5",
+  "Exosome component 7",                                       "EXOSC7",
   
   # ── RNA-binding / processing ──
   "RNA-binding protein EWS",                                   "EWSR1",
@@ -155,6 +162,7 @@ desc_to_gene <- tribble(
   "Interferon-inducible.*protein kinase activator A",          "PRKRA",
   "Small RNA 2'-O-methyltransferase",                          "HENMT1",
   "RNA-dependent RNA polymerase",                              "RDRP",
+  "RNA-directed RNA polymerase",                               "RDRP",
   
   # ── CCR4-NOT deadenylation complex ──
   "CCR4-NOT transcription complex subunit 1(?![0-9])",         "CNOT1",
@@ -213,7 +221,7 @@ desc_to_gene <- tribble(
   
   # ── Endoribonuclease ZC3H12A / Regnase ──
   "Ribonuclease ZC3H12A|Endoribonuclease ZC3H12A",           "ZC3H12A",
-  "Zinc finger C3H1 domain-containing",                        "ZFC3H1",
+  "C3H1-type domain-containing protein",                      "ZFC3H1",
   
   # ── tRNA methyltransferase ──
   "tRNA.*methyltransferase TARBP1",                            "TARBP1",
