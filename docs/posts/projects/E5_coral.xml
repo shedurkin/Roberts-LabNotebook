@@ -10,7 +10,31 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Tue, 16 Jun 2026 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 18 Jun 2026 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Timeseries: EN with layers option</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2026_06_18_timeseries_EN_layers.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>One functionality I want when using the EN model is an ability to evaluate the relative-contributions of each epigenetic layer (miRNA, lncRNA, and DNA methylation). However, when all 3 are combined into a single predictor set, I’m concerned that my ability to parse their relative contributions (e.g.,by examining the “type” of stably selected predictors) is unduly influenced by dimensional differences (e.g., having ~15,000 lncRNA predictors v. ~50 miRNAs).</p>
+<p>One option to supplement layer comparisons is to have the model try to predict expression from <em>single layers</em>, e.g., from lncRNAs alone. However, the way the EN script is structured, passing in any empty data (e.g., passing in empty files for the miRNA and methyl fields to use lncRNA as a predictor), breaks the code. For example, the code would try to variance-stabilize the empty methylation set, which would throw an error.</p>
+<p>This should be a pretty simple fix, though, since the only real “break” arises during the data preprocessing, before the three layers are combined into a single predictor set.</p>
+<p>Basically, I added an additional option to the script to specify layers (if desired), then added if statements throughout the data preprocessing, so that an input df was only handled if included. To avoid a major script restructuring, the command will still need to take in all 3 predictor files as input, but only the specified layer will be used (if the specification option is included)</p>
+<p><a href="https://robertslab.github.io/resources/Agentic-Coding-Tools/#five-level-rubric"><img src="https://img.shields.io/badge/AI%20Use-Level%200%20No%20AI%20use-lightgrey" alt="AI Use Level 0: No AI use"></a></p>
+
+
+
+ ]]></description>
+  <category>E5-coral</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2026_06_18_timeseries_EN_layers.html</guid>
+  <pubDate>Thu, 18 Jun 2026 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Timeseries: EN switching in OOF</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -17949,282 +17973,6 @@ Liew, Yi Jin, Didier Zoccola, Yong Li, Eric Tambutté, Alexander A. Venn, Craig 
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_10_23_timeseries_methyl_cors.html</guid>
   <pubDate>Thu, 23 Oct 2025 07:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Timeseries: Notes on ML tools + Emma meeting</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_10_22_timeseries_ML_notes.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-
-<section id="emma-strand-meeting" class="level1">
-<h1>Emma Strand Meeting:</h1>
-<ul>
-<li><p>Elastic net has been good basic start, but doesn’t handle non-linear relationships or context-dependence</p></li>
-<li><p><a href="https://shap.readthedocs.io/en/latest/index.html" class="uri">https://shap.readthedocs.io/en/latest/index.html</a></p></li>
-<li><p>^ Designed to have more inputs with different variables</p></li>
-<li><p>Emma’s biggest worry with elastic net was that it isn’t capturing any interactions among the inputs</p></li>
-<li><p>Agrees we’re strapped on sample size for the really big/complicated analyses</p></li>
-<li><p>What are our questions? Do we want to know what the integrations among layers are? Do we just want to know what feature(s) are most important?</p></li>
-<li><p>Recommends being very purposeful about what we’re trying</p></li>
-<li><p>Elastic net: can be very helpful tool if we know what type of outcome we expect , but maybe not best fit here? Especially with DNA methylation, since we pretty much know it’s not a linear relationship between methylation and expression</p></li>
-<li><p>With epigenetic clock, you already know the relationship , you’re just trying to get the smallest number of features that are still predictive</p></li>
-<li><p>Maybe Elastic net is more of a step 2? Like once we know what features have relationships</p></li>
-<li><p>One way to add non-linearity to Elastic Net would be to throw in inputs that are non-linearized (e.g., with inputs X and Y, add in the input of X*Y). Maybe this could be useful? Like try a bunch of combinations to find the most predictive combination?</p></li>
-<li><p>Maybe I can talk with Steve, volunteer @ URI who’s been working with Shelly, whose been studying ML applications. Emma or Shelley can connect me. He’s super helpful</p></li>
-<li><p>Paper from Steve Volmer (?) using a program, think it’s multi-omic. Trying to predict disease susceptibility from SNPs. But program could still be useful. Could maybe just replace disease susceptibility (numerical score) with expression? <a href="https://www.science.org/doi/10.1126/science.adi3601">Genomic signatures of disease resistance in endangered staghorn corals | Science</a></p></li>
-<li><p>How can we decide how to input the methylation data? Could try median % level at the gene level and methylation density over the gene?</p></li>
-<li><p>Maybe try to figure this out in Elastic Net first. Median % gene methylation, median methylation density. Could then easily compare methylation level v expression and methylation % v expression. Could also try a couple variants with just intronic methylation, exonic methylation, etc.</p></li>
-<li><p>Recommends being really mindful of each step to make sure I don’t have to go back and rerun things. Start at the basic, figure out which type of methylation input to use first (which is most correlated with expression level). Doesn’t necessarily take into account interactions, but can’t keep up with spider webbing from multiple routes. <em>After</em> I have the inputs decided, then can start looking into other models to try.</p></li>
-</ul>
-<p>AI summary:</p>
-<p>Prompt:</p>
-<p>“I have a large multi-omics dataset, which I want to use to do the following: Predict gene expression from input epigenetic features (CpG methylation and/or regional methylation, miRNA expression, lncRNA expression), and/or determine the relative importance of different epigenetic features to determining expression. Please suggest several ML models that might be useful for doing this, or which have been used for similar applications in biology/ecology contexts (provide all sources). For each, please explain the basics of the model, its strengths/limitations, assumptions, etc. Keep in mind my data sets will have multi-colinearity, and I want to account for the possibility of non-linear/context-dependent interactions. I also want to be able to implement the model in either R or command-line.”</p>
-</section>
-<section id="penalized-regression-elastic-net-lasso-ridge" class="level1">
-<h1>1) Penalized regression (Elastic Net / Lasso / Ridge)</h1>
-<p>What it is</p>
-<ul>
-<li>Linear regression with penalties on coefficients (L1 = Lasso, L2 = Ridge, Elastic Net = mixture). Elastic Net is very popular for genomics because it does variable selection and handles correlated predictors better than Lasso alone. <a href="https://academic.oup.com/nar/article/43/12/e79/2902606?utm_source=chatgpt.com" alt="https://academic.oup.com/nar/article/43/12/e79/2902606?utm_source=chatgpt.com"><u>OUP Academic+1</u></a></li>
-</ul>
-<p>Why use it for your data</p>
-<ul>
-<li>Good baseline for continuous gene expression prediction. Handles high-dimensional data (p ≫ n). Elastic Net downweights correlated groups rather than arbitrarily keeping one. Coefficients are directly interpretable as effect sizes.</li>
-</ul>
-<p>Strengths</p>
-<ul>
-<li><p>Fast, well understood, and easy to tune (cross-validated penalty λ, mixing α).</p></li>
-<li><p>Produces sparse model (variable selection), helping identify important CpGs/miRNAs/lncRNAs.</p></li>
-<li><p>Robust to multicollinearity compared to plain OLS.</p></li>
-</ul>
-<p>Limitations/assumptions</p>
-<ul>
-<li><p>Linear model — won't capture complex nonlinear or context-dependent interactions unless you add engineered interaction terms / basis expansions (splines, polynomial features).</p></li>
-<li><p>If many nonlinear interactions are important, performance will be limited.</p></li>
-</ul>
-<p>R / CLI implementations</p>
-<ul>
-<li><p>R: <code>glmnet</code> (very widely used).</p></li>
-<li><p>CLI: you can use Rscript to run glmnet, or Python scikit-learn's ElasticNet if you prefer command line.</p></li>
-</ul>
-<p>Papers: robust meta-analysis and applications of Elastic Net in genomic contexts. <a href="https://academic.oup.com/nar/article/43/12/e79/2902606?utm_source=chatgpt.com" alt="https://academic.oup.com/nar/article/43/12/e79/2902606?utm_source=chatgpt.com"><u>OUP Academic+1</u></a></p>
-<p>When to pick it</p>
-<ul>
-<li>Use it as a first model and for feature selection. Good when you want interpretable coefficients and to reduce dimensionality prior to more complex models.</li>
-</ul>
-</section>
-<section id="random-forests-ranger-ensemble-tree-models" class="level1">
-<h1>2) Random Forests / Ranger (ensemble tree models)</h1>
-<p>What it is</p>
-<ul>
-<li>Ensemble of decision trees (bagging) that averages many bootstrap trees; captures nonlinearities and interactions automatically. Widely used in epigenetics and methylation biomarker discovery. <a href="https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-019-0736-8?utm_source=chatgpt.com" alt="https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-019-0736-8?utm_source=chatgpt.com"><u>BioMed Central+1</u></a></li>
-</ul>
-<p>Why use it for your data</p>
-<ul>
-<li>Handles mixed predictor types, nonlinear relationships, and interactions without explicit feature engineering. Not strongly affected by multicollinearity in terms of predictive power, though variable importance measures can be biased if predictors are correlated.</li>
-</ul>
-<p>Strengths</p>
-<ul>
-<li><p>Good off-the-shelf performance, robust, few hyperparameters.</p></li>
-<li><p>Variable importance (Gini, permutation) gives a sense of feature contributions.</p></li>
-<li><p>R: <code>randomForest</code>, faster <code>ranger</code>; CLI: <code>ranger</code> can be run from command line or via R.</p></li>
-</ul>
-<p>Limitations/assumptions</p>
-<ul>
-<li><p>Interpretation is less direct than linear models.</p></li>
-<li><p>Standard importance metrics can be biased with correlated features; permutation importance or conditional importance methods are preferred.</p></li>
-<li><p>Can overfit if not tuned and if sample size is small relative to noise.</p></li>
-</ul>
-<p>Notes on collinearity &amp; interactions</p>
-<ul>
-<li>RF handles interactions, but if you need <em>reliable</em> ranking among highly correlated CpGs, pair RF with conditional permutation importance or follow up with Elastic Net on RF-selected features. <a href="https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-019-0736-8?utm_source=chatgpt.com" alt="https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-019-0736-8?utm_source=chatgpt.com"><u>BioMed Central</u></a></li>
-</ul>
-</section>
-<section id="gradient-boosting-xgboost-lightgbm-catboost" class="level1">
-<h1>3) Gradient boosting (XGBoost / LightGBM / CatBoost)</h1>
-<p>What it is</p>
-<ul>
-<li>Sequential ensemble of trees built to correct residuals (boosting). Often better accuracy than RF when tuned. Frequently used in multi-omics predictive models. <a href="https://www.sciencedirect.com/science/article/pii/S0888754319309449?utm_source=chatgpt.com" alt="https://www.sciencedirect.com/science/article/pii/S0888754319309449?utm_source=chatgpt.com"><u>ScienceDirect</u></a></li>
-</ul>
-<p>Strengths</p>
-<ul>
-<li><p>Strong predictive performance, handles nonlinearities and interactions.</p></li>
-<li><p>Feature importance, SHAP values available for interpretability.</p></li>
-<li><p>Scales well (LightGBM / XGBoost) and has CLI and R bindings.</p></li>
-</ul>
-<p>Limitations</p>
-<ul>
-<li><p>More hyperparameters to tune (learning rate, tree depth).</p></li>
-<li><p>Like RF, correlated features complicate feature-importance interpretation. Use SHAP and careful conditional analyses.</p></li>
-</ul>
-<p>When to pick</p>
-<ul>
-<li>If you need the best off-the-shelf predictive accuracy and can invest time in tuning. Good candidate if nonlinear/context dependencies are expected.</li>
-</ul>
-</section>
-<section id="bayesian-additive-regression-trees-bart" class="level1">
-<h1>4) Bayesian Additive Regression Trees (BART)</h1>
-<p>What it is</p>
-<ul>
-<li>Bayesian ensemble of trees (sum of trees) that gives probabilistic predictions and naturally regularizes to avoid overfitting. Useful for flexible regression with uncertainty estimates. BART has seen use in regulatory genomics and TF prediction contexts (and more broadly in biology). <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6084568/?utm_source=chatgpt.com" alt="https://pmc.ncbi.nlm.nih.gov/articles/PMC6084568/?utm_source=chatgpt.com"><u>PMC+1</u></a></li>
-</ul>
-<p>Strengths</p>
-<ul>
-<li><p>Captures nonlinearities and interactions without explicit specification.</p></li>
-<li><p>Provides full posterior uncertainty (credible intervals) for predictions and effects.</p></li>
-<li><p>Often performs competitively with boosting while offering principled uncertainty.</p></li>
-</ul>
-<p>Limitations</p>
-<ul>
-<li><p>More computationally intensive than RF/XGBoost.</p></li>
-<li><p>Interpretation is harder; partial dependence and variable inclusion proportions can help.</p></li>
-</ul>
-<p>R implementations</p>
-<ul>
-<li>R packages: <code>BART</code>, <code>dbarts</code>, <code>bartMachine</code> (note license/Java dependency). Good choice when uncertainty quantification matters.</li>
-</ul>
-</section>
-<section id="kernel-methods-gaussian-processes-support-vector-regression-svr" class="level1">
-<h1>5) Kernel methods / Gaussian Processes / Support Vector Regression (SVR)</h1>
-<p>What it is</p>
-<ul>
-<li>Kernel regression (e.g., SVR with radial basis kernel, Gaussian Processes) maps inputs to high-dimensional feature spaces to capture nonlinear relations.</li>
-</ul>
-<p>Strengths</p>
-<ul>
-<li>Powerful for smooth nonlinear relationships and small to moderate datasets. Gaussian Processes give uncertainty estimates and work well when you need calibrated intervals.</li>
-</ul>
-<p>Limitations</p>
-<ul>
-<li>Poor scalability to very large feature spaces (CpG arrays with hundreds of thousands of features) without dimensionality reduction. Kernels can struggle when p ≫ n unless you preselect features or use approximate kernels.</li>
-</ul>
-<p>When to pick</p>
-<ul>
-<li>Useful if you have reduced feature sets (selected CpGs / aggregated regional methylation) and want flexible, probabilistic modeling.</li>
-</ul>
-</section>
-<section id="deep-learning-fully-connected-networks-cnns-resnets-for-methylation-expression" class="level1">
-<h1>6) Deep learning (fully connected networks, CNNs, ResNets for methylation → expression)</h1>
-<p>What it is</p>
-<ul>
-<li>Neural networks (MLPs), convolutional networks (if using sequence or spatially ordered CpGs), and specialized architectures (e.g., DeepMethyGene) trained end-to-end to learn nonlinear mapping from epigenetic features to expression. Recent work shows deep nets can predict expression from methylation patterns. <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-025-06115-2?utm_source=chatgpt.com" alt="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-025-06115-2?utm_source=chatgpt.com"><u>BioMed Central</u></a></li>
-</ul>
-<p>Strengths</p>
-<ul>
-<li><p>Can learn complex, high-order interactions and hierarchical features; CNNs can exploit local genomic structure.</p></li>
-<li><p>Flexible architectures let you combine inputs (miRNA, CpG, lncRNA) in multi-branch models.</p></li>
-</ul>
-<p>Limitations</p>
-<ul>
-<li><p>Data hungry — needs many samples (or strong regularization / transfer learning). Risk of overfitting with limited sample size.</p></li>
-<li><p>Harder to interpret (but can use integrated gradients, DeepLIFT, SHAP for NN).</p></li>
-<li><p>Requires more compute (GPUs helpful).</p></li>
-</ul>
-<p>R / CLI implementations</p>
-<ul>
-<li>R: <code>keras</code> + <code>tensorflow</code> (R interface). CLI: Python <code>tensorflow</code>/<code>pytorch</code> scripts.</li>
-</ul>
-<p>Advice</p>
-<ul>
-<li>If sample size is modest, consider pretraining, transfer learning or using deep models to learn features and then feed them into simpler models.</li>
-</ul>
-</section>
-<section id="multi-omics-integrative-and-multivariate-methods-diablo-mixomics-mofa-multi-view-methods" class="level1">
-<h1>7) Multi-omics integrative and multivariate methods (DIABLO / mixOmics, MOFA, multi-view methods)</h1>
-<p>What it is</p>
-<ul>
-<li>Methods tuned for multi-omics integration: DIABLO (supervised sparse PLS for multi-omics discriminant analysis / prediction and feature selection); MOFA (unsupervised factor analysis for multi-omics latent factors). These identify components/latent factors that combine signals across omics and can be used for downstream regression/prediction. DIABLO has been used for integrating mRNA, miRNA, methylation, proteomics in predictive frameworks. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5687754/?utm_source=chatgpt.com" alt="https://pmc.ncbi.nlm.nih.gov/articles/PMC5687754/?utm_source=chatgpt.com"><u>PMC+1</u></a></li>
-</ul>
-<p>Strengths</p>
-<ul>
-<li><p>Explicitly built to integrate heterogeneous omics and find shared signals and cross-omics associations.</p></li>
-<li><p>DIABLO provides sparse multi-omics signatures and is implemented in <code>mixOmics</code> (R). MOFA gives latent factors useful as inputs to regression or for interpretation.</p></li>
-</ul>
-<p>Limitations</p>
-<ul>
-<li><p>DIABLO is supervised and tends to be used for classification/regression with careful tuning; it assumes linear latent relationships (though can capture nonlinearities via components indirectly).</p></li>
-<li><p>MOFA is unsupervised — useful for exploratory factor discovery but needs a downstream supervised model for prediction.</p></li>
-</ul>
-<p>When to pick</p>
-<ul>
-<li>When you want to combine all your omics coherently and identify cross-modal predictors (e.g., miRNA + CpG factors that jointly explain expression variance). Great for feature reduction before complex models. <a href="https://mixomics.org/mixdiablo/diablo-tcga-case-study/?utm_source=chatgpt.com" alt="https://mixomics.org/mixdiablo/diablo-tcga-case-study/?utm_source=chatgpt.com"><u>mixOmics</u></a></li>
-</ul>
-</section>
-<section id="hybrid-stacked-approaches-and-feature-selection-pipelines" class="level1">
-<h1>8) Hybrid / stacked approaches and feature-selection pipelines</h1>
-<p>Practical strategy (recommended)</p>
-<ul>
-<li><p>Step 1: Preprocess &amp; reduce dimensionality:</p>
-<ul>
-<li><p>For methylation: consider aggregating CpGs to biologically plausible regions (promoters, gene bodies, enhancers) or using principal components / variance filtering / domain knowledge to reduce p.</p></li>
-<li><p>For miRNA/lncRNA: variance/abundance filtering and perhaps correlation clustering.</p></li>
-</ul></li>
-<li><p>Step 2: Baseline models &amp; feature selection:</p>
-<ul>
-<li><p>Fit Elastic Net for a sparse, interpretable baseline.</p></li>
-<li><p>Fit Random Forest / XGBoost for nonlinear baseline and feature importance.</p></li>
-</ul></li>
-<li><p>Step 3: Integrative modeling:</p>
-<ul>
-<li>Use DIABLO or MOFA to create joint components fed to regression/ensemble models.</li>
-</ul></li>
-<li><p>Step 4: Final modeling:</p>
-<ul>
-<li>If sample size is large and you need best predictive accuracy, try XGBoost or a small NN; otherwise BART or RF plus Elastic Net on top of selected features.</li>
-</ul></li>
-<li><p>Step 5: Interpretation:</p>
-<ul>
-<li>Use SHAP values (for tree/boosting) or permutation importance, partial dependence plots, interaction detection (SHAP interaction values), and compare with Elastic Net coefficients.</li>
-</ul></li>
-</ul>
-<p>Why this pipeline helps</p>
-<ul>
-<li>Combines the interpretability of penalized regression with the flexibility of tree/boosting methods, addresses multicollinearity (regularization + aggregation), and gives ways to probe interactions.</li>
-</ul>
-</section>
-<section id="practical-notes-on-multicollinearity-interactions-and-interpretation" class="level1">
-<h1>Practical notes on multicollinearity, interactions, and interpretation</h1>
-<ul>
-<li><p>Multicollinearity: use Elastic Net, or aggregate CpGs into regional summaries, or use dimensionality reduction (PCA, MOFA). For variable ranking from tree models with correlated features, prefer conditional permutation importance or SHAP values and follow up with regression on selected features. <a href="https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-019-0736-8?utm_source=chatgpt.com" alt="https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-019-0736-8?utm_source=chatgpt.com"><u>BioMed Central</u></a></p></li>
-<li><p>Nonlinear/context-dependent interactions: tree ensembles, BART, and neural nets naturally capture them. Use interaction detection tools (H statistic, SHAP interaction values) to highlight important interactions.</p></li>
-<li><p>Interpretability: combine sparse linear models (effect sizes) with model-agnostic explainers (SHAP, partial dependence).</p></li>
-<li><p>Uncertainty: BART and Gaussian Processes provide principled uncertainty; bootstrap or Bayesian methods can give intervals for other models.</p></li>
-</ul>
-</section>
-<section id="implementation-pointers-r-cli-packages-quick-list" class="level1">
-<h1>Implementation pointers &amp; R / CLI packages (quick list)</h1>
-<ul>
-<li><p>Elastic Net: <code>glmnet</code> (R). <a href="https://academic.oup.com/nar/article/43/12/e79/2902606?utm_source=chatgpt.com" alt="https://academic.oup.com/nar/article/43/12/e79/2902606?utm_source=chatgpt.com"><u>OUP Academic</u></a></p></li>
-<li><p>Random Forest: <code>randomForest</code>, <code>ranger</code> (R / CLI). <a href="https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-019-0736-8?utm_source=chatgpt.com" alt="https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-019-0736-8?utm_source=chatgpt.com"><u>BioMed Central</u></a></p></li>
-<li><p>Gradient boosting: <code>xgboost</code>, <code>lightgbm</code>, <code>catboost</code> (R + CLI). <a href="https://www.sciencedirect.com/science/article/pii/S0888754319309449?utm_source=chatgpt.com" alt="https://www.sciencedirect.com/science/article/pii/S0888754319309449?utm_source=chatgpt.com"><u>ScienceDirect</u></a></p></li>
-<li><p>BART: <code>BART</code>, <code>dbarts</code>, <code>bartMachine</code> (R). <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6084568/?utm_source=chatgpt.com" alt="https://pmc.ncbi.nlm.nih.gov/articles/PMC6084568/?utm_source=chatgpt.com"><u>PMC</u></a></p></li>
-<li><p>Deep learning: <code>keras</code>/<code>tensorflow</code> (R interface) or Python <code>tensorflow</code>/<code>pytorch</code>. Example architecture papers: DeepMethyGene for methylation→expression. <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-025-06115-2?utm_source=chatgpt.com" alt="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-025-06115-2?utm_source=chatgpt.com"><u>BioMed Central</u></a></p></li>
-<li><p>Multi-omics integrative: <code>mixOmics</code> (DIABLO), <code>MOFA2</code> (R / python). <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5687754/?utm_source=chatgpt.com" alt="https://pmc.ncbi.nlm.nih.gov/articles/PMC5687754/?utm_source=chatgpt.com"><u>PMC+1</u></a></p></li>
-<li><p>Interpretation: <code>SHAPforxgboost</code> / <code>shapper</code> / <code>iml</code> (R), <code>shap</code> (Python).</p></li>
-<li><p>Pipelines / tuning: <code>caret</code>, <code>tidymodels</code>, <code>mlr3</code> (R).</p></li>
-</ul>
-</section>
-<section id="key-references-start-here" class="level1">
-<h1>Key references (start here)</h1>
-<ul>
-<li><p>mixOmics / DIABLO (multi-omics supervised integration &amp; prediction). <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5687754/?utm_source=chatgpt.com" alt="https://pmc.ncbi.nlm.nih.gov/articles/PMC5687754/?utm_source=chatgpt.com"><u>PMC+1</u></a></p></li>
-<li><p>Elastic Net in genomics/meta-analysis (robust penalized regression). <a href="https://academic.oup.com/nar/article/43/12/e79/2902606?utm_source=chatgpt.com" alt="https://academic.oup.com/nar/article/43/12/e79/2902606?utm_source=chatgpt.com"><u>OUP Academic+1</u></a></p></li>
-<li><p>Random Forest applications to methylation / biomarker modeling. <a href="https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-019-0736-8?utm_source=chatgpt.com" alt="https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-019-0736-8?utm_source=chatgpt.com"><u>BioMed Central+1</u></a></p></li>
-<li><p>DeepMethyGene — example of deep CNN to predict expression from methylation (recent). <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-025-06115-2?utm_source=chatgpt.com" alt="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-025-06115-2?utm_source=chatgpt.com"><u>BioMed Central</u></a></p></li>
-<li><p>BART for genomic inference &amp; TF prediction (Bayesian tree ensemble; uncertainty). <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6084568/?utm_source=chatgpt.com" alt="https://pmc.ncbi.nlm.nih.gov/articles/PMC6084568/?utm_source=chatgpt.com"><u>PMC+1</u></a></p></li>
-</ul>
-
-
-</section>
-
- ]]></description>
-  <category>E5-coral</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2025_10_22_timeseries_ML_notes.html</guid>
-  <pubDate>Wed, 22 Oct 2025 07:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

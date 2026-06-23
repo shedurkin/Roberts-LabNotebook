@@ -1,0 +1,15 @@
+{
+  "hash": "fcb50d56760cfe0213b6f173ff8f8ccd",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Timeseries: EN with layers option\"\nauthor: \"Kathleen Durkin\"\ndate: \"2026-06-18\"\ncategories: [\"E5-coral\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: FALSE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\nOne functionality I want when using the EN model is an ability to evaluate the relative-contributions of each epigenetic layer (miRNA, lncRNA, and DNA methylation). However, when all 3 are combined into a single predictor set, I'm concerned that my ability to parse their relative contributions (e.g.,by examining the \"type\" of stably selected predictors) is unduly influenced by dimensional differences (e.g., having \\~15,000 lncRNA predictors v. \\~50 miRNAs).\n\nOne option to supplement layer comparisons is to have the model try to predict expression from *single layers*, e.g., from lncRNAs alone. However, the way the EN script is structured, passing in any empty data (e.g., passing in empty files for the miRNA and methyl fields to use lncRNA as a predictor), breaks the code. For example, the code would try to variance-stabilize the empty methylation set, which would throw an error.\n\nThis should be a pretty simple fix, though, since the only real \"break\" arises during the data preprocessing, before the three layers are combined into a single predictor set.\n\nBasically, I added an additional option to the script to specify layers (if desired), then added if statements throughout the data preprocessing, so that an input df was only handled if included. To avoid a major script restructuring, the command will still need to take in all 3 predictor files as input, but only the specified layer will be used (if the specification option is included)\n\n<a href=\"https://robertslab.github.io/resources/Agentic-Coding-Tools/#five-level-rubric\"><img src=\"https://img.shields.io/badge/AI%20Use-Level%200%20No%20AI%20use-lightgrey\" alt=\"AI Use Level 0: No AI use\"/></a>\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
