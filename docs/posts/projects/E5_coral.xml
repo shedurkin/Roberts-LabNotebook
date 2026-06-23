@@ -10,7 +10,404 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Mon, 15 Jun 2026 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 16 Jun 2026 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Timeseries: EN switching in OOF</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2026_06_16_timeseries_EN_OOF.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>The current Elastic Net pipeline uses bootstrapping with an 80/20 train/test data split (Monte Carlo CV) to estimate general model performance (how well is a single gene’s expression predicted by the model). The 80/20 split allowed a comparison of model performance by applying a trained model to unseen data, and the bootstrapping accounted for the random split.</p>
+<p><strong>However</strong>, it’s come to my attention that, due to the structure of our data, using a random 80/20 test split is actually permitting leakage, which would be leading to overfitting/inflated estimates of model performance. Our data was collected using a repeated-measures design, in which each colony was sampled 4 times over the course of a year. When randomly splitting this dataset 80/20 its most likely that a given colony’s timepoints will also be split up (i.e., that 3/4 of a colony’s samples will be placed in the training set, and 1 in the test set). This means that, when the model is predicting this held-out timepoint as part of the test set, it’s actually already seen the same colony’s other timepoints during training. Both the methylation (predictor) and the gene expression (response) features will carry strong colony-level signature, because they are intrinsically tied to genotype. This means there’s leakage between training and testing at the colony level, which inflates R^2.</p>
+<p>To fix this, I’ll be replacing the 80/20 train/test split + bootstrapping with something called <strong>leave-one-out cross validation</strong>, with a colony-level split. If I have C colonies (so <img src="https://latex.codecogs.com/png.latex?N%20=%204*C"> total samples), I will perform C fittings. In each, the model will be trained on the data from C-1 colonies, then tested on the single remaining colony’s samples. This way, there is no colony-level leakage between the training and testing datasets. Performance is estimated the same way – an R^2 value calculated by comparing model performance using test data (or “out-of-fold”, since it is produced using the colonies not included in the training fold) to the actual response.</p>
+<p>I also ended up dropping the model feature of doing an initial run, and then re-running on only well-predicted genes (r^2 &gt; threshold). I originally incorporated this because of the high computational intensity required for bootstrapping. If my input gene set was large, it would be extremely intensive/timeconsuming to run the script with an appropriately high bootstrapping reps. Introducing a pre-filter to reduce the number of genes carried forward helped handle that. However, with the leave-one-out approach bootstrapping isn’t as necessary.</p>
+<p>Finally, I also added an option to turn off plotting, and an option to filter to the top n most variable features for both lncRNA and methylation features. This is both statistically defensible, as lowly-variable features are less informative and can produce inflated correlations, and computationally valuable, since it reduces the computational intensity of the run (reduces down from the full ~30,000 feature predictor set). Since there are so few miRNA (~50/species), those are left un-filtered.</p>
+<p><strong>Used Claude Opus 4.8 to help integrate added code into the 26.6 script structure</strong> <a href="https://robertslab.github.io/resources/Agentic-Coding-Tools/#five-level-rubric"><img alt="AI Use Level 2: AI-assisted drafting or coding" src="https://img.shields.io/badge/AI%20Use-Level%202%20Drafting%2FCoding-yellowgreen"></a></p>
+<p>Following the modifications, ran two side-by-side comparisons of the old 26.6 script (EN using Monte Carlo CV + stability selection) against the updated 26.7 (EN using leave-one-out CV + stability selection)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Rscript</span> 26.6-ElasticNet-stability-selection.R <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb1-2"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/26.5-ElasticNet-permutation-sig/SUBSET50_apul_biomin_counts.csv"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb1-3"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/10.1-format-miRNA-counts-updated/Apul_miRNA_counts_formatted_updated.txt"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb1-4"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../../D-Apul/output/31.5-Apul-lncRNA-discovery/lncRNA_counts.clean.filtered.txt"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb1-5"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../../D-Apul/output/40-Apul-Gene-Methylation/Apul-gene-methylation.tsv"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb1-6"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../../M-multi-species/data/rna_metadata.csv"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb1-7"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/26.6-ElasticNet-stability-selection-TEST/Apul"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb1-8"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ACR-225-TP1"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb1-9">0.2 <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\ </span>    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># alpha</span></span>
+<span id="cb1-10"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">10</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\ </span>     <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># bootstrap1_reps</span></span>
+<span id="cb1-11"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">10</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\ </span>     <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># bootstrap2_reps</span></span>
+<span id="cb1-12"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">0.5</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\ </span>    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># r2_threshold</span></span>
+<span id="cb1-13"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">10</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\ </span>     <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># n_subsamples (for stability selection)</span></span>
+<span id="cb1-14"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">4</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\ </span>      <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># n_cores</span></span>
+<span id="cb1-15"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">0.6</span>       <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># pi_thr (for stability selection)</span></span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Rscript</span> 26.7-ElasticNet-stabsel-varfilter-OOF.R <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-2"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/26.5-ElasticNet-permutation-sig/SUBSET50_apul_biomin_counts.csv"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-3"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/10.1-format-miRNA-counts-updated/Apul_miRNA_counts_formatted_updated.txt"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-4"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../../D-Apul/output/31.5-Apul-lncRNA-discovery/lncRNA_counts.clean.filtered.txt"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-5"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../../D-Apul/output/40-Apul-Gene-Methylation/Apul-gene-methylation.tsv"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-6"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../../M-multi-species/data/rna_metadata.csv"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-7"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/26.7-ElasticNet-stabsel-varfilter-OOF-TEST/Apul"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-8"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ACR-225-TP1"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-9">0.2 <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\ </span>    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># alpha</span></span>
+<span id="cb2-10"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">10</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\ </span>     <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># n_subsamples</span></span>
+<span id="cb2-11"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">4</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\ </span>      <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># n_cores</span></span>
+<span id="cb2-12"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">0.6</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\ </span>    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># pi_thr</span></span>
+<span id="cb2-13"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">0</span>         <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># var_filter (0=off)</span></span></code></pre></div>
+</div>
+<p>Note that the input arguments have changed</p>
+<p>26.6 retained and produced outputs for 18 genes post-filter (R^2 &gt; 0.5). That step is removed in 26.7, so all 48 genes were evaluated – only 14/48 had OOF R^2 values above 0.5, which makes sense given the expectation that Monte Carlo CV may inflate performance.</p>
+<p>Per-Gene Comparison (for the 18-gene overlap)</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Gene</th>
+<th>26.6 N_stable</th>
+<th>26.7 N_stable</th>
+<th>OOF R²</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>OG_01317</td>
+<td>67</td>
+<td>59</td>
+<td>0.797</td>
+</tr>
+<tr class="even">
+<td>OG_01117</td>
+<td>64</td>
+<td>57</td>
+<td>0.715</td>
+</tr>
+<tr class="odd">
+<td>OG_00171</td>
+<td>61</td>
+<td>60</td>
+<td>0.733</td>
+</tr>
+<tr class="even">
+<td>OG_13792</td>
+<td>59</td>
+<td>45</td>
+<td>0.690</td>
+</tr>
+<tr class="odd">
+<td>OG_10355</td>
+<td>57</td>
+<td>42</td>
+<td>0.670</td>
+</tr>
+<tr class="even">
+<td>OG_01023</td>
+<td>52</td>
+<td>52</td>
+<td>0.690</td>
+</tr>
+<tr class="odd">
+<td>OG_10523</td>
+<td>50</td>
+<td>47</td>
+<td>0.753</td>
+</tr>
+<tr class="even">
+<td>OG_10516</td>
+<td>45</td>
+<td>41</td>
+<td>0.715</td>
+</tr>
+<tr class="odd">
+<td><strong>OG_00843</strong></td>
+<td>44</td>
+<td>36</td>
+<td><strong>0.391</strong></td>
+</tr>
+<tr class="even">
+<td>OG_01277</td>
+<td>44</td>
+<td>45</td>
+<td>0.700</td>
+</tr>
+<tr class="odd">
+<td>OG_01147</td>
+<td>41</td>
+<td>46</td>
+<td>0.804</td>
+</tr>
+<tr class="even">
+<td>OG_00297</td>
+<td>38</td>
+<td>44</td>
+<td>0.561</td>
+</tr>
+<tr class="odd">
+<td>OG_01155</td>
+<td>38</td>
+<td>46</td>
+<td>0.530</td>
+</tr>
+<tr class="even">
+<td><strong>OG_10509</strong></td>
+<td>38</td>
+<td>50</td>
+<td><strong>0.103</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>OG_10681</strong></td>
+<td>38</td>
+<td>32</td>
+<td><strong>0.309</strong></td>
+</tr>
+<tr class="even">
+<td>OG_00460</td>
+<td>36</td>
+<td>32</td>
+<td>0.584</td>
+</tr>
+<tr class="odd">
+<td>OG_00430</td>
+<td>29</td>
+<td>36</td>
+<td>0.529</td>
+</tr>
+<tr class="even">
+<td><strong>OG_10450</strong></td>
+<td>25</td>
+<td>35</td>
+<td><strong>0.268</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Very similar counts of stable predictors across these genes – good sign of general agreement between the versions! Note, however, that several genes well-predicted by 26.6 (R^2 &gt; 0.5) are actually much worse-performing under 26.7 (low OOF R^2, bolded), suggesting colony-level leakage was previously inflating their prediction.</p>
+<p>Stable Predictor Type Breakdown</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Predictor Type</th>
+<th>26.6 N_stable</th>
+<th>26.6 Unique</th>
+<th>26.6 Genes</th>
+<th>26.7 N_stable</th>
+<th>26.7 Unique</th>
+<th>26.7 Genes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Gene Body Meth</td>
+<td>64</td>
+<td>61</td>
+<td>16</td>
+<td>154</td>
+<td>152</td>
+<td>39</td>
+</tr>
+<tr class="even">
+<td>lncRNA</td>
+<td>758</td>
+<td>683</td>
+<td>18</td>
+<td>1,205</td>
+<td>1,099</td>
+<td>44</td>
+</tr>
+<tr class="odd">
+<td>miRNA</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>26.7 finds more stable associations across all types, because it tests more genes, but the proportions are similar: lncRNA dominates (~88-90% of stable associations), Gene Body Meth ~8-11%, miRNA ~0.4-0.5%.</p>
+<p>Of the 826 predictors that are stably selected in 26.6, 611 (74%) are also stably selected in 26.7. This is also a great sign of concordance! Its also probably deflated due to the small number of subsamples during stability selection (n_subsamples = 10), because predictors near the 0.6 threshold could flip between stable and unstable based on a single run. A normal run with a higher number of subsamples may lead to even greater concordance.</p>
+<p>Finally, compare runtime</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 42%">
+<col style="width: 28%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>26.6</th>
+<th>26.7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Phase 1 (bootstrap / OOF)</td>
+<td>2.96 min</td>
+<td>2.15 min</td>
+</tr>
+<tr class="even">
+<td>Phase 2 (stability selection)</td>
+<td>0.52 min (18 genes)</td>
+<td>1.35 min (48 genes)</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td><strong>3.48 min</strong></td>
+<td><strong>3.50 min</strong></td>
+</tr>
+</tbody>
+</table>
+<p>All-in-all I’m very happy with this! Generally high concordance, with the updated version being less prone t oover-estimation and capable of modeling a higher number of genes, all without a time tradeoff.</p>
+
+
+
+ ]]></description>
+  <category>E5-coral</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2026_06_16_timeseries_EN_OOF.html</guid>
+  <pubDate>Tue, 16 Jun 2026 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Timeseries: Physiology gene sets</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -261,131 +658,6 @@ Zoccola, Didier, Philippe Ganot, Anthony Bertucci, Natacha Caminiti-Segonds, Nat
   <category>E5-coral</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2026_06_15_timeseries_phys_gene_sets.html</guid>
   <pubDate>Mon, 15 Jun 2026 07:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>E5: Lit Review for PhD Chapters</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2026_05_20_dissertation_chapter_litreview.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-
-<p>The final piece of my bypass package is the Dissertation proposal, outlining the additional chapters (on top of the “M.S.” DDE and ceasmaller chapters) that will justify my PhD extension. While I know I’ll be basing the PhD extension off the E5 timeseries data (molecular + phys + environmental), I now need to figure out <em>specifically</em> how I want to frame the chapters. The best way I can think to start wrapping my brain around this is a literature review.</p>
-<p>I generally know that the PhD extension should be much more grounded in our physiology data, rather than wrapped up in the molecular bubble of the DDE work. I think the two most promising routes are:</p>
-<ol type="1">
-<li><p>Coupling of epigenetic features with host phys</p></li>
-<li><p>Host epigenetic features mediate the symbiotic relationship</p></li>
-</ol>
-<p>Keeping in mind that this work will require <em>extremely</em> careful consideration of the timing of the data, since different epigenetic features may operate on different timescales (e.g., )</p>
-<section id="epigenetic-timing-and-seasonal-dynamics" class="level1">
-<h1>Epigenetic timing and seasonal dynamics</h1>
-<section id="dna-methylation" class="level2">
-<h2 class="anchored" data-anchor-id="dna-methylation">DNA methylation</h2>
-<section id="rodríguez-casariego-j.a.-et-al.-2020." class="level3">
-<h3 class="anchored" data-anchor-id="rodríguez-casariego-j.a.-et-al.-2020.">Rodríguez-Casariego J.A. et al.&nbsp;(2020).</h3>
-<p><strong>Genome-Wide DNA Methylation Analysis Reveals a Conserved Epigenetic Response to Seasonal Environmental Variation in the Staghorn Coral Acropora cervicornis. Frontiers in Marine Science 7: 560424. doi: 10.3389/fmars.2020.560424</strong></p>
-<p>Basically,</p>
-<p>Suarez-Ulloa V., Gonzalez-Romero R., Eirin-Lopez J.M. (2015). Environmental epigenetics: A promising venue for developing next-generation pollution biomonitoring tools in marine invertebrates. Marine Pollution Bulletin 98(1-2): 5-13. doi: 10.1016/j.marpolbul.2015.06.020</p>
-<p>Viitaniemi H.M. et al.&nbsp;(2019). Seasonal Variation in Genome-Wide DNA Methylation Patterns and the Onset of Seasonal Timing of Reproduction in Great Tits. Genome Biology and Evolution 11(3): 970–983. doi: 10.1093/gbe/evz044</p>
-<p>Lindner M. et al.&nbsp;(2021). Temporal changes in DNA methylation and RNA expression in a small song bird. BMC Genomics 22: 36. doi: 10.1186/s12864-020-07329-9</p>
-</section>
-</section>
-<section id="ncrna" class="level2">
-<h2 class="anchored" data-anchor-id="ncrna">ncRNA</h2>
-<p>Leung A.K.L. &amp; Sharp P.A. (2010). MicroRNA functions in stress responses. Molecular Cell 40(2): 205-215. doi: 10.1016/j.molcel.2010.09.027</p>
-<p>Ebert M.S. &amp; Sharp P.A. (2012). Roles for microRNAs in conferring robustness to biological processes. Cell 149(3): 515-524. doi: 10.1016/j.cell.2012.04.005</p>
-<p>Baumgarten S. et al.&nbsp;(2018). Evidence for miRNA-mediated modulation of the host transcriptome in cnidarian-dinoflagellate symbiosis. Molecular Ecology 27(2): 403-418. doi: 10.1111/mec.14452 Liew Y.J., Aranda M., Carr A., Baumgarten S., Zoccola D., Tambutté S., Allemand D., Micklem G., Voolstra C.R. (2014). Identification of microRNAs in the coral Stylophora pistillata. PLoS ONE 9: e91101. doi: 10.1371/journal.pone.0091101</p>
-<p>Nanopore long-read RNAseq reveals regulatory mechanisms of thermally variable reef environments promoting heat tolerance of scleractinian coral Pocillopora damicornis. Environmental Pollution (2021). doi: 10.1016/j.envpol.2021.116494</p>
-</section>
-</section>
-<section id="epigenetic-mediation-of-symbiosis" class="level1">
-<h1>Epigenetic mediation of symbiosis</h1>
-<p>Li et al.&nbsp;(2018) found that methylated genes are marked by H3K36me3 and show significant reduction of spurious transcription and transcriptional noise, revealing a role of DNA methylation in maintenance of transcriptional stability in the coral model Aiptasia: Science Li Y. et al.&nbsp;(2018). DNA methylation regulates transcriptional homeostasis of algal endosymbiosis in the coral model Aiptasia. Science Advances 4(8): eaat2142. doi: 10.1126/sciadv.aat2142</p>
-<section id="symbiosis-as-an-mirna-regulated-process" class="level2">
-<h2 class="anchored" data-anchor-id="symbiosis-as-an-mirna-regulated-process">Symbiosis as an miRNA-regulated process:</h2>
-<p>Baumgarten et al.&nbsp;(2018) reported post-transcriptional gene regulation by miRNAs in Aiptasia and showed that both conserved and species-specific miRNAs are differentially expressed in response to endosymbiont infection: Kaust</p>
-<p>Baumgarten S. et al.&nbsp;(2018). Evidence for miRNA-mediated modulation of the host transcriptome in cnidarian-dinoflagellate symbiosis. Molecular Ecology 27(2): 403-418. doi: 10.1111/mec.14452</p>
-<p>Modepalli V. et al.&nbsp;(2018). Evolutionary dynamics of microRNA target sites across vertebrate evolution. PLoS Genetics 14(9): e1007662. doi: 10.1371/journal.pgen.1007662</p>
-</section>
-<section id="hostsymbiont-metabolic-coupling" class="level2">
-<h2 class="anchored" data-anchor-id="hostsymbiont-metabolic-coupling">Host–symbiont metabolic coupling</h2>
-<p>Recent work hypothesizes that host nitrogen assimilation via dipeptide synthesis serves to limit nitrogen availability to Symbiodiniaceae, favoring photosynthate translocation to the host under thermal stress: PLOS</p>
-<p>Huffmyer A.S. et al.&nbsp;(2024). Coral larvae increase nitrogen assimilation to stabilize algal symbiosis and combat bleaching under increased temperature. PLoS Biology 22(11): e3002875. doi: 10.1371/journal.pbio.3002875</p>
-<p>Cui G. et al.&nbsp;(2019). Host-dependent nitrogen recycling as a mechanism of symbiont control in Aiptasia. PLoS Genetics 15(6): e1008189. doi: 10.1371/journal.pgen.1008189</p>
-<p>Cui G. et al.&nbsp;(2022). Nutritional control regulates symbiont proliferation and life history in coral-dinoflagellate symbiosis. BMC Biology 20: 103. doi: 10.1186/s12915-022-01306-2</p>
-<p>Rädecker N., Pogoreutz C., Voolstra C.R., Wiedenmann J., Wild C. (2015). Nitrogen cycling in corals: The key to understanding holobiont functioning? Trends in Microbiology 23(8): 490-497. doi: 10.1016/j.tim.2015.03.008</p>
-<p>Burriesci M.S., Raab T.K., Pringle J.R. (2012). Evidence that glucose is the major transferred metabolite in dinoflagellate-cnidarian symbiosis. Journal of Experimental Biology 215: 3467-3477. doi: 10.1242/jeb.070946</p>
-<p>Davy S.K., Allemand D., Weis V.M. (2012). Cell biology of cnidarian-dinoflagellate symbiosis. Microbiology and Molecular Biology Reviews 76(2): 229-261. doi: 10.1128/MMBR.05014-11</p>
-</section>
-<section id="methods-foundational-mediation-analysis-frameworks" class="level2">
-<h2 class="anchored" data-anchor-id="methods-foundational-mediation-analysis-frameworks">Methods: Foundational mediation analysis frameworks:</h2>
-<p>Baron R.M. &amp; Kenny D.A. (1986). The moderator-mediator variable distinction in social psychological research. Journal of Personality and Social Psychology 51(6): 1173-1182. doi: 10.1037/0022-3514.51.6.1173 — classic citation, ~126,000 citations.</p>
-<p>VanderWeele T.J. (2016). Mediation analysis: A practitioner’s guide. Annual Review of Public Health 37: 17-32. doi: 10.1146/annurev-publhealth-032315-021402</p>
-<p>Tingley D., Yamamoto T., Hirose K., Keele L., Imai K. (2014). mediation: R Package for Causal Mediation Analysis. Journal of Statistical Software 59(5): 1-38. doi: 10.18637/jss.v059.i05</p>
-<p>Imai K., Keele L., Tingley D. (2010). A general approach to causal mediation analysis. Psychological Methods 15(4): 309-334. doi: 10.1037/a0020761</p>
-</section>
-<section id="epigeneticomic-specific-mediation-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="epigeneticomic-specific-mediation-analysis">Epigenetic/omic-specific mediation analysis:</h2>
-<p>Clark-Boucher et al.&nbsp;(2023) compared seven methods for high-dimensional mediation analysis with continuous outcomes through both simulations and analysis of DNA methylation data, providing an R package (hdmed) for their implementation: PubMed Central</p>
-<p>Clark-Boucher D. et al.&nbsp;(2023). Methods for mediation analysis with high-dimensional DNA methylation data: Possible choices and comparisons. PLOS Genetics 19(11): e1011022. doi: 10.1371/journal.pgen.1011022</p>
-<p>Zhang H., Zheng Y., Zhang Z., Gao T., Joyce B., Yoon G., Zhang W., Schwartz J., Just A., Colicino E., Vokonas P., Zhao L., Lv J., Baccarelli A., Hou L., Liu L. (2016). Estimating and testing high-dimensional mediation effects in epigenetic studies. Bioinformatics 32(20): 3150-3154. doi: 10.1093/bioinformatics/btw351 — the HIMA package</p>
-<p>Liu Z. et al.&nbsp;(2022). Large-scale hypothesis testing for causal mediation effects with applications in genome-wide epigenetic studies. Journal of the American Statistical Association 117(537): 67-81. doi: 10.1080/01621459.2021.1914634</p>
-<p>Song Y. et al.&nbsp;(2020). Bayesian shrinkage estimation of high dimensional causal mediation effects in omics studies. Biometrics 76(3): 700-710. doi: 10.1111/biom.13189</p>
-<p>Yang et al.&nbsp;(2025) reviewed causal mediation analysis for integrating exposure, genomic, and phenotype data — a comprehensive overview directly relevant to your chapter design: PubMed Central</p>
-<p>Yang H. et al.&nbsp;(2025). Causal mediation analysis for integrating exposure, genomic, and phenotype data. Annual Review of Statistics and Its Application 12(1): 337-360. doi: 10.1146/annurev-statistics-040522-093248</p>
-<p>Gao Y., Yang H., Fang R., Zhang Y., Goode E.L., Cui Y. (2019). Testing mediation effects in high-dimensional epigenetic studies. Frontiers in Genetics 10: 1195. doi: 10.3389/fgene.2019.01195</p>
-</section>
-<section id="energetic-state-metabolism-and-bleaching-in-corals" class="level2">
-<h2 class="anchored" data-anchor-id="energetic-state-metabolism-and-bleaching-in-corals">Energetic state, metabolism, and bleaching in corals</h2>
-<p>Grottoli A.G., Rodrigues L.J., Palardy J.E. (2006). Heterotrophic plasticity and resilience in bleached corals. Nature 440: 1186-1189. doi: 10.1038/nature04565</p>
-<p>Anthony K.R.N. et al.&nbsp;(2009). Energetics approach to predicting mortality risk from environmental stress: A case study of coral bleaching. Functional Ecology 23(3): 539-550. doi: 10.1111/j.1365-2435.2008.01531.x</p>
-<p>Kenkel C.D. et al.&nbsp;(2013). Diagnostic gene expression biomarkers of coral thermal stress. Molecular Ecology Resources 14(4): 667-678. doi: 10.1111/1755-0998.12218</p>
-<p>Kenkel C.D., Meyer E., Matz M.V. (2013). Gene expression under chronic heat stress in populations of the mustard hill coral (Porites astreoides) from different thermal environments. Molecular Ecology 22(16): 4322-4334. doi: 10.1111/mec.12390</p>
-<p>Lee S.T. et al.&nbsp;(2018). Gene expression analyses during spawning of the reef-building coral Acropora millepora. Coral Reefs 37: 999-1011.</p>
-<p>Hillyer K.E. et al.&nbsp;(2017). Metabolite profiling of symbiont and host during thermal stress and bleaching in the coral Acropora aspera. Coral Reefs 36: 105-118. doi: 10.1007/s00338-016-1508-y</p>
-</section>
-</section>
-<section id="multi-omic-latent-states-predicting-coral-phenotype" class="level1">
-<h1>Multi-omic latent states predicting coral phenotype</h1>
-<p>4A. Multi-omic integration methods — the toolkit Unsupervised factorization:</p>
-<p>Argelaguet et al.&nbsp;(2018) present Multi-Omics Factor Analysis (MOFA), a computational method for discovering principal sources of variation in multi-omics data sets that disentangles axes of heterogeneity shared across multiple modalities and those specific to individual data modalities: nih Argelaguet R. et al.&nbsp;(2018). Multi-Omics Factor Analysis – a framework for unsupervised integration of multi-omics data sets. Molecular Systems Biology 14(6): e8124. doi: 10.15252/msb.20178124 Argelaguet R. et al.&nbsp;(2020). MOFA+: a statistical framework for comprehensive integration of multi-modal single-cell data. Genome Biology 21: 111. doi: 10.1186/s13059-020-02015-1 Lock E.F., Hoadley K.A., Marron J.S., Nobel A.B. (2013). Joint and individual variation explained (JIVE) for integrated analysis of multiple data types. Annals of Applied Statistics 7(1): 523-542. doi: 10.1214/12-AOAS597</p>
-<p>Supervised integration:</p>
-<p>DIABLO (Data Integration Analysis for Biomarker discovery using Latent cOmponents) maximizes the common or correlated information between multiple omics datasets while identifying key omics variables and characterizing disease sub-groups or phenotypes of interest, using Projection to Latent Structure (PLS) models: biorxiv Singh A. et al.&nbsp;(2019). DIABLO: an integrative approach for identifying key molecular drivers from multi-omics assays. Bioinformatics 35(17): 3055-3062. doi: 10.1093/bioinformatics/bty1054 Rohart F., Gautier B., Singh A., Lê Cao K.-A. (2017). mixOmics: An R package for ’omics feature selection and multiple data integration. PLOS Computational Biology 13(11): e1005752. doi: 10.1371/journal.pcbi.1005752 Tenenhaus A. &amp; Tenenhaus M. (2011). Regularized generalized canonical correlation analysis. Psychometrika 76(2): 257-284. doi: 10.1007/s11336-011-9206-8</p>
-<p>Network-based:</p>
-<p>Wang B. et al.&nbsp;(2014). Similarity network fusion for aggregating data types on a genomic scale. Nature Methods 11(3): 333-337. doi: 10.1038/nmeth.2810 Langfelder P. &amp; Horvath S. (2008). WGCNA: an R package for weighted correlation network analysis. BMC Bioinformatics 9: 559. doi: 10.1186/1471-2105-9-559 — you already use this.</p>
-<p>Reviews comparing methods:</p>
-<p>Recent reviews note that multivariate methods include both algorithms specifically designed for omics integration (DIABLO, MOFA and its extensions) and algorithms adapted to the purpose (PLS-DA, MCIA, MFA), increasingly used to provide insights about omics dataset relationships: Springer Cantini L. et al.&nbsp;(2025). Algorithms and tools for data-driven omics integration to achieve multilayer biological insights: a narrative review. Journal of Translational Medicine 23: 432. doi: 10.1186/s12967-025-06446-x Picard M., Scott-Boyer M.P., Bodein A., Périn O., Droit A. (2021). Integration strategies of multi-omics data for machine learning analysis. Computational and Structural Biotechnology Journal 19: 3735-3746. doi: 10.1016/j.csbj.2021.06.030 Reel P.S., Reel S., Pearson E., Trucco E., Jefferson E. (2021). Using machine learning approaches for multi-omics data analysis: A review. Biotechnology Advances 49: 107739. doi: 10.1016/j.biotechadv.2021.107739 Subramanian I., Verma S., Kumar S., Jere A., Anamika K. (2020). Multi-omics Data Integration, Interpretation, and Its Application. Bioinformatics and Biology Insights 14: 1177932219899051. doi: 10.1177/1177932219899051</p>
-<section id="multi-omics-in-coralsmarine-systems" class="level2">
-<h2 class="anchored" data-anchor-id="multi-omics-in-coralsmarine-systems">Multi-omics in corals/marine systems</h2>
-<p>Williams et al.&nbsp;(2021) used network methods to analyze transcriptomic and polar metabolomic data from Montipora capitata, finding gene co-expression networks where the early thermal stress response involves downregulation of growth and DNA replication while signaling and immune response are strongly upregulated: bioRxiv Williams A. et al.&nbsp;(2021). Multi-omic characterization of the thermal stress phenome in the stony coral Montipora capitata. PeerJ 9: e12335. doi: 10.7717/peerj.12335 Williams A. et al.&nbsp;(2021). Metabolomic shifts associated with heat stress in coral holobionts. Science Advances 7(1): eabd4210. doi: 10.1126/sciadv.abd4210 Recent reviews note that every level of omics data is a proxy for holobiont functions, and integration when multiple techniques produce data for the same sample set can provide useful insights into the flow of biological information within the system: Oxford Academic Forrest E.C., Pernice M., Bourne D.G., Bay L.K., Webster N.S. (2024). Multiomics data integration, limitations, and prospects to reveal the metabolic activity of the coral holobiont. FEMS Microbiology Ecology 100(5): fiae058. doi: 10.1093/femsec/fiae058 Bhattacharya (2026) viewed the host coral bleaching response through the lens of multi-omics, supporting the idea that coral bleaching is a multifactorial response that is population-specific under most conditions, with coral ploidy and genotype critical to bleaching sensitivity: Wiley Online Library Bhattacharya D. (2026). The Host Coral Bleaching Response Viewed Through the Lens of Multi-Omics. BioEssays 48(2): e70110. doi: 10.1002/bies.70110</p>
-<p>Gleason L.U., Strand E.L., Hizon B.J., Dowd W.W. (2023). Multi-omics reveals largely distinct transcript- and protein-level responses to the environment in an intertidal mussel. Journal of Experimental Biology 226(15): jeb245962. doi: 10.1242/jeb.245962 Roach T.N.F. et al.&nbsp;(2020). A Multi-Omic Analysis of in situ Coral-Turf Algal Interactions. PNAS 117(24): 13588-13595. doi: 10.1073/pnas.1915455117</p>
-</section>
-<section id="predictive-biomarker-signatures-and-resilience-prediction-in-corals" class="level2">
-<h2 class="anchored" data-anchor-id="predictive-biomarker-signatures-and-resilience-prediction-in-corals">Predictive biomarker signatures and resilience prediction in corals</h2>
-<p>This is where you’ll position the novelty of the chapter — extending established phenotype-prediction work into the integrative multi-omic space:</p>
-<p>Recent work demonstrated that metabolomics from a separate set of validation corals could predict bleaching phenotype with 100% accuracy, with experimental temperature stress inducing phenotype-specific responses that magnified differences between historical bleaching phenotypes: ResearchGate Roach T.N.F. et al.&nbsp;(2021). Metabolomic signatures of coral bleaching history. Nature Ecology &amp; Evolution 5: 495-503. doi: 10.1038/s41559-020-01388-7 Roach et al.&nbsp;(2025) showed metabolomic signatures of parental bleaching phenotype in sperm, eggs, embryos, larvae, and subsequent juvenile corals, providing evidence for biochemical inheritance as a potential mechanism for transgenerational acclimatization: Nature Roach T.N.F. et al.&nbsp;(2025). Intergenerational metabolomic signatures of bleaching resistance in corals. Nature Communications 16: 5829. doi: 10.1038/s41467-025-61102-8 Bay &amp; Palumbi (2014) showed gene expression profiles associated with increased tolerance to high temperatures in coral species — early demonstrations that transcriptomes reflect tolerance: NCBI Bay R.A. &amp; Palumbi S.R. (2014). Multilocus adaptation associated with heat resistance in reef-building corals. Current Biology 24(24): 2952-2956. doi: 10.1016/j.cub.2014.10.044 Kenkel C.D. et al.&nbsp;(2018). Transcriptome predictors of coral survival and growth in a highly variable environment. Ecology and Evolution 8(2): 1-15. doi: 10.1002/ece3.3640 Palumbi S.R., Barshis D.J., Traylor-Knowles N., Bay R.A. (2014). Mechanisms of reef coral resistance to future climate change. Science 344(6186): 895-898. doi: 10.1126/science.1251336 Fuller Z.L. et al.&nbsp;(2020). Population genetics of the coral Acropora millepora: Toward genomic prediction of bleaching. Science 369(6501): eaba4674. doi: 10.1126/science.aba4674</p>
-<p>4D. Inter-individual variation in coral tolerance — phenotype variance to be explained</p>
-<p>Recent work showed that candidate heat adaptive loci revealed by seascape genomics correlate with phenotypic response from conspecific coral colonies to artificial heat stress, with colonies that sustained lower mortality and higher Symbiodiniaceae/chlorophyll concentrations clustering by their genotypes: Nature Selmoni O. et al.&nbsp;(2024). Climate adaptive loci revealed by seascape genomics correlate with phenotypic variation in heat tolerance of the coral Acropora millepora. Scientific Reports 14: 22555. doi: 10.1038/s41598-024-67971-1 Drury C. (2020). Resilience in reef-building corals: The ecological and evolutionary importance of the host response to thermal stress. Molecular Ecology 29(3): 448-465. doi: 10.1111/mec.15337 Howells E.J. et al.&nbsp;(2016). Host adaptation and unexpected symbiont partners enable reef-building corals to tolerate extreme temperatures. Global Change Biology 22(8): 2702-2714. doi: 10.1111/gcb.13250 Drury C., Manzello D., Lirman D. (2017). Genotype and local environment dynamically influence growth, disturbance response and survivorship in the threatened coral, Acropora cervicornis. PLoS ONE 12(3): e0174000. doi: 10.1371/journal.pone.0174000 Quigley K.M., Bay L.K., van Oppen M.J.H. (2020). Genome-wide SNP analysis reveals an increase in adaptive genetic variation through selective breeding of coral. Molecular Ecology 29(12): 2176-2188. doi: 10.1111/mec.15482 Drury C., Caruso C., Quigley K.M. (2022). Selective breeding to enhance the adaptive potential of corals. In: Coral Reef Conservation and Restoration in the Omics Age (pp.&nbsp;71-84). Springer. doi: 10.1007/978-3-031-07055-6_5</p>
-<p>4E. Baseline state predicting future plastic response — the conceptual novelty This is more sparsely populated but provides a foothold:</p>
-<p>Dixon G.B., Bay L.K., Matz M.V. (2014). Bimodal signatures of germline methylation are linked with gene expression plasticity in the coral Acropora millepora. BMC Genomics 15: 1109. doi: 10.1186/1471-2164-15-1109 Dimond J.L. &amp; Roberts S.B. (2020). Convergence of DNA Methylation Profiles of the Reef Coral Porites astreoides in a Novel Environment. Frontiers in Marine Science 6: 792. doi: 10.3389/fmars.2019.00792 Liew Y.J. et al.&nbsp;(2020). Intergenerational epigenetic inheritance in reef-building corals. Nature Climate Change 10: 254-259. doi: 10.1038/s41558-020-0687-2 Bishop D.G. &amp; Whitehead A. (2022). Plasticity, robustness, and resilience in fishes: The phenotypic-genotypic landscape of adaptation. Annual Review of Animal Biosciences 10: 95-117. doi: 10.1146/annurev-animal-013122-104745 — broader-than-corals framing.</p>
-<p>Cross-validation and predictive modeling best practices for small-n omics:</p>
-<p>Hastie T., Tibshirani R., Friedman J. (2009). The Elements of Statistical Learning, Second Edition. Springer. — bible for elastic net, regularization, cross-validation. Varma S. &amp; Simon R. (2006). Bias in error estimation when using cross-validation for model selection. BMC Bioinformatics 7: 91. doi: 10.1186/1471-2105-7-91 — nested CV is essential at small n.&nbsp;Friedman J., Hastie T., Tibshirani R. (2010). Regularization Paths for Generalized Linear Models via Coordinate Descent. Journal of Statistical Software 33(1): 1-22. doi: 10.18637/jss.v033.i01 — glmnet, which you already use.</p>
-<p>Synthesis:</p>
-<p>A few high-level observations now that the literature is assembled: The strongest theoretical foundation is for Chapter 2 (temporal dynamics). Both mechanistic biology (miRNA biogenesis fast, methylation maintenance slow) and statistical methodology (DLMs/DLNMs, DSEMs) are mature. The novelty will be the application in a non-model marine invertebrate where this has not been formally tested — but the conceptual question itself is well-established. The strongest biological foundation is for Chapter 3 (mediation). Li et al.&nbsp;2018 in Aiptasia is the cleanest precedent — methylation regulating symbiosis-related transcription — and the metabolic-coupling literature (Cui, Rädecker, Huffmyer) is rich. The methodological hurdle is mediation analysis at moderate n, and the conceptual hurdle is that the field’s current consensus (Abbott 2024, Guerrero &amp; Bay 2024) is against methylation–expression coupling on physiological timescales. This makes the chapter higher-risk but higher-reward: either you replicate the field’s null (strong contribution) or you find the loci that buck it (publishable in a top journal). The strongest applied/conservation relevance is for Chapter 4 (predictive signatures). The Roach et al.&nbsp;(2021, 2025) metabolomic prediction work, the Selmoni et al.&nbsp;(2024) genomic-prediction work, and the Williams et al.&nbsp;(2021) multi-omics characterization establish that prediction is the active frontier. Your contribution would be extending from single-omic to integrative-omic predictors and from cross-sectional to baseline-predicts-future-response designs. A few caveats worth flagging:</p>
-<p>The Roach et al.&nbsp;metabolomic 100% accuracy result should be interpreted cautiously — small validation sets and possible overfitting are common in coral omics. Any prediction claim in your Chapter 4 needs rigorous out-of-sample validation. The decoupling between methylation and expression (Guerrero &amp; Bay 2024; Abbott 2024) is sufficiently strong that Chapter 3 should frame its hypothesis directionally — predicting that mediation is weaker than miRNA mediation but not absent — rather than assuming a strong methylation→expression pathway. The Huffmyer et al.&nbsp;(2025) seasonal plasticity preprint is essentially the phenotype companion paper to your project. You’ll want to coordinate with that team to ensure your chapters complement rather than duplicate that framing.</p>
-<p>If you’d like, I can next deepen any of these into a focused, chapter-specific lit review (e.g., a more detailed read of the mediation methods comparison, or a comparative methods table for MOFA vs.&nbsp;DIABLO vs.&nbsp;sPLS for your specific sample size), or I can help you start a Zotero collection skeleton organized by chapter. Let me know which would be most useful.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <category>E5-coral</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/E5_coral/2026_05_20_dissertation_chapter_litreview.html</guid>
-  <pubDate>Wed, 20 May 2026 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Deep Dive Expression: miRNA targeting, general trends</title>
