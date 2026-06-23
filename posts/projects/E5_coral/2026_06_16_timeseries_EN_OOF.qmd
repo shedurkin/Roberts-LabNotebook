@@ -18,11 +18,57 @@ The current Elastic Net pipeline uses bootstrapping with an 80/20 train/test dat
 
 To fix this, I'll be replacing the 80/20 train/test split + bootstrapping with something called **leave-one-out cross validation**, with a colony-level split. If I have C colonies (so $N = 4*C$ total samples), I will perform C fittings. In each, the model will be trained on the data from C-1 colonies, then tested on the single remaining colony's samples. This way, there is no colony-level leakage between the training and testing datasets. Performance is estimated the same way -- an R\^2 value calculated by comparing model performance using test data (or "out-of-fold", since it is produced using the colonies not included in the training fold) to the actual response.
 
+The basic code change:
+
+```{r, eval=FALSE}
+X_all <- as.matrix(predictor_features)
+  folds <- unique(colony)
+  genes <- colnames(response_features)
+
+  oof_one_gene <- function(g) {
+    y <- response_features[[g]]
+    pred <- rep(NA_real_, length(y))
+    for (cf in folds) {
+      te <- which(colony == cf); tr <- which(colony != cf)
+      if (length(unique(y[tr])) < 3) next
+      m <- tryCatch(cv.glmnet(X_all[tr, , drop = FALSE], y[tr],
+                              alpha = alpha, nfolds = nfolds_inner),
+                    error = function(e) NULL)
+      if (is.null(m)) next
+      pred[te] <- as.numeric(predict(m, X_all[te, , drop = FALSE], s = "lambda.min"))
+    }
+    ok <- !is.na(pred)
+   
+    r2  <- 1 - sum((y[ok] - pred[ok])^2) / sum((y[ok] - mean(y[ok]))^2)
+    rc  <- suppressWarnings(cor(y[ok], pred[ok]))
+
+```
+
+For each gene, iterate through every unique colony. For each colony, hold out *all* of that colony's samples (all 4 timepoints) as the test set, then fit `cv.glmnet` on the remaining colonies, and predict the held-out colony. The pooled out-of-fold predictions across all colonies produce two R² metrics:
+
+-   **`OOF_R2`** = 1 − SS_res/SS_tot — the standard coefficient of determination. This can go negative, which would the model predicts worse than always guessing the mean.
+
+-   **`OOF_R2_cor`** = cor(obs, pred)² — squared Pearson correlation. This is mostly for comparability with 26.6's bootstrap R² (which was also cor²)
+
 I also ended up dropping the model feature of doing an initial run, and then re-running on only well-predicted genes (r\^2 \> threshold). I originally incorporated this because of the high computational intensity required for bootstrapping. If my input gene set was large, it would be extremely intensive/timeconsuming to run the script with an appropriately high bootstrapping reps. Introducing a pre-filter to reduce the number of genes carried forward helped handle that. However, with the leave-one-out approach bootstrapping isn't as necessary.
 
-Finally, I also added an option to turn off plotting, and an option to filter to the top n most variable features for both lncRNA and methylation features. This is both statistically defensible, as lowly-variable features are less informative and can produce inflated correlations, and computationally valuable, since it reduces the computational intensity of the run (reduces down from the full \~30,000 feature predictor set). Since there are so few miRNA (\~50/species), those are left un-filtered.
+Finally, I also added an option to turn off plotting, and an option to filter to the top n most variable features for both lncRNA and methylation features. This is both statistically defensible, as lowly-variable features are less informative and can produce inflated correlations, and computationally valuable, since it reduces the computational intensity of the run (reduces down from the full \~30,000 feature predictor set). Since there are so few miRNA (\~50/species), those are left un-filtered. If included, filtering will happen after variance stabilization, but *before* scaling (puts all variance at 1).
 
-**Used Claude Opus 4.8 to help integrate added code into the 26.6 script structure**     <a href="https://robertslab.github.io/resources/Agentic-Coding-Tools/#five-level-rubric"><img alt="AI Use Level 2: AI-assisted drafting or coding" src="https://img.shields.io/badge/AI%20Use-Level%202%20Drafting%2FCoding-yellowgreen"></a>
+Basic code:
+
+```{r, eval=FALSE}
+if (var_filter_n > 0) {
+  top_var_rows <- function(mat, n) {
+    if (nrow(mat) <= n) return(mat)
+    v <- apply(mat, 1, var)
+    mat[order(v, decreasing = TRUE)[seq_len(n)], , drop = FALSE]
+  }
+  vsd_lncRNA <- top_var_rows(vsd_lncRNA, var_filter_n)
+  vsd_WGBS   <- top_var_rows(vsd_WGBS,   var_filter_n)
+}
+```
+
+**Used Claude Opus 4.8 to help integrate added code into the 26.6 script structure** <a href="https://robertslab.github.io/resources/Agentic-Coding-Tools/#five-level-rubric"><img src="https://img.shields.io/badge/AI%20Use-Level%202%20Drafting%2FCoding-yellowgreen" alt="AI Use Level 2: AI-assisted drafting or coding"/></a>
 
 Following the modifications, ran two side-by-side comparisons of the old 26.6 script (EN using Monte Carlo CV + stability selection) against the updated 26.7 (EN using leave-one-out CV + stability selection)
 
@@ -57,7 +103,8 @@ Rscript 26.7-ElasticNet-stabsel-varfilter-OOF.R \
 10 \      # n_subsamples
 4 \       # n_cores
 0.6 \     # pi_thr
-0         # var_filter (0=off)
+0 \       # var_filter (0=off)
+0         # plot_enabled (0=off)
 ```
 
 Note that the input arguments have changed

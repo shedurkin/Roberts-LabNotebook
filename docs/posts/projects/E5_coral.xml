@@ -25,169 +25,403 @@
 <p>The current Elastic Net pipeline uses bootstrapping with an 80/20 train/test data split (Monte Carlo CV) to estimate general model performance (how well is a single gene’s expression predicted by the model). The 80/20 split allowed a comparison of model performance by applying a trained model to unseen data, and the bootstrapping accounted for the random split.</p>
 <p><strong>However</strong>, it’s come to my attention that, due to the structure of our data, using a random 80/20 test split is actually permitting leakage, which would be leading to overfitting/inflated estimates of model performance. Our data was collected using a repeated-measures design, in which each colony was sampled 4 times over the course of a year. When randomly splitting this dataset 80/20 its most likely that a given colony’s timepoints will also be split up (i.e., that 3/4 of a colony’s samples will be placed in the training set, and 1 in the test set). This means that, when the model is predicting this held-out timepoint as part of the test set, it’s actually already seen the same colony’s other timepoints during training. Both the methylation (predictor) and the gene expression (response) features will carry strong colony-level signature, because they are intrinsically tied to genotype. This means there’s leakage between training and testing at the colony level, which inflates R^2.</p>
 <p>To fix this, I’ll be replacing the 80/20 train/test split + bootstrapping with something called <strong>leave-one-out cross validation</strong>, with a colony-level split. If I have C colonies (so <img src="https://latex.codecogs.com/png.latex?N%20=%204*C"> total samples), I will perform C fittings. In each, the model will be trained on the data from C-1 colonies, then tested on the single remaining colony’s samples. This way, there is no colony-level leakage between the training and testing datasets. Performance is estimated the same way – an R^2 value calculated by comparing model performance using test data (or “out-of-fold”, since it is produced using the colonies not included in the training fold) to the actual response.</p>
+<p>The basic code change:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">X_all <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.matrix</span>(predictor_features)</span>
+<span id="cb1-2">  folds <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unique</span>(colony)</span>
+<span id="cb1-3">  genes <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">colnames</span>(response_features)</span>
+<span id="cb1-4"></span>
+<span id="cb1-5">  oof_one_gene <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(g) {</span>
+<span id="cb1-6">    y <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> response_features[[g]]</span>
+<span id="cb1-7">    pred <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rep</span>(<span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA_real_</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">length</span>(y))</span>
+<span id="cb1-8">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> (cf <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> folds) {</span>
+<span id="cb1-9">      te <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">which</span>(colony <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> cf); tr <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">which</span>(colony <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!=</span> cf)</span>
+<span id="cb1-10">      <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">length</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unique</span>(y[tr])) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">next</span></span>
+<span id="cb1-11">      m <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tryCatch</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cv.glmnet</span>(X_all[tr, , <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">drop =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>], y[tr],</span>
+<span id="cb1-12">                              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> alpha, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">nfolds =</span> nfolds_inner),</span>
+<span id="cb1-13">                    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">error =</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(e) <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>)</span>
+<span id="cb1-14">      <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">is.null</span>(m)) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">next</span></span>
+<span id="cb1-15">      pred[te] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.numeric</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">predict</span>(m, X_all[te, , <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">drop =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>], <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">s =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lambda.min"</span>))</span>
+<span id="cb1-16">    }</span>
+<span id="cb1-17">    ok <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">is.na</span>(pred)</span>
+<span id="cb1-18">   </span>
+<span id="cb1-19">    r2  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>((y[ok] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> pred[ok])<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>((y[ok] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(y[ok]))<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span>
+<span id="cb1-20">    rc  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">suppressWarnings</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cor</span>(y[ok], pred[ok]))</span></code></pre></div>
+</div>
+<p>For each gene, iterate through every unique colony. For each colony, hold out <em>all</em> of that colony’s samples (all 4 timepoints) as the test set, then fit <code>cv.glmnet</code> on the remaining colonies, and predict the held-out colony. The pooled out-of-fold predictions across all colonies produce two R² metrics:</p>
+<ul>
+<li><p><strong><code>OOF_R2</code></strong> = 1 − SS_res/SS_tot — the standard coefficient of determination. This can go negative, which would the model predicts worse than always guessing the mean.</p></li>
+<li><p><strong><code>OOF_R2_cor</code></strong> = cor(obs, pred)² — squared Pearson correlation. This is mostly for comparability with 26.6’s bootstrap R² (which was also cor²)</p></li>
+</ul>
 <p>I also ended up dropping the model feature of doing an initial run, and then re-running on only well-predicted genes (r^2 &gt; threshold). I originally incorporated this because of the high computational intensity required for bootstrapping. If my input gene set was large, it would be extremely intensive/timeconsuming to run the script with an appropriately high bootstrapping reps. Introducing a pre-filter to reduce the number of genes carried forward helped handle that. However, with the leave-one-out approach bootstrapping isn’t as necessary.</p>
-<p>Finally, I also added an option to turn off plotting, and an option to filter to the top n most variable features for both lncRNA and methylation features. This is both statistically defensible, as lowly-variable features are less informative and can produce inflated correlations, and computationally valuable, since it reduces the computational intensity of the run (reduces down from the full ~30,000 feature predictor set). Since there are so few miRNA (~50/species), those are left un-filtered.</p>
-<p><strong>Used Claude Opus 4.8 to help integrate added code into the 26.6 script structure</strong> <a href="https://robertslab.github.io/resources/Agentic-Coding-Tools/#five-level-rubric"><img alt="AI Use Level 2: AI-assisted drafting or coding" src="https://img.shields.io/badge/AI%20Use-Level%202%20Drafting%2FCoding-yellowgreen"></a></p>
+<p>Finally, I also added an option to turn off plotting, and an option to filter to the top n most variable features for both lncRNA and methylation features. This is both statistically defensible, as lowly-variable features are less informative and can produce inflated correlations, and computationally valuable, since it reduces the computational intensity of the run (reduces down from the full ~30,000 feature predictor set). Since there are so few miRNA (~50/species), those are left un-filtered. If included, filtering will happen after variance stabilization, but <em>before</em> scaling (puts all variance at 1).</p>
+<p>Basic code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (var_filter_n <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) {</span>
+<span id="cb2-2">  top_var_rows <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(mat, n) {</span>
+<span id="cb2-3">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(mat) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;=</span> n) <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(mat)</span>
+<span id="cb2-4">    v <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">apply</span>(mat, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, var)</span>
+<span id="cb2-5">    mat[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">order</span>(v, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">decreasing =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq_len</span>(n)], , drop <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>]</span>
+<span id="cb2-6">  }</span>
+<span id="cb2-7">  vsd_lncRNA <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">top_var_rows</span>(vsd_lncRNA, var_filter_n)</span>
+<span id="cb2-8">  vsd_WGBS   <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">top_var_rows</span>(vsd_WGBS,   var_filter_n)</span>
+<span id="cb2-9">}</span></code></pre></div>
+</div>
+<p><strong>Used Claude Opus 4.8 to help integrate added code into the 26.6 script structure</strong> <a href="https://robertslab.github.io/resources/Agentic-Coding-Tools/#five-level-rubric"><img src="https://img.shields.io/badge/AI%20Use-Level%202%20Drafting%2FCoding-yellowgreen" alt="AI Use Level 2: AI-assisted drafting or coding"></a></p>
 <p>Following the modifications, ran two side-by-side comparisons of the old 26.6 script (EN using Monte Carlo CV + stability selection) against the updated 26.7 (EN using leave-one-out CV + stability selection)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">Rscript</span> 26.6-ElasticNet-stability-selection.R <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\</span></span>
-<span id="cb1-2"><span class="st" style="color: #20794D;
+<span id="cb3-2"><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"../output/26.5-ElasticNet-permutation-sig/SUBSET50_apul_biomin_counts.csv"</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\</span></span>
-<span id="cb1-3"><span class="st" style="color: #20794D;
+<span id="cb3-3"><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"../output/10.1-format-miRNA-counts-updated/Apul_miRNA_counts_formatted_updated.txt"</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\</span></span>
-<span id="cb1-4"><span class="st" style="color: #20794D;
+<span id="cb3-4"><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"../../D-Apul/output/31.5-Apul-lncRNA-discovery/lncRNA_counts.clean.filtered.txt"</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\</span></span>
-<span id="cb1-5"><span class="st" style="color: #20794D;
+<span id="cb3-5"><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"../../D-Apul/output/40-Apul-Gene-Methylation/Apul-gene-methylation.tsv"</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\</span></span>
-<span id="cb1-6"><span class="st" style="color: #20794D;
+<span id="cb3-6"><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"../../M-multi-species/data/rna_metadata.csv"</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\</span></span>
-<span id="cb1-7"><span class="st" style="color: #20794D;
+<span id="cb3-7"><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"../output/26.6-ElasticNet-stability-selection-TEST/Apul"</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\</span></span>
-<span id="cb1-8"><span class="st" style="color: #20794D;
+<span id="cb3-8"><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"ACR-225-TP1"</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\</span></span>
-<span id="cb1-9">0.2 <span class="dt" style="color: #AD0000;
+<span id="cb3-9">0.2 <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\ </span>    <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># alpha</span></span>
-<span id="cb1-10"><span class="ex" style="color: null;
+<span id="cb3-10"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">10</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\ </span>     <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># bootstrap1_reps</span></span>
-<span id="cb1-11"><span class="ex" style="color: null;
+<span id="cb3-11"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">10</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\ </span>     <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># bootstrap2_reps</span></span>
-<span id="cb1-12"><span class="ex" style="color: null;
+<span id="cb3-12"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">0.5</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\ </span>    <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># r2_threshold</span></span>
-<span id="cb1-13"><span class="ex" style="color: null;
+<span id="cb3-13"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">10</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\ </span>     <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># n_subsamples (for stability selection)</span></span>
-<span id="cb1-14"><span class="ex" style="color: null;
+<span id="cb3-14"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">4</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\ </span>      <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># n_cores</span></span>
-<span id="cb1-15"><span class="ex" style="color: null;
+<span id="cb3-15"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">0.6</span>       <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># pi_thr (for stability selection)</span></span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">Rscript</span> 26.7-ElasticNet-stabsel-varfilter-OOF.R <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\</span></span>
-<span id="cb2-2"><span class="st" style="color: #20794D;
+<span id="cb4-2"><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"../output/26.5-ElasticNet-permutation-sig/SUBSET50_apul_biomin_counts.csv"</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\</span></span>
-<span id="cb2-3"><span class="st" style="color: #20794D;
+<span id="cb4-3"><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"../output/10.1-format-miRNA-counts-updated/Apul_miRNA_counts_formatted_updated.txt"</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\</span></span>
-<span id="cb2-4"><span class="st" style="color: #20794D;
+<span id="cb4-4"><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"../../D-Apul/output/31.5-Apul-lncRNA-discovery/lncRNA_counts.clean.filtered.txt"</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\</span></span>
-<span id="cb2-5"><span class="st" style="color: #20794D;
+<span id="cb4-5"><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"../../D-Apul/output/40-Apul-Gene-Methylation/Apul-gene-methylation.tsv"</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\</span></span>
-<span id="cb2-6"><span class="st" style="color: #20794D;
+<span id="cb4-6"><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"../../M-multi-species/data/rna_metadata.csv"</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\</span></span>
-<span id="cb2-7"><span class="st" style="color: #20794D;
+<span id="cb4-7"><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"../output/26.7-ElasticNet-stabsel-varfilter-OOF-TEST/Apul"</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\</span></span>
-<span id="cb2-8"><span class="st" style="color: #20794D;
+<span id="cb4-8"><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"ACR-225-TP1"</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\</span></span>
-<span id="cb2-9">0.2 <span class="dt" style="color: #AD0000;
+<span id="cb4-9">0.2 <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\ </span>    <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># alpha</span></span>
-<span id="cb2-10"><span class="ex" style="color: null;
+<span id="cb4-10"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">10</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\ </span>     <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># n_subsamples</span></span>
-<span id="cb2-11"><span class="ex" style="color: null;
+<span id="cb4-11"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">4</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\ </span>      <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># n_cores</span></span>
-<span id="cb2-12"><span class="ex" style="color: null;
+<span id="cb4-12"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">0.6</span> <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">\ </span>    <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># pi_thr</span></span>
-<span id="cb2-13"><span class="ex" style="color: null;
+<span id="cb4-13"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">0</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\ </span>      <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># var_filter (0=off)</span></span>
+<span id="cb4-14"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">0</span>         <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># var_filter (0=off)</span></span></code></pre></div>
+font-style: inherit;"># plot_enabled (0=off)</span></span></code></pre></div>
 </div>
 <p>Note that the input arguments have changed</p>
 <p>26.6 retained and produced outputs for 18 genes post-filter (R^2 &gt; 0.5). That step is removed in 26.7, so all 48 genes were evaluated – only 14/48 had OOF R^2 values above 0.5, which makes sense given the expectation that Monte Carlo CV may inflate performance.</p>
