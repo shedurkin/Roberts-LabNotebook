@@ -1,0 +1,192 @@
+---
+title: "Timeseries: Physiology gene sets"
+author: "Kathleen Durkin"
+date: "2026-06-15"
+categories: ["E5-coral"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: FALSE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+To get started on additional Chpt 3/4 work, I first need to compile some physiologically relevant gene sets. Several Chpt 3/4 questions involve testing epigenetic $\leftrightarrow$ transcriptomic $\leftrightarrow$ physiological relationships. We have an existing set of host physiology metrics that have been collected, so I now want to focus on isolating relevant transcriptomic and epigenetic subsets for each of those physiological domains.
+
+The host phys metrics we have are:
+
+-   calcification
+
+-   antioxidant capacity
+
+-   respiration
+
+-   biomass
+
+-   protein
+
+We already have a biomineralization gene set compiled and blasted against our 3 study species (details in [timeseries_molecular/M-multi-species/scripts/31.1-biomin-blast.Rmd](https://github.com/urol-e5/timeseries_molecular/blob/main/M-multi-species/scripts/31.1-biomin-blast.Rmd)). This was originally done by Jill, and as far as I can tell the biomineralization gene set was acquired from @scucchia_combined_2021.
+
+Now I want to compile similar gene sets for the other phys domains: antioxidant capacity, respiration, and growth (biomass and protein). I'd also like to compile a set for symbiosis-related genes, since Chpt 4 relates to epigenetics mediating symbiosis.
+
+After some preliminary searching, I wasn't able to manually find pre-compiled comprehensive gene sets for these additional phys domains (unlike the biomin source). **To facilitate the time-intensive task of identifying domain-relevant genes/proteins, I used Claude Opus 4.8.**
+
+Final script: timeseries_molecular/M-multi-species/scripts/35-physiology-gene-sets.py
+
+## Approach
+
+For now, since I want to quickly trial some preliminary analyses, I'll just base gene identification on existing GO annotations performed using a blast of our species' reference against the Uniprot/Swissprot db. In the future, this should be extended or replaced by manual fasta curation and proteome blast (as in DDE) (*much* more time consuming)
+
+To identify domain-relevant genes, two complementary approaches will be used:
+
+(A) Curated members: Canonical genes drawn from the marine-invertebrate / cnidarian-symbiosis literature, each tied to a citation. This is particularly useful for recovering genes whose role is established functionally even when their generic GO terms are uninformative (especially symbiosis).
+(B) GO-term membership: Genes with a domain-**defining** GO term in the reviewed annotation. Terms are chosen to be specific to the process (e.g. antioxidant uses antioxidant/peroxidase/glutathione/redox terms, NOT the broad "response to oxidative stress", which pulls in signalling/apoptosis).
+
+::: callout-note
+## AI usage
+
+Claude Opus 4.8 was used in both curating genes/proteins from the literature and identifying domain-defining GO terms for all 4 of the physiological domains targeted here
+
+<a href="https://robertslab.github.io/resources/Agentic-Coding-Tools/#five-level-rubric"><img alt="AI Use Level 4: Substantial AI contribution" src="https://img.shields.io/badge/AI%20Use-Level%204%20Substantial%20AI%20Contribution-red"></a>
+:::
+
+A gene is included only if it has a reviewed Swiss-Prot best hit (e-value \<= 1e-10) AND qualifies through one or both of the above approaches
+
+To treat the three study species symmetrically, each set is keyed on the **ortholog group** and restricted to **three-way orthologs** (present in Apul, Peve, and Ptua). The A.pulchra functional annotation is used for calling, and the call is then applied to the full ortholog group (note that this assumes that orthology conserves function).
+
+The growth set captures anabolic / protein-biosynthetic capacity (cytoplasmic ribosome biogenesis, translation machinery, TOR signalling; + a tight cell-proliferation core), the canonical molecular correlate of biomass/protein via the growth-rate hypothesis (Elser et al. 2003; Warner 1999). Mitochondrial/organellar translation genes are vetoed to avoid overlap with respiration.
+
+## Respiration
+
+### Curated members
+
+[**ETC complexes\
+**]{.underline}Complex I (NADH:ubiquinone oxidoreductase): Core subunit of respiratory complex I (KEGG_ox)\
+Complex II (succinate dehydrogenase): Succinate dehydrogenase couples TCA to ETC (KEGG_ox)\
+Complex III (cytochrome bc1): Cytochrome bc1 subunit of the respiratory chain (KEGG_ox) \
+Complex IV (cytochrome c oxidase): Soluble carrier between complexes III and IV (KEGG_ox)\
+ATP synthase (complex V): F1Fo-ATP synthase subunit; synthesises ATP from the proton-motive force (KEGG_ox)
+
+[**other\
+**]{.underline}TCA cycle enzymes (\^Citrate synthase(?!-lysine), aconitate hydratase, mitochondrial, Isocitrate dehydrogenase, 2-oxoglutarate dehydrogenase, oxoglutarate dehydrogenase complex, Succinate--CoA ligase, Fumarate hydratase, Malate dehydrogenase mitochondrial, Dihydrolipoyllysine-residue succiny, transferase component of 2-oxoglutarate): Core TCA-cycle enzymes generating reducing equivalents for the ETC (KEGG_tca) \
+Pyruvate dehydrogenase complex (Pyruvate dehydrogenase, Dihydrolipoyllysine-residue acetyltransferase, Dihydrolipoyl dehydrogenase): PDH complex converts pyruvate to acetyl-CoA, feeding the TCA cycle/aerobic respiration (KEGG_tca) \
+ETF-ubiquinone oxidoreductase: Feeds electrons from flavoprotein dehydrogenases to ubiquinone (KEGG_ox)\
+ADP/ATP translocase: Exchanges mitochondrial ATP for cytosolic ADP, sustaining OXPHOS flux (KEGG_ox)
+
+**References:**\
+KEGG oxidative phosphorylation map00190, KEGG citrate (TCA) cycle map00020,
+
+### GO terms
+
+GO:0045333: cellular respiration\
+GO:0009060: aerobic respiration\
+GO:0006119: oxidative phosphorylation\
+GO:0006099: tricarboxylic acid cycle\
+GO:0022904: respiratory electron transport chain\
+GO:0006120: mito ET, NADH to ubiquinone\
+GO:0006121: mito ET, succinate to ubiquinone\
+GO:0006122: mito ET, ubiquinol to cyt c\
+GO:0006123: mito ET, cyt c to oxygen\
+GO:0042775: mito ATP synth coupled ET\
+GO:0008137: NADH dehydrogenase (ubiquinone) activity\
+GO:0004129: cytochrome-c oxidase activity\
+GO:0046933: proton-transporting ATP synthase activity\
+GO:0015980: energy derivation by oxidation
+
+## Antioxidant capacity
+
+### Curated members
+
+[**ROS detoxification**\
+]{.underline}Superoxide dismutase: SOD dismutes superoxide to H2O2; front-line antioxidant @downs_oxidative_2002 \
+Catalase: Catalase decomposes H2O2; core antioxidant @downs_oxidative_2002 \
+Glutathione peroxidase: GPx reduces peroxides using glutathione @lesser_oxidative_2006 \
+Peroxiredoxin: Thioredoxin-linked peroxidase, abundant under oxidative stress @lesser_oxidative_2006 \
+Peroxidases (Peroxidasin, Glutathione peroxidase, Thioredoxin peroxidase, Ascorbate peroxidase: Additional peroxidase scavenging activity @lesser_oxidative_2006 \
+Superoxide dismutase copper chaperone: Delivers copper to Cu/Zn-SOD @lesser_oxidative_2006
+
+[**thiol-redox**]{.underline}\
+Thioredoxin/reductase: Maintains thiol-redox balance; recycles peroxiredoxins @lesser_oxidative_2006 \
+Glutaredoxin: Glutathione-dependent thiol oxidoreductase @lesser_oxidative_2006 \
+Sulfiredoxin: Regenerates hyperoxidised peroxiredoxins @lesser_oxidative_2006
+
+[**glutathione system**\
+]{.underline}Glutathione reductase: Regenerates reduced glutathione, sustaining antioxidant capacity @lesser_oxidative_2006 \
+Glutathione synthesis: Sets the cellular GSH pool underlying total antioxidant capacity @lesser_oxidative_2006
+
+[**conjugation/detox\
+**]{.underline}Glutathione S-transferase: Conjugates GSH to oxidised products @lesser_oxidative_2006
+
+[**other\
+**]{.underline}Heme oxygenase: HO-1 is a cytoprotective, oxidative-stress-induced antioxidant enzyme @lesser_oxidative_2006 \
+Glucose-6-phosphate dehydrogenase: Supplies NADPH that regenerates glutathione/thioredoxin antioxidant systems @lesser_oxidative_2006 \
+Methionine sulfoxide reductase: Repairs oxidised methionine residues @lesser_oxidative_2006 \
+Ferritin: Sequesters iron, limiting Fenton-reaction ROS generation @lesser_oxidative_2006
+
+**References:**
+
+### GO terms
+
+GO:0016209: antioxidant activity\
+GO:0004601: peroxidase activity\
+GO:0004784: superoxide dismutase activity\
+GO:0042744: hydrogen peroxide catabolic process\
+GO:0006749: glutathione metabolic process\
+GO:0045454: cell redox homeostasis\
+GO:0004362: glutathione-disulfide reductase activity\
+GO:0004602: glutathione peroxidase activity\
+GO:0098869: cellular oxidant detoxification\
+GO:0008379: thioredoxin peroxidase activity\
+GO:0032928: regulation of superoxide metabolic process
+
+## Growth (Biomass + Protein)
+
+### Curated members
+
+TOR pathway (Serine/threonine-protein kinase (mTOR\|TOR), Target of rapamycin, Regulatory-associated protein of mTOR, Rapamycin-insensitive companion, Ribosomal protein S6 kinase, Eukaryotic translation initiation factor 4E-binding): TOR-pathway regulator linking nutrient status to ribosome biogenesis and cap-dependent translation; master controller of cell growth/anabolism @saxton_mtor_2017 \
+Ribosomal protein (cytoplasmic): Cytoplasmic ribosomal protein; ribosome content is the canonical molecular correlate of biomass/protein growth rate (growth-rate hypothesis) @warner_economics_1999 \
+Ribosome biogenesis / rRNA processing: Ribosome-biogenesis / rRNA-processing factor; ribosome production sets anabolic capacity @warner_economics_1999 \
+Translation initiation factor: Cytoplasmic translation initiation factor (eIF); rate-controlling for protein synthesis @sonenberg_regulation_2009 \
+Translation elongation factor: Cytoplasmic translation elongation / release factor (eEF1/eEF2) @sonenberg_regulation_2009 \
+Aminoacyl-tRNA synthetase: Aminoacyl-tRNA synthetase charges tRNAs for protein synthesis\
+Replication licensing (MCM) / PCNA: DNA-replication / proliferation marker (PCNA, MCM2-7); proxy for the cell-division contribution to tissue biomass @malumbres_cell_2009 \
+Cell-cycle cyclin: Cell-cycle (A/B/D/E) cyclin driving cell-division progression @malumbres_cell_2009 \
+Cell-cycle CDK: Cell-cycle cyclin-dependent kinase (CDK1/2/4/6) @malumbres_cell_2009
+
+### GO terms
+
+GO:0042254: ribosome biogenesis\
+GO:0006364: rRNA processing","high"),\
+GO:0003735: structural constituent of ribosome\
+GO:0002181: cytoplasmic translation\
+GO:0006412: translation\
+GO:0006413: translational initiation\
+GO:0006414: translational elongation\
+GO:0006418: tRNA aminoacylation for translation\
+GO:0004812: aminoacyl-tRNA ligase activity\
+GO:0031929: TOR signaling
+
+## Symbiosis
+
+### Curated members
+
+Ammonium transporter / Rhesus: Host ammonium/Rh transporters mediate symbiotic nitrogen exchange @pernice_single-cell_2012 \
+Glutamine synthetase: GS assimilates ammonium into glutamine; central to host control of symbiont N. @cui_host-dependent_2019 \
+Glutamate dehydrogenase: GDH interconverts glutamate/2-oxoglutarate+ammonium in symbiotic N recycling @cui_host-dependent_2019 \
+Glutamate synthase (GOGAT): GOGAT completes the GS/GOGAT ammonium-assimilation cycle @cui_host-dependent_2019 \
+NPC1/NPC2 sterol transporter: Niemann-Pick C proteins mediate host-symbiont sterol transfer @hambleton_sterol_2019 \
+Oxysterol-binding protein: Sterol-binding/transfer proteins implicated in symbiotic lipid trafficking @dani_expression_2017 \
+Carbonic anhydrase: Interconverts CO2/HCO3- to supply inorganic carbon for symbiont photosynthesis (overlaps biomin) @bertucci_carbonic_2013 \
+Bicarbonate / anion transporter: Bicarbonate transporters (SLC4 family) deliver DIC to the symbiont @zoccola_bicarbonate_2015 \
+V-type proton ATPase: Acidifies the symbiosome to concentrate carbon for photosynthesis @barott_coral_2015 \
+Facilitated glucose transporter: Candidate conduit for translocated photosynthate (glucose) @sproles_phylogenetic_2018 \
+Aquaporin / aquaglyceroporin: Aquaglyceroporins implicated in glycerol/water/DIC exchange in the symbiosis @sproles_phylogenetic_2018 \
+Mannose / C-type lectin receptor: Host lectins recognise symbiont surface glycans @wood-charlson_lectinglycan_2006 \
+Tachylectin / ficolin / fucolectin: Carbohydrate-recognition lectins implicated in symbiont uptake/winnowing @kvennefors_ancient_2008 \
+Symbiosome Rab GTPase (Rab5/7/11): Rab5/7/11 localise to the symbiosome and regulate its biogenesis @chen_molecular_2003 @chen_molecular_2004 @chen_aprab11_2005
+
+### GO terms
+
+GO:0072488: ammonium transmembrane transport\
+GO:0015696: ammonium transport

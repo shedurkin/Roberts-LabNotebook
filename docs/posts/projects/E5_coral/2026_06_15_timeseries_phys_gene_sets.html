@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Kathleen Durkin">
+<meta name="dcterms.date" content="2026-06-15">
+
+<title>Timeseries: Physiology gene sets – Kathleen’s Lab Notebook</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-b515dea5baab39ffcfcd4bae179e3bdb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-195886546b2eb1f67ede645fd062ce19.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-b515dea5baab39ffcfcd4bae179e3bdb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Kathleen’s Lab Notebook</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../daily_log.html"> 
+<span class="menu-text">Daily Notebook Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/shedurkin"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:kdurkin1@uw.edu"> <i class="bi bi-envelope" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Timeseries: Physiology gene sets</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">E5-coral</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page-left">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Kathleen Durkin </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 15, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#approach" id="toc-approach" class="nav-link active" data-scroll-target="#approach">Approach</a></li>
+  <li><a href="#respiration" id="toc-respiration" class="nav-link" data-scroll-target="#respiration">Respiration</a>
+  <ul class="collapse">
+  <li><a href="#curated-members" id="toc-curated-members" class="nav-link" data-scroll-target="#curated-members">Curated members</a></li>
+  <li><a href="#go-terms" id="toc-go-terms" class="nav-link" data-scroll-target="#go-terms">GO terms</a></li>
+  </ul></li>
+  <li><a href="#antioxidant-capacity" id="toc-antioxidant-capacity" class="nav-link" data-scroll-target="#antioxidant-capacity">Antioxidant capacity</a>
+  <ul class="collapse">
+  <li><a href="#curated-members-1" id="toc-curated-members-1" class="nav-link" data-scroll-target="#curated-members-1">Curated members</a></li>
+  <li><a href="#go-terms-1" id="toc-go-terms-1" class="nav-link" data-scroll-target="#go-terms-1">GO terms</a></li>
+  </ul></li>
+  <li><a href="#growth-biomass-protein" id="toc-growth-biomass-protein" class="nav-link" data-scroll-target="#growth-biomass-protein">Growth (Biomass + Protein)</a>
+  <ul class="collapse">
+  <li><a href="#curated-members-2" id="toc-curated-members-2" class="nav-link" data-scroll-target="#curated-members-2">Curated members</a></li>
+  <li><a href="#go-terms-2" id="toc-go-terms-2" class="nav-link" data-scroll-target="#go-terms-2">GO terms</a></li>
+  </ul></li>
+  <li><a href="#symbiosis" id="toc-symbiosis" class="nav-link" data-scroll-target="#symbiosis">Symbiosis</a>
+  <ul class="collapse">
+  <li><a href="#curated-members-3" id="toc-curated-members-3" class="nav-link" data-scroll-target="#curated-members-3">Curated members</a></li>
+  <li><a href="#go-terms-3" id="toc-go-terms-3" class="nav-link" data-scroll-target="#go-terms-3">GO terms</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+
+
+<p>To get started on additional Chpt 3/4 work, I first need to compile some physiologically relevant gene sets. Several Chpt 3/4 questions involve testing epigenetic <span class="math inline">\(\leftrightarrow\)</span> transcriptomic <span class="math inline">\(\leftrightarrow\)</span> physiological relationships. We have an existing set of host physiology metrics that have been collected, so I now want to focus on isolating relevant transcriptomic and epigenetic subsets for each of those physiological domains.</p>
+<p>The host phys metrics we have are:</p>
+<ul>
+<li><p>calcification</p></li>
+<li><p>antioxidant capacity</p></li>
+<li><p>respiration</p></li>
+<li><p>biomass</p></li>
+<li><p>protein</p></li>
+</ul>
+<p>We already have a biomineralization gene set compiled and blasted against our 3 study species (details in <a href="https://github.com/urol-e5/timeseries_molecular/blob/main/M-multi-species/scripts/31.1-biomin-blast.Rmd">timeseries_molecular/M-multi-species/scripts/31.1-biomin-blast.Rmd</a>). This was originally done by Jill, and as far as I can tell the biomineralization gene set was acquired from <span class="citation" data-cites="scucchia_combined_2021">Scucchia et al. (<a href="#ref-scucchia_combined_2021" role="doc-biblioref">2021</a>)</span>.</p>
+<p>Now I want to compile similar gene sets for the other phys domains: antioxidant capacity, respiration, and growth (biomass and protein). I’d also like to compile a set for symbiosis-related genes, since Chpt 4 relates to epigenetics mediating symbiosis.</p>
+<p>After some preliminary searching, I wasn’t able to manually find pre-compiled comprehensive gene sets for these additional phys domains (unlike the biomin source). <strong>To facilitate the time-intensive task of identifying domain-relevant genes/proteins, I used Claude Opus 4.8.</strong></p>
+<p>Final script: timeseries_molecular/M-multi-species/scripts/35-physiology-gene-sets.py</p>
+<section id="approach" class="level2">
+<h2 class="anchored" data-anchor-id="approach">Approach</h2>
+<p>For now, since I want to quickly trial some preliminary analyses, I’ll just base gene identification on existing GO annotations performed using a blast of our species’ reference against the Uniprot/Swissprot db. In the future, this should be extended or replaced by manual fasta curation and proteome blast (as in DDE) (<em>much</em> more time consuming)</p>
+<p>To identify domain-relevant genes, two complementary approaches will be used:</p>
+<ol type="A">
+<li>Curated members: Canonical genes drawn from the marine-invertebrate / cnidarian-symbiosis literature, each tied to a citation. This is particularly useful for recovering genes whose role is established functionally even when their generic GO terms are uninformative (especially symbiosis).</li>
+<li>GO-term membership: Genes with a domain-<strong>defining</strong> GO term in the reviewed annotation. Terms are chosen to be specific to the process (e.g.&nbsp;antioxidant uses antioxidant/peroxidase/glutathione/redox terms, NOT the broad “response to oxidative stress”, which pulls in signalling/apoptosis).</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+AI usage
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Claude Opus 4.8 was used in both curating genes/proteins from the literature and identifying domain-defining GO terms for all 4 of the physiological domains targeted here</p>
+<p><a href="https://robertslab.github.io/resources/Agentic-Coding-Tools/#five-level-rubric"><img alt="AI Use Level 4: Substantial AI contribution" src="https://img.shields.io/badge/AI%20Use-Level%204%20Substantial%20AI%20Contribution-red"></a></p>
+</div>
+</div>
+<p>A gene is included only if it has a reviewed Swiss-Prot best hit (e-value &lt;= 1e-10) AND qualifies through one or both of the above approaches</p>
+<p>To treat the three study species symmetrically, each set is keyed on the <strong>ortholog group</strong> and restricted to <strong>three-way orthologs</strong> (present in Apul, Peve, and Ptua). The A.pulchra functional annotation is used for calling, and the call is then applied to the full ortholog group (note that this assumes that orthology conserves function).</p>
+<p>The growth set captures anabolic / protein-biosynthetic capacity (cytoplasmic ribosome biogenesis, translation machinery, TOR signalling; + a tight cell-proliferation core), the canonical molecular correlate of biomass/protein via the growth-rate hypothesis (Elser et al.&nbsp;2003; Warner 1999). Mitochondrial/organellar translation genes are vetoed to avoid overlap with respiration.</p>
+</section>
+<section id="respiration" class="level2">
+<h2 class="anchored" data-anchor-id="respiration">Respiration</h2>
+<section id="curated-members" class="level3">
+<h3 class="anchored" data-anchor-id="curated-members">Curated members</h3>
+<p><u><strong>ETC complexes<br>
+</strong></u>Complex I (NADH:ubiquinone oxidoreductase): Core subunit of respiratory complex I (KEGG_ox)<br>
+Complex II (succinate dehydrogenase): Succinate dehydrogenase couples TCA to ETC (KEGG_ox)<br>
+Complex III (cytochrome bc1): Cytochrome bc1 subunit of the respiratory chain (KEGG_ox)<br>
+Complex IV (cytochrome c oxidase): Soluble carrier between complexes III and IV (KEGG_ox)<br>
+ATP synthase (complex V): F1Fo-ATP synthase subunit; synthesises ATP from the proton-motive force (KEGG_ox)</p>
+<p><u><strong>other<br>
+</strong></u>TCA cycle enzymes (^Citrate synthase(?!-lysine), aconitate hydratase, mitochondrial, Isocitrate dehydrogenase, 2-oxoglutarate dehydrogenase, oxoglutarate dehydrogenase complex, Succinate–CoA ligase, Fumarate hydratase, Malate dehydrogenase mitochondrial, Dihydrolipoyllysine-residue succiny, transferase component of 2-oxoglutarate): Core TCA-cycle enzymes generating reducing equivalents for the ETC (KEGG_tca)<br>
+Pyruvate dehydrogenase complex (Pyruvate dehydrogenase, Dihydrolipoyllysine-residue acetyltransferase, Dihydrolipoyl dehydrogenase): PDH complex converts pyruvate to acetyl-CoA, feeding the TCA cycle/aerobic respiration (KEGG_tca)<br>
+ETF-ubiquinone oxidoreductase: Feeds electrons from flavoprotein dehydrogenases to ubiquinone (KEGG_ox)<br>
+ADP/ATP translocase: Exchanges mitochondrial ATP for cytosolic ADP, sustaining OXPHOS flux (KEGG_ox)</p>
+<p><strong>References:</strong><br>
+KEGG oxidative phosphorylation map00190, KEGG citrate (TCA) cycle map00020,</p>
+</section>
+<section id="go-terms" class="level3">
+<h3 class="anchored" data-anchor-id="go-terms">GO terms</h3>
+<p>GO:0045333: cellular respiration<br>
+GO:0009060: aerobic respiration<br>
+GO:0006119: oxidative phosphorylation<br>
+GO:0006099: tricarboxylic acid cycle<br>
+GO:0022904: respiratory electron transport chain<br>
+GO:0006120: mito ET, NADH to ubiquinone<br>
+GO:0006121: mito ET, succinate to ubiquinone<br>
+GO:0006122: mito ET, ubiquinol to cyt c<br>
+GO:0006123: mito ET, cyt c to oxygen<br>
+GO:0042775: mito ATP synth coupled ET<br>
+GO:0008137: NADH dehydrogenase (ubiquinone) activity<br>
+GO:0004129: cytochrome-c oxidase activity<br>
+GO:0046933: proton-transporting ATP synthase activity<br>
+GO:0015980: energy derivation by oxidation</p>
+</section>
+</section>
+<section id="antioxidant-capacity" class="level2">
+<h2 class="anchored" data-anchor-id="antioxidant-capacity">Antioxidant capacity</h2>
+<section id="curated-members-1" class="level3">
+<h3 class="anchored" data-anchor-id="curated-members-1">Curated members</h3>
+<p><u><strong>ROS detoxification</strong><br>
+</u>Superoxide dismutase: SOD dismutes superoxide to H2O2; front-line antioxidant <span class="citation" data-cites="downs_oxidative_2002">Downs et al. (<a href="#ref-downs_oxidative_2002" role="doc-biblioref">2002</a>)</span><br>
+Catalase: Catalase decomposes H2O2; core antioxidant <span class="citation" data-cites="downs_oxidative_2002">Downs et al. (<a href="#ref-downs_oxidative_2002" role="doc-biblioref">2002</a>)</span><br>
+Glutathione peroxidase: GPx reduces peroxides using glutathione <span class="citation" data-cites="lesser_oxidative_2006">Lesser (<a href="#ref-lesser_oxidative_2006" role="doc-biblioref">2006</a>)</span><br>
+Peroxiredoxin: Thioredoxin-linked peroxidase, abundant under oxidative stress <span class="citation" data-cites="lesser_oxidative_2006">Lesser (<a href="#ref-lesser_oxidative_2006" role="doc-biblioref">2006</a>)</span><br>
+Peroxidases (Peroxidasin, Glutathione peroxidase, Thioredoxin peroxidase, Ascorbate peroxidase: Additional peroxidase scavenging activity <span class="citation" data-cites="lesser_oxidative_2006">Lesser (<a href="#ref-lesser_oxidative_2006" role="doc-biblioref">2006</a>)</span><br>
+Superoxide dismutase copper chaperone: Delivers copper to Cu/Zn-SOD <span class="citation" data-cites="lesser_oxidative_2006">Lesser (<a href="#ref-lesser_oxidative_2006" role="doc-biblioref">2006</a>)</span></p>
+<p><u><strong>thiol-redox</strong></u><br>
+Thioredoxin/reductase: Maintains thiol-redox balance; recycles peroxiredoxins <span class="citation" data-cites="lesser_oxidative_2006">Lesser (<a href="#ref-lesser_oxidative_2006" role="doc-biblioref">2006</a>)</span><br>
+Glutaredoxin: Glutathione-dependent thiol oxidoreductase <span class="citation" data-cites="lesser_oxidative_2006">Lesser (<a href="#ref-lesser_oxidative_2006" role="doc-biblioref">2006</a>)</span><br>
+Sulfiredoxin: Regenerates hyperoxidised peroxiredoxins <span class="citation" data-cites="lesser_oxidative_2006">Lesser (<a href="#ref-lesser_oxidative_2006" role="doc-biblioref">2006</a>)</span></p>
+<p><u><strong>glutathione system</strong><br>
+</u>Glutathione reductase: Regenerates reduced glutathione, sustaining antioxidant capacity <span class="citation" data-cites="lesser_oxidative_2006">Lesser (<a href="#ref-lesser_oxidative_2006" role="doc-biblioref">2006</a>)</span><br>
+Glutathione synthesis: Sets the cellular GSH pool underlying total antioxidant capacity <span class="citation" data-cites="lesser_oxidative_2006">Lesser (<a href="#ref-lesser_oxidative_2006" role="doc-biblioref">2006</a>)</span></p>
+<p><u><strong>conjugation/detox<br>
+</strong></u>Glutathione S-transferase: Conjugates GSH to oxidised products <span class="citation" data-cites="lesser_oxidative_2006">Lesser (<a href="#ref-lesser_oxidative_2006" role="doc-biblioref">2006</a>)</span></p>
+<p><u><strong>other<br>
+</strong></u>Heme oxygenase: HO-1 is a cytoprotective, oxidative-stress-induced antioxidant enzyme <span class="citation" data-cites="lesser_oxidative_2006">Lesser (<a href="#ref-lesser_oxidative_2006" role="doc-biblioref">2006</a>)</span><br>
+Glucose-6-phosphate dehydrogenase: Supplies NADPH that regenerates glutathione/thioredoxin antioxidant systems <span class="citation" data-cites="lesser_oxidative_2006">Lesser (<a href="#ref-lesser_oxidative_2006" role="doc-biblioref">2006</a>)</span><br>
+Methionine sulfoxide reductase: Repairs oxidised methionine residues <span class="citation" data-cites="lesser_oxidative_2006">Lesser (<a href="#ref-lesser_oxidative_2006" role="doc-biblioref">2006</a>)</span><br>
+Ferritin: Sequesters iron, limiting Fenton-reaction ROS generation <span class="citation" data-cites="lesser_oxidative_2006">Lesser (<a href="#ref-lesser_oxidative_2006" role="doc-biblioref">2006</a>)</span></p>
+<p><strong>References:</strong></p>
+</section>
+<section id="go-terms-1" class="level3">
+<h3 class="anchored" data-anchor-id="go-terms-1">GO terms</h3>
+<p>GO:0016209: antioxidant activity<br>
+GO:0004601: peroxidase activity<br>
+GO:0004784: superoxide dismutase activity<br>
+GO:0042744: hydrogen peroxide catabolic process<br>
+GO:0006749: glutathione metabolic process<br>
+GO:0045454: cell redox homeostasis<br>
+GO:0004362: glutathione-disulfide reductase activity<br>
+GO:0004602: glutathione peroxidase activity<br>
+GO:0098869: cellular oxidant detoxification<br>
+GO:0008379: thioredoxin peroxidase activity<br>
+GO:0032928: regulation of superoxide metabolic process</p>
+</section>
+</section>
+<section id="growth-biomass-protein" class="level2">
+<h2 class="anchored" data-anchor-id="growth-biomass-protein">Growth (Biomass + Protein)</h2>
+<section id="curated-members-2" class="level3">
+<h3 class="anchored" data-anchor-id="curated-members-2">Curated members</h3>
+<p>TOR pathway (Serine/threonine-protein kinase (mTOR|TOR), Target of rapamycin, Regulatory-associated protein of mTOR, Rapamycin-insensitive companion, Ribosomal protein S6 kinase, Eukaryotic translation initiation factor 4E-binding): TOR-pathway regulator linking nutrient status to ribosome biogenesis and cap-dependent translation; master controller of cell growth/anabolism <span class="citation" data-cites="saxton_mtor_2017">Saxton and Sabatini (<a href="#ref-saxton_mtor_2017" role="doc-biblioref">2017</a>)</span><br>
+Ribosomal protein (cytoplasmic): Cytoplasmic ribosomal protein; ribosome content is the canonical molecular correlate of biomass/protein growth rate (growth-rate hypothesis) <span class="citation" data-cites="warner_economics_1999">Warner (<a href="#ref-warner_economics_1999" role="doc-biblioref">1999</a>)</span><br>
+Ribosome biogenesis / rRNA processing: Ribosome-biogenesis / rRNA-processing factor; ribosome production sets anabolic capacity <span class="citation" data-cites="warner_economics_1999">Warner (<a href="#ref-warner_economics_1999" role="doc-biblioref">1999</a>)</span><br>
+Translation initiation factor: Cytoplasmic translation initiation factor (eIF); rate-controlling for protein synthesis <span class="citation" data-cites="sonenberg_regulation_2009">Sonenberg and Hinnebusch (<a href="#ref-sonenberg_regulation_2009" role="doc-biblioref">2009</a>)</span><br>
+Translation elongation factor: Cytoplasmic translation elongation / release factor (eEF1/eEF2) <span class="citation" data-cites="sonenberg_regulation_2009">Sonenberg and Hinnebusch (<a href="#ref-sonenberg_regulation_2009" role="doc-biblioref">2009</a>)</span><br>
+Aminoacyl-tRNA synthetase: Aminoacyl-tRNA synthetase charges tRNAs for protein synthesis<br>
+Replication licensing (MCM) / PCNA: DNA-replication / proliferation marker (PCNA, MCM2-7); proxy for the cell-division contribution to tissue biomass <span class="citation" data-cites="malumbres_cell_2009">Malumbres and Barbacid (<a href="#ref-malumbres_cell_2009" role="doc-biblioref">2009</a>)</span><br>
+Cell-cycle cyclin: Cell-cycle (A/B/D/E) cyclin driving cell-division progression <span class="citation" data-cites="malumbres_cell_2009">Malumbres and Barbacid (<a href="#ref-malumbres_cell_2009" role="doc-biblioref">2009</a>)</span><br>
+Cell-cycle CDK: Cell-cycle cyclin-dependent kinase (CDK1/2/4/6) <span class="citation" data-cites="malumbres_cell_2009">Malumbres and Barbacid (<a href="#ref-malumbres_cell_2009" role="doc-biblioref">2009</a>)</span></p>
+</section>
+<section id="go-terms-2" class="level3">
+<h3 class="anchored" data-anchor-id="go-terms-2">GO terms</h3>
+<p>GO:0042254: ribosome biogenesis<br>
+GO:0006364: rRNA processing”,“high”),<br>
+GO:0003735: structural constituent of ribosome<br>
+GO:0002181: cytoplasmic translation<br>
+GO:0006412: translation<br>
+GO:0006413: translational initiation<br>
+GO:0006414: translational elongation<br>
+GO:0006418: tRNA aminoacylation for translation<br>
+GO:0004812: aminoacyl-tRNA ligase activity<br>
+GO:0031929: TOR signaling</p>
+</section>
+</section>
+<section id="symbiosis" class="level2">
+<h2 class="anchored" data-anchor-id="symbiosis">Symbiosis</h2>
+<section id="curated-members-3" class="level3">
+<h3 class="anchored" data-anchor-id="curated-members-3">Curated members</h3>
+<p>Ammonium transporter / Rhesus: Host ammonium/Rh transporters mediate symbiotic nitrogen exchange <span class="citation" data-cites="pernice_single-cell_2012">Pernice et al. (<a href="#ref-pernice_single-cell_2012" role="doc-biblioref">2012</a>)</span><br>
+Glutamine synthetase: GS assimilates ammonium into glutamine; central to host control of symbiont N. <span class="citation" data-cites="cui_host-dependent_2019">Cui et al. (<a href="#ref-cui_host-dependent_2019" role="doc-biblioref">2019</a>)</span><br>
+Glutamate dehydrogenase: GDH interconverts glutamate/2-oxoglutarate+ammonium in symbiotic N recycling <span class="citation" data-cites="cui_host-dependent_2019">Cui et al. (<a href="#ref-cui_host-dependent_2019" role="doc-biblioref">2019</a>)</span><br>
+Glutamate synthase (GOGAT): GOGAT completes the GS/GOGAT ammonium-assimilation cycle <span class="citation" data-cites="cui_host-dependent_2019">Cui et al. (<a href="#ref-cui_host-dependent_2019" role="doc-biblioref">2019</a>)</span><br>
+NPC1/NPC2 sterol transporter: Niemann-Pick C proteins mediate host-symbiont sterol transfer <span class="citation" data-cites="hambleton_sterol_2019">Hambleton et al. (<a href="#ref-hambleton_sterol_2019" role="doc-biblioref">2019</a>)</span><br>
+Oxysterol-binding protein: Sterol-binding/transfer proteins implicated in symbiotic lipid trafficking <span class="citation" data-cites="dani_expression_2017">Dani et al. (<a href="#ref-dani_expression_2017" role="doc-biblioref">2017</a>)</span><br>
+Carbonic anhydrase: Interconverts CO2/HCO3- to supply inorganic carbon for symbiont photosynthesis (overlaps biomin) <span class="citation" data-cites="bertucci_carbonic_2013">Bertucci et al. (<a href="#ref-bertucci_carbonic_2013" role="doc-biblioref">2013</a>)</span><br>
+Bicarbonate / anion transporter: Bicarbonate transporters (SLC4 family) deliver DIC to the symbiont <span class="citation" data-cites="zoccola_bicarbonate_2015">Zoccola et al. (<a href="#ref-zoccola_bicarbonate_2015" role="doc-biblioref">2015</a>)</span><br>
+V-type proton ATPase: Acidifies the symbiosome to concentrate carbon for photosynthesis <span class="citation" data-cites="barott_coral_2015">Barott et al. (<a href="#ref-barott_coral_2015" role="doc-biblioref">2015</a>)</span><br>
+Facilitated glucose transporter: Candidate conduit for translocated photosynthate (glucose) <span class="citation" data-cites="sproles_phylogenetic_2018">Sproles et al. (<a href="#ref-sproles_phylogenetic_2018" role="doc-biblioref">2018</a>)</span><br>
+Aquaporin / aquaglyceroporin: Aquaglyceroporins implicated in glycerol/water/DIC exchange in the symbiosis <span class="citation" data-cites="sproles_phylogenetic_2018">Sproles et al. (<a href="#ref-sproles_phylogenetic_2018" role="doc-biblioref">2018</a>)</span><br>
+Mannose / C-type lectin receptor: Host lectins recognise symbiont surface glycans <span class="citation" data-cites="wood-charlson_lectinglycan_2006">Wood-Charlson et al. (<a href="#ref-wood-charlson_lectinglycan_2006" role="doc-biblioref">2006</a>)</span><br>
+Tachylectin / ficolin / fucolectin: Carbohydrate-recognition lectins implicated in symbiont uptake/winnowing <span class="citation" data-cites="kvennefors_ancient_2008">Kvennefors et al. (<a href="#ref-kvennefors_ancient_2008" role="doc-biblioref">2008</a>)</span><br>
+Symbiosome Rab GTPase (Rab5/7/11): Rab5/7/11 localise to the symbiosome and regulate its biogenesis <span class="citation" data-cites="chen_molecular_2003">Chen et al. (<a href="#ref-chen_molecular_2003" role="doc-biblioref">2003</a>)</span> <span class="citation" data-cites="chen_molecular_2004">Chen et al. (<a href="#ref-chen_molecular_2004" role="doc-biblioref">2004</a>)</span> <span class="citation" data-cites="chen_aprab11_2005">Chen et al. (<a href="#ref-chen_aprab11_2005" role="doc-biblioref">2005</a>)</span></p>
+</section>
+<section id="go-terms-3" class="level3">
+<h3 class="anchored" data-anchor-id="go-terms-3">GO terms</h3>
+<p>GO:0072488: ammonium transmembrane transport<br>
+GO:0015696: ammonium transport</p>
+
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-barott_coral_2015" class="csl-entry" role="listitem">
+Barott, Katie L., Alexander A. Venn, Sidney O. Perez, Sylvie Tambutté, and Martin Tresguerres. 2015. <span>“Coral Host Cells Acidify Symbiotic Algal Microenvironment to Promote Photosynthesis.”</span> <em>Proceedings of the National Academy of Sciences</em> 112 (2): 607–12. <a href="https://doi.org/10.1073/pnas.1413483112">https://doi.org/10.1073/pnas.1413483112</a>.
+</div>
+<div id="ref-bertucci_carbonic_2013" class="csl-entry" role="listitem">
+Bertucci, Anthony, Aurélie Moya, Sylvie Tambutté, Denis Allemand, Claudiu T. Supuran, and Didier Zoccola. 2013. <span>“Carbonic Anhydrases in Anthozoan Corals—<span>A</span> Review.”</span> <em>Bioorganic &amp; Medicinal Chemistry</em>, Carbonic <span>Anhydrase</span>, 21 (6): 1437–50. <a href="https://doi.org/10.1016/j.bmc.2012.10.024">https://doi.org/10.1016/j.bmc.2012.10.024</a>.
+</div>
+<div id="ref-chen_molecular_2004" class="csl-entry" role="listitem">
+Chen, Ming-Chyuan, Ying-Min Cheng, Min-Chang Hong, and Lee-Shing Fang. 2004. <span>“Molecular Cloning of <span>Rab5</span> (<span>ApRab5</span>) in <em><span>Aiptasia</span> Pulchella</em> and Its Retention in Phagosomes Harboring Live Zooxanthellae.”</span> <em>Biochemical and Biophysical Research Communications</em> 324 (3): 1024–33. <a href="https://doi.org/10.1016/j.bbrc.2004.09.151">https://doi.org/10.1016/j.bbrc.2004.09.151</a>.
+</div>
+<div id="ref-chen_molecular_2003" class="csl-entry" role="listitem">
+Chen, Ming-Chyuan, Ying-Min Cheng, Ping-Jyun Sung, Cham-En Kuo, and Lee-Shing Fang. 2003. <span>“Molecular Identification of <span>Rab7</span> (<span>ApRab7</span>) in <em><span>Aiptasia</span> Pulchella</em> and Its Exclusion from Phagosomes Harboring Zooxanthellae.”</span> <em>Biochemical and Biophysical Research Communications</em> 308 (3): 586–95. <a href="https://doi.org/10.1016/S0006-291X(03)01428-1">https://doi.org/10.1016/S0006-291X(03)01428-1</a>.
+</div>
+<div id="ref-chen_aprab11_2005" class="csl-entry" role="listitem">
+Chen, Ming-Chyuan, Ming-Cheng Hong, Yung-Sen Huang, Ming-Chin Liu, Ying-Min Cheng, and Lee-Shing Fang. 2005. <span>“<span>ApRab11</span>, a Cnidarian Homologue of the Recycling Regulatory Protein <span>Rab11</span>, Is Involved in the Establishment and Maintenance of the <em><span>Aiptasia</span>–<span>Symbiodinium</span></em> Endosymbiosis.”</span> <em>Biochemical and Biophysical Research Communications</em> 338 (3): 1607–16. <a href="https://doi.org/10.1016/j.bbrc.2005.10.133">https://doi.org/10.1016/j.bbrc.2005.10.133</a>.
+</div>
+<div id="ref-cui_host-dependent_2019" class="csl-entry" role="listitem">
+Cui, Guoxin, Yi Jin Liew, Yong Li, Najeh Kharbatia, Noura I. Zahran, Abdul-Hamid Emwas, Victor M. Eguiluz, and Manuel Aranda. 2019. <span>“Host-Dependent Nitrogen Recycling as a Mechanism of Symbiont Control in <span>Aiptasia</span>.”</span> <em>PLOS Genetics</em> 15 (6): e1008189. <a href="https://doi.org/10.1371/journal.pgen.1008189">https://doi.org/10.1371/journal.pgen.1008189</a>.
+</div>
+<div id="ref-dani_expression_2017" class="csl-entry" role="listitem">
+Dani, Vincent, Fabrice Priouzeau, Marjolijn Mertz, Magali Mondin, Sophie Pagnotta, Sandra Lacas-Gervais, Simon Davy, and Cécile Sabourault. 2017. <span>“Expression Patterns of Sterol Transporters <span>NPC1</span> and <span>NPC2</span> in the Cnidarian-Dinoflagellate Symbiosis.”</span> <em>Cellular Microbiology</em> 19 (10): e12753. <a href="https://doi.org/10.1111/cmi.12753">https://doi.org/10.1111/cmi.12753</a>.
+</div>
+<div id="ref-downs_oxidative_2002" class="csl-entry" role="listitem">
+Downs, C. A, John E Fauth, John C Halas, Phillip Dustan, John Bemiss, and Cheryl M Woodley. 2002. <span>“Oxidative Stress and Seasonal Coral Bleaching.”</span> <em>Free Radical Biology and Medicine</em> 33 (4): 533–43. <a href="https://doi.org/10.1016/S0891-5849(02)00907-3">https://doi.org/10.1016/S0891-5849(02)00907-3</a>.
+</div>
+<div id="ref-hambleton_sterol_2019" class="csl-entry" role="listitem">
+Hambleton, Elizabeth Ann, Victor Arnold Shivas Jones, Ira Maegele, David Kvaskoff, Timo Sachsenheimer, and Annika Guse. 2019. <span>“Sterol Transfer by Atypical Cholesterol-Binding <span>NPC2</span> Proteins in Coral-Algal Symbiosis.”</span> Edited by Paul G Falkowski and Ian T Baldwin. <em>eLife</em> 8 (June): e43923. <a href="https://doi.org/10.7554/eLife.43923">https://doi.org/10.7554/eLife.43923</a>.
+</div>
+<div id="ref-kvennefors_ancient_2008" class="csl-entry" role="listitem">
+Kvennefors, E. Charlotte E., William Leggat, Ove Hoegh-Guldberg, Bernard M. Degnan, and Andrew C. Barnes. 2008. <span>“An Ancient and Variable Mannose-Binding Lectin from the Coral <em><span>Acropora</span> Millepora</em> Binds Both Pathogens and Symbionts.”</span> <em>Developmental &amp; Comparative Immunology</em> 32 (12): 1582–92. <a href="https://doi.org/10.1016/j.dci.2008.05.010">https://doi.org/10.1016/j.dci.2008.05.010</a>.
+</div>
+<div id="ref-lesser_oxidative_2006" class="csl-entry" role="listitem">
+Lesser, Michael P. 2006. <span>“Oxidative Stress in Marine Environments: Biochemistry and Physiological Ecology.”</span> <em>Annual Review of Physiology</em> 68: 253–78. <a href="https://doi.org/10.1146/annurev.physiol.68.040104.110001">https://doi.org/10.1146/annurev.physiol.68.040104.110001</a>.
+</div>
+<div id="ref-malumbres_cell_2009" class="csl-entry" role="listitem">
+Malumbres, Marcos, and Mariano Barbacid. 2009. <span>“Cell Cycle, <span>CDKs</span> and Cancer: A Changing Paradigm.”</span> <em>Nature Reviews Cancer</em> 9 (3): 153–66. <a href="https://doi.org/10.1038/nrc2602">https://doi.org/10.1038/nrc2602</a>.
+</div>
+<div id="ref-pernice_single-cell_2012" class="csl-entry" role="listitem">
+Pernice, Mathieu, Anders Meibom, Annamieke Van Den Heuvel, Christophe Kopp, Isabelle Domart-Coulon, Ove Hoegh-Guldberg, and Sophie Dove. 2012. <span>“A Single-Cell View of Ammonium Assimilation in Coral–Dinoflagellate Symbiosis.”</span> <em>The ISME Journal</em> 6 (7): 1314–24. <a href="https://doi.org/10.1038/ismej.2011.196">https://doi.org/10.1038/ismej.2011.196</a>.
+</div>
+<div id="ref-saxton_mtor_2017" class="csl-entry" role="listitem">
+Saxton, Robert A., and David M. Sabatini. 2017. <span>“<span class="nocase">mTOR</span> <span>Signaling</span> in <span>Growth</span>, <span>Metabolism</span>, and <span>Disease</span>.”</span> <em>Cell</em> 168 (6): 960–76. <a href="https://doi.org/10.1016/j.cell.2017.02.004">https://doi.org/10.1016/j.cell.2017.02.004</a>.
+</div>
+<div id="ref-scucchia_combined_2021" class="csl-entry" role="listitem">
+Scucchia, Federica, Assaf Malik, Paul Zaslansky, Hollie M. Putnam, and Tali Mass. 2021. <span>“Combined Responses of Primary Coral Polyps and Their Algal Endosymbionts to Decreasing Seawater <span class="nocase">pH</span>.”</span> <em>Proceedings of the Royal Society B: Biological Sciences</em> 288 (1953): 20210328. <a href="https://doi.org/10.1098/rspb.2021.0328">https://doi.org/10.1098/rspb.2021.0328</a>.
+</div>
+<div id="ref-sonenberg_regulation_2009" class="csl-entry" role="listitem">
+Sonenberg, Nahum, and Alan G. Hinnebusch. 2009. <span>“Regulation of <span>Translation</span> <span>Initiation</span> in <span>Eukaryotes</span>: <span>Mechanisms</span> and <span>Biological</span> <span>Targets</span>.”</span> <em>Cell</em> 136 (4): 731–45. <a href="https://doi.org/10.1016/j.cell.2009.01.042">https://doi.org/10.1016/j.cell.2009.01.042</a>.
+</div>
+<div id="ref-sproles_phylogenetic_2018" class="csl-entry" role="listitem">
+Sproles, Ashley E., Nathan L. Kirk, Sheila A. Kitchen, Clinton A. Oakley, Arthur R. Grossman, Virginia M. Weis, and Simon K. Davy. 2018. <span>“Phylogenetic Characterization of Transporter Proteins in the Cnidarian-Dinoflagellate Symbiosis.”</span> <em>Molecular Phylogenetics and Evolution</em> 120 (March): 307–20. <a href="https://doi.org/10.1016/j.ympev.2017.12.007">https://doi.org/10.1016/j.ympev.2017.12.007</a>.
+</div>
+<div id="ref-warner_economics_1999" class="csl-entry" role="listitem">
+Warner, Jonathan R. 1999. <span>“The Economics of Ribosome Biosynthesis in Yeast.”</span> <em>Trends in Biochemical Sciences</em> 24 (11): 437–40. <a href="https://doi.org/10.1016/S0968-0004(99)01460-7">https://doi.org/10.1016/S0968-0004(99)01460-7</a>.
+</div>
+<div id="ref-wood-charlson_lectinglycan_2006" class="csl-entry" role="listitem">
+Wood-Charlson, Elisha M., Lea L. Hollingsworth, Dave A. Krupp, and Virginia M. Weis. 2006. <span>“Lectin/Glycan Interactions Play a Role in Recognition in a Coral/Dinoflagellate Symbiosis.”</span> <em>Cellular Microbiology</em> 8 (12): 1985–93. <a href="https://doi.org/10.1111/j.1462-5822.2006.00765.x">https://doi.org/10.1111/j.1462-5822.2006.00765.x</a>.
+</div>
+<div id="ref-zoccola_bicarbonate_2015" class="csl-entry" role="listitem">
+Zoccola, Didier, Philippe Ganot, Anthony Bertucci, Natacha Caminiti-Segonds, Nathalie Techer, Christian R. Voolstra, Manuel Aranda, et al. 2015. <span>“Bicarbonate Transporters in Corals Point Towards a Key Step in the Evolution of Cnidarian Calcification.”</span> <em>Scientific Reports</em> 5 (1): 9983. <a href="https://doi.org/10.1038/srep09983">https://doi.org/10.1038/srep09983</a>.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/shedurkin\.github\.io\/Roberts-LabNotebook");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>This notebook is built using <a href="https://quarto.org/">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
