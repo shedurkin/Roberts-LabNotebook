@@ -1,5 +1,5 @@
 ---
-title: "Timeseries: EN switching in OOF"
+title: "Timeseries: EN switching in LOCO"
 author: "Kathleen Durkin"
 date: "2026-06-16"
 categories: ["E5-coral"]
@@ -139,7 +139,7 @@ Very similar counts of stable predictors across these genes -- good sign of gene
 Stable Predictor Type Breakdown
 
 | Predictor Type | 26.6 N_stable | 26.6 Unique | 26.6 Genes | 26.7 N_stable | 26.7 Unique | 26.7 Genes |
-|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+|----------|----------|----------|----------|----------|----------|----------|
 | Gene Body Meth | 64 | 61 | 16 | 154 | 152 | 39 |
 | lncRNA | 758 | 683 | 18 | 1,205 | 1,099 | 44 |
 | miRNA | 4 | 3 | 3 | 5 | 4 | 4 |
