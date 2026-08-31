@@ -1,0 +1,187 @@
+---
+title: "Summary of completed ceasmallr work"
+author: "Kathleen Durkin"
+date: "2026-08-27"
+categories: ["cesmallr"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+After about a year away from the `ceasmallr` project, I'm ready to get back into it!
+
+See my old [project summary](./2025_08_07_current_summary.qmd) to see the current status of analyses.
+
+Basically, using `methylKit` I identified parental-treatment-based DMLs in the offspring methylation data, then compared to treatment-based DMLs in the parental gamete data, finding (limited) overlap. Ths overlap of shared treatment-based DMLs in both parent gametes and offspring data could indicate transmission/inhgeritance of environmentally-induced methylation signal!
+
+This preliminary analysis, however, did not evaluate significance (i.e., whether the DML overlap differed from overlap that could occur by chance). It also did not try to take the multifactor nature of this experiment's design into account. THese wil be my next challenges.
+
+To help accomplish this, I'm going to switch from `methylKit` to `DSS` (Dispersion Shrinkage for Sequencing data), A Bioconductor package that is designed for differential analysis of high-throughput sequencing data that is well-suited for use with multi-factor design. I'll be using [Hao Wu's DSS USer Guide](https://mirror.accum.se/mirror/bioconductor.org/packages/3.20/bioc/vignettes/DSS/inst/doc/DSS.html#1_Introduction) to familiarize myself with the package and how to use it.
+
+# Notes from The DSS USer's Guide
+
+> "The core of DSS is a procedure based on Bayesian hierarchical model to estimate and shrink gene- or CpG site-specific dispersions, then conduct Wald tests for detecting differential expression/methylation."
+
+-   DSS can be used for both RNA-seq data and BS-seq (i.e., WGBS) data to perform differential expression and differential methylation analysis, respectively.
+
+-   interestingly, DSS apparently provides functionality for "data without biological replicate"? Not really sure how that would work, but good to keep in mind for future needs (e.g., maybe the [SIFP Nanopore project](../SIFP_2025.qmd)?)
+
+-   DSS also outputs counts of differentially methylated regions (DMRs). **However**, this doesn't seem to be based on region-level tests -- instead, a DMR is just a chain of individually significant CpGs (i.e., DMLs) (you can adjust the requirements for defining a DMR chain, i.e. length, \# of CpGs)
+
+After *hours* of trying to debug why a certain process kept getting killed mid-run, I finally figured out (a) it was a memory issue (kept hitting cieling) and (b), while the node I'm working on has a huge amount of available memory, I was self-limiting the amount available to me through a setting in the apptainer-launching script I used, `rstudio-server-stevenscript.job`.
+
+# Results:
+
+-   In intial setup, **retained 7,594,836 loci** after filtering
+
+MULTI-FACTOR:
+
+-   Parental treatment effect (stage-adjusted): **8,404 DMLs**, **1,788 DMRs**
+
+-   Stage-dependence of treatment effect: **14 DMLs** show significant interaction at treatment-associated loci (effect differes between zygot and larvae, potentially indicating developmental reprogramming)
+
+STAGE-SPECIFIC
+
+```         
+## === Zygote ===
+## CpG sites tested:       7248025 
+## DMLs (|diff|>0.25, p<0.01): 7287 
+##   hyper (exposed > control): 2016 
+##   hypo  (exposed < control): 5271 
+## DMRs:                   5208 
+##   mean DMR length (bp):  311 
+##   mean CpGs per DMR:     11.8
+
+## === Larvae ===
+## CpG sites tested:       7410147 
+## DMLs (|diff|>0.25, p<0.01): 5330 
+##   hyper (exposed > control): 2729 
+##   hypo  (exposed < control): 2601 
+## DMRs:                   4661 
+##   mean DMR length (bp):  364 
+##   mean CpGs per DMR:     12.3
+```
+
+# Code:
+
+# 3 Multi-factor model (design-level tests)
+
+## 3.1 Parental treatment effect (O1.1)
+
+Fit an additive model (no interaction) to test for signal of parental treatment effect while *controlling for stage*.
+
+Note that, for a multi-factor analysis, DSS doesn’t seem to rely on a threshold of % methylation difference? Just an FDR pval.
+
+``` r
+fit_add  <- DMLfit.multiFactor(BSobj, design = design, formula = ~ treatment + stage)
+
+test_trt <- DMLtest.multiFactor(fit_add, coef = "treatmentExposed")
+head(test_trt[order(test_trt$pvals), ])
+
+# DMLs = FDR threshold (multiFactor gives per-site fdrs, not a methylKit-style % difference)
+dml_trt <- test_trt[which(test_trt$fdrs < 0.05), ]
+cat("Treatment DMLs (FDR < 0.05):", nrow(dml_trt), "\n")
+
+# Regions
+dmr_trt <- callDMR(test_trt, p.threshold = 0.01, minlen = 50, minCG = 3, dis.merge = 100)
+cat("Treatment DMRs:", nrow(dmr_trt), "\n")
+```
+
+## 3.2 Stage-dependence of the treatment effect (O1.3 / H1.2)
+
+Now fit an interaction model for tests of *stage-dependence* (does effect of parental exposure differ between the life stages)
+
+``` r
+design <- data.frame(treatment = meta$treatment, stage = meta$stage)
+
+# Interaction model: does the parental-treatment effect differ by stage?
+fit_int <- DMLfit.multiFactor(BSobj, design = design,
+                              formula = ~ treatment + stage + treatment:stage)
+
+# Inspect coefficient names so we test the right columns
+colnames(fit_int$X)
+# Expected: "(Intercept)" "treatmentExposed" "stageLarvae" "treatmentExposed:stageLarvae"
+```
+
+A *null* interaction at treatment-associated loci = inherited signal preserved across stages (H1.2 supported). A *significant* interaction = the effect differs between zygote and larva, i.e. evidence of developmental reprogramming.
+
+``` r
+test_intx <- DMLtest.multiFactor(fit_int, coef = "treatmentExposed:stageLarvae")
+head(test_intx[order(test_intx$pvals), ])
+
+dml_intx <- test_intx[which(test_intx$fdrs < 0.05), ]
+cat("Loci with stage-dependent treatment effect (FDR < 0.05):", nrow(dml_intx), "\n")
+```
+
+# 4 Save outputs
+
+``` r
+save_bed <- function(df, path, score_col) {
+  if (!all(c("chr","start","end") %in% names(df))) {
+    stop("save_bed: df lacks chr/start/end for ", basename(path),
+         " — columns are: ", paste(names(df), collapse=", "))
+  }
+  score <- if (score_col %in% names(df)) df[[score_col]] else NA_real_
+  bed <- data.frame(chr = df$chr, start = df$start, end = df$end, score = score)
+  write.table(bed, path, quote = FALSE, sep = "\t", row.names = FALSE, col.names = FALSE)
+}
+
+# Site-level tables
+write_tsv(test_trt,  file.path("../output/06.3-differential-methylation-DSS", "multifactor_treatment_test.tsv"))
+write_tsv(test_intx, file.path("../output/06.3-differential-methylation-DSS", "multifactor_interaction_test.tsv"))
+
+# Region-level BEDs (diff.Methy is exposed - control at the region level)
+save_bed(dmr_trt, file.path("../output/06.3-differential-methylation-DSS", "treatment_DMR.bed"), "diff.Methy")
+```
+
+# 5 Two-group smoothed test within each stage
+
+Also want to try within-stage tests with DSS. For non-multifactor tets, DSS makes use of smoothing and dispersion shrinkage to essentiallys “borrow” info across neighboring CpG sites. This cvan be useful for handling low-coverage libraries, which is an existing problem with the zygot libraries.
+
+It also produces effect estimates of the same type as `methylKit` (% methylation difference), which could be useful for more direct comparisons to the conventions used in Rondon et al. 2017 and Venkataraman et al. 2024. It would also be useful for questions involving directional concordance (hyper- v hypo-methylation)
+
+WARNING: Both the Zygote and Larvae stage-specific DMLtest() runs are **very** memory-intensive. I’ve needed to up the node request to \~300G just to successfully complete them, and it takes a while to finish.
+
+``` r
+run_stage <- function(stage_label) {
+  s_idx  <- which(meta$stage == stage_label)
+  BS_s   <- BSobj[, s_idx]
+  g_exp  <- meta$sample[s_idx][meta$treatment[s_idx] == "Exposed"]
+  g_ctrl <- meta$sample[s_idx][meta$treatment[s_idx] == "Control"]
+  dml <- DMLtest(BS_s, group1 = g_exp, group2 = g_ctrl, smoothing = TRUE)
+  out <- list(
+    dml = callDML(dml, delta = 0.25, p.threshold = 0.01),
+    dmr = callDMR(dml, delta = 0.10, p.threshold = 0.01,
+                  minlen = 50, minCG = 3, dis.merge = 100, pct.sig = 0.5)
+  )
+  # write per-stage results to disk immediately, so a later crash can't lose them
+  saveRDS(dml, file.path("../output/06.3-differential-methylation-DSS", paste0(stage_label, "_DMLtest.rds")))
+  rm(dml, BS_s); gc()
+  out
+}
+#res_zyg <- run_stage("Zygote"); gc()
+res_lar <- run_stage("Larvae"); gc()
+```
+
+```         
+## Smoothing ...
+## Estimating dispersion for each CpG site, this will take a while ...
+## Computing test statistics ...
+
+##             used   (Mb) gc trigger    (Mb)   max used    (Mb)
+## Ncells  10525499  562.2   29242664  1561.8   25467162  1360.1
+## Vcells 675751180 5155.6 1920085270 14649.1 3000133233 22889.3
+```
+
+``` r
+#cat("Zygote: DMLs =", nrow(res_zyg$dml), " DMRs =", nrow(res_zyg$dmr), "\n")
+cat("Larvae: DMLs =", nrow(res_lar$dml), " DMRs =", nrow(res_lar$dmr), "\n")
+```
+
+```         
+## Larvae: DMLs = 5330  DMRs = 4661
+```
