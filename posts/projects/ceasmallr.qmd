@@ -8,7 +8,7 @@ about:
   links:
     - icon: github
       text: Github
-      href: https://github.com/course-fish546-2025/kathleen-coral/tree/main/project
+      href: https://github.com/shedurkin/ceasmallr
 listing: 
   contents: ceasmallr
   sort: "date desc"

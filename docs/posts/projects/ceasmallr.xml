@@ -10,7 +10,669 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Thu, 07 Aug 2025 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 31 Aug 2026 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Merging the two repos</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_08_31_merging_repos.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>I currently have two repos containing code and data relevant to the <code>ceasmallr</code> project: The <code>ceasmallr</code> repo, which Steven originally created and which contains Sam’s data preprocessing work (e.g., Bismark), and my <code>kathleen-coral</code> repo, which I created to work on the ceasmallr data as part of Steven’s FISH 546 class project. Ultimately, though, it is most appropriate to have all of the <code>ceasmallr</code> relevant work to be contained within the <code>ceasmallr</code> repo. I’ve forked the <code>ceasmallr</code> repo so that I have a self-owned version to continue working in. I now need to figure out how to accurately merge the two repos in a way that is both functional and accurately documented in the git history.</p>
+<section id="result" class="level2">
+<h2 class="anchored" data-anchor-id="result">RESULT</h2>
+<p>All <code>ceasmallr</code> relevant work now available, and will be continued from, my fork of Steven’s <code>ceasmallr</code> repo: <a href="https://github.com/shedurkin/ceasmallr">github.com/shedurkin/ceasmallr</a></p>
+</section>
+<section id="merging" class="level2">
+<h2 class="anchored" data-anchor-id="merging">Merging</h2>
+<p>To help with this, I’m using Claude Opus 4.8.</p>
+<p>Prompt: &gt;I have two github repos that both contain work for a single project. One, ceasmallr contains work through the data preprocessing, while the other, kathleen-coral contains analysis work. I want all of the analysis work to also be included in the ceasmallr repo, and to continue the rest of the work from that repo. What is the easiest and most sound way to do that? Ideally the solution would be clealry documented in the git history. &gt; &gt;Technically I only want to merge the project directory of kathleen-coral with ceasmallr. Both ceasmallr and kathleen-coral/project have the same high-level structure (files contained within the primary directories of data, code, or output), and I’d like the structure to be maintained (i.e., code files from the analysis repo are placed in the code directory of the OG repo)</p>
+<ol type="1">
+<li>Make a disposable clone to operate on (protects the original):</li>
+</ol>
+<pre><code>bash
+cd ..
+git clone kathleen-coral kc-split
+cd kc-split</code></pre>
+<ol start="2" type="1">
+<li>Extract project/ to the root, rewriting history:</li>
+</ol>
+<pre><code>bash
+git filter-branch --prune-empty --subdirectory-filter project HEAD</code></pre>
+<ol start="3" type="1">
+<li>Merge into ceasmallr on an integration branch:</li>
+</ol>
+<pre><code>bash
+cd ../ceasmallr
+git status                    # clean
+git checkout main             # or master
+git checkout -b merge-analysis
+
+git remote add kc ../kc-split
+git fetch kc
+git branch -r | grep kc       # confirm the branch name (main vs master)
+
+git merge --allow-unrelated-histories kc/main \
+  -m "Merge analysis work from kathleen-coral/project</code></pre>
+<p>Imports the full commit history of the analysis work (previously the project/ directory of the kathleen-coral repo). Its code/, data/, and output/ trees merge into the existing top-level directories here. Future analysis continues from this repo.”</p>
+<p>(Swap kc/main for kc/master if that’s what step 3’s grep shows.)</p>
+<ol start="4" type="1">
+<li>Resolve collisions, if any. Files under code/, data/, output/ merge cleanly as long as filenames don’t overlap. The usual conflicts are shared top-level files (README.md, .gitignore, LICENSE, a .Rproj) as add/add conflicts — open each, combine, then:</li>
+</ol>
+<pre><code>bash
+git add &lt;resolved-file&gt;
+git commit                    # completes the merge commit</code></pre>
+<ol start="5" type="1">
+<li>Verify the history came across:</li>
+</ol>
+<pre><code>bash
+git log --oneline --graph --decorate | head -40
+git log --oneline -- code/
+git log --follow -- code/&lt;some-analysis-file&gt;.R</code></pre>
+<ol start="6" type="1">
+<li>Finalize and clean up:</li>
+</ol>
+<pre><code>bash
+git remote remove kc
+git checkout main
+git merge --no-ff merge-analysis
+cd ../ &amp;&amp; rm -rf kc-split      # disposable clone, no longer needed
+cd ceasmallr
+git push</code></pre>
+
+
+</section>
+
+ ]]></description>
+  <category>cesmallr</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_08_31_merging_repos.html</guid>
+  <pubDate>Mon, 31 Aug 2026 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Getting back to ceasmallr: DSS</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_08_27_getting_back_to_it.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>After about a year away from the <code>ceasmallr</code> project, I’m ready to get back into it!</p>
+<p>See my old <a href="../../../posts/projects/ceasmallr/2025_08_07_current_summary.html">project summary</a> to see the current status of analyses.</p>
+<p>Basically, using <code>methylKit</code> I identified parental-treatment-based DMLs in the offspring methylation data, then compared to treatment-based DMLs in the parental gamete data, finding (limited) overlap. Ths overlap of shared treatment-based DMLs in both parent gametes and offspring data could indicate transmission/inhgeritance of environmentally-induced methylation signal!</p>
+<p>This preliminary analysis, however, did not evaluate significance (i.e., whether the DML overlap differed from overlap that could occur by chance). It also did not try to take the multifactor nature of this experiment’s design into account. THese wil be my next challenges.</p>
+<p>To help accomplish this, I’m going to switch from <code>methylKit</code> to <code>DSS</code> (Dispersion Shrinkage for Sequencing data), A Bioconductor package that is designed for differential analysis of high-throughput sequencing data that is well-suited for use with multi-factor design. I’ll be using <a href="https://mirror.accum.se/mirror/bioconductor.org/packages/3.20/bioc/vignettes/DSS/inst/doc/DSS.html#1_Introduction">Hao Wu’s DSS USer Guide</a> to familiarize myself with the package and how to use it.</p>
+<section id="notes-from-the-dss-users-guide" class="level1">
+<h1>Notes from The DSS USer’s Guide</h1>
+<blockquote class="blockquote">
+<p>“The core of DSS is a procedure based on Bayesian hierarchical model to estimate and shrink gene- or CpG site-specific dispersions, then conduct Wald tests for detecting differential expression/methylation.”</p>
+</blockquote>
+<ul>
+<li><p>DSS can be used for both RNA-seq data and BS-seq (i.e., WGBS) data to perform differential expression and differential methylation analysis, respectively.</p></li>
+<li><p>interestingly, DSS apparently provides functionality for “data without biological replicate”? Not really sure how that would work, but good to keep in mind for future needs (e.g., maybe the <a href="../../../posts/projects/SIFP_2025.html">SIFP Nanopore project</a>?)</p></li>
+<li><p>DSS also outputs counts of differentially methylated regions (DMRs). <strong>However</strong>, this doesn’t seem to be based on region-level tests – instead, a DMR is just a chain of individually significant CpGs (i.e., DMLs) (you can adjust the requirements for defining a DMR chain, i.e.&nbsp;length, # of CpGs)</p></li>
+</ul>
+<p>After <em>hours</em> of trying to debug why a certain process kept getting killed mid-run, I finally figured out (a) it was a memory issue (kept hitting cieling) and (b), while the node I’m working on has a huge amount of available memory, I was self-limiting the amount available to me through a setting in the apptainer-launching script I used, <code>rstudio-server-stevenscript.job</code>.</p>
+</section>
+<section id="results" class="level1">
+<h1>Results:</h1>
+<ul>
+<li>In intial setup, <strong>retained 7,594,836 loci</strong> after filtering</li>
+</ul>
+<p>MULTI-FACTOR:</p>
+<ul>
+<li><p>Parental treatment effect (stage-adjusted): <strong>8,404 DMLs</strong>, <strong>1,788 DMRs</strong></p></li>
+<li><p>Stage-dependence of treatment effect: <strong>14 DMLs</strong> show significant interaction at treatment-associated loci (effect differes between zygot and larvae, potentially indicating developmental reprogramming)</p></li>
+</ul>
+<p>STAGE-SPECIFIC</p>
+<pre><code>## === Zygote ===
+## CpG sites tested:       7248025 
+## DMLs (|diff|&gt;0.25, p&lt;0.01): 7287 
+##   hyper (exposed &gt; control): 2016 
+##   hypo  (exposed &lt; control): 5271 
+## DMRs:                   5208 
+##   mean DMR length (bp):  311 
+##   mean CpGs per DMR:     11.8
+
+## === Larvae ===
+## CpG sites tested:       7410147 
+## DMLs (|diff|&gt;0.25, p&lt;0.01): 5330 
+##   hyper (exposed &gt; control): 2729 
+##   hypo  (exposed &lt; control): 2601 
+## DMRs:                   4661 
+##   mean DMR length (bp):  364 
+##   mean CpGs per DMR:     12.3</code></pre>
+</section>
+<section id="code" class="level1">
+<h1>Code:</h1>
+</section>
+<section id="multi-factor-model-design-level-tests" class="level1">
+<h1>3 Multi-factor model (design-level tests)</h1>
+<section id="parental-treatment-effect-o1.1" class="level2">
+<h2 class="anchored" data-anchor-id="parental-treatment-effect-o1.1">3.1 Parental treatment effect (O1.1)</h2>
+<p>Fit an additive model (no interaction) to test for signal of parental treatment effect while <em>controlling for stage</em>.</p>
+<p>Note that, for a multi-factor analysis, DSS doesn’t seem to rely on a threshold of % methylation difference? Just an FDR pval.</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">fit_add  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">DMLfit.multiFactor</span>(BSobj, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">design =</span> design, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">formula =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> treatment <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> stage)</span>
+<span id="cb2-2"></span>
+<span id="cb2-3">test_trt <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">DMLtest.multiFactor</span>(fit_add, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">coef =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"treatmentExposed"</span>)</span>
+<span id="cb2-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(test_trt[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">order</span>(test_trt<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>pvals), ])</span>
+<span id="cb2-5"></span>
+<span id="cb2-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># DMLs = FDR threshold (multiFactor gives per-site fdrs, not a methylKit-style % difference)</span></span>
+<span id="cb2-7">dml_trt <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> test_trt[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">which</span>(test_trt<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>fdrs <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.05</span>), ]</span>
+<span id="cb2-8"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Treatment DMLs (FDR &lt; 0.05):"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(dml_trt), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb2-9"></span>
+<span id="cb2-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Regions</span></span>
+<span id="cb2-11">dmr_trt <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">callDMR</span>(test_trt, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">p.threshold =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.01</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">minlen =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">minCG =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dis.merge =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)</span>
+<span id="cb2-12"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Treatment DMRs:"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(dmr_trt), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+</section>
+<section id="stage-dependence-of-the-treatment-effect-o1.3-h1.2" class="level2">
+<h2 class="anchored" data-anchor-id="stage-dependence-of-the-treatment-effect-o1.3-h1.2">3.2 Stage-dependence of the treatment effect (O1.3 / H1.2)</h2>
+<p>Now fit an interaction model for tests of <em>stage-dependence</em> (does effect of parental exposure differ between the life stages)</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">design <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">treatment =</span> meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>treatment, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">stage =</span> meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>stage)</span>
+<span id="cb3-2"></span>
+<span id="cb3-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Interaction model: does the parental-treatment effect differ by stage?</span></span>
+<span id="cb3-4">fit_int <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">DMLfit.multiFactor</span>(BSobj, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">design =</span> design,</span>
+<span id="cb3-5">                              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">formula =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> treatment <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> stage <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> treatment<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>stage)</span>
+<span id="cb3-6"></span>
+<span id="cb3-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Inspect coefficient names so we test the right columns</span></span>
+<span id="cb3-8"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">colnames</span>(fit_int<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>X)</span>
+<span id="cb3-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Expected: "(Intercept)" "treatmentExposed" "stageLarvae" "treatmentExposed:stageLarvae"</span></span></code></pre></div>
+<p>A <em>null</em> interaction at treatment-associated loci = inherited signal preserved across stages (H1.2 supported). A <em>significant</em> interaction = the effect differs between zygote and larva, i.e.&nbsp;evidence of developmental reprogramming.</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">test_intx <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">DMLtest.multiFactor</span>(fit_int, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">coef =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"treatmentExposed:stageLarvae"</span>)</span>
+<span id="cb4-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(test_intx[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">order</span>(test_intx<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>pvals), ])</span>
+<span id="cb4-3"></span>
+<span id="cb4-4">dml_intx <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> test_intx[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">which</span>(test_intx<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>fdrs <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.05</span>), ]</span>
+<span id="cb4-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Loci with stage-dependent treatment effect (FDR &lt; 0.05):"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(dml_intx), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+</section>
+</section>
+<section id="save-outputs" class="level1">
+<h1>4 Save outputs</h1>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">save_bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(df, path, score_col) {</span>
+<span id="cb5-2">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">all</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"chr"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"start"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"end"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">names</span>(df))) {</span>
+<span id="cb5-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">stop</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"save_bed: df lacks chr/start/end for "</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">basename</span>(path),</span>
+<span id="cb5-4">         <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" — columns are: "</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">names</span>(df), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">collapse=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">", "</span>))</span>
+<span id="cb5-5">  }</span>
+<span id="cb5-6">  score <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (score_col <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">names</span>(df)) df[[score_col]] <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA_real_</span></span>
+<span id="cb5-7">  bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">chr =</span> df<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>chr, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">start =</span> df<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>start, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">end =</span> df<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>end, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">score =</span> score)</span>
+<span id="cb5-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write.table</span>(bed, path, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quote =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sep =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\t</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">row.names =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col.names =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)</span>
+<span id="cb5-9">}</span>
+<span id="cb5-10"></span>
+<span id="cb5-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Site-level tables</span></span>
+<span id="cb5-12"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write_tsv</span>(test_trt,  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">file.path</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/06.3-differential-methylation-DSS"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"multifactor_treatment_test.tsv"</span>))</span>
+<span id="cb5-13"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write_tsv</span>(test_intx, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">file.path</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/06.3-differential-methylation-DSS"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"multifactor_interaction_test.tsv"</span>))</span>
+<span id="cb5-14"></span>
+<span id="cb5-15"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Region-level BEDs (diff.Methy is exposed - control at the region level)</span></span>
+<span id="cb5-16"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">save_bed</span>(dmr_trt, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">file.path</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/06.3-differential-methylation-DSS"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"treatment_DMR.bed"</span>), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"diff.Methy"</span>)</span></code></pre></div>
+</section>
+<section id="two-group-smoothed-test-within-each-stage" class="level1">
+<h1>5 Two-group smoothed test within each stage</h1>
+<p>Also want to try within-stage tests with DSS. For non-multifactor tets, DSS makes use of smoothing and dispersion shrinkage to essentiallys “borrow” info across neighboring CpG sites. This cvan be useful for handling low-coverage libraries, which is an existing problem with the zygot libraries.</p>
+<p>It also produces effect estimates of the same type as <code>methylKit</code> (% methylation difference), which could be useful for more direct comparisons to the conventions used in Rondon et al.&nbsp;2017 and Venkataraman et al.&nbsp;2024. It would also be useful for questions involving directional concordance (hyper- v hypo-methylation)</p>
+<p>WARNING: Both the Zygote and Larvae stage-specific DMLtest() runs are <strong>very</strong> memory-intensive. I’ve needed to up the node request to ~300G just to successfully complete them, and it takes a while to finish.</p>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">run_stage <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(stage_label) {</span>
+<span id="cb6-2">  s_idx  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">which</span>(meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>stage <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> stage_label)</span>
+<span id="cb6-3">  BS_s   <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> BSobj[, s_idx]</span>
+<span id="cb6-4">  g_exp  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>sample[s_idx][meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>treatment[s_idx] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Exposed"</span>]</span>
+<span id="cb6-5">  g_ctrl <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>sample[s_idx][meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>treatment[s_idx] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Control"</span>]</span>
+<span id="cb6-6">  dml <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">DMLtest</span>(BS_s, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group1 =</span> g_exp, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group2 =</span> g_ctrl, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">smoothing =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span>
+<span id="cb6-7">  out <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(</span>
+<span id="cb6-8">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dml =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">callDML</span>(dml, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">delta =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.25</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">p.threshold =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.01</span>),</span>
+<span id="cb6-9">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dmr =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">callDMR</span>(dml, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">delta =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.10</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">p.threshold =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.01</span>,</span>
+<span id="cb6-10">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">minlen =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">minCG =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dis.merge =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pct.sig =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>)</span>
+<span id="cb6-11">  )</span>
+<span id="cb6-12">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># write per-stage results to disk immediately, so a later crash can't lose them</span></span>
+<span id="cb6-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">saveRDS</span>(dml, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">file.path</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/06.3-differential-methylation-DSS"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste0</span>(stage_label, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"_DMLtest.rds"</span>)))</span>
+<span id="cb6-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rm</span>(dml, BS_s); <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gc</span>()</span>
+<span id="cb6-15">  out</span>
+<span id="cb6-16">}</span>
+<span id="cb6-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#res_zyg &lt;- run_stage("Zygote"); gc()</span></span>
+<span id="cb6-18">res_lar <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">run_stage</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Larvae"</span>); <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gc</span>()</span></code></pre></div>
+<pre><code>## Smoothing ...
+## Estimating dispersion for each CpG site, this will take a while ...
+## Computing test statistics ...
+
+##             used   (Mb) gc trigger    (Mb)   max used    (Mb)
+## Ncells  10525499  562.2   29242664  1561.8   25467162  1360.1
+## Vcells 675751180 5155.6 1920085270 14649.1 3000133233 22889.3</code></pre>
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#cat("Zygote: DMLs =", nrow(res_zyg$dml), " DMRs =", nrow(res_zyg$dmr), "\n")</span></span>
+<span id="cb8-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Larvae: DMLs ="</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(res_lar<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>dml), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" DMRs ="</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(res_lar<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>dmr), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+<pre><code>## Larvae: DMLs = 5330  DMRs = 4661</code></pre>
+
+
+</section>
+
+ ]]></description>
+  <category>cesmallr</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_08_27_getting_back_to_it.html</guid>
+  <pubDate>Thu, 27 Aug 2026 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Summary of completed ceasmallr work</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -72,7 +734,7 @@
 </section>
 
  ]]></description>
-  <category>SIFP-2025</category>
+  <category>ceasmallr</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2025_08_07_current_summary.html</guid>
   <pubDate>Thu, 07 Aug 2025 07:00:00 GMT</pubDate>
 </item>
