@@ -1,5 +1,5 @@
 ---
-title: "Summary of completed ceasmallr work"
+title: "Getting back to ceasmallr: DSS"
 author: "Kathleen Durkin"
 date: "2026-08-27"
 categories: ["cesmallr"]

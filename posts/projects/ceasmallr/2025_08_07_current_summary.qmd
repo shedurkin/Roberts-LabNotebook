@@ -2,7 +2,7 @@
 title: "Summary of completed ceasmallr work"
 author: "Kathleen Durkin"
 date: "2025-08-07"
-categories: ["SIFP-2025"]
+categories: ["ceasmallr"]
 format:
   html:
     toc: true
