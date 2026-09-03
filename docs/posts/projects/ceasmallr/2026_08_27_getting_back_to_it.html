@@ -363,10 +363,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code:</a></li>
   <li><a href="#multi-factor-model-design-level-tests" id="toc-multi-factor-model-design-level-tests" class="nav-link" data-scroll-target="#multi-factor-model-design-level-tests">3 Multi-factor model (design-level tests)</a>
   <ul class="collapse">
-  <li><a href="#parental-treatment-effect-o1.1" id="toc-parental-treatment-effect-o1.1" class="nav-link" data-scroll-target="#parental-treatment-effect-o1.1">3.1 Parental treatment effect (O1.1)</a></li>
-  <li><a href="#stage-dependence-of-the-treatment-effect-o1.3-h1.2" id="toc-stage-dependence-of-the-treatment-effect-o1.3-h1.2" class="nav-link" data-scroll-target="#stage-dependence-of-the-treatment-effect-o1.3-h1.2">3.2 Stage-dependence of the treatment effect (O1.3 / H1.2)</a></li>
+  <li><a href="#parental-treatment-effect" id="toc-parental-treatment-effect" class="nav-link" data-scroll-target="#parental-treatment-effect">3.1 Parental treatment effect</a></li>
+  <li><a href="#stage-dependence-of-the-treatment-effect" id="toc-stage-dependence-of-the-treatment-effect" class="nav-link" data-scroll-target="#stage-dependence-of-the-treatment-effect">3.2 Stage-dependence of the treatment effect</a></li>
   </ul></li>
-  <li><a href="#save-outputs" id="toc-save-outputs" class="nav-link" data-scroll-target="#save-outputs">4 Save outputs</a></li>
   <li><a href="#two-group-smoothed-test-within-each-stage" id="toc-two-group-smoothed-test-within-each-stage" class="nav-link" data-scroll-target="#two-group-smoothed-test-within-each-stage">5 Two-group smoothed test within each stage</a></li>
   </ul>
 </nav>
@@ -430,8 +429,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="multi-factor-model-design-level-tests" class="level1">
 <h1>3 Multi-factor model (design-level tests)</h1>
-<section id="parental-treatment-effect-o1.1" class="level2">
-<h2 class="anchored" data-anchor-id="parental-treatment-effect-o1.1">3.1 Parental treatment effect (O1.1)</h2>
+<section id="parental-treatment-effect" class="level2">
+<h2 class="anchored" data-anchor-id="parental-treatment-effect">3.1 Parental treatment effect</h2>
 <p>Fit an additive model (no interaction) to test for signal of parental treatment effect while <em>controlling for stage</em>.</p>
 <p>Note that, for a multi-factor analysis, DSS doesn’t seem to rely on a threshold of % methylation difference? Just an FDR pval.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fit_add  <span class="ot">&lt;-</span> <span class="fu">DMLfit.multiFactor</span>(BSobj, <span class="at">design =</span> design, <span class="at">formula =</span> <span class="sc">~</span> treatment <span class="sc">+</span> stage)</span>
@@ -447,8 +446,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>dmr_trt <span class="ot">&lt;-</span> <span class="fu">callDMR</span>(test_trt, <span class="at">p.threshold =</span> <span class="fl">0.01</span>, <span class="at">minlen =</span> <span class="dv">50</span>, <span class="at">minCG =</span> <span class="dv">3</span>, <span class="at">dis.merge =</span> <span class="dv">100</span>)</span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Treatment DMRs:"</span>, <span class="fu">nrow</span>(dmr_trt), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="stage-dependence-of-the-treatment-effect-o1.3-h1.2" class="level2">
-<h2 class="anchored" data-anchor-id="stage-dependence-of-the-treatment-effect-o1.3-h1.2">3.2 Stage-dependence of the treatment effect (O1.3 / H1.2)</h2>
+<section id="stage-dependence-of-the-treatment-effect" class="level2">
+<h2 class="anchored" data-anchor-id="stage-dependence-of-the-treatment-effect">3.2 Stage-dependence of the treatment effect</h2>
 <p>Now fit an interaction model for tests of <em>stage-dependence</em> (does effect of parental exposure differ between the life stages)</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>design <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">treatment =</span> meta<span class="sc">$</span>treatment, <span class="at">stage =</span> meta<span class="sc">$</span>stage)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -467,57 +466,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Loci with stage-dependent treatment effect (FDR &lt; 0.05):"</span>, <span class="fu">nrow</span>(dml_intx), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="save-outputs" class="level1">
-<h1>4 Save outputs</h1>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>save_bed <span class="ot">&lt;-</span> <span class="cf">function</span>(df, path, score_col) {</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">all</span>(<span class="fu">c</span>(<span class="st">"chr"</span>,<span class="st">"start"</span>,<span class="st">"end"</span>) <span class="sc">%in%</span> <span class="fu">names</span>(df))) {</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"save_bed: df lacks chr/start/end for "</span>, <span class="fu">basename</span>(path),</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>         <span class="st">" — columns are: "</span>, <span class="fu">paste</span>(<span class="fu">names</span>(df), <span class="at">collapse=</span><span class="st">", "</span>))</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  score <span class="ot">&lt;-</span> <span class="cf">if</span> (score_col <span class="sc">%in%</span> <span class="fu">names</span>(df)) df[[score_col]] <span class="cf">else</span> <span class="cn">NA_real_</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  bed <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">chr =</span> df<span class="sc">$</span>chr, <span class="at">start =</span> df<span class="sc">$</span>start, <span class="at">end =</span> df<span class="sc">$</span>end, <span class="at">score =</span> score)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write.table</span>(bed, path, <span class="at">quote =</span> <span class="cn">FALSE</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">col.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Site-level tables</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">write_tsv</span>(test_trt,  <span class="fu">file.path</span>(<span class="st">"../output/06.3-differential-methylation-DSS"</span>, <span class="st">"multifactor_treatment_test.tsv"</span>))</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">write_tsv</span>(test_intx, <span class="fu">file.path</span>(<span class="st">"../output/06.3-differential-methylation-DSS"</span>, <span class="st">"multifactor_interaction_test.tsv"</span>))</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Region-level BEDs (diff.Methy is exposed - control at the region level)</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">save_bed</span>(dmr_trt, <span class="fu">file.path</span>(<span class="st">"../output/06.3-differential-methylation-DSS"</span>, <span class="st">"treatment_DMR.bed"</span>), <span class="st">"diff.Methy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
 <section id="two-group-smoothed-test-within-each-stage" class="level1">
 <h1>5 Two-group smoothed test within each stage</h1>
 <p>Also want to try within-stage tests with DSS. For non-multifactor tets, DSS makes use of smoothing and dispersion shrinkage to essentiallys “borrow” info across neighboring CpG sites. This cvan be useful for handling low-coverage libraries, which is an existing problem with the zygot libraries.</p>
 <p>It also produces effect estimates of the same type as <code>methylKit</code> (% methylation difference), which could be useful for more direct comparisons to the conventions used in Rondon et al.&nbsp;2017 and Venkataraman et al.&nbsp;2024. It would also be useful for questions involving directional concordance (hyper- v hypo-methylation)</p>
 <p>WARNING: Both the Zygote and Larvae stage-specific DMLtest() runs are <strong>very</strong> memory-intensive. I’ve needed to up the node request to ~300G just to successfully complete them, and it takes a while to finish.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>run_stage <span class="ot">&lt;-</span> <span class="cf">function</span>(stage_label) {</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  s_idx  <span class="ot">&lt;-</span> <span class="fu">which</span>(meta<span class="sc">$</span>stage <span class="sc">==</span> stage_label)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  BS_s   <span class="ot">&lt;-</span> BSobj[, s_idx]</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  g_exp  <span class="ot">&lt;-</span> meta<span class="sc">$</span>sample[s_idx][meta<span class="sc">$</span>treatment[s_idx] <span class="sc">==</span> <span class="st">"Exposed"</span>]</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  g_ctrl <span class="ot">&lt;-</span> meta<span class="sc">$</span>sample[s_idx][meta<span class="sc">$</span>treatment[s_idx] <span class="sc">==</span> <span class="st">"Control"</span>]</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  dml <span class="ot">&lt;-</span> <span class="fu">DMLtest</span>(BS_s, <span class="at">group1 =</span> g_exp, <span class="at">group2 =</span> g_ctrl, <span class="at">smoothing =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">dml =</span> <span class="fu">callDML</span>(dml, <span class="at">delta =</span> <span class="fl">0.25</span>, <span class="at">p.threshold =</span> <span class="fl">0.01</span>),</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">dmr =</span> <span class="fu">callDMR</span>(dml, <span class="at">delta =</span> <span class="fl">0.10</span>, <span class="at">p.threshold =</span> <span class="fl">0.01</span>,</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                  <span class="at">minlen =</span> <span class="dv">50</span>, <span class="at">minCG =</span> <span class="dv">3</span>, <span class="at">dis.merge =</span> <span class="dv">100</span>, <span class="at">pct.sig =</span> <span class="fl">0.5</span>)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># write per-stage results to disk immediately, so a later crash can't lose them</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">saveRDS</span>(dml, <span class="fu">file.path</span>(<span class="st">"../output/06.3-differential-methylation-DSS"</span>, <span class="fu">paste0</span>(stage_label, <span class="st">"_DMLtest.rds"</span>)))</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rm</span>(dml, BS_s); <span class="fu">gc</span>()</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  out</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">#res_zyg &lt;- run_stage("Zygote"); gc()</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>res_lar <span class="ot">&lt;-</span> <span class="fu">run_stage</span>(<span class="st">"Larvae"</span>); <span class="fu">gc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>run_stage <span class="ot">&lt;-</span> <span class="cf">function</span>(stage_label) {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  s_idx  <span class="ot">&lt;-</span> <span class="fu">which</span>(meta<span class="sc">$</span>stage <span class="sc">==</span> stage_label)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  BS_s   <span class="ot">&lt;-</span> BSobj[, s_idx]</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  g_exp  <span class="ot">&lt;-</span> meta<span class="sc">$</span>sample[s_idx][meta<span class="sc">$</span>treatment[s_idx] <span class="sc">==</span> <span class="st">"Exposed"</span>]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  g_ctrl <span class="ot">&lt;-</span> meta<span class="sc">$</span>sample[s_idx][meta<span class="sc">$</span>treatment[s_idx] <span class="sc">==</span> <span class="st">"Control"</span>]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  dml <span class="ot">&lt;-</span> <span class="fu">DMLtest</span>(BS_s, <span class="at">group1 =</span> g_exp, <span class="at">group2 =</span> g_ctrl, <span class="at">smoothing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">dml =</span> <span class="fu">callDML</span>(dml, <span class="at">delta =</span> <span class="fl">0.25</span>, <span class="at">p.threshold =</span> <span class="fl">0.01</span>),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">dmr =</span> <span class="fu">callDMR</span>(dml, <span class="at">delta =</span> <span class="fl">0.10</span>, <span class="at">p.threshold =</span> <span class="fl">0.01</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                  <span class="at">minlen =</span> <span class="dv">50</span>, <span class="at">minCG =</span> <span class="dv">3</span>, <span class="at">dis.merge =</span> <span class="dv">100</span>, <span class="at">pct.sig =</span> <span class="fl">0.5</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># write per-stage results to disk immediately, so a later crash can't lose them</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">saveRDS</span>(dml, <span class="fu">file.path</span>(<span class="st">"../output/06.3-differential-methylation-DSS"</span>, <span class="fu">paste0</span>(stage_label, <span class="st">"_DMLtest.rds"</span>)))</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rm</span>(dml, BS_s); <span class="fu">gc</span>()</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  out</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>res_zyg <span class="ot">&lt;-</span> <span class="fu">run_stage</span>(<span class="st">"Zygote"</span>); <span class="fu">gc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>## Smoothing ...
 ## Estimating dispersion for each CpG site, this will take a while ...
 ## Computing test statistics ...
 
 ##             used   (Mb) gc trigger    (Mb)   max used    (Mb)
-## Ncells  10525499  562.2   29242664  1561.8   25467162  1360.1
-## Vcells 675751180 5155.6 1920085270 14649.1 3000133233 22889.3</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#cat("Zygote: DMLs =", nrow(res_zyg$dml), " DMRs =", nrow(res_zyg$dmr), "\n")</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Larvae: DMLs ="</span>, <span class="fu">nrow</span>(res_lar<span class="sc">$</span>dml), <span class="st">" DMRs ="</span>, <span class="fu">nrow</span>(res_lar<span class="sc">$</span>dmr), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+## Ncells  10572881  564.7   25790962  1377.4   25790962  1377.4
+## Vcells 987298622 7532.5 2997064826 22865.8 2997050377 22865.7</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>res_lar <span class="ot">&lt;-</span> <span class="fu">run_stage</span>(<span class="st">"Larvae"</span>); <span class="fu">gc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## Smoothing ...
+## Estimating dispersion for each CpG site, this will take a while ...
+## Computing test statistics ...
+
+##             used   (Mb) gc trigger    (Mb)   max used    (Mb)
+## Ncells  10572945  564.7   25790962  1377.4   25790962  1377.4
+## Vcells 987406984 7533.4 2877246233 21951.7 3596555354 27439.6</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Zygote: DMLs ="</span>, <span class="fu">nrow</span>(res_zyg<span class="sc">$</span>dml), <span class="st">" DMRs ="</span>, <span class="fu">nrow</span>(res_zyg<span class="sc">$</span>dmr), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## Zygote: DMLs = 7287  DMRs = 5208</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Larvae: DMLs ="</span>, <span class="fu">nrow</span>(res_lar<span class="sc">$</span>dml), <span class="st">" DMRs ="</span>, <span class="fu">nrow</span>(res_lar<span class="sc">$</span>dmr), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>## Larvae: DMLs = 5330  DMRs = 4661</code></pre>
 
 
