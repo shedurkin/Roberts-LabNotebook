@@ -28,32 +28,23 @@
 <ul>
 <li><p>After a few weeks some oysters began losing color in their shells, with the brown exterior layer flaking off into their water.</p></li>
 <li><p>A few oysters eventually developed brown-colored water between changes, with a foul smell. This generally preceded mortality.</p></li>
-<li><p>One oyster (India 03) had cloudy water during mortality checks and water changes on 09/11. I sampled and checked under the scope and <em>think</em> I may have seen sperm (but, since there was no movement, it’s hard to be sure). This was following a warm few days, which also increased temps in the lab, so I think India 03 may have spawned.</p></li>
+<li><p>One oyster (India 03) had cloudy water during mortality checks and water changes on 09/11. I sampled and checked under the scope and think I may have seen sperm (but, since there was no movement, it’s hard to be sure). This was following a warm few days, which also increased temps in the lab, so I think India 03 may have spawned.</p></li>
 </ul>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="do" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: italic;">#####################</span></span>
-<span id="cb1-2"><span class="do" style="color: #5E5E5E;
-background-color: null;
-font-style: italic;">### Load Packages </span><span class="al" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">###</span></span>
-<span id="cb1-3"><span class="do" style="color: #5E5E5E;
-background-color: null;
-font-style: italic;">#####################</span></span>
-<span id="cb1-4"></span>
-<span id="cb1-5"><span class="fu" style="color: #4758AB;
+font-style: inherit;"># Load packages</span></span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(ggplot2)</span>
-<span id="cb1-6"><span class="fu" style="color: #4758AB;
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(ggrepel)</span>
-<span id="cb1-7"><span class="fu" style="color: #4758AB;
+<span id="cb1-4"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(dplyr)</span></code></pre></div>
 </details>
@@ -77,47 +68,30 @@ Attaching package: 'dplyr'</code></pre>
 background-color: null;
 font-style: inherit;">library</span>(tidyr)</span>
 <span id="cb5-2"></span>
-<span id="cb5-3"><span class="do" style="color: #5E5E5E;
+<span id="cb5-3"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: italic;">#################</span></span>
-<span id="cb5-4"><span class="do" style="color: #5E5E5E;
-background-color: null;
-font-style: italic;">### Load Data </span><span class="al" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">###</span></span>
-<span id="cb5-5"><span class="do" style="color: #5E5E5E;
-background-color: null;
-font-style: italic;">#################</span></span>
-<span id="cb5-6"></span>
-<span id="cb5-7">round2 <span class="ot" style="color: #003B4F;
+font-style: inherit;"># Load data</span></span>
+<span id="cb5-4">round2 <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"../../../../../Data/Pacific_oysters/2024_11_09_Survivorship_Round2.csv"</span>)</span>
-<span id="cb5-8"></span>
-<span id="cb5-9"><span class="do" style="color: #5E5E5E;
+<span id="cb5-5"></span>
+<span id="cb5-6"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: italic;">####################</span></span>
-<span id="cb5-10"><span class="do" style="color: #5E5E5E;
-background-color: null;
-font-style: italic;">### Data Munging </span><span class="al" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">###</span></span>
-<span id="cb5-11"><span class="do" style="color: #5E5E5E;
-background-color: null;
-font-style: italic;">####################</span></span>
-<span id="cb5-12"></span>
-<span id="cb5-13"><span class="co" style="color: #5E5E5E;
+font-style: inherit;"># Data munging</span></span>
+<span id="cb5-7"></span>
+<span id="cb5-8"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Convert mort_date to Date format</span></span>
-<span id="cb5-14">round2 <span class="ot" style="color: #003B4F;
+<span id="cb5-9">round2 <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> round2 <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-15">  <span class="fu" style="color: #4758AB;
+<span id="cb5-10">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -128,21 +102,21 @@ background-color: null;
 font-style: inherit;">format=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"%m/%d/%Y"</span>))</span>
-<span id="cb5-16"></span>
-<span id="cb5-17"><span class="co" style="color: #5E5E5E;
+<span id="cb5-11"></span>
+<span id="cb5-12"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Calculate the total number of original samples in each group</span></span>
-<span id="cb5-18">group_totals <span class="ot" style="color: #003B4F;
+<span id="cb5-13">group_totals <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> round2 <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-19">  <span class="fu" style="color: #4758AB;
+<span id="cb5-14">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">group_by</span>(group) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-20">  <span class="fu" style="color: #4758AB;
+<span id="cb5-15">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summarise</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -153,11 +127,11 @@ background-color: null;
 font-style: inherit;">.groups =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'drop'</span>)</span>
-<span id="cb5-21"></span>
-<span id="cb5-22"><span class="co" style="color: #5E5E5E;
+<span id="cb5-16"></span>
+<span id="cb5-17"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Generate a sequence of dates covering the entire period</span></span>
-<span id="cb5-23">date_seq <span class="ot" style="color: #003B4F;
+<span id="cb5-18">date_seq <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -182,10 +156,10 @@ background-color: null;
 font-style: inherit;">by =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"day"</span>)</span>
-<span id="cb5-24"><span class="co" style="color: #5E5E5E;
+<span id="cb5-19"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Add the date before start of experiment, to show original 0% mortality</span></span>
-<span id="cb5-25">date_seq <span class="ot" style="color: #003B4F;
+<span id="cb5-20">date_seq <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -194,11 +168,11 @@ background-color: null;
 font-style: inherit;">as.Date</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"2024-08-08"</span>), date_seq)</span>
-<span id="cb5-26"></span>
-<span id="cb5-27"><span class="co" style="color: #5E5E5E;
+<span id="cb5-21"></span>
+<span id="cb5-22"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Create a data frame with all combinations of treatment group and date</span></span>
-<span id="cb5-28">round2_full <span class="ot" style="color: #003B4F;
+<span id="cb5-23">round2_full <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -208,25 +182,24 @@ font-style: inherit;">group =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">unique</span>(round2<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">$</span>group), </span>
-<span id="cb5-29">                           <span class="at" style="color: #657422;
+font-style: inherit;">$</span>group), <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">date =</span> date_seq)</span>
-<span id="cb5-30"></span>
-<span id="cb5-31"><span class="co" style="color: #5E5E5E;
+<span id="cb5-24"></span>
+<span id="cb5-25"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Aggregate the data by group and date to get daily death counts</span></span>
-<span id="cb5-32">round2_daily <span class="ot" style="color: #003B4F;
+<span id="cb5-26">round2_daily <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> round2 <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-33">  <span class="fu" style="color: #4758AB;
+<span id="cb5-27">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">group_by</span>(group, mort_date) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-34">  <span class="fu" style="color: #4758AB;
+<span id="cb5-28">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summarise</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -239,21 +212,21 @@ background-color: null;
 font-style: inherit;">'drop'</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-35">  <span class="fu" style="color: #4758AB;
+<span id="cb5-29">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">rename</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">date =</span> mort_date)</span>
-<span id="cb5-36"></span>
-<span id="cb5-37"><span class="co" style="color: #5E5E5E;
+<span id="cb5-30"></span>
+<span id="cb5-31"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Join the aggregated daily deaths with the full date range</span></span>
-<span id="cb5-38">round2_cumulative <span class="ot" style="color: #003B4F;
+<span id="cb5-32">round2_cumulative <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> round2_full <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-39">  <span class="fu" style="color: #4758AB;
+<span id="cb5-33">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">left_join</span>(round2_daily, <span class="at" style="color: #657422;
 background-color: null;
@@ -266,7 +239,7 @@ background-color: null;
 font-style: inherit;">"date"</span>)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-40">  <span class="fu" style="color: #4758AB;
+<span id="cb5-34">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -281,17 +254,17 @@ background-color: null;
 font-style: inherit;">%&gt;%</span>  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Replace NA with 0 for days with no deaths</span></span>
-<span id="cb5-41">  <span class="fu" style="color: #4758AB;
+<span id="cb5-35">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">group_by</span>(group) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-42">  <span class="fu" style="color: #4758AB;
+<span id="cb5-36">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">arrange</span>(date) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-43">  <span class="fu" style="color: #4758AB;
+<span id="cb5-37">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -300,19 +273,19 @@ background-color: null;
 font-style: inherit;">cumsum</span>(deaths)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-44">  <span class="fu" style="color: #4758AB;
+<span id="cb5-38">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ungroup</span>()</span>
-<span id="cb5-45"></span>
-<span id="cb5-46"><span class="co" style="color: #5E5E5E;
+<span id="cb5-39"></span>
+<span id="cb5-40"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Join with group totals to calculate cumulative deaths as a percentage</span></span>
-<span id="cb5-47">round2_cumulative <span class="ot" style="color: #003B4F;
+<span id="cb5-41">round2_cumulative <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> round2_cumulative <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-48">  <span class="fu" style="color: #4758AB;
+<span id="cb5-42">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">left_join</span>(group_totals, <span class="at" style="color: #657422;
 background-color: null;
@@ -321,7 +294,7 @@ background-color: null;
 font-style: inherit;">"group"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-49">  <span class="fu" style="color: #4758AB;
+<span id="cb5-43">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -332,58 +305,52 @@ background-color: null;
 font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">100</span>)</span>
-<span id="cb5-50"></span>
-<span id="cb5-51"><span class="co" style="color: #5E5E5E;
+<span id="cb5-44"></span>
+<span id="cb5-45"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># retrieve metadata associated with groups</span></span>
-<span id="cb5-52">metadata <span class="ot" style="color: #003B4F;
+<span id="cb5-46">metadata <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> round2 <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-53">  <span class="fu" style="color: #4758AB;
+<span id="cb5-47">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">select</span>(group, cattle_tag, round1_treatment, round2_treatment) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-54">  <span class="fu" style="color: #4758AB;
+<span id="cb5-48">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">distinct</span>()</span>
-<span id="cb5-55"></span>
-<span id="cb5-56">round2_cumulative_metadata <span class="ot" style="color: #003B4F;
+<span id="cb5-49"></span>
+<span id="cb5-50">round2_cumulative_metadata <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> round2_cumulative <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-57">  <span class="fu" style="color: #4758AB;
+<span id="cb5-51">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">left_join</span>(metadata, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">by =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"group"</span>)</span>
-<span id="cb5-58"></span>
-<span id="cb5-59"><span class="do" style="color: #5E5E5E;
+<span id="cb5-52"></span>
+<span id="cb5-53"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: italic;">################</span></span>
-<span id="cb5-60"><span class="do" style="color: #5E5E5E;
-background-color: null;
-font-style: italic;">### Plot Data ##</span></span>
-<span id="cb5-61"><span class="do" style="color: #5E5E5E;
-background-color: null;
-font-style: italic;">################</span></span>
-<span id="cb5-62"></span>
-<span id="cb5-63">labels_df <span class="ot" style="color: #003B4F;
+font-style: inherit;"># Plot</span></span>
+<span id="cb5-54"></span>
+<span id="cb5-55">labels_df <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> round2_cumulative_metadata <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-64">  <span class="fu" style="color: #4758AB;
+<span id="cb5-56">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">group_by</span>(group) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-65">  <span class="fu" style="color: #4758AB;
+<span id="cb5-57">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">filter</span>(date <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -392,11 +359,11 @@ background-color: null;
 font-style: inherit;">max</span>(date)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-66">  <span class="fu" style="color: #4758AB;
+<span id="cb5-58">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ungroup</span>()</span>
-<span id="cb5-67"></span>
-<span id="cb5-68"><span class="fu" style="color: #4758AB;
+<span id="cb5-59"></span>
+<span id="cb5-60"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(round2_cumulative_metadata, <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -411,22 +378,22 @@ background-color: null;
 font-style: inherit;">color =</span> round1_treatment)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb5-69">  <span class="co" style="color: #5E5E5E;
+<span id="cb5-61">  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#geom_point() +</span></span>
-<span id="cb5-70">  <span class="fu" style="color: #4758AB;
+<span id="cb5-62">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_line</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb5-71">  <span class="fu" style="color: #4758AB;
+<span id="cb5-63">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">~</span> round2_treatment) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb5-72">  <span class="fu" style="color: #4758AB;
+<span id="cb5-64">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_text_repel</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -449,29 +416,33 @@ background-color: null;
 font-style: inherit;">TRUE</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb5-73">  <span class="fu" style="color: #4758AB;
+<span id="cb5-65">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Cumulative mortality from Survivorship Round 2"</span>,</span>
-<span id="cb5-74">       <span class="at" style="color: #657422;
+<span id="cb5-66">       <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Time"</span>,</span>
-<span id="cb5-75">       <span class="at" style="color: #657422;
+<span id="cb5-67">       <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Cumulative mortality (%)"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb5-76">  <span class="fu" style="color: #4758AB;
+<span id="cb5-68">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 </details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_text_repel(data = labels_df, aes(label = group), size = 2.5, :
+Ignoring unknown parameters: `check_overlap`</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">

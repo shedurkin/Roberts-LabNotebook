@@ -77,23 +77,15 @@ Rscript 26.6-ElasticNet-stability-selection-2.R \
 0.6
 ```
 
-
-
-
-
-
-
-
-
 ## Load and filter to shared genes
 
 ```{r load-data}
 library(tidyverse)
 
 files <- c(
-  Apul = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/26.6-ElasticNet-stability-selection-2/Apul/Apul_stabsel_results_nonzero.csv",
-  Peve = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/26.6-ElasticNet-stability-selection-2/Peve/Peve_stabsel_results_nonzero.csv",
-  Pmea = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/26.6-ElasticNet-stability-selection-2/Ptuh/Ptuh_stabsel_results_nonzero.csv"
+  Apul = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/26.6-ElasticNet-stability-selection/Apul/Apul_stabsel_results_nonzero.csv",
+  Peve = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/26.6-ElasticNet-stability-selection/Peve/Peve_stabsel_results_nonzero.csv",
+  Pmea = "https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/26.6-ElasticNet-stability-selection/Ptuh/Ptuh_stabsel_results_nonzero.csv"
 )
 
 df_list <- imap(files, ~ read_csv(.x) %>% mutate(Species = .y))
@@ -120,6 +112,12 @@ table(df_shared$Feature_Type)
 # Filter to species
 sp_df <- df_shared %>% filter(Species == "Apul")
 
+feature_colors <- c(
+  "miRNA"  = "#e69f00",
+  "lncRNA" = "#0072b2",
+  "GbM"    = "#009e73"
+)
+
 # Summarise |coef| per gene x feature type
 bar_df <- sp_df %>%
   group_by(Gene, Feature_Type) %>%
@@ -130,15 +128,15 @@ npred_df <- sp_df %>%
   group_by(Gene) %>%
   summarise(N_Predictors = n_distinct(Predictor))
 
-# Order genes by total magnitude
-gene_order <- bar_df %>%
-  group_by(Gene) %>%
-  summarise(Total = sum(Abs_Coef)) %>%
-  arrange(desc(Total)) %>%
-  pull(Gene)
-
-bar_df$Gene   <- factor(bar_df$Gene,   levels = gene_order)
-npred_df$Gene <- factor(npred_df$Gene, levels = gene_order)
+# # Order genes by total magnitude
+# gene_order <- bar_df %>%
+#   group_by(Gene) %>%
+#   summarise(Total = sum(Abs_Coef)) %>%
+#   arrange(desc(Total)) %>%
+#   pull(Gene)
+# 
+# bar_df$Gene   <- factor(bar_df$Gene,   levels = gene_order)
+# npred_df$Gene <- factor(npred_df$Gene, levels = gene_order)
 
 # Scaling factor to map N_Predictors onto the coef axis
 coef_max  <- max(bar_df %>% group_by(Gene) %>% summarise(T = sum(Abs_Coef)) %>% pull(T))
@@ -151,6 +149,7 @@ ggplot(bar_df, aes(x = Gene, y = Abs_Coef, fill = Feature_Type)) +
              aes(x = Gene, y = N_Predictors * scale_factor),
              shape = 23, size = 2, fill = "black",
              inherit.aes = FALSE) +
+  scale_fill_manual(values = feature_colors) +
   scale_y_continuous(
     name = "Sum of |Coefficient|",
     sec.axis = sec_axis(~ . / scale_factor, name = "N Predictors")
@@ -174,14 +173,14 @@ npred_df <- sp_df %>%
   group_by(Gene) %>%
   summarise(N_Predictors = n_distinct(Predictor))
 
-gene_order <- bar_df %>%
-  group_by(Gene) %>%
-  summarise(Total = sum(Abs_Coef)) %>%
-  arrange(desc(Total)) %>%
-  pull(Gene)
-
-bar_df$Gene   <- factor(bar_df$Gene,   levels = gene_order)
-npred_df$Gene <- factor(npred_df$Gene, levels = gene_order)
+# gene_order <- bar_df %>%
+#   group_by(Gene) %>%
+#   summarise(Total = sum(Abs_Coef)) %>%
+#   arrange(desc(Total)) %>%
+#   pull(Gene)
+# 
+# bar_df$Gene   <- factor(bar_df$Gene,   levels = gene_order)
+# npred_df$Gene <- factor(npred_df$Gene, levels = gene_order)
 
 coef_max  <- max(bar_df %>% group_by(Gene) %>% summarise(T = sum(Abs_Coef)) %>% pull(T))
 npred_max <- max(npred_df$N_Predictors)
@@ -193,6 +192,7 @@ ggplot(bar_df, aes(x = Gene, y = Abs_Coef, fill = Feature_Type)) +
              aes(x = Gene, y = N_Predictors * scale_factor),
              shape = 23, size = 2, fill = "black",
              inherit.aes = FALSE) +
+  scale_fill_manual(values = feature_colors) +
   scale_y_continuous(
     name = "Sum of |Coefficient|",
     sec.axis = sec_axis(~ . / scale_factor, name = "N Predictors")
@@ -216,14 +216,14 @@ npred_df <- sp_df %>%
   group_by(Gene) %>%
   summarise(N_Predictors = n_distinct(Predictor))
 
-gene_order <- bar_df %>%
-  group_by(Gene) %>%
-  summarise(Total = sum(Abs_Coef)) %>%
-  arrange(desc(Total)) %>%
-  pull(Gene)
-
-bar_df$Gene   <- factor(bar_df$Gene,   levels = gene_order)
-npred_df$Gene <- factor(npred_df$Gene, levels = gene_order)
+# gene_order <- bar_df %>%
+#   group_by(Gene) %>%
+#   summarise(Total = sum(Abs_Coef)) %>%
+#   arrange(desc(Total)) %>%
+#   pull(Gene)
+# 
+# bar_df$Gene   <- factor(bar_df$Gene,   levels = gene_order)
+# npred_df$Gene <- factor(npred_df$Gene, levels = gene_order)
 
 coef_max  <- max(bar_df %>% group_by(Gene) %>% summarise(T = sum(Abs_Coef)) %>% pull(T))
 npred_max <- max(npred_df$N_Predictors)
@@ -235,6 +235,7 @@ ggplot(bar_df, aes(x = Gene, y = Abs_Coef, fill = Feature_Type)) +
              aes(x = Gene, y = N_Predictors * scale_factor),
              shape = 23, size = 2, fill = "black",
              inherit.aes = FALSE) +
+  scale_fill_manual(values = feature_colors) +
   scale_y_continuous(
     name = "Sum of |Coefficient|",
     sec.axis = sec_axis(~ . / scale_factor, name = "N Predictors")
@@ -248,7 +249,7 @@ ggplot(bar_df, aes(x = Gene, y = Abs_Coef, fill = Feature_Type)) +
 ## Peve — Stable predictors only
 
 ```{r peve-stable, fig.height=8}
-sp_df <- df_all %>% filter(Species == "Peve", Stable == TRUE)
+sp_df <- df_shared %>% filter(Species == "Peve", Stable == TRUE)
 
 bar_df <- sp_df %>%
   group_by(Gene, Feature_Type) %>%
@@ -258,24 +259,18 @@ npred_df <- sp_df %>%
   group_by(Gene) %>%
   summarise(N_Predictors = n_distinct(Predictor))
 
-gene_order <- bar_df %>%
-  group_by(Gene) %>%
-  summarise(Total = sum(Abs_Coef)) %>%
-  arrange(desc(Total)) %>%
-  pull(Gene)
-
-bar_df$Gene   <- factor(bar_df$Gene,   levels = gene_order)
-npred_df$Gene <- factor(npred_df$Gene, levels = gene_order)
+# gene_order <- bar_df %>%
+#   group_by(Gene) %>%
+#   summarise(Total = sum(Abs_Coef)) %>%
+#   arrange(desc(Total)) %>%
+#   pull(Gene)
+# 
+# bar_df$Gene   <- factor(bar_df$Gene,   levels = gene_order)
+# npred_df$Gene <- factor(npred_df$Gene, levels = gene_order)
 
 coef_max  <- max(bar_df %>% group_by(Gene) %>% summarise(T = sum(Abs_Coef)) %>% pull(T))
 npred_max <- max(npred_df$N_Predictors)
 scale_factor <- coef_max / npred_max
-
-feature_colors <- c(
-  "miRNA"  = "orange",
-  "lncRNA" = "#377EB8",
-  "GbM"    = "darkgrey"
-)
 
 ggplot(bar_df, aes(x = Gene, y = Abs_Coef, fill = Feature_Type)) +
   geom_bar(stat = "identity") +
@@ -307,14 +302,14 @@ npred_df <- sp_df %>%
   group_by(Gene) %>%
   summarise(N_Predictors = n_distinct(Predictor))
 
-gene_order <- bar_df %>%
-  group_by(Gene) %>%
-  summarise(Total = sum(Abs_Coef)) %>%
-  arrange(desc(Total)) %>%
-  pull(Gene)
-
-bar_df$Gene   <- factor(bar_df$Gene,   levels = gene_order)
-npred_df$Gene <- factor(npred_df$Gene, levels = gene_order)
+# gene_order <- bar_df %>%
+#   group_by(Gene) %>%
+#   summarise(Total = sum(Abs_Coef)) %>%
+#   arrange(desc(Total)) %>%
+#   pull(Gene)
+# 
+# bar_df$Gene   <- factor(bar_df$Gene,   levels = gene_order)
+# npred_df$Gene <- factor(npred_df$Gene, levels = gene_order)
 
 coef_max  <- max(bar_df %>% group_by(Gene) %>% summarise(T = sum(Abs_Coef)) %>% pull(T))
 npred_max <- max(npred_df$N_Predictors)
@@ -326,11 +321,12 @@ ggplot(bar_df, aes(x = Gene, y = Abs_Coef, fill = Feature_Type)) +
              aes(x = Gene, y = N_Predictors * scale_factor),
              shape = 23, size = 2, fill = "black",
              inherit.aes = FALSE) +
+  scale_fill_manual(values = feature_colors) +
   scale_y_continuous(
     name = "Sum of |Coefficient|",
     sec.axis = sec_axis(~ . / scale_factor, name = "N Predictors")
   ) +
-  labs(title = "Pmea — all predictors", x = "Gene", fill = "Feature Type") +
+  labs(title = "Ptuh — all predictors", x = "Gene", fill = "Feature Type") +
   theme_minimal(base_size = 13) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 6),
         legend.position = "bottom")
@@ -349,14 +345,14 @@ npred_df <- sp_df %>%
   group_by(Gene) %>%
   summarise(N_Predictors = n_distinct(Predictor))
 
-gene_order <- bar_df %>%
-  group_by(Gene) %>%
-  summarise(Total = sum(Abs_Coef)) %>%
-  arrange(desc(Total)) %>%
-  pull(Gene)
-
-bar_df$Gene   <- factor(bar_df$Gene,   levels = gene_order)
-npred_df$Gene <- factor(npred_df$Gene, levels = gene_order)
+# gene_order <- bar_df %>%
+#   group_by(Gene) %>%
+#   summarise(Total = sum(Abs_Coef)) %>%
+#   arrange(desc(Total)) %>%
+#   pull(Gene)
+# 
+# bar_df$Gene   <- factor(bar_df$Gene,   levels = gene_order)
+# npred_df$Gene <- factor(npred_df$Gene, levels = gene_order)
 
 coef_max  <- max(bar_df %>% group_by(Gene) %>% summarise(T = sum(Abs_Coef)) %>% pull(T))
 npred_max <- max(npred_df$N_Predictors)
@@ -368,6 +364,7 @@ ggplot(bar_df, aes(x = Gene, y = Abs_Coef, fill = Feature_Type)) +
              aes(x = Gene, y = N_Predictors * scale_factor),
              shape = 23, size = 2, fill = "black",
              inherit.aes = FALSE) +
+  scale_fill_manual(values = feature_colors) +
   scale_y_continuous(
     name = "Sum of |Coefficient|",
     sec.axis = sec_axis(~ . / scale_factor, name = "N Predictors")
@@ -378,14 +375,8 @@ ggplot(bar_df, aes(x = Gene, y = Abs_Coef, fill = Feature_Type)) +
         legend.position = "bottom")
 ```
 
-
-
-
-
-
-
-
 # ---- TEMPLATE: copy and modify per species ----
+
 # barplots
 
 ```{r fig.height=8}
@@ -432,10 +423,3 @@ barplot_function(df_all, "Apul", TRUE)
 barplot_function(df_all, "Peve", TRUE)
 barplot_function(df_all, "Pmea", TRUE)
 ```
-
-
-
-
-
-
-

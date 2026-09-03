@@ -19,5 +19,3 @@ One option to supplement layer comparisons is to have the model try to predict e
 This should be a pretty simple fix, though, since the only real "break" arises during the data preprocessing, before the three layers are combined into a single predictor set.
 
 Basically, I added an additional option to the script to specify layers (if desired), then added if statements throughout the data preprocessing, so that an input df was only handled if included. To avoid a major script restructuring, the command will still need to take in all 3 predictor files as input, but only the specified layer will be used (if the specification option is included)
-
-<a href="https://robertslab.github.io/resources/Agentic-Coding-Tools/#five-level-rubric"><img src="https://img.shields.io/badge/AI%20Use-Level%200%20No%20AI%20use-lightgrey" alt="AI Use Level 0: No AI use"/></a>

@@ -26,7 +26,6 @@
 <p>One option to supplement layer comparisons is to have the model try to predict expression from <em>single layers</em>, e.g., from lncRNAs alone. However, the way the EN script is structured, passing in any empty data (e.g., passing in empty files for the miRNA and methyl fields to use lncRNA as a predictor), breaks the code. For example, the code would try to variance-stabilize the empty methylation set, which would throw an error.</p>
 <p>This should be a pretty simple fix, though, since the only real “break” arises during the data preprocessing, before the three layers are combined into a single predictor set.</p>
 <p>Basically, I added an additional option to the script to specify layers (if desired), then added if statements throughout the data preprocessing, so that an input df was only handled if included. To avoid a major script restructuring, the command will still need to take in all 3 predictor files as input, but only the specified layer will be used (if the specification option is included)</p>
-<p><a href="https://robertslab.github.io/resources/Agentic-Coding-Tools/#five-level-rubric"><img src="https://img.shields.io/badge/AI%20Use-Level%200%20No%20AI%20use-lightgrey" alt="AI Use Level 0: No AI use"></a></p>
 
 
 
@@ -7404,17 +7403,17 @@ font-style: inherit;">c</span>(</span>
 background-color: null;
 font-style: inherit;">Apul =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/26.6-ElasticNet-stability-selection-2/Apul/Apul_stabsel_results_nonzero.csv"</span>,</span>
+font-style: inherit;">"https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/26.6-ElasticNet-stability-selection/Apul/Apul_stabsel_results_nonzero.csv"</span>,</span>
 <span id="cb4-5">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">Peve =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/26.6-ElasticNet-stability-selection-2/Peve/Peve_stabsel_results_nonzero.csv"</span>,</span>
+font-style: inherit;">"https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/26.6-ElasticNet-stability-selection/Peve/Peve_stabsel_results_nonzero.csv"</span>,</span>
 <span id="cb4-6">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">Pmea =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/26.6-ElasticNet-stability-selection-2/Ptuh/Ptuh_stabsel_results_nonzero.csv"</span></span>
+font-style: inherit;">"https://raw.githubusercontent.com/urol-e5/timeseries_molecular/refs/heads/main/M-multi-species/output/26.6-ElasticNet-stability-selection/Ptuh/Ptuh_stabsel_results_nonzero.csv"</span></span>
 <span id="cb4-7">)</span>
 <span id="cb4-8"></span>
 <span id="cb4-9">df_list <span class="ot" style="color: #003B4F;
@@ -7533,20 +7532,48 @@ font-style: inherit;">==</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Apul"</span>)</span>
 <span id="cb5-3"></span>
-<span id="cb5-4"><span class="co" style="color: #5E5E5E;
+<span id="cb5-4">feature_colors <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(</span>
+<span id="cb5-5">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"miRNA"</span>  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#e69f00"</span>,</span>
+<span id="cb5-6">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lncRNA"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#0072b2"</span>,</span>
+<span id="cb5-7">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"GbM"</span>    <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#009e73"</span></span>
+<span id="cb5-8">)</span>
+<span id="cb5-9"></span>
+<span id="cb5-10"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Summarise |coef| per gene x feature type</span></span>
-<span id="cb5-5">bar_df <span class="ot" style="color: #003B4F;
+<span id="cb5-11">bar_df <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> sp_df <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-6">  <span class="fu" style="color: #4758AB;
+<span id="cb5-12">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">group_by</span>(Gene, Feature_Type) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-7">  <span class="fu" style="color: #4758AB;
+<span id="cb5-13">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summarise</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -7557,88 +7584,60 @@ background-color: null;
 font-style: inherit;">.groups =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"drop"</span>)</span>
-<span id="cb5-8"></span>
-<span id="cb5-9"><span class="co" style="color: #5E5E5E;
+<span id="cb5-14"></span>
+<span id="cb5-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Count distinct predictors per gene</span></span>
-<span id="cb5-10">npred_df <span class="ot" style="color: #003B4F;
+<span id="cb5-16">npred_df <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> sp_df <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-11">  <span class="fu" style="color: #4758AB;
+<span id="cb5-17">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">group_by</span>(Gene) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-12">  <span class="fu" style="color: #4758AB;
+<span id="cb5-18">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summarise</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">N_Predictors =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">n_distinct</span>(Predictor))</span>
-<span id="cb5-13"></span>
-<span id="cb5-14"><span class="co" style="color: #5E5E5E;
+<span id="cb5-19"></span>
+<span id="cb5-20"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># Order genes by total magnitude</span></span>
-<span id="cb5-15">gene_order <span class="ot" style="color: #003B4F;
+font-style: inherit;"># # Order genes by total magnitude</span></span>
+<span id="cb5-21"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">&lt;-</span> bar_df <span class="sc" style="color: #5E5E5E;
+font-style: inherit;"># gene_order &lt;- bar_df %&gt;%</span></span>
+<span id="cb5-22"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-16">  <span class="fu" style="color: #4758AB;
+font-style: inherit;">#   group_by(Gene) %&gt;%</span></span>
+<span id="cb5-23"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">group_by</span>(Gene) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-17">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">summarise</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">Total =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sum</span>(Abs_Coef)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-18">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">arrange</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">desc</span>(Total)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb5-19">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pull</span>(Gene)</span>
-<span id="cb5-20"></span>
-<span id="cb5-21">bar_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene   <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">factor</span>(bar_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene,   <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">levels =</span> gene_order)</span>
-<span id="cb5-22">npred_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">factor</span>(npred_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">levels =</span> gene_order)</span>
-<span id="cb5-23"></span>
+font-style: inherit;">#   summarise(Total = sum(Abs_Coef)) %&gt;%</span></span>
 <span id="cb5-24"><span class="co" style="color: #5E5E5E;
 background-color: null;
+font-style: inherit;">#   arrange(desc(Total)) %&gt;%</span></span>
+<span id="cb5-25"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#   pull(Gene)</span></span>
+<span id="cb5-26"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span></span>
+<span id="cb5-27"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># bar_df$Gene   &lt;- factor(bar_df$Gene,   levels = gene_order)</span></span>
+<span id="cb5-28"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># npred_df$Gene &lt;- factor(npred_df$Gene, levels = gene_order)</span></span>
+<span id="cb5-29"></span>
+<span id="cb5-30"><span class="co" style="color: #5E5E5E;
+background-color: null;
 font-style: inherit;"># Scaling factor to map N_Predictors onto the coef axis</span></span>
-<span id="cb5-25">coef_max  <span class="ot" style="color: #003B4F;
+<span id="cb5-31">coef_max  <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -7659,20 +7658,20 @@ background-color: null;
 font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">pull</span>(T))</span>
-<span id="cb5-26">npred_max <span class="ot" style="color: #003B4F;
+<span id="cb5-32">npred_max <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">max</span>(npred_df<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">$</span>N_Predictors)</span>
-<span id="cb5-27">scale_factor <span class="ot" style="color: #003B4F;
+<span id="cb5-33">scale_factor <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> coef_max <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">/</span> npred_max</span>
-<span id="cb5-28"></span>
-<span id="cb5-29"><span class="fu" style="color: #4758AB;
+<span id="cb5-34"></span>
+<span id="cb5-35"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(bar_df, <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -7685,7 +7684,7 @@ background-color: null;
 font-style: inherit;">fill =</span> Feature_Type)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb5-30">  <span class="fu" style="color: #4758AB;
+<span id="cb5-36">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_bar</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -7694,12 +7693,12 @@ background-color: null;
 font-style: inherit;">"identity"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb5-31">  <span class="fu" style="color: #4758AB;
+<span id="cb5-37">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">data =</span> npred_df,</span>
-<span id="cb5-32">             <span class="fu" style="color: #4758AB;
+<span id="cb5-38">             <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -7708,7 +7707,7 @@ background-color: null;
 font-style: inherit;">y =</span> N_Predictors <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">*</span> scale_factor),</span>
-<span id="cb5-33">             <span class="at" style="color: #657422;
+<span id="cb5-39">             <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">shape =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
@@ -7721,22 +7720,29 @@ background-color: null;
 font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"black"</span>,</span>
-<span id="cb5-34">             <span class="at" style="color: #657422;
+<span id="cb5-40">             <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">inherit.aes =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">FALSE</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb5-35">  <span class="fu" style="color: #4758AB;
+<span id="cb5-41">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_manual</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values =</span> feature_colors) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-42">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">scale_y_continuous</span>(</span>
-<span id="cb5-36">    <span class="at" style="color: #657422;
+<span id="cb5-43">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Sum of |Coefficient|"</span>,</span>
-<span id="cb5-37">    <span class="at" style="color: #657422;
+<span id="cb5-44">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">sec.axis =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -7749,10 +7755,10 @@ background-color: null;
 font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"N Predictors"</span>)</span>
-<span id="cb5-38">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb5-45">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb5-39">  <span class="fu" style="color: #4758AB;
+<span id="cb5-46">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -7769,7 +7775,7 @@ background-color: null;
 font-style: inherit;">"Feature Type"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb5-40">  <span class="fu" style="color: #4758AB;
+<span id="cb5-47">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -7778,7 +7784,7 @@ background-color: null;
 font-style: inherit;">13</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb5-41">  <span class="fu" style="color: #4758AB;
+<span id="cb5-48">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -7797,7 +7803,7 @@ background-color: null;
 font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">6</span>),</span>
-<span id="cb5-42">        <span class="at" style="color: #657422;
+<span id="cb5-49">        <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -7863,58 +7869,30 @@ font-style: inherit;">N_Predictors =</span> <span class="fu" style="color: #4758
 background-color: null;
 font-style: inherit;">n_distinct</span>(Predictor))</span>
 <span id="cb6-10"></span>
-<span id="cb6-11">gene_order <span class="ot" style="color: #003B4F;
+<span id="cb6-11"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">&lt;-</span> bar_df <span class="sc" style="color: #5E5E5E;
+font-style: inherit;"># gene_order &lt;- bar_df %&gt;%</span></span>
+<span id="cb6-12"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb6-12">  <span class="fu" style="color: #4758AB;
+font-style: inherit;">#   group_by(Gene) %&gt;%</span></span>
+<span id="cb6-13"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">group_by</span>(Gene) <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">#   summarise(Total = sum(Abs_Coef)) %&gt;%</span></span>
+<span id="cb6-14"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb6-13">  <span class="fu" style="color: #4758AB;
+font-style: inherit;">#   arrange(desc(Total)) %&gt;%</span></span>
+<span id="cb6-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">summarise</span>(<span class="at" style="color: #657422;
+font-style: inherit;">#   pull(Gene)</span></span>
+<span id="cb6-16"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">Total =</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;"># </span></span>
+<span id="cb6-17"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">sum</span>(Abs_Coef)) <span class="sc" style="color: #5E5E5E;
+font-style: inherit;"># bar_df$Gene   &lt;- factor(bar_df$Gene,   levels = gene_order)</span></span>
+<span id="cb6-18"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb6-14">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">arrange</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">desc</span>(Total)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb6-15">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pull</span>(Gene)</span>
-<span id="cb6-16"></span>
-<span id="cb6-17">bar_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene   <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">factor</span>(bar_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene,   <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">levels =</span> gene_order)</span>
-<span id="cb6-18">npred_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">factor</span>(npred_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">levels =</span> gene_order)</span>
+font-style: inherit;"># npred_df$Gene &lt;- factor(npred_df$Gene, levels = gene_order)</span></span>
 <span id="cb6-19"></span>
 <span id="cb6-20">coef_max  <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -8008,13 +7986,20 @@ background-color: null;
 font-style: inherit;">+</span></span>
 <span id="cb6-30">  <span class="fu" style="color: #4758AB;
 background-color: null;
+font-style: inherit;">scale_fill_manual</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values =</span> feature_colors) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-31">  <span class="fu" style="color: #4758AB;
+background-color: null;
 font-style: inherit;">scale_y_continuous</span>(</span>
-<span id="cb6-31">    <span class="at" style="color: #657422;
+<span id="cb6-32">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Sum of |Coefficient|"</span>,</span>
-<span id="cb6-32">    <span class="at" style="color: #657422;
+<span id="cb6-33">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">sec.axis =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -8027,10 +8012,10 @@ background-color: null;
 font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"N Predictors"</span>)</span>
-<span id="cb6-33">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb6-34">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb6-34">  <span class="fu" style="color: #4758AB;
+<span id="cb6-35">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -8047,7 +8032,7 @@ background-color: null;
 font-style: inherit;">"Feature Type"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb6-35">  <span class="fu" style="color: #4758AB;
+<span id="cb6-36">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -8056,7 +8041,7 @@ background-color: null;
 font-style: inherit;">13</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb6-36">  <span class="fu" style="color: #4758AB;
+<span id="cb6-37">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -8075,7 +8060,7 @@ background-color: null;
 font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">6</span>),</span>
-<span id="cb6-37">        <span class="at" style="color: #657422;
+<span id="cb6-38">        <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -8137,58 +8122,30 @@ font-style: inherit;">N_Predictors =</span> <span class="fu" style="color: #4758
 background-color: null;
 font-style: inherit;">n_distinct</span>(Predictor))</span>
 <span id="cb7-10"></span>
-<span id="cb7-11">gene_order <span class="ot" style="color: #003B4F;
+<span id="cb7-11"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">&lt;-</span> bar_df <span class="sc" style="color: #5E5E5E;
+font-style: inherit;"># gene_order &lt;- bar_df %&gt;%</span></span>
+<span id="cb7-12"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb7-12">  <span class="fu" style="color: #4758AB;
+font-style: inherit;">#   group_by(Gene) %&gt;%</span></span>
+<span id="cb7-13"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">group_by</span>(Gene) <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">#   summarise(Total = sum(Abs_Coef)) %&gt;%</span></span>
+<span id="cb7-14"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb7-13">  <span class="fu" style="color: #4758AB;
+font-style: inherit;">#   arrange(desc(Total)) %&gt;%</span></span>
+<span id="cb7-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">summarise</span>(<span class="at" style="color: #657422;
+font-style: inherit;">#   pull(Gene)</span></span>
+<span id="cb7-16"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">Total =</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;"># </span></span>
+<span id="cb7-17"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">sum</span>(Abs_Coef)) <span class="sc" style="color: #5E5E5E;
+font-style: inherit;"># bar_df$Gene   &lt;- factor(bar_df$Gene,   levels = gene_order)</span></span>
+<span id="cb7-18"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb7-14">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">arrange</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">desc</span>(Total)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb7-15">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pull</span>(Gene)</span>
-<span id="cb7-16"></span>
-<span id="cb7-17">bar_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene   <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">factor</span>(bar_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene,   <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">levels =</span> gene_order)</span>
-<span id="cb7-18">npred_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">factor</span>(npred_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">levels =</span> gene_order)</span>
+font-style: inherit;"># npred_df$Gene &lt;- factor(npred_df$Gene, levels = gene_order)</span></span>
 <span id="cb7-19"></span>
 <span id="cb7-20">coef_max  <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -8282,13 +8239,20 @@ background-color: null;
 font-style: inherit;">+</span></span>
 <span id="cb7-30">  <span class="fu" style="color: #4758AB;
 background-color: null;
+font-style: inherit;">scale_fill_manual</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values =</span> feature_colors) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-31">  <span class="fu" style="color: #4758AB;
+background-color: null;
 font-style: inherit;">scale_y_continuous</span>(</span>
-<span id="cb7-31">    <span class="at" style="color: #657422;
+<span id="cb7-32">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Sum of |Coefficient|"</span>,</span>
-<span id="cb7-32">    <span class="at" style="color: #657422;
+<span id="cb7-33">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">sec.axis =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -8301,10 +8265,10 @@ background-color: null;
 font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"N Predictors"</span>)</span>
-<span id="cb7-33">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb7-34">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb7-34">  <span class="fu" style="color: #4758AB;
+<span id="cb7-35">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -8321,7 +8285,7 @@ background-color: null;
 font-style: inherit;">"Feature Type"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb7-35">  <span class="fu" style="color: #4758AB;
+<span id="cb7-36">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -8330,7 +8294,7 @@ background-color: null;
 font-style: inherit;">13</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb7-36">  <span class="fu" style="color: #4758AB;
+<span id="cb7-37">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -8349,7 +8313,7 @@ background-color: null;
 font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">6</span>),</span>
-<span id="cb7-37">        <span class="at" style="color: #657422;
+<span id="cb7-38">        <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -8361,7 +8325,7 @@ font-style: inherit;">"bottom"</span>)</span></code></pre></div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">sp_df <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">&lt;-</span> df_all <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">&lt;-</span> df_shared <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -8415,58 +8379,30 @@ font-style: inherit;">N_Predictors =</span> <span class="fu" style="color: #4758
 background-color: null;
 font-style: inherit;">n_distinct</span>(Predictor))</span>
 <span id="cb8-10"></span>
-<span id="cb8-11">gene_order <span class="ot" style="color: #003B4F;
+<span id="cb8-11"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">&lt;-</span> bar_df <span class="sc" style="color: #5E5E5E;
+font-style: inherit;"># gene_order &lt;- bar_df %&gt;%</span></span>
+<span id="cb8-12"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb8-12">  <span class="fu" style="color: #4758AB;
+font-style: inherit;">#   group_by(Gene) %&gt;%</span></span>
+<span id="cb8-13"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">group_by</span>(Gene) <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">#   summarise(Total = sum(Abs_Coef)) %&gt;%</span></span>
+<span id="cb8-14"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb8-13">  <span class="fu" style="color: #4758AB;
+font-style: inherit;">#   arrange(desc(Total)) %&gt;%</span></span>
+<span id="cb8-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">summarise</span>(<span class="at" style="color: #657422;
+font-style: inherit;">#   pull(Gene)</span></span>
+<span id="cb8-16"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">Total =</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;"># </span></span>
+<span id="cb8-17"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">sum</span>(Abs_Coef)) <span class="sc" style="color: #5E5E5E;
+font-style: inherit;"># bar_df$Gene   &lt;- factor(bar_df$Gene,   levels = gene_order)</span></span>
+<span id="cb8-18"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb8-14">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">arrange</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">desc</span>(Total)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb8-15">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pull</span>(Gene)</span>
-<span id="cb8-16"></span>
-<span id="cb8-17">bar_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene   <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">factor</span>(bar_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene,   <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">levels =</span> gene_order)</span>
-<span id="cb8-18">npred_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">factor</span>(npred_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">levels =</span> gene_order)</span>
+font-style: inherit;"># npred_df$Gene &lt;- factor(npred_df$Gene, levels = gene_order)</span></span>
 <span id="cb8-19"></span>
 <span id="cb8-20">coef_max  <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -8502,35 +8438,7 @@ font-style: inherit;">&lt;-</span> coef_max <span class="sc" style="color: #5E5E
 background-color: null;
 font-style: inherit;">/</span> npred_max</span>
 <span id="cb8-23"></span>
-<span id="cb8-24">feature_colors <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(</span>
-<span id="cb8-25">  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"miRNA"</span>  <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"orange"</span>,</span>
-<span id="cb8-26">  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"lncRNA"</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"#377EB8"</span>,</span>
-<span id="cb8-27">  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"GbM"</span>    <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"darkgrey"</span></span>
-<span id="cb8-28">)</span>
-<span id="cb8-29"></span>
-<span id="cb8-30"><span class="fu" style="color: #4758AB;
+<span id="cb8-24"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(bar_df, <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -8543,7 +8451,7 @@ background-color: null;
 font-style: inherit;">fill =</span> Feature_Type)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb8-31">  <span class="fu" style="color: #4758AB;
+<span id="cb8-25">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_bar</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -8552,40 +8460,40 @@ background-color: null;
 font-style: inherit;">"identity"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb8-32">  <span class="co" style="color: #5E5E5E;
+<span id="cb8-26">  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># geom_point(data = npred_df,</span></span>
-<span id="cb8-33">  <span class="co" style="color: #5E5E5E;
+<span id="cb8-27">  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#            aes(x = Gene, y = N_Predictors * scale_factor),</span></span>
-<span id="cb8-34">  <span class="co" style="color: #5E5E5E;
+<span id="cb8-28">  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#            shape = 23, size = 2, fill = "black",</span></span>
-<span id="cb8-35">  <span class="co" style="color: #5E5E5E;
+<span id="cb8-29">  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#            inherit.aes = FALSE) +</span></span>
-<span id="cb8-36">  <span class="fu" style="color: #4758AB;
+<span id="cb8-30">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">scale_fill_manual</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">values =</span> feature_colors) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb8-37">  <span class="fu" style="color: #4758AB;
+<span id="cb8-31">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">scale_y_continuous</span>(</span>
-<span id="cb8-38">    <span class="at" style="color: #657422;
+<span id="cb8-32">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Sum of |Coefficient|"</span>,</span>
-<span id="cb8-39">    <span class="co" style="color: #5E5E5E;
+<span id="cb8-33">    <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#sec.axis = sec_axis(~ . / scale_factor, name = "N Predictors")</span></span>
-<span id="cb8-40">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb8-34">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb8-41">  <span class="fu" style="color: #4758AB;
+<span id="cb8-35">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -8602,7 +8510,7 @@ background-color: null;
 font-style: inherit;">"Feature Type"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb8-42">  <span class="fu" style="color: #4758AB;
+<span id="cb8-36">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -8611,7 +8519,7 @@ background-color: null;
 font-style: inherit;">13</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb8-43">  <span class="fu" style="color: #4758AB;
+<span id="cb8-37">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -8630,7 +8538,7 @@ background-color: null;
 font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">6</span>),</span>
-<span id="cb8-44">        <span class="at" style="color: #657422;
+<span id="cb8-38">        <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -8692,58 +8600,30 @@ font-style: inherit;">N_Predictors =</span> <span class="fu" style="color: #4758
 background-color: null;
 font-style: inherit;">n_distinct</span>(Predictor))</span>
 <span id="cb9-10"></span>
-<span id="cb9-11">gene_order <span class="ot" style="color: #003B4F;
+<span id="cb9-11"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">&lt;-</span> bar_df <span class="sc" style="color: #5E5E5E;
+font-style: inherit;"># gene_order &lt;- bar_df %&gt;%</span></span>
+<span id="cb9-12"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb9-12">  <span class="fu" style="color: #4758AB;
+font-style: inherit;">#   group_by(Gene) %&gt;%</span></span>
+<span id="cb9-13"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">group_by</span>(Gene) <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">#   summarise(Total = sum(Abs_Coef)) %&gt;%</span></span>
+<span id="cb9-14"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb9-13">  <span class="fu" style="color: #4758AB;
+font-style: inherit;">#   arrange(desc(Total)) %&gt;%</span></span>
+<span id="cb9-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">summarise</span>(<span class="at" style="color: #657422;
+font-style: inherit;">#   pull(Gene)</span></span>
+<span id="cb9-16"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">Total =</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;"># </span></span>
+<span id="cb9-17"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">sum</span>(Abs_Coef)) <span class="sc" style="color: #5E5E5E;
+font-style: inherit;"># bar_df$Gene   &lt;- factor(bar_df$Gene,   levels = gene_order)</span></span>
+<span id="cb9-18"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb9-14">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">arrange</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">desc</span>(Total)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb9-15">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pull</span>(Gene)</span>
-<span id="cb9-16"></span>
-<span id="cb9-17">bar_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene   <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">factor</span>(bar_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene,   <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">levels =</span> gene_order)</span>
-<span id="cb9-18">npred_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">factor</span>(npred_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">levels =</span> gene_order)</span>
+font-style: inherit;"># npred_df$Gene &lt;- factor(npred_df$Gene, levels = gene_order)</span></span>
 <span id="cb9-19"></span>
 <span id="cb9-20">coef_max  <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -8837,13 +8717,20 @@ background-color: null;
 font-style: inherit;">+</span></span>
 <span id="cb9-30">  <span class="fu" style="color: #4758AB;
 background-color: null;
+font-style: inherit;">scale_fill_manual</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values =</span> feature_colors) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-31">  <span class="fu" style="color: #4758AB;
+background-color: null;
 font-style: inherit;">scale_y_continuous</span>(</span>
-<span id="cb9-31">    <span class="at" style="color: #657422;
+<span id="cb9-32">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Sum of |Coefficient|"</span>,</span>
-<span id="cb9-32">    <span class="at" style="color: #657422;
+<span id="cb9-33">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">sec.axis =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -8856,16 +8743,16 @@ background-color: null;
 font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"N Predictors"</span>)</span>
-<span id="cb9-33">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb9-34">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb9-34">  <span class="fu" style="color: #4758AB;
+<span id="cb9-35">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Pmea — all predictors"</span>, <span class="at" style="color: #657422;
+font-style: inherit;">"Ptuh — all predictors"</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -8876,7 +8763,7 @@ background-color: null;
 font-style: inherit;">"Feature Type"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb9-35">  <span class="fu" style="color: #4758AB;
+<span id="cb9-36">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -8885,7 +8772,7 @@ background-color: null;
 font-style: inherit;">13</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb9-36">  <span class="fu" style="color: #4758AB;
+<span id="cb9-37">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -8904,7 +8791,7 @@ background-color: null;
 font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">6</span>),</span>
-<span id="cb9-37">        <span class="at" style="color: #657422;
+<span id="cb9-38">        <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -8970,58 +8857,30 @@ font-style: inherit;">N_Predictors =</span> <span class="fu" style="color: #4758
 background-color: null;
 font-style: inherit;">n_distinct</span>(Predictor))</span>
 <span id="cb10-10"></span>
-<span id="cb10-11">gene_order <span class="ot" style="color: #003B4F;
+<span id="cb10-11"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">&lt;-</span> bar_df <span class="sc" style="color: #5E5E5E;
+font-style: inherit;"># gene_order &lt;- bar_df %&gt;%</span></span>
+<span id="cb10-12"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb10-12">  <span class="fu" style="color: #4758AB;
+font-style: inherit;">#   group_by(Gene) %&gt;%</span></span>
+<span id="cb10-13"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">group_by</span>(Gene) <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">#   summarise(Total = sum(Abs_Coef)) %&gt;%</span></span>
+<span id="cb10-14"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb10-13">  <span class="fu" style="color: #4758AB;
+font-style: inherit;">#   arrange(desc(Total)) %&gt;%</span></span>
+<span id="cb10-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">summarise</span>(<span class="at" style="color: #657422;
+font-style: inherit;">#   pull(Gene)</span></span>
+<span id="cb10-16"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">Total =</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;"># </span></span>
+<span id="cb10-17"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">sum</span>(Abs_Coef)) <span class="sc" style="color: #5E5E5E;
+font-style: inherit;"># bar_df$Gene   &lt;- factor(bar_df$Gene,   levels = gene_order)</span></span>
+<span id="cb10-18"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb10-14">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">arrange</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">desc</span>(Total)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb10-15">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pull</span>(Gene)</span>
-<span id="cb10-16"></span>
-<span id="cb10-17">bar_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene   <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">factor</span>(bar_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene,   <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">levels =</span> gene_order)</span>
-<span id="cb10-18">npred_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">factor</span>(npred_df<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>Gene, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">levels =</span> gene_order)</span>
+font-style: inherit;"># npred_df$Gene &lt;- factor(npred_df$Gene, levels = gene_order)</span></span>
 <span id="cb10-19"></span>
 <span id="cb10-20">coef_max  <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -9115,13 +8974,20 @@ background-color: null;
 font-style: inherit;">+</span></span>
 <span id="cb10-30">  <span class="fu" style="color: #4758AB;
 background-color: null;
+font-style: inherit;">scale_fill_manual</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values =</span> feature_colors) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-31">  <span class="fu" style="color: #4758AB;
+background-color: null;
 font-style: inherit;">scale_y_continuous</span>(</span>
-<span id="cb10-31">    <span class="at" style="color: #657422;
+<span id="cb10-32">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Sum of |Coefficient|"</span>,</span>
-<span id="cb10-32">    <span class="at" style="color: #657422;
+<span id="cb10-33">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">sec.axis =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -9134,10 +9000,10 @@ background-color: null;
 font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"N Predictors"</span>)</span>
-<span id="cb10-33">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb10-34">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb10-34">  <span class="fu" style="color: #4758AB;
+<span id="cb10-35">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -9154,7 +9020,7 @@ background-color: null;
 font-style: inherit;">"Feature Type"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb10-35">  <span class="fu" style="color: #4758AB;
+<span id="cb10-36">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -9163,7 +9029,7 @@ background-color: null;
 font-style: inherit;">13</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb10-36">  <span class="fu" style="color: #4758AB;
+<span id="cb10-37">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -9182,7 +9048,7 @@ background-color: null;
 font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">6</span>),</span>
-<span id="cb10-37">        <span class="at" style="color: #657422;
+<span id="cb10-38">        <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
 background-color: null;

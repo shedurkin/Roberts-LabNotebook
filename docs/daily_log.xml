@@ -10,7 +10,37 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/daily_log.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Mon, 06 Apr 2026 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 05 Aug 2026 19:09:14 GMT</lastBuildDate>
+<item>
+  <title>January 2026, Daily Log</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2026/August_2026_posts.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<section id="august-2026" class="level2">
+<h2 class="anchored" data-anchor-id="august-2026">05 August 2026</h2>
+<section id="tuesday" class="level4">
+<h4 class="anchored" data-anchor-id="tuesday">Tuesday</h4>
+<ul>
+<li><p>finished incorporating Steven’s comments on Doctoral Dissertation Proposal</p></li>
+<li><p>followed up with Hollie on the remaining document I need from her for the bypass package</p></li>
+<li><p>compiled food receipts from ICRS travel for reimbursement under FINS award</p></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>daily log</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2026/August_2026_posts.html</guid>
+  <pubDate>Wed, 05 Aug 2026 19:09:14 GMT</pubDate>
+</item>
 <item>
   <title>April 2026 Goals: Part 1</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -3215,106 +3245,6 @@ Last quarter, with the intensive TA position, grant applications, committee prep
   <category>monthly goals</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/2024_10_31_weekly_steven_meeting.html</guid>
   <pubDate>Thu, 31 Oct 2024 07:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Masters/Bypass planning</title>
-  <dc:creator>Kathleen Durkin</dc:creator>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/2024_10_25_Degree_ProgressPlan_Meeting.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-
-<p>Overview of 2024.10.25 meeting with Steven to discuss/plan Masters/bypass completion.</p>
-<section id="au24" class="level2">
-<h2 class="anchored" data-anchor-id="au24">AU24</h2>
-<ul>
-<li><p>Finalize masters committee. Discussing with Kerry on Tuesday (10/29), I think (hope) she’ll agree to join my committee! If not, Jackie would also fit.</p></li>
-<li><p>Have first committee meeting. <strong>What materials/slides do I need to prepare for this?</strong></p>
-<ul>
-<li>Need to prepare material overviewing my current degree progress and plans for completion</li>
-</ul></li>
-<li><p>Submit Plan of Study. Currently need 5.5 credits to complete masters requirements (4.5 if CENV 590 can by counted toward degree – would need approval). <strong>What other courses would be beneficial for proposed study?</strong></p></li>
-<li><p>Thesis focus: role of multiple epigenetic mechanisms and their interactions in environmental memory/stress response in marine invertebrates.</p>
-<ul>
-<li>E5: miRNA, miRNA + RNA expression, miRNA/siRNA + DNA methylation</li>
-</ul></li>
-<li><p>Q: <strong>How is collaborative work handled for thesis? E.g., to what extent can E5 work be included in thesis?</strong></p>
-<ul>
-<li>E5 work that I’ve completed is fully eligible</li>
-</ul></li>
-</ul>
-<section id="thesis-progress-and-brainstorming" class="level3">
-<h3 class="anchored" data-anchor-id="thesis-progress-and-brainstorming">Thesis progress and brainstorming</h3>
-<p>Chapter 1: corals deep-dive (+ deep-dive-expression)</p>
-<p>I’ve currently completed miRNA/siRNA characterization and preliminary expression work. I’m in the process of characterizting patterns of sncRNA + mRNA coexpression. Will also incorporate DNA methylation mapping and sncRNA/methylation interaction analysis.</p>
-<ul>
-<li><p>were methylation samples sent out? for deep dive</p></li>
-<li><p>could also include coral hDNA methylation in this if I receive the SIFP</p></li>
-<li><p>logical expansion into PhD thesis is looking at time series data</p></li>
-</ul>
-<p>Chapter 2: environmental memory in oysters</p>
-<ul>
-<li><p>we have data for oysters under OA exposure. Described in parents, but not yet touched children. In parents have gene expression and methylation (plus lncRNA from the RNAseq data)</p></li>
-<li><p>so I could look into <strong>heritability of methylation in oysters</strong></p></li>
-<li><p>methylation data from the offspring already exists!! (i.e., the samples have already been sequenced)</p></li>
-<li><p>side note: lab has already looked into barcoding bisulfite-converted DNA, but had limited success because their gene of interest was very long and bisulfite treatment degrades high-molecular-weight DNA. It would be interesting to develop some kind of screening protocol to screen for methylation patterns associate with resilience. (e.g., for broodstock screening)</p></li>
-</ul>
-</section>
-<section id="to-do" class="level3">
-<h3 class="anchored" data-anchor-id="to-do">To-Do:</h3>
-<p>E5:</p>
-<ul>
-<li><p>For each miRNA, calculate correlation coefficent with each gene</p></li>
-<li><p>Look into miRNA binding again (get software from Jill?)</p></li>
-<li><p>interactions with lncRNA (get data from Zach). Could also do binding here, since lncRNAs may be sponges, precursors, etc.</p></li>
-<li><p>cross-species stuff could be interesting – gene orthologs? but can be back burner for now</p></li>
-<li><p>correlation between methylation in an miRNA-coding region and expression of that miRNA.</p></li>
-</ul>
-<p>General:</p>
-<ul>
-<li><p>can bring Hollie in now for committee</p></li>
-<li><p>schedule meeting with steven, weekly thursdays at 11</p></li>
-</ul>
-</section>
-</section>
-<section id="wi25" class="level2">
-<h2 class="anchored" data-anchor-id="wi25">WI25</h2>
-<ul>
-<li><p>Full draft of Masters Proposal</p></li>
-<li><p>Q: <strong>To what extant can your thesis work deviate from submitted Proposal?</strong></p></li>
-</ul>
-</section>
-<section id="sp25su25" class="level2">
-<h2 class="anchored" data-anchor-id="sp25su25">SP25/SU25</h2>
-<ul>
-<li>Submit finalized Masters Proposal</li>
-</ul>
-</section>
-<section id="su25" class="level2">
-<h2 class="anchored" data-anchor-id="su25">SU25</h2>
-<ul>
-<li><p>Possibly Smithsonian fellowship (coral hDNA methylation), 10wks</p>
-<ul>
-<li><strong>How would funding for the remaining ~4wks work for this?</strong></li>
-</ul></li>
-</ul>
-</section>
-<section id="au25" class="level2">
-<h2 class="anchored" data-anchor-id="au25">AU25</h2>
-<ul>
-<li>MS exam + bypass</li>
-</ul>
-
-
-</section>
-
- ]]></description>
-  <category>monthly goals</category>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/daily_logs/2024/2024_10_25_Degree_ProgressPlan_Meeting.html</guid>
-  <pubDate>Mon, 28 Oct 2024 22:19:44 GMT</pubDate>
 </item>
 </channel>
 </rss>

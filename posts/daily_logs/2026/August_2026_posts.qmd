@@ -1,0 +1,24 @@
+---
+title: "January 2026, Daily Log"
+author: "Kathleen Durkin"
+date: "last-modified"
+categories: ["daily log"]
+format:
+  html:
+    code-fold: true
+execute:
+  warning: false
+---
+
+## 05 August 2026
+
+#### Tuesday
+ 
+ - finished incorporating Steven's comments on Doctoral Dissertation Proposal
+ 
+- followed up with Hollie on the remaining document I need from her for the bypass package
+
+- compiled food receipts from ICRS travel for reimbursement under FINS award
+
+
+

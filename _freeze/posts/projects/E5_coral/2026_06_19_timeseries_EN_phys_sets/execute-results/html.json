@@ -1,0 +1,15 @@
+{
+  "hash": "08fe05891ae296008133581d0913c6e6",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Timeseries: EN with physiology gene sets\"\nauthor: \"Kathleen Durkin\"\ndate: \"2026-06-19\"\ncategories: [\"E5-coral\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: FALSE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\nNow that I've made some improvements to the EN pipeline and compiled preliminary gene sets for our host physiology domains, I want to look at how the model performs across these functional sets. One hypothesis of interest for my dissertation is that the epigenome is not \"evenly spread\" across functions. In other words, some physiological functions are preferentially regulated over others. To run a preliminary test of this, I'm going to use the EN model to predict expression of each of these physiology-associated gene sets. If one set is broadly better-predicted by the epigenetic predictors than others, that would support this preferential regulation hypothesis.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
