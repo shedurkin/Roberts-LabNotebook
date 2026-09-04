@@ -1,0 +1,147 @@
+---
+title: "Incorporating parental data: bed check"
+author: "Kathleen Durkin"
+date: "2026-09-03"
+categories: ["cesmallr"]
+format:
+  html:
+    toc: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Now that I have the basic structure of using DSS to call DMLs/DMRs from the `ceasmallr` offspring data, I also want ot incorporate the parental data.
+
+As a reminder, we have WGBS data from both the eggs and sperm (maternal and paternal contributions) of the parents of all of our offspring subjects. In Venkataraman et al. 2024, `methylKit` was used to perform differential methylation analysis and ID DMLs based on parental OA treatment.
+
+The quick-and-dirty way to look for preliminary signal of methylation inheritance is to look for parental-offspring overlap in DMLs. In other words, look for loci that were differentially methylated in the parental cohort based on OA treatment, then see if the same loci were also differentially methylated (based on parent treatment) in the offspring. This overlap should also include directional concordance (e.g., a DML is present *and hypermethylated* in both parent gametres and in offspring).
+
+With a quick addon to the `10-diff-methyl-DSS` script I made, I can check to see if stage-specific DMLs overlap with parental DMLs:
+
+ead in the parental beds (sperm/egg DMLs, column 5 = parental methylation diff), join to the offspring DMLs on `chr` + `pos`, and compare the sign of the difference.
+
+``` r
+zyg_dmls <- read_tsv("../output/10-diff-methyl-DSS/zygote_DML.bed",
+                  col_names = c("chr", "start", "end", "zyg_diff"))
+```
+
+    ## Rows: 7287 Columns: 4
+    ## -- Column specification --------------------------------------------------------
+    ## Delimiter: "\t"
+    ## chr (1): chr
+    ## dbl (3): start, end, zyg_diff
+    ## 
+    ## i Use `spec()` to retrieve the full column specification for this data.
+    ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+lar_dmls <- read_tsv("../output/10-diff-methyl-DSS/larvae_DML.bed",
+                  col_names = c("chr", "start", "end", "lar_diff"))
+```
+
+    ## Rows: 5330 Columns: 4
+    ## -- Column specification --------------------------------------------------------
+    ## Delimiter: "\t"
+    ## chr (1): chr
+    ## dbl (3): start, end, lar_diff
+    ## 
+    ## i Use `spec()` to retrieve the full column specification for this data.
+    ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+sperm <- read_tsv("../data/adult_male_dml.bed",
+                  col_names = c("chr", "start", "end", "strand", "par_diff")) %>%
+  transmute(chr, start, end = end - 1, par_diff = par_diff/100)
+```
+
+    ## Rows: 4175 Columns: 5
+    ## -- Column specification --------------------------------------------------------
+    ## Delimiter: "\t"
+    ## chr (2): chr, strand
+    ## dbl (3): start, end, par_diff
+    ## 
+    ## i Use `spec()` to retrieve the full column specification for this data.
+    ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+egg <- read_tsv("../data/adult_female_dml.bed",
+                  col_names = c("chr", "start", "end", "strand", "par_diff")) %>%
+  transmute(chr, start, end = end - 1, par_diff = par_diff/100)
+```
+
+    ## Rows: 128 Columns: 5
+    ## -- Column specification --------------------------------------------------------
+    ## Delimiter: "\t"
+    ## chr (2): chr, strand
+    ## dbl (3): start, end, par_diff
+    ## 
+    ## i Use `spec()` to retrieve the full column specification for this data.
+    ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+shared_zyg_egg <- inner_join(zyg_dmls, egg, by = c("chr", "start", "end")) %>%
+  mutate(concordant = sign(zyg_diff) == sign(par_diff))
+
+shared_lar_egg<- inner_join(lar_dmls, egg, by = c("chr", "start", "end")) %>%
+  mutate(concordant = sign(lar_diff) == sign(par_diff))
+
+summarise(shared_zyg_egg, n_shared = n(), n_concordant = sum(concordant),
+          pct_concordant = mean(concordant) * 100)
+```
+
+    ## # A tibble: 1 x 3
+    ##   n_shared n_concordant pct_concordant
+    ##      <int>        <int>          <dbl>
+    ## 1        1            1            100
+
+``` r
+summarise(shared_lar_egg, n_shared = n(), n_concordant = sum(concordant),
+          pct_concordant = mean(concordant) * 100)
+```
+
+    ## # A tibble: 1 x 3
+    ##   n_shared n_concordant pct_concordant
+    ##      <int>        <int>          <dbl>
+    ## 1        2            2            100
+
+``` r
+shared_zyg_sperm <- inner_join(zyg_dmls, sperm, by = c("chr", "start", "end")) %>%
+  mutate(concordant = sign(zyg_diff) == sign(par_diff))
+
+shared_lar_sperm <- inner_join(lar_dmls, sperm, by = c("chr", "start", "end")) %>%
+  mutate(concordant = sign(lar_diff) == sign(par_diff))
+
+summarise(shared_zyg_sperm, n_shared = n(), n_concordant = sum(concordant),
+          pct_concordant = mean(concordant) * 100)
+```
+
+    ## # A tibble: 1 x 3
+    ##   n_shared n_concordant pct_concordant
+    ##      <int>        <int>          <dbl>
+    ## 1       86           86            100
+
+``` r
+summarise(shared_lar_sperm, n_shared = n(), n_concordant = sum(concordant),
+          pct_concordant = mean(concordant) * 100)
+```
+
+    ## # A tibble: 1 x 3
+    ##   n_shared n_concordant pct_concordant
+    ##      <int>        <int>          <dbl>
+    ## 1       74           73           98.6
+
+## Results summary
+
+We still have overlap between the `DSS` derived offspring DMLs and the `methylKit` derived parental gamete DMLs, again almost exclusively with sperm DMLs indicating primarily paternal inheritance. Additionally, the overlap shows almost exclusively directional agreement, which is exactly what we'd expect in a case of true differential methylation inheritance. Great start!
+
+NOTE, however, that this is an inherently flawed comparison because
+
+(a) the offspring DMLs and parental DMLs being compared were called using different tools (`DSS` and `methylKit`, respectively)
+
+(b) they use different thresholds for minimum methylation difference to qualify as a DML (offspring DMLs use \>=25%, parent analysis used \>=50%)
+
+(c) the parental DML analysis included a couple of samples from individuals not used for the offspring crosses
+
+For a real answer, I need to pull the `bismark` coverage files; re-call DMLs in the parental samples (excluding individuals not used for offspring crosses); re-check for directionally-consistent overlap with offspring DMLs; and test whether that overlap exceeds chance

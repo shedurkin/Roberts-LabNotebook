@@ -10,7 +10,404 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Mon, 31 Aug 2026 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 03 Sep 2026 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Incorporating parental data: bed check</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_09_03_parental_data.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>Now that I have the basic structure of using DSS to call DMLs/DMRs from the <code>ceasmallr</code> offspring data, I also want ot incorporate the parental data.</p>
+<p>As a reminder, we have WGBS data from both the eggs and sperm (maternal and paternal contributions) of the parents of all of our offspring subjects. In Venkataraman et al.&nbsp;2024, <code>methylKit</code> was used to perform differential methylation analysis and ID DMLs based on parental OA treatment.</p>
+<p>The quick-and-dirty way to look for preliminary signal of methylation inheritance is to look for parental-offspring overlap in DMLs. In other words, look for loci that were differentially methylated in the parental cohort based on OA treatment, then see if the same loci were also differentially methylated (based on parent treatment) in the offspring. This overlap should also include directional concordance (e.g., a DML is present <em>and hypermethylated</em> in both parent gametres and in offspring).</p>
+<p>With a quick addon to the <code>10-diff-methyl-DSS</code> script I made, I can check to see if stage-specific DMLs overlap with parental DMLs:</p>
+<p>ead in the parental beds (sperm/egg DMLs, column 5 = parental methylation diff), join to the offspring DMLs on <code>chr</code> + <code>pos</code>, and compare the sign of the difference.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">zyg_dmls <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_tsv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/10-diff-methyl-DSS/zygote_DML.bed"</span>,</span>
+<span id="cb1-2">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col_names =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"chr"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"start"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"end"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"zyg_diff"</span>))</span></code></pre></div>
+<pre><code>## Rows: 7287 Columns: 4
+## -- Column specification --------------------------------------------------------
+## Delimiter: "\t"
+## chr (1): chr
+## dbl (3): start, end, zyg_diff
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">lar_dmls <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_tsv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/10-diff-methyl-DSS/larvae_DML.bed"</span>,</span>
+<span id="cb3-2">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col_names =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"chr"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"start"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"end"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lar_diff"</span>))</span></code></pre></div>
+<pre><code>## Rows: 5330 Columns: 4
+## -- Column specification --------------------------------------------------------
+## Delimiter: "\t"
+## chr (1): chr
+## dbl (3): start, end, lar_diff
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">sperm <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_tsv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../data/adult_male_dml.bed"</span>,</span>
+<span id="cb5-2">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col_names =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"chr"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"start"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"end"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"strand"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"par_diff"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">transmute</span>(chr, start, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">end =</span> end <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">par_diff =</span> par_diff<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)</span></code></pre></div>
+<pre><code>## Rows: 4175 Columns: 5
+## -- Column specification --------------------------------------------------------
+## Delimiter: "\t"
+## chr (2): chr, strand
+## dbl (3): start, end, par_diff
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">egg <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_tsv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../data/adult_female_dml.bed"</span>,</span>
+<span id="cb7-2">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col_names =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"chr"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"start"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"end"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"strand"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"par_diff"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb7-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">transmute</span>(chr, start, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">end =</span> end <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">par_diff =</span> par_diff<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)</span></code></pre></div>
+<pre><code>## Rows: 128 Columns: 5
+## -- Column specification --------------------------------------------------------
+## Delimiter: "\t"
+## chr (2): chr, strand
+## dbl (3): start, end, par_diff
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">shared_zyg_egg <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">inner_join</span>(zyg_dmls, egg, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"chr"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"start"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"end"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb9-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">concordant =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sign</span>(zyg_diff) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sign</span>(par_diff))</span>
+<span id="cb9-3"></span>
+<span id="cb9-4">shared_lar_egg<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">inner_join</span>(lar_dmls, egg, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"chr"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"start"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"end"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb9-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">concordant =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sign</span>(lar_diff) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sign</span>(par_diff))</span>
+<span id="cb9-6"></span>
+<span id="cb9-7"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(shared_zyg_egg, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n_shared =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">n</span>(), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n_concordant =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(concordant),</span>
+<span id="cb9-8">          <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pct_concordant =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(concordant) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 3
+##   n_shared n_concordant pct_concordant
+##      &lt;int&gt;        &lt;int&gt;          &lt;dbl&gt;
+## 1        1            1            100</code></pre>
+<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(shared_lar_egg, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n_shared =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">n</span>(), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n_concordant =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(concordant),</span>
+<span id="cb11-2">          <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pct_concordant =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(concordant) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 3
+##   n_shared n_concordant pct_concordant
+##      &lt;int&gt;        &lt;int&gt;          &lt;dbl&gt;
+## 1        2            2            100</code></pre>
+<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">shared_zyg_sperm <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">inner_join</span>(zyg_dmls, sperm, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"chr"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"start"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"end"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb13-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">concordant =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sign</span>(zyg_diff) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sign</span>(par_diff))</span>
+<span id="cb13-3"></span>
+<span id="cb13-4">shared_lar_sperm <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">inner_join</span>(lar_dmls, sperm, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"chr"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"start"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"end"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb13-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">concordant =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sign</span>(lar_diff) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sign</span>(par_diff))</span>
+<span id="cb13-6"></span>
+<span id="cb13-7"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(shared_zyg_sperm, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n_shared =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">n</span>(), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n_concordant =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(concordant),</span>
+<span id="cb13-8">          <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pct_concordant =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(concordant) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 3
+##   n_shared n_concordant pct_concordant
+##      &lt;int&gt;        &lt;int&gt;          &lt;dbl&gt;
+## 1       86           86            100</code></pre>
+<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(shared_lar_sperm, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n_shared =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">n</span>(), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n_concordant =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(concordant),</span>
+<span id="cb15-2">          <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pct_concordant =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(concordant) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 3
+##   n_shared n_concordant pct_concordant
+##      &lt;int&gt;        &lt;int&gt;          &lt;dbl&gt;
+## 1       74           73           98.6</code></pre>
+<section id="results-summary" class="level2">
+<h2 class="anchored" data-anchor-id="results-summary">Results summary</h2>
+<p>We still have overlap between the <code>DSS</code> derived offspring DMLs and the <code>methylKit</code> derived parental gamete DMLs, again almost exclusively with sperm DMLs indicating primarily paternal inheritance. Additionally, the overlap shows almost exclusively directional agreement, which is exactly what we’d expect in a case of true differential methylation inheritance. Great start!</p>
+<p>NOTE, however, that this is an inherently flawed comparison because</p>
+<ol type="a">
+<li><p>the offspring DMLs and parental DMLs being compared were called using different tools (<code>DSS</code> and <code>methylKit</code>, respectively)</p></li>
+<li><p>they use different thresholds for minimum methylation difference to qualify as a DML (offspring DMLs use &gt;=25%, parent analysis used &gt;=50%)</p></li>
+<li><p>the parental DML analysis included a couple of samples from individuals not used for the offspring crosses</p></li>
+</ol>
+<p>For a real answer, I need to pull the <code>bismark</code> coverage files; re-call DMLs in the parental samples (excluding individuals not used for offspring crosses); re-check for directionally-consistent overlap with offspring DMLs; and test whether that overlap exceeds chance</p>
+
+
+</section>
+
+ ]]></description>
+  <category>cesmallr</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_09_03_parental_data.html</guid>
+  <pubDate>Thu, 03 Sep 2026 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Merging the two repos</title>
   <dc:creator>Kathleen Durkin</dc:creator>

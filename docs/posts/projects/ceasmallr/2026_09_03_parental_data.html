@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Kathleen Durkin">
+<meta name="dcterms.date" content="2026-09-03">
 
-<title>ceasmallr – Kathleen’s Lab Notebook</title>
+<title>Incorporating parental data: bed check – Kathleen’s Lab Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,31 +22,65 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-listing/list.min.js"></script>
-<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-b515dea5baab39ffcfcd4bae179e3bdb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-195886546b2eb1f67ede645fd062ce19.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-b515dea5baab39ffcfcd4bae179e3bdb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-b515dea5baab39ffcfcd4bae179e3bdb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-195886546b2eb1f67ede645fd062ce19.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-b515dea5baab39ffcfcd4bae179e3bdb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,68 +108,10 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../../styles.css">
-<link rel="alternate" type="application/rss+xml" title="Kathleen's Lab Notebook" href="ceasmallr.xml" data-external="1"></head>
+<link rel="stylesheet" href="../../../styles.css">
+</head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
@@ -304,7 +282,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Kathleen’s Lab Notebook</span>
     </a>
   </div>
@@ -315,11 +293,11 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../daily_log.html"> 
+    <a class="nav-link" href="../../../daily_log.html"> 
 <span class="menu-text">Daily Notebook Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../projects.html"> 
+    <a class="nav-link" href="../../../projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item compact">
@@ -343,154 +321,153 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page">
-      <h1 class="title">ceasmallr</h1>
-                      </div>
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Incorporating parental data: bed check</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">cesmallr</div>
+              </div>
+                  </div>
   </div>
-  <div class="quarto-title-meta column-page">
+    
+  
+  <div class="quarto-title-meta column-page-left">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Kathleen Durkin </p>
+            </div>
     </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 3, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#results-summary" id="toc-results-summary" class="nav-link active" data-scroll-target="#results-summary">Results summary</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
 
 
 
 
-<div class="quarto-about-jolla column-page">
-  <img src="../../images/eastern_oyster.png" class="about-image
-  rectangle " style="width: 15em;">
- <div id="description">
-<p><a href="10.1093/eep/dvae018">Venkataraman et al.&nbsp;2024</a> exposed Eastern oysters (<em>Crassostrea virginica</em>) to ocean acidification treatments and examined the interplay between resultant differential methylation and differential gene expression.</p>
-<p>In <code>ceasmallr</code>, we build on this work by evaluating the heritability of this environmentally-induced differential methylation in <em>C. virginica</em>. See project details and current status at the project Github, linked below!</p>
-</div> 
-  <hr class="about-sep">
-   <div class="about-links">
-  <a href="https://github.com/shedurkin/ceasmallr" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
-</div>
-</div>
+<p>Now that I have the basic structure of using DSS to call DMLs/DMRs from the <code>ceasmallr</code> offspring data, I also want ot incorporate the parental data.</p>
+<p>As a reminder, we have WGBS data from both the eggs and sperm (maternal and paternal contributions) of the parents of all of our offspring subjects. In Venkataraman et al.&nbsp;2024, <code>methylKit</code> was used to perform differential methylation analysis and ID DMLs based on parental OA treatment.</p>
+<p>The quick-and-dirty way to look for preliminary signal of methylation inheritance is to look for parental-offspring overlap in DMLs. In other words, look for loci that were differentially methylated in the parental cohort based on OA treatment, then see if the same loci were also differentially methylated (based on parent treatment) in the offspring. This overlap should also include directional concordance (e.g., a DML is present <em>and hypermethylated</em> in both parent gametres and in offspring).</p>
+<p>With a quick addon to the <code>10-diff-methyl-DSS</code> script I made, I can check to see if stage-specific DMLs overlap with parental DMLs:</p>
+<p>ead in the parental beds (sperm/egg DMLs, column 5 = parental methylation diff), join to the offspring DMLs on <code>chr</code> + <code>pos</code>, and compare the sign of the difference.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>zyg_dmls <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">"../output/10-diff-methyl-DSS/zygote_DML.bed"</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"chr"</span>, <span class="st">"start"</span>, <span class="st">"end"</span>, <span class="st">"zyg_diff"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## Rows: 7287 Columns: 4
+## -- Column specification --------------------------------------------------------
+## Delimiter: "\t"
+## chr (1): chr
+## dbl (3): start, end, zyg_diff
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>lar_dmls <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">"../output/10-diff-methyl-DSS/larvae_DML.bed"</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"chr"</span>, <span class="st">"start"</span>, <span class="st">"end"</span>, <span class="st">"lar_diff"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## Rows: 5330 Columns: 4
+## -- Column specification --------------------------------------------------------
+## Delimiter: "\t"
+## chr (1): chr
+## dbl (3): start, end, lar_diff
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sperm <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">"../data/adult_male_dml.bed"</span>,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"chr"</span>, <span class="st">"start"</span>, <span class="st">"end"</span>, <span class="st">"strand"</span>, <span class="st">"par_diff"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(chr, start, <span class="at">end =</span> end <span class="sc">-</span> <span class="dv">1</span>, <span class="at">par_diff =</span> par_diff<span class="sc">/</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## Rows: 4175 Columns: 5
+## -- Column specification --------------------------------------------------------
+## Delimiter: "\t"
+## chr (2): chr, strand
+## dbl (3): start, end, par_diff
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>egg <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">"../data/adult_female_dml.bed"</span>,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"chr"</span>, <span class="st">"start"</span>, <span class="st">"end"</span>, <span class="st">"strand"</span>, <span class="st">"par_diff"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(chr, start, <span class="at">end =</span> end <span class="sc">-</span> <span class="dv">1</span>, <span class="at">par_diff =</span> par_diff<span class="sc">/</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## Rows: 128 Columns: 5
+## -- Column specification --------------------------------------------------------
+## Delimiter: "\t"
+## chr (2): chr, strand
+## dbl (3): start, end, par_diff
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>shared_zyg_egg <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(zyg_dmls, egg, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"chr"</span>, <span class="st">"start"</span>, <span class="st">"end"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">concordant =</span> <span class="fu">sign</span>(zyg_diff) <span class="sc">==</span> <span class="fu">sign</span>(par_diff))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>shared_lar_egg<span class="ot">&lt;-</span> <span class="fu">inner_join</span>(lar_dmls, egg, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"chr"</span>, <span class="st">"start"</span>, <span class="st">"end"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">concordant =</span> <span class="fu">sign</span>(lar_diff) <span class="sc">==</span> <span class="fu">sign</span>(par_diff))</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(shared_zyg_egg, <span class="at">n_shared =</span> <span class="fu">n</span>(), <span class="at">n_concordant =</span> <span class="fu">sum</span>(concordant),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">pct_concordant =</span> <span class="fu">mean</span>(concordant) <span class="sc">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## # A tibble: 1 x 3
+##   n_shared n_concordant pct_concordant
+##      &lt;int&gt;        &lt;int&gt;          &lt;dbl&gt;
+## 1        1            1            100</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(shared_lar_egg, <span class="at">n_shared =</span> <span class="fu">n</span>(), <span class="at">n_concordant =</span> <span class="fu">sum</span>(concordant),</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">pct_concordant =</span> <span class="fu">mean</span>(concordant) <span class="sc">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## # A tibble: 1 x 3
+##   n_shared n_concordant pct_concordant
+##      &lt;int&gt;        &lt;int&gt;          &lt;dbl&gt;
+## 1        2            2            100</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>shared_zyg_sperm <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(zyg_dmls, sperm, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"chr"</span>, <span class="st">"start"</span>, <span class="st">"end"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">concordant =</span> <span class="fu">sign</span>(zyg_diff) <span class="sc">==</span> <span class="fu">sign</span>(par_diff))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>shared_lar_sperm <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(lar_dmls, sperm, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"chr"</span>, <span class="st">"start"</span>, <span class="st">"end"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">concordant =</span> <span class="fu">sign</span>(lar_diff) <span class="sc">==</span> <span class="fu">sign</span>(par_diff))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(shared_zyg_sperm, <span class="at">n_shared =</span> <span class="fu">n</span>(), <span class="at">n_concordant =</span> <span class="fu">sum</span>(concordant),</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">pct_concordant =</span> <span class="fu">mean</span>(concordant) <span class="sc">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## # A tibble: 1 x 3
+##   n_shared n_concordant pct_concordant
+##      &lt;int&gt;        &lt;int&gt;          &lt;dbl&gt;
+## 1       86           86            100</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(shared_lar_sperm, <span class="at">n_shared =</span> <span class="fu">n</span>(), <span class="at">n_concordant =</span> <span class="fu">sum</span>(concordant),</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">pct_concordant =</span> <span class="fu">mean</span>(concordant) <span class="sc">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## # A tibble: 1 x 3
+##   n_shared n_concordant pct_concordant
+##      &lt;int&gt;        &lt;int&gt;          &lt;dbl&gt;
+## 1       74           73           98.6</code></pre>
+<section id="results-summary" class="level2">
+<h2 class="anchored" data-anchor-id="results-summary">Results summary</h2>
+<p>We still have overlap between the <code>DSS</code> derived offspring DMLs and the <code>methylKit</code> derived parental gamete DMLs, again almost exclusively with sperm DMLs indicating primarily paternal inheritance. Additionally, the overlap shows almost exclusively directional agreement, which is exactly what we’d expect in a case of true differential methylation inheritance. Great start!</p>
+<p>NOTE, however, that this is an inherently flawed comparison because</p>
+<ol type="a">
+<li><p>the offspring DMLs and parental DMLs being compared were called using different tools (<code>DSS</code> and <code>methylKit</code>, respectively)</p></li>
+<li><p>they use different thresholds for minimum methylation difference to qualify as a DML (offspring DMLs use &gt;=25%, parent analysis used &gt;=50%)</p></li>
+<li><p>the parental DML analysis included a couple of samples from individuals not used for the offspring crosses</p></li>
+</ol>
+<p>For a real answer, I need to pull the <code>bismark</code> coverage files; re-call DMLs in the parental samples (excluding individuals not used for offspring crosses); re-check for directionally-consistent overlap with offspring DMLs; and test whether that overlap exceeds chance</p>
 
 
+</section>
 
-
-
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-
-<th>
- 
-</th>
-
-<th>
-Date
-</th>
-
-<th>
-Title
-</th>
-
-<th>
-Categories
-</th>
-
-<th>
-Reading Time
-</th>
-
-</tr>
-</thead>
-<tbody class="list">
-
-<tr data-index="0" data-categories="Y2VzbWFsbHI=" data-listing-date-sort="1788418800000" data-listing-file-modified-sort="1788545079330" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1261" data-listing-title-sort="Incorporating parental data: bed check" data-listing-filename-sort="2026_09_03_parental_data.qmd">
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-<td>
-<span class="listing-date">Sep 3, 2026</span>
-</td>
-<td>
-<a href="../../posts/projects/ceasmallr/2026_09_03_parental_data.html" class="title listing-title">Incorporating parental data: bed check</a>
-</td>
-<td>
-<span class="listing-categories">cesmallr</span>
-</td>
-<td>
-<span class="listing-reading-time">7 min</span>
-</td>
-
-</tr>
-
-<tr data-index="1" data-categories="Y2VzbWFsbHI=" data-listing-date-sort="1788159600000" data-listing-file-modified-sort="1788226708589" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="543" data-listing-title-sort="Merging the two repos" data-listing-filename-sort="2026_08_31_merging_repos.qmd">
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-<td>
-<span class="listing-date">Aug 31, 2026</span>
-</td>
-<td>
-<a href="../../posts/projects/ceasmallr/2026_08_31_merging_repos.html" class="title listing-title">Merging the two repos</a>
-</td>
-<td>
-<span class="listing-categories">cesmallr</span>
-</td>
-<td>
-<span class="listing-reading-time">3 min</span>
-</td>
-
-</tr>
-
-<tr data-index="2" data-categories="Y2VzbWFsbHI=" data-listing-date-sort="1787814000000" data-listing-file-modified-sort="1788466899833" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1302" data-listing-title-sort="Getting back to ceasmallr: DSS" data-listing-filename-sort="2026_08_27_getting_back_to_it.qmd">
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-<td>
-<span class="listing-date">Aug 27, 2026</span>
-</td>
-<td>
-<a href="../../posts/projects/ceasmallr/2026_08_27_getting_back_to_it.html" class="title listing-title">Getting back to ceasmallr: DSS</a>
-</td>
-<td>
-<span class="listing-categories">cesmallr</span>
-</td>
-<td>
-<span class="listing-reading-time">7 min</span>
-</td>
-
-</tr>
-
-<tr data-index="3" data-categories="Y2Vhc21hbGxy" data-listing-date-sort="1754550000000" data-listing-file-modified-sort="1787875530124" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="492" data-listing-title-sort="Summary of completed ceasmallr work" data-listing-filename-sort="2025_08_07_current_summary.qmd">
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-<td>
-<span class="listing-date">Aug 7, 2025</span>
-</td>
-<td>
-<a href="../../posts/projects/ceasmallr/2025_08_07_current_summary.html" class="title listing-title">Summary of completed ceasmallr work</a>
-</td>
-<td>
-<span class="listing-categories">ceasmallr</span>
-</td>
-<td>
-<span class="listing-reading-time">3 min</span>
-</td>
-
-</tr>
-
-</tbody>
-</table>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -506,6 +483,13 @@ Reading Time
       window.document.body.appendChild(a);
     }
     setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

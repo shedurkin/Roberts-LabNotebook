@@ -6304,7 +6304,7 @@
     "href": "posts/projects/ceasmallr.html",
     "title": "ceasmallr",
     "section": "",
-    "text": "Venkataraman et al. 2024 exposed Eastern oysters (Crassostrea virginica) to ocean acidification treatments and examined the interplay between resultant differential methylation and differential gene expression.\nIn ceasmallr, we build on this work by evaluating the heritability of this environmentally-induced differential methylation in C. virginica. See project details and current status at the project Github, linked below!\n \n  \n   \n  \n    \n     Github\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\nDate\n\n\n\nTitle\n\n\n\nCategories\n\n\n\nReading Time\n\n\n\n\n\n\n\n\n\n\n\nAug 31, 2026\n\n\nMerging the two repos\n\n\ncesmallr\n\n\n3 min\n\n\n\n\n\n\n\n\n\nAug 27, 2026\n\n\nGetting back to ceasmallr: DSS\n\n\ncesmallr\n\n\n7 min\n\n\n\n\n\n\n\n\n\nAug 7, 2025\n\n\nSummary of completed ceasmallr work\n\n\nceasmallr\n\n\n3 min\n\n\n\n\n\n\nNo matching items"
+    "text": "Venkataraman et al. 2024 exposed Eastern oysters (Crassostrea virginica) to ocean acidification treatments and examined the interplay between resultant differential methylation and differential gene expression.\nIn ceasmallr, we build on this work by evaluating the heritability of this environmentally-induced differential methylation in C. virginica. See project details and current status at the project Github, linked below!\n \n  \n   \n  \n    \n     Github\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\nDate\n\n\n\nTitle\n\n\n\nCategories\n\n\n\nReading Time\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2026\n\n\nIncorporating parental data: bed check\n\n\ncesmallr\n\n\n7 min\n\n\n\n\n\n\n\n\n\nAug 31, 2026\n\n\nMerging the two repos\n\n\ncesmallr\n\n\n3 min\n\n\n\n\n\n\n\n\n\nAug 27, 2026\n\n\nGetting back to ceasmallr: DSS\n\n\ncesmallr\n\n\n7 min\n\n\n\n\n\n\n\n\n\nAug 7, 2025\n\n\nSummary of completed ceasmallr work\n\n\nceasmallr\n\n\n3 min\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/projects/ceasmallr/2025_08_07_current_summary.html",
@@ -6333,5 +6333,19 @@
     "title": "Projects",
     "section": "",
     "text": "E5 Coral\n\n\n\n\n\n\n\n\n\n\nSIFP 2025\n\n\n\n\n\n\n\n\n\n\nceasmallr\n\n\n\n\n\n\n\n\n\n\nPacific Cod\n\n\n\n\n\n\n\n\n\n\nPacific Oyster\n\n\n\n\n\n\n\n\n\n\nMiscellaneous\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/projects/ceasmallr/2026_09_03_parental_data.html",
+    "href": "posts/projects/ceasmallr/2026_09_03_parental_data.html",
+    "title": "Incorporating parental data: bed check",
+    "section": "",
+    "text": "Now that I have the basic structure of using DSS to call DMLs/DMRs from the ceasmallr offspring data, I also want ot incorporate the parental data.\nAs a reminder, we have WGBS data from both the eggs and sperm (maternal and paternal contributions) of the parents of all of our offspring subjects. In Venkataraman et al. 2024, methylKit was used to perform differential methylation analysis and ID DMLs based on parental OA treatment.\nThe quick-and-dirty way to look for preliminary signal of methylation inheritance is to look for parental-offspring overlap in DMLs. In other words, look for loci that were differentially methylated in the parental cohort based on OA treatment, then see if the same loci were also differentially methylated (based on parent treatment) in the offspring. This overlap should also include directional concordance (e.g., a DML is present and hypermethylated in both parent gametres and in offspring).\nWith a quick addon to the 10-diff-methyl-DSS script I made, I can check to see if stage-specific DMLs overlap with parental DMLs:\nead in the parental beds (sperm/egg DMLs, column 5 = parental methylation diff), join to the offspring DMLs on chr + pos, and compare the sign of the difference."
+  },
+  {
+    "objectID": "posts/projects/ceasmallr/2026_09_03_parental_data.html#results-summary",
+    "href": "posts/projects/ceasmallr/2026_09_03_parental_data.html#results-summary",
+    "title": "Incorporating parental data: bed check",
+    "section": "Results summary",
+    "text": "Results summary\nWe still have overlap between the DSS derived offspring DMLs and the methylKit derived parental gamete DMLs, again almost exclusively with sperm DMLs indicating primarily paternal inheritance. Additionally, the overlap shows almost exclusively directional agreement, which is exactly what we’d expect in a case of true differential methylation inheritance. Great start!\nNOTE, however, that this is an inherently flawed comparison because\n\nthe offspring DMLs and parental DMLs being compared were called using different tools (DSS and methylKit, respectively)\nthey use different thresholds for minimum methylation difference to qualify as a DML (offspring DMLs use &gt;=25%, parent analysis used &gt;=50%)\nthe parental DML analysis included a couple of samples from individuals not used for the offspring crosses\n\nFor a real answer, I need to pull the bismark coverage files; re-call DMLs in the parental samples (excluding individuals not used for offspring crosses); re-check for directionally-consistent overlap with offspring DMLs; and test whether that overlap exceeds chance"
   }
 ]
