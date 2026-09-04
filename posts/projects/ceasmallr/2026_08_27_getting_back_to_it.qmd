@@ -68,6 +68,8 @@ STAGE-SPECIFIC
 
 # Code:
 
+Full code available at [ceasmallr/code/10-diff-methyl-DSS](https://github.com/shedurkin/ceasmallr/blob/main/code/10-diff-methyl-DSS.md)
+
 # 3 Multi-factor model (design-level tests)
 
 ## 3.1 Parental treatment effect

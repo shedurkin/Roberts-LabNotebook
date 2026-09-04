@@ -18,7 +18,7 @@ As a reminder, we have WGBS data from both the eggs and sperm (maternal and pate
 
 The quick-and-dirty way to look for preliminary signal of methylation inheritance is to look for parental-offspring overlap in DMLs. In other words, look for loci that were differentially methylated in the parental cohort based on OA treatment, then see if the same loci were also differentially methylated (based on parent treatment) in the offspring. This overlap should also include directional concordance (e.g., a DML is present *and hypermethylated* in both parent gametres and in offspring).
 
-With a quick addon to the `10-diff-methyl-DSS` script I made, I can check to see if stage-specific DMLs overlap with parental DMLs:
+With a quick addon to the [`10-diff-methyl-DSS`](https://github.com/shedurkin/ceasmallr/blob/main/code/10-diff-methyl-DSS.md) script I made, I can check to see if stage-specific DMLs overlap with parental DMLs:
 
 ead in the parental beds (sperm/egg DMLs, column 5 = parental methylation diff), join to the offspring DMLs on `chr` + `pos`, and compare the sign of the difference.
 
@@ -27,28 +27,32 @@ zyg_dmls <- read_tsv("../output/10-diff-methyl-DSS/zygote_DML.bed",
                   col_names = c("chr", "start", "end", "zyg_diff"))
 ```
 
-    ## Rows: 7287 Columns: 4
-    ## -- Column specification --------------------------------------------------------
-    ## Delimiter: "\t"
-    ## chr (1): chr
-    ## dbl (3): start, end, zyg_diff
-    ## 
-    ## i Use `spec()` to retrieve the full column specification for this data.
-    ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```         
+## Rows: 7287 Columns: 4
+## -- Column specification --------------------------------------------------------
+## Delimiter: "\t"
+## chr (1): chr
+## dbl (3): start, end, zyg_diff
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
 
 ``` r
 lar_dmls <- read_tsv("../output/10-diff-methyl-DSS/larvae_DML.bed",
                   col_names = c("chr", "start", "end", "lar_diff"))
 ```
 
-    ## Rows: 5330 Columns: 4
-    ## -- Column specification --------------------------------------------------------
-    ## Delimiter: "\t"
-    ## chr (1): chr
-    ## dbl (3): start, end, lar_diff
-    ## 
-    ## i Use `spec()` to retrieve the full column specification for this data.
-    ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```         
+## Rows: 5330 Columns: 4
+## -- Column specification --------------------------------------------------------
+## Delimiter: "\t"
+## chr (1): chr
+## dbl (3): start, end, lar_diff
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
 
 ``` r
 sperm <- read_tsv("../data/adult_male_dml.bed",
@@ -56,14 +60,16 @@ sperm <- read_tsv("../data/adult_male_dml.bed",
   transmute(chr, start, end = end - 1, par_diff = par_diff/100)
 ```
 
-    ## Rows: 4175 Columns: 5
-    ## -- Column specification --------------------------------------------------------
-    ## Delimiter: "\t"
-    ## chr (2): chr, strand
-    ## dbl (3): start, end, par_diff
-    ## 
-    ## i Use `spec()` to retrieve the full column specification for this data.
-    ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```         
+## Rows: 4175 Columns: 5
+## -- Column specification --------------------------------------------------------
+## Delimiter: "\t"
+## chr (2): chr, strand
+## dbl (3): start, end, par_diff
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
 
 ``` r
 egg <- read_tsv("../data/adult_female_dml.bed",
@@ -71,14 +77,16 @@ egg <- read_tsv("../data/adult_female_dml.bed",
   transmute(chr, start, end = end - 1, par_diff = par_diff/100)
 ```
 
-    ## Rows: 128 Columns: 5
-    ## -- Column specification --------------------------------------------------------
-    ## Delimiter: "\t"
-    ## chr (2): chr, strand
-    ## dbl (3): start, end, par_diff
-    ## 
-    ## i Use `spec()` to retrieve the full column specification for this data.
-    ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```         
+## Rows: 128 Columns: 5
+## -- Column specification --------------------------------------------------------
+## Delimiter: "\t"
+## chr (2): chr, strand
+## dbl (3): start, end, par_diff
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
 
 ``` r
 shared_zyg_egg <- inner_join(zyg_dmls, egg, by = c("chr", "start", "end")) %>%
@@ -91,20 +99,24 @@ summarise(shared_zyg_egg, n_shared = n(), n_concordant = sum(concordant),
           pct_concordant = mean(concordant) * 100)
 ```
 
-    ## # A tibble: 1 x 3
-    ##   n_shared n_concordant pct_concordant
-    ##      <int>        <int>          <dbl>
-    ## 1        1            1            100
+```         
+## # A tibble: 1 x 3
+##   n_shared n_concordant pct_concordant
+##      <int>        <int>          <dbl>
+## 1        1            1            100
+```
 
 ``` r
 summarise(shared_lar_egg, n_shared = n(), n_concordant = sum(concordant),
           pct_concordant = mean(concordant) * 100)
 ```
 
-    ## # A tibble: 1 x 3
-    ##   n_shared n_concordant pct_concordant
-    ##      <int>        <int>          <dbl>
-    ## 1        2            2            100
+```         
+## # A tibble: 1 x 3
+##   n_shared n_concordant pct_concordant
+##      <int>        <int>          <dbl>
+## 1        2            2            100
+```
 
 ``` r
 shared_zyg_sperm <- inner_join(zyg_dmls, sperm, by = c("chr", "start", "end")) %>%
@@ -117,20 +129,24 @@ summarise(shared_zyg_sperm, n_shared = n(), n_concordant = sum(concordant),
           pct_concordant = mean(concordant) * 100)
 ```
 
-    ## # A tibble: 1 x 3
-    ##   n_shared n_concordant pct_concordant
-    ##      <int>        <int>          <dbl>
-    ## 1       86           86            100
+```         
+## # A tibble: 1 x 3
+##   n_shared n_concordant pct_concordant
+##      <int>        <int>          <dbl>
+## 1       86           86            100
+```
 
 ``` r
 summarise(shared_lar_sperm, n_shared = n(), n_concordant = sum(concordant),
           pct_concordant = mean(concordant) * 100)
 ```
 
-    ## # A tibble: 1 x 3
-    ##   n_shared n_concordant pct_concordant
-    ##      <int>        <int>          <dbl>
-    ## 1       74           73           98.6
+```         
+## # A tibble: 1 x 3
+##   n_shared n_concordant pct_concordant
+##      <int>        <int>          <dbl>
+## 1       74           73           98.6
+```
 
 ## Results summary
 
