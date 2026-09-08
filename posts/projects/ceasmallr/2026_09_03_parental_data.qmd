@@ -2,7 +2,7 @@
 title: "Incorporating parental data: bed check"
 author: "Kathleen Durkin"
 date: "2026-09-03"
-categories: ["cesmallr"]
+categories: ["ceasmallr"]
 format:
   html:
     toc: true
