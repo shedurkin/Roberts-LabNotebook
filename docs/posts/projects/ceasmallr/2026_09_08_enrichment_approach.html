@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Kathleen Durkin">
+<meta name="dcterms.date" content="2026-09-08">
 
-<title>2026_09_08_enrichment_approach – Kathleen’s Lab Notebook</title>
+<title>Lit review: how to statistically test for inheritance – Kathleen’s Lab Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -285,14 +287,29 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page">
-      <h1 class="title">2026_09_08_enrichment_approach</h1>
-                      </div>
+      <h1 class="title">Lit review: how to statistically test for inheritance</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">ceasmallr</div>
+              </div>
+                  </div>
   </div>
     
   
   <div class="quarto-title-meta column-page">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Kathleen Durkin </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 8, 2026</p>
+      </div>
+    </div>
     
       
     </div>
@@ -301,7 +318,9 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page" id="quarto-document-content">
 
@@ -310,6 +329,64 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<p>Closest comparison is probably the Rondon et al.&nbsp;2017 diuron paper:</p>
+<p>METHODS:</p>
+<ul>
+<li>Parents exposed to diuron during beginning and middle of gametogenesis, then gametes collected and used for spawning.</li>
+<li>n=6 spat used for WGBS – 3 spat from parents who experienced diuron treatment, and 3 from control parents.</li>
+<li><code>methylkit</code> for analysis: DMRs of 500bp, using minimum coverage of 10x in all reps, minimum 25% methylation difference, with FDR-adjusted pval of 0.01.</li>
+<li>Used <strong>visual inspection</strong> to identify DMRs for which all reps were affected in same way (ngl, this seems kind of crazy to me…)</li>
+<li>defined “promoter” region as 1kb upstream region.</li>
+</ul>
+<p>RESULTS:</p>
+<ul>
+<li><p>no treatment-based difference in global methylation level (GML), and samples did not cluster by treatment (consistent with preliminary <code>methylkit</code> work in the ceasmallr samples)</p></li>
+<li><p>from 57,819 eligible windows (500bp, 10X cov), found 1,967 DMRs, with roughly even split between hyper- and hypomethylation (1,060 and 907, respectively) in treated v control samples.</p></li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Rondon et al.&nbsp;did NOT have data from the parents. While this may be the closest comparison in the sense that they also demonstrated inheritance of treatment-induced differential methylation, they have a much smaller sample size, no parent data to try demonstrating inheritance of <em>parental</em> DMLs, and used methylKit. Should look elsewhere for a closer methodologically/experimentally similar example.</p>
+</div>
+</div>
+<p>Feiner et al.&nbsp;(Daphnia paper)</p>
+<p>METHODS:</p>
+<ul>
+<li><p>Daphnia (F0 generation) exposed to respective = stressors (3 natural environmetnal stressors, 1 demethylation stressor), then propogated (asexually?) through to F4.</p></li>
+<li><p>WGBS for F1, F2, and F4 (note, ommited exposed parents F0, and intermediate generation F3). After <code>bismark</code> and quality filtering, n=54 libraries</p></li>
+<li><p><code>methylKit</code> – considered CpGs wiht &gt;=5 reads in all samples, and only variable sites with &gt;=0.5 std dv in % methylation – average of 2.8M sites/sample.</p></li>
+<li><p>Called DMLs (they term DMPs – differentially methylated positions) using FDR-correct p=0.05 – they don’t seem to have used a minimum methylation difference. These parameters are more permissive than the p&lt;0.01 (corrected) and &gt;25% methylation difference used by me, Rondon, etc.</p></li>
+<li><p>Def. of treatment-induced transgenerational DML:</p>
+<ul>
+<li><p>treatment-induced differential methylation in F1</p></li>
+<li><p>methylation state maintained in F2 and F4</p></li>
+<li><p>^ don’t clarify whether this also requires maintaining <em>direction</em> of differential methylation (hyper- or hypo-).</p></li>
+</ul></li>
+<li><p>some sort of permutation approach to provfide additional support for ID’d DMLs?</p></li>
+</ul>
+<p>Peterson et al (Acropora paper w matz)</p>
+<ul>
+<li><p>Two species – Acropora millepora and A. selago</p></li>
+<li><p>No treatments</p></li>
+<li><p>both pure (m1 x m2, m2 x m1, s1 x s2, s2 x s1) and hybrid (s1 x m1, s1 x m2, s2 x m1, s2 x m2) crosses</p></li>
+<li><p>WGBS</p></li>
+<li><p>used DSS!</p></li>
+<li></li>
+</ul>
+<p>Yagound et al., 2020: Intergenerational transfer of DNA methylation marks in the honey bee.</p>
+<ul>
+<li>Examines inheritance end epigenetic reprogramming in honey bees <em>without treatment-induced differential methylation</em></li>
+<li>WGBS</li>
+<li>Father (sperm) v. offspring comparisons</li>
+<li>Basically showing that offspring methylomes are far more similar to paternal methylomes than non-parental methylomes, so (a) methylomic state is inherited, adn (b) no evidence for epigenetic reprogramming.</li>
+</ul>
 
 
 

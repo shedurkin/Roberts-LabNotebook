@@ -1,0 +1,15 @@
+{
+  "hash": "9bcc6a3af077c05533cbeff0008ad8bc",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Shared DMLs on IGV\"\nauthor: \"Kathleen Durkin\"\ndate: \"2026-09-08\"\ncategories: [\"ceasmallr\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: TRUE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nI want to start looking through the parent-offspring shared DMLs and DMRs using a genome browser, to better contextualize their relative locations, positions relative to other genomic features (introns, exons), etc.\n\nLoaded all of the DML and DMR bed files generated in `10-diff-methyl-DSS.Rmd` and `10.1-diff-methyl-DSS-parents.Rmd` into IGV:\n\n- `zygote_DML.bed`\n- `zygote_DMR.bed`\n- `larvae_DML.bed`\n- `larvae_DMR.bed`\n- `female_DML.bed`\n- `female_DMR.bed`\n- `male_DML.bed`\n- `male_DMR.bed`\n\nas well as the bed files of DMLs that are *shared* among both parents and offspring -- currently these are split by both parent sex and offspring lifestage:\n\n- `shared_zygote_egg_DML.bed`\n- `shared_zygote_sperm_DML.bed`\n- `shared_larvae_egg_DML.bed`\n- `shared_larvae_sperm_DML.bed`\n\nI also loaded the *C. virginica* genome and feature tracks for mRNA, exons, and introns, all aquired from the [lab handbook page of genomic resources](https://robertslab.github.io/resources/Genomic-Resources/#crassostrea-virginica).\n\n\n\n\nSome interesting things pop out!\n\nHere's the full view with just the shared DML tracks and genome annotations\n\n![](./images/2026_09_08_igv_B.png)\n\nWe can see the numeric trend of there being more shared DMLs with the paternal contribution (top two tracks) than the maternal (next two tracks, in pink).\n\nI see only one location in the whole genome where all four of the shared DML tracks overlap -- in other words, where both sexes AND both lifestages have treatment-associated DMLs.\n\n![](./images/2026_09_08_igv_A.png)\n\nIn this region, both parent sexes AND both offspring lifestages share 11 DMLs, all hypomethylated with ~45% - ~60% methylation difference, and all within a ~300bp range. These DMLs sit within an intron in the gene LOC111118434, which is annotated to encode \"cell cycle protein RAD17-like\". This is essential to sustained cell growth and maintenance of chromosomal stability, and is a key component for sensing DNA damage and activating ATR-dependent DNA damage response ([Uniprot](https://www.uniprot.org/uniprotkb/O75943/entry#function))\n\nSince I know that there is little zygote-larvae overlap and little egg-sperm overlap, it will be interesting to run functional annotation and enrichment analysis on the DMLs from each group, to see where similarity/dissimilarity lies...",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

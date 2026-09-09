@@ -10,7 +10,131 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Fri, 04 Sep 2026 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 08 Sep 2026 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Shared DMLs on IGV</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_09_08_igv.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>I want to start looking through the parent-offspring shared DMLs and DMRs using a genome browser, to better contextualize their relative locations, positions relative to other genomic features (introns, exons), etc.</p>
+<p>Loaded all of the DML and DMR bed files generated in <code>10-diff-methyl-DSS.Rmd</code> and <code>10.1-diff-methyl-DSS-parents.Rmd</code> into IGV:</p>
+<ul>
+<li><code>zygote_DML.bed</code></li>
+<li><code>zygote_DMR.bed</code></li>
+<li><code>larvae_DML.bed</code></li>
+<li><code>larvae_DMR.bed</code></li>
+<li><code>female_DML.bed</code></li>
+<li><code>female_DMR.bed</code></li>
+<li><code>male_DML.bed</code></li>
+<li><code>male_DMR.bed</code></li>
+</ul>
+<p>as well as the bed files of DMLs that are <em>shared</em> among both parents and offspring – currently these are split by both parent sex and offspring lifestage:</p>
+<ul>
+<li><code>shared_zygote_egg_DML.bed</code></li>
+<li><code>shared_zygote_sperm_DML.bed</code></li>
+<li><code>shared_larvae_egg_DML.bed</code></li>
+<li><code>shared_larvae_sperm_DML.bed</code></li>
+</ul>
+<p>I also loaded the <em>C. virginica</em> genome and feature tracks for mRNA, exons, and introns, all aquired from the <a href="https://robertslab.github.io/resources/Genomic-Resources/#crassostrea-virginica">lab handbook page of genomic resources</a>.</p>
+<p>Some interesting things pop out!</p>
+<p>Here’s the full view with just the shared DML tracks and genome annotations</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/images/2026_09_08_igv_B.png" class="img-fluid"></p>
+<p>We can see the numeric trend of there being more shared DMLs with the paternal contribution (top two tracks) than the maternal (next two tracks, in pink).</p>
+<p>I see only one location in the whole genome where all four of the shared DML tracks overlap – in other words, where both sexes AND both lifestages have treatment-associated DMLs.</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/images/2026_09_08_igv_A.png" class="img-fluid"></p>
+<p>In this region, both parent sexes AND both offspring lifestages share 11 DMLs, all hypomethylated with ~45% - ~60% methylation difference, and all within a ~300bp range. These DMLs sit within an intron in the gene LOC111118434, which is annotated to encode “cell cycle protein RAD17-like”. This is essential to sustained cell growth and maintenance of chromosomal stability, and is a key component for sensing DNA damage and activating ATR-dependent DNA damage response (<a href="https://www.uniprot.org/uniprotkb/O75943/entry#function">Uniprot</a>)</p>
+<p>Since I know that there is little zygote-larvae overlap and little egg-sperm overlap, it will be interesting to run functional annotation and enrichment analysis on the DMLs from each group, to see where similarity/dissimilarity lies…</p>
+
+
+
+ ]]></description>
+  <category>ceasmallr</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_09_08_igv.html</guid>
+  <pubDate>Tue, 08 Sep 2026 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Lit review: how to statistically test for inheritance</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_09_08_enrichment_approach.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>Closest comparison is probably the Rondon et al.&nbsp;2017 diuron paper:</p>
+<p>METHODS:</p>
+<ul>
+<li>Parents exposed to diuron during beginning and middle of gametogenesis, then gametes collected and used for spawning.</li>
+<li>n=6 spat used for WGBS – 3 spat from parents who experienced diuron treatment, and 3 from control parents.</li>
+<li><code>methylkit</code> for analysis: DMRs of 500bp, using minimum coverage of 10x in all reps, minimum 25% methylation difference, with FDR-adjusted pval of 0.01.</li>
+<li>Used <strong>visual inspection</strong> to identify DMRs for which all reps were affected in same way (ngl, this seems kind of crazy to me…)</li>
+<li>defined “promoter” region as 1kb upstream region.</li>
+</ul>
+<p>RESULTS:</p>
+<ul>
+<li><p>no treatment-based difference in global methylation level (GML), and samples did not cluster by treatment (consistent with preliminary <code>methylkit</code> work in the ceasmallr samples)</p></li>
+<li><p>from 57,819 eligible windows (500bp, 10X cov), found 1,967 DMRs, with roughly even split between hyper- and hypomethylation (1,060 and 907, respectively) in treated v control samples.</p></li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Rondon et al.&nbsp;did NOT have data from the parents. While this may be the closest comparison in the sense that they also demonstrated inheritance of treatment-induced differential methylation, they have a much smaller sample size, no parent data to try demonstrating inheritance of <em>parental</em> DMLs, and used methylKit. Should look elsewhere for a closer methodologically/experimentally similar example.</p>
+</div>
+</div>
+<p>Feiner et al.&nbsp;(Daphnia paper)</p>
+<p>METHODS:</p>
+<ul>
+<li><p>Daphnia (F0 generation) exposed to respective = stressors (3 natural environmetnal stressors, 1 demethylation stressor), then propogated (asexually?) through to F4.</p></li>
+<li><p>WGBS for F1, F2, and F4 (note, ommited exposed parents F0, and intermediate generation F3). After <code>bismark</code> and quality filtering, n=54 libraries</p></li>
+<li><p><code>methylKit</code> – considered CpGs wiht &gt;=5 reads in all samples, and only variable sites with &gt;=0.5 std dv in % methylation – average of 2.8M sites/sample.</p></li>
+<li><p>Called DMLs (they term DMPs – differentially methylated positions) using FDR-correct p=0.05 – they don’t seem to have used a minimum methylation difference. These parameters are more permissive than the p&lt;0.01 (corrected) and &gt;25% methylation difference used by me, Rondon, etc.</p></li>
+<li><p>Def. of treatment-induced transgenerational DML:</p>
+<ul>
+<li><p>treatment-induced differential methylation in F1</p></li>
+<li><p>methylation state maintained in F2 and F4</p></li>
+<li><p>^ don’t clarify whether this also requires maintaining <em>direction</em> of differential methylation (hyper- or hypo-).</p></li>
+</ul></li>
+<li><p>some sort of permutation approach to provfide additional support for ID’d DMLs?</p></li>
+</ul>
+<p>Peterson et al (Acropora paper w matz)</p>
+<ul>
+<li><p>Two species – Acropora millepora and A. selago</p></li>
+<li><p>No treatments</p></li>
+<li><p>both pure (m1 x m2, m2 x m1, s1 x s2, s2 x s1) and hybrid (s1 x m1, s1 x m2, s2 x m1, s2 x m2) crosses</p></li>
+<li><p>WGBS</p></li>
+<li><p>used DSS!</p></li>
+<li></li>
+</ul>
+<p>Yagound et al., 2020: Intergenerational transfer of DNA methylation marks in the honey bee.</p>
+<ul>
+<li>Examines inheritance end epigenetic reprogramming in honey bees <em>without treatment-induced differential methylation</em></li>
+<li>WGBS</li>
+<li>Father (sperm) v. offspring comparisons</li>
+<li>Basically showing that offspring methylomes are far more similar to paternal methylomes than non-parental methylomes, so (a) methylomic state is inherited, adn (b) no evidence for epigenetic reprogramming.</li>
+</ul>
+
+
+
+ ]]></description>
+  <category>ceasmallr</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_09_08_enrichment_approach.html</guid>
+  <pubDate>Tue, 08 Sep 2026 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Incorporating parental data: parent DSS</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -75,7 +199,10 @@
 <li>Sperm/Zygote overlap: 1,120 shared DMLs, 99.4% directionally concordant</li>
 <li>Sperm/Larvae overlap: 1,022 shared DMLs, 99.4 directionally concordant</li>
 </ul>
-<p>Super cool! Re-calling the parental data with DSS (and using the lowered methylation difference of 25%, as with the offspring DMLs) led to more than 10X the number of overlapping DMLs! Again, the overlap is largely with paternal contribution (sperm), though there are also more overlapping DMLs with the egg data, and overlap across all 4 comparisons is still alomst exclusively directionally-concordant – great support for inheritance!</p>
+<p>Super cool! Re-calling the parental data with DSS (and using the lowered methylation difference of 25%, as with the offspring DMLs) led to more than 10X the number of overlapping DMLs! Again, the overlap is largely with paternal contribution (sperm), though there are also more overlapping DMLs with the egg data, and overlap across all 4 comparisons is still almost exclusively directionally-concordant – great support for inheritance!</p>
+<p><strong>Also of interest:</strong></p>
+<p>Of the 7,287 and 5,330 DMLs identified in zygotes and larvae, respectively, only 335 are present in both lifestages. However, of those stage-shared DMLS, ~97% are dirtectionally concordant! This is really interesting potential evidence of partial epigenetic reprogramming!</p>
+<p>Additionally, of the 10,584 and 67,461 DMLs identified in parent eggs and sperm, respectively, only 1,319 are present in both sexes. Furthermore, within these 1,319 sex-shared DMLs, only 36% are directionally concordant. In other words, The majority of parental DMLs are sex-specific, and of those present in both sexes, the majority of treatment responses point in opposite directions! While both male and female oysters underwent methylomic shifts, the location and direction of those shifts differed dramatically between the two sexes.</p>
 <p>Next steps will be to perform an enrichment analysis, to check whether the observed overlap in parent-offspring differential methylation exceeds overlap that we would expect by chance.</p>
 </section>
 <section id="code" class="level1">
@@ -3227,23 +3354,6 @@ font-style: inherit;">"</span>)</span></code></pre></div>
   <category>ceasmallr</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2025_08_07_current_summary.html</guid>
   <pubDate>Thu, 07 Aug 2025 07:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>2026_09_08_enrichment_approach</title>
-  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_09_08_enrichment_approach.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-
-
-
-
- ]]></description>
-  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_09_08_enrichment_approach.html</guid>
-  <pubDate>Tue, 08 Sep 2026 18:18:15 GMT</pubDate>
 </item>
 </channel>
 </rss>
