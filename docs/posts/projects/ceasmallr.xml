@@ -10,7 +10,267 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Tue, 08 Sep 2026 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 15 Sep 2026 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Details of MACAU usage and functionality</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_09_15_MACAU.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>Of the methylation analysis tools reviewed in <span class="citation" data-cites="shafi_survey_2017">Shafi et al. (2017)</span>, only <code>MACAU</code> (<span class="citation" data-cites="lea_flexible_2015">Lea, Tung, and Zhou (2015)</span>) is specifically noted to be designed to account for population structure, in addition to biological and sampling variability (though, as this review was published almost 10 years ago, there may be more recently-developed tools with similar functionality). I want to familiarize myself more with the tool so I can try applying it to the <code>ceasmallr</code> data. I’ll be relying mostly on the <a href="https://xiangzhou.github.io/software/MACAUmanual.pdf"><code>MACAU</code> user manual</a>.</p>
+<ul>
+<li><p>Like <code>DSS</code>, <code>MACAU</code> models DNA methylation one site at a time, using a binomial mixed model</p>
+<ul>
+<li>(Note that <code>MACAU</code> can also be applied to RNAseq data for differential expression analysis, and in these cases uses a poisson mixed model)</li>
+</ul></li>
+<li><p>Unlike <code>DSS</code>, the <code>MACAU</code> manual explicitly states that “No missing data is allowed in the count table”. I think this means that, like with the <code>methylKit</code> work, analysis will be restricted to a pretty small # of cytosine positions, due to several samples with low coverage. It also means that exclusion of the very low-coverage samples may again be prudent.</p>
+<ul>
+<li>It will be interesting to see how this affects analysis — is there a possible outcome where <code>DSS</code>’s ability to retain sites with missingness is more valuable, and I need to find a different post-DSS approach to accounting for pseudo-replication?</li>
+</ul></li>
+<li><p>The tool requires a pre-computed relatedness matrix to incorporate genetic/population structure information. This is something I’ll need to figure out how to get from just our WGBS data (they recommend <code>GEMMA</code> to compute a relatedness matrix from SNP genotypes, and I know there are several tools to call SNPs from WGBS data by accounting for the bisulfite-induced C-&gt;T transitions, e.g., <code>Revelio</code>)</p>
+<ul>
+<li>There should also be more stright-forward ways to generate a relatedness matrix directly from the pedigree information (the parent IDs of each specimen). Googling returns a few options, including the R packages <code>pedigree</code> and <code>nadiv</code>. Only possible caveat is that this will ignore possible relatedness that is not captured by the parent IDs (e.g., what if individuals from the same family were used in both control and treatment groups? This would lead to higher relatedness between some offspring in the two groups as well, but it isn’t documented in the pedigree). This theoretically shouldn’t be too much of a problem, though, since all of the original adult oysters were collected from the wild, rather than being sourced from a hatchery/specific families (<span class="citation" data-cites="mcnally2022">McNally et al. (2022)</span>)</li>
+</ul></li>
+<li><p>Looks like <code>MACAU</code> is implemented from terminal commands, rather than through an R package.</p></li>
+</ul>
+<blockquote class="blockquote">
+<p>The basic usages for association analysis are:</p>
+<p><code>./macau -g [filename] -t [filename] -p [filename] -k [filename] -bmm -o [prefix]</code> where the “-g [prefix]” specifies the methylated reads count file name; “-t [filename]” specifies the total reads count file name; “-p [filename]” specifies the predictor variable file name; “-k [filename]” specifies relatedness matrix file name; “-o [prefix]” specifies output file prefix.</p>
+</blockquote>
+<p>(there are, of course, options for adjusting analysis parameters)</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+But wait!!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I actually just found that there is now a <code>MACAU2</code>, or MACAU 2.0, which is an <em>R package</em> for implementing the MACAU tool! This is great, because I would have needed Sam’s help installing the command-line tool for use on Klone/Raven. With an R package I can just work from a conda environment, sidestepping admin issues.</p>
+<p><a href="https://sqsun.github.io/software/MACAU-R-Manual.pdf"><code>MACAU2</code> user manual</a></p>
+</div>
+</div>
+
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="ref-lea_flexible_2015" class="csl-entry">
+Lea, Amanda J., Jenny Tung, and Xiang Zhou. 2015. <span>“A <span>Flexible</span>, <span>Efficient</span> <span>Binomial</span> <span>Mixed</span> <span>Model</span> for <span>Identifying</span> <span>Differential</span> <span>DNA</span> <span>Methylation</span> in <span>Bisulfite</span> <span>Sequencing</span> <span>Data</span>.”</span> <em>PLOS Genetics</em> 11 (11): e1005650. <a href="https://doi.org/10.1371/journal.pgen.1005650">https://doi.org/10.1371/journal.pgen.1005650</a>.
+</div>
+<div id="ref-mcnally2022" class="csl-entry">
+McNally, Elise M., Alan M. Downey-Wall, F. Dylan Titmuss, Camila Cortina, Kathleen Lotterhos, and Justin B. Ries. 2022. <span>“Parental Exposure of Eastern Oysters (Crassostrea Virginica) to Elevated CO Mitigates Its Negative Effects on Early Larval Shell Growth and Morphology.”</span> <em>Limnology and Oceanography</em> 67 (8): 1732–45. <a href="https://doi.org/10.1002/lno.12162">https://doi.org/10.1002/lno.12162</a>.
+</div>
+<div id="ref-shafi_survey_2017" class="csl-entry">
+Shafi, Adib, Cristina Mitrea, Tin Nguyen, and Sorin Draghici. 2017. <span>“A Survey of the Approaches for Identifying Differential Methylation Using Bisulfite Sequencing Data.”</span> <em>Briefings in Bioinformatics</em> 19 (5): 737–53. <a href="https://doi.org/10.1093/bib/bbx013">https://doi.org/10.1093/bib/bbx013</a>.
+</div>
+</div></section></div> ]]></description>
+  <category>ceasmallr</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_09_15_MACAU.html</guid>
+  <pubDate>Tue, 15 Sep 2026 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Rerunning offspring DSS with all samples</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_09_09_DSS_rerun_allsamp.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>Since <code>DSS</code> can handle missingness better than <code>methylKit</code>, its worth at least checking how it handles the low-coverage sample data that I’ve been excluding from runs.</p>
+<p>I just commented out the following two lines from the <code>10-diff-methyl-DSS.Rmd</code> file and re-ran it using <code>sbatch 10-diff-methyl-DSS.sh</code>.</p>
+<pre><code>drop &lt;- c("CF01-CM01-Zygote", "CF08-CM04-Larvae", "CF08-CM05-Larvae", "EF04-EM04-Zygote", "EF05-EM05-Zygote")
+file.list &lt;- file.list[!str_detect(basename(file.list), str_c(drop, collapse = "|"))]</code></pre>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<p>New n for offspring analyses is the full 32 samples.</p>
+<p>Only slightly more loci present in the samples (<strong>31596324</strong> vs.&nbsp;31450950 in the subsampled run), but fewer loci retained after filtering (<strong>6337469</strong> vs.&nbsp;7594836; not that surprising, given the low coverage).</p>
+<p>During multifactor design tests, more DMLs and DMRs identified, for both the additive and interaction models(Additive: <strong>11356 DMLs/1893 DMRs</strong> vs.&nbsp;8404/1788; Interaction: <strong>20</strong> stage-dependent loci vs.&nbsp;14 in the subsampled run)</p>
+<p>However, during single-stage smoothed runs, fewer DMLs and DMRs identified (Zygote: <strong>5357 DMLs/4145 DMRs</strong> vs.&nbsp;7287/5208; Larvae: <strong>4183 DMLs/3963 DMRs</strong> vs.&nbsp;5330/4661).</p>
+<p>The increase in multifactor-identified DMLs/DMRs, but decrease in per-stage tests isn’t unexpected. Having fewer loci post-filter to test on would naturally reduce the number of identified DMLs. The multifactor test, however, gained power via the increase in sample size, which helped outweigh the accompanying reduction in loci count.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>ceasmallr</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_09_09_DSS_rerun_allsamp.html</guid>
+  <pubDate>Wed, 09 Sep 2026 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Details of DSS functionality</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_09_09_DSS_details.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>Within-stage/within-sex smoothed tests</p>
+<p>To perform the test, use <code>DMLtest()</code>, then use <code>callDML()</code> and <code>callDMR()</code> to call DMLs and DMRs.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">run_stage <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(stage_label) {</span>
+<span id="cb1-2">  s_idx  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">which</span>(meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>stage <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> stage_label)</span>
+<span id="cb1-3">  BS_s   <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> BSobj[, s_idx]</span>
+<span id="cb1-4">  g_exp  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>sample[s_idx][meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>treatment[s_idx] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Exposed"</span>]</span>
+<span id="cb1-5">  g_ctrl <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>sample[s_idx][meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>treatment[s_idx] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Control"</span>]</span>
+<span id="cb1-6">  dml <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">DMLtest</span>(BS_s, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group1 =</span> g_exp, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group2 =</span> g_ctrl, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">smoothing =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span>
+<span id="cb1-7">  out <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(</span>
+<span id="cb1-8">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dml =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">callDML</span>(dml, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">delta =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.25</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">p.threshold =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.01</span>),</span>
+<span id="cb1-9">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dmr =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">callDMR</span>(dml, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">delta =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.10</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">p.threshold =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.01</span>,</span>
+<span id="cb1-10">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">minlen =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">minCG =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dis.merge =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pct.sig =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>)</span>
+<span id="cb1-11">  )</span>
+<span id="cb1-12">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># write per-stage results to disk immediately, so a later crash can't lose them</span></span>
+<span id="cb1-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">saveRDS</span>(dml, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">file.path</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/10-diff-methyl-DSS"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste0</span>(stage_label, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"_DMLtest.rds"</span>)))</span>
+<span id="cb1-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rm</span>(dml, BS_s); <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gc</span>()</span>
+<span id="cb1-15">  out</span>
+<span id="cb1-16">}</span></code></pre></div>
+</div>
+<p><code>DMLtest()</code> performs the following steps: (1) estimate mean methylation levels for all CpG site (I’m doing this with smoothing enabled); (2) estimate dispersions at each CpG sites; (3) conduct Wald test. Smoothing is recommended for use with WGBS data, because it permits information from nearby CpG sites to be combined, improving estimation of methylation levels.</p>
+<p>For my runs of <code>callDML()</code>, I’m requiring a minimum difference in methylation level of 0.25, and a minimum adjusted-pvalue of 0.01. For <code>callDMR()</code>, which identifies regions with many statistically-significant DMLs, I require a minimum region length of 50 nucloeotides containing at least 3 CpG sites, with at least 50% of the CpGs sites being significant DMLs.</p>
+<p>For the multifactor design tests, the primary function is <code>DMLfit.multifactor()</code>.<br>
+</p>
+<section id="how-do-the-two-models-differ" class="level2">
+<h2 class="anchored" data-anchor-id="how-do-the-two-models-differ">How do the two models differ?</h2>
+<p>The two models I’ve tried are additive (<code>treatment + stage</code>, <code>treatment + sex</code>) and interaction (<code>treatment + stage + treatment:stage</code>, <code>treatment + sex + treatment:sex</code>).</p>
+<p>Here’s the general idea of how they differ (I’ll be explaining through the treatment/stage case, but the same idea applies to the parental treatment/sex case).</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/images/DSS_models.png" class="img-fluid"></p>
+<section id="the-additive-model" class="level3">
+<h3 class="anchored" data-anchor-id="the-additive-model">The additive model</h3>
+<p>The treatment effect is the same for both lifestages, though there may be a “shift” involved – essentially, both lifestages exhibit the same slope of change, but may have different intercepts. With this model we’re asking “when you pool both life stages and adjust for the stage difference (the possible intercept shift), does parental exposure affect offspring methylation?”.</p>
+</section>
+<section id="the-interaction-model" class="level3">
+<h3 class="anchored" data-anchor-id="the-interaction-model">The interaction model</h3>
+<p>The treatment effect <em>can differ</em> between life stages – both slope and intercept may differ. With this model we can ask “Does the effect of parental exposure <em>change</em> from zygote to larvae?”</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>ceasmallr</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_09_09_DSS_details.html</guid>
+  <pubDate>Wed, 09 Sep 2026 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Shared DMLs on IGV</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -69,7 +329,11 @@
 
 
 
+<p>Preliminary lit review to help decide what analytical tools/approaches may be best suited to the <code>ceasmallr</code> data type and structure.</p>
+<section id="rondon-et-al.-2017" class="level3">
+<h3 class="anchored" data-anchor-id="rondon-et-al.-2017">Rondon et al.&nbsp;2017</h3>
 <p>Closest comparison is probably the Rondon et al.&nbsp;2017 diuron paper:</p>
+<p><span class="citation" data-cites="rondon2017">Rondon et al. (2017)</span></p>
 <p>METHODS:</p>
 <ul>
 <li>Parents exposed to diuron during beginning and middle of gametogenesis, then gametes collected and used for spawning.</li>
@@ -96,7 +360,10 @@ Important
 <p>Rondon et al.&nbsp;did NOT have data from the parents. While this may be the closest comparison in the sense that they also demonstrated inheritance of treatment-induced differential methylation, they have a much smaller sample size, no parent data to try demonstrating inheritance of <em>parental</em> DMLs, and used methylKit. Should look elsewhere for a closer methodologically/experimentally similar example.</p>
 </div>
 </div>
-<p>Feiner et al.&nbsp;(Daphnia paper)</p>
+</section>
+<section id="feiner-et-al.-2022" class="level3">
+<h3 class="anchored" data-anchor-id="feiner-et-al.-2022">Feiner et al.&nbsp;2022</h3>
+<p><span class="citation" data-cites="feiner2022">Feiner et al. (2022)</span></p>
 <p>METHODS:</p>
 <ul>
 <li><p>Daphnia (F0 generation) exposed to respective = stressors (3 natural environmetnal stressors, 1 demethylation stressor), then propogated (asexually?) through to F4.</p></li>
@@ -111,7 +378,10 @@ Important
 </ul></li>
 <li><p>some sort of permutation approach to provfide additional support for ID’d DMLs?</p></li>
 </ul>
-<p>Peterson et al (Acropora paper w matz)</p>
+</section>
+<section id="peterson-et-al.-2024" class="level3">
+<h3 class="anchored" data-anchor-id="peterson-et-al.-2024">Peterson et al.&nbsp;2024</h3>
+<p><span class="citation" data-cites="peterson_mixed_2024">Peterson et al. (2024)</span></p>
 <ul>
 <li><p>Two species – Acropora millepora and A. selago</p></li>
 <li><p>No treatments</p></li>
@@ -120,17 +390,75 @@ Important
 <li><p>used DSS!</p></li>
 <li></li>
 </ul>
-<p>Yagound et al., 2020: Intergenerational transfer of DNA methylation marks in the honey bee.</p>
+<p>Ultimately I don’t think this approach is very useful – I’m looking at other papers in the invertebrate DNA methylation world, and there seem to be very few or no other studies with identical experimental design (treated parents, offspring with multiple lifestages, etc.). As such, I’m not finding much insight on how to handle the most glaring challenges: pseduoreplication from shared parentage</p>
+<p>Let’s instead take a look at some methods papers. Some general googling suggests that the best approach to account for pseudoreplication when working with high-throughput sequencing data (RNAseq, WGBS, etc.) is tools that make use of Linear Mixed-effects Models (LMMs or GLMMs). There do also seem to be tools that are specifically designed to account for genetic differences in use with methylomic data (e.g., <code>MACAU</code>)</p>
+</section>
+<section id="shafi-et-al.-2017-a-survey-of-the-approaches-for-identifying-differential-methylation-using-bisulfite-sequencing-data" class="level3">
+<h3 class="anchored" data-anchor-id="shafi-et-al.-2017-a-survey-of-the-approaches-for-identifying-differential-methylation-using-bisulfite-sequencing-data"><strong>Shafi et al.&nbsp;2017 – A survey of the approaches for identifying differential methylation using bisulfite sequencing data</strong></h3>
+<p><span class="citation" data-cites="shafi_survey_2017">Shafi et al. (2017)</span></p>
+<section id="logistic-regression-based-approaches" class="level4">
+<h4 class="anchored" data-anchor-id="logistic-regression-based-approaches">Logistic regression-based approaches</h4>
 <ul>
-<li>Examines inheritance end epigenetic reprogramming in honey bees <em>without treatment-induced differential methylation</em></li>
-<li>WGBS</li>
-<li>Father (sperm) v. offspring comparisons</li>
-<li>Basically showing that offspring methylomes are far more similar to paternal methylomes than non-parental methylomes, so (a) methylomic state is inherited, adn (b) no evidence for epigenetic reprogramming.</li>
+<li><code>methylKit</code> and other logistic regression-based approaches take sequencing coverage into account, can incorporate additional covariates, and can work with CHG or CHH methylation, BUT cannot consider <strong>biological variation</strong> among replicates.</li>
 </ul>
+</section>
+<section id="smoothing-based-approaches" class="level4">
+<h4 class="anchored" data-anchor-id="smoothing-based-approaches">Smoothing-based approaches</h4>
+<ul>
+<li><p>These assume that methylation levels of the CpG sites”vary smoothly across the genome” (rather than, for example, the methylation of one site being radically different from its adjacent CpG neighbors – if I understand correctly?)</p></li>
+<li><p>Application of this smoothing permits estimating methylation levels of CpG sites by borrowing info from neighbors. This reduces required sequencing coverage and permits estimation of methylation of <em>missing</em> CpG sites. HOWEVER, poorly handle regions where methylation has sharp cahnges (e.g., transcription factor binding sites, which are often &lt;50bp). Biological events involving a single CpG site (isolated from other sites) may not be detected.</p></li>
+<li><p><code>BSmooth</code>: first example of smoothing approach, but lacks suitable error measurements, only applicable with biological replicates, and limited to comparisons between two groups</p></li>
+<li><p><code>BiSeq</code>: smooths across candidate <em>regions</em> instead of samples. Also, smoothing method takes coverage into account, so that CpGs with higher coverage have higher impact on estimated methylation. In addition to identifying DMCs using Wald test, also uses hierarchical testing to ID significant clusters containing DMC(s), accounting for size. Provides region-wise error control measurment, can add additional covariates. However, limited to application in experiemnts with predefined regions (e.g., RRBS data)</p></li>
+</ul>
+</section>
+<section id="beta-binomial-based-approaches" class="level4">
+<h4 class="anchored" data-anchor-id="beta-binomial-based-approaches">Beta-binomial-based approaches</h4>
+<p>These are of particular interest to me because the category includes both <code>DSS</code>, which I’ve been trialing recently, <em>and</em> <code>MACAU</code>, which popped up in google searches for BS tools that can handle pseudoreplication related to shared parentage.</p>
+<ul>
+<li>With this approach, methylation read counts are characterized as a beta-binomial distribution</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <strong>beta-binomial distribution</strong> models the number of successes in a fixed number of trials when the probability of success varies randomly according to a beta distribution (rather than the probability of success being constant). It’s commonly used to capture overdispersion (the presence of greater variability than expected) in binomial type data. (<a href="https://en.wikipedia.org/wiki/Beta-binomial_distribution">Wikipedia</a>)</p>
+</div>
+</div>
+<p>There are a whole bunch of tools reviewed here that make use of a beta-binomial-based approach (MOABS, RADMeth, methylSig, DSS-single, DSS-general, GetisDMR), but I’m going to focus on <code>DSS</code> and <code>MACAU</code> for now</p>
+<ul>
+<li><p><code>DSS</code>: Prior distribution is constructed from the whole genome, the biological variability is captured by the beta distribution, and the sampling variability is captured by the binomial distribution. This method is particularly useful when working with small sample sizes, because it makes use of a shrinkage procedure to improve estimation of the dispersion parameter under low sample sizes. There is even a version which can be applied without any biological replicates (n=1). It’s also advantageous because it can be applied to data with multiple groups or covariates.</p></li>
+<li><p><code>MACAU</code>: Based on a binomial mixed model that <strong><em>takes population structure into account</em></strong> – this is why it could be useful to me for handling my data’s parental pseudoreplication. This is in addition to taking biological variability among samples and sampling variability among sequencing reads into account. It can also be applied to both WGBS and RRBS data.<br>
+This is the only tool reviewed in this paper that can take population structure into account</p></li>
+</ul>
+<p>I’m actually going to end my in-depth notetaking here, since the remaining types of methylation analysis tools seem to be less well-suited to the type of work I’m doing (with the exception of hidden markov based approaches, all remaining types are ratio-based, rather than count, are limited in their ability to consider additional covariates, and don’t seem to be able to ID DMCs, only DMRs)</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/images/Shafi_Fig.png" class="img-fluid"></p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/images/Shafi_Table.png" class="img-fluid"></p>
 
 
 
- ]]></description>
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="ref-feiner2022" class="csl-entry">
+Feiner, Nathalie, Reinder Radersma, Louella Vasquez, Markus Ringnér, Björn Nystedt, Amanda Raine, Elmar W. Tobi, Bastiaan T. Heijmans, and Tobias Uller. 2022. <span>“Environmentally Induced DNA Methylation Is Inherited Across Generations in an Aquatic Keystone Species.”</span> <em>iScience</em> 25 (5). <a href="https://doi.org/10.1016/j.isci.2022.104303">https://doi.org/10.1016/j.isci.2022.104303</a>.
+</div>
+<div id="ref-peterson_mixed_2024" class="csl-entry">
+Peterson, Christopher R, Carly B Scott, Rashin Ghaffari, Groves Dixon, and Mikhail V Matz. 2024. <span>“Mixed <span>Patterns</span> of <span>Intergenerational</span> <span>DNA</span> <span>Methylation</span> <span>Inheritance</span> in <span>Acropora</span>.”</span> <em>Molecular Biology and Evolution</em> 41 (2): msae008. <a href="https://doi.org/10.1093/molbev/msae008">https://doi.org/10.1093/molbev/msae008</a>.
+</div>
+<div id="ref-rondon2017" class="csl-entry">
+Rondon, Rodolfo, Christoph Grunau, Manon Fallet, Nicolas Charlemagne, Rossana Sussarellu, Cristian Chaparro, Caroline Montagnani, et al. 2017. <span>“Effects of a Parental Exposure to Diuron on Pacific Oyster Spat Methylome.”</span> <em>Environmental Epigenetics</em> 3 (1): dvx004. <a href="https://doi.org/10.1093/eep/dvx004">https://doi.org/10.1093/eep/dvx004</a>.
+</div>
+<div id="ref-shafi_survey_2017" class="csl-entry">
+Shafi, Adib, Cristina Mitrea, Tin Nguyen, and Sorin Draghici. 2017. <span>“A Survey of the Approaches for Identifying Differential Methylation Using Bisulfite Sequencing Data.”</span> <em>Briefings in Bioinformatics</em> 19 (5): 737–53. <a href="https://doi.org/10.1093/bib/bbx013">https://doi.org/10.1093/bib/bbx013</a>.
+</div>
+</div></section></div> ]]></description>
   <category>ceasmallr</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_09_08_enrichment_approach.html</guid>
   <pubDate>Tue, 08 Sep 2026 07:00:00 GMT</pubDate>

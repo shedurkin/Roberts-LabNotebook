@@ -1,0 +1,15 @@
+{
+  "hash": "ac48f00be7950d18b3da4e33916045a4",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Rerunning offspring DSS with all samples\"\nauthor: \"Kathleen Durkin\"\ndate: \"2026-09-09\"\ncategories: [\"ceasmallr\"]\nformat:\n  html:\n    toc: true\nexecute: \n  eval: TRUE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\n\nSince `DSS` can handle missingness better than `methylKit`, its worth at least checking how it handles the low-coverage sample data that I've been excluding from runs.\n\nI just commented out the following two lines from the `10-diff-methyl-DSS.Rmd` file and re-ran it using `sbatch 10-diff-methyl-DSS.sh`. \n\n```\ndrop <- c(\"CF01-CM01-Zygote\", \"CF08-CM04-Larvae\", \"CF08-CM05-Larvae\", \"EF04-EM04-Zygote\", \"EF05-EM05-Zygote\")\nfile.list <- file.list[!str_detect(basename(file.list), str_c(drop, collapse = \"|\"))]\n```\n\n## Results\n\nNew n for offspring analyses is the full 32 samples. \n\nOnly slightly more loci present in the samples (**31596324** vs. 31450950 in the subsampled run), but fewer loci retained after filtering (**6337469** vs. 7594836; not that surprising, given the low coverage).\n\nDuring multifactor design tests, more DMLs and DMRs identified, for both the additive and interaction models(Additive: **11356 DMLs/1893 DMRs** vs. 8404/1788;  Interaction: **20** stage-dependent loci vs. 14 in the subsampled run)\n\nHowever, during single-stage smoothed runs, fewer DMLs and DMRs identified (Zygote: **5357 DMLs/4145 DMRs** vs. 7287/5208; Larvae: **4183 DMLs/3963 DMRs** vs. 5330/4661).\n\nThe increase in multifactor-identified DMLs/DMRs, but decrease in per-stage tests isn't unexpected. Having fewer loci post-filter to test on would naturally reduce the number of identified DMLs. The multifactor test, however, gained power via the increase in sample size, which helped outweigh the accompanying reduction in loci count. \n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
