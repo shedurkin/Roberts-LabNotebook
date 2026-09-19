@@ -10,7 +10,1910 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Tue, 15 Sep 2026 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 16 Sep 2026 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Implementing MACAU</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_09_16_MACAU_implementation.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>Implementing <code>MACAU</code> to identify differentially methylated loci (DMLs) in <code>ceasmallr</code> data based on parent treatment, <strong><em>while</em></strong> accounting for shared parentage. Note that, due to various package/version mismatches, I ended up using <code>PQLSeq2</code> to run the <code>MACAU</code> model, rather than the original MACAU 2.0 R package.</p>
+<p>For this initial attempt I generated a relatedness matrix the “easy” way, by simply assigning half-sib values to offspring based on parent IDs.</p>
+<p>Full code at <a href="https://github.com/shedurkin/ceasmallr/blob/main/code/11-diff-methyl-MACAU.Rmd">11-diff-methyl-MACAU.Rmd</a></p>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<p>Ran wilth all 32 offspring samples (low-coverage samples were not removed, to maximize sample size).</p>
+<p>2148546 loci retained after filtering</p>
+<p>Pedigree matrix (constructed from parent IDs)</p>
+<section id="macau-run" class="level4">
+<h4 class="anchored" data-anchor-id="macau-run">MACAU run</h4>
+<p>sites into fit: 2148546<br>
+sites returned: 2148546 (100% survived fitting)<br>
+of those, converged: 1997127 (93%)<br>
+Treatment DMLs (FDR &lt; 0.05): 799 (361 hyper, 438 hypo)</p>
+</section>
+</section>
+<section id="interpretationnotesnext-steps" class="level2">
+<h2 class="anchored" data-anchor-id="interpretationnotesnext-steps">Interpretation/notes/next steps</h2>
+<p>I believe the test run here is most comparable to the DSS test <code>DMLfit.multiFactor(BSobj, design = design, formula = ~ treatment + stage)</code>, which adjusts for lifestage but does not permit/account for an interaction effect between parental treatment and lifestage.</p>
+<p>Applying the above <code>DSS</code> model fit to all samples identified 11,356 DMLs. This is more than 10X the number of significant DMLs identified as here, 799! Part of that is probably explained by the difference in # of sites tested (this <em>MACAU</em> work required an additional filter to remove invariant sites within treatment groups): when using all samples, 6,337,469 sites tested in <code>DSS</code> work; 2,148,546 sites tested in <code>MACAU</code> work.</p>
+<p>However, the difference may also be explained in part by relatedness effects – <code>DSS</code> may have been identiying some treatment-related DMLs that are actually artifacts of shared parentage (pseudoreplication). I think that DMLs identified in both sets would be the most robust.</p>
+<p>Keep in mind, however, that <code>MACAU</code> is unable to identify loci for which treatment effect <em>Differs by stage</em>, which <code>DSS</code> can answer using a <code>~treatment + stage + treatment:stage</code> design.</p>
+<p>I also have a concern about the way I’ve created the relatedness matrix here. Because all offspring were generated using within-treatment crosses (control M x contol F; exposed M x exposed F), by using parent IDs to generate the matrix, I’ve also <em>nested</em> relatedness and treatment. This is visible in the relatedness matrix heatmap, which shows 0 relatedness for all cross-treatment comparisons (i.e.&nbsp;all CxC and ExE comparisons are completely unrelated). The down-stream analysis problem becomes evident when looking at the <code>h2</code> values of output DMLs. All are either 0 (no variance explained by relatedness), 1 (all explained by relatedness), or NA. This is a pretty clear indicator of covariate confounding – the treatment parameter and relatedness matrix are colinear by nature of the experimental design and matrix construction approach.</p>
+<p>The fix should be conceptually straightforward, if a little annoying to implement. WGBS data is essentially modified WGS data – I can use WGBS data with a bisulfite-conversion-aware caller (e.g., <code>Revelio</code>) to call SNPs and then generate a relatedness matrix using <code>GEMMA</code>, as recommended in the <code>MACAU</code> user manual.</p>
+</section>
+<section id="code" class="level2">
+<h2 class="anchored" data-anchor-id="code">Code</h2>
+<p>Differential methylation analysis using <code>MACAU</code>, which has built-in functionality for incorporating informatin on population structure. This will help account for pseudoreplication in our <code>ceasmallr</code> samples stemming from shared parentage among the specimens.</p>
+<p>As in <code>10-diff-methyl-DSS.Rmd</code> and <code>10.1-diff-methyl-DSS-parents.Rmd</code>, will need to run this .rmd using a .sh script on Klone (copy below for posterity)</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#!/bin/bash</span></span>
+<span id="cb1-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#SBATCH --account=srlab</span></span>
+<span id="cb1-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#SBATCH --partition=cpu-g2-mem2x</span></span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#SBATCH --cpus-per-task=8</span></span>
+<span id="cb1-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#SBATCH --mem=200G</span></span>
+<span id="cb1-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#SBATCH --time=1-00:00:00</span></span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#SBATCH --output=macau_%j.out</span></span>
+<span id="cb1-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#SBATCH --error=macau_%j.err</span></span>
+<span id="cb1-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#SBATCH --chdir=/gscratch/srlab/kdurkin1/ceasmallr/code</span></span>
+<span id="cb1-10"></span>
+<span id="cb1-11"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">apptainer</span> exec <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--bind</span> /gscratch:/gscratch <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb1-12"> /gscratch/srlab/kdurkin1/srlab-R4.4-bioinformatics-container-703094b.sif <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb1-13">  bash <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'source /srlab/programs/miniforge3-24.7.1-0/etc/profile.d/conda.sh &amp;&amp; conda activate /gscratch/srlab/kdurkin1/.conda/envs/macau &amp;&amp; Rscript -e "rmarkdown::render(\"11-diff-methyl-MACAU.Rmd\")"'</span></span></code></pre></div>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Ended up needing to use PQLseq2 to implement the MACAU approach, instead of the MACAU 2.0 R package, which seemed to have some incompatabilites related to being built with an older version of R (?)</span></span>
+<span id="cb2-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># PQLseq2 is also supported by MACAU authors (?)</span></span>
+<span id="cb2-3"></span>
+<span id="cb2-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(PQLseq2)</span>
+<span id="cb2-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(bsseq)</span>
+<span id="cb2-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(BiocParallel)</span>
+<span id="cb2-7"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(nadiv)</span>
+<span id="cb2-8"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(readr)</span>
+<span id="cb2-9"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(dplyr)</span>
+<span id="cb2-10"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(stringr)</span>
+<span id="cb2-11"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tibble)</span>
+<span id="cb2-12"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
+<span id="cb2-13"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(BiocParallel)</span></code></pre></div>
+</section>
+<section id="download-methylation-calls" class="level1">
+<h1>1 Download methylation calls</h1>
+<p>(if necessary — same offspring files as used in <code>10-diff-methyl-DSS.Rmd</code>)</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">wget</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb3-2">--directory-prefix ../data/bismark-methyl-extraction <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb3-3">--recursive <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb3-4">--no-check-certificate <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb3-5">--continue <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb3-6">--cut-dirs 4 <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb3-7">--no-host-directories <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb3-8">--no-parent <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb3-9">--quiet <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb3-10">--no-clobber <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb3-11">--accept=<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"*.deduplicated.bismark.cov.gz,checksums.md5"</span> https://gannet.fish.washington.edu/gitrepos/ceasmallr/output/02.20-bismark-methylation-extraction/</span></code></pre></div>
+<p>We should have N=32 (n=15 ControlxControl crosses, n=17 ExposedxExposed crosses)</p>
+</section>
+<section id="read-bismark-coverage-into-a-bsseq-object" class="level1">
+<h1>2 Read Bismark coverage into a BSseq object</h1>
+<p>Same as <code>10-diff-methyl-DSS.Rmd</code>: Bismark <code>.cov</code> columns (no header) are <code>chr start end meth% count_methylated count_unmethylated</code>; positions are 1-based. Read into a <code>BSseq</code> object so we get the union of CpG positions across samples, then pull the methylated-count and total-count matrices MACAU needs.</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">file.list  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list.files</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../data/bismark-methyl-extraction"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pattern =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">.bismark</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">.cov</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">.gz$"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">full.names =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span>
+<span id="cb4-2"></span>
+<span id="cb4-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># As in 06.2, could drop the low-yield libraries (&lt;100M Cs); leaving all in for now to maximize sample size</span></span>
+<span id="cb4-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># drop &lt;- c("CF01-CM01-Zygote", "CF08-CM04-Larvae", "CF08-CM05-Larvae", "EF04-EM04-Zygote", "EF05-EM05-Zygote")</span></span>
+<span id="cb4-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># file.list &lt;- file.list[!str_detect(basename(file.list), str_c(drop, collapse = "|"))]</span></span>
+<span id="cb4-6"></span>
+<span id="cb4-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># format sample IDs</span></span>
+<span id="cb4-8">sample.ids <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">basename</span>(file.list) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_replace</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"_R1_001</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">.fastp-trim_bismark_bt2_pe</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">.deduplicated</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">.bismark</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">.cov</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">.gz$"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_replace</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"_R1_001</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">.fastp-trim</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">.REPAIRED_bismark_bt2_pe</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">.deduplicated</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">.bismark</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">.cov</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">.gz$"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">".REP"</span>)</span>
+<span id="cb4-11"></span>
+<span id="cb4-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Grab treatment and lifestage info from Sample IDs</span></span>
+<span id="cb4-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#   first letter of the cross code = parental treatment (C = control, E = exposed)</span></span>
+<span id="cb4-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#   stage encoded in the ID string (Zygote / Larvae)</span></span>
+<span id="cb4-15">meta <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>(</span>
+<span id="cb4-16">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sample    =</span> sample.ids,</span>
+<span id="cb4-17">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">file      =</span> file.list,</span>
+<span id="cb4-18">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">treatment =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">case_when</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_starts</span>(sample.ids, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"E"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Exposed"</span>,</span>
+<span id="cb4-19">                        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_starts</span>(sample.ids, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"C"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Control"</span>,</span>
+<span id="cb4-20">                        <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA_character_</span>),</span>
+<span id="cb4-21">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">stage     =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">case_when</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_detect</span>(sample.ids, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Zygote"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Zygote"</span>,</span>
+<span id="cb4-22">                        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_detect</span>(sample.ids, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Larvae"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Larvae"</span>,</span>
+<span id="cb4-23">                        <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA_character_</span>)</span>
+<span id="cb4-24">) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-25">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># reference levels: Control (so the coefficient = effect of exposure) and Zygote (earlier stage)</span></span>
+<span id="cb4-26">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">treatment =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(treatment, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Control"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Exposed"</span>)),</span>
+<span id="cb4-27">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">stage     =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(stage,     <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Zygote"</span>,  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Larvae"</span>)))</span>
+<span id="cb4-28"></span>
+<span id="cb4-29">knitr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">kable</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">count</span>(meta, treatment, stage))</span></code></pre></div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">treatment</th>
+<th style="text-align: left;">stage</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Control</td>
+<td style="text-align: left;">Zygote</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Control</td>
+<td style="text-align: left;">Larvae</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Exposed</td>
+<td style="text-align: left;">Zygote</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Exposed</td>
+<td style="text-align: left;">Larvae</td>
+<td style="text-align: right;">11</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">colData <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">DataFrame</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">treatment =</span> meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>treatment,</span>
+<span id="cb5-2">                     <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">stage     =</span> meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>stage,</span>
+<span id="cb5-3">                     <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">row.names =</span> meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>sample)</span>
+<span id="cb5-4"></span>
+<span id="cb5-5">BSobj <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.bismark</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">files          =</span> meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>file,</span>
+<span id="cb5-6">                      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colData        =</span> colData,</span>
+<span id="cb5-7">                      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">rmZeroCov      =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>,          <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># drops positions covered in 0 samples</span></span>
+<span id="cb5-8">                      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">strandCollapse =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>,         <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># .cov isn't a cytosine report; leave off</span></span>
+<span id="cb5-9">                      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">BPPARAM        =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">MulticoreParam</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">workers =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">12</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">progressbar =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>),</span>
+<span id="cb5-10">                      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">verbose        =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span></code></pre></div>
+<pre><code>## [read.bismark] Parsing files and constructing valid loci ...
+
+##   |                                                                              |                                                                      |   0%  |                                                                              |==                                                                    |   3%  |                                                                              |=====                                                                 |   6%  |                                                                              |=======                                                               |  10%  |                                                                              |=========                                                             |  13%  |                                                                              |===========                                                           |  16%  |                                                                              |==============                                                        |  19%  |                                                                              |================                                                      |  23%  |                                                                              |==================                                                    |  26%  |                                                                              |====================                                                  |  29%  |                                                                              |=======================                                               |  32%  |                                                                              |=========================                                             |  35%  |                                                                              |===========================                                           |  39%  |                                                                              |=============================                                         |  42%  |                                                                              |================================                                      |  45%  |                                                                              |==================================                                    |  48%  |                                                                              |====================================                                  |  52%  |                                                                              |======================================                                |  55%  |                                                                              |=========================================                             |  58%  |                                                                              |===========================================                           |  61%  |                                                                              |=============================================                         |  65%  |                                                                              |===============================================                       |  68%  |                                                                              |==================================================                    |  71%  |                                                                              |====================================================                  |  74%  |                                                                              |======================================================                |  77%  |                                                                              |========================================================              |  81%  |                                                                              |===========================================================           |  84%  |                                                                              |=============================================================         |  87%  |                                                                              |===============================================================       |  90%  |                                                                              |=================================================================     |  94%  |                                                                              |====================================================================  |  97%  |                                                                              |======================================================================| 100%
+
+## Done in 76.5 secs
+
+## [read.bismark] Parsing files and constructing 'M' and 'Cov' matrices ...
+
+##   |                                                                              |                                                                      |   0%  |                                                                              |==                                                                    |   3%  |                                                                              |====                                                                  |   6%  |                                                                              |=======                                                               |   9%  |                                                                              |=========                                                             |  12%  |                                                                              |===========                                                           |  16%  |                                                                              |=============                                                         |  19%  |                                                                              |===============                                                       |  22%  |                                                                              |==================                                                    |  25%  |                                                                              |====================                                                  |  28%  |                                                                              |======================                                                |  31%  |                                                                              |========================                                              |  34%  |                                                                              |==========================                                            |  38%  |                                                                              |============================                                          |  41%  |                                                                              |===============================                                       |  44%  |                                                                              |=================================                                     |  47%  |                                                                              |===================================                                   |  50%  |                                                                              |=====================================                                 |  53%  |                                                                              |=======================================                               |  56%  |                                                                              |==========================================                            |  59%  |                                                                              |============================================                          |  62%  |                                                                              |==============================================                        |  66%  |                                                                              |================================================                      |  69%  |                                                                              |==================================================                    |  72%  |                                                                              |====================================================                  |  75%  |                                                                              |=======================================================               |  78%  |                                                                              |=========================================================             |  81%  |                                                                              |===========================================================           |  84%  |                                                                              |=============================================================         |  88%  |                                                                              |===============================================================       |  91%  |                                                                              |==================================================================    |  94%  |                                                                              |====================================================================  |  97%  |                                                                              |======================================================================| 100%
+
+## Done in 28.4 secs
+
+## [read.bismark] Constructing BSseq object ...</code></pre>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">BSobj    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># positions are the UNION across samples; missing positions get N = 0</span></span></code></pre></div>
+<pre><code>## An object of type 'BSseq' with
+##   31596324 methylation loci
+##   32 samples
+## has not been smoothed
+## All assays are in-memory</code></pre>
+<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Require non-zero coverage in &gt;= half the samples of each treatment x stage cell.</span></span>
+<span id="cb9-2">cov_check <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">getCoverage</span>(BSobj, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cov"</span>)</span>
+<span id="cb9-3">cells     <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">interaction</span>(meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>treatment, meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>stage, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">drop =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span>
+<span id="cb9-4"></span>
+<span id="cb9-5">keep <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Reduce</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">&amp;</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lapply</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">levels</span>(cells), <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(cl) {</span>
+<span id="cb9-6">  idx <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">which</span>(cells <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> cl)</span>
+<span id="cb9-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rowSums</span>(cov_check[, idx, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">drop =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ceiling</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">length</span>(idx) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span>
+<span id="cb9-8">}))</span>
+<span id="cb9-9"></span>
+<span id="cb9-10">BSobj <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> BSobj[keep, ]</span>
+<span id="cb9-11"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Loci retained after coverage filter:"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(BSobj), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+<pre><code>## Loci retained after coverage filter: 6337469</code></pre>
+<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Separation-aware filter</span></span>
+<span id="cb11-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Was getting errors (fatal `solve(): solution not found`) related to within-group sites</span></span>
+<span id="cb11-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># that were either all 0% or all 100%.</span></span>
+<span id="cb11-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># To prevent, require enough covered samples AND both methylated and unmethylated signal. </span></span>
+<span id="cb11-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># within each treatment group</span></span>
+<span id="cb11-6">Mmat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">getCoverage</span>(BSobj, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"M"</span>)</span>
+<span id="cb11-7">Cmat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">getCoverage</span>(BSobj, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cov"</span>)</span>
+<span id="cb11-8">Umat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> Cmat <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> Mmat</span>
+<span id="cb11-9">grp  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>treatment</span>
+<span id="cb11-10"></span>
+<span id="cb11-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Can adjust these parameters if desired</span></span>
+<span id="cb11-12">ok <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sapply</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">levels</span>(grp), <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(g) {</span>
+<span id="cb11-13">  j       <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">which</span>(grp <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> g)</span>
+<span id="cb11-14">  covered <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rowSums</span>(Cmat[, j, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">drop =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>)   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># samples with &gt;=5x in this group</span></span>
+<span id="cb11-15">  hasM    <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rowSums</span>(Mmat[, j, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">drop =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># samples with &gt;=1 methylated read</span></span>
+<span id="cb11-16">  hasU    <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rowSums</span>(Umat[, j, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">drop =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># samples with &gt;=1 unmethylated read</span></span>
+<span id="cb11-17">  (covered <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&amp;</span> (hasM <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&amp;</span> (hasU <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span>
+<span id="cb11-18">})</span>
+<span id="cb11-19">BSobj <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> BSobj[ok[, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Control"</span>] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&amp;</span> ok[, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Exposed"</span>], ]</span>
+<span id="cb11-20"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Loci retained after separation-aware filter:"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(BSobj), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+<pre><code>## Loci retained after separation-aware filter: 2148546</code></pre>
+<p>Per-site mixed-model fitting is <em>very</em> slow across whole genome. As in the DSS workflow, add a test-run switch that thins loci for troubleshooting.</p>
+<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Keeps all samples but randomly thins loci genome-wide.</span></span>
+<span id="cb13-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># set test_run to FALSE for full-data runs</span></span>
+<span id="cb13-3">test_run  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span></span>
+<span id="cb13-4">test_frac <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.02</span>      <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># keep 2% of loci</span></span>
+<span id="cb13-5"></span>
+<span id="cb13-6"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (test_run) {</span>
+<span id="cb13-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">set.seed</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb13-8">  idx   <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sort</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sample</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(BSobj), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">floor</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(BSobj) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> test_frac)))</span>
+<span id="cb13-9">  BSobj <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> BSobj[idx, ]</span>
+<span id="cb13-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"TEST RUN — loci subsampled to:"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(BSobj), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb13-11">}</span></code></pre></div>
+<p>Pull the two count matrices MACAU needs <em>both</em> methylated counts (<code>X</code>) and total coverage (<code>N</code>). Rows = loci, columns = samples, in the same sample order as <code>meta</code>.</p>
+<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">gr       <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">granges</span>(BSobj)</span>
+<span id="cb14-2">site_ids <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste0</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.character</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seqnames</span>(gr)), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"_"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">start</span>(gr))</span>
+<span id="cb14-3"></span>
+<span id="cb14-4">meth_mat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.matrix</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">getCoverage</span>(BSobj, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"M"</span>))    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># methylated read counts</span></span>
+<span id="cb14-5">cov_mat  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.matrix</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">getCoverage</span>(BSobj, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cov"</span>))  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># total read counts (library size)</span></span>
+<span id="cb14-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rownames</span>(meth_mat) <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rownames</span>(cov_mat) <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> site_ids</span>
+<span id="cb14-7"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">colnames</span>(meth_mat) <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">colnames</span>(cov_mat) <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>sample</span>
+<span id="cb14-8"></span>
+<span id="cb14-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># check columns line up</span></span>
+<span id="cb14-10"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">stopifnot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">identical</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">colnames</span>(meth_mat), meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>sample),</span>
+<span id="cb14-11">          <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">identical</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dim</span>(meth_mat), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dim</span>(cov_mat)),</span>
+<span id="cb14-12">          <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">all</span>(meth_mat <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;=</span> cov_mat))</span>
+<span id="cb14-13"></span>
+<span id="cb14-14"></span>
+<span id="cb14-15"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Count matrices:"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(meth_mat), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"loci x"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ncol</span>(meth_mat), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"samples</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+<pre><code>## Count matrices: 2148546 loci x 32 samples</code></pre>
+</section>
+<section id="build-the-pedigree-and-relatedness-matrix" class="level1">
+<h1>3 Build the pedigree and relatedness matrix</h1>
+<p>Each offspring library ID encodes its parents: <code>Dam-Sire-Stage</code> (e.g.&nbsp;<code>CF03-CM04-Larvae</code> represents a dam of <code>CF03</code>, sire of <code>CM04</code>).</p>
+<p>I need to build a pedigree where the parents are unrelated founders (unknown parents, these oysters were collected from the wild, see Mcnally et al.&nbsp;2022, so we don’t know genetic background) and each offspring points to its dam and sire, then convert to a relatedness matrix (full sibs 0.5, half sibs 0.25, self 1, so we’d expect a matrix with a diagonal of 1, and some 0.25s scattered throughout both groups – we have no full siblings, so don’t expect any 0.5 values).</p>
+<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># pull dam/sire IDs</span></span>
+<span id="cb16-2">parents_of <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_split_fixed</span>(meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>sample, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"-"</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span>
+<span id="cb16-3">offspring_ped <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>(</span>
+<span id="cb16-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">id   =</span> meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>sample,</span>
+<span id="cb16-5">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dam  =</span> parents_of[, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>],</span>
+<span id="cb16-6">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sire =</span> parents_of[, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>]</span>
+<span id="cb16-7">)</span>
+<span id="cb16-8"></span>
+<span id="cb16-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># founder rows: every parent that appears, with unknown parents</span></span>
+<span id="cb16-10">founder_ped <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>(</span>
+<span id="cb16-11">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">id   =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unique</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(offspring_ped<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>dam, offspring_ped<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>sire)),</span>
+<span id="cb16-12">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dam  =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA_character_</span>,</span>
+<span id="cb16-13">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sire =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA_character_</span></span>
+<span id="cb16-14">)</span>
+<span id="cb16-15"></span>
+<span id="cb16-16">ped <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">bind_rows</span>(founder_ped, offspring_ped) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb16-17">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">distinct</span>(id, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.keep_all =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb16-18">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.data.frame</span>()</span>
+<span id="cb16-19"></span>
+<span id="cb16-20"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Pedigree:"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(founder_ped), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"founders (parents) +"</span>,</span>
+<span id="cb16-21">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(offspring_ped), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"offspring</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+<pre><code>## Pedigree: 27 founders (parents) + 32 offspring</code></pre>
+<div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(ped)</span></code></pre></div>
+<pre><code>##     id  dam sire
+## 1 CF01 &lt;NA&gt; &lt;NA&gt;
+## 2 CF02 &lt;NA&gt; &lt;NA&gt;
+## 3 CF03 &lt;NA&gt; &lt;NA&gt;
+## 4 CF04 &lt;NA&gt; &lt;NA&gt;
+## 5 CF05 &lt;NA&gt; &lt;NA&gt;
+## 6 CF06 &lt;NA&gt; &lt;NA&gt;</code></pre>
+<div class="sourceCode" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># nadiv::makeA() generates additive relationship matrix A for the whole pedigree.</span></span>
+<span id="cb20-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># prepPed() orders records and fills in any implied founders first.</span></span>
+<span id="cb20-3">ped_prepped <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> nadiv<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">prepPed</span>(ped)</span>
+<span id="cb20-4">A_full      <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.matrix</span>(nadiv<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">makeA</span>(ped_prepped))</span>
+<span id="cb20-5"></span>
+<span id="cb20-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Subset to just the offspring libraries</span></span>
+<span id="cb20-7">K <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> A_full[meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>sample, meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>sample]</span>
+<span id="cb20-8"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">stopifnot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">identical</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rownames</span>(K), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">colnames</span>(meth_mat)),</span>
+<span id="cb20-9">          <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">isSymmetric</span>(K))</span></code></pre></div>
+<p>Quick look at the relatedness structure (how much pseudoreplication are we actually modeling?):</p>
+<div class="sourceCode" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># heatmap</span></span>
+<span id="cb21-2">ord <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">order</span>(meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>treatment, meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>stage)</span>
+<span id="cb21-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.data.frame</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.table</span>(K[ord, ord])) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb21-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(Var1, Var2, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> Freq)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb21-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_tile</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb21-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_viridis_c</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"relatedness (A)"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb21-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">base_size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb21-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis.text.x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">angle =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">90</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">hjust =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb21-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Pedigree relatedness among offspring libraries"</span>)</span></code></pre></div>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/images/relatedness-diagnostics-1.png" class="img-fluid"><!-- --></p>
+</section>
+<section id="pqlseq2-binomial-mixed-model-for-parental-treatment-effect" class="level1">
+<h1>4 PQLseq2: binomial mixed model for parental-treatment effect</h1>
+<p>Fit, per CpG, a binomial mixed model:</p>
+<p><code>meth_i / total_i ~ Binomial(total_i, p_i)</code>, <code>logit(p_i) = intercept + treatment_i + stage_i + u_i</code>, <code>u ~ N(0, h2 * K)</code></p>
+<ul>
+<li><strong>Predictor tested (<code>x</code>)</strong> = parental <code>treatment</code> (Control = 0, Exposed = 1).</li>
+<li><strong>Covariate adjusted for (<code>W</code>)</strong> = <code>stage</code> (Zygote = 0, Larvae = 1). PQLseq2 fits its own intercept, so <code>W</code> holds covariates only.</li>
+<li><strong>Random-effect covariance (<code>K</code>)</strong> = the pedigree relatedness matrix.</li>
+</ul>
+<p>Runs kept failing due to single sites throwing <code>solve()</code> errors and, while these only repesent fit failures for single CpG sites, the error kills the entire run. This should hopefully be addressed by the within-group filtering added above, but to make double sure I’m adding a wrapper tot he <code>pqlseq2()</code> function that essentially parses the full set of sites in chunks, and retries failed chunks in small batches. Ultimately, this should function to eaxclude failed sites from the run, rather than letting them corrupt/kill the whole job. Will also check, though, for how many sites ended up being dropped (high # could indicate lingering data preprocessing issues)</p>
+<p>(utills::capture.output() added bc first successful run had <em>thousands</em> of lines of output messages about # of sites, chunks, etc.)</p>
+<div class="sourceCode" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1">run_pqlseq2_safe <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(Y, x, K, W, lib_size, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">chunk =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ncores =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>, ...) {</span>
+<span id="cb22-2">  idx_chunks <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">split</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq_len</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(Y)), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ceiling</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq_len</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(Y)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> chunk))</span>
+<span id="cb22-3">  out <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">vector</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"list"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">length</span>(idx_chunks))</span>
+<span id="cb22-4">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> (i <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq_along</span>(idx_chunks)) {</span>
+<span id="cb22-5">    rows <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> idx_chunks[[i]]</span>
+<span id="cb22-6">    utils<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">capture.output</span>(</span>
+<span id="cb22-7">    res  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">try</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pqlseq2</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Y =</span> Y[rows, , <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">drop =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>], <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> x, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">K =</span> K, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">W =</span> W,</span>
+<span id="cb22-8">                        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">lib_size =</span> lib_size[rows, , <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">drop =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>],</span>
+<span id="cb22-9">                        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ncores =</span> ncores, ...), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">silent =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span>
+<span id="cb22-10">    )</span>
+<span id="cb22-11">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">inherits</span>(res, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"try-error"</span>)) {</span>
+<span id="cb22-12">      <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># if a site in this chunk threw a fatal solve() error, redo it site-by-site</span></span>
+<span id="cb22-13">      <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># so the singular one is dropped but its chunk-mates are kept</span></span>
+<span id="cb22-14">      res <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">bind_rows</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lapply</span>(rows, <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(r) {</span>
+<span id="cb22-15">        utils<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">capture.output</span>(</span>
+<span id="cb22-16">        s <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">try</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pqlseq2</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Y =</span> Y[r, , <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">drop =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>], <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> x, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">K =</span> K, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">W =</span> W,</span>
+<span id="cb22-17">                         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">lib_size =</span> lib_size[r, , <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">drop =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>],</span>
+<span id="cb22-18">                         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ncores =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, ...), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">silent =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span>
+<span id="cb22-19">        )</span>
+<span id="cb22-20">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">inherits</span>(s, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"try-error"</span>)) <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span> s</span>
+<span id="cb22-21">      }))</span>
+<span id="cb22-22">    }</span>
+<span id="cb22-23">    out[[i]] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> res</span>
+<span id="cb22-24">  }</span>
+<span id="cb22-25">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">bind_rows</span>(out)</span>
+<span id="cb22-26">}</span></code></pre></div>
+<div class="sourceCode" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1">treatment_num <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.numeric</span>(meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>treatment) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Control=0, Exposed=1</span></span>
+<span id="cb23-2">stage_num     <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.numeric</span>(meta<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>stage)     <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Zygote=0,  Larvae=1</span></span>
+<span id="cb23-3"></span>
+<span id="cb23-4">fit_pql <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">run_pqlseq2_safe</span>(</span>
+<span id="cb23-5">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Y        =</span> meth_mat,                 <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># q x n methylated counts (rownames = "chr_pos")</span></span>
+<span id="cb23-6">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x        =</span> treatment_num,            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># predictor of interest (parental treatment)</span></span>
+<span id="cb23-7">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">K        =</span> K,                        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># n x n pedigree relatedness -&gt; random effect</span></span>
+<span id="cb23-8">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">W        =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cbind</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">stage =</span> stage_num), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># covariates (life stage)</span></span>
+<span id="cb23-9">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">lib_size =</span> cov_mat,                  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># q x n total coverage</span></span>
+<span id="cb23-10">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">chunk    =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span>,</span>
+<span id="cb23-11">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ncores   =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>,</span>
+<span id="cb23-12">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">model    =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"BMM"</span>,                    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># binomial mixed model (MACAU model)</span></span>
+<span id="cb23-13">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">filter   =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>,                     <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># drop sites w/o &gt;=2 individuals having counts&gt;5 (should be redundant)</span></span>
+<span id="cb23-14">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">check_K  =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>,</span>
+<span id="cb23-15">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">verbose  =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span></span>
+<span id="cb23-16">)</span>
+<span id="cb23-17"></span>
+<span id="cb23-18"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># wrapper check: how much of the data was actually fittable?</span></span>
+<span id="cb23-19">n_in <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(meth_mat); n_out <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(fit_pql); n_conv <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(fit_pql<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>converged, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span>
+<span id="cb23-20"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sites into fit:      "</span>, n_in, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>,</span>
+<span id="cb23-21">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sites returned:      "</span>, n_out, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" ("</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> n_out <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> n_in, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"% survived fitting)</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>,</span>
+<span id="cb23-22">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"of those, converged: "</span>, n_conv, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" ("</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> n_conv <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> n_out, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"%)</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sep =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>)</span></code></pre></div>
+<pre><code>## sites into fit:      2148546
+## sites returned:      2148546 (100% survived fitting)
+## of those, converged: 1997127 (93%)</code></pre>
+<div class="sourceCode" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(fit_pql)</span></code></pre></div>
+<pre><code>##          outcome  n intercept se_intercept       beta   se_beta     pvalue
+## 1 NC_007175.2_49 31 -4.035420    0.3181180  0.2946013 0.4041593 0.46604839
+## 2 NC_007175.2_50 31 -3.643355    0.4000642  0.3819395 0.6318924 0.54555277
+## 3 NC_007175.2_51 32 -3.686781    0.3325835 -0.9784464 0.4904543 0.04604510
+## 4 NC_007175.2_52 31 -4.572153    0.5797449  0.1587980 0.7907265 0.84083511
+## 5 NC_007175.2_88 32 -3.623185    0.2072900 -0.7102227 0.3178756 0.02546472
+## 6 NC_007175.2_89 32 -4.195998    0.2633442  0.4007804 0.3670981 0.27494171
+##          h2    sigma2 converged elapsed_time
+## 1 0.0000000 0.3029549      TRUE     1.116125
+## 2 0.0000000 0.3950827      TRUE     1.116296
+## 3 1.0000000 0.4155439      TRUE     8.556898
+## 4 0.0000000 0.9539051      TRUE     1.116428
+## 5 0.0000000 0.1880950      TRUE     1.068336
+## 6 0.6881588 0.3761060      TRUE     7.926949</code></pre>
+</section>
+<section id="results-call-dmls" class="level1">
+<h1>5 Results: call DMLs</h1>
+<p><code>pqlseq2()</code> returns <code>beta</code> (logit-scale effect of exposure), <code>se_beta</code>, Wald <code>pvalue</code>, and <code>h2</code> (variance explained by relatedness). Add a BH-FDR, keep converged fits, call DMLs at FDR &lt; 0.05.</p>
+<div class="sourceCode" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1">res <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> fit_pql <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb27-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_tibble</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb27-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.logical</span>(converged)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb27-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">padj =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">p.adjust</span>(pvalue, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"BH"</span>),</span>
+<span id="cb27-5">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pos  =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.integer</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_extract</span>(outcome, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"[0-9]+$"</span>)),   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># site id = "chr_pos"</span></span>
+<span id="cb27-6">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">chr  =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_remove</span>(outcome, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"_[0-9]+$"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb27-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrange</span>(pvalue)</span>
+<span id="cb27-8"></span>
+<span id="cb27-9">dml <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(res, padj <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.05</span>)</span>
+<span id="cb27-10"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Converged sites tested:"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(res), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+<pre><code>## Converged sites tested: 1997127</code></pre>
+<div class="sourceCode" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Treatment DMLs (FDR &lt; 0.05):"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(dml), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+<pre><code>## Treatment DMLs (FDR &lt; 0.05): 799</code></pre>
+<div class="sourceCode" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"  hyper in exposed (beta &gt; 0):"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(dml<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>beta <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+<pre><code>##   hyper in exposed (beta &gt; 0): 361</code></pre>
+<div class="sourceCode" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"  hypo  in exposed (beta &lt; 0):"</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(dml<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>beta <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+<pre><code>##   hypo  in exposed (beta &lt; 0): 438</code></pre>
+<div class="sourceCode" id="cb35" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(dml)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 14
+##   outcome           n intercept se_intercept  beta se_beta   pvalue    h2 sigma2
+##   &lt;chr&gt;         &lt;int&gt;     &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+## 1 NC_035783.1_~    25     -1.16        0.329 -2.23   0.247 2.07e-19   NaN 0     
+## 2 NC_035783.1_~    23     -1.24        0.367 -3.19   0.372 9.87e-18     0 0.0927
+## 3 NC_035783.1_~    25     -1.33        0.360 -2.75   0.323 1.40e-17     1 0.0574
+## 4 NC_035783.1_~    24     -1.34        0.352 -2.54   0.301 3.23e-17     1 0.0215
+## 5 NC_035787.1_~    25      1.64        0.502  2.42   0.302 1.20e-15     1 0.0462
+## 6 NC_035783.1_~    23     -1.66        0.448 -3.27   0.420 6.68e-15     0 0.179 
+## # i 5 more variables: converged &lt;lgl&gt;, elapsed_time &lt;dbl&gt;, padj &lt;dbl&gt;,
+## #   pos &lt;int&gt;, chr &lt;chr&gt;</code></pre>
+</section>
+<section id="save-outputs" class="level1">
+<h1>6 Save outputs</h1>
+<div class="sourceCode" id="cb37" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1">save_bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(df, path, score_col) {</span>
+<span id="cb37-2">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">is.null</span>(df) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">||</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(df) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) {</span>
+<span id="cb37-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">file.create</span>(path)</span>
+<span id="cb37-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">message</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"save_bed: no rows for "</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">basename</span>(path), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" — wrote empty file."</span>)</span>
+<span id="cb37-5">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">invisible</span>(<span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>))</span>
+<span id="cb37-6">  }</span>
+<span id="cb37-7">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">all</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"chr"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"start"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"end"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">names</span>(df))) {</span>
+<span id="cb37-8">    start <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> df<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>start; end <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> df<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>end</span>
+<span id="cb37-9">  } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">all</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"chr"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"pos"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">names</span>(df))) {</span>
+<span id="cb37-10">    start <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> df<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>pos <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>L; end <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> df<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>pos</span>
+<span id="cb37-11">  } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span> {</span>
+<span id="cb37-12">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">stop</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"save_bed: df lacks chr/start/end or chr/pos for "</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">basename</span>(path))</span>
+<span id="cb37-13">  }</span>
+<span id="cb37-14">  score <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (score_col <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">names</span>(df)) df[[score_col]] <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA_real_</span></span>
+<span id="cb37-15">  bed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">chr =</span> df<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>chr, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">start =</span> start, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">end =</span> end, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">score =</span> score)</span>
+<span id="cb37-16">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write.table</span>(bed, path, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quote =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sep =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\t</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">row.names =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col.names =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)</span>
+<span id="cb37-17">}</span>
+<span id="cb37-18"></span>
+<span id="cb37-19"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write_tsv</span>(res, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/11.1-diff-methyl-MACAU/pqlseq_treatment_test.tsv"</span>)</span>
+<span id="cb37-20"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">save_bed</span>(dml, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"../output/11.1-diff-methyl-MACAU/treatment_DML.bed"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"beta"</span>)</span></code></pre></div>
+
+
+</section>
+
+ ]]></description>
+  <category>ceasmallr</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_09_16_MACAU_implementation.html</guid>
+  <pubDate>Wed, 16 Sep 2026 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Details of MACAU usage and functionality</title>
   <dc:creator>Kathleen Durkin</dc:creator>
