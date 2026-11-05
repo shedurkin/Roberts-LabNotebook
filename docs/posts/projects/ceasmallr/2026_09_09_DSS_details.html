@@ -396,13 +396,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>DMLtest()</code> performs the following steps: (1) estimate mean methylation levels for all CpG site (I’m doing this with smoothing enabled); (2) estimate dispersions at each CpG sites; (3) conduct Wald test. Smoothing is recommended for use with WGBS data, because it permits information from nearby CpG sites to be combined, improving estimation of methylation levels.</p>
 <p>For my runs of <code>callDML()</code>, I’m requiring a minimum difference in methylation level of 0.25, and a minimum adjusted-pvalue of 0.01. For <code>callDMR()</code>, which identifies regions with many statistically-significant DMLs, I require a minimum region length of 50 nucloeotides containing at least 3 CpG sites, with at least 50% of the CpGs sites being significant DMLs.</p>
-<p>For the multifactor design tests, the primary function is <code>DMLfit.multifactor()</code>.<br>
-</p>
+<p>For the multifactor design tests, the primary function is <code>DMLfit.multifactor()</code>.</p>
 <section id="how-do-the-two-models-differ" class="level2">
 <h2 class="anchored" data-anchor-id="how-do-the-two-models-differ">How do the two models differ?</h2>
 <p>The two models I’ve tried are additive (<code>treatment + stage</code>, <code>treatment + sex</code>) and interaction (<code>treatment + stage + treatment:stage</code>, <code>treatment + sex + treatment:sex</code>).</p>
 <p>Here’s the general idea of how they differ (I’ll be explaining through the treatment/stage case, but the same idea applies to the parental treatment/sex case).</p>
-<p><img src="./images/DSS_models.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/DSS_models.png" class="img-fluid figure-img"></p>
+<figcaption>Created in Biorender</figcaption>
+</figure>
+</div>
 <section id="the-additive-model" class="level3">
 <h3 class="anchored" data-anchor-id="the-additive-model">The additive model</h3>
 <p>The treatment effect is the same for both lifestages, though there may be a “shift” involved – essentially, both lifestages exhibit the same slope of change, but may have different intercepts. With this model we’re asking “when you pool both life stages and adjust for the stage difference (the possible intercept shift), does parental exposure affect offspring methylation?”.</p>

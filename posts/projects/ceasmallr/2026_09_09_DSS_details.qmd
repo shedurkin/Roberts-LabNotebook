@@ -12,7 +12,6 @@ engine: knitr
 bibliography: ../../../references.bib
 ---
 
-
 Within-stage/within-sex smoothed tests
 
 To perform the test, use `DMLtest()`, then use `callDML()` and `callDMR()` to call DMLs and DMRs.
@@ -40,10 +39,7 @@ run_stage <- function(stage_label) {
 
 For my runs of `callDML()`, I'm requiring a minimum difference in methylation level of 0.25, and a minimum adjusted-pvalue of 0.01. For `callDMR()`, which identifies regions with many statistically-significant DMLs, I require a minimum region length of 50 nucloeotides containing at least 3 CpG sites, with at least 50% of the CpGs sites being significant DMLs.
 
-
-For the multifactor design tests, the primary function is `DMLfit.multifactor()`. 
-
-
+For the multifactor design tests, the primary function is `DMLfit.multifactor()`.
 
 ## How do the two models differ?
 
@@ -57,8 +53,6 @@ Here's the general idea of how they differ (I'll be explaining through the treat
 
 The treatment effect is the same for both lifestages, though there may be a "shift" involved -- essentially, both lifestages exhibit the same slope of change, but may have different intercepts. With this model we're asking "when you pool both life stages and adjust for the stage difference (the possible intercept shift), does parental exposure affect offspring methylation?".
 
-
 ### The interaction model
 
 The treatment effect *can differ* between life stages -- both slope and intercept may differ. With this model we can ask "Does the effect of parental exposure *change* from zygote to larvae?"
-
