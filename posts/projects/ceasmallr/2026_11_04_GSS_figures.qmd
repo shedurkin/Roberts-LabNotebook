@@ -1,0 +1,163 @@
+---
+title: "Generating ceasmallr figures for GSS"
+author: "Kathleen Durkin"
+date: "2026-11-04"
+categories: ["ceasmallr"]
+format:
+  html:
+    toc: true
+    code-fold: true
+execute: 
+  eval: TRUE
+engine: knitr
+bibliography: ../../../references.bib
+---
+
+Presenting at the department's Graduate Student Symposium (GSS) this week on `ceasmallr` work, so let's generate some pretty figures to include in the slidedeck.
+
+
+
+Load libraries
+```{r}
+library(readr)
+library(dplyr)
+library(tidyr)
+library(purrr)
+library(ggplot2)
+```
+
+Read in data
+```{r}
+read_feat <- function(path) {
+  read_tsv(path, col_names = c("chr", "start", "end", "diff"), col_types = "cddd") %>%
+    mutate(across(c(start, end), as.integer))
+}
+
+off_dml <- list(Zygote = read_feat("../../../../ceasmallr/output/10.01-diff-methyl-DSS-CTmask/zygote_DML.bed"),
+                Larvae = read_feat("../../../../ceasmallr/output/10.01-diff-methyl-DSS-CTmask/larvae_DML.bed"))
+off_dmr <- list(Zygote = read_feat("../../../../ceasmallr/output/10.01-diff-methyl-DSS-CTmask/zygote_DMR.bed"),
+                Larvae = read_feat("../../../../ceasmallr/output/10.01-diff-methyl-DSS-CTmask/larvae_DMR.bed"))
+par_dml <- list(Egg   = read_feat("../../../../ceasmallr/output/10.11-diff-methyl-DSS-parents-CTmask/female_DML.bed"),
+                Sperm = read_feat("../../../../ceasmallr/output/10.11-diff-methyl-DSS-parents-CTmask/male_DML.bed"))
+```
+
+```{r}
+# DMLs: shared = exact same CpG position is a DML in that parent
+classify_dml <- function(off) {
+  off %>%
+    mutate(in_egg   = paste(chr, end) %in% paste(par_dml$Egg$chr,   par_dml$Egg$end),
+           in_sperm = paste(chr, end) %in% paste(par_dml$Sperm$chr, par_dml$Sperm$end))
+}
+
+# DMRs: shared = offspring DMR has >= 1 overlap with a parent DMR that passes the >= 50bp / >= 3 CpG criteria
+shared_dmr_keys <- function(stage, parent) {
+  read_tsv(file.path("../../../../ceasmallr/output/13-DMR-overlap-CTmask", paste0("shared_", tolower(stage), "_", tolower(parent), "_DMR.bed")),
+           col_types = cols(.default = "c")) %>%
+    mutate(key = paste(chr, as.integer(as.numeric(off_DMR_start)),
+                       as.integer(as.numeric(off_DMR_end)))) %>%
+    pull(key) %>% unique()
+}
+
+classify_dmr <- function(off, stage) {
+  key <- paste(off$chr, off$start, off$end)
+  off %>%
+    mutate(in_egg   = key %in% shared_dmr_keys(stage, "Egg"),
+           in_sperm = key %in% shared_dmr_keys(stage, "Sperm"))
+}
+
+categories <- c("Egg & sperm", "Egg only", "Sperm only", "Offspring only")
+
+counts <- bind_rows(
+  imap_dfr(off_dml, ~ classify_dml(.x) %>% mutate(stage = .y, type = "DMLs")),
+  imap_dfr(off_dmr, ~ classify_dmr(.x, .y) %>% mutate(stage = .y, type = "DMRs"))
+) %>%
+  mutate(category = case_when(in_egg & in_sperm ~ "Egg & sperm",
+                              in_egg            ~ "Egg only",
+                              in_sperm          ~ "Sperm only",
+                              TRUE              ~ "Offspring only")) %>%
+  count(type, stage, category) %>%
+  complete(type, stage, category = categories, fill = list(n = 0)) %>%
+  mutate(stage    = factor(stage, levels = c("Zygote", "Larvae")),
+         # first level stacks on top; keep "Egg & sperm" at the baseline
+         category = factor(category, levels = rev(categories)))
+
+counts %>%
+  pivot_wider(names_from = category, values_from = n) %>%
+  mutate(Total = rowSums(across(where(is.numeric)))) %>%
+  knitr::kable(format.args = list(big.mark = ","))
+```
+
+Plot
+```{r}
+# colors chosen to match slidedeck theme pallate
+cat_cols <- c("Egg & sperm"    = "#1b7f79ff",
+              "Egg only"       = "#e0a458ff",
+              "Sperm only"     = "#2e86abff",
+              "Offspring only" = "#e6efeeff")
+
+plot_overlap <- function(df, title, ylab = "Number identified", legend_cats = categories) {
+  totals <- df %>% group_by(type, stage) %>% summarise(n = sum(n), .groups = "drop")
+
+  ggplot(df, aes(x = stage, y = n, fill = category)) +
+    # color here is the outline, to ensure faint column interior is still clearly defined
+    geom_col(width = 0.65, colour = "grey30", linewidth = 0.3) +
+    geom_text(data = totals, aes(x = stage, y = n, label = scales::comma(n)),
+              inherit.aes = FALSE, vjust = -0.5, size = 3.5) +
+    facet_wrap(~ type) +
+    scale_fill_manual(values = cat_cols, breaks = legend_cats) +
+    scale_y_continuous(labels = scales::comma, expand = expansion(mult = c(0, 0.08))) +
+    labs(x = NULL, y = ylab, fill = NULL, title = title,
+         caption = "Color indicates presence in exposed-parent gametes") +
+    theme_minimal(base_size = 12) +
+    # lots of text size tweaking
+    theme(plot.title         = element_text(face = "bold", hjust = 0.5),
+          strip.text         = element_text(face = "bold", size = 12),
+          panel.grid.major.x = element_blank(),
+          panel.grid.minor   = element_blank(),
+          panel.spacing      = unit(2, "lines"),
+          axis.text.x        = element_text(size = 11),
+          legend.position    = "bottom",
+          plot.caption       = element_text(hjust = 0.5, size = 10))
+}
+
+# full
+p_full <- plot_overlap(counts, "Differential methylation in offspring (based on parental treatment)")
+p_full
+
+# zoomed (excludes "offspring only")
+counts_shared <- counts %>% filter(category != "Offspring only")
+
+# adjust label positions
+seg_labels <- counts_shared %>%
+  arrange(type, stage, desc(category)) %>%
+  group_by(type, stage) %>%
+  mutate(ymid = cumsum(n) - n / 2, top = sum(n)) %>%
+  group_by(type) %>%
+  mutate(small = n < 0.06 * max(top),
+         # lift side labels off the x-axis
+         ymid  = ifelse(small, pmax(ymid, 0.025 * max(top)), ymid)) %>%
+  ungroup() %>%
+  filter(n > 0) %>%
+  mutate(x      = as.numeric(stage) + ifelse(small, 0.36, 0),
+         hjust  = ifelse(small, 0, 0.5),
+         colour = case_when(small ~ "grey10",
+                            category == "Egg only" ~ "grey10",
+                            TRUE ~ "white"))
+
+p_zoom <- plot_overlap(counts_shared,
+                       "Offspring DMLs/DMRs shared with exposed-parent gametes",
+                       ylab = "Number shared with parents",
+                       legend_cats = categories[1:3]) +
+  geom_text(data = seg_labels,
+            aes(x = x, y = ymid, label = scales::comma(n), hjust = hjust, colour = colour),
+            inherit.aes = FALSE, size = 3) +
+  scale_colour_identity()
+p_zoom
+```
+
+
+Save
+```{r}
+ggsave("./images/2026_11_04_GSS_offspring_parent_overlap.png", p_full, width = 8, height = 5, dpi = 300)
+ggsave("./images/2026_11_04_GSS_offspring_parent_overlap_zoom.png", p_zoom, width = 8, height = 5, dpi = 300)
+```
