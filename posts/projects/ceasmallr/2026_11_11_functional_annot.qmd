@@ -1,5 +1,5 @@
 ---
-title: "2026_11_11_functional_annot"
+title: "Obtaining C. virginica functional annotations"
 author: "Kathleen Durkin"
 date: "2026-11-11"
 categories: ["ceasmallr"]
@@ -56,7 +56,7 @@ Note that not all genes with SPID annotations mapped to GO terms\
 Breakdown of the most common GO terms
 
 |   | Term | Count | Percent |
-|----|:---|---:|---:|
+|------------------|:-----------------|-----------------:|-----------------:|
 | <GO:0048856> | anatomical structure development | 2068 | 21.2 |
 | <GO:0030154> | cell differentiation | 914 | 9.4 |
 | <GO:0023052> | signaling | 909 | 9.3 |
