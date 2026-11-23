@@ -10,7 +10,7 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Thu, 26 Mar 2026 21:31:39 GMT</lastBuildDate>
+<lastBuildDate>Wed, 18 Nov 2026 22:29:41 GMT</lastBuildDate>
 <item>
   <title>Ideas/Questions Log</title>
   <dc:creator>Kathleen Durkin</dc:creator>
@@ -25,6 +25,14 @@
 <p>My favorite part of science is constantly interacting with papers/presentations/people that prompt new ideas and questions about the stuff I’m working in, and I want to make sure I don’t forget things when that happens. This is my brain dump of thoughts/questions I want to remember and reference in the future!</p>
 <section id="ideas" class="level2">
 <h2 class="anchored" data-anchor-id="ideas">Ideas</h2>
+<ul>
+<li>2026/11/18: One of the major limitations to evaluating stress response from transcriptomic data is sparse functional annotation in non-model organisms (e.g., in <em>C. virginica</em> only ~60% of the proteome is functionally annotated based on sequence similarity). IT is thus possible that there are transcripts or classes of transcripts with great functional importance to stress response in marine inverts that are unknown, because unannotated transcripts are generally ignored in studies (by necessity – you can’t say anything about them). IT would be super cool to trawl existing studies on a given specie s(e.g., <em>Nematostella</em>) to find transcripts/sequences that are consistently differentially expressed, and then use this database to begin targeting specific unknown transcripts for identification via e.g.&nbsp;knockdown studies.</li>
+</ul>
+<!-- -->
+<ul>
+<li>2026/11/16: Our lab has been developing non-lethal metabolic assays in oysters using Resazurin, a redox-sensitive dye. Included in the Resazurin “master mix” is an antibiotic, used to minimize the influence of metabolic activity conducted by the oyster’s shell microbiome. However, it seems plausible that this could also lead to long-term shifts in the oyster’s shell and even internal microbiome (e.g., bacterial relative composition), with potential effects on oyster performance, disease susceptibility, etc. While this is probably of minimial concern in a hatchery setting (presumablly, only a tiny fraction of oysters would be assayed), it may have implications fro studies which use Resazurin in long-term evaluations of oyster performace. It therefore may be prudent to evaluate</li>
+</ul>
+<!-- -->
 <ul>
 <li>2026/03/05: In CSE 527, professor mentioned how it’s much harder to get papers published these days because AI has led to more submissions (more efficient research), which means many journals are overwhelmed. I’m wondering, could this mean that journals might start trending towards publishing authors who are already highly-published, and thus have some degree of “confidence” associated with their name? (or rather, might this trend become more pronounced than it probably already is?)</li>
 </ul>
@@ -73,7 +81,7 @@
  ]]></description>
   <category>miscellaneous</category>
   <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_30_Ideas.html</guid>
-  <pubDate>Thu, 26 Mar 2026 21:31:39 GMT</pubDate>
+  <pubDate>Wed, 18 Nov 2026 22:29:41 GMT</pubDate>
 </item>
 <item>
   <title>Molecular Notetaking: How Life Annotates its own Recipes</title>

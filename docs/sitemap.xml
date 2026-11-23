@@ -574,7 +574,7 @@
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_01_30_Ideas.html</loc>
-    <lastmod>2026-03-26T21:31:39.760Z</lastmod>
+    <lastmod>2026-11-18T22:29:41.036Z</lastmod>
   </url>
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/misc/2024_02_08_bedtools_gffvbed.html</loc>
@@ -967,5 +967,17 @@
   <url>
     <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_11_04_GSS_figures.html</loc>
     <lastmod>2026-11-05T08:41:16.697Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_11_04_DMR_overlap.html</loc>
+    <lastmod>2026-11-21T02:16:22.279Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_11_11_functional_annot.html</loc>
+    <lastmod>2026-11-23T23:20:17.748Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_11_12_functional_enrich.html</loc>
+    <lastmod>2026-11-23T23:49:06.898Z</lastmod>
   </url>
 </urlset>

@@ -1,0 +1,15 @@
+{
+  "hash": "5252f4887a8d2e6871e104a343bcf7b5",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"2026_11_12_functional_enrich\"\nauthor: \"Kathleen Durkin\"\ndate: \"2026-11-12\"\ncategories: [\"ceasmallr\"]\nformat:\n  html:\n    toc: true\n    code-fold: true\nexecute: \n  eval: TRUE\nengine: knitr\nbibliography: ../../../references.bib\n---\n\nAfter constructing a table of functional annotations for *C. virginica* genes, I can annotate my features of interest -- parental-treatment-based differentially methylated loci (DMLs) and differentially methylated regions (DMRs).\n\nThis is essentially just a series of table joins -- full code can be found at [14.1-functional-annotation-DMLs-DMRs](https://github.com/shedurkin/ceasmallr/blob/main/code/14.1-functional-annotation-DMLs-DMRs.md)\n\nIn all sets, DMLs and DMRs primarily occur in the gene body, followed by intergenic regions. Only a small portion of DMLs/DMRs occur in promoter regions (defined as 2kb upstream of a gene). I'll need to find the files of more detailed genomic feature tracks to provide more specific genomic context trends (i.e., introns, exons, TEs)\n\n![](./images/2026_11_12_functional_enrich/region_counts.png)\n\nBreakdown of most common BP categories for each DML/DMR set:\n\n![](./images/2026_11_12_functional_enrich/goslim_counts.png)\n\nImportantly, this only describes which functions are *present* among DM features, so next steps are to ask whether any functions are *over-represented*, using an enrichment test (e.g. `topGO` or `goseq`). (Note should use all *tested* CpGs (`tested_loci.bed.gz`) as the background, rather than the whole genome, since only genes with sufficient coverage could have been called as DM)\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

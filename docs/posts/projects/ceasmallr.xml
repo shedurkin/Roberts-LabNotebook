@@ -10,7 +10,409 @@
 <atom:link href="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Wed, 04 Nov 2026 08:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 12 Nov 2026 08:00:00 GMT</lastBuildDate>
+<item>
+  <title>2026_11_12_functional_enrich</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_11_12_functional_enrich.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>After constructing a table of functional annotations for <em>C. virginica</em> genes, I can annotate my features of interest – parental-treatment-based differentially methylated loci (DMLs) and differentially methylated regions (DMRs).</p>
+<p>This is essentially just a series of table joins – full code can be found at <a href="https://github.com/shedurkin/ceasmallr/blob/main/code/14.1-functional-annotation-DMLs-DMRs.md">14.1-functional-annotation-DMLs-DMRs</a></p>
+<p>In all sets, DMLs and DMRs primarily occur in the gene body, followed by intergenic regions. Only a small portion of DMLs/DMRs occur in promoter regions (defined as 2kb upstream of a gene). I’ll need to find the files of more detailed genomic feature tracks to provide more specific genomic context trends (i.e., introns, exons, TEs)</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/images/2026_11_12_functional_enrich/region_counts.png" class="img-fluid"></p>
+<p>Breakdown of most common BP categories for each DML/DMR set:</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/images/2026_11_12_functional_enrich/goslim_counts.png" class="img-fluid"></p>
+<p>Importantly, this only describes which functions are <em>present</em> among DM features, so next steps are to ask whether any functions are <em>over-represented</em>, using an enrichment test (e.g.&nbsp;<code>topGO</code> or <code>goseq</code>). (Note should use all <em>tested</em> CpGs (<code>tested_loci.bed.gz</code>) as the background, rather than the whole genome, since only genes with sufficient coverage could have been called as DM)</p>
+
+
+
+ ]]></description>
+  <category>ceasmallr</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_11_12_functional_enrich.html</guid>
+  <pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>2026_11_11_functional_annot</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_11_11_functional_annot.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>Now that we have DML/DMR sets of interest, we need to know more information about where they’re located in the genome, including genomic distribution (representation among introns, exons, intergenetic regions, etc.) and, for intragenic features, the function of those genes. Here I’ll build a Uniprot/Swissprot lookup table of GO terms for the C. virginica genome (3.0) so that I can functionally annotate our features of interest</p>
+<p>I largely followed the <a href="https://robertslab.github.io/resources/bio-Annotation/#retrieve-go-terms-from-uniprot-using-swissprot-ids">Roberts Lab Handbook’s GO/GOslim workflow</a></p>
+<p>The basic workflow is as follows:</p>
+<ol type="1">
+<li><p>Obtain the <em>C.virginica</em> proteome and BLAST it against the SwissProt database to obtain top-match functional annotations for each protien</p></li>
+<li><p>Map the <em>C.virginica</em> protiens to corresponding genes</p></li>
+<li><p>Using each gene’s mapped SwissProt ID, retrieve corresponding GO terms from Uniprot</p></li>
+<li><p>Map obtained GO terms to GOslims</p></li>
+<li><p>Compile all of this into a lookup table. For each gene we can see Gene ID, Protein ID, SPID, BLAST stats (% identity match, evalue, etc.), Protein name, organism name, and GO terms (BP, CC, MF, GOslim terms)</p></li>
+</ol>
+<p>Note that this approach, which initially BLASTs against the <em>C. virginica</em> proteome, inherently limits our annotation to protein-coding genes – noncoding features (tRNA, lncRNA, etc.) are excluded.</p>
+<p>Full code can be found at <a href="https://github.com/shedurkin/ceasmallr/blob/main/code/14-functional-annotation.md">14-functional-annotation</a>. <a href="https://robertslab.github.io/resources/Agentic-Coding-Tools/#five-level-rubric"><img src="https://img.shields.io/badge/AI%20Use-Level%202%20Drafting%2FCoding-yellowgreen" alt="AI Use Level 2: AI-assisted drafting or coding"></a></p>
+<p>Primary stats:</p>
+<p>Breakdown of proteome-based annotation</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">n_genes_total</th>
+<th style="text-align: right;">n_genes_annotated</th>
+<th style="text-align: right;">pct_annotated</th>
+<th style="text-align: right;">n_unique_SPIDs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">34608</td>
+<td style="text-align: right;">21123</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">11063</td>
+</tr>
+</tbody>
+</table>
+<p><br>
+61% of genes have functional annotations available – not terrible in the invert world!</p>
+<p>Note that not all genes with SPID annotations mapped to GO terms<br>
+</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">n_genes_annotated</th>
+<th style="text-align: right;">n_with_GO</th>
+<th style="text-align: right;">n_with_GOslim_BP</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">21123</td>
+<td style="text-align: right;">20516</td>
+<td style="text-align: right;">16372</td>
+</tr>
+</tbody>
+</table>
+<p><br>
+<br>
+<br>
+Breakdown of the most common GO terms</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">Term</th>
+<th style="text-align: right;">Count</th>
+<th style="text-align: right;">Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="GO:0048856" class="uri">GO:0048856</a></td>
+<td style="text-align: left;">anatomical structure development</td>
+<td style="text-align: right;">2068</td>
+<td style="text-align: right;">21.2</td>
+</tr>
+<tr class="even">
+<td><a href="GO:0030154" class="uri">GO:0030154</a></td>
+<td style="text-align: left;">cell differentiation</td>
+<td style="text-align: right;">914</td>
+<td style="text-align: right;">9.4</td>
+</tr>
+<tr class="odd">
+<td><a href="GO:0023052" class="uri">GO:0023052</a></td>
+<td style="text-align: left;">signaling</td>
+<td style="text-align: right;">909</td>
+<td style="text-align: right;">9.3</td>
+</tr>
+<tr class="even">
+<td><a href="GO:0002376" class="uri">GO:0002376</a></td>
+<td style="text-align: left;">immune system process</td>
+<td style="text-align: right;">550</td>
+<td style="text-align: right;">5.6</td>
+</tr>
+<tr class="odd">
+<td><a href="GO:0006629" class="uri">GO:0006629</a></td>
+<td style="text-align: left;">lipid metabolic process</td>
+<td style="text-align: right;">323</td>
+<td style="text-align: right;">3.3</td>
+</tr>
+<tr class="even">
+<td><a href="GO:0022414" class="uri">GO:0022414</a></td>
+<td style="text-align: left;">reproductive process</td>
+<td style="text-align: right;">310</td>
+<td style="text-align: right;">3.2</td>
+</tr>
+<tr class="odd">
+<td><a href="GO:1901135" class="uri">GO:1901135</a></td>
+<td style="text-align: left;">carbohydrate derivative metabolic process</td>
+<td style="text-align: right;">293</td>
+<td style="text-align: right;">3.0</td>
+</tr>
+<tr class="even">
+<td><a href="GO:0055085" class="uri">GO:0055085</a></td>
+<td style="text-align: left;">transmembrane transport</td>
+<td style="text-align: right;">239</td>
+<td style="text-align: right;">2.4</td>
+</tr>
+<tr class="odd">
+<td><a href="GO:0055086" class="uri">GO:0055086</a></td>
+<td style="text-align: left;">nucleobase-containing small molecule metabolic process</td>
+<td style="text-align: right;">234</td>
+<td style="text-align: right;">2.4</td>
+</tr>
+<tr class="even">
+<td><a href="GO:0016192" class="uri">GO:0016192</a></td>
+<td style="text-align: left;">vesicle-mediated transport</td>
+<td style="text-align: right;">228</td>
+<td style="text-align: right;">2.3</td>
+</tr>
+<tr class="odd">
+<td><a href="GO:0048870" class="uri">GO:0048870</a></td>
+<td style="text-align: left;">cell motility</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: right;">2.0</td>
+</tr>
+<tr class="even">
+<td><a href="GO:0012501" class="uri">GO:0012501</a></td>
+<td style="text-align: left;">programmed cell death</td>
+<td style="text-align: right;">194</td>
+<td style="text-align: right;">2.0</td>
+</tr>
+<tr class="odd">
+<td><a href="GO:0007010" class="uri">GO:0007010</a></td>
+<td style="text-align: left;">cytoskeleton organization</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: right;">1.9</td>
+</tr>
+<tr class="even">
+<td><a href="GO:0065003" class="uri">GO:0065003</a></td>
+<td style="text-align: left;">protein-containing complex assembly</td>
+<td style="text-align: right;">160</td>
+<td style="text-align: right;">1.6</td>
+</tr>
+<tr class="odd">
+<td><a href="GO:0061024" class="uri">GO:0061024</a></td>
+<td style="text-align: left;">membrane organization</td>
+<td style="text-align: right;">154</td>
+<td style="text-align: right;">1.6</td>
+</tr>
+<tr class="even">
+<td><a href="GO:0034330" class="uri">GO:0034330</a></td>
+<td style="text-align: left;">cell junction organization</td>
+<td style="text-align: right;">122</td>
+<td style="text-align: right;">1.3</td>
+</tr>
+<tr class="odd">
+<td><a href="GO:0007155" class="uri">GO:0007155</a></td>
+<td style="text-align: left;">cell adhesion</td>
+<td style="text-align: right;">118</td>
+<td style="text-align: right;">1.2</td>
+</tr>
+<tr class="even">
+<td><a href="GO:0000278" class="uri">GO:0000278</a></td>
+<td style="text-align: left;">mitotic cell cycle</td>
+<td style="text-align: right;">112</td>
+<td style="text-align: right;">1.1</td>
+</tr>
+<tr class="odd">
+<td><a href="GO:0003013" class="uri">GO:0003013</a></td>
+<td style="text-align: left;">circulatory system process</td>
+<td style="text-align: right;">107</td>
+<td style="text-align: right;">1.1</td>
+</tr>
+<tr class="even">
+<td><a href="GO:0005975" class="uri">GO:0005975</a></td>
+<td style="text-align: left;">carbohydrate metabolic process</td>
+<td style="text-align: right;">104</td>
+<td style="text-align: right;">1.1</td>
+</tr>
+</tbody>
+</table>
+
+
+
+ ]]></description>
+  <category>ceasmallr</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_11_11_functional_annot.html</guid>
+  <pubDate>Wed, 11 Nov 2026 08:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Identifying overlapping DMRs in parents and offspring</title>
+  <dc:creator>Kathleen Durkin</dc:creator>
+  <link>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_11_04_DMR_overlap.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>One indicator of faithfully inherited differential methylation is differentially methylated loci (DMLs) that are present in both the exposed parents (eggs and/or sperm) <em>and</em> in the offspring (zygote and larvae). I’ve already identified these overlapping parent/offspring DML sets in parent differential methylation analyses (<a href="https://github.com/shedurkin/ceasmallr/blob/main/code/10.11-diff-methyl-DSS-parents-CTmask.md">10.11-diff-methyl-DSS-parents-CTmask</a>). However, there’s evidence that differentially methylated <em>regions</em> (DMRs) or summarized gene-body methylation (gbM) are more biologically relevant (see <span class="citation" data-cites="liew_epigenome-associated_2018">Liew et al. (2018)</span>, <span class="citation" data-cites="dixon_bimodal_2014">Dixon, Bay, and Matz (2014)</span>), in addition to reducing noise (the CpG aggregation increases statistical power and reduces false positives). We already found DMRs in offspring and parents during differential methylation analysis (<a href="https://github.com/shedurkin/ceasmallr/blob/main/code/10.1-diff-methyl-DSS-parents.md">10.01-diff-methyl-DSS-CTmask</a>, <a href="https://github.com/shedurkin/ceasmallr/blob/main/code/10.11-diff-methyl-DSS-parents-CTmask.md">10.11-diff-methyl-DSS-parents-CTmask</a>). Here, I find overlaps among those DMR sets.</p>
+<p>Since a DMR is a region, two DMRs could technically “overlap” by a single base pair, which isn’t very meaningful. For now I’ll define an overlap using the same criteria DSS uses to call DMRs: (<code>callDMR(minlen = 50, minCG = 3)</code>):</p>
+<ul>
+<li>minimum overlap of <strong>&gt;= 50bp</strong>, and</li>
+<li>overlap must contain <strong>&gt;= 3 CpG sites</strong></li>
+</ul>
+<p>Full code available at <a href="https://github.com/shedurkin/ceasmallr/blob/main/code/13-DMR-overlap-CTmask.md">13-DMR-overlap-CTmask</a></p>
+<p><a href="https://robertslab.github.io/resources/Agentic-Coding-Tools/#five-level-rubric"><img src="https://img.shields.io/badge/AI%20Use-Level%202%20Drafting%2FCoding-yellowgreen" alt="AI Use Level 2: AI-assisted drafting or coding"></a></p>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<p>Summary of DMRs accross the 4 primary sets (parents – eggs/sperm; offspring – zygote/larvae)</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">set</th>
+<th style="text-align: right;">n_DMRs</th>
+<th style="text-align: right;">median_bp</th>
+<th style="text-align: right;">pct_hyper</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Zygote</td>
+<td style="text-align: right;">5128</td>
+<td style="text-align: right;">166</td>
+<td style="text-align: right;">31.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Larvae</td>
+<td style="text-align: right;">4590</td>
+<td style="text-align: right;">211</td>
+<td style="text-align: right;">53.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Egg</td>
+<td style="text-align: right;">11143</td>
+<td style="text-align: right;">238</td>
+<td style="text-align: right;">50.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sperm</td>
+<td style="text-align: right;">18493</td>
+<td style="text-align: right;">256</td>
+<td style="text-align: right;">53.3</td>
+</tr>
+</tbody>
+</table>
+<p>Counts of overlaping DMRs among different comparison sets:<br>
+</p>
+<p>Tables:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">off_name</th>
+<th style="text-align: left;">par_name</th>
+<th style="text-align: right;">n_off_DMRs</th>
+<th style="text-align: right;">n_par_DMRs</th>
+<th style="text-align: right;">n_any_overlap</th>
+<th style="text-align: right;">n_pass</th>
+<th style="text-align: right;">n_pass_concord</th>
+<th style="text-align: right;">n_off_DMRs_pass</th>
+<th style="text-align: right;">n_par_DMRs_pass</th>
+<th style="text-align: right;">pct_off_DMRs_shared</th>
+<th style="text-align: right;">pct_concordant</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Zygote</td>
+<td style="text-align: left;">Egg</td>
+<td style="text-align: right;">5128</td>
+<td style="text-align: right;">11143</td>
+<td style="text-align: right;">766</td>
+<td style="text-align: right;">629</td>
+<td style="text-align: right;">517</td>
+<td style="text-align: right;">613</td>
+<td style="text-align: right;">584</td>
+<td style="text-align: right;">12.0</td>
+<td style="text-align: right;">82.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Zygote</strong></td>
+<td style="text-align: left;"><strong>Sperm</strong></td>
+<td style="text-align: right;"><strong>5128</strong></td>
+<td style="text-align: right;"><strong>18493</strong></td>
+<td style="text-align: right;"><strong>1376</strong></td>
+<td style="text-align: right;"><strong>1186</strong></td>
+<td style="text-align: right;"><strong>1111</strong></td>
+<td style="text-align: right;"><strong>1151</strong></td>
+<td style="text-align: right;"><strong>1079</strong></td>
+<td style="text-align: right;"><strong>22.4</strong></td>
+<td style="text-align: right;"><strong>93.7</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Larvae</td>
+<td style="text-align: left;">Egg</td>
+<td style="text-align: right;">4590</td>
+<td style="text-align: right;">11143</td>
+<td style="text-align: right;">916</td>
+<td style="text-align: right;">751</td>
+<td style="text-align: right;">678</td>
+<td style="text-align: right;">726</td>
+<td style="text-align: right;">714</td>
+<td style="text-align: right;">15.8</td>
+<td style="text-align: right;">90.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Larvae</td>
+<td style="text-align: left;">Sperm</td>
+<td style="text-align: right;">4590</td>
+<td style="text-align: right;">18493</td>
+<td style="text-align: right;">1643</td>
+<td style="text-align: right;">1390</td>
+<td style="text-align: right;">1329</td>
+<td style="text-align: right;">1346</td>
+<td style="text-align: right;">1292</td>
+<td style="text-align: right;">29.3</td>
+<td style="text-align: right;">95.6</td>
+</tr>
+</tbody>
+</table>
+<p>Plotted:</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/images/13-DMR-overlap-CTmask_files/figure-gfm/unnamed-chunk-8-1.png" class="img-fluid"></p>
+<p>As in DML overlap comparisons, almost all overlapping DMRs are directionally concordant (sign of the offspring score == sign of the parent score). Also as noticed in DML overlap comparisons, only a small portion of features are present in all parents and offspring (Zygote x Larvae x Egg x Sperm). Much of the ceasmallr data thus far has suggested that the paternal contribution has a greater influence on the offspring methylome, and this is still supported at the DMR level, with offspring x sperm comparisons having both greater counts and rates of directional concordance than offspring x egg comparisons.</p>
+<p>If we assume primary paternal contribution and focus on the larvae stage of offspring (later in development, and thus later in any possible reprogramming timeline), we see 1186 overlapping DMRs, with 93.7% of them directionally concordant.</p>
+<p>Again, as with DML comparisons, we see only partial overlap between the two offspring lifestages, suggesting partial epigenetic reprogramming.</p>
+<p><img src="https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/images/13-DMR-overlap-CTmask_files/figure-gfm/unnamed-chunk-9-1.png" class="img-fluid"></p>
+<p>The majority of overlapping DMRs are less than 1000bp long, and contain fewer than 30 tested CpGs. It may be prudent to more seriously consider the parameters that constitute an “overlap” – not sure at the moment the biological relevance of very diffuse CpGs. Maybe a length-dependent parameter (e.g., need average of at least 1 CpG per 20bp).</p>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="ref-dixon_bimodal_2014" class="csl-entry">
+Dixon, Groves B., Line K. Bay, and Mikhail V. Matz. 2014. <span>“Bimodal Signatures of Germline Methylation Are Linked with Gene Expression Plasticity in the Coral <span>Acropora</span> Millepora.”</span> <em>BMC Genomics</em> 15 (1): 1109. <a href="https://doi.org/10.1186/1471-2164-15-1109">https://doi.org/10.1186/1471-2164-15-1109</a>.
+</div>
+<div id="ref-liew_epigenome-associated_2018" class="csl-entry">
+Liew, Yi Jin, Didier Zoccola, Yong Li, Eric Tambutté, Alexander A. Venn, Craig T. Michell, Guoxin Cui, et al. 2018. <span>“Epigenome-Associated Phenotypic Acclimatization to Ocean Acidification in a Reef-Building Coral.”</span> <em>Science Advances</em> 4 (6): eaar8028. <a href="https://doi.org/10.1126/sciadv.aar8028">https://doi.org/10.1126/sciadv.aar8028</a>.
+</div>
+</div></section></div> ]]></description>
+  <category>ceasmallr</category>
+  <guid>https://shedurkin.github.io/Roberts-LabNotebook/posts/projects/ceasmallr/2026_11_04_DMR_overlap.html</guid>
+  <pubDate>Wed, 04 Nov 2026 08:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Generating ceasmallr figures for GSS</title>
   <dc:creator>Kathleen Durkin</dc:creator>
